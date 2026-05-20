@@ -2,8 +2,11 @@ name: GEX Daily Tracker
 
 on:
   schedule:
-    - cron: '0 23 * * 1-5'  # 6pm EST (11pm UTC) Monday-Friday
-  workflow_dispatch:  # allows manual run anytime
+    - cron: '0 23 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run-tracker:
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,4 +37,4 @@ jobs:
           git config user.email "one7rade@gmail.com"
           git add gex_log.csv
           git diff --staged --quiet || git commit -m "GEX log update $(date +'%Y-%m-%d')"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git
