@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPY GEX Tracker</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f8f8f6;color:#222;padding:0;min-height:100vh}
+.header{background:#fff;border-bottom:1px solid #e5e5e0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.header-title{font-size:15px;font-weight:600;color:#1a1a1a}
+.header-sub{font-size:11px;color:#888;margin-top:1px}
+.refresh-badge{font-size:11px;color:#888;display:flex;align-items:center;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:#639922;display:inline-block}
+.container{max-width:900px;margin:0 auto;padding:16px}
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:14px}
+.m{background:#fff;border-radius:8px;padding:10px 12px;border:0.5px solid #e5e5e0}
+.ml{font-size:10px;color:#888;margin-bottom:3px}
+.mv{font-size:17px;font-weight:600}
+.ms{font-size:10px;color:#aaa;margin-top:2px}
+.card{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.cl{font-size:10px;font-weight:600;color:#999;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase}
+.sig{border-radius:8px;padding:12px 16px;margin-bottom:12px}
+.sig-g{background:#EAF3DE;border-left:4px solid #3B6D11}
+.sig-r{background:#FCEBEB;border-left:4px solid #A32D2D}
+.sig-b{background:#E6F1FB;border-left:4px solid #185FA5}
+.sig-a{background:#FAEEDA;border-left:4px solid #BA7517}
+.sig-title{font-size:15px;font-weight:600;margin-bottom:5px}
+.sig-g .sig-title{color:#27500A}
+.sig-r .sig-title{color:#791F1F}
+.sig-b .sig-title{color:#0C447C}
+.sig-a .sig-title{color:#633806}
+.sig-body{font-size:12px;line-height:1.6;color:#555}
+.leg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;font-size:11px;color:#666;align-items:center}
+.li{display:flex;align-items:center;gap:4px}
+.ll{width:14px;height:3px;border-radius:2px}
+.lb{width:9px;height:9px;border-radius:2px}
+.badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
+.bg{background:#EAF3DE;color:#27500A}
+.br{background:#FCEBEB;color:#791F1F}
+.ba{background:#FAEEDA;color:#633806}
+.bb{background:#E6F1FB;color:#0C447C}
+.bn{background:#f0ede8;color:#666}
+.hr{display:flex;gap:8px;font-size:12px;padding:6px 0;border-bottom:0.5px solid #f0ede8;align-items:center}
+.hr:last-child{border-bottom:none}
+.pw{background:#f0ede8;border-radius:20px;height:6px;overflow:hidden;margin-top:3px}
+.pb{height:100%;border-radius:20px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:6px 8px;background:#f8f8f6;color:#888;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e5e5e0}
+td{padding:6px 8px;border-bottom:0.5px solid #f0ede8;color:#333;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.opp{border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:12px;line-height:1.6}
+.opp-g{background:#EAF3DE;border-left:3px solid #3B6D11}
+.opp-a{background:#FAEEDA;border-left:3px solid #BA7517}
+.opp-b{background:#E6F1FB;border-left:3px solid #185FA5}
+.opp-t{font-weight:600;margin-bottom:2px;font-size:13px}
+.opp-g .opp-t{color:#27500A}
+.opp-a .opp-t{color:#633806}
+.opp-b .opp-t{color:#0C447C}
+.opp-body{color:#555}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.prog-label{font-size:11px;color:#666;margin-bottom:3px}
+.prog-val{font-size:13px;font-weight:600;color:#222}
+.prog-sub{font-size:10px;color:#aaa;margin-top:2px}
+.loading{text-align:center;padding:40px;color:#888;font-size:14px}
+footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
+@media(max-width:500px){.mg{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-title">SPY GEX Tracker</div>
+    <div class="header-sub">one7rade · GEX + VIX signal framework</div>
+  </div>
+  <div class="refresh-badge"><span class="dot" id="statusDot"></span><span id="statusTxt">Loading...</span></div>
+</div>
+
+<div class="container">
+  <div id="app"><div class="loading">Loading GEX data...</div></div>
+</div>
+
+<footer>Data pulled daily from InsiderFinance + Yahoo Finance · GitHub Actions automation · one7rade-byte/gex-tracker</footer>
+
+<script>
+const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
+let pChart=null,gChart=null,vChart=null;
+
+async function fetchCSV(){
+  const r=await fetch(CSV_URL+'?t='+Date.now());
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return r.text();
+}
+
+function parseCSV(text){
+  const lines=text.trim().split('\n');
+  if(lines.length<2)return[];
+  const headers=lines[0].split(',').map(h=>h.trim());
+  return lines.slice(1).map(line=>{
+    const vals=line.split(',');
+    const obj={};
+    headers.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+    return{
+      d:obj.date||'',
+      s:parseFloat(obj.spot_price)||0,
+      g:parseFloat(obj.net_gex_b)||0,
+      v:parseFloat(obj.vix)||0,
+      z:parseFloat(obj.zero_gamma)||null,
+      cw:parseFloat(obj.call_wall)||null,
+      pw:parseFloat(obj.put_wall)||null,
+      sig:obj.signal||''
+    };
+  }).filter(e=>e.d&&e.s&&e.v);
+}
+
+function computeSignal(g,v,prev){
+  const neg=prev.filter(e=>e.g<0).length;
+  const vRise=prev.length>=2&&v>prev[prev.length-1].v;
+  if(g<0&&v>19.5)return{cls:'sig-r',bc:'br',label:'Exit / sell signal',body:'GEX negative + VIX above 19.5 — dual exit condition. Dealers amplifying moves.',port:'Avoid new long positions. Wait for VIX to peak before loading.'};
+  if(g<-5&&v>22)return{cls:'sig-g',bc:'bg',label:'Buy zone loading',body:'GEX deeply negative + VIX elevated — spring coiling. Watch for price to stop making new lows.',port:'Early buy zone. Begin scaling into long-term positions.'};
+  if(g<-4&&neg>=2&&v>18&&vRise)return{cls:'sig-a',bc:'ba',label:'Watch — setup building',body:'GEX deeply negative '+neg+' days, VIX rising. Setup loading but not at peak fear yet.',port:'Potential buying opportunity building. Monitor daily.'};
+  if(g<0&&v<19)return{cls:'sig-b',bc:'bb',label:'Weekly noise — hold',body:'GEX negative but VIX low. Likely expiry oscillation — not a real regime change.',port:'No action. This snaps back quickly. Wait and watch.'};
+  if(g>10&&v<17.5)return{cls:'sig-g',bc:'bg',label:'Strong hold — maximum positive regime',body:'GEX '+g.toFixed(2)+'B at near all-time high. VIX '+v.toFixed(2)+' at cycle lows. Dealers fully long gamma.',port:'Hold existing positions. Not a new entry point — market elevated and calm.'};
+  if(g>0&&v<19)return{cls:'sig-b',bc:'bb',label:'Hold — positive regime intact',body:'GEX positive, VIX controlled. Bull regime active. Dealers buying dips mechanically.',port:'Hold. Not a portfolio loading opportunity at current prices.'};
+  return{cls:'sig-a',bc:'ba',label:'Neutral — monitor',body:'Mixed signals. Track daily.',port:'No clear action.'};
+}
+
+function buildUI(data){
+  const last=data[data.length-1];
+  const prev=data.slice(-6,-1);
+  const info=computeSignal(last.g,last.v,prev);
+  const change=data.length>=2?(last.s-data[data.length-2].s):0;
+  const chSign=change>=0?'+':'';
+  const spyHigh=Math.max(...data.map(e=>e.s));
+  const vLow=Math.min(...data.map(e=>e.v));
+  const gHigh=Math.max(...data.map(e=>e.g));
+  const gColor=last.g>=0?'#3B6D11':'#A32D2D';
+  const vColor=last.v<=17?'#3B6D11':last.v<=19?'#BA7517':'#A32D2D';
+  const sColor=change>=0?'#3B6D11':'#A32D2D';
+  const vixTgt=Math.max(0,25-last.v);
+  const gexTgt=Math.max(0,-5-last.g);
+  const inBuy=last.g<-5&&last.v>22;
+  const approaching=last.g<-3&&last.v>19;
+
+  const recent=[...data].slice(-10).reverse();
+  const tableRows=recent.map(e=>{
+    const si=computeSignal(e.g,e.v,[]);
+    const label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
+    const gColor=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11';
+    const vColor=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
+    return`<tr>
+      <td style="color:#666">${e.d}</td>
+      <td style="font-weight:500">$${e.s.toFixed(2)}</td>
+      <td style="color:${gColor};font-weight:500">${e.g>=0?'+':''}${e.g.toFixed(2)}B</td>
+      <td style="color:${vColor}">${e.v.toFixed(2)}</td>
+      <td>${e.z?'$'+e.z.toFixed(2):'—'}</td>
+      <td>${e.cw?'$'+e.cw:'—'}</td>
+      <td>${e.pw?'$'+e.pw:'—'}</td>
+      <td><span class="badge ${si.bc}">${label}</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML=`
+    <div class="sig ${info.cls}"><div class="sig-title">${info.label}</div><div class="sig-body">${info.body}</div></div>
+
+    <div class="mg">
+      <div class="m"><div class="ml">SPY today</div><div class="mv" style="color:${sColor}">$${last.s.toFixed(2)}</div><div class="ms">${chSign}$${Math.abs(change).toFixed(2)}</div></div>
+      <div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:${gColor}">${last.g>=0?'+':''}$${last.g.toFixed(2)}B</div><div class="ms">${last.g>=0?'positive':'negative'}</div></div>
+      <div class="m"><div class="ml">VIX</div><div class="mv" style="color:${vColor}">${last.v.toFixed(2)}</div><div class="ms">${last.v<=vLow+0.05?'cycle low':'low: '+vLow.toFixed(2)}</div></div>
+      <div class="m"><div class="ml">Zero-gamma</div><div class="mv">${last.z?'$'+last.z.toFixed(2):'—'}</div><div class="ms">${last.z?(last.s>last.z?'price above':'price below'):'—'}</div></div>
+      <div class="m"><div class="ml">Call wall</div><div class="mv">${last.cw?'$'+last.cw:'—'}</div><div class="ms">resistance</div></div>
+      <div class="m"><div class="ml">Put wall</div><div class="mv">${last.pw?'$'+last.pw:'—'}</div><div class="ms">support</div></div>
+      <div class="m"><div class="ml">Dataset ATH</div><div class="mv" style="color:#3B6D11">$${spyHigh.toFixed(2)}</div><div class="ms">all-time high</div></div>
+      <div class="m"><div class="ml">Days logged</div><div class="mv">${data.length}</div><div class="ms">entries</div></div>
+    </div>
+
+    <div class="card">
+      <div class="cl">SPY price · VIX · call wall</div>
+      <div class="leg">
+        <span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span>
+        <span class="li"><span class="ll" style="background:#E24B4A;border-top:2px dashed #E24B4A"></span>VIX (right)</span>
+        <span class="li"><span class="ll" style="background:#BA7517;border-top:2px dotted #BA7517"></span>Call wall</span>
+        <span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span>
+        <span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span>
+      </div>
+      <div style="position:relative;width:100%;height:240px"><canvas id="c1" role="img" aria-label="SPY price and VIX chart with GEX regime zones">SPY and VIX trend chart.</canvas></div>
+      <div style="position:relative;width:100%;height:100px;margin-top:8px"><canvas id="c2" role="img" aria-label="Net GEX bars by day">GEX regime bars.</canvas></div>
+      <div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3" role="img" aria-label="VIX daily bars">VIX daily bars.</canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="cl">Portfolio buy zone assessment</div>
+      <div class="opp ${inBuy?'opp-g':approaching?'opp-a':'opp-b'}">
+        <div class="opp-t">${inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry'}</div>
+        <div class="opp-body">${info.port}</div>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="prog-label">VIX → target 25+ for buy zone</div>
+          <div class="prog-val">+${vixTgt.toFixed(1)} pts needed</div>
+          <div class="pw"><div class="pb" style="width:${Math.min(100,last.v/25*100).toFixed(0)}%;background:${last.v>22?'#A32D2D':last.v>19?'#BA7517':'#639922'}"></div></div>
+          <div class="prog-sub">Current ${last.v.toFixed(2)} → target 25.00</div>
+        </div>
+        <div>
+          <div class="prog-label">GEX → target below -$5B</div>
+          <div class="prog-val">${last.g<-5?'In zone':'$'+gexTgt.toFixed(1)+'B more needed'}</div>
+          <div class="pw"><div class="pb" style="width:${Math.min(100,Math.max(0,Math.abs(Math.min(0,last.g))/5*100)).toFixed(0)}%;background:${last.g<-5?'#A32D2D':last.g<-3?'#BA7517':'#639922'}"></div></div>
+          <div class="prog-sub">Current ${last.g.toFixed(2)}B → below -5B</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg · SPY $629–$659 · +18% return in 7 weeks</div>
+    </div>
+
+    <div class="card">
+      <div class="cl">Recent history</div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>Zero-G</th><th>Call wall</th><th>Put wall</th><th>Signal</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+
+  renderCharts(data);
+}
+
+function renderCharts(data){
+  const labels=data.map(e=>e.d);
+  const spyD=data.map(e=>e.s);
+  const vixD=data.map(e=>e.v);
+  const gexD=data.map(e=>e.g);
+  const wallD=data.map(e=>e.cw);
+  const gc='rgba(0,0,0,0.06)';
+  const tc='#888';
+
+  const zones=[];
+  let zs=0,zt=data[0]?.g<0?'n':'p';
+  data.forEach((e,i)=>{const t=e.g<0?'n':'p';if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}});
+
+  const bgP={id:'bg2',beforeDraw(chart){
+    const{ctx,chartArea,scales}=chart;if(!chartArea)return;
+    const x=scales.x,bw=x.width/labels.length;
+    ctx.save();
+    zones.forEach(([s,e,t])=>{
+      ctx.fillStyle=t==='n'?'rgba(226,75,74,0.08)':'rgba(99,153,34,0.07)';
+      ctx.fillRect(x.getPixelForValue(s)-bw*.35,chartArea.top,(x.getPixelForValue(e)+bw*.65)-(x.getPixelForValue(s)-bw*.35),chartArea.height);
+    });
+    ctx.restore();
+  }};
+
+  const evP2={id:'ev2',afterDraw(chart){
+    const{ctx,chartArea,scales}=chart;if(!chartArea)return;
+    const x=scales.x;
+    [{i:0,c:'#A32D2D',t:'Low'},{i:4,c:'#BA7517',t:'Enter'},{i:14,c:'#A32D2D',t:'Exit'},{i:data.length-1,c:'#3B6D11',t:'Today'}].forEach(ev=>{
+      if(ev.i>=labels.length)return;
+      const px=x.getPixelForValue(ev.i);
+      ctx.save();ctx.beginPath();ctx.moveTo(px,chartArea.top+14);ctx.lineTo(px,chartArea.bottom);
+      ctx.strokeStyle=ev.c;ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.stroke();
+      ctx.fillStyle=ev.c;ctx.font='500 8px Arial';ctx.textAlign='center';
+      ctx.fillText(ev.t,px,chartArea.top+10);ctx.restore();
+    });
+  }};
+
+  Chart.register(evP2);
+  if(pChart)pChart.destroy();
+  pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels,datasets:[
+    {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,
+     pointRadius:spyD.map((_,i)=>i===0||i===4||i===14||i===data.length-1?4:1),
+     pointBackgroundColor:spyD.map((_,i)=>i===4?'#BA7517':i===14?'#A32D2D':i===data.length-1?'#3B6D11':'#378ADD'),
+     pointBorderColor:'#fff',pointBorderWidth:1.5,yAxisID:'yP',backgroundColor:'transparent'},
+    {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,
+     pointRadius:1,pointBackgroundColor:'#E24B4A',yAxisID:'yV',backgroundColor:'transparent'},
+    {label:'Wall',data:wallD,borderColor:'#BA7517',borderWidth:1.5,borderDash:[3,4],tension:0,
+     pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
+      if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
+      if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
+      if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;return null;
+    }}}},
+    scales:{
+      x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
+      yP:{position:'left',min:600,max:790,ticks:{font:{size:9},color:'#378ADD',callback:v=>'$'+v},grid:{color:gc}},
+      yV:{position:'right',min:13,max:30,ticks:{font:{size:9},color:'#E24B4A'},grid:{display:false}}
+    }
+  },plugins:[bgP,evP2]});
+
+  if(gChart)gChart.destroy();
+  gChart=new Chart(document.getElementById('c2'),{type:'bar',data:{labels,datasets:[{
+    label:'GEX',data:gexD,borderRadius:2,borderWidth:1,
+    backgroundColor:gexD.map(v=>v<0?'rgba(226,75,74,0.7)':v<3?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.7)'),
+    borderColor:gexD.map(v=>v<0?'#A32D2D':v<3?'#BA7517':'#3B6D11')
+  }]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' GEX '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y.toFixed(2)+'B'}}},
+    scales:{x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
+      y:{ticks:{font:{size:9},color:tc,callback:v=>(v>=0?'+':'')+v+'B'},grid:{color:gc}}}
+  },plugins:[bgP]});
+
+  if(vChart)vChart.destroy();
+  vChart=new Chart(document.getElementById('c3'),{type:'bar',data:{labels,datasets:[{
+    label:'VIX',data:vixD,borderRadius:2,borderWidth:1,
+    backgroundColor:vixD.map((_,i)=>i<=4?'rgba(226,75,74,0.65)':i<=12?'rgba(99,153,34,0.65)':i<=16?'rgba(186,119,23,0.65)':'rgba(99,153,34,0.65)'),
+    borderColor:vixD.map((_,i)=>i<=4?'#A32D2D':i<=12?'#3B6D11':i<=16?'#BA7517':'#3B6D11')
+  }]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' VIX '+ctx.parsed.y.toFixed(2)}}},
+    scales:{x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
+      y:{min:13,max:28,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
+  },plugins:[bgP]});
+}
+
+async function init(){
+  try{
+    const text=await fetchCSV();
+    const data=parseCSV(text);
+    if(!data.length)throw new Error('No data');
+    buildUI(data);
+    const last=data[data.length-1];
+    document.getElementById('statusDot').style.background='#639922';
+    document.getElementById('statusTxt').textContent='Live · last: '+last.d;
+  }catch(e){
+    document.getElementById('statusDot').style.background='#E24B4A';
+    document.getElementById('statusTxt').textContent='Error loading data';
+    document.getElementById('app').innerHTML='<div class="loading" style="color:#A32D2D">Could not load gex_log.csv — make sure GitHub Pages is enabled and the CSV exists in your repo.<br><br>Error: '+e.message+'</div>';
+  }
+}
+
+init();
+setInterval(init,300000);
+</script>
+</body>
+</html>
