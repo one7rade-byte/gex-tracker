@@ -34,3 +34,4 @@ date,ticker,spot_price,net_gex_b,vix,zero_gamma,call_wall,put_wall,peak_gex_stri
 2026-05-19,SPY,734.39,-7.85,18.06,738.43,745.0,730.0,730.0,715.0,2.20,RED Watch - GEX deeply neg VIX rising
 2026-05-21,SPY,744.16,6.63,16.76,739.65,745.0,730.0,743.0,715.0,2.06,GREEN Hold - pos GEX vol controlled
 2026-05-22,SPY,743.96,13.28,16.70,742.58,745.0,730.0,745.0,720.0,1.97,GREEN Strong hold - GEX high vol suppressed
+2026-05-26,SPY,750.34,11.35,17.01,742.09,755.0,730.0,750.0,720.0,2.0,"GREEN Strong hold - GEX high, vol suppressed"
