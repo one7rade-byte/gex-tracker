@@ -1,7 +1,36 @@
 date,ticker,spot_price,net_gex_b,vix,zero_gamma,call_wall,put_wall,peak_gex_strike,max_pain,pc_ratio,signal
-2026-05-20,SPY,734.39,-7.8,18.06,738.43,745.0,730.0,730.0,715.0,2.2,"RED Watch - GEX deeply neg, VIX rising"
-2026-05-21,SPY,738.29,3.78,17.44,740.59,740.0,730.0,740.0,715.0,2.09,"GREEN Hold - pos GEX, vol controlled"
-2026-05-21,SPY,738.87,,17.75,743.47,740.0,738.0,738.0,715.0,1.96,Unknown - check data
-2026-05-22,SPY,744.16,6.63,16.76,739.65,745.0,730.0,743.0,715.0,2.06,"GREEN Hold - pos GEX, vol controlled"
-2026-05-22,SPY,744.13,2.86,17.06,739.55,745.0,730.0,745.0,715.0,2.08,"GREEN Hold - pos GEX, vol controlled"
-2026-05-23,SPY,743.96,13.28,16.7,742.58,745.0,730.0,745.0,720.0,1.97,"GREEN Strong hold - GEX high, vol suppressed"
+2026-03-30,SPY,629.35,-3.5,25.35,,,,,,,RED Watch - GEX deeply neg
+2026-04-01,SPY,624.0,-3.2,24.54,,,,,,,RED Watch - GEX deeply neg
+2026-04-02,SPY,624.0,-3.0,23.87,,,,,,,RED Watch - GEX deeply neg
+2026-04-06,SPY,628.0,-2.8,24.17,,,,,,,RED Watch - GEX deeply neg
+2026-04-07,SPY,659.30,-3.5,25.78,,,,,,,RED EXIT - neg GEX + VIX elevated
+2026-04-08,SPY,672.0,4.0,21.04,,,,,,,GREEN Hold - pos GEX vol controlled
+2026-04-09,SPY,681.0,7.0,19.49,,,,,,,GREEN Hold - pos GEX vol controlled
+2026-04-10,SPY,687.0,8.5,19.23,,,,,,,GREEN Hold - pos GEX vol controlled
+2026-04-13,SPY,692.0,9.8,19.12,,,,,,,GREEN Hold - pos GEX vol controlled
+2026-04-14,SPY,694.49,11.26,18.36,680.91,695.0,650.0,695.0,674.0,2.06,GREEN Hold - pos GEX vol controlled
+2026-04-15,SPY,700.64,16.86,18.17,684.05,710.0,650.0,700.0,677.0,2.11,GREEN Hold - pos GEX vol controlled
+2026-04-16,SPY,701.79,11.05,17.94,668.97,702.0,650.0,700.0,680.0,2.06,GREEN Hold - pos GEX vol controlled
+2026-04-17,SPY,710.54,11.05,17.48,668.97,702.0,650.0,700.0,680.0,2.26,GREEN Hold - pos GEX vol controlled
+2026-04-20,SPY,709.52,0.82,18.87,700.31,710.0,709.0,709.0,687.0,2.11,NEUTRAL - monitor
+2026-04-21,SPY,706.98,-2.04,19.50,704.36,710.0,700.0,710.0,689.0,2.09,RED EXIT - neg GEX + VIX elevated
+2026-04-22,SPY,709.51,-1.83,18.92,709.22,715.0,700.0,715.0,691.0,2.13,AMBER Caution - neg GEX watch VIX
+2026-04-23,SPY,708.66,-6.38,19.31,708.56,715.0,708.0,708.0,691.0,2.18,RED Watch - GEX deeply neg VIX rising
+2026-04-24,SPY,713.95,6.75,18.71,709.61,714.0,699.0,714.0,693.0,2.14,GREEN Hold - pos GEX vol controlled
+2026-04-27,SPY,716.30,4.48,18.02,708.88,720.0,699.0,715.0,693.0,2.14,GREEN Hold - pos GEX vol controlled
+2026-04-28,SPY,711.67,-5.10,17.83,712.40,715.0,700.0,712.0,695.0,2.19,AMBER Caution - neg GEX watch VIX
+2026-04-29,SPY,713.48,-6.28,18.81,704.24,715.0,710.0,710.0,695.0,2.17,RED Watch - GEX deeply neg VIX rising
+2026-04-30,SPY,719.00,9.98,16.89,707.68,720.0,700.0,720.0,695.0,2.13,GREEN Hold - pos GEX vol controlled
+2026-05-01,SPY,720.34,2.63,16.99,713.15,725.0,700.0,725.0,695.0,2.18,GREEN Hold - pos GEX vol controlled
+2026-05-04,SPY,717.65,-2.89,18.29,716.22,725.0,700.0,700.0,700.0,2.23,AMBER Caution - neg GEX watch VIX
+2026-05-05,SPY,724.53,8.18,17.38,716.68,725.0,700.0,724.0,700.0,2.21,GREEN Hold - pos GEX vol controlled
+2026-05-06,SPY,733.57,9.98,17.39,720.71,734.0,700.0,734.0,700.0,2.22,GREEN Hold - pos GEX vol controlled
+2026-05-07,SPY,730.04,2.84,17.08,726.58,732.0,700.0,732.0,705.0,2.21,GREEN Hold - pos GEX vol controlled
+2026-05-08,SPY,737.61,12.83,17.19,727.68,738.0,710.0,738.0,705.0,2.16,GREEN Strong hold - GEX high vol suppressed
+2026-05-11,SPY,738.97,6.70,18.38,732.48,739.0,710.0,739.0,710.0,2.21,GREEN Hold - pos GEX vol controlled
+2026-05-12,SPY,737.41,-1.31,17.99,734.74,740.0,737.0,737.0,710.0,2.19,AMBER Caution - neg GEX watch VIX
+2026-05-14,SPY,747.63,11.86,17.26,737.97,748.0,700.0,748.0,710.0,2.02,GREEN Strong hold - GEX high vol suppressed
+2026-05-18,SPY,738.95,-5.0,17.82,738.98,745.0,738.0,738.0,715.0,2.17,AMBER Caution - neg GEX watch VIX
+2026-05-19,SPY,734.39,-7.85,18.06,738.43,745.0,730.0,730.0,715.0,2.20,RED Watch - GEX deeply neg VIX rising
+2026-05-21,SPY,744.16,6.63,16.76,739.65,745.0,730.0,743.0,715.0,2.06,GREEN Hold - pos GEX vol controlled
+2026-05-22,SPY,743.96,13.28,16.70,742.58,745.0,730.0,745.0,720.0,1.97,GREEN Strong hold - GEX high vol suppressed
