@@ -1,36 +1,30 @@
 name: GEX Daily Tracker
-
 on:
-  schedule:
-   - cron: '0 22 * * 1-5'
+  repository_dispatch:
+    types: [run-gex-tracker]
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 22 * * 1-5'
 permissions:
   contents: write
-
 jobs:
   run-tracker:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install dependencies
         run: pip install requests beautifulsoup4
-
       - name: Run GEX tracker
         env:
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
         run: python gex_tracker.py
-
       - name: Save CSV to repository
         run: |
           git config user.name "GEX Bot"
