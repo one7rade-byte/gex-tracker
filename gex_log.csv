@@ -1,47 +1,47 @@
-date,ticker,spot_price,net_gex_b,vix,zero_gamma,call_wall,put_wall,peak_gex_strike,max_pain,pc_ratio,signal
-2026-03-30,SPY,629.35,-3.5,25.35,,,,,,,RED Watch - GEX deeply neg
-2026-04-01,SPY,624.0,-3.2,24.54,,,,,,,RED Watch - GEX deeply neg
-2026-04-02,SPY,624.0,-3.0,23.87,,,,,,,RED Watch - GEX deeply neg
-2026-04-06,SPY,628.0,-2.8,24.17,,,,,,,RED Watch - GEX deeply neg
-2026-04-07,SPY,659.30,-3.5,25.78,,,,,,,RED EXIT - neg GEX + VIX elevated
-2026-04-08,SPY,672.0,4.0,21.04,,,,,,,GREEN Hold - pos GEX vol controlled
-2026-04-09,SPY,681.0,7.0,19.49,,,,,,,GREEN Hold - pos GEX vol controlled
-2026-04-10,SPY,687.0,8.5,19.23,,,,,,,GREEN Hold - pos GEX vol controlled
-2026-04-13,SPY,692.0,9.8,19.12,,,,,,,GREEN Hold - pos GEX vol controlled
-2026-04-14,SPY,694.49,11.26,18.36,680.91,695.0,650.0,695.0,674.0,2.06,GREEN Hold - pos GEX vol controlled
-2026-04-15,SPY,700.64,16.86,18.17,684.05,710.0,650.0,700.0,677.0,2.11,GREEN Hold - pos GEX vol controlled
-2026-04-16,SPY,701.79,11.05,17.94,668.97,702.0,650.0,700.0,680.0,2.06,GREEN Hold - pos GEX vol controlled
-2026-04-17,SPY,710.54,11.05,17.48,668.97,702.0,650.0,700.0,680.0,2.26,GREEN Hold - pos GEX vol controlled
-2026-04-20,SPY,709.52,0.82,18.87,700.31,710.0,709.0,709.0,687.0,2.11,NEUTRAL - monitor
-2026-04-21,SPY,706.98,-2.04,19.50,704.36,710.0,700.0,710.0,689.0,2.09,RED EXIT - neg GEX + VIX elevated
-2026-04-22,SPY,709.51,-1.83,18.92,709.22,715.0,700.0,715.0,691.0,2.13,AMBER Caution - neg GEX watch VIX
-2026-04-23,SPY,708.66,-6.38,19.31,708.56,715.0,708.0,708.0,691.0,2.18,RED Watch - GEX deeply neg VIX rising
-2026-04-24,SPY,713.95,6.75,18.71,709.61,714.0,699.0,714.0,693.0,2.14,GREEN Hold - pos GEX vol controlled
-2026-04-27,SPY,716.30,4.48,18.02,708.88,720.0,699.0,715.0,693.0,2.14,GREEN Hold - pos GEX vol controlled
-2026-04-28,SPY,711.67,-5.10,17.83,712.40,715.0,700.0,712.0,695.0,2.19,AMBER Caution - neg GEX watch VIX
-2026-04-29,SPY,713.48,-6.28,18.81,704.24,715.0,710.0,710.0,695.0,2.17,RED Watch - GEX deeply neg VIX rising
-2026-04-30,SPY,719.00,9.98,16.89,707.68,720.0,700.0,720.0,695.0,2.13,GREEN Hold - pos GEX vol controlled
-2026-05-01,SPY,720.34,2.63,16.99,713.15,725.0,700.0,725.0,695.0,2.18,GREEN Hold - pos GEX vol controlled
-2026-05-04,SPY,717.65,-2.89,18.29,716.22,725.0,700.0,700.0,700.0,2.23,AMBER Caution - neg GEX watch VIX
-2026-05-05,SPY,724.53,8.18,17.38,716.68,725.0,700.0,724.0,700.0,2.21,GREEN Hold - pos GEX vol controlled
-2026-05-06,SPY,733.57,9.98,17.39,720.71,734.0,700.0,734.0,700.0,2.22,GREEN Hold - pos GEX vol controlled
-2026-05-07,SPY,730.04,2.84,17.08,726.58,732.0,700.0,732.0,705.0,2.21,GREEN Hold - pos GEX vol controlled
-2026-05-08,SPY,737.61,12.83,17.19,727.68,738.0,710.0,738.0,705.0,2.16,GREEN Strong hold - GEX high vol suppressed
-2026-05-11,SPY,738.97,6.70,18.38,732.48,739.0,710.0,739.0,710.0,2.21,GREEN Hold - pos GEX vol controlled
-2026-05-12,SPY,737.41,-1.31,17.99,734.74,740.0,737.0,737.0,710.0,2.19,AMBER Caution - neg GEX watch VIX
-2026-05-14,SPY,747.63,11.86,17.26,737.97,748.0,700.0,748.0,710.0,2.02,GREEN Strong hold - GEX high vol suppressed
-2026-05-18,SPY,738.95,-5.0,17.82,738.98,745.0,738.0,738.0,715.0,2.17,AMBER Caution - neg GEX watch VIX
-2026-05-19,SPY,734.39,-7.85,18.06,738.43,745.0,730.0,730.0,715.0,2.20,RED Watch - GEX deeply neg VIX rising
-2026-05-21,SPY,744.16,6.63,16.76,739.65,745.0,730.0,743.0,715.0,2.06,GREEN Hold - pos GEX vol controlled
-2026-05-22,SPY,743.96,13.28,16.70,742.58,745.0,730.0,745.0,720.0,1.97,GREEN Strong hold - GEX high vol suppressed
-2026-05-26,SPY,750.34,11.35,17.01,742.09,755.0,730.0,750.0,720.0,2.0,"GREEN Strong hold - GEX high, vol suppressed"
-2026-05-27,SPY,750.92,11.37,17.01,741.61,755.0,730.0,750.0,720.0,2.0,"GREEN Strong hold - GEX high, vol suppressed"
-2026-05-27,SPY,753.21,3.56,16.9,738.99,755.0,730.0,755.0,717.0,1.79,"GREEN Hold - pos GEX, vol controlled"
-2026-05-27,SPY,751.49,8.25,16.29,743.74,755.0,700.0,750.0,720.0,2.0,"GREEN Hold - pos GEX, vol controlled"
-2026-05-28,SPY,755.23,12.02,15.74,747.59,760.0,730.0,755.0,724.0,1.96,"GREEN Strong hold - GEX high, vol suppressed"
-2026-05-29,SPY,755.45,10.09,15.32,751.26,757.0,730.0,757.0,726.0,2.04,"GREEN Strong hold - GEX high, vol suppressed"
-2026-06-01,SPY,757.78,7.08,16.05,752.04,760.0,740.0,760.0,726.0,2.04,"GREEN Hold - pos GEX, vol controlled"
-2026-06-02,SPY,759.87,10.76,15.77,753.89,760.0,740.0,760.0,729.0,2.02,"GREEN Strong hold - GEX high, vol suppressed"
-2026-06-03,SPY,750.41,-3.6,16.06,755.24,760.0,740.0,760.0,730.0,2.08,"AMBER Caution - neg GEX, watch VIX"
-2026-06-04,SPY,756.05,7.0,15.4,753.86,757.0,740.0,757.0,730.0,2.02,"GREEN Hold - pos GEX, vol controlled"
-2026-06-05,SPY,735.34,-12.8,21.51,750.89,800.0,735.0,735.0,732.0,2.03,RED EXIT - neg GEX + VIX elevated
+date,ticker,spot_price,net_gex_b,vix,zero_gamma,call_wall,put_wall,peak_gex_strike,max_pain,pc_ratio,spy_200ma,spy_above_200ma,spy_rsi_14,vix_3m,vix_term_spread,vix_term_structure,skew_index,signal,l1_context
+2026-03-30,SPY,629.35,-3.5,25.35,,,,,,,661.79,False,22.8,29.13,-1.48,backwardation,142.23,RED Watch - GEX deeply neg,SPY BELOW 200MA (downtrend warning) | RSI oversold (22.8) | VIX in backwardation (stress elevated) | SKEW elevated (142.23) - tail hedging active
+2026-04-01,SPY,624.0,-3.2,24.54,,,,,,,662.31,False,44.32,24.86,0.32,contango,143.77,RED Watch - GEX deeply neg,SPY BELOW 200MA (downtrend warning) | RSI neutral (44.32) | VIX in contango (calm) | SKEW elevated (143.77) - tail hedging active
+2026-04-02,SPY,624.0,-3.0,23.87,,,,,,,662.58,False,46.49,24.72,0.85,contango,146.95,RED Watch - GEX deeply neg,SPY BELOW 200MA (downtrend warning) | RSI neutral (46.49) | VIX in contango (calm) | SKEW elevated (146.95) - tail hedging active
+2026-04-06,SPY,628.0,-2.8,24.17,,,,,,,662.88,False,44.29,24.77,0.6,contango,147.6,RED Watch - GEX deeply neg,SPY BELOW 200MA (downtrend warning) | RSI neutral (44.29) | VIX in contango (calm) | SKEW elevated (147.6) - tail hedging active
+2026-04-07,SPY,659.30,-3.5,25.78,,,,,,,663.19,False,43.35,25.57,-0.21,backwardation,148.45,RED EXIT - neg GEX + VIX elevated,SPY BELOW 200MA (downtrend warning) | RSI neutral (43.35) | VIX in backwardation (stress elevated) | SKEW elevated (148.45) - tail hedging active
+2026-04-08,SPY,672.0,4.0,21.04,,,,,,,663.6,True,57.72,22.68,1.64,contango,150.36,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (57.72) | VIX in contango (calm) | SKEW elevated (150.36) - tail hedging active
+2026-04-09,SPY,681.0,7.0,19.49,,,,,,,664.0,True,60.4,21.81,2.32,contango,143.27,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (60.4) | VIX in contango (calm) | SKEW elevated (143.27) - tail hedging active
+2026-04-10,SPY,687.0,8.5,19.23,,,,,,,664.36,True,67.98,21.86,2.63,contango,144.18,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (67.98) | VIX in contango (calm) | SKEW elevated (144.18) - tail hedging active
+2026-04-13,SPY,692.0,9.8,19.12,,,,,,,664.76,True,67.92,21.34,2.22,contango,156.93,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (67.92) | VIX in contango (calm) | SKEW elevated (156.93) - tail hedging active
+2026-04-14,SPY,694.49,11.26,18.36,680.91,695.0,650.0,695.0,674.0,2.06,665.17,True,72.46,20.82,2.46,contango,149.94,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (72.46) | VIX in contango (calm) | SKEW elevated (149.94) - tail hedging active
+2026-04-15,SPY,700.64,16.86,18.17,684.05,710.0,650.0,700.0,677.0,2.11,665.6,True,73.0,20.78,2.61,contango,139.23,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (73.0) | VIX in contango (calm) | SKEW elevated (139.23) - tail hedging active
+2026-04-16,SPY,701.79,11.05,17.94,668.97,702.0,650.0,700.0,680.0,2.06,666.01,True,83.79,20.77,2.83,contango,140.74,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (83.79) | VIX in contango (calm) | SKEW elevated (140.74) - tail hedging active
+2026-04-17,SPY,710.54,11.05,17.48,668.97,702.0,650.0,700.0,680.0,2.26,666.48,True,96.83,20.51,3.03,contango,141.82,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (96.83) | VIX in contango (calm) | SKEW elevated (141.82) - tail hedging active
+2026-04-20,SPY,709.52,0.82,18.87,700.31,710.0,709.0,709.0,687.0,2.11,666.92,True,97.68,21.24,2.37,contango,141.9,NEUTRAL - monitor,SPY above 200MA (uptrend intact) | RSI overbought (97.68) | VIX in contango (calm) | SKEW elevated (141.9) - tail hedging active
+2026-04-21,SPY,706.98,-2.04,19.50,704.36,710.0,700.0,710.0,689.0,2.09,667.31,True,90.25,21.51,2.01,contango,140.91,RED EXIT - neg GEX + VIX elevated,SPY above 200MA (uptrend intact) | RSI overbought (90.25) | VIX in contango (calm) | SKEW elevated (140.91) - tail hedging active
+2026-04-22,SPY,709.51,-1.83,18.92,709.22,715.0,700.0,715.0,691.0,2.13,667.76,True,90.56,21.24,2.32,contango,140.84,AMBER Caution - neg GEX watch VIX,SPY above 200MA (uptrend intact) | RSI overbought (90.56) | VIX in contango (calm) | SKEW elevated (140.84) - tail hedging active
+2026-04-23,SPY,708.66,-6.38,19.31,708.56,715.0,708.0,708.0,691.0,2.18,668.21,True,86.97,21.48,2.17,contango,139.59,RED Watch - GEX deeply neg VIX rising,SPY above 200MA (uptrend intact) | RSI overbought (86.97) | VIX in contango (calm) | SKEW elevated (139.59) - tail hedging active
+2026-04-24,SPY,713.95,6.75,18.71,709.61,714.0,699.0,714.0,693.0,2.14,668.65,True,87.4,21.3,2.59,contango,139.08,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (87.4) | VIX in contango (calm) | SKEW elevated (139.08) - tail hedging active
+2026-04-27,SPY,716.30,4.48,18.02,708.88,720.0,699.0,715.0,693.0,2.14,669.1,True,87.56,20.77,2.75,contango,139.64,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (87.56) | VIX in contango (calm) | SKEW elevated (139.64) - tail hedging active
+2026-04-28,SPY,711.67,-5.10,17.83,712.40,715.0,700.0,712.0,695.0,2.19,669.54,True,79.16,20.49,2.66,contango,138.16,AMBER Caution - neg GEX watch VIX,SPY above 200MA (uptrend intact) | RSI overbought (79.16) | VIX in contango (calm) | SKEW elevated (138.16) - tail hedging active
+2026-04-29,SPY,713.48,-6.28,18.81,704.24,715.0,710.0,710.0,695.0,2.17,669.98,True,77.59,21.19,2.38,contango,141.88,RED Watch - GEX deeply neg VIX rising,SPY above 200MA (uptrend intact) | RSI overbought (77.59) | VIX in contango (calm) | SKEW elevated (141.88) - tail hedging active
+2026-04-30,SPY,719.00,9.98,16.89,707.68,720.0,700.0,720.0,695.0,2.13,670.46,True,80.62,20.08,3.19,contango,143.33,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (80.62) | VIX in contango (calm) | SKEW elevated (143.33) - tail hedging active
+2026-05-01,SPY,720.34,2.63,16.99,713.15,725.0,700.0,725.0,695.0,2.18,670.94,True,79.1,20.37,3.38,contango,141.38,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (79.1) | VIX in contango (calm) | SKEW elevated (141.38) - tail hedging active
+2026-05-04,SPY,717.65,-2.89,18.29,716.22,725.0,700.0,700.0,700.0,2.23,671.39,True,71.95,21.05,2.76,contango,141.74,AMBER Caution - neg GEX watch VIX,SPY above 200MA (uptrend intact) | RSI overbought (71.95) | VIX in contango (calm) | SKEW elevated (141.74) - tail hedging active
+2026-05-05,SPY,724.53,8.18,17.38,716.68,725.0,700.0,724.0,700.0,2.21,671.87,True,72.09,20.82,3.44,contango,138.74,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (72.09) | VIX in contango (calm) | SKEW elevated (138.74) - tail hedging active
+2026-05-06,SPY,733.57,9.98,17.39,720.71,734.0,700.0,734.0,700.0,2.22,672.4,True,75.83,20.57,3.18,contango,135.42,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (75.83) | VIX in contango (calm) | SKEW elevated (135.42) - tail hedging active
+2026-05-07,SPY,730.04,2.84,17.08,726.58,732.0,700.0,732.0,705.0,2.21,672.91,True,69.13,20.35,3.27,contango,136.11,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (69.13) | VIX in contango (calm) | SKEW elevated (136.11) - tail hedging active
+2026-05-08,SPY,737.61,12.83,17.19,727.68,738.0,710.0,738.0,705.0,2.16,673.43,True,73.82,20.5,3.31,contango,138.21,GREEN Strong hold - GEX high vol suppressed,SPY above 200MA (uptrend intact) | RSI overbought (73.82) | VIX in contango (calm) | SKEW elevated (138.21) - tail hedging active
+2026-05-11,SPY,738.97,6.70,18.38,732.48,739.0,710.0,739.0,710.0,2.21,673.95,True,80.52,21.24,2.86,contango,140.21,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI overbought (80.52) | VIX in contango (calm) | SKEW elevated (140.21) - tail hedging active
+2026-05-12,SPY,737.41,-1.31,17.99,734.74,740.0,737.0,737.0,710.0,2.19,674.46,True,76.09,21.04,3.05,contango,139.41,AMBER Caution - neg GEX watch VIX,SPY above 200MA (uptrend intact) | RSI overbought (76.09) | VIX in contango (calm) | SKEW elevated (139.41) - tail hedging active
+2026-05-14,SPY,747.63,11.86,17.26,737.97,748.0,700.0,748.0,710.0,2.02,675.55,True,82.03,20.85,3.59,contango,139.32,GREEN Strong hold - GEX high vol suppressed,SPY above 200MA (uptrend intact) | RSI overbought (82.03) | VIX in contango (calm) | SKEW elevated (139.32) - tail hedging active
+2026-05-18,SPY,738.95,-5.0,17.82,738.98,745.0,738.0,738.0,715.0,2.17,676.6,True,73.15,20.92,3.1,contango,138.4,AMBER Caution - neg GEX watch VIX,SPY above 200MA (uptrend intact) | RSI overbought (73.15) | VIX in contango (calm) | SKEW elevated (138.4) - tail hedging active
+2026-05-19,SPY,734.39,-7.85,18.06,738.43,745.0,730.0,730.0,715.0,2.20,677.16,True,67.57,21.12,3.06,contango,135.5,RED Watch - GEX deeply neg VIX rising,SPY above 200MA (uptrend intact) | RSI neutral (67.57) | VIX in contango (calm) | SKEW elevated (135.5) - tail hedging active
+2026-05-21,SPY,744.16,6.63,16.76,739.65,745.0,730.0,743.0,715.0,2.06,678.29,True,67.52,20.0,3.24,contango,136.96,GREEN Hold - pos GEX vol controlled,SPY above 200MA (uptrend intact) | RSI neutral (67.52) | VIX in contango (calm) | SKEW elevated (136.96) - tail hedging active
+2026-05-22,SPY,743.96,13.28,16.70,742.58,745.0,730.0,745.0,720.0,1.97,678.85,True,71.84,20.03,3.33,contango,137.39,GREEN Strong hold - GEX high vol suppressed,SPY above 200MA (uptrend intact) | RSI overbought (71.84) | VIX in contango (calm) | SKEW elevated (137.39) - tail hedging active
+2026-05-26,SPY,750.34,11.35,17.01,742.09,755.0,730.0,750.0,720.0,2.0,679.44,True,71.48,19.89,2.88,contango,139.04,"GREEN Strong hold - GEX high, vol suppressed",SPY above 200MA (uptrend intact) | RSI overbought (71.48) | VIX in contango (calm) | SKEW elevated (139.04) - tail hedging active
+2026-05-27,SPY,750.92,11.37,17.01,741.61,755.0,730.0,750.0,720.0,2.0,680.01,True,65.84,19.45,3.16,contango,138.57,"GREEN Strong hold - GEX high, vol suppressed",SPY above 200MA (uptrend intact) | RSI neutral (65.84) | VIX in contango (calm) | SKEW elevated (138.57) - tail hedging active
+2026-05-27,SPY,753.21,3.56,16.9,738.99,755.0,730.0,755.0,717.0,1.79,680.01,True,65.84,19.45,3.16,contango,138.57,"GREEN Hold - pos GEX, vol controlled",SPY above 200MA (uptrend intact) | RSI neutral (65.84) | VIX in contango (calm) | SKEW elevated (138.57) - tail hedging active
+2026-05-27,SPY,751.49,8.25,16.29,743.74,755.0,700.0,750.0,720.0,2.0,680.01,True,65.84,19.45,3.16,contango,138.57,"GREEN Hold - pos GEX, vol controlled",SPY above 200MA (uptrend intact) | RSI neutral (65.84) | VIX in contango (calm) | SKEW elevated (138.57) - tail hedging active
+2026-05-28,SPY,755.23,12.02,15.74,747.59,760.0,730.0,755.0,724.0,1.96,680.6,True,71.16,19.11,3.37,contango,139.52,"GREEN Strong hold - GEX high, vol suppressed",SPY above 200MA (uptrend intact) | RSI overbought (71.16) | VIX in contango (calm) | SKEW elevated (139.52) - tail hedging active
+2026-05-29,SPY,755.45,10.09,15.32,751.26,757.0,730.0,757.0,726.0,2.04,681.17,True,68.77,18.66,3.34,contango,144.18,"GREEN Strong hold - GEX high, vol suppressed",SPY above 200MA (uptrend intact) | RSI neutral (68.77) | VIX in contango (calm) | SKEW elevated (144.18) - tail hedging active
+2026-06-01,SPY,757.78,7.08,16.05,752.04,760.0,740.0,760.0,726.0,2.04,681.74,True,69.0,19.43,3.38,contango,142.46,"GREEN Hold - pos GEX, vol controlled",SPY above 200MA (uptrend intact) | RSI neutral (69.0) | VIX in contango (calm) | SKEW elevated (142.46) - tail hedging active
+2026-06-02,SPY,759.87,10.76,15.77,753.89,760.0,740.0,760.0,729.0,2.02,682.31,True,71.17,19.49,3.72,contango,143.24,"GREEN Strong hold - GEX high, vol suppressed",SPY above 200MA (uptrend intact) | RSI overbought (71.17) | VIX in contango (calm) | SKEW elevated (143.24) - tail hedging active
+2026-06-03,SPY,750.41,-3.6,16.06,755.24,760.0,740.0,760.0,730.0,2.08,682.87,True,61.53,19.76,3.7,contango,136.86,"AMBER Caution - neg GEX, watch VIX",SPY above 200MA (uptrend intact) | RSI neutral (61.53) | VIX in contango (calm) | SKEW elevated (136.86) - tail hedging active
+2026-06-04,SPY,756.05,7.0,15.4,753.86,757.0,740.0,757.0,730.0,2.02,683.44,True,59.15,19.23,3.83,contango,142.15,"GREEN Hold - pos GEX, vol controlled",SPY above 200MA (uptrend intact) | RSI neutral (59.15) | VIX in contango (calm) | SKEW elevated (142.15) - tail hedging active
+2026-06-05,SPY,735.34,-12.8,21.51,750.89,800.0,735.0,735.0,732.0,2.03,683.93,True,48.63,21.82,0.31,contango,152.25,RED EXIT - neg GEX + VIX elevated,SPY above 200MA (uptrend intact) | RSI neutral (48.63) | VIX in contango (calm) | SKEW elevated (152.25) - tail hedging active
