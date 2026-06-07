@@ -12,19 +12,13 @@ Safe to re-run — already-filled rows are skipped.
 
 import csv
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 
 CSV_PATH = "gex_log.csv"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
 }
-
-NEW_COLS = [
-    "spy_200ma", "spy_above_200ma", "spy_rsi_14",
-    "vix_3m", "vix_term_spread", "vix_term_structure",
-    "skew_index", "l1_context",
-]
 
 ALL_COLS = [
     "date", "ticker", "spot_price", "net_gex_b", "vix",
@@ -39,16 +33,29 @@ ALL_COLS = [
 # ── Yahoo Finance helpers ─────────────────────────────────────────────────────
 
 def yf_fetch(symbol, period="2y", interval="1d"):
-    """Fetch full daily OHLCV from Yahoo Finance. Returns (timestamps, closes) lists."""
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{requests.utils.quote(symbol)}?interval={interval}&range={period}"
-    r = requests.get(url, headers=HEADERS, timeout=15)
-    data = r.json()
-    result = data["chart"]["result"][0]
-    ts     = result.get("timestamp", result.get("timestamps", []))
-    closes = result["indicators"]["quote"][0]["close"]
-    # pair up and drop None closes
-    pairs = [(t, c) for t, c in zip(ts, closes) if c is not None]
-    return pairs  # list of (unix_timestamp, close_price)
+    """Fetch daily closes from Yahoo Finance. Tries query1 then query2. Returns list of (timestamp, close)."""
+    encoded = requests.utils.quote(symbol)
+    urls = [
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{encoded}?interval={interval}&range={period}",
+        f"https://query2.finance.yahoo.com/v8/finance/chart/{encoded}?interval={interval}&range={period}",
+    ]
+    for url in urls:
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=15)
+            data = r.json()
+            result = data.get("chart", {}).get("result")
+            if not result:
+                print(f"  Empty result from {url}")
+                continue
+            result = result[0]
+            ts     = result.get("timestamp", result.get("timestamps", []))
+            closes = result["indicators"]["quote"][0]["close"]
+            pairs  = [(t, c) for t, c in zip(ts, closes) if c is not None]
+            if pairs:
+                return pairs
+        except Exception as e:
+            print(f"  Error ({url}): {e}")
+    raise ValueError(f"All endpoints failed for {symbol}")
 
 
 def ts_to_date(ts):
@@ -56,7 +63,6 @@ def ts_to_date(ts):
 
 
 def build_daily_map(pairs):
-    """Dict of date_str -> close_price."""
     return {ts_to_date(t): c for t, c in pairs}
 
 
@@ -111,36 +117,35 @@ def main():
     with open(CSV_PATH, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         rows = list(reader)
-        original_fieldnames = reader.fieldnames or []
 
     print(f"Loaded {len(rows)} rows from {CSV_PATH}")
 
-    # Check how many already have Layer 1 data
     already_filled = sum(1 for r in rows if r.get("spy_200ma") not in (None, ""))
     print(f"Rows already with Layer 1 data: {already_filled}")
     if already_filled == len(rows):
         print("All rows already filled. Nothing to do.")
         return
 
-    # ── Fetch all historical data up front (one API call per symbol) ──────────
+    # ── Fetch all historical data up front ────────────────────────────────────
     print("\nFetching SPY history (2y)...")
-    spy_pairs = yf_fetch("SPY", period="2y")
-    spy_map   = build_daily_map(spy_pairs)
-    # Build an ordered list of (date, close) for rolling calculations
+    spy_pairs  = yf_fetch("SPY", period="2y")
     spy_sorted = sorted(spy_pairs, key=lambda x: x[0])
     spy_dates  = [ts_to_date(t) for t, _ in spy_sorted]
     spy_closes = [c for _, c in spy_sorted]
+    spy_date_index = {d: i for i, d in enumerate(spy_dates)}
     print(f"  SPY: {len(spy_closes)} trading days")
 
     print("Fetching VIX history (2y)...")
-    vix_pairs = yf_fetch("%5EVIX", period="2y")
-    vix_map   = build_daily_map(vix_pairs)
-    print(f"  VIX: {len(vix_map)} days")
+    try:
+        vix_map = build_daily_map(yf_fetch("^VIX", period="2y"))
+        print(f"  VIX: {len(vix_map)} days")
+    except Exception as e:
+        vix_map = {}
+        print(f"  VIX FAILED (will use CSV values): {e}")
 
     print("Fetching VIX3M history (2y)...")
     try:
-        vix3m_pairs = yf_fetch("%5EVIX3M", period="2y")
-        vix3m_map   = build_daily_map(vix3m_pairs)
+        vix3m_map = build_daily_map(yf_fetch("^VIX3M", period="2y"))
         print(f"  VIX3M: {len(vix3m_map)} days")
     except Exception as e:
         vix3m_map = {}
@@ -148,63 +153,54 @@ def main():
 
     print("Fetching SKEW history (2y)...")
     try:
-        skew_pairs = yf_fetch("%5ESKEW", period="2y")
-        skew_map   = build_daily_map(skew_pairs)
+        skew_map = build_daily_map(yf_fetch("^SKEW", period="2y"))
         print(f"  SKEW: {len(skew_map)} days")
     except Exception as e:
         skew_map = {}
         print(f"  SKEW FAILED: {e}")
 
-    # ── Build lookup: date -> index in spy_sorted for rolling calcs ───────────
-    spy_date_index = {d: i for i, d in enumerate(spy_dates)}
-
     # ── Backfill each row ─────────────────────────────────────────────────────
-    print(f"\nBackfilling {len(rows)} rows...")
+    print(f"\nBackfilling {len(rows) - already_filled} rows...")
     filled = 0
 
     for row in rows:
         d = row.get("date", "").strip()
 
-        # Skip if already filled
         if row.get("spy_200ma") not in (None, ""):
             continue
 
-        # ── SPY 200MA + RSI using all closes UP TO this date ─────────────────
+        # SPY 200MA + RSI (point-in-time, no lookahead)
         spy_200ma = None
         spy_above = None
         rsi       = None
-
         if d in spy_date_index:
             idx = spy_date_index[d]
-            closes_up_to = spy_closes[: idx + 1]
+            closes_up_to = spy_closes[:idx + 1]
             spot = closes_up_to[-1]
-            if len(closes_up_to) >= 1:
-                spy_200ma = calc_200ma(closes_up_to)
-                spy_above = spot > spy_200ma
-            if len(closes_up_to) >= 15:
-                rsi = calc_rsi14(closes_up_to)
+            spy_200ma = calc_200ma(closes_up_to)
+            spy_above = spot > spy_200ma
+            rsi = calc_rsi14(closes_up_to)
         else:
-            print(f"  WARNING: {d} not found in SPY history (weekend/holiday row?)")
+            print(f"  WARNING: {d} not in SPY history (weekend/holiday?)")
 
-        # ── VIX term structure ────────────────────────────────────────────────
-        vix_val   = vix_map.get(d)
+        # VIX term structure — use CSV vix value as fallback if map failed
+        vix_val   = vix_map.get(d) or row.get("vix")
         vix3m_val = vix3m_map.get(d)
-        if vix_val is not None and vix3m_val is not None:
+        if vix_val and vix3m_val:
             spread    = round(float(vix3m_val) - float(vix_val), 2)
             structure = "contango" if spread > 0 else "backwardation"
         else:
             spread    = None
             structure = None
 
-        # ── SKEW ──────────────────────────────────────────────────────────────
+        # SKEW
         skew = skew_map.get(d)
         if skew is not None:
             skew = round(float(skew), 2)
 
-        # ── L1 context sentence ───────────────────────────────────────────────
+        # L1 context
         l1_ctx = compute_l1_context(spy_above, rsi, structure, skew, vix_val)
 
-        # ── Write back into row ───────────────────────────────────────────────
         row["spy_200ma"]          = spy_200ma
         row["spy_above_200ma"]    = spy_above
         row["spy_rsi_14"]         = rsi
@@ -224,7 +220,6 @@ def main():
         writer.writerows(rows)
 
     print(f"\nDone. {CSV_PATH} updated with Layer 1 columns.")
-    print("Commit and push to deploy.")
 
 
 if __name__ == "__main__":
