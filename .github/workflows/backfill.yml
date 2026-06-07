@@ -1,0 +1,21 @@
+name: Backfill Layer 1
+on:
+  workflow_dispatch:
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python backfill_layer1.py
+      - run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add gex_log.csv
+          git diff --staged --quiet || git commit -m "Backfill Layer 1 columns"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git
