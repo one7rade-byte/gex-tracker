@@ -67,7 +67,7 @@ tr:last-child td{border-bottom:none}
 .l1-tile-label{font-size:10px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
 .l1-tile-val{font-size:16px;font-weight:600}
 .l1-tile-sub{font-size:10px;color:#aaa;margin-top:3px}
-.l1-tile-bar{position:absolute;bottom:0;left:0;height:3px;border-radius:0 0 0 8px}
+.l1-tile-bar{position:absolute;bottom:0;left:0;height:3px;width:100%}
 .term-indicator{display:flex;align-items:center;gap:6px;margin-top:6px}
 .term-bar{flex:1;height:5px;border-radius:3px;background:#f0ede8;overflow:hidden}
 .term-fill{height:100%;border-radius:3px}
@@ -116,23 +116,24 @@ function parseCSV(text){
     const vals=line.split(',');
     const obj={};
     headers.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
-    const boolParse=v=>v==='True'?true:v==='False'?false:null;
+    const bp=v=>v==='True'?true:v==='False'?false:null;
+    const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
     return{
       d:obj.date||'',
-      s:parseFloat(obj.spot_price)||0,
-      g:parseFloat(obj.net_gex_b)||0,
-      v:parseFloat(obj.vix)||0,
-      z:parseFloat(obj.zero_gamma)||null,
-      cw:parseFloat(obj.call_wall)||null,
-      pw:parseFloat(obj.put_wall)||null,
+      s:n('spot_price')||0,
+      g:n('net_gex_b')||0,
+      v:n('vix')||0,
+      z:n('zero_gamma'),
+      cw:n('call_wall'),
+      pw:n('put_wall'),
       sig:obj.signal||'',
-      ma200:parseFloat(obj.spy_200ma)||null,
-      aboveMa:boolParse(obj.spy_above_200ma),
-      rsi:parseFloat(obj.spy_rsi_14)||null,
-      vix3m:parseFloat(obj.vix_3m)||null,
-      termSpread:parseFloat(obj.vix_term_spread)||null,
+      ma200:n('spy_200ma'),
+      aboveMa:bp(obj.spy_above_200ma),
+      rsi:n('spy_rsi_14'),
+      vix3m:n('vix_3m'),
+      termSpread:n('vix_term_spread'),
       termStruct:obj.vix_term_structure||null,
-      skew:parseFloat(obj.skew_index)||null,
+      skew:n('skew_index'),
       l1ctx:obj.l1_context||''
     };
   }).filter(e=>e.d&&e.s&&e.v);
@@ -151,20 +152,20 @@ function computeSignal(g,v,prev){
 }
 
 function rsiColor(r){
-  if(r===null||r===undefined)return'#aaa';
+  if(r===null)return'#aaa';
   if(r<30)return'#A32D2D';
   if(r>70)return'#BA7517';
   return'#3B6D11';
 }
 function rsiLabel(r){
-  if(r===null||r===undefined)return'—';
+  if(r===null)return'—';
   if(r<30)return'Oversold';
   if(r<45)return'Weak';
   if(r<55)return'Neutral';
   if(r<70)return'Strong';
   return'Overbought';
 }
-function skewInfo(s){
+function getSkewInfo(s){
   if(!s)return{label:'—',cls:'pill-gray'};
   if(s>145)return{label:'Extreme hedging',cls:'pill-red'};
   if(s>135)return{label:'Elevated',cls:'pill-amber'};
@@ -181,12 +182,13 @@ function buildL1Panel(last){
   const rsi=last.rsi;
   const rsiPct=rsi!==null?rsi:50;
   const rsiC=rsiColor(rsi);
-  const sk=skewInfo(last.skew);
+  const sk=getSkewInfo(last.skew);
   const termC=termColor(last.termStruct);
   const spreadAbs=last.termSpread!==null?Math.abs(last.termSpread):0;
   const spreadPct=Math.min(100,(spreadAbs/8)*100);
   const maColor=last.aboveMa===true?'#3B6D11':last.aboveMa===false?'#A32D2D':'#aaa';
-  const maLabel=last.aboveMa===true?'Above ✓':last.aboveMa===false?'Below ✗':'—';
+  const maLabel=last.aboveMa===true?'Above \u2713':last.aboveMa===false?'Below \u2717':'—';
+  const skewC=last.skew>135?'#A32D2D':last.skew>115?'#BA7517':'#3B6D11';
   const pills=(last.l1ctx||'').split('|').map(p=>p.trim()).filter(Boolean).map(p=>{
     let cls='pill-gray';
     const lo=p.toLowerCase();
@@ -194,40 +196,38 @@ function buildL1Panel(last){
     else if(lo.includes('below')||lo.includes('backwardation')||lo.includes('overbought')||lo.includes('extreme'))cls='pill-red';
     else if(lo.includes('elevated')||lo.includes('rising'))cls='pill-amber';
     else if(lo.includes('neutral')||lo.includes('normal'))cls='pill-blue';
-    return`<span class="context-pill ${cls}">${p}</span>`;
+    return'<span class="context-pill '+cls+'">'+p+'</span>';
   }).join('');
 
-  return`
-    <div class="l1-grid">
-      <div class="l1-tile">
-        <div class="l1-tile-label">200-Day MA</div>
-        <div class="l1-tile-val" style="color:${maColor}">${maLabel}</div>
-        <div class="l1-tile-sub">${last.ma200?'MA: $'+last.ma200.toFixed(2):'—'}</div>
-        <div class="l1-tile-bar" style="width:100%;background:${maColor};opacity:0.2"></div>
-      </div>
-      <div class="l1-tile">
-        <div class="l1-tile-label">RSI-14</div>
-        <div class="l1-tile-val" style="color:${rsiC}">${rsi!==null?rsi.toFixed(1):'—'}</div>
-        <div class="l1-tile-sub">${rsiLabel(rsi)}</div>
-        <div style="margin-top:6px;position:relative;height:5px">
-          <div style="height:5px;border-radius:3px;background:linear-gradient(to right,#A32D2D 0%,#A32D2D 20%,#ddd 20%,#ddd 30%,#3B6D11 30%,#3B6D11 70%,#ddd 70%,#ddd 80%,#BA7517 80%,#BA7517 100%)"></div>
-          <div style="position:absolute;top:50%;left:${rsiPct}%;transform:translate(-50%,-50%);width:9px;height:9px;background:#fff;border:2px solid ${rsiC};border-radius:50%"></div>
-        </div>
-      </div>
-      <div class="l1-tile">
-        <div class="l1-tile-label">VIX Term Structure</div>
-        <div class="l1-tile-val" style="color:${termC}">${last.termStruct?last.termStruct.charAt(0).toUpperCase()+last.termStruct.slice(1):'—'}</div>
-        <div class="l1-tile-sub">Spread: ${last.termSpread!==null?(last.termSpread>0?'+':'')+last.termSpread.toFixed(2):'—'}</div>
-        <div class="term-indicator"><div class="term-bar"><div class="term-fill" style="width:${spreadPct}%;background:${termC}"></div></div></div>
-      </div>
-      <div class="l1-tile">
-        <div class="l1-tile-label">SKEW Index</div>
-        <div class="l1-tile-val" style="color:${last.skew>135?'#A32D2D':last.skew>115?'#BA7517':'#3B6D11'}">${last.skew?last.skew.toFixed(1):'—'}</div>
-        <div class="l1-tile-sub"><span class="context-pill ${sk.cls}" style="margin:0;padding:1px 6px">${sk.label}</span></div>
-      </div>
-    </div>
-    ${pills?`<div class="context-banner">${pills}</div>`:''}
-  `;
+  return'<div class="l1-grid">'+
+    '<div class="l1-tile">'+
+      '<div class="l1-tile-label">200-Day MA</div>'+
+      '<div class="l1-tile-val" style="color:'+maColor+'">'+maLabel+'</div>'+
+      '<div class="l1-tile-sub">'+(last.ma200?'MA: $'+last.ma200.toFixed(2):'—')+'</div>'+
+      '<div class="l1-tile-bar" style="background:'+maColor+';opacity:0.2"></div>'+
+    '</div>'+
+    '<div class="l1-tile">'+
+      '<div class="l1-tile-label">RSI-14</div>'+
+      '<div class="l1-tile-val" style="color:'+rsiC+'">'+(rsi!==null?rsi.toFixed(1):'—')+'</div>'+
+      '<div class="l1-tile-sub">'+rsiLabel(rsi)+'</div>'+
+      '<div style="margin-top:6px;position:relative;height:5px">'+
+        '<div style="height:5px;border-radius:3px;background:linear-gradient(to right,#A32D2D 0%,#A32D2D 20%,#ddd 20%,#ddd 30%,#3B6D11 30%,#3B6D11 70%,#ddd 70%,#ddd 80%,#BA7517 80%,#BA7517 100%)"></div>'+
+        '<div style="position:absolute;top:50%;left:'+rsiPct+'%;transform:translate(-50%,-50%);width:9px;height:9px;background:#fff;border:2px solid '+rsiC+';border-radius:50%"></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="l1-tile">'+
+      '<div class="l1-tile-label">VIX Term Structure</div>'+
+      '<div class="l1-tile-val" style="color:'+termC+'">'+(last.termStruct?last.termStruct.charAt(0).toUpperCase()+last.termStruct.slice(1):'—')+'</div>'+
+      '<div class="l1-tile-sub">Spread: '+(last.termSpread!==null?(last.termSpread>0?'+':'')+last.termSpread.toFixed(2):'—')+'</div>'+
+      '<div class="term-indicator"><div class="term-bar"><div class="term-fill" style="width:'+spreadPct+'%;background:'+termC+'"></div></div></div>'+
+    '</div>'+
+    '<div class="l1-tile">'+
+      '<div class="l1-tile-label">SKEW Index</div>'+
+      '<div class="l1-tile-val" style="color:'+skewC+'">'+(last.skew?last.skew.toFixed(1):'—')+'</div>'+
+      '<div class="l1-tile-sub"><span class="context-pill '+sk.cls+'" style="margin:0;padding:1px 6px">'+sk.label+'</span></div>'+
+    '</div>'+
+  '</div>'+
+  (pills?'<div class="context-banner">'+pills+'</div>':'');
 }
 
 function buildUI(data){
@@ -255,93 +255,122 @@ function buildUI(data){
     const rsiC=rsiColor(e.rsi);
     const maC=e.aboveMa===true?'#3B6D11':e.aboveMa===false?'#A32D2D':'#aaa';
     const tC=termColor(e.termStruct);
-    return`<tr>
-      <td style="color:#666">${e.d}</td>
-      <td style="font-weight:500">$${e.s.toFixed(2)}</td>
-      <td style="color:${gC};font-weight:500">${e.g>=0?'+':''}${e.g.toFixed(2)}B</td>
-      <td style="color:${vC}">${e.v.toFixed(2)}</td>
-      <td style="color:${maC};font-size:11px">${e.aboveMa===true?'✓ Above':e.aboveMa===false?'✗ Below':'—'}</td>
-      <td style="color:${rsiC}">${e.rsi?e.rsi.toFixed(1):'—'}</td>
-      <td style="color:${tC};font-size:11px">${e.termStruct?e.termStruct.charAt(0).toUpperCase()+e.termStruct.slice(1):'—'}</td>
-      <td>${e.skew?e.skew.toFixed(0):'—'}</td>
-      <td><span class="badge ${si.bc}">${label}</span></td>
-    </tr>`;
+    return'<tr>'+
+      '<td style="color:#666">'+e.d+'</td>'+
+      '<td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
+      '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
+      '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
+      '<td style="color:'+maC+';font-size:11px">'+(e.aboveMa===true?'\u2713 Above':e.aboveMa===false?'\u2717 Below':'—')+'</td>'+
+      '<td style="color:'+rsiC+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
+      '<td style="color:'+tC+';font-size:11px">'+(e.termStruct?e.termStruct.charAt(0).toUpperCase()+e.termStruct.slice(1):'—')+'</td>'+
+      '<td>'+(e.skew?e.skew.toFixed(0):'—')+'</td>'+
+      '<td><span class="badge '+si.bc+'">'+label+'</span></td>'+
+    '</tr>';
   }).join('');
 
-  document.getElementById('app').innerHTML=`
-    <div class="sig ${info.cls}"><div class="sig-title">${info.label}</div><div class="sig-body">${info.body}</div></div>
-    <div class="mg">
-      <div class="m"><div class="ml">SPY today</div><div class="mv" style="color:${sColor}">$${last.s.toFixed(2)}</div><div class="ms">${chSign}$${Math.abs(change).toFixed(2)}</div></div>
-      <div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:${gColor}">${last.g>=0?'+':''}$${last.g.toFixed(2)}B</div><div class="ms">${last.g>=0?'positive':'negative'}</div></div>
-      <div class="m"><div class="ml">VIX</div><div class="mv" style="color:${vColor}">${last.v.toFixed(2)}</div><div class="ms">${last.v<=vLow+0.05?'cycle low':'low: '+vLow.toFixed(2)}</div></div>
-      <div class="m"><div class="ml">Zero-gamma</div><div class="mv">${last.z?'$'+last.z.toFixed(2):'—'}</div><div class="ms">${last.z?(last.s>last.z?'price above':'price below'):'—'}</div></div>
-      <div class="m"><div class="ml">Call wall</div><div class="mv">${last.cw?'$'+last.cw:'—'}</div><div class="ms">resistance</div></div>
-      <div class="m"><div class="ml">Put wall</div><div class="mv">${last.pw?'$'+last.pw:'—'}</div><div class="ms">support</div></div>
-      <div class="m"><div class="ml">Dataset ATH</div><div class="mv" style="color:#3B6D11">$${spyHigh.toFixed(2)}</div><div class="ms">all-time high</div></div>
-      <div class="m"><div class="ml">Days logged</div><div class="mv">${data.length}</div><div class="ms">entries</div></div>
-    </div>
-    <div class="card">
-      <div class="cl">Layer 1 — macro context</div>
-      ${buildL1Panel(last)}
-    </div>
-    <div class="card">
-      <div class="cl">SPY price · VIX · 200MA · call wall</div>
-      <div class="leg">
-        <span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span>
-        <span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span>
-      <span class="li"><span class="ll" style="background:#9b59b6"></span>200MA</span>
-<span class="li"><span class="ll" style="background:#BA7517"></span>Call wall</span>
-        <span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span>
-        <span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span>
-      </div>
-      <div style="position:relative;width:100%;height:240px"><canvas id="c1"></canvas></div>
-      <div style="position:relative;width:100%;height:100px;margin-top:8px"><canvas id="c2"></canvas></div>
-      <div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="cl">RSI-14 · SKEW · VIX term spread</div>
-      <div class="leg">
-        <span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span>
-        <span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span>
-        <span class="li"><span class="lb" style="background:rgba(163,45,45,0.2)"></span>Oversold &lt;30</span>
-        <span class="li"><span class="lb" style="background:rgba(186,117,23,0.2)"></span>Overbought &gt;70</span>
-      </div>
-      <div style="position:relative;width:100%;height:160px"><canvas id="c4"></canvas></div>
-      <div style="position:relative;width:100%;height:80px;margin-top:6px"><canvas id="c5"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="cl">Portfolio buy zone assessment</div>
-      <div class="opp ${inBuy?'opp-g':approaching?'opp-a':'opp-b'}">
-        <div class="opp-t">${inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry'}</div>
-        <div class="opp-body">${info.port}</div>
-      </div>
-      <div class="two-col">
-        <div>
-          <div class="prog-label">VIX → target 25+ for buy zone</div>
-          <div class="prog-val">+${vixTgt.toFixed(1)} pts needed</div>
-          <div class="pw"><div class="pb" style="width:${Math.min(100,last.v/25*100).toFixed(0)}%;background:${last.v>22?'#A32D2D':last.v>19?'#BA7517':'#639922'}"></div></div>
-          <div class="prog-sub">Current ${last.v.toFixed(2)} → target 25.00</div>
-        </div>
-        <div>
-          <div class="prog-label">GEX → target below -$5B</div>
-          <div class="prog-val">${last.g<-5?'In zone':'$'+gexTgt.toFixed(1)+'B more needed'}</div>
-          <div class="pw"><div class="pb" style="width:${Math.min(100,Math.max(0,Math.abs(Math.min(0,last.g))/5*100)).toFixed(0)}%;background:${last.g<-5?'#A32D2D':last.g<-3?'#BA7517':'#639922'}"></div></div>
-          <div class="prog-sub">Current ${last.g.toFixed(2)}B → below -5B</div>
-        </div>
-      </div>
-      <div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg · SPY $629–$659 · +18% return in 7 weeks</div>
-    </div>
-    <div class="card">
-      <div class="cl">Full history</div>
-      <div style="overflow-x:auto">
-        <table>
-          <thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Term</th><th>SKEW</th><th>Signal</th></tr></thead>
-          <tbody>${tableRows}</tbody>
-        </table>
-      </div>
-    </div>`;
+  document.getElementById('app').innerHTML=
+    '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
+    '<div class="mg">'+
+      '<div class="m"><div class="ml">SPY today</div><div class="mv" style="color:'+sColor+'">$'+last.s.toFixed(2)+'</div><div class="ms">'+chSign+'$'+Math.abs(change).toFixed(2)+'</div></div>'+
+      '<div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:'+gColor+'">'+(last.g>=0?'+':'')+'$'+last.g.toFixed(2)+'B</div><div class="ms">'+(last.g>=0?'positive':'negative')+'</div></div>'+
+      '<div class="m"><div class="ml">VIX</div><div class="mv" style="color:'+vColor+'">'+last.v.toFixed(2)+'</div><div class="ms">'+(last.v<=vLow+0.05?'cycle low':'low: '+vLow.toFixed(2))+'</div></div>'+
+      '<div class="m"><div class="ml">Zero-gamma</div><div class="mv">'+(last.z?'$'+last.z.toFixed(2):'—')+'</div><div class="ms">'+(last.z?(last.s>last.z?'price above':'price below'):'—')+'</div></div>'+
+      '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
+      '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
+      '<div class="m"><div class="ml">Dataset ATH</div><div class="mv" style="color:#3B6D11">$'+spyHigh.toFixed(2)+'</div><div class="ms">all-time high</div></div>'+
+      '<div class="m"><div class="ml">Days logged</div><div class="mv">'+data.length+'</div><div class="ms">entries</div></div>'+
+    '</div>'+
+    '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
+    '<div class="card">'+
+      '<div class="cl">SPY price · VIX · 200MA · call wall</div>'+
+      '<div class="leg">'+
+        '<span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span>'+
+        '<span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span>'+
+        '<span class="li"><span class="ll" style="background:#00BCD4"></span>200MA</span>'+
+        '<span class="li"><span class="ll" style="background:#FF6B00"></span>Call wall</span>'+
+        '<span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span>'+
+        '<span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span>'+
+      '</div>'+
+      '<div style="position:relative;width:100%;height:240px"><canvas id="c1"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:100px;margin-top:8px"><canvas id="c2"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3"></canvas></div>'+
+    '</div>'+
+    '<div class="card">'+
+      '<div class="cl">RSI-14 · SKEW · VIX term spread</div>'+
+      '<div class="leg">'+
+        '<span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span>'+
+        '<span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span>'+
+        '<span class="li"><span class="lb" style="background:rgba(163,45,45,0.2)"></span>Oversold &lt;30</span>'+
+        '<span class="li"><span class="lb" style="background:rgba(186,117,23,0.2)"></span>Overbought &gt;70</span>'+
+      '</div>'+
+      '<div style="position:relative;width:100%;height:160px"><canvas id="c4"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:80px;margin-top:6px"><canvas id="c5"></canvas></div>'+
+    '</div>'+
+    '<div class="card">'+
+      '<div class="cl">Portfolio buy zone assessment</div>'+
+      '<div class="opp '+(inBuy?'opp-g':approaching?'opp-a':'opp-b')+'">'+
+        '<div class="opp-t">'+(inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry')+'</div>'+
+        '<div class="opp-body">'+info.port+'</div>'+
+      '</div>'+
+      '<div class="two-col">'+
+        '<div>'+
+          '<div class="prog-label">VIX \u2192 target 25+ for buy zone</div>'+
+          '<div class="prog-val">+'+vixTgt.toFixed(1)+' pts needed</div>'+
+          '<div class="pw"><div class="pb" style="width:'+Math.min(100,last.v/25*100).toFixed(0)+'%;background:'+(last.v>22?'#A32D2D':last.v>19?'#BA7517':'#639922')+'"></div></div>'+
+          '<div class="prog-sub">Current '+last.v.toFixed(2)+' \u2192 target 25.00</div>'+
+        '</div>'+
+        '<div>'+
+          '<div class="prog-label">GEX \u2192 target below -$5B</div>'+
+          '<div class="prog-val">'+(last.g<-5?'In zone':'$'+gexTgt.toFixed(1)+'B more needed')+'</div>'+
+          '<div class="pw"><div class="pb" style="width:'+Math.min(100,Math.max(0,Math.abs(Math.min(0,last.g))/5*100)).toFixed(0)+'%;background:'+(last.g<-5?'#A32D2D':last.g<-3?'#BA7517':'#639922')+'"></div></div>'+
+          '<div class="prog-sub">Current '+last.g.toFixed(2)+'B \u2192 below -5B</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
+    '</div>'+
+    '<div class="card">'+
+      '<div class="cl">Full history</div>'+
+      '<div style="overflow-x:auto">'+
+        '<table>'+
+          '<thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Term</th><th>SKEW</th><th>Signal</th></tr></thead>'+
+          '<tbody>'+tableRows+'</tbody>'+
+        '</table>'+
+      '</div>'+
+    '</div>';
 
   renderCharts(data);
+}
+
+function makeBgPlugin(id,zones,labels){
+  return{id:id,beforeDraw:function(chart){
+    const ca=chart.chartArea,sc=chart.scales;
+    if(!ca||!sc.x)return;
+    const x=sc.x,bw=x.width/labels.length,ctx=chart.ctx;
+    ctx.save();
+    zones.forEach(function(z){
+      ctx.fillStyle=z[2]==='n'?'rgba(226,75,74,0.08)':'rgba(99,153,34,0.07)';
+      ctx.fillRect(x.getPixelForValue(z[0])-bw*0.35,ca.top,(x.getPixelForValue(z[1])+bw*0.65)-(x.getPixelForValue(z[0])-bw*0.35),ca.height);
+    });
+    ctx.restore();
+  }};
+}
+
+function makeRsiPlugin(){
+  return{id:'rsiZones',beforeDraw:function(chart){
+    const ca=chart.chartArea,sc=chart.scales;
+    if(!ca||!sc.y)return;
+    const y=sc.y,ctx=chart.ctx;
+    ctx.save();
+    ctx.fillStyle='rgba(163,45,45,0.1)';
+    ctx.fillRect(ca.left,y.getPixelForValue(30),ca.width,ca.bottom-y.getPixelForValue(30));
+    ctx.fillStyle='rgba(186,117,23,0.1)';
+    ctx.fillRect(ca.left,ca.top,ca.width,y.getPixelForValue(70)-ca.top);
+    ctx.beginPath();
+    ctx.moveTo(ca.left,y.getPixelForValue(50));
+    ctx.lineTo(ca.right,y.getPixelForValue(50));
+    ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();
+    ctx.restore();
+  }};
 }
 
 function renderCharts(data){
@@ -358,110 +387,113 @@ function renderCharts(data){
   const tc='#888';
 
   const zones=[];
-  let zs=0,zt=data[0]?.g<0?'n':'p';
-  data.forEach((e,i)=>{const t=e.g<0?'n':'p';if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}});
+  let zs=0,zt=data[0]&&data[0].g<0?'n':'p';
+  data.forEach(function(e,i){
+    const t=e.g<0?'n':'p';
+    if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}
+  });
 
-  const bgP={id:'bgP',beforeDraw(chart){
-    const{ctx,chartArea,scales}=chart;if(!chartArea)return;
-    const x=scales.x,bw=x.width/labels.length;
-    ctx.save();
-    zones.forEach(([s,e,t])=>{
-      ctx.fillStyle=t==='n'?'rgba(226,75,74,0.08)':'rgba(99,153,34,0.07)';
-      ctx.fillRect(x.getPixelForValue(s)-bw*.35,chartArea.top,(x.getPixelForValue(e)+bw*.65)-(x.getPixelForValue(s)-bw*.35),chartArea.height);
-    });
-    ctx.restore();
-  }};
-
-  const rsiZP={id:'rsiZP',beforeDraw(chart){
-    const{ctx,chartArea,scales}=chart;if(!chartArea)return;
-    const y=scales.y;
-    ctx.save();
-    ctx.fillStyle='rgba(163,45,45,0.1)';
-    ctx.fillRect(chartArea.left,y.getPixelForValue(30),chartArea.width,chartArea.bottom-y.getPixelForValue(30));
-    ctx.fillStyle='rgba(186,117,23,0.1)';
-    ctx.fillRect(chartArea.left,chartArea.top,chartArea.width,y.getPixelForValue(70)-chartArea.top);
-    ctx.beginPath();ctx.moveTo(chartArea.left,y.getPixelForValue(50));ctx.lineTo(chartArea.right,y.getPixelForValue(50));
-    ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();
-    ctx.restore();
-  }};
+  const xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}};
 
   if(pChart)pChart.destroy();
-  pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels,datasets:[
-    {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
-    {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
-   {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
-{label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
-  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
-      if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
-      if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
-      if(ctx.dataset.label==='200MA'&&ctx.parsed.y)return'  200MA $'+ctx.parsed.y.toFixed(2);
-      if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;
-      return null;
-    }}}},
-    scales:{
-      x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-      yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:v=>'$'+v},grid:{color:gc}},
-      yV:{position:'right',min:13,max:30,ticks:{font:{size:9},color:'#E24B4A'},grid:{display:false}}
-    }
-  },plugins:[bgP]});
+  pChart=new Chart(document.getElementById('c1'),{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
+      {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
+      {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
+      {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+        if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
+        if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
+        if(ctx.dataset.label==='200MA'&&ctx.parsed.y)return'  200MA $'+ctx.parsed.y.toFixed(2);
+        if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;
+        return null;
+      }}}},
+      scales:{
+        x:xAxis,
+        yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:function(v){return'$'+v;}},grid:{color:gc}},
+        yV:{position:'right',min:13,max:30,ticks:{font:{size:9},color:'#E24B4A'},grid:{display:false}}
+      }
+    },
+    plugins:[makeBgPlugin('bgMain',zones,labels)]
+  });
 
   if(gChart)gChart.destroy();
-  gChart=new Chart(document.getElementById('c2'),{type:'bar',data:{labels,datasets:[{
-    label:'GEX',data:gexD,borderRadius:2,borderWidth:1,
-    backgroundColor:gexD.map(v=>v<0?'rgba(226,75,74,0.7)':v<3?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.7)'),
-    borderColor:gexD.map(v=>v<0?'#A32D2D':v<3?'#BA7517':'#3B6D11')
-  }]},options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' GEX '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y.toFixed(2)+'B'}}},
-    scales:{x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-      y:{ticks:{font:{size:9},color:tc,callback:v=>(v>=0?'+':'')+v+'B'},grid:{color:gc}}}
-  },plugins:[bgP]});
+  gChart=new Chart(document.getElementById('c2'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{
+      label:'GEX',data:gexD,borderRadius:2,borderWidth:1,
+      backgroundColor:gexD.map(function(v){return v<0?'rgba(226,75,74,0.7)':v<3?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.7)';}),
+      borderColor:gexD.map(function(v){return v<0?'#A32D2D':v<3?'#BA7517':'#3B6D11';})
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' GEX '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y.toFixed(2)+'B';}}}},
+      scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v+'B';}},grid:{color:gc}}}
+    },
+    plugins:[makeBgPlugin('bgGex',zones,labels)]
+  });
 
   if(vChart)vChart.destroy();
-  vChart=new Chart(document.getElementById('c3'),{type:'bar',data:{labels,datasets:[{
-    label:'VIX',data:vixD,borderRadius:2,borderWidth:1,
-    backgroundColor:vixD.map(v=>v>22?'rgba(163,45,45,0.75)':v>19?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.65)'),
-    borderColor:vixD.map(v=>v>22?'#A32D2D':v>19?'#BA7517':'#3B6D11')
-  }]},options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' VIX '+ctx.parsed.y.toFixed(2)}}},
-    scales:{x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-      y:{min:13,max:28,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
-  },plugins:[bgP]});
+  vChart=new Chart(document.getElementById('c3'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{
+      label:'VIX',data:vixD,borderRadius:2,borderWidth:1,
+      backgroundColor:vixD.map(function(v){return v>22?'rgba(163,45,45,0.75)':v>19?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.65)';}),
+      borderColor:vixD.map(function(v){return v>22?'#A32D2D':v>19?'#BA7517':'#3B6D11';})
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' VIX '+ctx.parsed.y.toFixed(2);}}}},
+      scales:{x:xAxis,y:{min:13,max:28,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
+    },
+    plugins:[makeBgPlugin('bgVix',zones,labels)]
+  });
 
   if(rsiChart)rsiChart.destroy();
-  rsiChart=new Chart(document.getElementById('c4'),{type:'line',data:{labels,datasets:[
-    {label:'RSI',data:rsiD,borderColor:'#3B6D11',borderWidth:2,tension:0.35,
-     pointRadius:rsiD.map(v=>v!==null&&(v<30||v>70)?4:1),
-     pointBackgroundColor:rsiD.map(v=>v<30?'#A32D2D':v>70?'#BA7517':'#3B6D11'),
-     pointBorderColor:'#fff',pointBorderWidth:1.5,yAxisID:'yR',backgroundColor:'transparent',spanGaps:true},
-    {label:'SKEW',data:skewD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.3,
-     pointRadius:1,yAxisID:'yS',backgroundColor:'transparent',spanGaps:true}
-  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
-      if(ctx.dataset.label==='RSI'&&ctx.parsed.y!==null)return' RSI '+ctx.parsed.y.toFixed(1);
-      if(ctx.dataset.label==='SKEW'&&ctx.parsed.y)return'  SKEW '+ctx.parsed.y.toFixed(1);
-      return null;
-    }}}},
-    scales:{
-      x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-      yR:{position:'left',min:20,max:80,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},
-      yS:{position:'right',min:100,max:170,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}
-    }
-  },plugins:[rsiZP]});
+  rsiChart=new Chart(document.getElementById('c4'),{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'RSI',data:rsiD,borderColor:'#3B6D11',borderWidth:2,tension:0.35,
+       pointRadius:rsiD.map(function(v){return v!==null&&(v<30||v>70)?4:1;}),
+       pointBackgroundColor:rsiD.map(function(v){return v<30?'#A32D2D':v>70?'#BA7517':'#3B6D11';}),
+       pointBorderColor:'#fff',pointBorderWidth:1.5,
+       yAxisID:'yR',backgroundColor:'transparent',spanGaps:true},
+      {label:'SKEW',data:skewD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.3,
+       pointRadius:1,yAxisID:'yS',backgroundColor:'transparent',spanGaps:true}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+        if(ctx.dataset.label==='RSI'&&ctx.parsed.y!==null)return' RSI '+ctx.parsed.y.toFixed(1);
+        if(ctx.dataset.label==='SKEW'&&ctx.parsed.y)return'  SKEW '+ctx.parsed.y.toFixed(1);
+        return null;
+      }}}},
+      scales:{
+        x:xAxis,
+        yR:{position:'left',min:20,max:80,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},
+        yS:{position:'right',min:100,max:170,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}
+      }
+    },
+    plugins:[makeRsiPlugin()]
+  });
 
   if(termChart)termChart.destroy();
-  termChart=new Chart(document.getElementById('c5'),{type:'bar',data:{labels,datasets:[{
-    label:'Term Spread',data:termD,borderRadius:2,borderWidth:1,
-    backgroundColor:termD.map(v=>v===null?'transparent':v>0?'rgba(99,153,34,0.65)':'rgba(163,45,45,0.65)'),
-    borderColor:termD.map(v=>v===null?'transparent':v>0?'#3B6D11':'#A32D2D')
-  }]},options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
-      if(ctx.parsed.y===null)return null;
-      return' Spread '+(ctx.parsed.y>0?'+':'')+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>0?' (contango)':' (backwardation)');
-    }}}},
-    scales:{x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-      y:{ticks:{font:{size:9},color:tc,callback:v=>(v>=0?'+':'')+v.toFixed(1)},grid:{color:gc}}}
-  }});
+  termChart=new Chart(document.getElementById('c5'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{
+      label:'Term Spread',data:termD,borderRadius:2,borderWidth:1,
+      backgroundColor:termD.map(function(v){return v===null?'transparent':v>0?'rgba(99,153,34,0.65)':'rgba(163,45,45,0.65)';}),
+      borderColor:termD.map(function(v){return v===null?'transparent':v>0?'#3B6D11':'#A32D2D';})
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+        if(ctx.parsed.y===null)return null;
+        return' Spread '+(ctx.parsed.y>0?'+':'')+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>0?' (contango)':' (backwardation)');
+      }}}},
+      scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
+    }
+  });
 }
 
 async function init(){
