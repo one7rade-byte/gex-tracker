@@ -289,8 +289,8 @@ function buildUI(data){
       <div class="leg">
         <span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span>
         <span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span>
-        <span class="li"><span class="ll" style="background:#9b59b6"></span>200MA</span>
-        <span class="li"><span class="ll" style="background:#BA7517"></span>Call wall</span>
+      <span class="li"><span class="ll" style="background:#9b59b6"></span>200MA</span>
+<span class="li"><span class="ll" style="background:#BA7517"></span>Call wall</span>
         <span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span>
         <span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span>
       </div>
@@ -389,8 +389,8 @@ function renderCharts(data){
   pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels,datasets:[
     {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
     {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
-    {label:'Wall',data:wallD,borderColor:'#BA7517',borderWidth:1.5,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
-    {label:'200MA',data:ma200D,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[5,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
+   {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
+{label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
   ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{
       if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
