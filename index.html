@@ -13,7 +13,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .header-sub{font-size:11px;color:#888;margin-top:1px}
 .refresh-badge{font-size:11px;color:#888;display:flex;align-items:center;gap:5px}
 .dot{width:7px;height:7px;border-radius:50%;background:#639922;display:inline-block}
-.container{max-width:900px;margin:0 auto;padding:16px}
+.container{max-width:960px;margin:0 auto;padding:16px}
 .mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:14px}
 .m{background:#fff;border-radius:8px;padding:10px 12px;border:0.5px solid #e5e5e0}
 .ml{font-size:10px;color:#888;margin-bottom:3px}
@@ -32,7 +32,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .sig-b .sig-title{color:#0C447C}
 .sig-a .sig-title{color:#633806}
 .sig-body{font-size:12px;line-height:1.6;color:#555}
-.leg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;font-size:11px;color:#666;align-items:center}
+.leg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;font-size:11px;color:#666;align-items:center}
 .li{display:flex;align-items:center;gap:4px}
 .ll{width:14px;height:3px;border-radius:2px}
 .lb{width:9px;height:9px;border-radius:2px}
@@ -41,7 +41,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .br{background:#FCEBEB;color:#791F1F}
 .ba{background:#FAEEDA;color:#633806}
 .bb{background:#E6F1FB;color:#0C447C}
-.bn{background:#f0ede8;color:#666}
 .pw{background:#f0ede8;border-radius:20px;height:6px;overflow:hidden;margin-top:3px}
 .pb{height:100%;border-radius:20px}
 table{width:100%;border-collapse:collapse;font-size:12px}
@@ -68,7 +67,6 @@ tr:last-child td{border-bottom:none}
 .l1-tile-val{font-size:16px;font-weight:600}
 .l1-tile-sub{font-size:10px;color:#aaa;margin-top:3px}
 .l1-tile-bar{position:absolute;bottom:0;left:0;height:3px;width:100%}
-.term-indicator{display:flex;align-items:center;gap:6px;margin-top:6px}
 .term-bar{flex:1;height:5px;border-radius:3px;background:#f0ede8;overflow:hidden}
 .term-fill{height:100%;border-radius:3px}
 .context-banner{border-radius:8px;padding:8px 12px;font-size:11px;line-height:1.9;color:#444;background:#f4f2ee;border:0.5px solid #e5e5e0;margin-top:8px}
@@ -78,8 +76,24 @@ tr:last-child td{border-bottom:none}
 .pill-amber{background:#FAEEDA;color:#633806}
 .pill-blue{background:#E6F1FB;color:#0C447C}
 .pill-gray{background:#f0ede8;color:#666}
+.range-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:11px;color:#666}
+.range-row input[type=range]{flex:1;accent-color:#378ADD;height:4px}
+.range-label{white-space:nowrap;font-size:11px;color:#888;min-width:110px;text-align:right}
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.insight-block{border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.7}
+.ib-g{background:#EAF3DE;border-left:3px solid #3B6D11}
+.ib-r{background:#FCEBEB;border-left:3px solid #A32D2D}
+.ib-a{background:#FAEEDA;border-left:3px solid #BA7517}
+.ib-b{background:#E6F1FB;border-left:3px solid #185FA5}
+.ib-n{background:#f4f2ee;border-left:3px solid #ccc}
+.ib-title{font-weight:600;font-size:12px;margin-bottom:4px}
+.ib-g .ib-title{color:#27500A}
+.ib-r .ib-title{color:#791F1F}
+.ib-a .ib-title{color:#633806}
+.ib-b .ib-title{color:#0C447C}
+.ib-n .ib-title{color:#555}
 footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
-@media(max-width:500px){.mg{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.l1-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.mg{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.l1-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -96,11 +110,13 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
   <div id="app"><div class="loading">Loading GEX data...</div></div>
 </div>
 
-<footer>Data pulled daily from InsiderFinance + Yahoo Finance · GitHub Actions automation · one7rade-byte/gex-tracker</footer>
+<footer>Data pulled daily · InsiderFinance + Yahoo Finance · GitHub Actions · one7rade-byte/gex-tracker</footer>
 
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
 let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null;
+let ALL_DATA=[];
+let WIN=60;
 
 async function fetchCSV(){
   const r=await fetch(CSV_URL+'?t='+Date.now());
@@ -145,26 +161,14 @@ function computeSignal(g,v,prev){
   if(g<0&&v>19.5)return{cls:'sig-r',bc:'br',label:'Exit / sell signal',body:'GEX negative + VIX above 19.5 — dual exit condition. Dealers amplifying moves.',port:'Avoid new long positions. Wait for VIX to peak before loading.'};
   if(g<-5&&v>22)return{cls:'sig-g',bc:'bg',label:'Buy zone loading',body:'GEX deeply negative + VIX elevated — spring coiling. Watch for price to stop making new lows.',port:'Early buy zone. Begin scaling into long-term positions.'};
   if(g<-4&&neg>=2&&v>18&&vRise)return{cls:'sig-a',bc:'ba',label:'Watch — setup building',body:'GEX deeply negative '+neg+' days, VIX rising. Setup loading but not at peak fear yet.',port:'Potential buying opportunity building. Monitor daily.'};
-  if(g<0&&v<19)return{cls:'sig-b',bc:'bb',label:'Weekly noise — hold',body:'GEX negative but VIX low. Likely expiry oscillation — not a real regime change.',port:'No action. This snaps back quickly. Wait and watch.'};
-  if(g>10&&v<17.5)return{cls:'sig-g',bc:'bg',label:'Strong hold — maximum positive regime',body:'GEX '+g.toFixed(2)+'B at near all-time high. VIX '+v.toFixed(2)+' at cycle lows. Dealers fully long gamma.',port:'Hold existing positions. Not a new entry point — market elevated and calm.'};
+  if(g<0&&v<19)return{cls:'sig-b',bc:'bb',label:'Weekly noise — hold',body:'GEX negative but VIX low. Likely expiry oscillation, not a real regime change.',port:'No action. This snaps back quickly. Wait and watch.'};
+  if(g>10&&v<17.5)return{cls:'sig-g',bc:'bg',label:'Strong hold — maximum positive regime',body:'GEX '+g.toFixed(2)+'B at near all-time high. VIX '+v.toFixed(2)+' at cycle lows. Dealers fully long gamma.',port:'Hold existing positions. Not a new entry point.'};
   if(g>0&&v<19)return{cls:'sig-b',bc:'bb',label:'Hold — positive regime intact',body:'GEX positive, VIX controlled. Bull regime active. Dealers buying dips mechanically.',port:'Hold. Not a portfolio loading opportunity at current prices.'};
   return{cls:'sig-a',bc:'ba',label:'Neutral — monitor',body:'Mixed signals. Track daily.',port:'No clear action.'};
 }
 
-function rsiColor(r){
-  if(r===null)return'#aaa';
-  if(r<30)return'#A32D2D';
-  if(r>70)return'#BA7517';
-  return'#3B6D11';
-}
-function rsiLabel(r){
-  if(r===null)return'—';
-  if(r<30)return'Oversold';
-  if(r<45)return'Weak';
-  if(r<55)return'Neutral';
-  if(r<70)return'Strong';
-  return'Overbought';
-}
+function rsiColor(r){if(r===null)return'#aaa';if(r<30)return'#A32D2D';if(r>70)return'#BA7517';return'#3B6D11';}
+function rsiLabel(r){if(r===null)return'—';if(r<30)return'Oversold';if(r<45)return'Weak';if(r<55)return'Neutral';if(r<70)return'Strong';return'Overbought';}
 function getSkewInfo(s){
   if(!s)return{label:'—',cls:'pill-gray'};
   if(s>145)return{label:'Extreme hedging',cls:'pill-red'};
@@ -172,191 +176,102 @@ function getSkewInfo(s){
   if(s>115)return{label:'Normal',cls:'pill-blue'};
   return{label:'Low hedging',cls:'pill-green'};
 }
-function termColor(ts){
-  if(ts==='contango')return'#3B6D11';
-  if(ts==='backwardation')return'#A32D2D';
-  return'#aaa';
+function termColor(ts){if(ts==='contango')return'#3B6D11';if(ts==='backwardation')return'#A32D2D';return'#aaa';}
+
+function buildDailyInsight(last,prev){
+  const blocks=[];
+  if(last.g<-5){
+    blocks.push({cls:'ib-r',title:'GEX: Dealer short gamma — amplified moves',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers are net short gamma and must sell into weakness, buy into strength. Moves are being amplified, not dampened. This is where crashes accelerate and squeezes are violent.'});
+  } else if(last.g<0){
+    blocks.push({cls:'ib-a',title:'GEX: Negative regime — caution',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers short gamma but not deeply so. Market is unstable but not in free-fall mode. Watch for VIX and SKEW confirmation before acting.'});
+  } else if(last.g>10){
+    blocks.push({cls:'ib-g',title:'GEX: Maximum positive regime — pinned market',body:'Net GEX +'+last.g.toFixed(2)+'B. Dealers heavily long gamma, actively buying dips and selling rips. Market is pinned near current levels. Low volatility, slow grind likely.'});
+  } else {
+    blocks.push({cls:'ib-b',title:'GEX: Positive regime — dealers stabilizing',body:'Net GEX +'+last.g.toFixed(2)+'B. Dealers long gamma, providing cushion on dips. Bullish regime but not peak suppression. Normal trending environment.'});
+  }
+  const termStr=last.termStruct;const spread=last.termSpread;
+  if(last.v>25){
+    blocks.push({cls:'ib-r',title:'VIX: Extreme fear — potential buy zone',body:'VIX '+last.v.toFixed(2)+'. Historically marks capitulation zones. Smart money begins accumulating when retail panic sells. Term structure: '+(termStr||'unknown')+(spread!==null?' (spread '+spread.toFixed(2)+')':'')+'.'});
+  } else if(last.v>20){
+    blocks.push({cls:'ib-a',title:'VIX: Elevated — stress building',body:'VIX '+last.v.toFixed(2)+'. Above 20 means the market is pricing in real risk. '+(termStr==='backwardation'?'Backwardation confirms near-term fear exceeds long-term — institutions hedging short-dated risk aggressively.':'Contango holding — fear elevated but not panic yet.')});
+  } else if(termStr==='backwardation'){
+    blocks.push({cls:'ib-a',title:'VIX term: Backwardation — hidden stress',body:'VIX '+last.v.toFixed(2)+' appears calm but VIX3M-VIX spread is '+(spread!==null?spread.toFixed(2):'negative')+'. Near-term vol exceeds long-term — institutions hedging an imminent event, not a distant one.'});
+  } else {
+    blocks.push({cls:'ib-g',title:'VIX: Calm — contango intact',body:'VIX '+last.v.toFixed(2)+'. Term structure in contango (spread '+(spread!==null?(spread>0?'+':'')+spread.toFixed(2):'n/a')+'). Normal environment. Institutions not paying up for near-term protection.'});
+  }
+  if(last.skew!==null){
+    if(last.skew>145){
+      blocks.push({cls:'ib-r',title:'SKEW '+last.skew.toFixed(0)+': Whales buying crash protection',body:'Extreme SKEW means large institutions are paying a premium for deep OTM puts. These are 8-figure positions. Often precedes a sharp move down within 2-4 weeks. GEX going negative here would be a high-conviction sell signal.'});
+    } else if(last.skew>135){
+      blocks.push({cls:'ib-a',title:'SKEW '+last.skew.toFixed(0)+': Elevated — institutions hedging',body:'Above 135 means smart money is paying up for tail risk insurance. They may be protecting large long positions or positioning for a pullback. Watch for GEX to turn negative as confirmation.'});
+    } else if(last.skew>115){
+      blocks.push({cls:'ib-b',title:'SKEW '+last.skew.toFixed(0)+': Normal hedging activity',body:'SKEW in the normal range. Institutions hedging at standard clip, no unusual tail risk demand. Market not expecting a black swan event near-term.'});
+    } else {
+      blocks.push({cls:'ib-g',title:'SKEW '+last.skew.toFixed(0)+': Low — minimal tail hedging',body:'Below 115 means institutions are NOT buying crash protection. Can signal complacency. Low SKEW + high GEX = dealers suppressing vol while nobody hedges = potential sharp snap when it unwinds.'});
+    }
+  }
+  if(last.rsi!==null){
+    if(last.rsi<30){
+      blocks.push({cls:'ib-r',title:'RSI '+last.rsi.toFixed(1)+': Oversold — coiling for a bounce',body:'RSI below 30 marks exhaustion in sellers. Combined with deeply negative GEX and elevated VIX this is a strong buy zone signal. Institutions often step in as RSI approaches 25-28.'});
+    } else if(last.rsi>70){
+      blocks.push({cls:'ib-a',title:'RSI '+last.rsi.toFixed(1)+': Overbought — momentum stretched',body:'RSI above 70 means the move has been fast and extended. New longs here have poor risk/reward. Institutions likely trimming or hedging via options.'});
+    } else if(last.rsi>55){
+      blocks.push({cls:'ib-g',title:'RSI '+last.rsi.toFixed(1)+': Strong momentum',body:'RSI in the strong zone. Uptrend healthy and not overextended. Institutions adding on pullbacks, not chasing. Positive regime with room to run.'});
+    } else {
+      blocks.push({cls:'ib-b',title:'RSI '+last.rsi.toFixed(1)+': Neutral momentum',body:'RSI mid-range. No clear directional bias from momentum alone. Let GEX and VIX lead the signal.'});
+    }
+  }
+  const gexNeg=last.g<0,vixHigh=last.v>20,skewHigh=last.skew!==null&&last.skew>135,rsiLow=last.rsi!==null&&last.rsi<35,back=last.termStruct==='backwardation';
+  const fearCount=[gexNeg,vixHigh,skewHigh,rsiLow,back].filter(Boolean).length;
+  const bullCount=[!gexNeg,!vixHigh,!skewHigh,!rsiLow].filter(Boolean).length;
+  let crossCls,crossTitle,crossBody;
+  if(fearCount>=4){crossCls='ib-r';crossTitle='Cross-signal: Maximum fear — prime buy zone setup';crossBody='GEX negative, VIX elevated, SKEW high, RSI oversold'+(back?', backwardation':'')+'. All signals pointing to institutional accumulation zone. This is the setup that preceded Cycle 1 +18% move. Size up carefully.';}
+  else if(fearCount>=3){crossCls='ib-a';crossTitle='Cross-signal: Fear building — watch for entry';crossBody=fearCount+' of 5 fear signals active. Not at peak fear but approaching. Institutions likely beginning to accumulate quietly. Watch for GEX to stop falling as a trigger.';}
+  else if(bullCount>=3&&!gexNeg){crossCls='ib-g';crossTitle='Cross-signal: Bull regime — dealers in control';crossBody='Multiple bullish signals aligned. GEX positive, vol suppressed, momentum healthy. Dealers are the market shock absorber. Hold and monitor for regime change.';}
+  else{crossCls='ib-n';crossTitle='Cross-signal: Mixed — no clear edge';crossBody='Signals are mixed. Do not force a trade. Wait for at least 3 signals to align before acting. Patience preserves capital for high-conviction setups.';}
+  blocks.push({cls:crossCls,title:crossTitle,body:crossBody});
+  return blocks;
 }
 
 function buildL1Panel(last){
-  const rsi=last.rsi;
-  const rsiPct=rsi!==null?rsi:50;
-  const rsiC=rsiColor(rsi);
-  const sk=getSkewInfo(last.skew);
-  const termC=termColor(last.termStruct);
-  const spreadAbs=last.termSpread!==null?Math.abs(last.termSpread):0;
-  const spreadPct=Math.min(100,(spreadAbs/8)*100);
+  const rsi=last.rsi,rsiPct=rsi!==null?rsi:50,rsiC=rsiColor(rsi),sk=getSkewInfo(last.skew),termC=termColor(last.termStruct);
+  const spreadAbs=last.termSpread!==null?Math.abs(last.termSpread):0,spreadPct=Math.min(100,(spreadAbs/8)*100);
   const maColor=last.aboveMa===true?'#3B6D11':last.aboveMa===false?'#A32D2D':'#aaa';
   const maLabel=last.aboveMa===true?'Above \u2713':last.aboveMa===false?'Below \u2717':'—';
-  const skewC=last.skew>135?'#A32D2D':last.skew>115?'#BA7517':'#3B6D11';
+  const skewC=last.skew&&last.skew>135?'#A32D2D':last.skew&&last.skew>115?'#BA7517':'#3B6D11';
   const pills=(last.l1ctx||'').split('|').map(p=>p.trim()).filter(Boolean).map(p=>{
-    let cls='pill-gray';
-    const lo=p.toLowerCase();
+    let cls='pill-gray';const lo=p.toLowerCase();
     if(lo.includes('uptrend')||lo.includes('above')||lo.includes('contango')||lo.includes('oversold')||lo.includes('low hedging'))cls='pill-green';
     else if(lo.includes('below')||lo.includes('backwardation')||lo.includes('overbought')||lo.includes('extreme'))cls='pill-red';
     else if(lo.includes('elevated')||lo.includes('rising'))cls='pill-amber';
     else if(lo.includes('neutral')||lo.includes('normal'))cls='pill-blue';
     return'<span class="context-pill '+cls+'">'+p+'</span>';
   }).join('');
-
   return'<div class="l1-grid">'+
-    '<div class="l1-tile">'+
-      '<div class="l1-tile-label">200-Day MA</div>'+
-      '<div class="l1-tile-val" style="color:'+maColor+'">'+maLabel+'</div>'+
-      '<div class="l1-tile-sub">'+(last.ma200?'MA: $'+last.ma200.toFixed(2):'—')+'</div>'+
-      '<div class="l1-tile-bar" style="background:'+maColor+';opacity:0.2"></div>'+
-    '</div>'+
-    '<div class="l1-tile">'+
-      '<div class="l1-tile-label">RSI-14</div>'+
-      '<div class="l1-tile-val" style="color:'+rsiC+'">'+(rsi!==null?rsi.toFixed(1):'—')+'</div>'+
-      '<div class="l1-tile-sub">'+rsiLabel(rsi)+'</div>'+
-      '<div style="margin-top:6px;position:relative;height:5px">'+
-        '<div style="height:5px;border-radius:3px;background:linear-gradient(to right,#A32D2D 0%,#A32D2D 20%,#ddd 20%,#ddd 30%,#3B6D11 30%,#3B6D11 70%,#ddd 70%,#ddd 80%,#BA7517 80%,#BA7517 100%)"></div>'+
-        '<div style="position:absolute;top:50%;left:'+rsiPct+'%;transform:translate(-50%,-50%);width:9px;height:9px;background:#fff;border:2px solid '+rsiC+';border-radius:50%"></div>'+
-      '</div>'+
-    '</div>'+
-    '<div class="l1-tile">'+
-      '<div class="l1-tile-label">VIX Term Structure</div>'+
-      '<div class="l1-tile-val" style="color:'+termC+'">'+(last.termStruct?last.termStruct.charAt(0).toUpperCase()+last.termStruct.slice(1):'—')+'</div>'+
-      '<div class="l1-tile-sub">Spread: '+(last.termSpread!==null?(last.termSpread>0?'+':'')+last.termSpread.toFixed(2):'—')+'</div>'+
-      '<div class="term-indicator"><div class="term-bar"><div class="term-fill" style="width:'+spreadPct+'%;background:'+termC+'"></div></div></div>'+
-    '</div>'+
-    '<div class="l1-tile">'+
-      '<div class="l1-tile-label">SKEW Index</div>'+
-      '<div class="l1-tile-val" style="color:'+skewC+'">'+(last.skew?last.skew.toFixed(1):'—')+'</div>'+
-      '<div class="l1-tile-sub"><span class="context-pill '+sk.cls+'" style="margin:0;padding:1px 6px">'+sk.label+'</span></div>'+
-    '</div>'+
-  '</div>'+
-  (pills?'<div class="context-banner">'+pills+'</div>':'');
-}
-
-function buildUI(data){
-  const last=data[data.length-1];
-  const prev=data.slice(-6,-1);
-  const info=computeSignal(last.g,last.v,prev);
-  const change=data.length>=2?(last.s-data[data.length-2].s):0;
-  const chSign=change>=0?'+':'';
-  const spyHigh=Math.max(...data.map(e=>e.s));
-  const vLow=Math.min(...data.map(e=>e.v));
-  const gColor=last.g>=0?'#3B6D11':'#A32D2D';
-  const vColor=last.v<=17?'#3B6D11':last.v<=19?'#BA7517':'#A32D2D';
-  const sColor=change>=0?'#3B6D11':'#A32D2D';
-  const vixTgt=Math.max(0,25-last.v);
-  const gexTgt=Math.max(0,-5-last.g);
-  const inBuy=last.g<-5&&last.v>22;
-  const approaching=last.g<-3&&last.v>19;
-
-  const recent=[...data].reverse();
-  const tableRows=recent.map(e=>{
-    const si=computeSignal(e.g,e.v,[]);
-    const label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
-    const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11';
-    const vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
-    const rsiC=rsiColor(e.rsi);
-    const maC=e.aboveMa===true?'#3B6D11':e.aboveMa===false?'#A32D2D':'#aaa';
-    const tC=termColor(e.termStruct);
-    return'<tr>'+
-      '<td style="color:#666">'+e.d+'</td>'+
-      '<td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
-      '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
-      '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
-      '<td style="color:'+maC+';font-size:11px">'+(e.aboveMa===true?'\u2713 Above':e.aboveMa===false?'\u2717 Below':'—')+'</td>'+
-      '<td style="color:'+rsiC+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
-      '<td style="color:'+tC+';font-size:11px">'+(e.termStruct?e.termStruct.charAt(0).toUpperCase()+e.termStruct.slice(1):'—')+'</td>'+
-      '<td>'+(e.skew?e.skew.toFixed(0):'—')+'</td>'+
-      '<td><span class="badge '+si.bc+'">'+label+'</span></td>'+
-    '</tr>';
-  }).join('');
-
-  document.getElementById('app').innerHTML=
-    '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
-    '<div class="mg">'+
-      '<div class="m"><div class="ml">SPY today</div><div class="mv" style="color:'+sColor+'">$'+last.s.toFixed(2)+'</div><div class="ms">'+chSign+'$'+Math.abs(change).toFixed(2)+'</div></div>'+
-      '<div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:'+gColor+'">'+(last.g>=0?'+':'')+'$'+last.g.toFixed(2)+'B</div><div class="ms">'+(last.g>=0?'positive':'negative')+'</div></div>'+
-      '<div class="m"><div class="ml">VIX</div><div class="mv" style="color:'+vColor+'">'+last.v.toFixed(2)+'</div><div class="ms">'+(last.v<=vLow+0.05?'cycle low':'low: '+vLow.toFixed(2))+'</div></div>'+
-      '<div class="m"><div class="ml">Zero-gamma</div><div class="mv">'+(last.z?'$'+last.z.toFixed(2):'—')+'</div><div class="ms">'+(last.z?(last.s>last.z?'price above':'price below'):'—')+'</div></div>'+
-      '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
-      '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
-      '<div class="m"><div class="ml">Dataset ATH</div><div class="mv" style="color:#3B6D11">$'+spyHigh.toFixed(2)+'</div><div class="ms">all-time high</div></div>'+
-      '<div class="m"><div class="ml">Days logged</div><div class="mv">'+data.length+'</div><div class="ms">entries</div></div>'+
-    '</div>'+
-    '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
-    '<div class="card">'+
-      '<div class="cl">SPY price · VIX · 200MA · call wall</div>'+
-      '<div class="leg">'+
-        '<span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span>'+
-        '<span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span>'+
-        '<span class="li"><span class="ll" style="background:#00BCD4"></span>200MA</span>'+
-        '<span class="li"><span class="ll" style="background:#FF6B00"></span>Call wall</span>'+
-        '<span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span>'+
-        '<span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span>'+
-      '</div>'+
-      '<div style="position:relative;width:100%;height:240px"><canvas id="c1"></canvas></div>'+
-      '<div style="position:relative;width:100%;height:100px;margin-top:8px"><canvas id="c2"></canvas></div>'+
-      '<div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3"></canvas></div>'+
-    '</div>'+
-    '<div class="card">'+
-      '<div class="cl">RSI-14 · SKEW · VIX term spread</div>'+
-      '<div class="leg">'+
-        '<span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span>'+
-        '<span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span>'+
-        '<span class="li"><span class="lb" style="background:rgba(163,45,45,0.2)"></span>Oversold &lt;30</span>'+
-        '<span class="li"><span class="lb" style="background:rgba(186,117,23,0.2)"></span>Overbought &gt;70</span>'+
-      '</div>'+
-      '<div style="position:relative;width:100%;height:160px"><canvas id="c4"></canvas></div>'+
-      '<div style="position:relative;width:100%;height:80px;margin-top:6px"><canvas id="c5"></canvas></div>'+
-    '</div>'+
-    '<div class="card">'+
-      '<div class="cl">Portfolio buy zone assessment</div>'+
-      '<div class="opp '+(inBuy?'opp-g':approaching?'opp-a':'opp-b')+'">'+
-        '<div class="opp-t">'+(inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry')+'</div>'+
-        '<div class="opp-body">'+info.port+'</div>'+
-      '</div>'+
-      '<div class="two-col">'+
-        '<div>'+
-          '<div class="prog-label">VIX \u2192 target 25+ for buy zone</div>'+
-          '<div class="prog-val">+'+vixTgt.toFixed(1)+' pts needed</div>'+
-          '<div class="pw"><div class="pb" style="width:'+Math.min(100,last.v/25*100).toFixed(0)+'%;background:'+(last.v>22?'#A32D2D':last.v>19?'#BA7517':'#639922')+'"></div></div>'+
-          '<div class="prog-sub">Current '+last.v.toFixed(2)+' \u2192 target 25.00</div>'+
-        '</div>'+
-        '<div>'+
-          '<div class="prog-label">GEX \u2192 target below -$5B</div>'+
-          '<div class="prog-val">'+(last.g<-5?'In zone':'$'+gexTgt.toFixed(1)+'B more needed')+'</div>'+
-          '<div class="pw"><div class="pb" style="width:'+Math.min(100,Math.max(0,Math.abs(Math.min(0,last.g))/5*100)).toFixed(0)+'%;background:'+(last.g<-5?'#A32D2D':last.g<-3?'#BA7517':'#639922')+'"></div></div>'+
-          '<div class="prog-sub">Current '+last.g.toFixed(2)+'B \u2192 below -5B</div>'+
-        '</div>'+
-      '</div>'+
-      '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
-    '</div>'+
-    '<div class="card">'+
-      '<div class="cl">Full history</div>'+
-      '<div style="overflow-x:auto">'+
-        '<table>'+
-          '<thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Term</th><th>SKEW</th><th>Signal</th></tr></thead>'+
-          '<tbody>'+tableRows+'</tbody>'+
-        '</table>'+
-      '</div>'+
-    '</div>';
-
-  renderCharts(data);
+    '<div class="l1-tile"><div class="l1-tile-label">200-Day MA</div><div class="l1-tile-val" style="color:'+maColor+'">'+maLabel+'</div><div class="l1-tile-sub">'+(last.ma200?'MA: $'+last.ma200.toFixed(2):'—')+'</div><div class="l1-tile-bar" style="background:'+maColor+';opacity:0.2"></div></div>'+
+    '<div class="l1-tile"><div class="l1-tile-label">RSI-14</div><div class="l1-tile-val" style="color:'+rsiC+'">'+(rsi!==null?rsi.toFixed(1):'—')+'</div><div class="l1-tile-sub">'+rsiLabel(rsi)+'</div><div style="margin-top:6px;position:relative;height:5px"><div style="height:5px;border-radius:3px;background:linear-gradient(to right,#A32D2D 0%,#A32D2D 20%,#ddd 20%,#ddd 30%,#3B6D11 30%,#3B6D11 70%,#ddd 70%,#ddd 80%,#BA7517 80%,#BA7517 100%)"></div><div style="position:absolute;top:50%;left:'+rsiPct+'%;transform:translate(-50%,-50%);width:9px;height:9px;background:#fff;border:2px solid '+rsiC+';border-radius:50%"></div></div></div>'+
+    '<div class="l1-tile"><div class="l1-tile-label">VIX Term Structure</div><div class="l1-tile-val" style="color:'+termC+'">'+(last.termStruct?last.termStruct.charAt(0).toUpperCase()+last.termStruct.slice(1):'—')+'</div><div class="l1-tile-sub">Spread: '+(last.termSpread!==null?(last.termSpread>0?'+':'')+last.termSpread.toFixed(2):'—')+'</div><div style="display:flex;align-items:center;margin-top:6px"><div class="term-bar"><div class="term-fill" style="width:'+spreadPct+'%;background:'+termC+'"></div></div></div></div>'+
+    '<div class="l1-tile"><div class="l1-tile-label">SKEW Index</div><div class="l1-tile-val" style="color:'+skewC+'">'+(last.skew?last.skew.toFixed(1):'—')+'</div><div class="l1-tile-sub"><span class="context-pill '+sk.cls+'" style="margin:0;padding:1px 6px">'+sk.label+'</span></div></div>'+
+  '</div>'+(pills?'<div class="context-banner">'+pills+'</div>':'');
 }
 
 function makeBgPlugin(id,zones,labels){
   return{id:id,beforeDraw:function(chart){
     const ca=chart.chartArea,sc=chart.scales;
     if(!ca||!sc.x)return;
-    const x=sc.x,bw=x.width/labels.length,ctx=chart.ctx;
+    const x=sc.x,bw=x.width/Math.max(labels.length,1),ctx=chart.ctx;
     ctx.save();
     zones.forEach(function(z){
-      ctx.fillStyle=z[2]==='n'?'rgba(226,75,74,0.08)':'rgba(99,153,34,0.07)';
-      ctx.fillRect(x.getPixelForValue(z[0])-bw*0.35,ca.top,(x.getPixelForValue(z[1])+bw*0.65)-(x.getPixelForValue(z[0])-bw*0.35),ca.height);
+      ctx.fillStyle=z[2]==='n'?'rgba(226,75,74,0.09)':'rgba(99,153,34,0.07)';
+      const x0=x.getPixelForValue(z[0])-bw*0.4,x1=x.getPixelForValue(z[1])+bw*0.6;
+      ctx.fillRect(x0,ca.top,x1-x0,ca.height);
     });
     ctx.restore();
   }};
 }
 
 function makeRsiPlugin(){
-  return{id:'rsiZones',beforeDraw:function(chart){
+  return{id:'rsiZ',beforeDraw:function(chart){
     const ca=chart.chartArea,sc=chart.scales;
     if(!ca||!sc.y)return;
     const y=sc.y,ctx=chart.ctx;
@@ -365,135 +280,151 @@ function makeRsiPlugin(){
     ctx.fillRect(ca.left,y.getPixelForValue(30),ca.width,ca.bottom-y.getPixelForValue(30));
     ctx.fillStyle='rgba(186,117,23,0.1)';
     ctx.fillRect(ca.left,ca.top,ca.width,y.getPixelForValue(70)-ca.top);
-    ctx.beginPath();
-    ctx.moveTo(ca.left,y.getPixelForValue(50));
-    ctx.lineTo(ca.right,y.getPixelForValue(50));
+    ctx.beginPath();ctx.moveTo(ca.left,y.getPixelForValue(50));ctx.lineTo(ca.right,y.getPixelForValue(50));
     ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();
     ctx.restore();
   }};
 }
 
 function renderCharts(data){
-  const labels=data.map(e=>e.d);
-  const spyD=data.map(e=>e.s);
-  const vixD=data.map(e=>e.v);
-  const gexD=data.map(e=>e.g);
-  const wallD=data.map(e=>e.cw);
-  const ma200D=data.map(e=>e.ma200);
-  const rsiD=data.map(e=>e.rsi);
-  const skewD=data.map(e=>e.skew);
-  const termD=data.map(e=>e.termSpread);
-  const gc='rgba(0,0,0,0.06)';
-  const tc='#888';
-
-  const zones=[];
-  let zs=0,zt=data[0]&&data[0].g<0?'n':'p';
-  data.forEach(function(e,i){
-    const t=e.g<0?'n':'p';
-    if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}
-  });
-
-  const xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}};
+  const labels=data.map(e=>e.d),spyD=data.map(e=>e.s),vixD=data.map(e=>e.v),gexD=data.map(e=>e.g);
+  const wallD=data.map(e=>e.cw),ma200D=data.map(e=>e.ma200),rsiD=data.map(e=>e.rsi);
+  const skewD=data.map(e=>e.skew),termD=data.map(e=>e.termSpread);
+  const gc='rgba(0,0,0,0.06)',tc='#888';
+  const zones=[];let zs=0,zt=data[0]&&data[0].g<0?'n':'p';
+  data.forEach(function(e,i){const t=e.g<0?'n':'p';if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}});
+  const xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:14},grid:{color:gc}};
 
   if(pChart)pChart.destroy();
-  pChart=new Chart(document.getElementById('c1'),{
-    type:'line',
-    data:{labels:labels,datasets:[
-      {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
-      {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
-      {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
-      {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
-        if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
-        if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
-        if(ctx.dataset.label==='200MA'&&ctx.parsed.y)return'  200MA $'+ctx.parsed.y.toFixed(2);
-        if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;
-        return null;
-      }}}},
-      scales:{
-        x:xAxis,
-        yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:function(v){return'$'+v;}},grid:{color:gc}},
-        yV:{position:'right',min:13,max:30,ticks:{font:{size:9},color:'#E24B4A'},grid:{display:false}}
-      }
-    },
-    plugins:[makeBgPlugin('bgMain',zones,labels)]
-  });
+  pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels:labels,datasets:[
+    {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
+    {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
+    {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
+    {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+      if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
+      if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
+      if(ctx.dataset.label==='200MA'&&ctx.parsed.y)return'  200MA $'+ctx.parsed.y.toFixed(2);
+      if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;
+      return null;
+    }}}},
+    scales:{x:xAxis,yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:function(v){return'$'+v;}},grid:{color:gc}},yV:{position:'right',min:13,max:32,ticks:{font:{size:9},color:'#E24B4A'},grid:{display:false}}}
+  },plugins:[makeBgPlugin('bgM',zones,labels)]});
 
   if(gChart)gChart.destroy();
-  gChart=new Chart(document.getElementById('c2'),{
-    type:'bar',
-    data:{labels:labels,datasets:[{
-      label:'GEX',data:gexD,borderRadius:2,borderWidth:1,
-      backgroundColor:gexD.map(function(v){return v<0?'rgba(226,75,74,0.7)':v<3?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.7)';}),
-      borderColor:gexD.map(function(v){return v<0?'#A32D2D':v<3?'#BA7517':'#3B6D11';})
-    }]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' GEX '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y.toFixed(2)+'B';}}}},
-      scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v+'B';}},grid:{color:gc}}}
-    },
-    plugins:[makeBgPlugin('bgGex',zones,labels)]
-  });
+  gChart=new Chart(document.getElementById('c2'),{type:'bar',data:{labels:labels,datasets:[{label:'GEX',data:gexD,borderRadius:2,borderWidth:1,
+    backgroundColor:gexD.map(function(v){return v<0?'rgba(226,75,74,0.7)':v<3?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.7)';}),
+    borderColor:gexD.map(function(v){return v<0?'#A32D2D':v<3?'#BA7517':'#3B6D11';})}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' GEX '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y.toFixed(2)+'B';}}}},
+    scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v+'B';}},grid:{color:gc}}}
+  },plugins:[makeBgPlugin('bgG',zones,labels)]});
 
   if(vChart)vChart.destroy();
-  vChart=new Chart(document.getElementById('c3'),{
-    type:'bar',
-    data:{labels:labels,datasets:[{
-      label:'VIX',data:vixD,borderRadius:2,borderWidth:1,
-      backgroundColor:vixD.map(function(v){return v>22?'rgba(163,45,45,0.75)':v>19?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.65)';}),
-      borderColor:vixD.map(function(v){return v>22?'#A32D2D':v>19?'#BA7517':'#3B6D11';})
-    }]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' VIX '+ctx.parsed.y.toFixed(2);}}}},
-      scales:{x:xAxis,y:{min:13,max:28,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
-    },
-    plugins:[makeBgPlugin('bgVix',zones,labels)]
-  });
+  vChart=new Chart(document.getElementById('c3'),{type:'bar',data:{labels:labels,datasets:[{label:'VIX',data:vixD,borderRadius:2,borderWidth:1,
+    backgroundColor:vixD.map(function(v){return v>22?'rgba(163,45,45,0.75)':v>19?'rgba(186,119,23,0.7)':'rgba(99,153,34,0.65)';}),
+    borderColor:vixD.map(function(v){return v>22?'#A32D2D':v>19?'#BA7517':'#3B6D11';})}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' VIX '+ctx.parsed.y.toFixed(2);}}}},
+    scales:{x:xAxis,y:{min:13,max:32,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
+  },plugins:[makeBgPlugin('bgV',zones,labels)]});
 
   if(rsiChart)rsiChart.destroy();
-  rsiChart=new Chart(document.getElementById('c4'),{
-    type:'line',
-    data:{labels:labels,datasets:[
-      {label:'RSI',data:rsiD,borderColor:'#3B6D11',borderWidth:2,tension:0.35,
-       pointRadius:rsiD.map(function(v){return v!==null&&(v<30||v>70)?4:1;}),
-       pointBackgroundColor:rsiD.map(function(v){return v<30?'#A32D2D':v>70?'#BA7517':'#3B6D11';}),
-       pointBorderColor:'#fff',pointBorderWidth:1.5,
-       yAxisID:'yR',backgroundColor:'transparent',spanGaps:true},
-      {label:'SKEW',data:skewD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.3,
-       pointRadius:1,yAxisID:'yS',backgroundColor:'transparent',spanGaps:true}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
-        if(ctx.dataset.label==='RSI'&&ctx.parsed.y!==null)return' RSI '+ctx.parsed.y.toFixed(1);
-        if(ctx.dataset.label==='SKEW'&&ctx.parsed.y)return'  SKEW '+ctx.parsed.y.toFixed(1);
-        return null;
-      }}}},
-      scales:{
-        x:xAxis,
-        yR:{position:'left',min:20,max:80,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},
-        yS:{position:'right',min:100,max:170,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}
-      }
-    },
-    plugins:[makeRsiPlugin()]
-  });
+  rsiChart=new Chart(document.getElementById('c4'),{type:'line',data:{labels:labels,datasets:[
+    {label:'RSI',data:rsiD,borderColor:'#3B6D11',borderWidth:2,tension:0.35,
+     pointRadius:rsiD.map(function(v){return v!==null&&(v<30||v>70)?5:1;}),
+     pointBackgroundColor:rsiD.map(function(v){return v===null?'transparent':v<30?'#A32D2D':v>70?'#BA7517':'#3B6D11';}),
+     pointBorderColor:'#fff',pointBorderWidth:1.5,yAxisID:'yR',backgroundColor:'transparent',spanGaps:true},
+    {label:'SKEW',data:skewD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.3,pointRadius:2,yAxisID:'yS',backgroundColor:'transparent',spanGaps:true}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+      if(ctx.dataset.label==='RSI'&&ctx.parsed.y!==null)return' RSI '+ctx.parsed.y.toFixed(1);
+      if(ctx.dataset.label==='SKEW'&&ctx.parsed.y)return'  SKEW '+ctx.parsed.y.toFixed(1);
+      return null;
+    }}}},
+    scales:{x:xAxis,yR:{position:'left',min:15,max:85,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},yS:{position:'right',min:100,max:175,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}}
+  },plugins:[makeRsiPlugin()]});
 
   if(termChart)termChart.destroy();
-  termChart=new Chart(document.getElementById('c5'),{
-    type:'bar',
-    data:{labels:labels,datasets:[{
-      label:'Term Spread',data:termD,borderRadius:2,borderWidth:1,
-      backgroundColor:termD.map(function(v){return v===null?'transparent':v>0?'rgba(99,153,34,0.65)':'rgba(163,45,45,0.65)';}),
-      borderColor:termD.map(function(v){return v===null?'transparent':v>0?'#3B6D11':'#A32D2D';})
-    }]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
-        if(ctx.parsed.y===null)return null;
-        return' Spread '+(ctx.parsed.y>0?'+':'')+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>0?' (contango)':' (backwardation)');
-      }}}},
-      scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
-    }
-  });
+  termChart=new Chart(document.getElementById('c5'),{type:'bar',data:{labels:labels,datasets:[{label:'Term Spread',data:termD,borderRadius:2,borderWidth:1,
+    backgroundColor:termD.map(function(v){return v===null?'transparent':v>0?'rgba(99,153,34,0.65)':'rgba(163,45,45,0.65)';}),
+    borderColor:termD.map(function(v){return v===null?'transparent':v>0?'#3B6D11':'#A32D2D';})}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){if(ctx.parsed.y===null)return null;return' Spread '+(ctx.parsed.y>0?'+':'')+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>0?' (contango)':' (backwardation)');}}}},
+    scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
+  }});
+}
+
+function updateCharts(){
+  const total=ALL_DATA.length,sliderEl=document.getElementById('rangeSlider');
+  const offset=sliderEl?parseInt(sliderEl.value):0,win=Math.min(WIN,total);
+  const end=Math.max(win,total-offset),start=Math.max(0,end-win),slice=ALL_DATA.slice(start,end);
+  const labelEl=document.getElementById('rangeLabel');
+  if(labelEl)labelEl.textContent=slice[0].d+' \u2013 '+slice[slice.length-1].d;
+  renderCharts(slice);
+}
+
+function buildUI(data){
+  ALL_DATA=data;
+  const last=data[data.length-1],prev=data.slice(-6,-1),info=computeSignal(last.g,last.v,prev);
+  const change=data.length>=2?(last.s-data[data.length-2].s):0,chSign=change>=0?'+':'';
+  const spyHigh=Math.max(...data.map(e=>e.s)),vLow=Math.min(...data.map(e=>e.v));
+  const gColor=last.g>=0?'#3B6D11':'#A32D2D',vColor=last.v<=17?'#3B6D11':last.v<=19?'#BA7517':'#A32D2D',sColor=change>=0?'#3B6D11':'#A32D2D';
+  const vixTgt=Math.max(0,25-last.v),gexTgt=Math.max(0,-5-last.g);
+  const inBuy=last.g<-5&&last.v>22,approaching=last.g<-3&&last.v>19;
+  const maxOffset=Math.max(0,data.length-WIN);
+  const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
+  const tableRows=[...data].reverse().map(function(e){
+    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
+    const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
+    return'<tr><td style="color:#666">'+e.d+'</td><td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
+      '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
+      '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
+      '<td style="color:'+(e.aboveMa===true?'#3B6D11':e.aboveMa===false?'#A32D2D':'#aaa')+';font-size:11px">'+(e.aboveMa===true?'\u2713':e.aboveMa===false?'\u2717':'—')+'</td>'+
+      '<td style="color:'+rsiColor(e.rsi)+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
+      '<td style="color:'+termColor(e.termStruct)+';font-size:11px">'+(e.termStruct?e.termStruct.charAt(0).toUpperCase()+e.termStruct.slice(1):'—')+'</td>'+
+      '<td>'+(e.skew?e.skew.toFixed(0):'—')+'</td>'+
+      '<td><span class="badge '+si.bc+'">'+label+'</span></td></tr>';
+  }).join('');
+
+  document.getElementById('app').innerHTML=
+    '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
+    '<div class="mg">'+
+      '<div class="m"><div class="ml">SPY today</div><div class="mv" style="color:'+sColor+'">$'+last.s.toFixed(2)+'</div><div class="ms">'+chSign+'$'+Math.abs(change).toFixed(2)+'</div></div>'+
+      '<div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:'+gColor+'">'+(last.g>=0?'+':'')+'$'+last.g.toFixed(2)+'B</div><div class="ms">'+(last.g>=0?'positive':'negative')+'</div></div>'+
+      '<div class="m"><div class="ml">VIX</div><div class="mv" style="color:'+vColor+'">'+last.v.toFixed(2)+'</div><div class="ms">'+(last.v<=vLow+0.05?'cycle low':'low: '+vLow.toFixed(2))+'</div></div>'+
+      '<div class="m"><div class="ml">Zero-gamma</div><div class="mv">'+(last.z?'$'+last.z.toFixed(2):'—')+'</div><div class="ms">'+(last.z?(last.s>last.z?'above':'below'):'—')+'</div></div>'+
+      '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
+      '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
+      '<div class="m"><div class="ml">Dataset ATH</div><div class="mv" style="color:#3B6D11">$'+spyHigh.toFixed(2)+'</div><div class="ms">all-time high</div></div>'+
+      '<div class="m"><div class="ml">Days logged</div><div class="mv">'+data.length+'</div><div class="ms">entries</div></div>'+
+    '</div>'+
+    '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
+    '<div class="card"><div class="cl">Daily signal insight — '+last.d+'</div><div class="insight-grid">'+insightHTML+'</div></div>'+
+    '<div class="card">'+
+      '<div class="cl">SPY price · VIX · 200MA · call wall</div>'+
+      '<div class="leg"><span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span><span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span><span class="li"><span class="ll" style="background:#00BCD4"></span>200MA</span><span class="li"><span class="ll" style="background:#FF6B00"></span>Call wall</span><span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span><span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span></div>'+
+      '<div class="range-row"><span style="font-size:11px;color:#888;white-space:nowrap">Scroll window</span><input type="range" id="rangeSlider" min="0" max="'+maxOffset+'" value="0" step="1"><span class="range-label" id="rangeLabel">—</span></div>'+
+      '<div style="position:relative;width:100%;height:260px"><canvas id="c1"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:110px;margin-top:8px"><canvas id="c2"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3"></canvas></div>'+
+    '</div>'+
+    '<div class="card">'+
+      '<div class="cl">RSI-14 · SKEW · VIX term spread</div>'+
+      '<div class="leg"><span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span><span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span><span class="li"><span class="lb" style="background:rgba(163,45,45,0.15)"></span>Oversold &lt;30</span><span class="li"><span class="lb" style="background:rgba(186,117,23,0.15)"></span>Overbought &gt;70</span></div>'+
+      '<div style="position:relative;width:100%;height:220px"><canvas id="c4"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:90px;margin-top:8px"><canvas id="c5"></canvas></div>'+
+    '</div>'+
+    '<div class="card"><div class="cl">Portfolio buy zone assessment</div>'+
+      '<div class="opp '+(inBuy?'opp-g':approaching?'opp-a':'opp-b')+'"><div class="opp-t">'+(inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry')+'</div><div class="opp-body">'+info.port+'</div></div>'+
+      '<div class="two-col">'+
+        '<div><div class="prog-label">VIX \u2192 target 25+</div><div class="prog-val">+'+vixTgt.toFixed(1)+' pts needed</div><div class="pw"><div class="pb" style="width:'+Math.min(100,last.v/25*100).toFixed(0)+'%;background:'+(last.v>22?'#A32D2D':last.v>19?'#BA7517':'#639922')+'"></div></div><div class="prog-sub">Current '+last.v.toFixed(2)+' \u2192 25.00</div></div>'+
+        '<div><div class="prog-label">GEX \u2192 target below -$5B</div><div class="prog-val">'+(last.g<-5?'In zone':'$'+gexTgt.toFixed(1)+'B more needed')+'</div><div class="pw"><div class="pb" style="width:'+Math.min(100,Math.max(0,Math.abs(Math.min(0,last.g))/5*100)).toFixed(0)+'%;background:'+(last.g<-5?'#A32D2D':last.g<-3?'#BA7517':'#639922')+'"></div></div><div class="prog-sub">Current '+last.g.toFixed(2)+'B \u2192 below -5B</div></div>'+
+      '</div>'+
+      '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
+    '</div>'+
+    '<div class="card"><div class="cl">Full history</div><div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Term</th><th>SKEW</th><th>Signal</th></tr></thead><tbody>'+tableRows+'</tbody></table></div></div>';
+
+  updateCharts();
+  document.getElementById('rangeSlider').addEventListener('input',function(){updateCharts();});
 }
 
 async function init(){
