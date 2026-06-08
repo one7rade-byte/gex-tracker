@@ -27,7 +27,7 @@ CSV_HEADERS = [
     "spy_200ma", "spy_above_200ma", "spy_rsi_14",
     "vix_3m", "vix_term_spread", "vix_term_structure",
     "skew_index",
-    "fear_score", "bull_score", "score_label",
+    "fear_score", "bull_score", "bear_score", "score_label",
     "signal", "l1_context",
 ]
 
@@ -165,110 +165,100 @@ def fetch_skew():
 
 
 # ── Confluence scoring ────────────────────────────────────────────────────────
-#
-# FEAR SCORE (0-10): how close to a buy zone. 8+ = deploy capital.
-# Measures conditions that historically precede big bounces.
-#
-# BULL SCORE (0-10): how strong the hold signal is. 8+ = stay in, don't exit.
-# Measures conditions that confirm a healthy positive regime.
 
 def compute_scores(gex, vix, rsi, term_structure, skew, above_200ma):
     """
-    Returns (fear_score, bull_score, score_label)
+    Returns (fear_score, bull_score, bear_score, score_label)
 
-    Fear score breakdown (max 10):
-      GEX regime    : 0-3 pts
-      VIX level     : 0-2 pts
-      VIX term      : 0-1 pt
-      SKEW          : 0-2 pts
-      RSI           : 0-1 pt
-      200MA position: 0-1 pt  (below 200MA adds fear, above subtracts)
-
-    Bull score breakdown (max 10):
-      GEX regime    : 0-3 pts
-      VIX level     : 0-2 pts
-      VIX term      : 0-1 pt
-      SKEW          : 0-1 pt
-      RSI           : 0-2 pts
-      200MA position: 0-1 pt
+    FEAR  (0-10): how close to a buy zone. 8+ = deploy capital.
+    BULL  (0-10): how strong the positive regime is. 8+ = hold max conviction.
+    BEAR  (0-10): how dangerous the current setup is. 7+ = reduce / exit.
     """
-
     fear = 0
     bull = 0
+    bear = 0
 
-    # ── GEX (3 pts each direction) ────────────────────────────────────────────
+    # ── GEX ──────────────────────────────────────────────────────────────────
     if gex is not None:
-        if gex < -10:
-            fear += 3
-        elif gex < -5:
-            fear += 2
-        elif gex < 0:
-            fear += 1
+        # Fear: deeply negative GEX = coiling for a bounce
+        if gex < -10:   fear += 3
+        elif gex < -5:  fear += 2
+        elif gex < 0:   fear += 1
+        # Bull: positive GEX = dealers stabilizing
+        if gex > 10:    bull += 3
+        elif gex > 5:   bull += 2
+        elif gex > 0:   bull += 1
+        # Bear: negative GEX = dealers amplifying moves downward
+        if gex < -10:   bear += 3
+        elif gex < -5:  bear += 2
+        elif gex < -2:  bear += 1
 
-        if gex > 10:
-            bull += 3
-        elif gex > 5:
-            bull += 2
-        elif gex > 0:
-            bull += 1
-
-    # ── VIX (2 pts each direction) ────────────────────────────────────────────
+    # ── VIX ──────────────────────────────────────────────────────────────────
     if vix is not None:
-        if vix > 28:
-            fear += 2
-        elif vix > 22:
-            fear += 1
+        if vix > 28:    fear += 2
+        elif vix > 22:  fear += 1
+        if vix < 15:    bull += 2
+        elif vix < 18:  bull += 1
+        # Bear: elevated VIX = market stressed
+        if vix > 25:    bear += 2
+        elif vix > 20:  bear += 1
 
-        if vix < 15:
-            bull += 2
-        elif vix < 18:
-            bull += 1
-
-    # ── VIX term structure (1 pt each direction) ──────────────────────────────
+    # ── VIX term structure ────────────────────────────────────────────────────
     if term_structure == "backwardation":
         fear += 1
+        bear += 1   # near-term fear > long-term = imminent stress
     elif term_structure == "contango":
         bull += 1
 
-    # ── SKEW (2 pts fear / 1 pt bull) ────────────────────────────────────────
+    # ── SKEW ─────────────────────────────────────────────────────────────────
     if skew is not None:
         if skew > 145:
             fear += 2
+            bear += 2   # whales buying crash protection = danger
         elif skew > 135:
             fear += 1
-
+            bear += 1
         if skew < 115:
-            bull += 1  # low hedging = complacent calm = bullish regime
+            bull += 1   # low hedging = calm regime
 
-    # ── RSI (1 pt fear / 2 pts bull) ─────────────────────────────────────────
+    # ── RSI ──────────────────────────────────────────────────────────────────
     if rsi is not None:
         if rsi < 30:
-            fear += 1
-        elif rsi < 40:
-            fear += 0  # approaching but not there
-
+            fear += 1   # oversold = bounce potential
         if rsi > 55 and rsi <= 70:
-            bull += 2  # healthy strong momentum
+            bull += 2   # healthy momentum
         elif rsi > 45:
             bull += 1
+        # Bear: overbought = vulnerable to reversal
+        if rsi > 75:    bear += 2
+        elif rsi > 70:  bear += 1
+        # Bear: momentum rolling over (weakening but not crashed yet)
+        if 30 < rsi < 45:
+            bear += 1
 
-    # ── 200MA position (1 pt each) ────────────────────────────────────────────
+    # ── 200MA ────────────────────────────────────────────────────────────────
     if above_200ma is False:
-        fear += 1   # below 200MA = downtrend = more fear justified
+        fear += 1
+        bear += 1   # below 200MA = downtrend = bearish structure
     elif above_200ma is True:
-        bull += 1   # above 200MA = uptrend intact
+        bull += 1
 
-    # Cap at 10
+    # Cap all at 10
     fear = min(10, fear)
     bull = min(10, bull)
+    bear = min(10, bear)
 
-    # ── Label ─────────────────────────────────────────────────────────────────
+    # ── Label (priority: fear > bear > bull) ─────────────────────────────────
     if fear >= 8:
         label = "HIGH CONVICTION BUY ZONE"
     elif fear >= 6:
         label = "Fear building — watch for entry"
     elif fear >= 4:
         label = "Moderate fear — monitor"
+    elif bear >= 7:
+        label = "BEAR SIGNAL — reduce / exit"
+    elif bear >= 5:
+        label = "Bear building — caution"
     elif bull >= 8:
         label = "Strong bull regime — hold"
     elif bull >= 6:
@@ -278,8 +268,8 @@ def compute_scores(gex, vix, rsi, term_structure, skew, above_200ma):
     else:
         label = "Mixed — no edge"
 
-    print(f"  Fear score={fear}  Bull score={bull}  Label={label}")
-    return fear, bull, label
+    print(f"  Fear={fear}  Bull={bull}  Bear={bear}  Label={label}")
+    return fear, bull, bear, label
 
 
 # ── Signal + context ──────────────────────────────────────────────────────────
@@ -386,7 +376,6 @@ def main():
     print("\n[5/5] Fetching SKEW index...")
     skew = fetch_skew()
 
-    # ── Compute all signals ───────────────────────────────────────────────────
     gex_val = gex_data.get("net_gex_b")
     signal  = compute_signal(gex_val, vix)
     l1_ctx  = compute_l1_context(
@@ -396,12 +385,12 @@ def main():
     )
 
     print("\n[+] Computing confluence scores...")
-    fear_score, bull_score, score_label = compute_scores(
-        gex      = gex_val,
-        vix      = vix,
-        rsi      = technicals.get("spy_rsi_14"),
+    fear_score, bull_score, bear_score, score_label = compute_scores(
+        gex         = gex_val,
+        vix         = vix,
+        rsi         = technicals.get("spy_rsi_14"),
         term_structure = structure,
-        skew     = skew,
+        skew        = skew,
         above_200ma = technicals.get("spy_above_200ma"),
     )
 
@@ -426,19 +415,17 @@ def main():
         "skew_index":         skew,
         "fear_score":         fear_score,
         "bull_score":         bull_score,
+        "bear_score":         bear_score,
         "score_label":        score_label,
         "signal":             signal,
         "l1_context":         l1_ctx,
     }
 
-    # ── Email ─────────────────────────────────────────────────────────────────
     def f(v):  return "$" + str(v) if v is not None else "---"
     def fg(v):
         if v is None: return "---"
         return ("+" if v >= 0 else "-") + "$" + str(abs(v)) + "B"
     def fb(v): return str(v) if v is not None else "---"
-
-    # Score bar visual  e.g. ||||||||..  8/10
     def score_bar(score, width=10):
         filled = int(score)
         return "|" * filled + "." * (width - filled) + f"  {score}/10"
@@ -450,6 +437,7 @@ def main():
         "|  CONFLUENCE SCORES\n"
         "|  Fear score : " + score_bar(fear_score) + "\n"
         "|  Bull score : " + score_bar(bull_score) + "\n"
+        "|  Bear score : " + score_bar(bear_score) + "\n"
         "|  Assessment : " + score_label + "\n"
         "+--------------------------------------------------+\n"
         "|  Spot price      :  " + f(row["spot_price"]) + "\n"
@@ -477,9 +465,9 @@ def main():
     print(summary)
     save_csv(row)
 
-    # Subject leads with score for instant read in inbox
     fear_flag = " 🔴 BUY ZONE" if fear_score >= 8 else (" ⚠️ WATCH" if fear_score >= 6 else "")
-    email_subject = f"{TICKER} GEX {today} | Fear {fear_score}/10 · Bull {bull_score}/10{fear_flag}"
+    bear_flag = " 🐻 EXIT" if bear_score >= 7 else ""
+    email_subject = f"{TICKER} GEX {today} | Fear {fear_score} · Bull {bull_score} · Bear {bear_score}{fear_flag}{bear_flag}"
     send_email(email_subject, summary)
     print("Done.")
 
