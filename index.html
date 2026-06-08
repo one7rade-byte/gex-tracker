@@ -19,7 +19,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .ml{font-size:10px;color:#888;margin-bottom:3px}
 .mv{font-size:17px;font-weight:600}
 .ms{font-size:10px;color:#aaa;margin-top:2px}
-.card{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px 28px;margin-bottom:16px;overflow:visible}
+.card{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px 28px;margin-bottom:12px;overflow:visible}
 .cl{font-size:10px;font-weight:600;color:#999;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase}
 .sig{border-radius:8px;padding:12px 16px;margin-bottom:12px}
 .sig-g{background:#EAF3DE;border-left:4px solid #3B6D11}
@@ -57,6 +57,7 @@ tr:last-child td{border-bottom:none}
 .opp-b .opp-t{color:#0C447C}
 .opp-body{color:#555}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 .prog-label{font-size:11px;color:#666;margin-bottom:3px}
 .prog-val{font-size:13px;font-weight:600;color:#222}
 .prog-sub{font-size:10px;color:#aaa;margin-top:2px}
@@ -92,8 +93,19 @@ tr:last-child td{border-bottom:none}
 .ib-a .ib-title{color:#633806}
 .ib-b .ib-title{color:#0C447C}
 .ib-n .ib-title{color:#555}
+.score-card{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px}
+.score-title{font-size:10px;font-weight:600;color:#999;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}
+.score-main{display:flex;align-items:center;gap:14px}
+.score-num{font-size:42px;font-weight:700;line-height:1;min-width:52px}
+.score-right{flex:1}
+.score-label-txt{font-size:11px;font-weight:600;margin-bottom:6px}
+.score-track{height:10px;border-radius:5px;background:#f0ede8;overflow:hidden;margin-bottom:4px}
+.score-fill{height:100%;border-radius:5px}
+.score-sub{font-size:10px;color:#aaa}
+.score-sparkline{margin-top:10px}
+.score-sparkline-label{font-size:9px;color:#bbb;margin-bottom:3px}
 footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
-@media(max-width:600px){.mg{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.l1-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.mg{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.three-col{grid-template-columns:1fr}.l1-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -101,7 +113,7 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 <div class="header">
   <div>
     <div class="header-title">SPY GEX Tracker</div>
-    <div class="header-sub">one7rade · GEX + VIX + Layer 1 signal framework</div>
+    <div class="header-sub">one7rade · GEX + VIX + Layer 1 · Fear / Bear / Bull scoring</div>
   </div>
   <div class="refresh-badge"><span class="dot" id="statusDot"></span><span id="statusTxt">Loading...</span></div>
 </div>
@@ -114,7 +126,7 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
-let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null;
+let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null,fearChart=null,bearChart=null,bullChart=null;
 let ALL_DATA=[];
 const WIN=60;
 
@@ -135,22 +147,13 @@ function parseCSV(text){
     const bp=v=>v==='True'?true:v==='False'?false:null;
     const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
     return{
-      d:obj.date||'',
-      s:n('spot_price')||0,
-      g:n('net_gex_b')||0,
-      v:n('vix')||0,
-      z:n('zero_gamma'),
-      cw:n('call_wall'),
-      pw:n('put_wall'),
-      sig:obj.signal||'',
-      ma200:n('spy_200ma'),
-      aboveMa:bp(obj.spy_above_200ma),
-      rsi:n('spy_rsi_14'),
-      vix3m:n('vix_3m'),
-      termSpread:n('vix_term_spread'),
-      termStruct:obj.vix_term_structure||null,
-      skew:n('skew_index'),
-      l1ctx:obj.l1_context||''
+      d:obj.date||'',s:n('spot_price')||0,g:n('net_gex_b')||0,v:n('vix')||0,
+      z:n('zero_gamma'),cw:n('call_wall'),pw:n('put_wall'),sig:obj.signal||'',
+      ma200:n('spy_200ma'),aboveMa:bp(obj.spy_above_200ma),rsi:n('spy_rsi_14'),
+      vix3m:n('vix_3m'),termSpread:n('vix_term_spread'),termStruct:obj.vix_term_structure||null,
+      skew:n('skew_index'),l1ctx:obj.l1_context||'',
+      fearScore:n('fear_score'),bullScore:n('bull_score'),bearScore:n('bear_score'),
+      scoreLabel:obj.score_label||''
     };
   }).filter(e=>e.d&&e.s&&e.v);
 }
@@ -177,42 +180,98 @@ function getSkewInfo(s){
   return{label:'Low hedging',cls:'pill-green'};
 }
 function termColor(ts){if(ts==='contango')return'#3B6D11';if(ts==='backwardation')return'#A32D2D';return'#aaa';}
+function fearColor(s){if(s>=8)return'#A32D2D';if(s>=6)return'#BA7517';if(s>=4)return'#d4a017';return'#aaa';}
+function bearColor(s){if(s>=7)return'#7B1F1F';if(s>=5)return'#A32D2D';if(s>=3)return'#BA7517';return'#aaa';}
+function bullColor(s){if(s>=8)return'#27500A';if(s>=6)return'#3B6D11';if(s>=4)return'#639922';return'#aaa';}
+
+function buildScorePanel(last,allData){
+  const fs=last.fearScore!==null?last.fearScore:0;
+  const bs=last.bearScore!==null?last.bearScore:0;
+  const bls=last.bullScore!==null?last.bullScore:0;
+  const fc=fearColor(fs),bc=bearColor(bs),blc=bullColor(bls);
+  const fPct=(fs/10*100).toFixed(0),bPct=(bs/10*100).toFixed(0),blPct=(bls/10*100).toFixed(0);
+  const fearDesc=fs>=8?'HIGH CONVICTION BUY ZONE — deploy capital':fs>=6?'Fear building — watch for entry':fs>=4?'Moderate fear — monitor':'Low fear — not a buy zone yet';
+  const bearDesc=bs>=7?'BEAR SIGNAL — reduce / exit positions':bs>=5?'Bear building — reduce exposure':bs>=3?'Mild bear — hold with caution':'Low bear risk — regime intact';
+  const bullDesc=bls>=8?'Strong bull regime — max hold conviction':bls>=6?'Positive regime — hold':bls>=4?'Mild bull — hold with caution':'Weak bull — no strong hold signal';
+  return'<div class="three-col">'+
+    '<div class="score-card"><div class="score-title">\uD83D\uDFE1 Fear Score — buy zone proximity</div>'+
+    '<div class="score-main"><div class="score-num" style="color:'+fc+'">'+fs+'</div>'+
+    '<div class="score-right"><div class="score-label-txt" style="color:'+fc+'">'+fearDesc+'</div>'+
+    '<div class="score-track"><div class="score-fill" style="width:'+fPct+'%;background:'+fc+'"></div></div>'+
+    '<div class="score-sub">'+fs+' / 10 &nbsp;&middot;&nbsp; 8+ = deploy</div></div></div>'+
+    '<div class="score-sparkline"><div class="score-sparkline-label">20-day fear trend</div><div style="position:relative;height:40px"><canvas id="sc1"></canvas></div></div></div>'+
+    '<div class="score-card"><div class="score-title">\uD83D\uDC3B Bear Score — exit / hedge signal</div>'+
+    '<div class="score-main"><div class="score-num" style="color:'+bc+'">'+bs+'</div>'+
+    '<div class="score-right"><div class="score-label-txt" style="color:'+bc+'">'+bearDesc+'</div>'+
+    '<div class="score-track"><div class="score-fill" style="width:'+bPct+'%;background:'+bc+'"></div></div>'+
+    '<div class="score-sub">'+bs+' / 10 &nbsp;&middot;&nbsp; 7+ = reduce / exit</div></div></div>'+
+    '<div class="score-sparkline"><div class="score-sparkline-label">20-day bear trend</div><div style="position:relative;height:40px"><canvas id="sc2"></canvas></div></div></div>'+
+    '<div class="score-card"><div class="score-title">\uD83D\uDFE2 Bull Score — hold conviction</div>'+
+    '<div class="score-main"><div class="score-num" style="color:'+blc+'">'+bls+'</div>'+
+    '<div class="score-right"><div class="score-label-txt" style="color:'+blc+'">'+bullDesc+'</div>'+
+    '<div class="score-track"><div class="score-fill" style="width:'+blPct+'%;background:'+blc+'"></div></div>'+
+    '<div class="score-sub">'+bls+' / 10 &nbsp;&middot;&nbsp; 8+ = max hold</div></div></div>'+
+    '<div class="score-sparkline"><div class="score-sparkline-label">20-day bull trend</div><div style="position:relative;height:40px"><canvas id="sc3"></canvas></div></div></div>'+
+  '</div>';
+}
+
+function renderSparklines(allData){
+  const spark=allData.slice(-20);
+  const labels=spark.map(e=>e.d);
+  const fVals=spark.map(e=>e.fearScore!==null?e.fearScore:0);
+  const bVals=spark.map(e=>e.bearScore!==null?e.bearScore:0);
+  const blVals=spark.map(e=>e.bullScore!==null?e.bullScore:0);
+  function makeSparkline(id,vals,color,threshold,old){
+    if(old)old.destroy();
+    return new Chart(document.getElementById(id),{
+      type:'line',
+      data:{labels:labels,datasets:[{data:vals,borderColor:color,borderWidth:2,tension:0.4,
+        pointRadius:vals.map(function(v){return v>=threshold?4:1;}),
+        pointBackgroundColor:vals.map(function(v){return v>=threshold?color:'#ddd';}),
+        fill:true,backgroundColor:color+'18',spanGaps:true}]},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return' Score '+ctx.parsed.y+'/10';}}}},
+        scales:{x:{display:false},y:{display:false,min:0,max:10}}}
+    });
+  }
+  fearChart=makeSparkline('sc1',fVals,'#A32D2D',6,fearChart);
+  bearChart=makeSparkline('sc2',bVals,'#7B1F1F',5,bearChart);
+  bullChart=makeSparkline('sc3',blVals,'#3B6D11',6,bullChart);
+}
 
 function buildDailyInsight(last,prev){
   const blocks=[];
-  if(last.g<-5)blocks.push({cls:'ib-r',title:'GEX: Dealer short gamma — amplified moves',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers net short gamma and must sell into weakness, buy into strength. Moves are being amplified, not dampened. This is where crashes accelerate and squeezes are violent.'});
-  else if(last.g<0)blocks.push({cls:'ib-a',title:'GEX: Negative regime — caution',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers short gamma but not deeply so. Market unstable but not in free-fall mode. Watch for VIX and SKEW confirmation before acting.'});
+  if(last.g<-5)blocks.push({cls:'ib-r',title:'GEX: Dealer short gamma — amplified moves',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers net short gamma, must sell into weakness and buy into strength. Moves are amplified, not dampened. This is where crashes accelerate and squeezes are violent.'});
+  else if(last.g<0)blocks.push({cls:'ib-a',title:'GEX: Negative regime — caution',body:'Net GEX '+last.g.toFixed(2)+'B. Dealers short gamma but not deeply so. Market unstable but not in free-fall. Watch for VIX and SKEW confirmation before acting.'});
   else if(last.g>10)blocks.push({cls:'ib-g',title:'GEX: Maximum positive regime — pinned market',body:'Net GEX +'+last.g.toFixed(2)+'B. Dealers heavily long gamma, actively buying dips and selling rips. Market pinned near current levels. Low volatility, slow grind likely.'});
   else blocks.push({cls:'ib-b',title:'GEX: Positive regime — dealers stabilizing',body:'Net GEX +'+last.g.toFixed(2)+'B. Dealers long gamma, providing cushion on dips. Bullish regime but not peak suppression. Normal trending environment.'});
-
   const ts=last.termStruct,sp=last.termSpread;
-  if(last.v>25)blocks.push({cls:'ib-r',title:'VIX: Extreme fear — potential buy zone',body:'VIX '+last.v.toFixed(2)+'. Historically marks capitulation zones. Smart money begins accumulating when retail panic sells. Term structure: '+(ts||'unknown')+(sp!==null?' (spread '+sp.toFixed(2)+')':'')+'.'});
-  else if(last.v>20)blocks.push({cls:'ib-a',title:'VIX: Elevated — stress building',body:'VIX '+last.v.toFixed(2)+'. Above 20 means the market is pricing in real risk. '+(ts==='backwardation'?'Backwardation confirms near-term fear exceeds long-term — institutions hedging short-dated risk aggressively.':'Contango holding — fear elevated but not panic yet.')});
-  else if(ts==='backwardation')blocks.push({cls:'ib-a',title:'VIX term: Backwardation — hidden stress',body:'VIX '+last.v.toFixed(2)+' appears calm but term spread is '+(sp!==null?sp.toFixed(2):'negative')+'. Near-term vol exceeds long-term — institutions hedging an imminent event, not a distant one.'});
+  if(last.v>25)blocks.push({cls:'ib-r',title:'VIX: Extreme fear — potential buy zone',body:'VIX '+last.v.toFixed(2)+'. Historically marks capitulation zones. Smart money begins accumulating when retail panic sells. Term: '+(ts||'unknown')+(sp!==null?' (spread '+sp.toFixed(2)+')':'')+'.'});
+  else if(last.v>20)blocks.push({cls:'ib-a',title:'VIX: Elevated — stress building',body:'VIX '+last.v.toFixed(2)+'. Above 20 means the market is pricing in real risk. '+(ts==='backwardation'?'Backwardation confirms near-term fear exceeds long-term.':'Contango holding — fear elevated but not panic yet.')});
+  else if(ts==='backwardation')blocks.push({cls:'ib-a',title:'VIX term: Backwardation — hidden stress',body:'VIX '+last.v.toFixed(2)+' appears calm but term spread is '+(sp!==null?sp.toFixed(2):'negative')+'. Near-term vol exceeds long-term — institutions hedging an imminent event.'});
   else blocks.push({cls:'ib-g',title:'VIX: Calm — contango intact',body:'VIX '+last.v.toFixed(2)+'. Term structure in contango (spread '+(sp!==null?(sp>0?'+':'')+sp.toFixed(2):'n/a')+'). Normal environment. Institutions not paying up for near-term protection.'});
-
   if(last.skew!==null){
-    if(last.skew>145)blocks.push({cls:'ib-r',title:'SKEW '+last.skew.toFixed(0)+': Whales buying crash protection',body:'Extreme SKEW means large institutions paying a premium for deep OTM puts. These are 8-figure positions. Often precedes a sharp move down within 2-4 weeks. GEX going negative here would be a high-conviction sell signal.'});
-    else if(last.skew>135)blocks.push({cls:'ib-a',title:'SKEW '+last.skew.toFixed(0)+': Elevated — institutions hedging',body:'Above 135 means smart money paying up for tail risk insurance. May be protecting large long positions or positioning for a pullback. Watch for GEX to turn negative as confirmation.'});
-    else if(last.skew>115)blocks.push({cls:'ib-b',title:'SKEW '+last.skew.toFixed(0)+': Normal hedging activity',body:'SKEW in the normal range. Institutions hedging at a standard clip, no unusual tail risk demand. Market not expecting a black swan event near-term.'});
-    else blocks.push({cls:'ib-g',title:'SKEW '+last.skew.toFixed(0)+': Low — minimal tail hedging',body:'Below 115 means institutions are NOT buying crash protection. Can signal complacency. Low SKEW + high GEX = dealers suppressing vol while nobody hedges = potential sharp snap when it unwinds.'});
+    if(last.skew>145)blocks.push({cls:'ib-r',title:'SKEW '+last.skew.toFixed(0)+': Whales buying crash protection',body:'Extreme SKEW means large institutions paying a premium for deep OTM puts. These are 8-figure positions. Often precedes a sharp move down within 2-4 weeks. Bear score is elevated.'});
+    else if(last.skew>135)blocks.push({cls:'ib-a',title:'SKEW '+last.skew.toFixed(0)+': Elevated — institutions hedging',body:'Above 135 means smart money paying up for tail risk insurance. May be protecting large long positions or positioning for a pullback.'});
+    else if(last.skew>115)blocks.push({cls:'ib-b',title:'SKEW '+last.skew.toFixed(0)+': Normal hedging activity',body:'SKEW in the normal range. Institutions hedging at a standard clip, no unusual tail risk demand.'});
+    else blocks.push({cls:'ib-g',title:'SKEW '+last.skew.toFixed(0)+': Low — minimal tail hedging',body:'Below 115 means institutions are NOT buying crash protection. Can signal complacency — potential sharp snap when vol unwinds.'});
   }
-
   if(last.rsi!==null){
     if(last.rsi<30)blocks.push({cls:'ib-r',title:'RSI '+last.rsi.toFixed(1)+': Oversold — coiling for a bounce',body:'RSI below 30 marks exhaustion in sellers. Combined with deeply negative GEX and elevated VIX this is a strong buy zone signal. Institutions often step in as RSI approaches 25-28.'});
-    else if(last.rsi>70)blocks.push({cls:'ib-a',title:'RSI '+last.rsi.toFixed(1)+': Overbought — momentum stretched',body:'RSI above 70 means the move has been fast and extended. New longs here have poor risk/reward. Institutions likely trimming or hedging via options.'});
-    else if(last.rsi>55)blocks.push({cls:'ib-g',title:'RSI '+last.rsi.toFixed(1)+': Strong momentum',body:'RSI in the strong zone. Uptrend healthy and not overextended. Institutions adding on pullbacks, not chasing. Positive regime with room to run.'});
+    else if(last.rsi>70)blocks.push({cls:'ib-a',title:'RSI '+last.rsi.toFixed(1)+': Overbought — bear risk elevated',body:'RSI above 70 means the move has been fast and extended. New longs here have poor risk/reward. Bear score rises here — institutions likely trimming or hedging.'});
+    else if(last.rsi>55)blocks.push({cls:'ib-g',title:'RSI '+last.rsi.toFixed(1)+': Strong momentum',body:'RSI in the strong zone. Uptrend healthy and not overextended. Institutions adding on pullbacks, not chasing. Bull score elevated.'});
     else blocks.push({cls:'ib-b',title:'RSI '+last.rsi.toFixed(1)+': Neutral momentum',body:'RSI mid-range. No clear directional bias from momentum alone. Let GEX and VIX lead the signal.'});
   }
-
   const gN=last.g<0,vH=last.v>20,sH=last.skew!==null&&last.skew>135,rL=last.rsi!==null&&last.rsi<35,bk=last.termStruct==='backwardation';
+  const bearHigh=last.bearScore!==null&&last.bearScore>=5;
   const fc=[gN,vH,sH,rL,bk].filter(Boolean).length;
-  const bc=[!gN,!vH,!sH,!rL].filter(Boolean).length;
+  const bc2=[!gN,!vH,!sH,!rL].filter(Boolean).length;
   let cc,ct,cb;
-  if(fc>=4){cc='ib-r';ct='Cross-signal: Maximum fear — prime buy zone setup';cb='GEX negative, VIX elevated, SKEW high, RSI oversold'+(bk?', backwardation':'')+'. All signals pointing to institutional accumulation zone. This is the setup that preceded Cycle 1 +18% move. Size up carefully.';}
-  else if(fc>=3){cc='ib-a';ct='Cross-signal: Fear building — watch for entry';cb=fc+' of 5 fear signals active. Not at peak fear but approaching. Institutions likely beginning to accumulate quietly. Watch for GEX to stop falling as a trigger.';}
-  else if(bc>=3&&!gN){cc='ib-g';ct='Cross-signal: Bull regime — dealers in control';cb='Multiple bullish signals aligned. GEX positive, vol suppressed, momentum healthy. Dealers are the market shock absorber. Hold and monitor for regime change.';}
-  else{cc='ib-n';ct='Cross-signal: Mixed — no clear edge';cb='Signals are mixed. Do not force a trade. Wait for at least 3 signals to align before acting. Patience preserves capital for high-conviction setups.';}
+  if(fc>=4){cc='ib-r';ct='Cross-signal: Maximum fear — prime buy zone';cb='GEX negative, VIX elevated, SKEW high, RSI oversold'+(bk?', backwardation':'')+'. All signals pointing to institutional accumulation zone. This is the setup that preceded Cycle 1 +18% move.';}
+  else if(bearHigh){cc='ib-r';ct='Cross-signal: Bear signals dominant — reduce exposure';cb='Bear score '+last.bearScore+'/10. Multiple bearish signals aligned: '+(gN?'GEX negative, ':'')+(vH?'VIX elevated, ':'')+(sH?'SKEW elevated, ':'')+(bk?'backwardation, ':'')+'. Consider reducing positions or hedging.';}
+  else if(fc>=3){cc='ib-a';ct='Cross-signal: Fear building — watch for entry';cb=fc+' of 5 fear signals active. Not at peak fear but approaching. Institutions likely beginning to accumulate quietly.';}
+  else if(bc2>=3&&!gN){cc='ib-g';ct='Cross-signal: Bull regime — dealers in control';cb='Multiple bullish signals aligned. GEX positive, vol suppressed, momentum healthy. Hold and monitor for regime change.';}
+  else{cc='ib-n';ct='Cross-signal: Mixed — no clear edge';cb='Signals are mixed. Do not force a trade. Wait for at least 3 signals to align before acting.';}
   blocks.push({cls:cc,title:ct,body:cb});
   return blocks;
 }
@@ -313,6 +372,12 @@ function renderCharts(data){
   },plugins:[makeBgPlugin('bgV',zones,labels)]});
 
   if(rsiChart)rsiChart.destroy();
+  const rsiValid=rsiD.filter(function(v){return v!==null;});
+  const skewValid=skewD.filter(function(v){return v!==null;});
+  const rsiMin=rsiValid.length?Math.floor((Math.min.apply(null,rsiValid)-10)/10)*10:10;
+  const rsiMax=rsiValid.length?Math.ceil((Math.max.apply(null,rsiValid)+10)/10)*10:90;
+  const skewMin=skewValid.length?Math.floor((Math.min.apply(null,skewValid)-10)/10)*10:100;
+  const skewMax=skewValid.length?Math.ceil((Math.max.apply(null,skewValid)+10)/10)*10:175;
   rsiChart=new Chart(document.getElementById('c4'),{type:'line',data:{labels:labels,datasets:[
     {label:'RSI',data:rsiD,borderColor:'#3B6D11',borderWidth:2,tension:0.35,
      pointRadius:rsiD.map(function(v){return v!==null&&(v<30||v>70)?5:1;}),
@@ -325,14 +390,7 @@ function renderCharts(data){
       if(ctx.dataset.label==='SKEW'&&ctx.parsed.y)return'  SKEW '+ctx.parsed.y.toFixed(1);
       return null;
     }}}},
-    scales:{x:xAxis,yR:{position:'left',
-  min:Math.floor((Math.min(...rsiD.filter(v=>v!==null))-10)/10)*10,
-  max:Math.ceil((Math.max(...rsiD.filter(v=>v!==null))+10)/10)*10,
-  ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},
-yS:{position:'right',
-  min:Math.floor((Math.min(...skewD.filter(v=>v!==null))-10)/10)*10,
-  max:Math.ceil((Math.max(...skewD.filter(v=>v!==null))+10)/10)*10,
-  ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}}
+    scales:{x:xAxis,yR:{position:'left',min:rsiMin,max:rsiMax,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},yS:{position:'right',min:skewMin,max:skewMax,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}}
   },plugins:[makeRsiPlugin()]});
 
   if(termChart)termChart.destroy();
@@ -371,18 +429,21 @@ function buildUI(data){
   const tableRows=[...data].reverse().map(function(e){
     const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
+    const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     return'<tr><td style="color:#666">'+e.d+'</td><td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
       '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
       '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
       '<td style="color:'+(e.aboveMa===true?'#3B6D11':e.aboveMa===false?'#A32D2D':'#aaa')+';font-size:11px">'+(e.aboveMa===true?'\u2713':e.aboveMa===false?'\u2717':'—')+'</td>'+
       '<td style="color:'+rsiColor(e.rsi)+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
-      '<td style="color:'+termColor(e.termStruct)+';font-size:11px">'+(e.termStruct?e.termStruct.charAt(0).toUpperCase()+e.termStruct.slice(1):'—')+'</td>'+
-      '<td>'+(e.skew?e.skew.toFixed(0):'—')+'</td>'+
+      '<td style="color:'+(e.fearScore>=6?'#BA7517':e.fearScore>=4?'#d4a017':'#aaa')+';font-weight:600">'+fs+'</td>'+
+      '<td style="color:'+(e.bearScore>=5?'#A32D2D':e.bearScore>=3?'#BA7517':'#aaa')+';font-weight:600">'+bs+'</td>'+
+      '<td style="color:'+(e.bullScore>=6?'#3B6D11':e.bullScore>=4?'#639922':'#aaa')+';font-weight:600">'+bls+'</td>'+
       '<td><span class="badge '+si.bc+'">'+label+'</span></td></tr>';
   }).join('');
 
   document.getElementById('app').innerHTML=
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
+    buildScorePanel(last,data)+
     '<div class="mg">'+
       '<div class="m"><div class="ml">SPY today</div><div class="mv" style="color:'+sColor+'">$'+last.s.toFixed(2)+'</div><div class="ms">'+chSign+'$'+Math.abs(change).toFixed(2)+'</div></div>'+
       '<div class="m"><div class="ml">Net GEX</div><div class="mv" style="color:'+gColor+'">'+(last.g>=0?'+':'')+'$'+last.g.toFixed(2)+'B</div><div class="ms">'+(last.g>=0?'positive':'negative')+'</div></div>'+
@@ -398,11 +459,7 @@ function buildUI(data){
     '<div class="card">'+
       '<div class="cl">SPY price · VIX · 200MA · call wall</div>'+
       '<div class="leg"><span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span><span class="li"><span class="ll" style="background:#E24B4A"></span>VIX (right)</span><span class="li"><span class="ll" style="background:#00BCD4"></span>200MA</span><span class="li"><span class="ll" style="background:#FF6B00"></span>Call wall</span><span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span><span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span></div>'+
-      '<div class="range-row">'+
-        '<span style="font-size:11px;color:#888;white-space:nowrap">\u25c4 Scroll history</span>'+
-        '<input type="range" id="rangeSlider" min="'+WIN+'" max="'+total+'" value="'+total+'" step="1">'+
-        '<span class="range-label" id="rangeLabel">—</span>'+
-      '</div>'+
+      '<div class="range-row"><span style="font-size:11px;color:#888;white-space:nowrap">\u25c4 Scroll history</span><input type="range" id="rangeSlider" min="'+WIN+'" max="'+total+'" value="'+total+'" step="1"><span class="range-label" id="rangeLabel">—</span></div>'+
       '<div style="position:relative;width:100%;height:260px"><canvas id="c1"></canvas></div>'+
       '<div style="position:relative;width:100%;height:110px;margin-top:8px"><canvas id="c2"></canvas></div>'+
       '<div style="position:relative;width:100%;height:90px;margin-top:6px"><canvas id="c3"></canvas></div>'+
@@ -410,8 +467,8 @@ function buildUI(data){
     '<div class="card">'+
       '<div class="cl">RSI-14 · SKEW · VIX term spread</div>'+
       '<div class="leg"><span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span><span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span><span class="li"><span class="lb" style="background:rgba(163,45,45,0.15)"></span>Oversold &lt;30</span><span class="li"><span class="lb" style="background:rgba(186,117,23,0.15)"></span>Overbought &gt;70</span></div>'+
-'<div style="position:relative;width:100%;height:280px"><canvas id="c4"></canvas></div>'+
-'<div style="position:relative;width:100%;height:120px;margin-top:16px"><canvas id="c5"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:280px"><canvas id="c4"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:120px;margin-top:16px"><canvas id="c5"></canvas></div>'+
     '</div>'+
     '<div class="card"><div class="cl">Portfolio buy zone assessment</div>'+
       '<div class="opp '+(inBuy?'opp-g':approaching?'opp-a':'opp-b')+'"><div class="opp-t">'+(inBuy?'Active buy zone — deploy capital':approaching?'Approaching buy zone — prepare':'Not a buy zone — hold cash for better entry')+'</div><div class="opp-body">'+info.port+'</div></div>'+
@@ -421,11 +478,11 @@ function buildUI(data){
       '</div>'+
       '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
     '</div>'+
-    '<div class="card"><div class="cl">Full history</div><div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Term</th><th>SKEW</th><th>Signal</th></tr></thead><tbody>'+tableRows+'</tbody></table></div></div>';
+    '<div class="card"><div class="cl">Full history</div><div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>SPY</th><th>GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Fear</th><th>Bear</th><th>Bull</th><th>Signal</th></tr></thead><tbody>'+tableRows+'</tbody></table></div></div>';
 
-  // wire slider after DOM is written
   setTimeout(function(){
     updateCharts();
+    renderSparklines(ALL_DATA);
     var sl=document.getElementById('rangeSlider');
     if(sl)sl.addEventListener('input',function(){updateCharts();});
   },50);
