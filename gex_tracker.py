@@ -10,12 +10,13 @@ import requests
 from bs4 import BeautifulSoup
 
 OUTPUT_CSV = "gex_log.csv"
-TICKER     = "SPY"
+TICKERS    = ["SPY", "QQQ"]   # both tracked daily
 EMAIL_FROM = "one7rade@gmail.com"
 EMAIL_TO   = "one7rade@gmail.com"
 EMAIL_PASS = os.environ.get("GMAIL_PASS", "")
 
-GEX_URL = "https://www.insiderfinance.io/gamma-exposure/" + TICKER
+def gex_url(ticker):
+    return "https://www.insiderfinance.io/gamma-exposure/" + ticker
 
 def yf_url(symbol, period="1y", interval="1d"):
     sym = requests.utils.quote(symbol)
@@ -28,6 +29,9 @@ CSV_HEADERS = [
     "vix_3m", "vix_term_spread", "vix_term_structure",
     "skew_index",
     "fear_score", "bull_score", "bear_score", "score_label",
+    # QQQ divergence columns (only populated on SPY rows)
+    "qqq_spot", "qqq_gex_b", "qqq_fear_score", "qqq_bear_score", "qqq_bull_score",
+    "qqq_divergence",   # SPY_bull + QQQ_bear = bearish divergence warning
     "signal", "l1_context",
 ]
 
@@ -51,17 +55,19 @@ def fetch_vix():
         return None
 
 
-def fetch_gex():
+def fetch_gex(ticker):
     result = {}
     try:
-        print("Fetching InsiderFinance...")
-        r = requests.get(GEX_URL, headers=HEADERS, timeout=20)
+        print(f"Fetching InsiderFinance GEX for {ticker}...")
+        r = requests.get(gex_url(ticker), headers=HEADERS, timeout=20)
         print("Status: " + str(r.status_code))
         soup = BeautifulSoup(r.text, "html.parser")
         text = soup.get_text(separator="\n")
-        print("--- PAGE SAMPLE ---")
-        print(text[:3000])
-        print("--- END SAMPLE ---")
+
+        if ticker == "SPY":
+            print("--- PAGE SAMPLE ---")
+            print(text[:3000])
+            print("--- END SAMPLE ---")
 
         def find_val(patterns, t):
             for pat in patterns:
@@ -102,8 +108,9 @@ def fetch_gex():
             try: result["pc_ratio"] = float(pc.group(1))
             except: pass
 
+        print(f"  {ticker} GEX={result.get('net_gex_b')}  spot={result.get('spot_price')}")
     except Exception as e:
-        print("GEX fetch failed: " + str(e))
+        print(f"GEX fetch failed for {ticker}: " + str(e))
     return result
 
 
@@ -124,11 +131,7 @@ def fetch_spy_technicals():
         losses   = [abs(min(d, 0)) for d in deltas[-14:]]
         avg_gain = sum(gains) / 14
         avg_loss = sum(losses) / 14
-        if avg_loss == 0:
-            rsi = 100.0
-        else:
-            rs  = avg_gain / avg_loss
-            rsi = round(100 - (100 / (1 + rs)), 2)
+        rsi = 100.0 if avg_loss == 0 else round(100 - (100 / (1 + avg_gain / avg_loss)), 2)
         result["spy_200ma"]       = ma200
         result["spy_above_200ma"] = spot > ma200
         result["spy_rsi_14"]      = rsi
@@ -155,8 +158,7 @@ def fetch_skew():
     try:
         r = requests.get(yf_url("%5ESKEW", period="1d"), headers=HEADERS, timeout=10)
         data = r.json()
-        skew = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
-        skew = round(float(skew), 2)
+        skew = round(float(data["chart"]["result"][0]["meta"]["regularMarketPrice"]), 2)
         print(f"  SKEW={skew}")
         return skew
     except Exception as e:
@@ -167,109 +169,108 @@ def fetch_skew():
 # ── Confluence scoring ────────────────────────────────────────────────────────
 
 def compute_scores(gex, vix, rsi, term_structure, skew, above_200ma):
-    """
-    Returns (fear_score, bull_score, bear_score, score_label)
-
-    FEAR  (0-10): how close to a buy zone. 8+ = deploy capital.
-    BULL  (0-10): how strong the positive regime is. 8+ = hold max conviction.
-    BEAR  (0-10): how dangerous the current setup is. 7+ = reduce / exit.
-    """
     fear = 0
     bull = 0
     bear = 0
 
-    # ── GEX ──────────────────────────────────────────────────────────────────
     if gex is not None:
-        # Fear: deeply negative GEX = coiling for a bounce
         if gex < -10:   fear += 3
         elif gex < -5:  fear += 2
         elif gex < 0:   fear += 1
-        # Bull: positive GEX = dealers stabilizing
         if gex > 10:    bull += 3
         elif gex > 5:   bull += 2
         elif gex > 0:   bull += 1
-        # Bear: negative GEX = dealers amplifying moves downward
         if gex < -10:   bear += 3
         elif gex < -5:  bear += 2
         elif gex < -2:  bear += 1
 
-    # ── VIX ──────────────────────────────────────────────────────────────────
     if vix is not None:
         if vix > 28:    fear += 2
         elif vix > 22:  fear += 1
         if vix < 15:    bull += 2
         elif vix < 18:  bull += 1
-        # Bear: elevated VIX = market stressed
         if vix > 25:    bear += 2
         elif vix > 20:  bear += 1
 
-    # ── VIX term structure ────────────────────────────────────────────────────
     if term_structure == "backwardation":
         fear += 1
-        bear += 1   # near-term fear > long-term = imminent stress
+        bear += 1
     elif term_structure == "contango":
         bull += 1
 
-    # ── SKEW ─────────────────────────────────────────────────────────────────
     if skew is not None:
         if skew > 145:
-            fear += 2
-            bear += 2   # whales buying crash protection = danger
+            fear += 2; bear += 2
         elif skew > 135:
-            fear += 1
-            bear += 1
+            fear += 1; bear += 1
         if skew < 115:
-            bull += 1   # low hedging = calm regime
-
-    # ── RSI ──────────────────────────────────────────────────────────────────
-    if rsi is not None:
-        if rsi < 30:
-            fear += 1   # oversold = bounce potential
-        if rsi > 55 and rsi <= 70:
-            bull += 2   # healthy momentum
-        elif rsi > 45:
             bull += 1
-        # Bear: overbought = vulnerable to reversal
+
+    if rsi is not None:
+        if rsi < 30:             fear += 1
+        if rsi > 55 and rsi <= 70: bull += 2
+        elif rsi > 45:           bull += 1
         if rsi > 75:    bear += 2
         elif rsi > 70:  bear += 1
-        # Bear: momentum rolling over (weakening but not crashed yet)
-        if 30 < rsi < 45:
-            bear += 1
+        if 30 < rsi < 45: bear += 1
 
-    # ── 200MA ────────────────────────────────────────────────────────────────
     if above_200ma is False:
-        fear += 1
-        bear += 1   # below 200MA = downtrend = bearish structure
+        fear += 1; bear += 1
     elif above_200ma is True:
         bull += 1
 
-    # Cap all at 10
     fear = min(10, fear)
     bull = min(10, bull)
     bear = min(10, bear)
 
-    # ── Label (priority: fear > bear > bull) ─────────────────────────────────
-    if fear >= 8:
-        label = "HIGH CONVICTION BUY ZONE"
-    elif fear >= 6:
-        label = "Fear building — watch for entry"
-    elif fear >= 4:
-        label = "Moderate fear — monitor"
-    elif bear >= 7:
-        label = "BEAR SIGNAL — reduce / exit"
-    elif bear >= 5:
-        label = "Bear building — caution"
-    elif bull >= 8:
-        label = "Strong bull regime — hold"
-    elif bull >= 6:
-        label = "Positive regime — hold"
-    elif bull >= 4:
-        label = "Mild bull — neutral"
-    else:
-        label = "Mixed — no edge"
+    if fear >= 8:       label = "HIGH CONVICTION BUY ZONE"
+    elif fear >= 6:     label = "Fear building — watch for entry"
+    elif fear >= 4:     label = "Moderate fear — monitor"
+    elif bear >= 7:     label = "BEAR SIGNAL — reduce / exit"
+    elif bear >= 5:     label = "Bear building — caution"
+    elif bull >= 8:     label = "Strong bull regime — hold"
+    elif bull >= 6:     label = "Positive regime — hold"
+    elif bull >= 4:     label = "Mild bull — neutral"
+    else:               label = "Mixed — no edge"
 
-    print(f"  Fear={fear}  Bull={bull}  Bear={bear}  Label={label}")
     return fear, bull, bear, label
+
+
+def compute_qqq_scores(qqq_gex, vix):
+    """
+    Simplified scoring for QQQ — uses only GEX and VIX (no RSI/SKEW/200MA for QQQ).
+    Returns (fear, bull, bear).
+    """
+    fear = 0; bull = 0; bear = 0
+    if qqq_gex is not None:
+        if qqq_gex < -5:  fear += 2; bear += 2
+        elif qqq_gex < 0: fear += 1; bear += 1
+        if qqq_gex > 5:   bull += 2
+        elif qqq_gex > 0: bull += 1
+    if vix is not None:
+        if vix > 25:    fear += 2; bear += 2
+        elif vix > 20:  fear += 1; bear += 1
+        if vix < 15:    bull += 2
+        elif vix < 18:  bull += 1
+    return min(10, fear), min(10, bull), min(10, bear)
+
+
+def compute_divergence(spy_bull, spy_bear, qqq_bear, qqq_bull):
+    """
+    Detect divergences between SPY and QQQ GEX regimes.
+    These are the most actionable signals — market appears calm but tech is breaking.
+    """
+    if spy_bull >= 6 and qqq_bear >= 5:
+        return "BEARISH DIVERGENCE — SPY positive but QQQ GEX bearish. Tech leading lower. Watch for SPY to follow."
+    if spy_bear >= 5 and qqq_bull >= 6:
+        return "BULLISH DIVERGENCE — SPY bearish but QQQ GEX turning positive. Tech stabilizing. Watch for recovery."
+    if qqq_bear >= 6 and spy_bear < 4:
+        return "QQQ WARNING — QQQ bear score elevated before SPY. Early warning signal. Monitor SPY GEX closely."
+    if qqq_bull >= 7 and spy_bull >= 7:
+        return "ALIGNED BULL — Both SPY and QQQ GEX strongly positive. High conviction hold."
+    if qqq_bear >= 5 and spy_bear >= 5:
+        return "ALIGNED BEAR — Both SPY and QQQ GEX bearish. Confirmed broad market stress."
+    return "Aligned — no divergence"
 
 
 # ── Signal + context ──────────────────────────────────────────────────────────
@@ -352,60 +353,70 @@ def main():
     print("  GEX Daily Tracker  |  " + today + "  " + now)
     print("====================================================")
 
-    print("\n[1/5] Fetching VIX...")
+    print("\n[1/6] Fetching VIX...")
     vix = fetch_vix()
     print("      VIX = " + str(vix))
 
-    print("\n[2/5] Fetching " + TICKER + " GEX...")
-    gex_data = fetch_gex()
+    print("\n[2/6] Fetching SPY GEX...")
+    spy_data = fetch_gex("SPY")
 
-    print("\n[3/5] Fetching SPY technicals (200MA, RSI)...")
+    print("\n[3/6] Fetching QQQ GEX...")
+    qqq_data = fetch_gex("QQQ")
+
+    print("\n[4/6] Fetching SPY technicals (200MA, RSI)...")
     technicals = fetch_spy_technicals()
 
-    print("\n[4/5] Fetching VIX term structure (VIX3M)...")
+    print("\n[5/6] Fetching VIX term structure + SKEW...")
     term_data = fetch_vix_term_structure()
     vix_3m    = term_data.get("vix_3m")
     if vix is not None and vix_3m is not None:
         spread    = round(vix_3m - vix, 2)
         structure = "contango" if spread > 0 else "backwardation"
     else:
-        spread    = None
-        structure = None
-    print(f"      Term spread (VIX3M-VIX) = {spread}  [{structure}]")
+        spread = None; structure = None
+    print(f"      Term spread = {spread}  [{structure}]")
 
-    print("\n[5/5] Fetching SKEW index...")
+    print("\n[6/6] Fetching SKEW...")
     skew = fetch_skew()
 
-    gex_val = gex_data.get("net_gex_b")
+    # ── Compute SPY scores ────────────────────────────────────────────────────
+    gex_val = spy_data.get("net_gex_b")
     signal  = compute_signal(gex_val, vix)
     l1_ctx  = compute_l1_context(
         technicals.get("spy_above_200ma"),
         technicals.get("spy_rsi_14"),
         structure, skew, vix,
     )
-
-    print("\n[+] Computing confluence scores...")
+    print("\n[+] Computing SPY confluence scores...")
     fear_score, bull_score, bear_score, score_label = compute_scores(
-        gex         = gex_val,
-        vix         = vix,
-        rsi         = technicals.get("spy_rsi_14"),
-        term_structure = structure,
-        skew        = skew,
-        above_200ma = technicals.get("spy_above_200ma"),
+        gex=gex_val, vix=vix, rsi=technicals.get("spy_rsi_14"),
+        term_structure=structure, skew=skew,
+        above_200ma=technicals.get("spy_above_200ma"),
     )
+
+    # ── Compute QQQ scores ────────────────────────────────────────────────────
+    qqq_gex = qqq_data.get("net_gex_b")
+    qqq_spot = qqq_data.get("spot_price")
+    print("\n[+] Computing QQQ confluence scores...")
+    qqq_fear, qqq_bull, qqq_bear = compute_qqq_scores(qqq_gex, vix)
+    print(f"  QQQ GEX={qqq_gex}  fear={qqq_fear}  bull={qqq_bull}  bear={qqq_bear}")
+
+    # ── Divergence signal ─────────────────────────────────────────────────────
+    divergence = compute_divergence(bull_score, bear_score, qqq_bear, qqq_bull)
+    print(f"  Divergence: {divergence}")
 
     row = {
         "date":            today,
-        "ticker":          TICKER,
-        "spot_price":      gex_data.get("spot_price"),
+        "ticker":          "SPY",
+        "spot_price":      spy_data.get("spot_price"),
         "net_gex_b":       gex_val,
         "vix":             vix,
-        "zero_gamma":      gex_data.get("zero_gamma"),
-        "call_wall":       gex_data.get("call_wall"),
-        "put_wall":        gex_data.get("put_wall"),
-        "peak_gex_strike": gex_data.get("peak_gex_strike"),
-        "max_pain":        gex_data.get("max_pain"),
-        "pc_ratio":        gex_data.get("pc_ratio"),
+        "zero_gamma":      spy_data.get("zero_gamma"),
+        "call_wall":       spy_data.get("call_wall"),
+        "put_wall":        spy_data.get("put_wall"),
+        "peak_gex_strike": spy_data.get("peak_gex_strike"),
+        "max_pain":        spy_data.get("max_pain"),
+        "pc_ratio":        spy_data.get("pc_ratio"),
         "spy_200ma":          technicals.get("spy_200ma"),
         "spy_above_200ma":    technicals.get("spy_above_200ma"),
         "spy_rsi_14":         technicals.get("spy_rsi_14"),
@@ -417,48 +428,59 @@ def main():
         "bull_score":         bull_score,
         "bear_score":         bear_score,
         "score_label":        score_label,
+        "qqq_spot":           qqq_spot,
+        "qqq_gex_b":          qqq_gex,
+        "qqq_fear_score":     qqq_fear,
+        "qqq_bear_score":     qqq_bear,
+        "qqq_bull_score":     qqq_bull,
+        "qqq_divergence":     divergence,
         "signal":             signal,
         "l1_context":         l1_ctx,
     }
 
+    # ── Email ─────────────────────────────────────────────────────────────────
     def f(v):  return "$" + str(v) if v is not None else "---"
     def fg(v):
         if v is None: return "---"
         return ("+" if v >= 0 else "-") + "$" + str(abs(v)) + "B"
     def fb(v): return str(v) if v is not None else "---"
-    def score_bar(score, width=10):
-        filled = int(score)
-        return "|" * filled + "." * (width - filled) + f"  {score}/10"
+    def score_bar(s, w=10): return "|"*int(s) + "."*(w-int(s)) + f"  {s}/10"
 
     summary = (
         "\n+--------------------------------------------------+\n"
-        "|  " + TICKER + " GEX Daily — " + today + "  " + now + "\n"
+        "|  GEX Daily — " + today + "  " + now + "\n"
         "+--------------------------------------------------+\n"
-        "|  CONFLUENCE SCORES\n"
-        "|  Fear score : " + score_bar(fear_score) + "\n"
-        "|  Bull score : " + score_bar(bull_score) + "\n"
-        "|  Bear score : " + score_bar(bear_score) + "\n"
-        "|  Assessment : " + score_label + "\n"
+        "|  SPY CONFLUENCE SCORES\n"
+        "|  Fear : " + score_bar(fear_score) + "\n"
+        "|  Bear : " + score_bar(bear_score) + "\n"
+        "|  Bull : " + score_bar(bull_score) + "\n"
+        "|  Label: " + score_label + "\n"
         "+--------------------------------------------------+\n"
-        "|  Spot price      :  " + f(row["spot_price"]) + "\n"
-        "|  Net GEX         :  " + fg(gex_val) + "\n"
-        "|  VIX             :  " + fb(vix) + "\n"
-        "|  Zero-gamma      :  " + f(row["zero_gamma"]) + "\n"
-        "|  Call wall       :  " + f(row["call_wall"]) + "\n"
-        "|  Put wall        :  " + f(row["put_wall"]) + "\n"
-        "|  Peak GEX strike :  " + f(row["peak_gex_strike"]) + "\n"
-        "|  Max pain        :  " + f(row["max_pain"]) + "\n"
-        "|  P/C ratio       :  " + (str(row["pc_ratio"]) if row["pc_ratio"] else "---") + "\n"
+        "|  QQQ GEX LAYER\n"
+        "|  QQQ spot    :  " + f(qqq_spot) + "\n"
+        "|  QQQ GEX     :  " + fg(qqq_gex) + "\n"
+        "|  QQQ Fear    :  " + score_bar(qqq_fear) + "\n"
+        "|  QQQ Bear    :  " + score_bar(qqq_bear) + "\n"
+        "|  QQQ Bull    :  " + score_bar(qqq_bull) + "\n"
+        "|  Divergence  :  " + divergence + "\n"
+        "+--------------------------------------------------+\n"
+        "|  SPY DATA\n"
+        "|  Spot price  :  " + f(row["spot_price"]) + "\n"
+        "|  Net GEX     :  " + fg(gex_val) + "\n"
+        "|  VIX         :  " + fb(vix) + "\n"
+        "|  Zero-gamma  :  " + f(row["zero_gamma"]) + "\n"
+        "|  Call wall   :  " + f(row["call_wall"]) + "\n"
+        "|  Put wall    :  " + f(row["put_wall"]) + "\n"
         "+--------------------------------------------------+\n"
         "|  LAYER 1\n"
-        "|  200MA           :  " + f(row["spy_200ma"]) + "  (above: " + str(row["spy_above_200ma"]) + ")\n"
-        "|  RSI-14          :  " + fb(row["spy_rsi_14"]) + "\n"
-        "|  VIX3M           :  " + fb(vix_3m) + "\n"
-        "|  Term spread     :  " + fb(spread) + "  [" + (structure or "---") + "]\n"
-        "|  SKEW            :  " + fb(skew) + "\n"
+        "|  200MA       :  " + f(row["spy_200ma"]) + "  (above: " + str(row["spy_above_200ma"]) + ")\n"
+        "|  RSI-14      :  " + fb(row["spy_rsi_14"]) + "\n"
+        "|  VIX3M       :  " + fb(vix_3m) + "\n"
+        "|  Term spread :  " + fb(spread) + "  [" + (structure or "---") + "]\n"
+        "|  SKEW        :  " + fb(skew) + "\n"
         "+--------------------------------------------------+\n"
-        "|  Signal  : " + signal + "\n"
-        "|  Context : " + l1_ctx + "\n"
+        "|  Signal      :  " + signal + "\n"
+        "|  Context     :  " + l1_ctx + "\n"
         "+--------------------------------------------------+\n"
     )
 
@@ -467,8 +489,9 @@ def main():
 
     fear_flag = " 🔴 BUY ZONE" if fear_score >= 8 else (" ⚠️ WATCH" if fear_score >= 6 else "")
     bear_flag = " 🐻 EXIT" if bear_score >= 7 else ""
-    email_subject = f"{TICKER} GEX {today} | Fear {fear_score} · Bull {bull_score} · Bear {bear_score}{fear_flag}{bear_flag}"
-    send_email(email_subject, summary)
+    div_flag  = " ⚡ DIVERGENCE" if "DIVERGENCE" in divergence or "WARNING" in divergence else ""
+    subject   = f"GEX {today} | SPY F{fear_score}/Be{bear_score}/Bu{bull_score} · QQQ F{qqq_fear}/Be{qqq_bear}/Bu{qqq_bull}{fear_flag}{bear_flag}{div_flag}"
+    send_email(subject, summary)
     print("Done.")
 
 
