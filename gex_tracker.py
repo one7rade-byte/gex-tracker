@@ -44,30 +44,49 @@ HEADERS = {
 
 # ── Fetchers ──────────────────────────────────────────────────────────────────
 
-def fetch_vix():
-    for sym in ["%5EVIX", "%5EVIX"]:
-        for base in ["query1", "query2"]:
-            try:
-                url = f"https://{base}.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=1d"
-                r = requests.get(url, headers=HEADERS, timeout=10)
-                data = r.json()
-                result = data.get("chart", {}).get("result")
-                if not result:
-                    continue
-                price = result[0]["meta"]["regularMarketPrice"]
+def fetch_yahoo_price(encoded_symbol, label="symbol"):
+    """
+    Robust Yahoo Finance price fetcher.
+    Tries v8 chart on query1, then query2, then v7 quote endpoint.
+    Returns float price or None.
+    """
+    # v8 chart endpoint — try both query1 and query2
+    for base in ["query1", "query2"]:
+        try:
+            url = f"https://{base}.finance.yahoo.com/v8/finance/chart/{encoded_symbol}?interval=1d&range=1d"
+            r = requests.get(url, headers=HEADERS, timeout=10)
+            data = r.json()
+            result = data.get("chart", {}).get("result")
+            if not result:
+                print(f"  {label} v8 {base}: empty result")
+                continue
+            price = result[0]["meta"]["regularMarketPrice"]
+            if price is not None:
                 return round(float(price), 2)
-            except Exception as e:
-                print(f"VIX fetch failed ({base}): {e}")
-    # Final fallback — try v7 quote endpoint
+        except Exception as e:
+            print(f"  {label} v8 {base} failed: {e}")
+
+    # v7 quote endpoint as final fallback
     try:
-        url = "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EVIX"
+        url = f"https://query1.finance.yahoo.com/v7/finance/quote?symbols={encoded_symbol}"
         r = requests.get(url, headers=HEADERS, timeout=10)
         data = r.json()
-        price = data["quoteResponse"]["result"][0]["regularMarketPrice"]
-        return round(float(price), 2)
+        results = data.get("quoteResponse", {}).get("result", [])
+        if results:
+            price = results[0].get("regularMarketPrice")
+            if price is not None:
+                return round(float(price), 2)
     except Exception as e:
-        print(f"VIX v7 fallback failed: {e}")
-        return None
+        print(f"  {label} v7 fallback failed: {e}")
+
+    print(f"  {label}: all endpoints failed")
+    return None
+
+def fetch_vix():
+    vix = fetch_yahoo_price("%5EVIX", "VIX")
+    if vix is None:
+        print("VIX fetch failed on all endpoints")
+    return vix
 
 
 def fetch_gex(ticker):
@@ -156,29 +175,21 @@ def fetch_spy_technicals():
     return result
 
 
+
 def fetch_vix_term_structure():
     result = {"vix_3m": None}
-    try:
-        r = requests.get(yf_url("%5EVIX3M", period="1d"), headers=HEADERS, timeout=10)
-        data = r.json()
-        vix3m = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
-        result["vix_3m"] = round(float(vix3m), 2)
-        print(f"  VIX3M={result['vix_3m']}")
-    except Exception as e:
-        print("VIX3M fetch failed: " + str(e))
+    vix3m = fetch_yahoo_price("%5EVIX3M", "VIX3M")
+    if vix3m is not None:
+        result["vix_3m"] = vix3m
+        print(f"  VIX3M={vix3m}")
     return result
 
 
 def fetch_skew():
-    try:
-        r = requests.get(yf_url("%5ESKEW", period="1d"), headers=HEADERS, timeout=10)
-        data = r.json()
-        skew = round(float(data["chart"]["result"][0]["meta"]["regularMarketPrice"]), 2)
+    skew = fetch_yahoo_price("%5ESKEW", "SKEW")
+    if skew is not None:
         print(f"  SKEW={skew}")
-        return skew
-    except Exception as e:
-        print("SKEW fetch failed: " + str(e))
-        return None
+    return skew
 
 
 # ── Confluence scoring ────────────────────────────────────────────────────────
