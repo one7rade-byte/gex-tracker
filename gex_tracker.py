@@ -45,13 +45,28 @@ HEADERS = {
 # ── Fetchers ──────────────────────────────────────────────────────────────────
 
 def fetch_vix():
+    for sym in ["%5EVIX", "%5EVIX"]:
+        for base in ["query1", "query2"]:
+            try:
+                url = f"https://{base}.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=1d"
+                r = requests.get(url, headers=HEADERS, timeout=10)
+                data = r.json()
+                result = data.get("chart", {}).get("result")
+                if not result:
+                    continue
+                price = result[0]["meta"]["regularMarketPrice"]
+                return round(float(price), 2)
+            except Exception as e:
+                print(f"VIX fetch failed ({base}): {e}")
+    # Final fallback — try v7 quote endpoint
     try:
-        r = requests.get(yf_url("%5EVIX", period="1d"), headers=HEADERS, timeout=10)
+        url = "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EVIX"
+        r = requests.get(url, headers=HEADERS, timeout=10)
         data = r.json()
-        price = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
+        price = data["quoteResponse"]["result"][0]["regularMarketPrice"]
         return round(float(price), 2)
     except Exception as e:
-        print("VIX fetch failed: " + str(e))
+        print(f"VIX v7 fallback failed: {e}")
         return None
 
 
