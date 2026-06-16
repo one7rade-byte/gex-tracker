@@ -660,11 +660,29 @@ def main():
         "ai_brief":result["full_brief"][:2000],
         "voo_vgt_action":result["voo_vgt_action"][:300],
     }
-    exists = os.path.isfile(INTEL_CSV)
-    with open(INTEL_CSV,"a",newline="",encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
-        if not exists: w.writeheader()
-        w.writerow(csv_row)
+    # Save CSV — idempotent on date, so re-running the same day (manual
+    # re-trigger, retry, accidental double dispatch) replaces today's row
+    # instead of appending a duplicate.
+    existing_rows = []
+    if os.path.isfile(INTEL_CSV):
+        with open(INTEL_CSV, newline="", encoding="utf-8") as f:
+            existing_rows = list(csv.DictReader(f))
+
+    already_present = any(r.get("date") == today for r in existing_rows)
+
+    if already_present:
+        existing_rows = [csv_row if r.get("date") == today else r for r in existing_rows]
+        with open(INTEL_CSV, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
+            w.writeheader()
+            w.writerows(existing_rows)
+        print(f"  Updated existing row for {today} (re-run detected, no duplicate created)")
+    else:
+        exists = os.path.isfile(INTEL_CSV)
+        with open(INTEL_CSV, "a", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
+            if not exists: w.writeheader()
+            w.writerow(csv_row)
 
     # Save JSON for dashboard
     report = {
