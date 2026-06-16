@@ -1,0 +1,52 @@
+name: Mag 7 Signals + Squeeze Screener
+on:
+  repository_dispatch:
+    types: [run-gex-tracker]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  signals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Wait + pull fresh, same pattern as intelligence_daily.yml — all
+      # workflows fire from the same repository_dispatch event in
+      # parallel, so this avoids racing the other scrapers' commits
+      - name: Wait then pull latest
+        run: |
+          sleep 60
+          git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install playwright --break-system-packages
+
+      # Chromium only (not firefox/webkit) to keep install time down —
+      # this is the heaviest step in the workflow, typically 1-2 minutes
+      - name: Install Playwright Chromium
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run signals scraper
+        run: python mag7_signals.py
+
+      - name: Commit results
+        run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add mag7_signals_log.csv
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Update Mag 7 signals + squeeze screener"
+
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
+            echo "Push attempt $i failed, retrying in $((i*5))s..."
+            sleep $((i*5))
+          done
