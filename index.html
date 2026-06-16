@@ -143,6 +143,12 @@ tr:last-child td{border-bottom:none}
 .intel-news-list{list-style:none;padding:0;margin:6px 0}
 .intel-news-list li{font-size:11px;color:#555;padding:3px 0;border-bottom:0.5px solid #f0ede8;line-height:1.5}
 .intel-news-list li:last-child{border-bottom:none}
+.hist-scroll{max-height:560px;overflow-y:auto;border:0.5px solid #f0ede8;border-radius:6px}
+.hist-scroll table{margin:0}
+.hist-scroll thead th{position:sticky;top:0;background:#f8f8f6;z-index:1}
+.hist-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:11px;color:#888}
+.hist-toggle{background:none;border:1px solid #d8d5cf;border-radius:14px;padding:3px 12px;font-size:11px;color:#555;cursor:pointer}
+.hist-toggle:hover{background:#f4f2ee}
 .news-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:600;margin-right:4px;text-transform:uppercase}
 .news-macro{background:#E6F1FB;color:#0C447C}
 .news-neg{background:#FCEBEB;color:#791F1F}
@@ -239,7 +245,7 @@ function buildIntelCard(report){
     }).join('');
     const impBadge=himp?'<span class="news-tag" style="background:#FCEBEB;color:#791F1F">HIGH IMPACT</span>':'';
     const titleEl=link
-      ?'<a href="'+link+'" target="_blank" rel="noopener" style="color:#1a4d8f;text-decoration:underline;cursor:pointer">'+title+'</a>'
+      ?'<a href="'+link+'" target="_blank" rel="noopener" style="color:#333;text-decoration:none;hover:underline">'+title+'</a>'
       :'<span>'+title+'</span>';
     return'<li style="padding:5px 0">'+
       '<div style="display:flex;align-items:center;gap:4px;margin-bottom:2px">'+
@@ -709,7 +715,10 @@ function buildUI(data){
   const vixTgt=Math.max(0,25-last.v),gexTgt=Math.max(0,-5-last.g);
   const inBuy=last.g<-5&&last.v>22,approaching=last.g<-3&&last.v>19;
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
-  const tableRows=[...data].reverse().map(function(e){
+  const allReversed=[...data].reverse();
+  const DEFAULT_HIST_DAYS=30;
+  function buildTableRows(rows){
+    return rows.map(function(e){
     const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
@@ -725,7 +734,9 @@ function buildUI(data){
       '<td style="color:'+(e.qqqBear>=5?'#A32D2D':e.qqqBear>=3?'#BA7517':'#aaa')+';font-weight:600">'+qb+'</td>'+
       '<td style="color:'+gexColor(e.qqqGex)+';font-size:11px">'+qg+'</td>'+
       '<td><span class="badge '+si.bc+'">'+label+'</span></td></tr>';
-  }).join('');
+    }).join('');
+  }
+  const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
 
   document.getElementById('app').innerHTML=
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
@@ -773,7 +784,12 @@ function buildUI(data){
       '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
     '</div>'+
     '<div id="intelplaceholder"></div>'+'<div id="mag7placeholder"></div>'+
-    '<div class="card"><div class="cl">Full history</div><div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>SPY</th><th>SPY GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Fear</th><th>Bear</th><th>Bull</th><th>QQQ Bear</th><th>QQQ GEX</th><th>Signal</th></tr></thead><tbody>'+tableRows+'</tbody></table></div></div>';
+    '<div class="card"><div class="cl">Full history</div>'+
+      '<div class="hist-scroll" id="histScrollBox"><table id="histTable"><thead><tr><th>Date</th><th>SPY</th><th>SPY GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Fear</th><th>Bear</th><th>Bull</th><th>QQQ Bear</th><th>QQQ GEX</th><th>Signal</th></tr></thead><tbody id="histTbody">'+tableRows+'</tbody></table></div>'+
+      '<div class="hist-footer"><span id="histCountLabel">Showing last '+Math.min(DEFAULT_HIST_DAYS,total)+' of '+total+' days</span>'+
+      (total>DEFAULT_HIST_DAYS?'<button class="hist-toggle" id="histToggleBtn">Show all '+total+' days</button>':'')+
+      '</div>'+
+    '</div>';
 
   setTimeout(function(){
     updateCharts();
@@ -781,6 +797,27 @@ function buildUI(data){
     var sl=document.getElementById('rangeSlider');
     if(sl)sl.addEventListener('input',function(){updateCharts();});
     wireToggles();
+    var histBtn=document.getElementById('histToggleBtn');
+    var histExpanded=false;
+    if(histBtn){
+      histBtn.addEventListener('click',function(){
+        histExpanded=!histExpanded;
+        var tbody=document.getElementById('histTbody');
+        var box=document.getElementById('histScrollBox');
+        var label=document.getElementById('histCountLabel');
+        if(histExpanded){
+          tbody.innerHTML=buildTableRows(allReversed);
+          label.textContent='Showing all '+total+' days';
+          histBtn.textContent='Show last '+DEFAULT_HIST_DAYS+' days';
+          box.scrollTop=0;
+        }else{
+          tbody.innerHTML=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
+          label.textContent='Showing last '+DEFAULT_HIST_DAYS+' of '+total+' days';
+          histBtn.textContent='Show all '+total+' days';
+          box.scrollTop=0;
+        }
+      });
+    }
     fetchIntel().then(function(intel){
       var iph=document.getElementById('intelplaceholder');
       if(iph)iph.outerHTML=buildIntelCard(intel);
