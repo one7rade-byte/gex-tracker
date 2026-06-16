@@ -1,12 +1,12 @@
 {
   "date": "2026-06-16",
-  "generated_at": "03:30 AM",
+  "generated_at": "09:46 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
   "macro_picture": "SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 15th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft Faces Azure And Copilot Lawsuit As Copilot Adoptio...' Do not buy this dip until news clears.",
+  "mag7_section": "AMZN AVOID \u2014 company-specific negative news detected: 'Amazon may face penalties from potential FTC ad suit, Bloomb...' Do not buy this dip until news clears. GOOGL AVOID \u2014 company-specific negative news detected: 'Amazon may face penalties from potential FTC ad suit, Bloomb...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Apple (AAPL) Faces Italy DMA Probe Over Cloud Interoperabili...' Do not buy this dip until news clears.",
   "watch_section": "VIX pushing above 22-25 (currently 16.2, needs +5.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 15th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft Faces Azure And Copilot Lawsuit As Copilot Adoptio...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.2, needs +5.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AMZN AVOID \u2014 company-specific negative news detected: 'Amazon may face penalties from potential FTC ad suit, Bloomb...' Do not buy this dip until news clears. GOOGL AVOID \u2014 company-specific negative news detected: 'Amazon may face penalties from potential FTC ad suit, Bloomb...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Apple (AAPL) Faces Italy DMA Probe Over Cloud Interoperabili...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.2, needs +5.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "positive_gex",
     "vix_trend": "rising",
@@ -24,55 +24,57 @@
     "spy_rsi": 52.59
   },
   "top_opportunity": {
-    "ticker": "AMZN",
-    "score": 3.0,
-    "reason": "RSI very oversold vs own history (bottom 15%) | Above 200MA \u2014 uptrend intact [price-based only]",
-    "news": "macro_fear"
+    "ticker": null,
+    "score": 0,
+    "reason": "",
+    "news": ""
   },
   "avoid_names": [
-    "MSFT"
+    "AMZN",
+    "GOOGL",
+    "AAPL"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 2.0,
       "rsi_pct": 25.4,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "company_negative",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 5,
       "headlines": [
-        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
-        "Standard Chartered Says UNI Could Hit $100 as Wall Street Moves Onchain",
-        "With Roku Stock Near Highs, Is It Worth It?",
-        "Are There Opportunities in Europe\u2019s \u201cDigital Sovereignty\u201d?"
+        "Apple (AAPL) Faces Italy DMA Probe Over Cloud Interoperability",
+        "Snap unveils its $2,195 augmented reality glasses as rivalry with Meta heats up",
+        "What Trump's clamp down on Anthropic is signaling to rest of the world",
+        "Sector Update: Tech Stocks Fall Late Afternoon"
       ]
     },
     "AMZN": {
       "score": 3.0,
       "rsi_pct": 14.6,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
-        "Amazon (AMZN) Stock After Recent AI And Cloud Investment Push Is There Still Value",
-        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
-        "Amazon Selects Missouri for $10 Billion Data Center Campus"
+        "SpaceX surges past Amazon, briefly tops Microsoft in market cap",
+        "After three sessions, SpaceX already among world's most valuable companies",
+        "Dun &amp; Bradstreet Brings the D&amp;B Commercial Graph to Amazon Quick, Powering AI Workflows Across Sales, Marketing, and Finance",
+        "Billionaire Ken Griffin Sold Amazon and Nvidia but Quietly Loaded Up on This Healthcare Giant"
       ]
     },
     "GOOGL": {
       "score": 3.0,
       "rsi_pct": 17.3,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Google Just Went All in on Its Deal With Intel",
-        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
-        "Jeff Bezos' AI Startup Prometheus Hits $41 Billion As Investors Back Industrial AI",
-        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power"
+        "Nvidia vs. Alphabet: Which Is the Better AI Chip Stock to Own for the Next 5 Years?",
+        "Dow Jones Hits High, SpaceX Keeps Rising, But AI Stocks Skid; Warsh's Fed Debut On Tap",
+        "Tesla Seeks Customer Backing To Oppose New Jersey Driverless Vehicle Bills",
+        "Snap unveils its $2,195 augmented reality glasses as rivalry with Meta heats up"
       ]
     },
     "META": {
@@ -83,38 +85,38 @@
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
-        "Tech Stocks Aren't The Only Options For Big Gains",
-        "QCOM Stock Jumps Over 4% \u2014 Qualcomm Reportedly Eyes Tenstorrent Acquisition To Power AI Chip Ambitions",
-        "Meta Tests New Revenue Streams With Instagram Plus And AI Cost Controls"
+        "Stock Market Today, June 16: Snap Falls After Launch of $2,195 AR Glasses",
+        "Nvidia Latest Big Borrower: AI Data Centers, Suppliers Racking Up Debt",
+        "Meta Threads Reaches 500 Million Monthly Users",
+        "Meta Pushes Threads Deeper Into Communities"
       ]
     },
     "MSFT": {
       "score": 0.0,
       "rsi_pct": 38.6,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 2,
       "headlines": [
-        "Intuit Stock's Real Growth Story Isn't The One You're Watching",
-        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
-        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
-        "Soft &amp; Cloud presents licensing advisory for Used Software"
+        "SpaceX surges past Amazon, briefly tops Microsoft in market cap",
+        "After three sessions, SpaceX already among world's most valuable companies",
+        "Update: Dow Logs Back-to-Back Record High in Mixed Session Ahead of Fed Decision",
+        "Nvidia Latest Big Borrower: AI Data Centers, Suppliers Racking Up Debt"
       ]
     },
     "NVDA": {
       "score": 1.0,
       "rsi_pct": 40.0,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 8,
       "headlines": [
-        "Why SpaceX Stock Skyrocketed Today",
-        "Why Summer Is the Best Time to Review Your Estate Plan",
-        "Applied Optoelectronics (AAOI) Soars 13% as US-Iran Peace Deal Propels AI Stocks",
-        "Could SpaceX Be More Valuable Than Amazon and Microsoft? Here's What Price Its Stock Would Need to Hit for That to Happen"
+        "Nvidia vs. Alphabet: Which Is the Better AI Chip Stock to Own for the Next 5 Years?",
+        "The Stock Market Is Underestimating the Massive Growth Potential of This Artificial Intelligence (AI) Giant That Could Easily Become a $1 Trillion Company",
+        "Micron Technology (MU) Wins HBM4 Supplier Role For Nvidia Vera Rubin AI Platform",
+        "1 Reason to Buy NuScale Power and Hold Until 2033"
       ]
     },
     "TSLA": {
@@ -125,61 +127,125 @@
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 5,
       "headlines": [
-        "S&amp;P 500, Nasdaq, Dow Futures Retreat After Rally Fueled By SpaceX, US-Iran Deal As Fed Meeting Looms: TSLA, PLAY, FISV In Focus",
-        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
-        "SpaceX Post-IPO: Something Big May Happen in 15 Days. Here's What It Means for You.",
-        "Standard Chartered Says UNI Could Hit $100 as Wall Street Moves Onchain"
+        "Why robotics will be the next great investment theme",
+        "Tesla Seeks Customer Backing To Oppose New Jersey Driverless Vehicle Bills",
+        "Elon Musk Just Delivered Fantastic News for ASML Stock Investors",
+        "What investors should know before hopping on SpaceX options trades"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "ETFs That May Provide Investors Protection From Market Risks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-may-investors-protection-market-143500592.html?.tsrc=rss",
-      "pub_date": "2026-06-10",
+      "title": "Wall Street Analyst Calls for S&amp;P 500 Soaring to 9000. Here\u2019s Why the Stock Market Melt Up Could Be Just Beginning.",
+      "link": "https://247wallst.com/investing/2026/06/16/wall-street-analyst-calls-for-sp-500-soaring-to-9000-heres-why-the-stock-market-melt-up-could-be-just-beginning/?.tsrc=rss",
+      "pub_date": "2026-06-16",
       "tickers": [
-        "MARKET"
+        "SPY"
       ],
-      "high_impact": true
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
     },
     {
-      "title": "Dow Hits Record High, Nasdaq And S&amp;P 500 Jump On US-Iran Deal And SpaceX Optimism \u2014 SPCX, NVDA, ROKU, CRM, AMZN In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/dow-hits-record-high-nasdaq-and-s-and-p-500-jump-on-us-iran-deal-and-space-x-optimism-spcx-nvda-roku-crm-amzn-in-focus/cZKfwt9R73v?.tsrc=rss",
-      "pub_date": "2026-06-15",
-      "tickers": [
-        "NVDA",
-        "AMZN",
-        "QQQ"
-      ],
-      "high_impact": false
-    },
-    {
-      "title": "Stocks Settle Sharply Higher as US-Iran Peace Deal Spurs Optimism",
-      "link": "https://www.barchart.com/story/news/2480274/stocks-settle-sharply-higher-as-us-iran-peace-deal-spurs-optimism?.tsrc=rss",
-      "pub_date": "2026-06-15",
+      "title": "Broader Market Weakens as Energy and Software Stocks Fall",
+      "link": "https://www.barchart.com/story/news/2496862/broader-market-weakens-as-energy-and-software-stocks-fall?.tsrc=rss",
+      "pub_date": "2026-06-16",
       "tickers": [
         "SPY",
         "QQQ"
       ],
-      "high_impact": false
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
     },
     {
-      "title": "The Case For Mutual Fund-To-ETF Conversion: Flow Picture",
-      "link": "http://www.etf.com/sections/advisor-center/case-mutual-fund-etf-conversion-flow-picture?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-06-15",
+      "title": "Opening the Strait Eases Oil Prices, Imports &amp; Housing Starts Report",
+      "link": "https://finance.yahoo.com/energy/articles/opening-strait-eases-oil-prices-143100338.html?.tsrc=rss",
+      "pub_date": "2026-06-16",
       "tickers": [
         "MARKET"
       ],
-      "high_impact": false
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
     },
     {
-      "title": "EHang Rockets 18%, Archer Zooms 10%, Joby Rises 7% as Air Taxi Stocks Fly Higher With the Broader Market",
-      "link": "https://247wallst.com/investing/2026/06/15/ehang-rockets-18-archer-zooms-10-joby-rises-7-as-air-taxi-stocks-fly-higher-with-the-broader-market/?.tsrc=rss",
-      "pub_date": "2026-06-15",
+      "title": "Stocks Supported by Lower Crude Oil Prices and Bond Yields",
+      "link": "https://www.barchart.com/story/news/2495519/stocks-supported-by-lower-crude-oil-prices-and-bond-yields?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "SPY",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "This Vanguard ETF Is Quietly Outpacing the S&amp;P 500 in 2026 and Costs Just 0.04 Percent",
+      "link": "https://247wallst.com/investing/2026/06/16/this-vanguard-etf-is-quietly-outpacing-the-sp-500-in-2026-and-costs-just-0-04-percent/?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "VOO vs. IWO: What's the Difference for S&amp;P 500 Investors in 2026?",
+      "link": "https://www.fool.com/coverage/etfs/2026/06/16/voo-vs-iwo-what-s-the-difference-for-s-and-p-500-investors-in-2026/?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Tuesday Ahead of Fed Policy Meeting",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-123451429.html?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Why Dave Ramsey Chooses $5,000 Index Funds Over SpaceX: The Math Explained",
+      "link": "https://247wallst.com/personal-finance/2026/06/16/why-dave-ramsey-chooses-5000-index-funds-over-spacex-the-math-explained/?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Guide to the Dow Jones ETF Investing",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/guide-dow-jones-etf-investing-120000436.html?.tsrc=rss",
+      "pub_date": "2026-06-16",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Will The Fed Kill The S&amp;P 500's Relief Rally?",
+      "link": "https://www.trefis.com/articles/603077/will-the-fed-kill-the-sp-500s-relief-rally/2026-06-16?.tsrc=rss",
+      "pub_date": "2026-06-16",
       "tickers": [
         "QQQ"
       ],
-      "high_impact": false
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
     }
   ]
 }
