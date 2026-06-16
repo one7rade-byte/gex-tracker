@@ -112,23 +112,40 @@ def fetch_gex(ticker):
                     except: pass
             return None
 
-        neg  = re.search(r"negative net gamma of \$?([\d,\.]+)B", text, re.IGNORECASE)
-        pos  = re.search(r"positive net gamma of \$?([\d,\.]+)B", text, re.IGNORECASE)
-        neg2 = re.search(r"Net GEX\s*\n\s*-\$?([\d,\.]+)B", text, re.IGNORECASE)
-        pos2 = re.search(r"Net GEX\s*\n\s*\$?([\d,\.]+)B", text, re.IGNORECASE)
+        def parse_dollar_amount(value_str, unit):
+            """Converts a numeric string + 'M'/'B' unit into a value in $B units."""
+            try:
+                v = float(value_str.replace(",", ""))
+            except ValueError:
+                return None
+            return v / 1000.0 if unit.upper() == "M" else v
 
-        if neg:
-            try: result["net_gex_b"] = -float(neg.group(1).replace(",", ""))
-            except: pass
-        elif pos:
-            try: result["net_gex_b"] = float(pos.group(1).replace(",", ""))
-            except: pass
-        elif neg2:
-            try: result["net_gex_b"] = -float(neg2.group(1).replace(",", ""))
-            except: pass
-        elif pos2:
-            try: result["net_gex_b"] = float(pos2.group(1).replace(",", ""))
-            except: pass
+        # GEX — primary tile or narrative sentence, units may be M or B.
+        # InsiderFinance prints whichever unit fits the number — SPY is large
+        # enough to usually show $B, but QQQ (and individual stocks) often
+        # report in $M. A regex that only matched a trailing "B" silently
+        # produced no value at all on any day the reading printed in millions
+        # — this was the root cause of QQQ GEX being blank for weeks while
+        # SPY (consistently large enough for $B) kept working.
+        tile = re.search(r"Net GEX\s*\n\s*(-?)\$?([\d,\.]+)(M|B)", text, re.IGNORECASE)
+        narrative = re.search(
+            r"(positive|negative) net gamma of \$?([\d,\.]+)(M|B)", text, re.IGNORECASE
+        )
+
+        gex = None
+        if tile:
+            sign, amount, unit = tile.groups()
+            gex = parse_dollar_amount(amount, unit)
+            if gex is not None and sign == "-":
+                gex = -gex
+        elif narrative:
+            direction, amount, unit = narrative.groups()
+            gex = parse_dollar_amount(amount, unit)
+            if gex is not None and direction.lower() == "negative":
+                gex = -gex
+
+        if gex is not None:
+            result["net_gex_b"] = gex
 
         result["spot_price"]      = find_val([r"Spot Price[:\s\n]*\$?([\d,\.]+)", r"currently trading at \$?([\d,\.]+)"], text)
         result["call_wall"]       = find_val([r"Call Wall[:\s\n]*\$?([\d,\.]+)"], text)
