@@ -82,6 +82,12 @@ def load_mag7_trend(ticker, days=20):
     return result
 
 # ── News fetchers ─────────────────────────────────────────────────────────────
+#
+# Architecture: pull from 5 trusted financial/wire outlets that trading desks
+# actually monitor, via Google News RSS site-restricted search (Reuters killed
+# their direct RSS feed in 2025, so this is the standard workaround). Each
+# outlet's last-7-days headlines get deduplicated and cross-referenced — a
+# story covered by 2+ trusted sources is weighted higher than a single mention.
 
 # High-impact macro keywords
 HIGH_IMPACT_MACRO_KW = [
@@ -106,6 +112,23 @@ TICKER_KEYWORDS = {
     "QQQ":   ["nasdaq","qqq","tech stocks","technology sector"],
 }
 
+# Single-stock tickers only — used to gate headline dedup so two genuinely
+# different companies' generic "earnings beat" headlines never merge. SPY/QQQ
+# are broad-market proxies, not specific companies, so they're excluded here.
+MAG7_TICKERS = {"AAPL","MSFT","NVDA","GOOGL","META","AMZN","TSLA"}
+
+# Trusted outlets, ranked by how closely trading desks watch them.
+# Reuters/AP/Bloomberg/CNBC/MarketWatch are reached via Google News RSS
+# site-restricted search since several killed direct public RSS feeds.
+TRUSTED_SOURCES = [
+    {"name": "Reuters",     "domain": "reuters.com",     "weight": 3},
+    {"name": "Bloomberg",   "domain": "bloomberg.com",   "weight": 3},
+    {"name": "CNBC",        "domain": "cnbc.com",        "weight": 2},
+    {"name": "AP News",     "domain": "apnews.com",      "weight": 2},
+    {"name": "MarketWatch", "domain": "marketwatch.com", "weight": 2},
+]
+
+
 def extract_pub_date(item_text):
     m = re.search(r'<pubDate>(.*?)</pubDate>', item_text)
     if not m: return None
@@ -116,16 +139,112 @@ def extract_pub_date(item_text):
         dm = re.search(r'(\d{1,2} \w{3} \d{4})', m.group(1))
         return dm.group(1) if dm else None
 
+
 def tag_tickers(title, summary=""):
     text = (title + " " + summary).lower()
     found = [t for t, kws in TICKER_KEYWORDS.items() if any(kw in text for kw in kws)]
     return found if found else ["MARKET"]
 
+
 def is_high_impact(title, summary=""):
     text = (title + " " + summary).lower()
     return any(kw in text for kw in HIGH_IMPACT_MACRO_KW)
 
+
+_STOPWORDS = {"the","a","an","and","or","but","in","on","at","to","for","of","with",
+              "is","are","was","were","be","as","by","that","this","it","its","from",
+              "after","amid","over","up","down","new","says","report","reports","than",
+              "more","less","data","comes","shows","expected","forecast"}
+
+# Generic finance words that are too common to count as a "real" match on
+# their own — two unrelated earnings stories both mention "earnings beat",
+# so distinctiveness has to come from somewhere else (a ticker/company name).
+_GENERIC_OVERLAP_WORDS = {"earnings","stock","stocks","shares","market","markets",
+                           "rates","rate","report","reports","results","quarterly",
+                           "revenue","price","prices","beat","beats","estimates",
+                           "growth","strong","record"}
+
+
+def normalize_title(title):
+    """Strip punctuation/casing/stopwords for fuzzy dedup matching across outlets."""
+    t = re.sub(r'[^a-z0-9\s]', '', title.lower())
+    t = re.sub(r'\s+', ' ', t).strip()
+    t = re.sub(r'\b(reuters|bloomberg|cnbc|ap news|marketwatch)\b', '', t)
+    words = [w for w in t.split() if w not in _STOPWORDS and len(w) > 2]
+    return set(words)
+
+
+def titles_similar(title_a, title_b, threshold=0.25, min_overlap=2):
+    """
+    Determines whether two headlines (from possibly different outlets) are
+    reporting the same underlying story, so they can be merged into one
+    cluster instead of showing as duplicate entries.
+
+    Three-stage check, all conservative on purpose since a false merge is
+    worse than an occasional missed merge:
+      1. Minimum raw word-overlap count (filters near-empty matches)
+      2. At least one shared word must be "distinctive" (not generic finance
+         vocabulary like "earnings"/"stock"/"beat") — otherwise two totally
+         unrelated earnings stories would falsely merge
+      3. If either headline mentions a specific ticker/company, both must
+         share at least one common ticker tag — otherwise "Microsoft beats
+         earnings" and "Amazon beats earnings" would falsely merge purely on
+         generic vocabulary
+    """
+    set_a, set_b = normalize_title(title_a), normalize_title(title_b)
+    if not set_a or not set_b:
+        return False
+
+    overlap = set_a & set_b
+    if len(overlap) < min_overlap:
+        return False
+
+    distinctive = overlap - _GENERIC_OVERLAP_WORDS
+    if not distinctive:
+        return False
+
+    tickers_a = set(tag_tickers(title_a)) & MAG7_TICKERS
+    tickers_b = set(tag_tickers(title_b)) & MAG7_TICKERS
+    if tickers_a or tickers_b:
+        if not (tickers_a & tickers_b):
+            return False
+
+    return len(overlap) / min(len(set_a), len(set_b)) >= threshold
+
+
+def fetch_source_via_google_news(domain, hours=168, max_items=15):
+    """
+    Fetch headlines restricted to one trusted domain via Google News RSS.
+    `hours=168` = 7 days, matching the requested lookback window.
+    """
+    headlines = []
+    try:
+        url = (f"https://news.google.com/rss/search?q=when:{hours}h+allinurl:{domain}"
+               f"&hl=en-US&gl=US&ceid=US:en")
+        r = requests.get(url, headers=HEADERS, timeout=12)
+        for item in re.findall(r'<item>(.*?)</item>', r.text, re.DOTALL)[:max_items]:
+            title = re.search(r'<title>(.*?)</title>', item)
+            link  = re.search(r'<link>(.*?)</link>', item)
+            desc  = re.search(r'<description>(.*?)</description>', item)
+            if title:
+                t = re.sub(r'<.*?>', '', title.group(1)).strip()
+                # Google News titles end with " - Source Name" — strip it
+                t = re.sub(r'\s*-\s*[A-Za-z0-9 .]+$', '', t).strip()
+                s = re.sub(r'<.*?>', '', desc.group(1)).strip()[:300] if desc else ""
+                l = link.group(1).strip() if link else ""
+                headlines.append({
+                    "title": t, "summary": s, "link": l,
+                    "pub_date":    extract_pub_date(item),
+                    "tickers":     tag_tickers(t, s),
+                    "high_impact": is_high_impact(t, s),
+                })
+    except Exception as e:
+        print(f"  {domain} fetch failed: {e}")
+    return headlines
+
+
 def fetch_yahoo_news(symbol, max_items=10):
+    """Fallback / company-specific feed — Yahoo's per-ticker RSS still works."""
     headlines = []
     try:
         url = f"https://feeds.finance.yahoo.com/rss/2.0/headline?s={symbol}&region=US&lang=en-US"
@@ -148,21 +267,72 @@ def fetch_yahoo_news(symbol, max_items=10):
         print(f"  News fetch failed ({symbol}): {e}")
     return headlines
 
+
 def fetch_market_news():
+    """
+    Pull the last 7 days from each trusted outlet, deduplicate near-identical
+    stories across sources, and rank by (source_count * source_weight) +
+    high-impact keyword match. Stories multiple wire services ran are the
+    ones trading desks actually treat as significant.
+    """
     from datetime import datetime, timedelta
     cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
-    seen, all_h = set(), []
-    for sym in ["SPY", "%5EGSPC", "%5EVIX"]:
-        for h in fetch_yahoo_news(sym, 10):
-            if h["title"] not in seen:
-                seen.add(h["title"])
-                all_h.append(h)
-    recent     = [h for h in all_h if not h.get("pub_date") or h["pub_date"] >= cutoff]
-    high_imp   = [h for h in recent if h["high_impact"]]
-    normal     = [h for h in recent if not h["high_impact"]]
-    result     = high_imp[:6] + normal[:4]
-    print(f"  Market news: {len(result)} total ({len(high_imp)} high impact, last 7 days)")
-    return result[:10]
+
+    # Collect per-source, last 7 days
+    per_source = {}
+    for src in TRUSTED_SOURCES:
+        items = fetch_source_via_google_news(src["domain"], hours=168, max_items=15)
+        recent = [h for h in items if not h.get("pub_date") or h["pub_date"] >= cutoff]
+        per_source[src["name"]] = {"items": recent, "weight": src["weight"]}
+        print(f"  {src['name']}: {len(recent)} headlines (last 7 days)")
+        time.sleep(0.4)
+
+    # Fallback to Yahoo market feed if all trusted sources failed (e.g. Google News blocked)
+    if all(len(v["items"]) == 0 for v in per_source.values()):
+        print("  All trusted sources empty — falling back to Yahoo market feed")
+        fallback = fetch_yahoo_news("SPY", 10) + fetch_yahoo_news("%5EGSPC", 10)
+        fallback = [h for h in fallback if not h.get("pub_date") or h["pub_date"] >= cutoff]
+        return fallback[:10]
+
+    # Cross-reference: group similar headlines across sources, count mentions
+    clusters = []   # each: {"headline": dict, "title": str, "sources": [names], "score": float}
+    for src_name, data in per_source.items():
+        for h in data["items"]:
+            matched = None
+            for c in clusters:
+                if titles_similar(h["title"], c["title"]):
+                    matched = c
+                    break
+            if matched:
+                if src_name not in matched["sources"]:
+                    matched["sources"].append(src_name)
+                    matched["score"] += data["weight"]
+            else:
+                clusters.append({
+                    "headline": h, "title": h["title"],
+                    "sources": [src_name], "score": data["weight"],
+                })
+
+    # Boost score for high-impact keyword matches
+    for c in clusters:
+        if c["headline"]["high_impact"]:
+            c["score"] += 5
+
+    # Rank: highest cross-source + high-impact score first
+    clusters.sort(key=lambda c: c["score"], reverse=True)
+
+    result = []
+    for c in clusters[:10]:
+        h = dict(c["headline"])
+        h["sources"] = c["sources"]
+        h["source_count"] = len(c["sources"])
+        result.append(h)
+
+    high_imp_count = sum(1 for h in result if h["high_impact"])
+    multi_source   = sum(1 for h in result if h["source_count"] > 1)
+    print(f"  Market news: {len(result)} ranked headlines "
+          f"({high_imp_count} high impact, {multi_source} confirmed by 2+ sources)")
+    return result
 
 
 # ── News classifier ───────────────────────────────────────────────────────────
@@ -516,7 +686,7 @@ def main():
             "rsi_dir":d.get("trend",{}).get("rsi_direction",""),
             "days_oversold":d.get("trend",{}).get("days_oversold",0),
             "headlines":d.get("headlines",[])} for t,d in mag7_data.items()},
-        "macro_headlines":[{"title":h["title"],"link":h.get("link",""),"pub_date":h.get("pub_date",""),"tickers":h.get("tickers",["MARKET"]),"high_impact":h.get("high_impact",False)} for h in macro_headlines[:8]],
+        "macro_headlines":[{"title":h["title"],"link":h.get("link",""),"pub_date":h.get("pub_date",""),"tickers":h.get("tickers",["MARKET"]),"high_impact":h.get("high_impact",False),"sources":h.get("sources",[]),"source_count":h.get("source_count",1)} for h in macro_headlines[:10]],
     }
 
     with open(INTEL_JSON,"w",encoding="utf-8") as f:
