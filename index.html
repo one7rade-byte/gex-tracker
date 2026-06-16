@@ -128,6 +128,27 @@ tr:last-child td{border-bottom:none}
 .ob-w{background:#FAEEDA;color:#633806}
 .ob-n{background:#f0ede8;color:#666}
 .ob-x{background:#f8f8f6;color:#bbb}
+
+.intel-card{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px 24px;margin-bottom:12px}
+.intel-signal{display:inline-block;font-size:20px;font-weight:800;padding:4px 16px;border-radius:8px;margin-bottom:12px}
+.intel-load{background:#EAF3DE;color:#27500A}
+.intel-watch{background:#FAEEDA;color:#633806}
+.intel-hold{background:#E6F1FB;color:#0C447C}
+.intel-reduce{background:#FCEBEB;color:#791F1F}
+.intel-section{margin-bottom:12px}
+.intel-section-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.intel-body{font-size:12px;line-height:1.8;color:#333}
+.intel-action{background:#f4f2ee;border-radius:8px;padding:10px 14px;font-size:12px;font-weight:500;color:#222;margin-bottom:12px;border-left:3px solid #378ADD}
+.intel-ticker-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:2px;border:0.5px solid #e5e5e0}
+.intel-news-list{list-style:none;padding:0;margin:6px 0}
+.intel-news-list li{font-size:11px;color:#555;padding:3px 0;border-bottom:0.5px solid #f0ede8;line-height:1.5}
+.intel-news-list li:last-child{border-bottom:none}
+.news-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:600;margin-right:4px;text-transform:uppercase}
+.news-macro{background:#E6F1FB;color:#0C447C}
+.news-neg{background:#FCEBEB;color:#791F1F}
+.news-pos{background:#EAF3DE;color:#27500A}
+.news-fund{background:#FAEEDA;color:#633806}
+
 footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 @media(max-width:600px){.mg{grid-template-columns:repeat(2,1fr)}.two-col,.three-col,.qqq-grid{grid-template-columns:1fr}.l1-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:1fr}}
 </style>
@@ -145,6 +166,7 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
 const MAG7_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/mag7_log.csv';
+const INTEL_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/intelligence_report.json';
 let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null,fearChart=null,bearChart=null,bullChart=null;
 let ALL_DATA=[];
 const WIN=60;
@@ -153,6 +175,73 @@ async function fetchCSV(){
   const r=await fetch(CSV_URL+'?t='+Date.now());
   if(!r.ok)throw new Error('HTTP '+r.status);
   return r.text();
+}
+
+
+async function fetchIntel(){
+  try{
+    const r=await fetch(INTEL_URL+'?t='+Date.now());
+    if(!r.ok)return null;
+    return await r.json();
+  }catch(e){return null;}
+}
+
+function buildIntelCard(report){
+  if(!report)return'<div class="intel-card"><div style="font-size:10px;font-weight:600;color:#999;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">Daily intelligence report</div><div style="font-size:12px;color:#aaa;padding:4px 0">No report yet — runs daily at 6pm. Trigger manually via Actions \u2192 Daily Intelligence Engine.</div></div>';
+  const sig=report.overall_signal||'HOLD';
+  const sigClass={'LOAD':'intel-load','WATCH':'intel-watch','HOLD':'intel-hold','REDUCE':'intel-reduce'}[sig]||'intel-hold';
+  const sigEmoji={'LOAD':'\uD83D\uDFE2','WATCH':'\uD83D\uDFE1','HOLD':'\uD83D\uDD35','REDUCE':'\uD83D\uDD34'}[sig]||'\uD83D\uDD35';
+
+  const macroPic  = report.macro_picture  || '';
+  const mag7Sec   = report.mag7_section   || '';
+  const watchSec  = report.watch_section  || '';
+  const vooAction = report.voo_vgt_action || '';
+
+  const snap=report.mag7_snapshot||{};
+  const snapHTML=Object.entries(snap).sort((a,b)=>(b[1].score||0)-(a[1].score||0)).map(function(e){
+    const tk=e[0],d=e[1];
+    const news=d.news||'neutral';
+    const avoided=(report.avoid_names||[]).includes(tk);
+    const scoreC=d.score>=6?'#3B6D11':d.score>=4?'#BA7517':'#888';
+    const newsCls={'macro_fear':'news-macro','company_negative':'news-neg','company_positive':'news-pos','fundamental_change':'news-fund'}[news]||'';
+    return'<span class="intel-ticker-pill" style="background:'+(avoided?'#fef2f2':'#f8f8f6')+'">'+
+      '<span style="font-weight:700;color:'+(avoided?'#A32D2D':scoreC)+'">'+tk+'</span>'+
+      (d.rsi_pct!==null&&d.rsi_pct!==undefined?'<span style="color:#aaa;font-size:10px">'+d.rsi_pct+'pct</span>':'')+
+      (newsCls?'<span class="news-tag '+newsCls+'">'+news.replace(/_/g,' ')+'</span>':'')+
+      (avoided?'<span style="color:#A32D2D;font-size:10px">avoid</span>':'')+
+    '</span>';
+  }).join('');
+
+  const top=report.top_opportunity||{};
+  let topHTML='';
+  if(top.ticker&&top.score>=3){
+    topHTML='<div style="background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.6">'+
+      '<div style="font-weight:700;color:#27500A;font-size:13px;margin-bottom:3px">Top opportunity: '+top.ticker+' ('+top.score+'/10)</div>'+
+      (top.reason?'<div style="color:#444">'+top.reason.split('|')[0].trim()+'</div>':'')+
+    '</div>';
+  }
+
+  const headlines=(report.macro_headlines||[]).slice(0,4).map(function(h){
+    return'<li><span class="news-tag news-macro">macro</span>'+h+'</li>';
+  }).join('');
+
+  return'<div class="intel-card">'+
+    '<div style="font-size:10px;font-weight:600;color:#999;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Daily intelligence report \u2014 '+report.date+'</div>'+
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">'+
+      '<span class="intel-signal '+sigClass+'">'+sigEmoji+' '+sig+'</span>'+
+      '<span style="font-size:11px;color:#888">Generated '+report.generated_at+'</span>'+
+    '</div>'+
+    (vooAction?'<div class="intel-action">\uD83D\uDCCA VOO/VGT: '+vooAction+'</div>':'')+
+    topHTML+
+    (macroPic?'<div class="intel-section"><div class="intel-section-title">Macro picture</div><div class="intel-body">'+macroPic+'</div></div>':'')+
+    (mag7Sec?'<div class="intel-section"><div class="intel-section-title">Mag 7 opportunities</div><div class="intel-body">'+mag7Sec+'</div></div>':'')+
+    (watchSec?'<div class="intel-section"><div class="intel-section-title">Watch for</div><div class="intel-body">'+watchSec+'</div></div>':'')+
+    '<div style="margin-top:12px;padding-top:10px;border-top:0.5px solid #f0ede8">'+
+      '<div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Mag 7 snapshot</div>'+
+      '<div>'+snapHTML+'</div>'+
+    '</div>'+
+    (headlines?'<div style="margin-top:10px;padding-top:10px;border-top:0.5px solid #f0ede8"><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Market headlines</div><ul class="intel-news-list">'+headlines+'</ul></div>':'')+
+  '</div>';
 }
 
 async function fetchMag7(){
@@ -658,7 +747,7 @@ function buildUI(data){
       '</div>'+
       '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
     '</div>'+
-    '<div id="mag7placeholder"></div>'+
+    '<div id="intelplaceholder"></div>'+'<div id="mag7placeholder"></div>'+
     '<div class="card"><div class="cl">Full history</div><div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>SPY</th><th>SPY GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Fear</th><th>Bear</th><th>Bull</th><th>QQQ Bear</th><th>QQQ GEX</th><th>Signal</th></tr></thead><tbody>'+tableRows+'</tbody></table></div></div>';
 
   setTimeout(function(){
@@ -667,6 +756,10 @@ function buildUI(data){
     var sl=document.getElementById('rangeSlider');
     if(sl)sl.addEventListener('input',function(){updateCharts();});
     wireToggles();
+    fetchIntel().then(function(intel){
+      var iph=document.getElementById('intelplaceholder');
+      if(iph)iph.outerHTML=buildIntelCard(intel);
+    });
     fetchMag7().then(function(m7){
       var ph=document.getElementById('mag7placeholder');
       if(ph){
