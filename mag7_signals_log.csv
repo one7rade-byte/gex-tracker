@@ -1,0 +1,8 @@
+date,ticker,signals_summary,bullish_squeeze_label,bullish_squeeze_score,bearish_squeeze_label,bearish_squeeze_score
+2026-06-16,AAPL,,possible,45,,
+2026-06-16,MSFT,,unlikely,25,unlikely,25
+2026-06-16,NVDA,,possible,40,,
+2026-06-16,GOOGL,,possible,35,unlikely,20
+2026-06-16,META,,unlikely,25,unlikely,20
+2026-06-16,AMZN,,possible,40,,
+2026-06-16,TSLA,,possible,30,unlikely,20
