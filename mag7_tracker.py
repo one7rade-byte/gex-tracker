@@ -199,52 +199,73 @@ def yf_fetch_pc_history(ticker):
     return []
 
 
-# ── InsiderFinance GEX ────────────────────────────────────────────────────────
+# ── InsiderFinance GEX + P/C ────────────────────────────────────────────────
 
-def fetch_gex(ticker):
-    """Fetch GEX from InsiderFinance. Returns (gex_b, regime)."""
+def _parse_dollar_amount(value_str, unit):
+    """Converts a '$665.1' + 'M' or 'B' pair into a value in $B units."""
+    try:
+        v = float(value_str.replace(",", ""))
+    except ValueError:
+        return None
+    if unit.upper() == "M":
+        return v / 1000.0   # millions -> billions
+    return v                # already billions
+
+
+def fetch_insiderfinance_data(ticker):
+    """
+    Single fetch of the InsiderFinance GEX page, parsing both GEX and P/C
+    ratio from the same response. Combined into one function (rather than
+    two separate fetches of the same URL) to halve the request load on
+    InsiderFinance and reduce rate-limit risk across 7 tickers.
+
+    Returns (gex_b, gex_regime, pc_ratio) — any of which may be None if not
+    found on the page.
+    """
     try:
         url = "https://www.insiderfinance.io/gamma-exposure/" + ticker
         r = requests.get(url, headers=HEADERS, timeout=20)
         soup = BeautifulSoup(r.text, "html.parser")
         text = soup.get_text(separator="\n")
 
-        neg = re.search(r"Net GEX\s*\n\s*-\$?([\d,\.]+)B", text, re.IGNORECASE)
-        pos = re.search(r"Net GEX\s*\n\s*\$?([\d,\.]+)B", text, re.IGNORECASE)
-        neg2 = re.search(r"negative net gamma of \$?([\d,\.]+)B", text, re.IGNORECASE)
-        pos2 = re.search(r"positive net gamma of \$?([\d,\.]+)B", text, re.IGNORECASE)
+        # GEX — primary tile or narrative sentence, units may be M or B
+        tile = re.search(r"Net GEX\s*\n\s*(-?)\$?([\d,\.]+)(M|B)", text, re.IGNORECASE)
+        narrative = re.search(
+            r"(positive|negative) net gamma of \$?([\d,\.]+)(M|B)", text, re.IGNORECASE
+        )
 
         gex = None
-        if neg:
-            try: gex = -float(neg.group(1).replace(",", ""))
-            except: pass
-        elif pos:
-            try: gex = float(pos.group(1).replace(",", ""))
-            except: pass
-        elif neg2:
-            try: gex = -float(neg2.group(1).replace(",", ""))
-            except: pass
-        elif pos2:
-            try: gex = float(pos2.group(1).replace(",", ""))
-            except: pass
+        if tile:
+            sign, amount, unit = tile.groups()
+            gex = _parse_dollar_amount(amount, unit)
+            if gex is not None and sign == "-":
+                gex = -gex
+        elif narrative:
+            direction, amount, unit = narrative.groups()
+            gex = _parse_dollar_amount(amount, unit)
+            if gex is not None and direction.lower() == "negative":
+                gex = -gex
 
         if gex is None:
-            return None, "unknown"
-
-        if gex < -3:
-            regime = "deeply_negative"
+            gex_regime = "unknown"
+        elif gex < -3:
+            gex_regime = "deeply_negative"
         elif gex < 0:
-            regime = "negative"
+            gex_regime = "negative"
         elif gex > 3:
-            regime = "strongly_positive"
+            gex_regime = "strongly_positive"
         else:
-            regime = "positive"
+            gex_regime = "positive"
 
-        return gex, regime
+        # P/C ratio — plain text on the same page, no auth wall
+        pc_match = re.search(r"Put/Call Ratio:?\s*([\d.]+)", text, re.IGNORECASE)
+        pc_ratio = round(float(pc_match.group(1)), 3) if pc_match else None
+
+        return gex, gex_regime, pc_ratio
 
     except Exception as e:
-        print(f"  {ticker} GEX failed: {e}")
-        return None, "unknown"
+        print(f"  {ticker} InsiderFinance fetch failed: {e}")
+        return None, "unknown", None
 
 
 # ── Technical calculations ────────────────────────────────────────────────────
@@ -477,14 +498,22 @@ def main():
 
         print(f"  Spot=${spot:.2f}  RSI={rsi}  200MA={ma200}  Above={above_200}")
 
-        # 2. Options chain
-        print(f"  Fetching {ticker} options chain...")
-        pc_ratio, iv_current = yf_fetch_options(ticker)
-        print(f"  P/C={pc_ratio}  IV={iv_current}%")
+        # 2. Options chain — Yahoo for IV (P/C used only as fallback, since
+        # Yahoo's options endpoint requires a crumb/cookie handshake that
+        # frequently fails; InsiderFinance serves P/C unauthenticated below)
+        print(f"  Fetching {ticker} options chain (Yahoo, IV + P/C fallback)...")
+        pc_ratio_yahoo, iv_current = yf_fetch_options(ticker)
 
-        # 3. GEX from InsiderFinance
-        print(f"  Fetching {ticker} GEX...")
-        gex_b, gex_regime = fetch_gex(ticker)
+        # 3. GEX + P/C from InsiderFinance — single combined fetch of the
+        # same page (avoids requesting the URL twice)
+        print(f"  Fetching {ticker} GEX + P/C (InsiderFinance)...")
+        gex_b, gex_regime, pc_ratio_if = fetch_insiderfinance_data(ticker)
+
+        # Prefer InsiderFinance's P/C (unauthenticated, reliable) over Yahoo's
+        # (frequently blocked by crumb requirement) when both are available
+        pc_ratio = pc_ratio_if if pc_ratio_if is not None else pc_ratio_yahoo
+
+        print(f"  P/C={pc_ratio} (source={'InsiderFinance' if pc_ratio_if is not None else 'Yahoo' if pc_ratio_yahoo is not None else 'none'})  IV={iv_current}%")
         print(f"  GEX={gex_b}  Regime={gex_regime}")
 
         # 4. Compute percentiles vs own history
