@@ -43,9 +43,12 @@ CSV_HEADERS = [
     # Options data
     "iv_current",     # current 30-day IV estimate
     "pc_ratio",       # put/call volume ratio
-    # GEX
+    # GEX — full parity with SPY/QQQ fields in gex_tracker.py
     "gex_b",          # net GEX in $B
     "gex_regime",     # positive / negative / deeply_negative
+    "zero_gamma",     # price level where net gamma flips sign
+    "call_wall",      # strike with heaviest call gamma (resistance)
+    "put_wall",       # strike with heaviest put gamma (support)
     # Composite score
     "opportunity_score",   # 0-10, higher = better loading opportunity
     "signal",              # plain English
@@ -214,21 +217,44 @@ def _parse_dollar_amount(value_str, unit):
 
 def fetch_insiderfinance_data(ticker):
     """
-    Single fetch of the InsiderFinance GEX page, parsing both GEX and P/C
-    ratio from the same response. Combined into one function (rather than
-    two separate fetches of the same URL) to halve the request load on
-    InsiderFinance and reduce rate-limit risk across 7 tickers.
+    Single fetch of the InsiderFinance GEX page, parsing GEX, P/C ratio,
+    zero gamma, call wall, and put wall from the same response — full
+    parity with the fields already pulled for SPY/QQQ in gex_tracker.py.
 
-    Returns (gex_b, gex_regime, pc_ratio) — any of which may be None if not
-    found on the page.
+    Combined into one function (rather than separate fetches of the same
+    URL per field) to minimize request load on InsiderFinance across 7
+    tickers.
+
+    Returns a dict with keys: gex_b, gex_regime, pc_ratio, zero_gamma,
+    call_wall, put_wall, spot_price. Any value may be None if not found.
     """
+    result = {
+        "gex_b": None, "gex_regime": "unknown", "pc_ratio": None,
+        "zero_gamma": None, "call_wall": None, "put_wall": None,
+        "spot_price": None,
+    }
     try:
         url = "https://www.insiderfinance.io/gamma-exposure/" + ticker
         r = requests.get(url, headers=HEADERS, timeout=20)
         soup = BeautifulSoup(r.text, "html.parser")
         text = soup.get_text(separator="\n")
 
+        def find_val(patterns, t):
+            for pat in patterns:
+                m = re.search(pat, t, re.IGNORECASE | re.DOTALL)
+                if m:
+                    raw = m.group(1).replace(",", "").replace("$", "").strip()
+                    try:
+                        return float(raw)
+                    except ValueError:
+                        pass
+            return None
+
         # GEX — primary tile or narrative sentence, units may be M or B
+        # (InsiderFinance prints whichever unit fits the number — mega-cap
+        # names often show $B, mid-sized readings frequently show $M; a
+        # regex that only matched a trailing "B" silently produced
+        # "unknown" for any name whose GEX happened to print in millions)
         tile = re.search(r"Net GEX\s*\n\s*(-?)\$?([\d,\.]+)(M|B)", text, re.IGNORECASE)
         narrative = re.search(
             r"(positive|negative) net gamma of \$?([\d,\.]+)(M|B)", text, re.IGNORECASE
@@ -246,26 +272,44 @@ def fetch_insiderfinance_data(ticker):
             if gex is not None and direction.lower() == "negative":
                 gex = -gex
 
+        result["gex_b"] = gex
         if gex is None:
-            gex_regime = "unknown"
+            result["gex_regime"] = "unknown"
         elif gex < -3:
-            gex_regime = "deeply_negative"
+            result["gex_regime"] = "deeply_negative"
         elif gex < 0:
-            gex_regime = "negative"
+            result["gex_regime"] = "negative"
         elif gex > 3:
-            gex_regime = "strongly_positive"
+            result["gex_regime"] = "strongly_positive"
         else:
-            gex_regime = "positive"
+            result["gex_regime"] = "positive"
 
-        # P/C ratio — plain text on the same page, no auth wall
-        pc_match = re.search(r"Put/Call Ratio:?\s*([\d.]+)", text, re.IGNORECASE)
-        pc_ratio = round(float(pc_match.group(1)), 3) if pc_match else None
+        # Spot price, walls, zero gamma — same field patterns proven
+        # working for SPY/QQQ in gex_tracker.py
+        result["spot_price"] = find_val(
+            [r"Spot Price[:\s\n]*\$?([\d,\.]+)", r"currently trading at \$?([\d,\.]+)"], text
+        )
+        result["call_wall"]  = find_val([r"Call Wall[:\s\n]*\$?([\d,\.]+)"], text)
+        result["put_wall"]   = find_val([r"Put Wall[:\s\n]*\$?([\d,\.]+)"], text)
+        result["zero_gamma"] = find_val(
+            [r"Zero.Gamma Level[:\s\n]*\$?([\d,\.]+)", r"Zero Gamma[:\s\n]*\$?([\d,\.]+)"], text
+        )
 
-        return gex, gex_regime, pc_ratio
+        # P/C ratio — plain text on the same page, no Yahoo auth wall.
+        # Pattern uses "." instead of "/" between Put and Call to also
+        # match "Put-Call Ratio" / "Put Call Ratio" phrasing variants.
+        pc_match = re.search(r"Put.Call Ratio[:\s]*([\d\.]+)", text, re.IGNORECASE)
+        if pc_match:
+            try:
+                result["pc_ratio"] = round(float(pc_match.group(1)), 3)
+            except ValueError:
+                pass
+
+        return result
 
     except Exception as e:
         print(f"  {ticker} InsiderFinance fetch failed: {e}")
-        return None, "unknown", None
+        return result
 
 
 # ── Technical calculations ────────────────────────────────────────────────────
@@ -504,17 +548,24 @@ def main():
         print(f"  Fetching {ticker} options chain (Yahoo, IV + P/C fallback)...")
         pc_ratio_yahoo, iv_current = yf_fetch_options(ticker)
 
-        # 3. GEX + P/C from InsiderFinance — single combined fetch of the
-        # same page (avoids requesting the URL twice)
-        print(f"  Fetching {ticker} GEX + P/C (InsiderFinance)...")
-        gex_b, gex_regime, pc_ratio_if = fetch_insiderfinance_data(ticker)
+        # 3. GEX + walls + zero gamma + P/C from InsiderFinance — single
+        # combined fetch of the same page (avoids requesting the URL
+        # multiple times), full parity with the SPY/QQQ fields
+        print(f"  Fetching {ticker} GEX + walls + P/C (InsiderFinance)...")
+        if_data    = fetch_insiderfinance_data(ticker)
+        gex_b      = if_data["gex_b"]
+        gex_regime = if_data["gex_regime"]
+        zero_gamma = if_data["zero_gamma"]
+        call_wall  = if_data["call_wall"]
+        put_wall   = if_data["put_wall"]
+        pc_ratio_if = if_data["pc_ratio"]
 
         # Prefer InsiderFinance's P/C (unauthenticated, reliable) over Yahoo's
         # (frequently blocked by crumb requirement) when both are available
         pc_ratio = pc_ratio_if if pc_ratio_if is not None else pc_ratio_yahoo
 
         print(f"  P/C={pc_ratio} (source={'InsiderFinance' if pc_ratio_if is not None else 'Yahoo' if pc_ratio_yahoo is not None else 'none'})  IV={iv_current}%")
-        print(f"  GEX={gex_b}  Regime={gex_regime}")
+        print(f"  GEX={gex_b}  Regime={gex_regime}  ZeroGamma={zero_gamma}  CallWall={call_wall}  PutWall={put_wall}")
 
         # 4. Compute percentiles vs own history
         hist_rsi = history[ticker]["rsi"] + ([rsi] if rsi else [])
@@ -567,6 +618,9 @@ def main():
             "pc_ratio":          pc_ratio,
             "gex_b":             gex_b,
             "gex_regime":        gex_regime,
+            "zero_gamma":        zero_gamma,
+            "call_wall":         call_wall,
+            "put_wall":          put_wall,
             "opportunity_score": score,
             "signal":            signal,
             "signal_detail":     detail,
