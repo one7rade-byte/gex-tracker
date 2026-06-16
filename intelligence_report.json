@@ -1,0 +1,142 @@
+{
+  "date": "2026-06-16",
+  "generated_at": "03:18 AM",
+  "overall_signal": "HOLD",
+  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
+  "macro_picture": "SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 15th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft Faces Azure And Copilot Lawsuit As Copilot Adoptio...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.2, needs +5.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 15th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 3/10. Below 200MA \u2014 scale in slowly. MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft Faces Azure And Copilot Lawsuit As Copilot Adoptio...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.2, needs +5.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "macro_trend": {
+    "regime": "positive_gex",
+    "vix_trend": "rising",
+    "vix_current": 16.2,
+    "gex_trend": "deteriorating",
+    "gex_current": 8.8,
+    "fear_trend": "building",
+    "fear_current": 1.0,
+    "bear_current": 1.0,
+    "bull_current": 6.0,
+    "neg_gex_days": 8,
+    "skew_current": 144.32,
+    "term_struct": "contango",
+    "above_200ma": "True",
+    "spy_rsi": 52.59
+  },
+  "top_opportunity": {
+    "ticker": "AMZN",
+    "score": 3.0,
+    "reason": "RSI very oversold vs own history (bottom 15%) | Above 200MA \u2014 uptrend intact [price-based only]",
+    "news": "macro_fear"
+  },
+  "avoid_names": [
+    "MSFT"
+  ],
+  "mag7_snapshot": {
+    "AAPL": {
+      "score": 2.0,
+      "rsi_pct": 25.4,
+      "above_200ma": true,
+      "news": "company_positive",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 5,
+      "headlines": [
+        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
+        "Standard Chartered Says UNI Could Hit $100 as Wall Street Moves Onchain",
+        "With Roku Stock Near Highs, Is It Worth It?",
+        "Are There Opportunities in Europe\u2019s \u201cDigital Sovereignty\u201d?"
+      ]
+    },
+    "AMZN": {
+      "score": 3.0,
+      "rsi_pct": 14.6,
+      "above_200ma": true,
+      "news": "macro_fear",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 10,
+      "headlines": [
+        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
+        "Amazon (AMZN) Stock After Recent AI And Cloud Investment Push Is There Still Value",
+        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
+        "Amazon Selects Missouri for $10 Billion Data Center Campus"
+      ]
+    },
+    "GOOGL": {
+      "score": 3.0,
+      "rsi_pct": 17.3,
+      "above_200ma": true,
+      "news": "macro_fear",
+      "rsi_dir": "stable",
+      "days_oversold": 10,
+      "headlines": [
+        "Google Just Went All in on Its Deal With Intel",
+        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
+        "Jeff Bezos' AI Startup Prometheus Hits $41 Billion As Investors Back Industrial AI",
+        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power"
+      ]
+    },
+    "META": {
+      "score": 0.0,
+      "rsi_pct": 37.9,
+      "above_200ma": false,
+      "news": "company_positive",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 3,
+      "headlines": [
+        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
+        "Tech Stocks Aren't The Only Options For Big Gains",
+        "QCOM Stock Jumps Over 4% \u2014 Qualcomm Reportedly Eyes Tenstorrent Acquisition To Power AI Chip Ambitions",
+        "Meta Tests New Revenue Streams With Instagram Plus And AI Cost Controls"
+      ]
+    },
+    "MSFT": {
+      "score": 0.0,
+      "rsi_pct": 38.6,
+      "above_200ma": false,
+      "news": "company_negative",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 2,
+      "headlines": [
+        "Intuit Stock's Real Growth Story Isn't The One You're Watching",
+        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
+        "AI Wars: Why Microsoft, Google and Amazon Are All Fighting Over Power",
+        "Soft &amp; Cloud presents licensing advisory for Used Software"
+      ]
+    },
+    "NVDA": {
+      "score": 1.0,
+      "rsi_pct": 40.0,
+      "above_200ma": true,
+      "news": "neutral",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 8,
+      "headlines": [
+        "Why Summer Is the Best Time to Review Your Estate Plan",
+        "Applied Optoelectronics (AAOI) Soars 13% as US-Iran Peace Deal Propels AI Stocks",
+        "Could SpaceX Be More Valuable Than Amazon and Microsoft? Here's What Price Its Stock Would Need to Hit for That to Happen",
+        "Why Palantir Stock Soared Today"
+      ]
+    },
+    "TSLA": {
+      "score": 1.0,
+      "rsi_pct": 29.7,
+      "above_200ma": false,
+      "news": "macro_fear",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 5,
+      "headlines": [
+        "S&amp;P 500, Nasdaq, Dow Futures Retreat After Rally Fueled By SpaceX, US-Iran Deal As Fed Meeting Looms: TSLA, PLAY, FISV In Focus",
+        "SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom",
+        "SpaceX Post-IPO: Something Big May Happen in 15 Days. Here's What It Means for You.",
+        "Standard Chartered Says UNI Could Hit $100 as Wall Street Moves Onchain"
+      ]
+    }
+  },
+  "macro_headlines": [
+    "Dow Hits Record High, Nasdaq And S&amp;P 500 Jump On US-Iran Deal And SpaceX Optimism \u2014 SPCX, NVDA, ROKU, CRM, AMZN In Focus",
+    "Stocks Settle Sharply Higher as US-Iran Peace Deal Spurs Optimism",
+    "The Case For Mutual Fund-To-ETF Conversion: Flow Picture",
+    "EHang Rockets 18%, Archer Zooms 10%, Joby Rises 7% as Air Taxi Stocks Fly Higher With the Broader Market",
+    "Palantir Rises 5%, Cloudflare Pops 3% as Investors Pile Into AI Security Plays"
+  ]
+}
