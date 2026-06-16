@@ -1,0 +1,23 @@
+name: Mag 7 Daily Scanner
+on:
+  repository_dispatch:
+    types: [run-gex-tracker]   # fires same time as main GEX tracker
+  workflow_dispatch:            # also manually triggerable
+jobs:
+  mag7:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python mag7_tracker.py
+      - run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add mag7_log.csv
+          git diff --staged --quiet || git commit -m "Mag 7 daily scan $(date +%Y-%m-%d)"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git
