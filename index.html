@@ -32,10 +32,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .sig-b .sig-title{color:#0C447C}
 .sig-a .sig-title{color:#633806}
 .sig-body{font-size:12px;line-height:1.6;color:#555}
-.leg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;font-size:11px;color:#666;align-items:center}
-.li{display:flex;align-items:center;gap:4px}
-.ll{width:14px;height:3px;border-radius:2px}
-.lb{width:9px;height:9px;border-radius:2px}
+.leg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;align-items:center}
+.toggle-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1.5px solid var(--tc);color:var(--tc);background:transparent;user-select:none;transition:all 0.15s}
+.toggle-btn::before{content:'';width:10px;height:3px;border-radius:2px;background:var(--tc);display:inline-block}
+.toggle-btn.active{background:var(--tc);color:#fff}
+.toggle-btn.active::before{background:#fff}
+.lb{width:9px;height:9px;border-radius:2px;display:inline-block}
 .badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
 .bg{background:#EAF3DE;color:#27500A}
 .br{background:#FCEBEB;color:#791F1F}
@@ -342,6 +344,19 @@ function buildL1Panel(last){
   '</div>'+(pills?'<div class="context-banner">'+pills+'</div>':'');
 }
 
+function wireToggles(){
+  document.querySelectorAll('.toggle-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      const idx=parseInt(btn.getAttribute('data-idx'));
+      const active=btn.classList.toggle('active');
+      if(pChart&&pChart.data.datasets[idx]!==undefined){
+        pChart.data.datasets[idx].hidden=!active;
+        pChart.update();
+      }
+    });
+  });
+}
+
 function makeBgPlugin(id,zones,labels){
   return{id:id,beforeDraw:function(chart){
     const ca=chart.chartArea,sc=chart.scales;
@@ -382,13 +397,19 @@ function renderCharts(data){
   data.forEach(function(e,i){const t=e.g<0?'n':'p';if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}});
   const xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:14},grid:{color:gc}};
 
-  if(pChart)pChart.destroy();
+  // preserve toggle states across redraws
+  const hidden=[false,false,false,false,false];
+  if(pChart){
+    pChart.data.datasets.forEach(function(ds,i){if(ds.hidden)hidden[i]=true;});
+    pChart.destroy();
+  }
+
   pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels:labels,datasets:[
-    {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
-    {label:'QQQ',data:qqqD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yQ',backgroundColor:'transparent',spanGaps:true},
-    {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent'},
-    {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
-    {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true}
+    {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent',hidden:hidden[0]},
+    {label:'QQQ',data:qqqD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yQ',backgroundColor:'transparent',spanGaps:true,hidden:hidden[1]},
+    {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent',hidden:hidden[2]},
+    {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false,hidden:hidden[3]},
+    {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true,hidden:hidden[4]}
   ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
       if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
@@ -513,7 +534,14 @@ function buildUI(data){
     '<div class="card"><div class="cl">Daily signal insight — '+last.d+'</div><div class="insight-grid">'+insightHTML+'</div></div>'+
     '<div class="card">'+
       '<div class="cl">SPY + QQQ price · VIX · 200MA · call wall</div>'+
-      '<div class="leg"><span class="li"><span class="ll" style="background:#378ADD"></span>SPY (left)</span><span class="li"><span class="ll" style="background:#9b59b6"></span>QQQ (right)</span><span class="li"><span class="ll" style="background:#E24B4A"></span>VIX</span><span class="li"><span class="ll" style="background:#00BCD4"></span>200MA</span><span class="li"><span class="ll" style="background:#FF6B00"></span>Call wall</span><span class="li"><span class="lb" style="background:rgba(226,75,74,0.6)"></span>Neg GEX</span><span class="li"><span class="lb" style="background:rgba(99,153,34,0.55)"></span>Pos GEX</span></div>'+
+      '<div class="leg">'+
+        '<span class="toggle-btn active" data-idx="0" style="--tc:#378ADD">SPY</span>'+
+        '<span class="toggle-btn active" data-idx="1" style="--tc:#9b59b6">QQQ</span>'+
+        '<span class="toggle-btn active" data-idx="2" style="--tc:#E24B4A">VIX</span>'+
+        '<span class="toggle-btn active" data-idx="3" style="--tc:#FF6B00">Call wall</span>'+
+        '<span class="toggle-btn active" data-idx="4" style="--tc:#00BCD4">200MA</span>'+
+        '<span style="font-size:11px;color:#bbb;margin-left:4px">click to hide/show</span>'+
+      '</div>'+
       '<div class="range-row"><span style="font-size:11px;color:#888;white-space:nowrap">\u25c4 Scroll history</span><input type="range" id="rangeSlider" min="'+WIN+'" max="'+total+'" value="'+total+'" step="1"><span class="range-label" id="rangeLabel">—</span></div>'+
       '<div style="position:relative;width:100%;height:260px"><canvas id="c1"></canvas></div>'+
       '<div style="position:relative;width:100%;height:110px;margin-top:8px"><canvas id="c2"></canvas></div>'+
@@ -521,7 +549,7 @@ function buildUI(data){
     '</div>'+
     '<div class="card">'+
       '<div class="cl">RSI-14 · SKEW · VIX term spread</div>'+
-      '<div class="leg"><span class="li"><span class="ll" style="background:#3B6D11"></span>RSI-14 (left)</span><span class="li"><span class="ll" style="background:#9b59b6"></span>SKEW (right)</span><span class="li"><span class="lb" style="background:rgba(163,45,45,0.15)"></span>Oversold &lt;30</span><span class="li"><span class="lb" style="background:rgba(186,117,23,0.15)"></span>Overbought &gt;70</span></div>'+
+      '<div class="leg"><span style="font-size:11px;color:#3B6D11;font-weight:500">RSI-14 (left)</span><span style="font-size:11px;color:#9b59b6;font-weight:500;margin-left:8px">SKEW (right)</span><span class="lb" style="background:rgba(163,45,45,0.25);margin-left:8px"></span><span style="font-size:11px;color:#888">Oversold &lt;30</span><span class="lb" style="background:rgba(186,117,23,0.25);margin-left:8px"></span><span style="font-size:11px;color:#888">Overbought &gt;70</span></div>'+
       '<div style="position:relative;width:100%;height:280px"><canvas id="c4"></canvas></div>'+
       '<div style="position:relative;width:100%;height:120px;margin-top:16px"><canvas id="c5"></canvas></div>'+
     '</div>'+
@@ -540,6 +568,7 @@ function buildUI(data){
     renderSparklines(ALL_DATA);
     var sl=document.getElementById('rangeSlider');
     if(sl)sl.addEventListener('input',function(){updateCharts();});
+    wireToggles();
   },50);
 }
 
