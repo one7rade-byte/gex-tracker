@@ -83,7 +83,49 @@ def load_mag7_trend(ticker, days=20):
 
 # ── News fetchers ─────────────────────────────────────────────────────────────
 
-def fetch_yahoo_news(symbol, max_items=6):
+# High-impact macro keywords
+HIGH_IMPACT_MACRO_KW = [
+    "fed rate","federal reserve","rate decision","fomc","interest rate",
+    "cpi report","inflation data","pce data","jobs report","nonfarm payroll",
+    "gdp report","recession","rate hike","rate cut","tariff","trade war",
+    "earnings miss","earnings beat","guidance cut","guidance raise",
+    "market crash","circuit breaker","vix spike","volatility spike",
+    "bank failure","banking crisis","credit downgrade","debt ceiling",
+    "geopolitical","oil shock","sanctions","default","bankruptcy major",
+]
+
+TICKER_KEYWORDS = {
+    "AAPL":  ["apple","aapl"],
+    "MSFT":  ["microsoft","msft","azure","copilot"],
+    "NVDA":  ["nvidia","nvda","gpu","blackwell","h100"],
+    "GOOGL": ["google","googl","alphabet","gemini","waymo","youtube"],
+    "META":  ["meta","facebook","instagram","zuckerberg","llama"],
+    "AMZN":  ["amazon","amzn","aws","alexa","prime"],
+    "TSLA":  ["tesla","tsla","elon","musk","cybertruck"],
+    "SPY":   ["s&p","s&p 500","sp500","spy","dow jones","stock market","broad market"],
+    "QQQ":   ["nasdaq","qqq","tech stocks","technology sector"],
+}
+
+def extract_pub_date(item_text):
+    m = re.search(r'<pubDate>(.*?)</pubDate>', item_text)
+    if not m: return None
+    try:
+        from email.utils import parsedate_to_datetime
+        return parsedate_to_datetime(m.group(1).strip()).strftime("%Y-%m-%d")
+    except:
+        dm = re.search(r'(\d{1,2} \w{3} \d{4})', m.group(1))
+        return dm.group(1) if dm else None
+
+def tag_tickers(title, summary=""):
+    text = (title + " " + summary).lower()
+    found = [t for t, kws in TICKER_KEYWORDS.items() if any(kw in text for kw in kws)]
+    return found if found else ["MARKET"]
+
+def is_high_impact(title, summary=""):
+    text = (title + " " + summary).lower()
+    return any(kw in text for kw in HIGH_IMPACT_MACRO_KW)
+
+def fetch_yahoo_news(symbol, max_items=10):
     headlines = []
     try:
         url = f"https://feeds.finance.yahoo.com/rss/2.0/headline?s={symbol}&region=US&lang=en-US"
@@ -91,21 +133,37 @@ def fetch_yahoo_news(symbol, max_items=6):
         for item in re.findall(r'<item>(.*?)</item>', r.text, re.DOTALL)[:max_items]:
             title = re.search(r'<title><!\[CDATA\[(.*?)\]\]></title>', item) or re.search(r'<title>(.*?)</title>', item)
             desc  = re.search(r'<description><!\[CDATA\[(.*?)\]\]></description>', item) or re.search(r'<description>(.*?)</description>', item)
+            link  = re.search(r'<link>(.*?)</link>', item) or re.search(r'<guid>(.*?)</guid>', item)
             if title:
-                headlines.append({"title": title.group(1).strip(),
-                                   "summary": desc.group(1).strip()[:200] if desc else ""})
+                t = title.group(1).strip()
+                s = desc.group(1).strip()[:300] if desc else ""
+                l = link.group(1).strip() if link else ""
+                headlines.append({
+                    "title": t, "summary": s, "link": l,
+                    "pub_date":    extract_pub_date(item),
+                    "tickers":     tag_tickers(t, s),
+                    "high_impact": is_high_impact(t, s),
+                })
     except Exception as e:
         print(f"  News fetch failed ({symbol}): {e}")
     return headlines
 
 def fetch_market_news():
-    seen, out = set(), []
-    for sym in ["SPY", "%5EGSPC"]:
-        for h in fetch_yahoo_news(sym, 6):
+    from datetime import datetime, timedelta
+    cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    seen, all_h = set(), []
+    for sym in ["SPY", "%5EGSPC", "%5EVIX"]:
+        for h in fetch_yahoo_news(sym, 10):
             if h["title"] not in seen:
                 seen.add(h["title"])
-                out.append(h)
-    return out[:10]
+                all_h.append(h)
+    recent     = [h for h in all_h if not h.get("pub_date") or h["pub_date"] >= cutoff]
+    high_imp   = [h for h in recent if h["high_impact"]]
+    normal     = [h for h in recent if not h["high_impact"]]
+    result     = high_imp[:6] + normal[:4]
+    print(f"  Market news: {len(result)} total ({len(high_imp)} high impact, last 7 days)")
+    return result[:10]
+
 
 # ── News classifier ───────────────────────────────────────────────────────────
 
@@ -458,7 +516,7 @@ def main():
             "rsi_dir":d.get("trend",{}).get("rsi_direction",""),
             "days_oversold":d.get("trend",{}).get("days_oversold",0),
             "headlines":d.get("headlines",[])} for t,d in mag7_data.items()},
-        "macro_headlines":[h["title"] for h in macro_headlines[:5]],
+        "macro_headlines":[{"title":h["title"],"link":h.get("link",""),"pub_date":h.get("pub_date",""),"tickers":h.get("tickers",["MARKET"]),"high_impact":h.get("high_impact",False)} for h in macro_headlines[:8]],
     }
 
     with open(INTEL_JSON,"w",encoding="utf-8") as f:
