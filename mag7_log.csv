@@ -1,0 +1,379 @@
+date,ticker,spot_price,rsi_14,ma_200,above_200ma,rsi_pct,iv_pct,pc_pct,iv_current,pc_ratio,gex_b,gex_regime,opportunity_score,signal,signal_detail
+2026-03-30,AAPL,246.63,27.96,248.29,False,9.5,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 10%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-30,AMZN,200.95,36.66,224.61,False,18.3,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 18%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-30,GOOGL,273.5,20.7,263.23,True,2.8,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 3%) | Above 200MA — uptrend intact [price-based only]
+2026-03-30,META,536.38,19.48,686.81,False,2.3,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 2%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-30,MSFT,358.96,12.4,478.51,False,0.9,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 1%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-30,NVDA,165.17,26.04,179.34,False,1.4,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 1%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-30,TSLA,355.28,30.59,396.22,False,9.3,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 9%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-31,AAPL,253.79,41.08,248.56,True,29.8,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 30%) | Above 200MA — uptrend intact [price-based only]
+2026-03-31,AMZN,208.27,46.07,224.59,False,38.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-31,GOOGL,287.56,34.82,263.79,True,13.4,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 13%) | Above 200MA — uptrend intact [price-based only]
+2026-03-31,META,572.13,31.84,686.21,False,14.1,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 14%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-31,MSFT,370.17,26.09,477.97,False,7.9,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 8%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-31,NVDA,174.4,38.1,179.49,False,13.9,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 14%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-03-31,TSLA,371.75,35.11,396.48,False,14.8,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 15%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-01,AAPL,255.63,49.82,248.86,True,44.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-01,AMZN,210.57,50.95,224.58,False,47.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-01,GOOGL,297.39,45.86,264.4,True,33.9,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 34%) | Above 200MA — uptrend intact [price-based only]
+2026-04-01,META,579.23,36.49,685.69,False,23.0,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 23%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-01,MSFT,369.37,26.91,477.44,False,9.9,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 10%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-01,NVDA,175.75,42.19,179.65,False,25.1,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 25%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-01,TSLA,381.26,44.17,396.76,False,34.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-02,AAPL,255.92,59.42,249.15,True,63.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-02,AMZN,209.77,51.95,224.55,False,49.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-02,GOOGL,295.77,45.64,265.0,True,33.1,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 33%) | Above 200MA — uptrend intact [price-based only]
+2026-04-02,META,574.46,40.11,685.05,False,29.2,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 29%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-02,MSFT,373.46,33.79,476.92,False,21.6,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 22%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-02,NVDA,177.39,46.9,179.82,False,38.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-02,TSLA,360.59,38.64,396.92,False,22.5,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 22%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-06,AAPL,258.86,59.73,249.46,True,63.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-06,AMZN,212.79,50.99,224.54,False,47.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-06,GOOGL,299.99,46.32,265.62,True,35.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-06,META,573.02,35.38,684.43,False,20.9,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 21%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-06,MSFT,372.88,28.95,476.39,False,14.2,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 14%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-06,NVDA,177.64,43.57,179.99,False,28.0,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 28%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-06,TSLA,352.82,34.53,397.1,False,14.0,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 14%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-07,AAPL,253.5,48.96,249.75,True,43.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-07,AMZN,213.77,48.58,224.55,False,42.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-07,GOOGL,305.46,46.39,266.28,True,35.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-07,META,575.05,37.02,683.83,False,23.8,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 24%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-07,MSFT,372.29,28.93,475.85,False,14.2,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 14%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-07,NVDA,178.1,45.5,180.15,False,33.9,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-07,TSLA,346.65,31.28,397.22,False,10.8,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 11%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-08,AAPL,258.9,62.41,250.04,True,70.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-08,AMZN,221.25,60.83,224.6,False,69.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-08,GOOGL,317.32,55.71,267.03,True,50.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-08,META,612.42,49.24,683.48,False,46.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-08,MSFT,374.33,35.15,475.33,False,24.7,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 25%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-08,NVDA,182.08,51.87,180.34,True,50.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-08,TSLA,343.25,31.99,397.33,False,11.6,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 12%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-09,AAPL,260.49,65.7,250.33,True,75.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-09,AMZN,233.65,69.5,224.73,True,87.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-09,GOOGL,318.49,56.69,267.8,True,52.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-09,META,628.39,54.91,683.13,False,54.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-09,MSFT,373.07,36.07,474.77,False,25.7,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 26%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-09,NVDA,183.91,55.95,180.54,True,58.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-09,TSLA,345.62,36.39,397.31,False,17.3,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 17%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-10,AAPL,260.48,67.47,250.63,True,79.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-10,AMZN,238.38,75.33,224.86,True,93.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-10,GOOGL,317.24,60.14,268.55,True,63.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-10,META,629.86,58.65,682.71,False,64.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-10,MSFT,370.87,39.49,474.17,False,31.4,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 31%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-10,NVDA,188.63,68.17,180.74,True,81.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-10,TSLA,348.95,41.97,397.35,False,29.8,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 30%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-13,AAPL,259.2,61.5,250.92,True,67.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-13,AMZN,239.89,74.03,225.0,True,93.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-13,GOOGL,321.31,61.58,269.3,True,65.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-13,META,634.53,57.49,682.34,False,61.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-13,MSFT,384.37,51.06,473.63,False,55.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-13,NVDA,189.31,66.44,180.92,True,78.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-13,TSLA,352.42,36.95,397.48,False,18.6,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 19%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-14,AAPL,258.83,60.65,251.21,True,65.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-14,AMZN,249.02,80.67,225.16,True,98.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-14,GOOGL,332.91,75.56,270.1,True,87.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-14,META,662.49,65.79,682.03,False,77.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-14,MSFT,393.11,66.12,473.11,False,79.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-14,NVDA,196.51,72.05,181.12,True,88.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-14,TSLA,364.2,42.06,397.67,False,30.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 30%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-15,AAPL,266.43,67.1,251.54,True,78.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-15,AMZN,248.5,78.67,225.28,True,97.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-15,GOOGL,337.12,76.61,270.89,True,88.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-15,META,671.58,66.86,681.72,False,79.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-15,MSFT,411.22,75.25,472.69,False,92.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-15,NVDA,198.87,71.38,181.33,True,87.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-15,TSLA,391.95,52.09,398.01,False,52.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-16,AAPL,263.4,62.18,251.83,True,68.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-16,AMZN,249.7,84.44,225.43,True,99.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-16,GOOGL,336.02,85.37,271.69,True,95.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-16,META,676.87,84.88,681.41,False,95.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-16,MSFT,420.26,82.49,472.3,False,97.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-16,NVDA,198.35,83.64,181.53,True,98.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-16,TSLA,388.9,56.33,398.37,False,60.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-17,AAPL,270.23,73.36,252.14,True,86.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-17,AMZN,250.56,97.55,225.58,True,100.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-17,GOOGL,341.68,93.75,272.52,True,100.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-17,META,688.55,96.46,681.26,True,98.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-17,MSFT,422.79,92.94,471.96,False,98.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-17,NVDA,201.68,92.81,181.77,True,100.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-17,TSLA,400.62,64.47,398.87,True,76.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-20,AAPL,273.05,78.4,252.44,True,92.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-20,AMZN,248.28,93.4,225.73,True,99.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-20,GOOGL,337.42,89.76,273.31,True,97.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-20,META,670.91,86.91,681.04,False,95.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-20,MSFT,418.07,87.22,471.59,False,98.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-20,NVDA,202.06,98.63,182.0,True,100.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-20,TSLA,392.5,63.73,399.25,False,74.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-21,AAPL,266.17,63.39,252.71,True,71.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-21,AMZN,249.91,92.63,225.86,True,99.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-21,GOOGL,332.29,81.3,274.08,True,92.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-21,META,668.84,82.55,680.79,False,94.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-21,MSFT,424.16,86.34,471.22,False,97.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-21,NVDA,199.88,91.26,182.2,True,99.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-21,TSLA,386.42,55.86,399.61,False,59.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-22,AAPL,273.17,67.06,253.02,True,78.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-22,AMZN,255.36,93.08,226.02,True,99.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-22,GOOGL,339.32,80.54,274.89,True,92.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-22,META,674.72,82.41,680.57,False,94.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-22,MSFT,432.92,88.63,470.89,False,98.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-22,NVDA,202.5,91.6,182.42,True,99.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-22,TSLA,387.51,52.68,400.07,False,54.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-23,AAPL,273.43,67.04,253.34,True,78.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-23,AMZN,255.08,94.02,226.2,True,99.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-23,GOOGL,338.89,81.96,275.71,True,92.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-23,META,659.15,76.78,680.27,False,90.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-23,MSFT,415.75,72.18,470.49,False,88.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-23,NVDA,199.64,83.34,182.62,True,97.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-23,TSLA,373.72,55.97,400.45,False,60.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-24,AAPL,271.06,62.01,253.64,True,67.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-24,AMZN,263.99,94.63,226.4,True,99.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-24,GOOGL,344.4,82.3,276.55,True,92.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-24,META,675.03,79.56,679.98,False,93.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-24,MSFT,424.62,74.97,470.1,False,90.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-24,NVDA,208.27,86.68,182.85,True,97.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-24,TSLA,376.3,61.21,400.86,False,71.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-27,AAPL,267.61,64.43,253.92,True,72.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-27,AMZN,261.12,89.96,226.6,True,98.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-27,GOOGL,350.34,82.42,277.42,True,92.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-27,META,678.62,79.74,679.73,False,93.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-27,MSFT,424.82,75.44,469.71,False,91.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-27,NVDA,216.61,88.8,183.11,True,98.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-27,TSLA,378.67,65.87,401.2,False,78.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-28,AAPL,270.71,62.67,254.21,True,69.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-28,AMZN,259.7,86.14,226.77,True,98.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-28,GOOGL,349.78,78.02,278.26,True,88.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-28,META,671.34,70.45,679.5,False,82.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-28,MSFT,429.25,76.0,469.34,False,91.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-28,NVDA,213.17,81.67,183.35,True,95.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-28,TSLA,376.02,66.36,401.51,False,79.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-29,AAPL,270.17,60.63,254.52,True,63.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-29,AMZN,263.04,83.3,226.96,True,97.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-29,GOOGL,349.94,77.63,279.11,True,87.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-29,META,669.12,65.63,679.24,False,75.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-29,MSFT,424.46,73.54,468.95,False,89.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-29,NVDA,209.25,74.76,183.58,True,89.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-29,TSLA,372.8,63.46,401.79,False,74.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-30,AAPL,271.35,61.64,254.83,True,66.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-30,AMZN,265.06,82.21,227.15,True,96.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-30,GOOGL,384.8,87.32,280.12,True,95.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-30,META,611.91,45.18,678.75,False,36.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-30,MSFT,407.78,64.93,468.46,False,75.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-04-30,NVDA,199.57,59.74,183.72,True,63.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-04-30,TSLA,381.63,65.34,402.15,False,77.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-01,AAPL,280.14,69.31,255.18,True,82.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-01,AMZN,268.26,82.9,227.38,True,96.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-01,GOOGL,385.69,86.86,281.13,True,94.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-01,META,608.75,43.01,678.28,False,33.8,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-01,MSFT,414.44,62.87,468.0,False,72.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-01,NVDA,198.45,58.08,183.86,True,59.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-01,TSLA,390.82,67.11,402.49,False,80.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-04,AAPL,276.83,65.75,255.52,True,75.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-04,AMZN,272.05,80.49,227.62,True,95.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-04,GOOGL,383.25,82.19,282.13,True,91.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-04,META,610.41,33.54,677.83,False,16.9,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 17%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-04,MSFT,413.62,59.42,467.51,False,68.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-04,NVDA,198.48,51.99,183.98,True,48.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-04,TSLA,392.51,63.86,402.86,False,74.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-05,AAPL,284.18,65.59,255.88,True,74.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-05,AMZN,273.55,82.32,227.86,True,96.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-05,GOOGL,388.43,82.41,283.15,True,92.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-05,META,604.96,28.45,677.33,False,9.2,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 9%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-05,MSFT,411.38,50.09,467.02,False,51.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-05,NVDA,196.5,47.58,184.1,True,38.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-05,TSLA,389.37,48.34,403.16,False,44.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-06,AAPL,287.51,71.07,256.26,True,85.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-06,AMZN,274.99,82.43,228.08,True,96.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-06,GOOGL,398.04,85.38,284.19,True,94.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-06,META,612.88,29.65,676.83,False,12.2,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 12%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-06,MSFT,413.96,46.36,466.54,False,43.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-06,NVDA,207.83,57.92,184.29,True,59.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-06,TSLA,398.73,55.86,403.51,False,59.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-07,AAPL,287.44,67.06,256.62,True,78.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-07,AMZN,271.17,74.57,228.3,True,89.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-07,GOOGL,397.99,84.31,285.22,True,93.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-07,META,616.81,26.0,676.39,False,6.5,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 6%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-07,MSFT,420.77,48.89,466.12,False,50.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-07,NVDA,211.5,58.16,184.51,True,60.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-07,TSLA,411.79,56.56,403.91,True,60.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-08,AAPL,293.32,68.94,257.02,True,81.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-08,AMZN,272.68,79.63,228.52,True,94.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-08,GOOGL,400.8,89.32,286.27,True,97.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-08,META,609.63,27.96,675.87,False,8.9,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 9%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-08,MSFT,415.12,48.39,465.66,False,48.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-08,NVDA,215.2,60.35,184.73,True,65.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-08,TSLA,428.35,69.15,404.39,True,82.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-11,AAPL,292.68,78.04,257.41,True,92.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-11,AMZN,268.99,72.06,228.71,True,87.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-11,GOOGL,388.64,82.15,287.26,True,90.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-11,META,598.86,26.31,675.29,False,7.8,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 8%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-11,MSFT,412.66,43.47,465.17,False,38.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-11,NVDA,219.44,64.92,184.96,True,75.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-11,TSLA,445.0,78.11,405.08,True,93.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-12,AAPL,294.8,75.51,257.82,True,89.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-12,AMZN,265.82,62.77,228.88,True,69.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-12,GOOGL,387.35,79.33,288.23,True,88.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-12,META,603.0,25.43,674.74,False,6.1,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 6%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-12,MSFT,407.77,35.07,464.64,False,23.2,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 23%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-12,NVDA,220.78,64.22,185.2,True,73.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-12,TSLA,433.45,70.04,405.67,True,83.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-13,AAPL,298.87,77.53,258.24,True,91.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-13,AMZN,270.13,66.73,229.07,True,78.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-13,GOOGL,402.62,82.94,289.28,True,92.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-13,META,616.63,35.24,674.24,False,20.7,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 21%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-13,MSFT,405.21,42.43,464.1,False,34.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-13,NVDA,225.83,69.7,185.44,True,82.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-13,TSLA,445.27,81.75,406.27,True,97.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-14,AAPL,298.21,80.51,258.68,True,94.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-14,AMZN,267.22,54.14,229.25,True,51.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-14,GOOGL,401.07,80.54,290.3,True,89.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-14,META,618.43,28.22,673.83,False,9.9,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 10%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-14,MSFT,409.43,38.31,463.59,False,28.0,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 28%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-14,NVDA,235.74,70.27,185.74,True,83.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-14,TSLA,443.3,79.89,406.88,True,95.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-15,AAPL,300.23,87.88,259.13,True,97.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-15,AMZN,264.14,53.85,229.42,True,51.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-15,GOOGL,396.78,75.48,291.31,True,83.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-15,META,614.23,25.34,673.42,False,6.0,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 6%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-15,MSFT,421.92,48.12,463.13,False,48.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-15,NVDA,225.32,56.24,185.97,True,56.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-15,TSLA,422.24,66.66,407.4,True,79.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-18,AAPL,297.84,82.03,259.58,True,95.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-18,AMZN,264.86,56.7,229.57,True,57.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-18,GOOGL,396.94,75.99,292.33,True,83.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-18,META,611.21,26.19,672.61,False,8.2,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 8%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-18,MSFT,423.54,46.17,462.58,False,43.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-18,NVDA,222.32,56.59,186.19,True,57.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-18,TSLA,409.99,62.1,407.9,True,70.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-19,AAPL,298.97,83.54,260.07,True,96.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-19,AMZN,259.34,45.45,229.79,True,34.3,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 34%) | Above 200MA — uptrend intact [price-based only]
+2026-05-19,GOOGL,387.66,68.89,293.32,True,73.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-19,META,602.61,24.93,671.88,False,5.6,,,,,,,3,NEUTRAL — mild dip in own history,"RSI extremely oversold vs own history (bottom 6%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-19,MSFT,417.42,45.36,462.05,False,42.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-19,NVDA,220.61,58.45,186.43,True,60.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-19,TSLA,404.11,60.95,408.41,False,68.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-20,AAPL,302.25,84.3,260.56,True,97.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-20,AMZN,265.01,49.94,230.06,True,43.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-20,GOOGL,388.91,53.1,294.29,True,43.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-20,META,605.06,45.6,671.02,False,39.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-20,MSFT,421.06,60.58,461.48,False,70.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-20,NVDA,223.47,69.8,186.65,True,82.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-20,TSLA,417.26,62.09,408.95,True,70.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-21,AAPL,304.99,81.87,261.07,True,94.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-21,AMZN,268.46,50.22,230.33,True,43.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-21,GOOGL,387.66,51.48,295.26,True,41.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-21,META,607.38,49.11,670.24,False,45.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-21,MSFT,419.09,54.0,460.93,False,59.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-21,NVDA,219.51,66.66,186.85,True,77.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-21,TSLA,417.85,59.74,409.5,True,66.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-22,AAPL,308.82,90.48,261.55,True,98.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-22,AMZN,266.32,43.33,230.55,True,29.4,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 29%) | Above 200MA — uptrend intact [price-based only]
+2026-05-22,GOOGL,382.97,49.8,296.19,True,38.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-22,META,610.26,49.9,669.43,False,47.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-22,MSFT,418.57,54.28,460.4,False,60.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-22,NVDA,215.33,62.51,187.03,True,69.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-22,TSLA,426.01,61.54,410.03,True,69.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-26,AAPL,308.33,86.98,261.99,True,97.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-26,AMZN,265.29,40.27,230.77,True,23.1,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 23%) | Above 200MA — uptrend intact [price-based only]
+2026-05-26,GOOGL,388.88,50.32,297.15,True,40.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-26,META,612.34,54.93,668.68,False,54.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-26,MSFT,416.03,54.0,459.88,False,59.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-26,NVDA,214.86,63.94,187.2,True,72.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-26,TSLA,433.59,64.78,410.58,True,76.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-27,AAPL,310.85,86.65,262.4,True,97.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-27,AMZN,271.85,46.7,231.01,True,36.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-27,GOOGL,388.83,42.33,298.09,True,25.0,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 25%) | Above 200MA — uptrend intact [price-based only]
+2026-05-27,META,635.26,62.44,668.01,False,69.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-27,MSFT,412.67,48.9,459.33,False,50.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-27,NVDA,212.6,54.2,187.35,True,52.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-27,TSLA,440.36,64.16,411.14,True,74.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-28,AAPL,312.51,87.5,262.83,True,97.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-28,AMZN,274.0,53.08,231.27,True,50.3,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-28,GOOGL,390.13,43.58,299.04,True,26.8,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 27%) | Above 200MA — uptrend intact [price-based only]
+2026-05-28,META,635.29,60.74,667.36,False,66.8,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-28,MSFT,426.99,54.69,458.86,False,61.1,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-28,NVDA,214.25,52.51,187.51,True,47.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-28,TSLA,442.1,61.17,411.65,True,68.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-29,AAPL,312.06,83.46,263.24,True,95.1,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-29,AMZN,270.64,47.86,231.52,True,38.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-05-29,GOOGL,380.34,35.01,299.92,True,13.1,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 13%) | Above 200MA — uptrend intact [price-based only]
+2026-05-29,META,632.51,64.02,666.57,False,71.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-29,MSFT,450.24,70.91,458.46,False,86.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-05-29,NVDA,211.14,46.25,187.65,True,33.1,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 33%) | Above 200MA — uptrend intact [price-based only]
+2026-05-29,TSLA,435.79,52.96,412.13,True,52.7,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-01,AAPL,306.31,70.58,263.6,True,81.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-01,AMZN,261.26,42.77,231.7,True,27.8,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 28%) | Above 200MA — uptrend intact [price-based only]
+2026-06-01,GOOGL,376.37,39.78,300.79,True,20.0,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 20%) | Above 200MA — uptrend intact [price-based only]
+2026-06-01,META,600.47,50.78,665.67,False,48.4,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-01,MSFT,460.52,76.07,458.16,True,92.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-01,NVDA,224.36,53.9,187.87,True,51.8,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-01,TSLA,415.88,38.69,412.51,True,21.9,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 22%) | Above 200MA — uptrend intact [price-based only]
+2026-06-02,AAPL,315.2,75.58,264.01,True,87.2,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-02,AMZN,256.52,41.55,231.83,True,24.8,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 25%) | Above 200MA — uptrend intact [price-based only]
+2026-06-02,GOOGL,361.85,32.6,301.59,True,10.9,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 11%) | Above 200MA — uptrend intact [price-based only]
+2026-06-02,META,597.63,47.36,664.75,False,41.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-02,MSFT,441.31,65.81,457.76,False,77.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-02,NVDA,222.82,51.61,188.07,True,45.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-02,TSLA,423.74,46.12,412.95,True,37.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-03,AAPL,310.26,63.98,264.41,True,68.6,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-03,AMZN,250.02,32.42,231.93,True,11.7,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 12%) | Above 200MA — uptrend intact [price-based only]
+2026-06-03,GOOGL,358.99,14.16,302.36,True,0.4,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 0%) | Above 200MA — uptrend intact [price-based only]
+2026-06-03,META,622.98,52.8,663.94,False,50.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-03,MSFT,427.34,59.42,457.29,False,69.2,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-03,NVDA,214.75,41.65,188.24,True,21.2,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 21%) | Above 200MA — uptrend intact [price-based only]
+2026-06-03,TSLA,423.7,40.48,413.42,True,24.3,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 24%) | Above 200MA — uptrend intact [price-based only]
+2026-06-04,AAPL,311.23,65.85,264.81,True,72.4,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-04,AMZN,253.79,38.44,232.04,True,19.9,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 20%) | Above 200MA — uptrend intact [price-based only]
+2026-06-04,GOOGL,372.19,30.09,303.21,True,9.4,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 9%) | Above 200MA — uptrend intact [price-based only]
+2026-06-04,META,627.57,53.94,663.24,False,52.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-04,MSFT,428.05,58.17,456.85,False,67.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-04,NVDA,218.66,35.85,188.43,True,9.0,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 9%) | Above 200MA — uptrend intact [price-based only]
+2026-06-04,TSLA,418.45,39.34,413.83,True,22.8,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 23%) | Above 200MA — uptrend intact [price-based only]
+2026-06-05,AAPL,307.34,58.28,265.19,True,55.5,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-05,AMZN,246.03,35.57,232.13,True,14.8,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 15%) | Above 200MA — uptrend intact [price-based only]
+2026-06-05,GOOGL,368.53,30.35,304.04,True,9.6,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 10%) | Above 200MA — uptrend intact [price-based only]
+2026-06-05,META,593.0,42.75,662.45,False,34.2,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-05,MSFT,416.67,47.67,456.38,False,45.5,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-05,NVDA,205.1,34.08,188.57,True,7.1,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 7%) | Above 200MA — uptrend intact [price-based only]
+2026-06-05,TSLA,391.0,37.29,414.14,False,17.7,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 18%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-08,AAPL,301.54,53.99,265.57,True,46.9,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-08,AMZN,245.22,34.37,232.24,True,13.3,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 13%) | Above 200MA — uptrend intact [price-based only]
+2026-06-08,GOOGL,363.31,28.15,304.86,True,7.3,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 7%) | Above 200MA — uptrend intact [price-based only]
+2026-06-08,META,585.39,41.45,661.64,False,31.5,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 32%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-08,MSFT,411.74,44.92,455.91,False,40.0,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-08,NVDA,208.64,39.32,188.74,True,15.4,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 15%) | Above 200MA — uptrend intact [price-based only]
+2026-06-08,TSLA,408.95,49.6,414.57,False,45.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-09,AAPL,290.55,42.51,265.9,True,28.7,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 29%) | Above 200MA — uptrend intact [price-based only]
+2026-06-09,AMZN,244.19,37.02,232.35,True,17.3,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 17%) | Above 200MA — uptrend intact [price-based only]
+2026-06-09,GOOGL,364.26,32.95,305.68,True,12.3,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 12%) | Above 200MA — uptrend intact [price-based only]
+2026-06-09,META,584.59,43.71,660.86,False,35.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-09,MSFT,403.41,44.08,455.41,False,38.7,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-09,NVDA,208.19,40.11,188.91,True,17.0,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 17%) | Above 200MA — uptrend intact [price-based only]
+2026-06-09,TSLA,396.68,47.25,414.95,False,40.3,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-10,AAPL,291.58,40.11,266.22,True,24.9,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 25%) | Above 200MA — uptrend intact [price-based only]
+2026-06-10,AMZN,238.0,27.06,232.39,True,6.8,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 7%) | Above 200MA — uptrend intact [price-based only]
+2026-06-10,GOOGL,356.38,28.39,306.44,True,7.7,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 8%) | Above 200MA — uptrend intact [price-based only]
+2026-06-10,META,570.98,38.97,659.95,False,27.4,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 27%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-10,MSFT,397.36,40.19,454.86,False,30.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 30%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-10,NVDA,200.42,32.97,189.02,True,6.4,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 6%) | Above 200MA — uptrend intact [price-based only]
+2026-06-10,TSLA,381.59,36.98,415.16,False,17.2,,,,,,,2,NEUTRAL — mild dip in own history,"RSI very oversold vs own history (bottom 17%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-11,AAPL,295.63,41.53,266.56,True,27.7,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 28%) | Above 200MA — uptrend intact [price-based only]
+2026-06-11,AMZN,241.51,27.13,232.46,True,7.0,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 7%) | Above 200MA — uptrend intact [price-based only]
+2026-06-11,GOOGL,357.77,30.18,307.18,True,9.9,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 10%) | Above 200MA — uptrend intact [price-based only]
+2026-06-11,META,568.43,37.41,659.02,False,24.6,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 25%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-11,MSFT,390.34,38.58,454.29,False,27.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 27%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-11,NVDA,204.87,39.26,189.14,True,15.1,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 15%) | Above 200MA — uptrend intact [price-based only]
+2026-06-11,TSLA,399.15,43.93,415.42,False,33.5,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 34%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-12,AAPL,291.13,34.19,266.87,True,15.1,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 15%) | Above 200MA — uptrend intact [price-based only]
+2026-06-12,AMZN,238.55,26.76,232.51,True,6.6,,,,,,,4,WATCH — price-based setup (options data from today forward),RSI extremely oversold vs own history (bottom 7%) | Above 200MA — uptrend intact [price-based only]
+2026-06-12,GOOGL,359.68,33.96,307.94,True,12.8,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 13%) | Above 200MA — uptrend intact [price-based only]
+2026-06-12,META,566.98,35.88,658.09,False,21.9,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 22%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-12,MSFT,390.74,38.93,453.73,False,28.7,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 29%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-12,NVDA,205.19,42.12,189.26,True,23.3,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 23%) | Above 200MA — uptrend intact [price-based only]
+2026-06-12,TSLA,406.43,43.6,415.69,False,33.3,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 33%) | Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-15,AAPL,296.42,40.19,267.2,True,25.4,,,,,,,2,NEUTRAL — mild dip in own history,RSI oversold vs own history (bottom 25%) | Above 200MA — uptrend intact [price-based only]
+2026-06-15,AMZN,246.02,35.44,232.59,True,14.6,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 15%) | Above 200MA — uptrend intact [price-based only]
+2026-06-15,GOOGL,369.35,37.21,308.75,True,17.3,,,,,,,3,NEUTRAL — mild dip in own history,RSI very oversold vs own history (bottom 17%) | Above 200MA — uptrend intact [price-based only]
+2026-06-15,META,593.48,44.69,657.32,False,37.9,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-15,MSFT,399.76,43.85,453.2,False,38.6,,,,,,,0,NO SIGNAL — not oversold vs own history,"Below 200MA — downtrend, scale in slowly [price-based only]"
+2026-06-15,NVDA,212.45,48.31,189.41,True,40.0,,,,,,,1,NO SIGNAL — not oversold vs own history,Above 200MA — uptrend intact [price-based only]
+2026-06-15,TSLA,411.15,42.53,416.0,False,29.7,,,,,,,1,NO SIGNAL — not oversold vs own history,"RSI oversold vs own history (bottom 30%) | Below 200MA — downtrend, scale in slowly [price-based only]"
