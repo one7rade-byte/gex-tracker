@@ -1,6 +1,6 @@
 {
   "date": "2026-06-16",
-  "generated_at": "03:18 AM",
+  "generated_at": "03:29 AM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
   "macro_picture": "SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
@@ -111,10 +111,10 @@
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 8,
       "headlines": [
+        "Why SpaceX Stock Skyrocketed Today",
         "Why Summer Is the Best Time to Review Your Estate Plan",
         "Applied Optoelectronics (AAOI) Soars 13% as US-Iran Peace Deal Propels AI Stocks",
-        "Could SpaceX Be More Valuable Than Amazon and Microsoft? Here's What Price Its Stock Would Need to Hit for That to Happen",
-        "Why Palantir Stock Soared Today"
+        "Could SpaceX Be More Valuable Than Amazon and Microsoft? Here's What Price Its Stock Would Need to Hit for That to Happen"
       ]
     },
     "TSLA": {
