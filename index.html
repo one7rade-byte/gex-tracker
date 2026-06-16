@@ -221,8 +221,33 @@ function buildIntelCard(report){
     '</div>';
   }
 
-  const headlines=(report.macro_headlines||[]).slice(0,4).map(function(h){
-    return'<li><span class="news-tag news-macro">macro</span>'+h+'</li>';
+  const rawHeadlines=report.macro_headlines||[];
+  const headlines=rawHeadlines.slice(0,8).map(function(h){
+    // h may be string (old format) or object (new format)
+    const isObj=typeof h==='object'&&h!==null;
+    const title=isObj?h.title:h;
+    const link=isObj&&h.link?h.link:'';
+    const tickers=isObj&&h.tickers?h.tickers:['MARKET'];
+    const himp=isObj?h.high_impact:false;
+    const pubDate=isObj&&h.pub_date?h.pub_date:'';
+    // Ticker pills
+    const tickerPills=tickers.slice(0,3).map(function(t){
+      const isMag7=['AAPL','MSFT','NVDA','GOOGL','META','AMZN','TSLA'].includes(t);
+      const isIndex=['SPY','QQQ','MARKET'].includes(t);
+      const col=isMag7?'#9b59b6':isIndex?'#378ADD':'#888';
+      return'<span style="display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;background:'+col+'18;color:'+col+';font-weight:600;margin-right:3px">'+t+'</span>';
+    }).join('');
+    const impBadge=himp?'<span class="news-tag" style="background:#FCEBEB;color:#791F1F">HIGH IMPACT</span>':'';
+    const titleEl=link
+      ?'<a href="'+link+'" target="_blank" rel="noopener" style="color:#333;text-decoration:none;hover:underline">'+title+'</a>'
+      :'<span>'+title+'</span>';
+    return'<li style="padding:5px 0">'+
+      '<div style="display:flex;align-items:center;gap:4px;margin-bottom:2px">'+
+        impBadge+tickerPills+
+        (pubDate?'<span style="font-size:9px;color:#ccc;margin-left:auto">'+pubDate+'</span>':'')+
+      '</div>'+
+      '<div style="font-size:11px;color:#444;line-height:1.5">'+titleEl+'</div>'+
+    '</li>';
   }).join('');
 
   return'<div class="intel-card">'+
@@ -240,7 +265,7 @@ function buildIntelCard(report){
       '<div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Mag 7 snapshot</div>'+
       '<div>'+snapHTML+'</div>'+
     '</div>'+
-    (headlines?'<div style="margin-top:10px;padding-top:10px;border-top:0.5px solid #f0ede8"><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Market headlines</div><ul class="intel-news-list">'+headlines+'</ul></div>':'')+
+    (headlines?'<div style="margin-top:10px;padding-top:10px;border-top:0.5px solid #f0ede8"><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">High-impact headlines &nbsp;<span style="font-weight:400;font-size:9px">last 7 days · click to read</span></div><ul class="intel-news-list">'+headlines+'</ul></div>':'')+
   '</div>';
 }
 
