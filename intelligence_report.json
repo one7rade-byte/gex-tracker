@@ -1,6 +1,6 @@
 {
   "date": "2026-06-16",
-  "generated_at": "03:29 AM",
+  "generated_at": "03:30 AM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
   "macro_picture": "SPY GEX is positive at +$8.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
@@ -133,10 +133,53 @@
     }
   },
   "macro_headlines": [
-    "Dow Hits Record High, Nasdaq And S&amp;P 500 Jump On US-Iran Deal And SpaceX Optimism \u2014 SPCX, NVDA, ROKU, CRM, AMZN In Focus",
-    "Stocks Settle Sharply Higher as US-Iran Peace Deal Spurs Optimism",
-    "The Case For Mutual Fund-To-ETF Conversion: Flow Picture",
-    "EHang Rockets 18%, Archer Zooms 10%, Joby Rises 7% as Air Taxi Stocks Fly Higher With the Broader Market",
-    "Palantir Rises 5%, Cloudflare Pops 3% as Investors Pile Into AI Security Plays"
+    {
+      "title": "ETFs That May Provide Investors Protection From Market Risks",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-may-investors-protection-market-143500592.html?.tsrc=rss",
+      "pub_date": "2026-06-10",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": true
+    },
+    {
+      "title": "Dow Hits Record High, Nasdaq And S&amp;P 500 Jump On US-Iran Deal And SpaceX Optimism \u2014 SPCX, NVDA, ROKU, CRM, AMZN In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/dow-hits-record-high-nasdaq-and-s-and-p-500-jump-on-us-iran-deal-and-space-x-optimism-spcx-nvda-roku-crm-amzn-in-focus/cZKfwt9R73v?.tsrc=rss",
+      "pub_date": "2026-06-15",
+      "tickers": [
+        "NVDA",
+        "AMZN",
+        "QQQ"
+      ],
+      "high_impact": false
+    },
+    {
+      "title": "Stocks Settle Sharply Higher as US-Iran Peace Deal Spurs Optimism",
+      "link": "https://www.barchart.com/story/news/2480274/stocks-settle-sharply-higher-as-us-iran-peace-deal-spurs-optimism?.tsrc=rss",
+      "pub_date": "2026-06-15",
+      "tickers": [
+        "SPY",
+        "QQQ"
+      ],
+      "high_impact": false
+    },
+    {
+      "title": "The Case For Mutual Fund-To-ETF Conversion: Flow Picture",
+      "link": "http://www.etf.com/sections/advisor-center/case-mutual-fund-etf-conversion-flow-picture?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
+      "pub_date": "2026-06-15",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false
+    },
+    {
+      "title": "EHang Rockets 18%, Archer Zooms 10%, Joby Rises 7% as Air Taxi Stocks Fly Higher With the Broader Market",
+      "link": "https://247wallst.com/investing/2026/06/15/ehang-rockets-18-archer-zooms-10-joby-rises-7-as-air-taxi-stocks-fly-higher-with-the-broader-market/?.tsrc=rss",
+      "pub_date": "2026-06-15",
+      "tickers": [
+        "QQQ"
+      ],
+      "high_impact": false
+    }
   ]
 }
