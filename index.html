@@ -355,12 +355,19 @@ function buildMag7Card(rows){
   const cur=rows.filter(r=>r.d===latest).sort((a,b)=>(b.score||0)-(a.score||0));
   function rsiC(r){if(r===null)return'#aaa';if(r<30)return'#A32D2D';if(r>70)return'#BA7517';return'#333';}
   function scoreC(s){return s>=8?'#27500A':s>=6?'#3B6D11':s>=4?'#BA7517':s>=2?'#d4a017':'#ddd';}
-  function gexBadge(reg){
-    if(reg==='deeply_negative')return'<span style="color:#A32D2D;font-size:10px">Deeply neg</span>';
-    if(reg==='negative')return'<span style="color:#BA7517;font-size:10px">Negative</span>';
-    if(reg==='strongly_positive')return'<span style="color:#27500A;font-size:10px">Strong pos</span>';
-    if(reg==='positive')return'<span style="color:#3B6D11;font-size:10px">Positive</span>';
-    return'<span style="color:#aaa;font-size:10px">—</span>';
+  function fmtGex(val){
+    if(val===null||val===undefined||isNaN(val))return null;
+    const abs=Math.abs(val);
+    // val is stored in $B units; show as $M when small for readability
+    if(abs<1)return(val>=0?'+':'-')+'$'+(abs*1000).toFixed(0)+'M';
+    return(val>=0?'+':'-')+'$'+abs.toFixed(2)+'B';
+  }
+  function gexBadge(reg,val){
+    const col=reg==='deeply_negative'?'#A32D2D':reg==='negative'?'#BA7517':reg==='strongly_positive'?'#27500A':reg==='positive'?'#3B6D11':'#aaa';
+    const label=reg==='deeply_negative'?'Deeply neg':reg==='negative'?'Negative':reg==='strongly_positive'?'Strong pos':reg==='positive'?'Positive':'—';
+    const valStr=fmtGex(val);
+    if(!valStr)return'<span style="color:#aaa;font-size:10px">—</span>';
+    return'<span style="color:'+col+';font-size:11px;font-weight:600">'+valStr+'</span><br><span style="color:'+col+';font-size:9px">'+label+'</span>';
   }
   function obBadge(s){
     if(s>=8)return'<span class="ob ob-s">Strong Buy</span>';
@@ -389,7 +396,7 @@ function buildMag7Card(rows){
       '<td style="color:'+rsiC(r.rsi)+'">'+(r.rsi?r.rsi.toFixed(1):'—')+(r.rsiPct!==null?'<br><span style="font-size:9px;color:#aaa">'+r.rsiPct+'th pct</span>':'')+'</td>'+
       '<td style="color:'+pcC+'">'+(r.pc?r.pc.toFixed(2):'—')+(r.pcPct!==null?'<br><span style="font-size:9px;color:#aaa">'+r.pcPct+'th pct</span>':'')+'</td>'+
       '<td>'+(r.iv?r.iv.toFixed(1)+'%':'—')+(r.ivPct!==null?'<br><span style="font-size:9px;color:#aaa">'+r.ivPct+'th pct</span>':'')+'</td>'+
-      '<td>'+gexBadge(r.gexReg)+'</td>'+
+      '<td>'+gexBadge(r.gexReg,r.gex)+'</td>'+
       '<td style="color:'+maC+';font-size:11px">'+(r.above===true?'\u2713 Above':r.above===false?'\u2717 Below':'—')+'</td>'+
       '<td><div class="sbar"><div class="sbar-track"><div class="sbar-fill" style="width:'+pct+'%;background:'+scC+'"></div></div><span style="font-size:11px;font-weight:600;color:'+scC+'">'+sc+'</span></div></td>'+
       '<td>'+obBadge(sc)+'</td>'+
