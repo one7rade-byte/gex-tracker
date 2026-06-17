@@ -172,6 +172,7 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
 const MAG7_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/mag7_log.csv';
+const MAG7_SIGNALS_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/mag7_signals_log.csv';
 const INTEL_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/intelligence_report.json';
 let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null,fearChart=null,bearChart=null,bullChart=null;
 let ALL_DATA=[];
@@ -296,6 +297,25 @@ async function fetchMag7(){
   }catch(e){return[];}
 }
 
+async function fetchMag7Signals(){
+  try{
+    const r=await fetch(MAG7_SIGNALS_URL+'?t='+Date.now());
+    if(!r.ok)return[];
+    const text=await r.text();
+    const lines=text.trim().split('\n');
+    if(lines.length<2)return[];
+    const hdrs=lines[0].split(',').map(h=>h.trim());
+    return lines.slice(1).map(line=>{
+      const vals=line.split(','),obj={};
+      hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+      const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
+      return{d:obj.date||'',tk:obj.ticker||'',signals:obj.signals_summary||'',
+        bullLabel:obj.bullish_squeeze_label||'',bullScore:n('bullish_squeeze_score'),
+        bearLabel:obj.bearish_squeeze_label||'',bearScore:n('bearish_squeeze_score')};
+    }).filter(e=>e.d&&e.tk);
+  }catch(e){return[];}
+}
+
 function parseCSV(text){
   const lines=text.trim().split('\n');
   if(lines.length<2)return[];
@@ -348,11 +368,19 @@ function bearColor(s){if(s>=7)return'#7B1F1F';if(s>=5)return'#A32D2D';if(s>=3)re
 function bullColor(s){if(s>=8)return'#27500A';if(s>=6)return'#3B6D11';if(s>=4)return'#639922';return'#aaa';}
 function gexColor(g){if(g===null)return'#aaa';if(g<-5)return'#A32D2D';if(g<0)return'#BA7517';if(g>5)return'#27500A';return'#3B6D11';}
 
-function buildMag7Card(rows){
+function buildMag7Card(rows,signalRows){
   if(!rows||!rows.length)return'<div class="card"><div class="cl">Mag 7 opportunity scanner</div><div style="font-size:12px;color:#aaa;padding:8px 0">Runs daily at 6pm. First data appears after tonight\'s run and backfill.</div></div>';
   const dates=[...new Set(rows.map(r=>r.d))].sort();
   const latest=dates[dates.length-1];
   const cur=rows.filter(r=>r.d===latest).sort((a,b)=>(b.score||0)-(a.score||0));
+  // Map signals data by ticker for the same date so it can be merged in
+  // alongside each row — falls back gracefully to '—' if the signals
+  // workflow hasn't run yet or a ticker is missing that day
+  const sigByTicker={};
+  if(signalRows&&signalRows.length){
+    const sigLatest=[...new Set(signalRows.map(r=>r.d))].sort().pop();
+    signalRows.filter(r=>r.d===sigLatest).forEach(r=>{sigByTicker[r.tk]=r;});
+  }
   function rsiC(r){if(r===null)return'#aaa';if(r<30)return'#A32D2D';if(r>70)return'#BA7517';return'#333';}
   function scoreC(s){return s>=8?'#27500A':s>=6?'#3B6D11':s>=4?'#BA7517':s>=2?'#d4a017':'#ddd';}
   function fmtGex(val){
@@ -368,6 +396,13 @@ function buildMag7Card(rows){
     const valStr=fmtGex(val);
     if(!valStr)return'<span style="color:#aaa;font-size:10px">—</span>';
     return'<span style="color:'+col+';font-size:11px;font-weight:600">'+valStr+'</span><br><span style="color:'+col+';font-size:9px">'+label+'</span>';
+  }
+  function squeezeBadge(label,score){
+    if(!label||label==='not_shown')return'<span style="color:#ccc;font-size:10px">—</span>';
+    const col=label==='imminent'?'#A32D2D':label==='likely'?'#BA7517':label==='possible'?'#d4a017':'#aaa';
+    const scoreStr=(score!==null&&score!==undefined)?score+'/100':'';
+    return'<span style="color:'+col+';font-size:11px;font-weight:600;text-transform:capitalize">'+label+'</span>'+
+      (scoreStr?'<br><span style="font-size:9px;color:#999">'+scoreStr+'</span>':'');
   }
   function obBadge(s){
     if(s>=8)return'<span class="ob ob-s">Strong Buy</span>';
@@ -390,6 +425,7 @@ function buildMag7Card(rows){
     const pcC=r.pc!==null?(r.pc>1.5?'#A32D2D':r.pc>1.0?'#BA7517':'#3B6D11'):'#aaa';
     const sc=r.score||0,scC=scoreC(sc);
     const pct=Math.min(100,(sc/10)*100).toFixed(0);
+    const sig=sigByTicker[r.tk]||{};
     return'<tr>'+
       '<td style="font-weight:600;font-size:13px">'+r.tk+'</td>'+
       '<td>$'+(r.spot?r.spot.toFixed(2):'—')+'</td>'+
@@ -398,6 +434,8 @@ function buildMag7Card(rows){
       '<td>'+(r.iv?r.iv.toFixed(1)+'%':'—')+(r.ivPct!==null?'<br><span style="font-size:9px;color:#aaa">'+r.ivPct+'th pct</span>':'')+'</td>'+
       '<td>'+gexBadge(r.gexReg,r.gex)+'</td>'+
       '<td style="color:'+maC+';font-size:11px">'+(r.above===true?'\u2713 Above':r.above===false?'\u2717 Below':'—')+'</td>'+
+      '<td>'+squeezeBadge(sig.bullLabel,sig.bullScore)+'</td>'+
+      '<td>'+squeezeBadge(sig.bearLabel,sig.bearScore)+'</td>'+
       '<td><div class="sbar"><div class="sbar-track"><div class="sbar-fill" style="width:'+pct+'%;background:'+scC+'"></div></div><span style="font-size:11px;font-weight:600;color:'+scC+'">'+sc+'</span></div></td>'+
       '<td>'+obBadge(sc)+'</td>'+
       '<td><div style="position:relative;height:28px;width:70px"><canvas id="m7s_'+r.tk+'"></canvas></div></td>'+
@@ -411,9 +449,12 @@ function buildMag7Card(rows){
     '<th>RSI-14<br><span style="font-weight:400;text-transform:none;font-size:9px">vs own history</span></th>'+
     '<th>P/C ratio<br><span style="font-weight:400;text-transform:none;font-size:9px">put buying</span></th>'+
     '<th>IV<br><span style="font-weight:400;text-transform:none;font-size:9px">options cost</span></th>'+
-    '<th>GEX</th><th>200MA</th><th>Score /10</th><th>Signal</th><th>20d trend</th>'+
+    '<th>GEX</th><th>200MA</th>'+
+    '<th>Bull squeeze<br><span style="font-weight:400;text-transform:none;font-size:9px">InsiderFinance</span></th>'+
+    '<th>Bear squeeze<br><span style="font-weight:400;text-transform:none;font-size:9px">InsiderFinance</span></th>'+
+    '<th>Score /10</th><th>Signal</th><th>20d trend</th>'+
     '</tr></thead><tbody>'+tblRows+'</tbody></table></div>'+
-    '<div style="margin-top:8px;font-size:10px;color:#aaa">8-10 = strong buy · 6-7 = buy · 4-5 = watch · RSI percentile historical · Options + GEX from today forward</div>'+
+    '<div style="margin-top:8px;font-size:10px;color:#aaa">8-10 = strong buy · 6-7 = buy · 4-5 = watch · RSI percentile historical · Options + GEX from today forward · Squeeze scores delayed 30min (InsiderFinance free tier)</div>'+
   '</div>';
 }
 
@@ -829,10 +870,11 @@ function buildUI(data){
       var iph=document.getElementById('intelplaceholder');
       if(iph)iph.outerHTML=buildIntelCard(intel);
     });
-    fetchMag7().then(function(m7){
+    Promise.all([fetchMag7(),fetchMag7Signals()]).then(function(results){
+      var m7=results[0],sig=results[1];
       var ph=document.getElementById('mag7placeholder');
       if(ph){
-        ph.outerHTML=buildMag7Card(m7);
+        ph.outerHTML=buildMag7Card(m7,sig);
         setTimeout(function(){renderMag7Sparks(m7);},100);
       }
     });
