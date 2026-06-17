@@ -104,6 +104,19 @@ def fetch_optionstrategist_iv(tickers):
         r = requests.get(url, headers=HEADERS, timeout=30)
         text = r.text
 
+        # Diagnostics — the regex below is confirmed working against real
+        # content fetched independently, so if it finds nothing in
+        # production, something about THIS specific request/response is
+        # different (blocked, redirected, rate-limited, bot-challenge
+        # page, etc.) rather than the parsing logic being wrong. Print
+        # enough detail to tell those apart without guessing.
+        print(f"  optionstrategist.com: HTTP {r.status_code}, {len(text)} chars received")
+        if "AAPL" not in text:
+            print(f"  WARNING: 'AAPL' string not found anywhere in response — "
+                  f"page content likely isn't the volatility data table")
+            print(f"  Response snippet (first 500 chars):")
+            print(f"  {text[:500]!r}")
+
         # Each data line looks like:
         #   AAPL    24  24  26  260612   23.34   600/ 28%ile  291.07
         # Symbol, then hv20/hv50/hv100 (or "SERIAL OPTION"), a 6-digit
