@@ -360,9 +360,17 @@ def compute_l1_context(spy_above_200ma, rsi, term_structure, skew, vix):
 
 def save_csv(row):
     """
-    Idempotent write: if a row for today's date already exists, replace it
-    in place rather than appending a duplicate. Makes re-running the same
-    day (manual re-trigger, retry, accidental double dispatch) safe.
+    Idempotent write: collapses to exactly one row per date, replacing it
+    with fresh data on every run. Makes re-running the same day (manual
+    re-trigger, retry, accidental double dispatch) safe.
+
+    NOTE: this previously used a list comprehension that replaced every
+    row matching today's date with the new row — correct when at most one
+    match existed, but if duplicates ever accumulated (e.g. from an
+    interrupted write, or before this function existed), it would stamp
+    the same new row onto every duplicate instead of collapsing them,
+    making the problem worse rather than fixing it. This version always
+    keeps exactly one row per date regardless of how many already exist.
     """
     today = row.get("date")
     existing_rows = []
@@ -370,23 +378,22 @@ def save_csv(row):
         with open(OUTPUT_CSV, newline="", encoding="utf-8") as f:
             existing_rows = list(csv.DictReader(f))
 
-    already_present = any(r.get("date") == today for r in existing_rows)
+    # Keep all rows that are NOT today's date, then append exactly one
+    # fresh row for today — this guarantees no duplicates regardless of
+    # how many stale matches were already present
+    other_rows = [r for r in existing_rows if r.get("date") != today]
+    had_duplicates = len(existing_rows) - len(other_rows) > 1
 
-    if already_present:
-        existing_rows = [row if r.get("date") == today else r for r in existing_rows]
-        with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
-            w.writeheader()
-            w.writerows(existing_rows)
-        print(f"Updated existing row for {today} -> {OUTPUT_CSV} (re-run detected, no duplicate created)")
+    with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(other_rows)
+        w.writerow(row)
+
+    if had_duplicates:
+        print(f"  WARNING: found multiple stale duplicate rows for {today} — collapsed to one")
     else:
-        exists = os.path.isfile(OUTPUT_CSV)
-        with open(OUTPUT_CSV, "a", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
-            if not exists:
-                w.writeheader()
-            w.writerow(row)
-        print("Saved -> " + OUTPUT_CSV)
+        print(f"Saved row for {today} -> {OUTPUT_CSV}")
 
 
 def send_email(subject, body):
