@@ -3,6 +3,11 @@ on:
   repository_dispatch:
     types: [run-gex-tracker]
   workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Print raw rendered page text to logs (for fixing selectors)'
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -35,6 +40,8 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Run signals scraper
+        env:
+          MAG7_SIGNALS_DEBUG: ${{ github.event.inputs.debug_mode == 'true' && '1' || '0' }}
         run: python mag7_signals.py
 
       - name: Commit results
