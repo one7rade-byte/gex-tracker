@@ -19,6 +19,7 @@ import os
 import re
 import time
 from datetime import datetime, date
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -509,7 +510,7 @@ def save_row(row):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    today = date.today().strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("America/New_York")).date().strftime("%Y-%m-%d")
     now   = datetime.now().strftime("%I:%M %p")
 
     print("=" * 60)
