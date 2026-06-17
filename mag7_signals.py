@@ -120,11 +120,17 @@ def extract_signals_and_squeeze(page, ticker):
         print(body_text[:6000])
         print(f"  --- END {ticker} DUMP ---")
 
-    # Signals: each one is rendered as a type ("volatility"/"support"),
-    # a strength ("STRONG"/"MODERATE"/"WEAK"), a description, then an
-    # "@ $price  pct%" trigger line. Capture up to 3.
+    # Signals: each one is rendered as a type (Volatility/Support/
+    # Resistance/Magnet), a strength (STRONG/MODERATE/WEAK), a blank line,
+    # a description, a blank line, "@ $price" on its own line, then the
+    # trigger percentage on the line after that. Capture up to 3.
+    #
+    # Confirmed against real debug-dump output across AAPL/MSFT/NVDA/GOOGL:
+    # price and percentage sit on two separate lines (not concatenated as
+    # originally assumed from a single screenshot), and "Magnet" is a real
+    # signal type seen on AAPL/NVDA that the original pattern didn't cover.
     signal_pattern = re.compile(
-        r"(volatility|support|resistance)\s*\n\s*(STRONG|MODERATE|WEAK)\s*\n([^\n]+)\n\s*@\s*\$?([\d,]+\.\d{2})([+-][\d,\.]+|0\.00)%",
+        r"(Volatility|Support|Resistance|Magnet)\s*\n\s*(STRONG|MODERATE|WEAK)\s*\n+\s*([^\n]+)\n+\s*@\s*\$?([\d,\.]+)\s*\n\s*([+-]?[\d,\.]+)%",
         re.IGNORECASE,
     )
     signals_found = signal_pattern.findall(body_text)[:3]
@@ -134,30 +140,36 @@ def extract_signals_and_squeeze(page, ticker):
             parts.append(f"{sig_type.upper()}/{strength.upper()} @ ${level} ({pct}%)")
         result["signals_summary"] = " | ".join(parts)
 
-    # Bullish squeeze: "Bullish Squeeze\npossible\nProbability Score35/100"
+    # Bullish squeeze: "Bullish Squeeze\nPOSSIBLE\nPROBABILITY SCORE\n45/100"
+    # — confirmed working against real text; the regex doesn't require the
+    # literal "PROBABILITY SCORE" header so it tolerates this exact layout
     bull_match = re.search(
-        r"Bullish Squeeze\s*\n\s*(\w+)\s*\nProbability Score\s*(\d+)\s*/\s*100",
-        body_text, re.IGNORECASE,
+        r"Bullish Squeeze\s*\n\s*(\w+)\s*\n.*?(\d+)\s*/\s*100",
+        body_text, re.IGNORECASE | re.DOTALL,
     )
     if bull_match:
         result["bullish_squeeze_label"] = bull_match.group(1).lower()
         result["bullish_squeeze_score"] = int(bull_match.group(2))
 
-    # Bearish squeeze: shown as "Bearish Squeeze\n25/100unlikely" (compact
-    # alternate-setup format) based on the captured sample
+    # Bearish squeeze: "Bearish Squeeze\n25/100\nUNLIKELY" — score and label
+    # on separate lines, confirmed against real MSFT/GOOGL/META/TSLA text.
+    # AAPL/NVDA/AMZN showing blank previously was this regex never matching
+    # (it expected them concatenated on one line), not a truncation issue —
+    # extraction always runs against the full page text regardless of how
+    # much the debug dump prints.
     bear_match = re.search(
-        r"Bearish Squeeze\s*\n\s*(\d+)\s*/\s*100\s*(\w+)",
+        r"Bearish Squeeze\s*\n\s*(\d+)\s*/\s*100\s*\n\s*(\w+)",
         body_text, re.IGNORECASE,
     )
     if bear_match:
         result["bearish_squeeze_score"] = int(bear_match.group(1))
         result["bearish_squeeze_label"] = bear_match.group(2).lower()
     else:
-        # Fallback: same layout as bullish, in case bearish is also shown
-        # as "Bearish Squeeze\nunlikely\nProbability Score 25/100"
+        # Fallback: same layout as bullish, in case bearish ever renders
+        # as "Bearish Squeeze\nunlikely\n...25/100" instead
         bear_alt = re.search(
-            r"Bearish Squeeze\s*\n\s*(\w+)\s*\nProbability Score\s*(\d+)\s*/\s*100",
-            body_text, re.IGNORECASE,
+            r"Bearish Squeeze\s*\n\s*(\w+)\s*\n.*?(\d+)\s*/\s*100",
+            body_text, re.IGNORECASE | re.DOTALL,
         )
         if bear_alt:
             result["bearish_squeeze_label"] = bear_alt.group(1).lower()
