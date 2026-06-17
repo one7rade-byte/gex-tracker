@@ -154,10 +154,25 @@ def extract_signals_and_squeeze(page, ticker):
 
     # Bearish squeeze: "Bearish Squeeze\n25/100\nUNLIKELY" — score and label
     # on separate lines, confirmed against real MSFT/GOOGL/META/TSLA text.
-    # AAPL/NVDA/AMZN showing blank previously was this regex never matching
-    # (it expected them concatenated on one line), not a truncation issue —
-    # extraction always runs against the full page text regardless of how
-    # much the debug dump prints.
+    #
+    # AAPL/NVDA/AMZN have consistently shown no bearish data across multiple
+    # runs/dates while the other 4 tickers consistently do. Evidence points
+    # to this being a genuine page-rendering difference, not a scraper bug:
+    # AAPL/NVDA's captured dumps both showed a "BULLISH BIAS" tag directly
+    # above the squeeze screener heading, while MSFT (which does show
+    # bearish) did not. InsiderFinance's own public NVDA/M ticker pages
+    # (checked via search) also only mention a single bullish squeeze
+    # narrative with no alternate/bearish setup at all. Working theory:
+    # the "Alternate Setup / Bearish Squeeze" block only renders when the
+    # bullish bias isn't strongly dominant — i.e. it's conditional content,
+    # not always present.
+    #
+    # To avoid blank meaning two different things (scraper failed to find
+    # it vs. genuinely not shown on the page), explicitly mark the latter
+    # case as "not_shown" rather than leaving it blank like an extraction
+    # failure would.
+    has_alternate_setup = bool(re.search(r"ALTERNATE SETUP|Bearish Squeeze", body_text, re.IGNORECASE))
+
     bear_match = re.search(
         r"Bearish Squeeze\s*\n\s*(\d+)\s*/\s*100\s*\n\s*(\w+)",
         body_text, re.IGNORECASE,
@@ -175,6 +190,9 @@ def extract_signals_and_squeeze(page, ticker):
         if bear_alt:
             result["bearish_squeeze_label"] = bear_alt.group(1).lower()
             result["bearish_squeeze_score"] = int(bear_alt.group(2))
+        elif not has_alternate_setup:
+            # Confirmed absent on the page, not a failed extraction
+            result["bearish_squeeze_label"] = "not_shown"
 
     return result
 
