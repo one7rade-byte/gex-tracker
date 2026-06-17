@@ -78,62 +78,77 @@ def yf_fetch_history(ticker, period="1y"):
     return []
 
 
-def yf_fetch_options(ticker):
+def fetch_optionstrategist_iv(tickers):
     """
-    Fetches nearest expiry options chain.
-    Returns (pc_ratio, avg_iv) or (None, None).
-    P/C ratio = total put volume / total call volume.
-    IV = average implied volatility of near-ATM options.
+    Fetches implied volatility + pre-computed IV percentile for the given
+    tickers from optionstrategist.com's free volatility data feed.
+
+    This replaces Yahoo's v7/finance/options endpoint, which requires a
+    crumb/cookie handshake that Yahoo has progressively locked down and
+    which returned nothing for any Mag7 ticker in practice (see project
+    notes). optionstrategist.com serves this unauthenticated as one large
+    plain-text page covering every optionable US ticker — so this fetches
+    the whole page ONCE and parses out just the tickers we need, rather
+    than making one request per ticker.
+
+    Source: McMillan Analysis Corp, described as updating weekly
+    (Saturdays) but observed to carry a recent DATE field per ticker —
+    worth periodically re-checking actual update cadence in practice.
+
+    Returns a dict: {ticker: {"iv": float, "iv_pct": int, "as_of": "YYMMDD"}}
+    Tickers not found in the feed are simply absent from the result dict.
     """
-    for base in ["query1", "query2"]:
-        try:
-            url = f"https://{base}.finance.yahoo.com/v7/finance/options/{ticker}"
-            r = requests.get(url, headers=HEADERS, timeout=15)
-            data = r.json()
-            result = data.get("optionChain", {}).get("result", [])
-            if not result:
-                continue
+    url = "https://www.optionstrategist.com/calculators/free-volatility-data"
+    result = {}
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=30)
+        text = r.text
 
-            opts = result[0].get("options", [])
-            if not opts:
-                continue
+        # Each data line looks like:
+        #   AAPL    24  24  26  260612   23.34   600/ 28%ile  291.07
+        # Symbol, then hv20/hv50/hv100 (or "SERIAL OPTION"), a 6-digit
+        # YYMMDD date, current IV, "Days/Percentile%ile", closing price.
+        pattern = re.compile(
+            r"^([A-Z]+)\s+.*?(\d{6})\s+([\d.]+)\s+(\d+)/\s*(\d+)%ile\s+([\d.]+)\s*$",
+            re.MULTILINE,
+        )
 
-            calls = opts[0].get("calls", [])
-            puts  = opts[0].get("puts", [])
+        wanted = set(tickers)
+        for m in pattern.finditer(text):
+            symbol, as_of, cur_iv, days, pctile, close = m.groups()
+            if symbol in wanted:
+                try:
+                    result[symbol] = {
+                        "iv": float(cur_iv),
+                        "iv_pct": int(pctile),
+                        "as_of": as_of,
+                    }
+                except ValueError:
+                    continue
 
-            # P/C ratio from volume
-            call_vol = sum(c.get("volume", 0) or 0 for c in calls)
-            put_vol  = sum(p.get("volume", 0) or 0 for p in puts)
-            pc_ratio = round(put_vol / call_vol, 3) if call_vol > 0 else None
+        missing = wanted - set(result.keys())
+        if missing:
+            print(f"  optionstrategist.com: no data found for {sorted(missing)}")
 
-            # IV — average of near-ATM options (middle 20% by strike)
-            spot = result[0].get("quote", {}).get("regularMarketPrice", 0)
-            all_opts = calls + puts
-            if spot:
-                near_atm = [o for o in all_opts
-                            if o.get("strike") and abs(o["strike"] - spot) / spot < 0.05
-                            and o.get("impliedVolatility") is not None]
-                if near_atm:
-                    avg_iv = round(sum(o["impliedVolatility"] for o in near_atm) / len(near_atm) * 100, 1)
-                else:
-                    ivs = [o["impliedVolatility"] for o in all_opts if o.get("impliedVolatility")]
-                    avg_iv = round(sum(ivs) / len(ivs) * 100, 1) if ivs else None
-            else:
-                avg_iv = None
+    except Exception as e:
+        print(f"  optionstrategist.com fetch failed: {e}")
 
-            return pc_ratio, avg_iv
-
-        except Exception as e:
-            print(f"  {ticker} options {base} failed: {e}")
-
-    return None, None
+    return result
 
 
 def yf_fetch_iv_history(ticker):
     """
     Proxy for IV history: use daily High-Low range as % of close.
     This gives a normalized volatility measure that can be percentile-ranked.
-    True IV history requires paid data; this is a good free proxy.
+
+    NOT CURRENTLY USED — kept as a documented fallback. IV + IV percentile
+    now come from optionstrategist.com's free volatility data (see
+    fetch_optionstrategist_iv), which provides a pre-computed 600-day
+    percentile directly and doesn't depend on accumulating our own
+    history. This function uses Yahoo's v8/finance/chart endpoint, which
+    (unlike the now-removed v7/finance/options endpoint) has remained
+    reliable, so it's safe to re-enable here if optionstrategist.com ever
+    goes down or stops covering a ticker.
     """
     for base in ["query1", "query2"]:
         try:
@@ -528,6 +543,17 @@ def main():
 
     results = []
 
+    # Fetch IV + IV percentile for all 7 tickers in ONE request, since
+    # optionstrategist.com serves all tickers on a single page rather than
+    # one endpoint per symbol
+    print("\nFetching IV data from optionstrategist.com (all tickers, one request)...")
+    iv_data = fetch_optionstrategist_iv(TICKERS)
+    for t in TICKERS:
+        if t in iv_data:
+            print(f"  {t}: IV={iv_data[t]['iv']}%  pct={iv_data[t]['iv_pct']}th  as_of={iv_data[t]['as_of']}")
+        else:
+            print(f"  {t}: no IV data found")
+
     for ticker in TICKERS:
         print(f"\n{'─'*50}")
         print(f"  Processing {ticker}...")
@@ -546,11 +572,13 @@ def main():
 
         print(f"  Spot=${spot:.2f}  RSI={rsi}  200MA={ma200}  Above={above_200}")
 
-        # 2. Options chain — Yahoo for IV (P/C used only as fallback, since
-        # Yahoo's options endpoint requires a crumb/cookie handshake that
-        # frequently fails; InsiderFinance serves P/C unauthenticated below)
-        print(f"  Fetching {ticker} options chain (Yahoo, IV + P/C fallback)...")
-        pc_ratio_yahoo, iv_current = yf_fetch_options(ticker)
+        # 2. IV + IV percentile — from the one-shot optionstrategist.com
+        # fetch above. P/C still comes from InsiderFinance below; Yahoo's
+        # options endpoint is no longer used at all (it required a
+        # crumb/cookie handshake that consistently failed in practice).
+        iv_entry = iv_data.get(ticker)
+        iv_current = iv_entry["iv"] if iv_entry else None
+        iv_pct_from_source = iv_entry["iv_pct"] if iv_entry else None
 
         # 3. GEX + walls + zero gamma + P/C from InsiderFinance — single
         # combined fetch of the same page (avoids requesting the URL
@@ -562,42 +590,21 @@ def main():
         zero_gamma = if_data["zero_gamma"]
         call_wall  = if_data["call_wall"]
         put_wall   = if_data["put_wall"]
-        pc_ratio_if = if_data["pc_ratio"]
+        pc_ratio   = if_data["pc_ratio"]
 
-        # Prefer InsiderFinance's P/C (unauthenticated, reliable) over Yahoo's
-        # (frequently blocked by crumb requirement) when both are available
-        pc_ratio = pc_ratio_if if pc_ratio_if is not None else pc_ratio_yahoo
-
-        print(f"  P/C={pc_ratio} (source={'InsiderFinance' if pc_ratio_if is not None else 'Yahoo' if pc_ratio_yahoo is not None else 'none'})  IV={iv_current}%")
+        print(f"  P/C={pc_ratio} (source=InsiderFinance)  IV={iv_current}% (pct={iv_pct_from_source}, source=optionstrategist.com)")
         print(f"  GEX={gex_b}  Regime={gex_regime}  ZeroGamma={zero_gamma}  CallWall={call_wall}  PutWall={put_wall}")
 
         # 4. Compute percentiles vs own history
         hist_rsi = history[ticker]["rsi"] + ([rsi] if rsi else [])
-        hist_iv  = history[ticker]["iv"]  + ([iv_current] if iv_current else [])
         hist_pc  = history[ticker]["pc"]  + ([pc_ratio] if pc_ratio else [])
 
-        # Need at least 20 data points for meaningful percentiles
-        # Fall back to IV proxy from daily price range if < 20 options data points
-        if len(hist_iv) < 20:
-            print(f"  Building IV proxy from price range history...")
-            iv_proxy = yf_fetch_iv_history(ticker)
-            if iv_proxy and iv_current:
-                # Convert current IV to comparable proxy scale
-                avg_proxy = sum(iv_proxy) / len(iv_proxy) if iv_proxy else None
-                if avg_proxy:
-                    # Scale current IV to proxy range
-                    iv_scaled = iv_current / 100 * avg_proxy * 10
-                    hist_iv = iv_proxy
-                    iv_current_scaled = iv_scaled
-                else:
-                    iv_current_scaled = iv_current
-            else:
-                iv_current_scaled = iv_current
-        else:
-            iv_current_scaled = iv_current
-
         rsi_pct = compute_percentile(rsi, hist_rsi) if len(hist_rsi) >= 5 else None
-        iv_pct  = compute_percentile(iv_current_scaled, hist_iv) if len(hist_iv) >= 5 else None
+        # IV percentile comes pre-computed from optionstrategist.com (600-day
+        # lookback) rather than being calculated from our own accumulated
+        # history — no fallback proxy needed since the source already
+        # solves the "not enough history yet" problem for us
+        iv_pct  = iv_pct_from_source
         pc_pct  = compute_percentile(pc_ratio, hist_pc) if len(hist_pc) >= 5 else None
 
         print(f"  Percentiles: RSI={rsi_pct}  IV={iv_pct}  PC={pc_pct}")
