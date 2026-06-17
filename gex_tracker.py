@@ -3,6 +3,7 @@ import os
 import re
 import smtplib
 from datetime import datetime, date
+from zoneinfo import ZoneInfo
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -410,7 +411,7 @@ def send_email(subject, body):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    today = date.today().strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("America/New_York")).date().strftime("%Y-%m-%d")
     now   = datetime.now().strftime("%I:%M %p")
 
     print("====================================================")
