@@ -104,18 +104,43 @@ def fetch_optionstrategist_iv(tickers):
         r = requests.get(url, headers=HEADERS, timeout=30)
         text = r.text
 
+        # The live page likely uses HTML entities (&nbsp;) for monospace
+        # column padding rather than literal space characters.
+        # requests.get().text returns raw HTML with these entities
+        # un-decoded, so a regex using \s never matches them. This fits
+        # the production symptom exactly: AAPL was confirmed present in
+        # the raw text (723KB received, no "not found" warning), yet the
+        # regex found zero matches. html.unescape() converts &nbsp; (and
+        # any other entities) to real Unicode characters, which \s does
+        # correctly match.
+        import html as _html
+        text = _html.unescape(text)
+
         # Diagnostics — the regex below is confirmed working against real
         # content fetched independently, so if it finds nothing in
         # production, something about THIS specific request/response is
         # different (blocked, redirected, rate-limited, bot-challenge
         # page, etc.) rather than the parsing logic being wrong. Print
         # enough detail to tell those apart without guessing.
-        print(f"  optionstrategist.com: HTTP {r.status_code}, {len(text)} chars received")
+        print(f"  optionstrategist.com: HTTP {r.status_code}, {len(text)} chars received (after entity decode)")
         if "AAPL" not in text:
             print(f"  WARNING: 'AAPL' string not found anywhere in response — "
                   f"page content likely isn't the volatility data table")
             print(f"  Response snippet (first 500 chars):")
             print(f"  {text[:500]!r}")
+        else:
+            # AAPL is present but the regex below may still not match it if
+            # the raw response has different whitespace/formatting than
+            # expected (e.g. web_fetch tooling may normalize whitespace
+            # when rendering for inspection, while requests.get() returns
+            # truly raw bytes) — print the exact raw line(s) containing it
+            # so any mismatch is visible directly rather than assumed
+            idx = text.find("AAPL")
+            line_start = text.rfind("\n", 0, idx) + 1
+            line_end = text.find("\n", idx)
+            raw_line = text[line_start:line_end]
+            print(f"  DIAGNOSTIC: raw line containing 'AAPL' (repr to show exact whitespace):")
+            print(f"  {raw_line!r}")
 
         # Each data line looks like:
         #   AAPL    24  24  26  260612   23.34   600/ 28%ile  291.07
