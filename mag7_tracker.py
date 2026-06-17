@@ -122,19 +122,30 @@ def fetch_optionstrategist_iv(tickers):
         # different (blocked, redirected, rate-limited, bot-challenge
         # page, etc.) rather than the parsing logic being wrong. Print
         # enough detail to tell those apart without guessing.
-        print(f"  optionstrategist.com: HTTP {r.status_code}, {len(text)} chars received (after entity decode)")
+        # CONFIRMED root cause (from production diagnostic output): the
+        # live page wraps each data line in HTML tags
+        # (<span class='vol-line'>...</span>) and terminates lines with a
+        # bare \r character, not \n. Two separate problems, both fixed
+        # here:
+        #   1. HTML tags broken up the line text itself, which the &nbsp;
+        #      decode alone didn't address
+        #   2. re.MULTILINE's ^ and $ anchors only recognize \n as a line
+        #      boundary in Python by default -- a bare \r is invisible to
+        #      them, so $ never matched at the end of any data line, even
+        #      though the data itself was present and correctly formatted
+        # web_fetch's markdown extraction normalizes both of these away
+        # automatically, which is why testing against it looked fine while
+        # production (raw requests.get().text) failed.
+        text = re.sub(r"<[^>]+>", "", text)
+        text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+        print(f"  optionstrategist.com: HTTP {r.status_code}, {len(text)} chars received (after entity decode + HTML strip + line-ending normalize)")
         if "AAPL" not in text:
             print(f"  WARNING: 'AAPL' string not found anywhere in response — "
                   f"page content likely isn't the volatility data table")
             print(f"  Response snippet (first 500 chars):")
             print(f"  {text[:500]!r}")
         else:
-            # AAPL is present but the regex below may still not match it if
-            # the raw response has different whitespace/formatting than
-            # expected (e.g. web_fetch tooling may normalize whitespace
-            # when rendering for inspection, while requests.get() returns
-            # truly raw bytes) — print the exact raw line(s) containing it
-            # so any mismatch is visible directly rather than assumed
             idx = text.find("AAPL")
             line_start = text.rfind("\n", 0, idx) + 1
             line_end = text.find("\n", idx)
