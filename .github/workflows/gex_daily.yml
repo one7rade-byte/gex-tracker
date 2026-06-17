@@ -29,4 +29,15 @@ jobs:
           git config user.email "one7rade@gmail.com"
           git add gex_log.csv
           git diff --staged --quiet || git commit -m "GEX log update $(date +'%Y-%m-%d')"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git
+
+          # All daily workflows fire from the same repository_dispatch
+          # event simultaneously, so two jobs can race to push -- whoever
+          # pushes second gets rejected. Retry with pull --rebase before
+          # each attempt so this job replays its commit on top of
+          # whatever another workflow already pushed, instead of failing.
+          for i in 1 2 3 4 5; do
+            git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
+            echo "Push attempt $i failed, retrying in $((i*5))s..."
+            sleep $((i*5))
+          done
