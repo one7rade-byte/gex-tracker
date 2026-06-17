@@ -660,29 +660,33 @@ def main():
         "ai_brief":result["full_brief"][:2000],
         "voo_vgt_action":result["voo_vgt_action"][:300],
     }
-    # Save CSV — idempotent on date, so re-running the same day (manual
-    # re-trigger, retry, accidental double dispatch) replaces today's row
-    # instead of appending a duplicate.
+    # Save CSV — idempotent on date, collapses to exactly one row per date
+    # regardless of how many duplicates already exist.
+    #
+    # NOTE: this previously used a list comprehension that replaced every
+    # row matching today's date with the new row — correct when at most
+    # one match existed, but if duplicates ever accumulated, it stamped
+    # the same row onto every duplicate instead of collapsing them. This
+    # is exactly what produced 4 identical rows for the same date in
+    # production. Fixed to always keep exactly one row per date.
     existing_rows = []
     if os.path.isfile(INTEL_CSV):
         with open(INTEL_CSV, newline="", encoding="utf-8") as f:
             existing_rows = list(csv.DictReader(f))
 
-    already_present = any(r.get("date") == today for r in existing_rows)
+    other_rows = [r for r in existing_rows if r.get("date") != today]
+    had_duplicates = len(existing_rows) - len(other_rows) > 1
 
-    if already_present:
-        existing_rows = [csv_row if r.get("date") == today else r for r in existing_rows]
-        with open(INTEL_CSV, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
-            w.writeheader()
-            w.writerows(existing_rows)
-        print(f"  Updated existing row for {today} (re-run detected, no duplicate created)")
+    with open(INTEL_CSV, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(other_rows)
+        w.writerow(csv_row)
+
+    if had_duplicates:
+        print(f"  WARNING: found multiple stale duplicate rows for {today} — collapsed to one")
     else:
-        exists = os.path.isfile(INTEL_CSV)
-        with open(INTEL_CSV, "a", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=INTEL_CSV_HEADERS, extrasaction="ignore")
-            if not exists: w.writeheader()
-            w.writerow(csv_row)
+        print(f"  Saved row for {today}")
 
     # Save JSON for dashboard
     report = {
