@@ -28,7 +28,8 @@ import csv
 import os
 import re
 import time
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
@@ -179,7 +180,7 @@ def extract_signals_and_squeeze(page, ticker):
 
 
 def main():
-    today = date.today().isoformat()
+    today = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
     print(f"=== Mag 7 Signals + Squeeze Screener — {today} ===")
 
     results = []
