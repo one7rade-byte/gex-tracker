@@ -6,10 +6,10 @@ date,ticker,signals_summary,bullish_squeeze_label,bullish_squeeze_score,bearish_
 2026-06-16,META,,unlikely,25,unlikely,20
 2026-06-16,AMZN,,possible,40,,
 2026-06-16,TSLA,,possible,30,unlikely,20
-2026-06-17,AAPL,,possible,45,,
-2026-06-17,MSFT,,unlikely,25,unlikely,25
-2026-06-17,NVDA,,possible,40,,
-2026-06-17,GOOGL,,possible,35,unlikely,20
-2026-06-17,META,,unlikely,25,unlikely,20
-2026-06-17,AMZN,,possible,40,,
-2026-06-17,TSLA,,possible,30,unlikely,20
+2026-06-17,AAPL,VOLATILITY/STRONG @ $298.87 (0.00%) | MAGNET/STRONG @ $300.00 (+0.38%) | VOLATILITY/STRONG @ $240.00 (-19.70%),possible,45,,
+2026-06-17,MSFT,VOLATILITY/STRONG @ $393.12 (0.00%) | SUPPORT/MODERATE @ $380.07 (-3.32%) | VOLATILITY/STRONG @ $380.00 (-3.34%),unlikely,25,unlikely,25
+2026-06-17,NVDA,VOLATILITY/STRONG @ $207.54 (0.00%) | MAGNET/STRONG @ $210.00 (+1.19%) | VOLATILITY/STRONG @ $185.00 (-10.86%),possible,40,,
+2026-06-17,GOOGL,VOLATILITY/STRONG @ $371.74 (0.00%) | VOLATILITY/STRONG @ $345.00 (-7.19%),possible,35,unlikely,20
+2026-06-17,META,VOLATILITY/STRONG @ $597.92 (0.00%) | VOLATILITY/STRONG @ $550.00 (-8.02%),unlikely,25,unlikely,20
+2026-06-17,AMZN,VOLATILITY/STRONG @ $245.84 (0.00%) | MAGNET/STRONG @ $250.00 (+1.69%) | VOLATILITY/STRONG @ $220.00 (-10.51%),possible,40,,
+2026-06-17,TSLA,VOLATILITY/STRONG @ $402.82 (0.00%) | SUPPORT/MODERATE @ $388.03 (-3.67%) | VOLATILITY/STRONG @ $380.00 (-5.67%),possible,30,unlikely,20
