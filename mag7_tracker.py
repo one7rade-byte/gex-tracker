@@ -476,10 +476,16 @@ def load_existing_history():
 
 def save_row(row):
     """
-    Idempotent write keyed on (date, ticker): if this ticker already has a
-    row for today, replace it in place instead of appending a duplicate.
-    Makes re-running the same day (manual re-trigger, retry, accidental
-    double dispatch) safe.
+    Idempotent write keyed on (date, ticker): collapses to exactly one row
+    per (date, ticker), replacing it with fresh data on every run. Makes
+    re-running the same day (manual re-trigger, retry, accidental double
+    dispatch) safe.
+
+    NOTE: this previously used a list comprehension that replaced every
+    matching row with the new one — correct when at most one match
+    existed, but would stamp duplicates with the same row instead of
+    collapsing them if more than one ever accumulated for the same key.
+    This version always keeps exactly one row per key.
     """
     today  = row.get("date")
     ticker = row.get("ticker")
@@ -488,23 +494,20 @@ def save_row(row):
         with open(OUTPUT_CSV, newline="", encoding="utf-8") as f:
             existing_rows = list(csv.DictReader(f))
 
-    already_present = any(r.get("date") == today and r.get("ticker") == ticker for r in existing_rows)
+    other_rows = [r for r in existing_rows
+                  if not (r.get("date") == today and r.get("ticker") == ticker)]
+    had_duplicates = len(existing_rows) - len(other_rows) > 1
 
-    if already_present:
-        existing_rows = [row if (r.get("date") == today and r.get("ticker") == ticker) else r
-                          for r in existing_rows]
-        with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
-            w.writeheader()
-            w.writerows(existing_rows)
-        print(f"  Updated existing row for {ticker} on {today} (re-run detected, no duplicate created)")
+    with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(other_rows)
+        w.writerow(row)
+
+    if had_duplicates:
+        print(f"  WARNING: found multiple stale duplicate rows for {ticker} on {today} — collapsed to one")
     else:
-        exists = os.path.isfile(OUTPUT_CSV)
-        with open(OUTPUT_CSV, "a", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
-            if not exists:
-                w.writeheader()
-            w.writerow(row)
+        print(f"  Saved row for {ticker} on {today}")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
