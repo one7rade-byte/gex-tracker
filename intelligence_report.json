@@ -1,21 +1,21 @@
 {
-  "date": "2026-06-19",
+  "date": "2026-06-22",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is negative at $-3.1B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.4 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AAPL OPPORTUNITY (high confidence) \u2014 RSI at 7th percentile of own history, 8 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly. NVDA WATCH \u2014 score 4/10, RSI at 35th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 4/10. Below 200MA \u2014 scale in slowly.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.4, needs +5.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-3.1B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.4 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL OPPORTUNITY (high confidence) \u2014 RSI at 7th percentile of own history, 8 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly. NVDA WATCH \u2014 score 4/10, RSI at 35th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 4/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.4, needs +5.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is negative at $-1.4B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "AAPL OPPORTUNITY (high confidence) \u2014 RSI at 9th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 5 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly. NVDA WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.8, needs +5.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-1.4B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL OPPORTUNITY (high confidence) \u2014 RSI at 9th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 5 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly. NVDA WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 4/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.8, needs +5.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
+    "regime": "mixed",
     "vix_trend": "falling",
-    "vix_current": 16.4,
+    "vix_current": 16.78,
     "gex_trend": "improving",
-    "gex_current": -3.1,
+    "gex_current": -1.4,
     "fear_trend": "easing",
     "fear_current": 3.0,
-    "bear_current": 4.0,
+    "bear_current": 3.0,
     "bull_current": 3.0,
     "neg_gex_days": 9,
     "skew_current": 146.72,
@@ -26,206 +26,117 @@
   "top_opportunity": {
     "ticker": "AAPL",
     "score": 6.0,
-    "reason": "RSI extremely oversold (bottom 7% of own history) | Options moderately priced (IV 28th pct) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "macro_fear"
+    "reason": "RSI extremely oversold (bottom 9% of own history) | Options moderately priced (IV 28th pct) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "neutral"
   },
-  "avoid_names": [],
+  "avoid_names": [
+    "TSLA"
+  ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 6.0,
-      "rsi_pct": 7.0,
+      "rsi_pct": 8.6,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 8,
+      "days_oversold": 9,
       "headlines": [
-        "The Memory Boom Has Been a Gift to Micron. For Apple, It's Becoming a Problem. Or Is It?",
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem",
-        "If You\u2019re 38 With $500K Saved, AVUV Fixes Your Tech-Heavy Portfolio",
-        "ASML Faces Fresh China Export Scrutiny"
+        "Memory's price surge threatens Apple's 'magic formula' \u2014 and the economy: WSJ reporter",
+        "QQQ vs QQQM: Same Nasdaq-100 Index, One Clear Winner for Long-Term Investors",
+        "Intel\u2019s Surge on an Apple Chip Deal Means Investors Are Betting on Its Foundry, Says Bernstein\u2019s Stacy Rasgon",
+        "Berkshire Looked Like It Got a Bargain on Alphabet Stock. It Didn\u2019t."
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 3.5,
+      "rsi_pct": 5.2,
       "above_200ma": false,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 4,
+      "days_oversold": 5,
       "headlines": [
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem",
-        "If You\u2019re 38 With $500K Saved, AVUV Fixes Your Tech-Heavy Portfolio",
-        "Amazon's Quantum Bet Nears Reality",
-        "Google, SpaceX, Microsoft, and Amazon Are About to Spend \u2018Twice the Entire U.S. Defense Budget\u2019 on AI"
+        "Stock Market Today, June 22: Alphabet Falls as AlphaFold Co-Creator\u2019s Exit Raises AI Talent Concerns",
+        "Memory's price surge threatens Apple's 'magic formula' \u2014 and the economy: WSJ reporter",
+        "Microsoft and Chevron plan one of the largest gas-powered data center projects in US",
+        "Stock Market Today: Dow Up As Bessent Makes This Iran Move; SpaceX Craters (Live Coverage)"
       ]
     },
     "NVDA": {
       "score": 4.0,
-      "rsi_pct": 35.1,
+      "rsi_pct": 36.2,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
-        "Beyond the Trillion-Dollar Club: 3 High-Growth Tech Stocks to Buy Right Now",
-        "The Memory Boom Has Been a Gift to Micron. For Apple, It's Becoming a Problem. Or Is It?",
-        "Why Gildan Activewear Stock Tumbled by 11% This Week",
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem"
+        "Buying SpaceX Stock Isn't the Same as Buying Tesla's IPO Back in 2010. There's One Massive Difference",
+        "Stock Market Today, June 22: Super Micro Computer Jumps After Introducing New Platform Accelerating AI Server Backlog Growth",
+        "SpaceX Stock Is All Over the Place. 3 Dividend Stocks to Buy Instead That Will Let You Sleep Well at Night",
+        "Broadcom's AI Revenue Is on Pace to Triple to $16 Billion in a Single Quarter, but the Stock Just Dipped 17%. Is This an Opportunity to Buy the Dip?"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 31.6,
+      "rsi_pct": 32.8,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 9,
+      "days_oversold": 8,
       "headlines": [
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem",
-        "If You\u2019re 38 With $500K Saved, AVUV Fixes Your Tech-Heavy Portfolio",
-        "SpaceX stock joins AI bond frenzy",
-        "Nearing 52-Week High, This is Where DTE Energy Will End The Year"
+        "Google's $75M stake in A24 follows a 50% funding increase in AI content creation startups",
+        "Stock Market Today, June 22: Alphabet Falls as AlphaFold Co-Creator\u2019s Exit Raises AI Talent Concerns",
+        "Stock Market Today, June 22: Alphabet Slips on Key Departure and Defensive Blue Chips Gain",
+        "Dow Jones Futures: Tech Stocks Tumble As SpaceX Plunges; Amazon, Alphabet, Nvidia Sell Off"
       ]
     },
     "META": {
       "score": 2.0,
-      "rsi_pct": 31.6,
+      "rsi_pct": 32.8,
       "above_200ma": false,
-      "news": "neutral",
-      "rsi_dir": "getting_more_oversold",
+      "news": "macro_fear",
+      "rsi_dir": "stable",
       "days_oversold": 4,
       "headlines": [
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem",
-        "If You\u2019re 38 With $500K Saved, AVUV Fixes Your Tech-Heavy Portfolio",
-        "Prediction: Meta's AI Spending Will Pay Off Bigger Than Wall Street Expects",
-        "Oklo Locks In Domestic Nuclear Fuel Supply for Its Ohio Gigawatt Campus"
+        "Stock Market Today, June 22: Alphabet Falls as AlphaFold Co-Creator\u2019s Exit Raises AI Talent Concerns",
+        "Analyst Trims Price Target on Entergy (ETR). Here is Why",
+        "Meta Names Indian Entrepreneur Kunal Shah As WhatsApp Chief",
+        "Alger Russell Innovation Index Updates for Second Quarter 2026"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 10.5,
+      "rsi_pct": 12.1,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "Making Six Figures but Betting Everything on U.S. Stocks? AVUV Fixes That Problem",
-        "If You\u2019re 38 With $500K Saved, AVUV Fixes Your Tech-Heavy Portfolio",
-        "Is Plug Power Inc. (PLUG) A Good Stock To Buy Now?",
-        "SpaceX stock joins AI bond frenzy"
+        "Walmart slashed the prices of expensive electronics by up to 88% off",
+        "Dow Jones Futures: Tech Stocks Tumble As SpaceX Plunges; Amazon, Alphabet, Nvidia Sell Off",
+        "AI Stocks in a Value Fund? This Veteran Money Pro Says Absolutely.",
+        "Amazon (AMZN) Teams Up With ArcelorMittal To Bring AI Into Steel Plants"
       ]
     },
     "TSLA": {
       "score": 3.0,
-      "rsi_pct": 21.1,
+      "rsi_pct": 22.4,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 6,
       "headlines": [
-        "Wall Street expects Tesla rival to surge 90% despite cash crunch",
-        "If You'd Invested $10,000 in Tesla 10 Years Ago, Here's How Much You'd Have Today",
-        "Cathie Wood Makes Bold Tesla Bet, Dumps $77 Million in Roku Shares",
-        "Rivian's CEO Is Taking On Elon Musk In Humanoid Robots"
+        "Buying SpaceX Stock Isn't the Same as Buying Tesla's IPO Back in 2010. There's One Massive Difference",
+        "SpaceX Merger Would Hurt Tesla Stock, Jefferies Says. Cathie Wood Adds Tesla.",
+        "The SpaceX IPO Is Over. History Says Investors Should Do This Next.",
+        "Redistributing Elon Musk\u2019s $1 Trillion Fortune Would Likely Give Each U.S. Household Just $1,500. Here\u2019s the Math"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "A Median Earner Needs $803 Monthly for 30 Years to Hit $1 Million. Most Don\u2019t Make It.",
-      "link": "https://247wallst.com/personal-finance/2026/06/19/a-median-earner-needs-803-monthly-for-30-years-to-hit-1-million-most-dont-make-it/?.tsrc=rss",
-      "pub_date": "2026-06-19",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Famous Wall Street Tech Analyst Names Meta and Amazon the Best Magnificent 7 Stock Buys Today",
-      "link": "https://247wallst.com/investing/2026/06/19/famous-wall-street-tech-analyst-names-meta-and-amazon-the-best-magnificent-7-stock-buys-today/?.tsrc=rss",
-      "pub_date": "2026-06-19",
-      "tickers": [
-        "META",
-        "AMZN",
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Why JEPI Investors Gave Up $3,379 in Five-Year Gains",
-      "link": "https://247wallst.com/investing/2026/06/18/why-jepi-investors-gave-up-3379-in-five-year-gains/?.tsrc=rss",
-      "pub_date": "2026-06-19",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "S&amp;P 500, Nasdaq And Dow End Holiday-Shortened Week Higher As Investors Cheer US-Iran Peace Deal \u2014 SPCX, AMZN, ONDS, NFLX, TTWO In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-and-dow-end-holiday-shortened-week-higher-as-investors-cheer-us-iran-peace-deal-spcx-amzn-onds-nflx-ttwo-in-focus/cZKk181R77v?.tsrc=rss",
-      "pub_date": "2026-06-18",
-      "tickers": [
-        "AMZN",
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETF League Tables: VictoryShares Accumulates $2.6B",
-      "link": "http://www.etf.com/sections/etf-league-tables/etf-league-tables-victoryshares-accumulates-26b?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-06-18",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Kevin Warsh Comments Send Shiver Down Investors\u2019 Spines. Would He Really \u2018Murder This Bull Market?\u2019",
-      "link": "https://247wallst.com/investing/2026/06/18/kevin-warsh-comments-send-shiver-down-investors-spines-would-he-really-murder-this-bull-market/?.tsrc=rss",
-      "pub_date": "2026-06-18",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The VIX Isn\u2019t Broken, It\u2019s Just Being Outplayed",
-      "link": "http://www.etf.com/sections/conferences/vix-isnt-broken-its-just-being-outplayed?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-06-18",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Trump Says Markets Are \u2018Loving What Is Happening\u2019 As US-Iran Peace Deal Sends Oil Lower And Stocks \u2018Way Up\u2019",
-      "link": "https://stocktwits.com/news-articles/markets/equity/trump-says-markets-loving-us-iran-peace-deal-oil-falls-stocks-rise/cZKkgCaR77s?.tsrc=rss",
-      "pub_date": "2026-06-18",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "2 ETFs to Watch for Outsized Volume on US Treasury &amp; Dividend",
-      "link": "https://finance.yahoo.com/markets/options/articles/2-etfs-watch-outsized-volume-164600833.html?.tsrc=rss",
-      "pub_date": "2026-06-18",
+      "title": "Index Options Are Now Cheap; Here's How To Buy Insurance Using The S&amp;P 500 Tracking Fund SPY",
+      "link": "https://finance.yahoo.com/m/06882f74-ccc1-31d6-a839-932111938ea7/index-options-are-now-cheap%3B.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
       "tickers": [
         "SPY"
       ],
@@ -234,14 +145,102 @@
       "source_count": 1
     },
     {
-      "title": "Stocks Supported as Geopolitical Risks Recede",
-      "link": "https://www.barchart.com/story/news/2539862/stocks-supported-as-geopolitical-risks-recede?.tsrc=rss",
-      "pub_date": "2026-06-18",
+      "title": "JPMorgan: 2026 rally entirely earnings-driven, bull case targets 8900 by year-end",
+      "link": "https://247wallst.com/personal-finance/2026/06/22/jpmorgan-2026-rally-entirely-earnings-driven-bull-case-targets-8900-by-year-end/?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Had You Invested $1,000 in Marvell or Micron a Decade Ago, Here\u2019s What You\u2019d Have Now",
+      "link": "https://247wallst.com/investing/2026/06/22/had-you-invested-1000-in-marvell-or-micron-a-decade-ago-heres-what-youd-have-now/?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "US Economy Looking Like Goldilocks: ETF Areas Likely to Gain",
+      "link": "https://finance.yahoo.com/economy/articles/us-economy-looking-goldilocks-etf-160000675.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETF Ways to Navigate the 2026 Midterm Election Cycle",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etf-ways-navigate-2026-midterm-160000370.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Ex-Fed Chair Greenspan Remembered, PCE This Week",
+      "link": "https://finance.yahoo.com/economy/policy/articles/ex-fed-chair-greenspan-remembered-143000913.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "What Happens to a 75 Year Old With a $500,000 IRA Who Takes the RMD in January vs December vs Monthly",
+      "link": "https://247wallst.com/personal-finance/2026/06/22/what-happens-to-a-75-year-old-with-a-500000-ira-who-takes-the-rmd-in-january-vs-december-vs-monthly/?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Amid Continued US-Iran Talks",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125854095.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "One S&amp;P 500 Stock Is Older Than The U.S. \u2014 But Don't Buy It",
+      "link": "https://finance.yahoo.com/m/14e3dd58-d013-3ce6-9ebd-23a719e44d8d/one-s%26p-500-stock-is-older.html?.tsrc=rss",
+      "pub_date": "2026-06-22",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "SPY vs. QQQ: Which ETF Looks Best for Your Portfolio in 2026?",
+      "link": "https://www.fool.com/coverage/etfs/2026/06/21/spy-and-qqq-which-looks-best-for-your-portfolio-in-2026/?.tsrc=rss",
+      "pub_date": "2026-06-21",
       "tickers": [
         "SPY",
         "QQQ"
       ],
-      "high_impact": true,
+      "high_impact": false,
       "sources": [],
       "source_count": 1
     }
