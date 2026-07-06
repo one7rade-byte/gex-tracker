@@ -1,21 +1,21 @@
 {
-  "date": "2026-07-03",
+  "date": "2026-07-06",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-6.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.1 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.",
-  "mag7_section": "NVDA WATCH \u2014 score 7/10, RSI at 22th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN AVOID \u2014 company-specific negative news detected: 'MotorK Announces Board of Directors Changes...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.1, needs +5.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-6.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.1 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 7/10, RSI at 22th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN AVOID \u2014 company-specific negative news detected: 'MotorK Announces Board of Directors Changes...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.1, needs +5.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is negative at $-1.9B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 15.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "NVDA WATCH \u2014 score 7/10, RSI at 24th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 37th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-1.9B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 15.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 7/10, RSI at 24th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 37th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
-    "vix_trend": "stable",
-    "vix_current": 16.15,
+    "regime": "mixed",
+    "vix_trend": "falling",
+    "vix_current": 15.81,
     "gex_trend": "improving",
-    "gex_current": -6.2,
-    "fear_trend": "stable",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
+    "gex_current": -1.9,
+    "fear_trend": "easing",
+    "fear_current": 3.0,
+    "bear_current": 2.0,
     "bull_current": 4.0,
     "neg_gex_days": 8,
     "skew_current": 150.02,
@@ -29,114 +29,125 @@
     "reason": "",
     "news": ""
   },
-  "avoid_names": [
-    "AMZN"
-  ],
+  "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 35.8,
+      "rsi_pct": 36.8,
       "above_200ma": true,
       "news": "company_positive",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
-        "Apple Is About 4% Away From Overtaking Nvidia as the World's Most Valuable Company. Could It Happen This Month?",
-        "Dow Jones Futures: Techs' Rise Signal AI Trend Isn't Over; Apple, Robinhood Flash Buy Signals",
-        "Jim Cramer\u2019s Latest Thought on Apple Inc. (AAPL)",
-        "This Tech ETF Is Quietly Outperforming QQQ in 2026 -- Is There Still Time to Buy?"
+        "Seagate, Semtech, and Teradyne Stocks Trade Up, What You Need To Know",
+        "Apple's $2,500 foldable iPhone could sell out instantly",
+        "Monolithic Power Systems, Vishay Intertechnology, and Microchip Technology Stocks Trade Up, What You Need To Know",
+        "Why does Apple still need Broadcom? The story behind their new AI deal"
       ]
     },
     "MSFT": {
       "score": 2.0,
-      "rsi_pct": 59.7,
+      "rsi_pct": 60.3,
       "above_200ma": false,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
-        "Microsoft Had Its Worst Month in More Than 25 Years. Should Investors Buy the Crash?",
-        "Microsoft (MSFT) Launches $2.5 Billion Frontier Company For Enterprise AI Adoption",
-        "Jim Cramer Explains What Microsoft Needs to Do to \u201cReverse Its Fortunes\u201d",
-        "Here\u2019s Why Jim Cramer Thinks Amazon (AMZN) is Punished by the Markets"
+        "S&amp;P 500, Nasdaq End Higher On Support From Strong Tech Gains Led By Nvidia, Dow Hits Record Highs \u2014 MSFT, NVDA, LMT, AVGO, SPCX In Focus",
+        "DigitalOcean's Big Promotion Ends In A Bruise",
+        "Stock Market Today: Dow Up, AI Stock Tests Entry; SpaceX Tumbles As Elon Musk Makes This Boast (Live Coverage)",
+        "Microsoft Is Cutting 4,800 Jobs to Feed the AI Machine. Should You Still Own It?"
       ]
     },
     "NVDA": {
       "score": 7.0,
-      "rsi_pct": 22.4,
+      "rsi_pct": 23.5,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "company_positive",
       "rsi_dir": "stable",
-      "days_oversold": 8,
+      "days_oversold": 9,
       "headlines": [
-        "Apple Is About 4% Away From Overtaking Nvidia as the World's Most Valuable Company. Could It Happen This Month?",
-        "Dividend ETFs vs. Bond ETFs: Which Is the Better Investment in 2026?",
-        "Better EV Stock: Rivian vs. Lucid",
-        "Is This $17.5 Billion Nuclear Stock Your Ticket to Future Riches?"
+        "Why Abacus Global Management Stock Inched Higher Today",
+        "Nvidia rivals get a rare break in AI race",
+        "Why Dan Ives Sees NVDA And Korea Memory Stocks Driving AI Demand",
+        "S&amp;P 500, Nasdaq End Higher On Support From Strong Tech Gains Led By Nvidia, Dow Hits Record Highs \u2014 MSFT, NVDA, LMT, AVGO, SPCX In Focus"
       ]
     },
     "GOOGL": {
       "score": 2.0,
-      "rsi_pct": 50.7,
+      "rsi_pct": 51.5,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "Better Artificial Intelligence (AI) Stock: Alphabet vs. Micron Technology (the Winner May Surprise You)",
-        "Is Reddit (RDDT) The Best Cheap AI Stock to Buy?",
-        "Jim Cramer\u2019s Latest Thought on Apple Inc. (AAPL)",
-        "Here\u2019s Why Jim Cramer Thinks Alphabet Is Still Cheap"
+        "Why Reddit (RDDT) Stock Is Trading Up Today",
+        "2 Brilliant Stocks to Buy and Hold for 10 Years",
+        "DigitalOcean's Big Promotion Ends In A Bruise",
+        "SpaceX Reveals Starmind AI Satellite Constellation Plan"
       ]
     },
     "META": {
       "score": 1.0,
-      "rsi_pct": 68.7,
+      "rsi_pct": 69.1,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "This TSX stock jumped 17% on the week and could buck its discount status on massive Alberta power centre project, analyst says",
-        "Top Invesco Analyst: The AI Trade That \u201cLifted All Boats\u201d Is Over. Now Profitability Decides Winners As \u201cCapacity Will Catch Up\u201d",
-        "Here is Why Jim Cramer Thinks Meta Platforms (META) is Misunderstood",
-        "Here\u2019s Why Jim Cramer Thinks Alphabet Is Still Cheap"
+        "How SK Hynix Can Save the AI Rally\u2014or Send Tech Stocks Tumbling Again",
+        "AMD Feels Goldman\u2019s Love, and the Stock Jumps",
+        "Mark Zuckerberg wants in on prediction markets. Meta's reported plans sent these stocks lower as a result",
+        "Amazon Could be On the Cusp of Reshaping the Artificial Intelligence (AI) Chip Market. Should Nvidia Investors be Worried?"
       ]
     },
     "AMZN": {
       "score": 2.0,
-      "rsi_pct": 49.3,
+      "rsi_pct": 50.0,
       "above_200ma": true,
-      "news": "company_negative",
-      "rsi_dir": "recovering",
-      "days_oversold": 5,
-      "headlines": [
-        "Here\u2019s Why Jim Cramer Thinks Amazon (AMZN) is Punished by the Markets",
-        "Here\u2019s Why Jim Cramer Thinks Alphabet Is Still Cheap",
-        "3 Core Artificial Intelligence (AI) Market Leaders to Buy with $1,000 Right Now and Hold for the Next 20 Years",
-        "Early Snowflake Investor Nails a 50% Rebound That May Only Be Warming Up"
-      ]
-    },
-    "TSLA": {
-      "score": 3.0,
-      "rsi_pct": 46.3,
-      "above_200ma": false,
       "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 4,
       "headlines": [
-        "Dow Jones Futures: Techs' Rise Signal AI Trend Isn't Over; Apple, Robinhood Flash Buy Signals",
-        "Elon Musk's X Money \u2014 New Details On Bank Killer Super App",
-        "Jim Cramer on Tesla: \u201cI Think It\u2019ll Be Bought By SpaceX Sooner Rather Than Later\u201d",
-        "Jim Cramer Explains Why You Need to Own NVIDIA Now"
+        "2 Brilliant Stocks to Buy and Hold for 10 Years",
+        "DigitalOcean's Big Promotion Ends In A Bruise",
+        "How Wide Is The Range Of Possibilities For Netflix Stock?",
+        "SpaceX Reveals Starmind AI Satellite Constellation Plan"
+      ]
+    },
+    "TSLA": {
+      "score": 3.0,
+      "rsi_pct": 47.1,
+      "above_200ma": false,
+      "news": "macro_fear",
+      "rsi_dir": "recovering",
+      "days_oversold": 3,
+      "headlines": [
+        "Stock Market Today, July 6: Semiconductor Momentum Lifts Nasdaq as Dow Closes Above 53,000",
+        "Update: US Equity Indexes Advance as Communication Services, Technology Top Sector Charts While Crude Oil Trades Steady",
+        "Dow Jones Futures: AI Stocks Astera, Bloom, Tesla Rebound; SpaceX Slides Ahead Of Nasdaq-100 Inclusion",
+        "Stock Market Today: Dow Up, AI Stock Tests Entry; SpaceX Tumbles As Elon Musk Makes This Boast (Live Coverage)"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "JEPI Investors Missed 13.21% in Gains While Paying Hidden Taxes on \u2018Monthly\u2019 Income",
-      "link": "https://247wallst.com/investing/2026/07/03/jepi-investors-missed-13-21-in-gains-while-paying-hidden-taxes-on-monthly-income/?.tsrc=rss",
-      "pub_date": "2026-07-03",
+      "title": "S&amp;P 500, Nasdaq End Higher On Support From Strong Tech Gains Led By Nvidia, Dow Hits Record Highs \u2014 MSFT, NVDA, LMT, AVGO, SPCX In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-higher-on-support-from-strong-tech-gains-led-by-nvidia-dow-hits-record-highs-msft-nvda-lmt-avgo-spcx-in-focus/cZm1YfaR7lU?.tsrc=rss",
+      "pub_date": "2026-07-06",
+      "tickers": [
+        "MSFT",
+        "NVDA",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Top Wall Street Strategist: The S&amp;P 500 Could Hit As High As 8,800 This Year, But a 10-20% Drop May Come First",
+      "link": "https://247wallst.com/investing/2026/07/06/top-wall-street-strategist-the-sp-500-could-hit-as-high-as-8800-this-year-but-a-10-20-drop-may-come-first/?.tsrc=rss",
+      "pub_date": "2026-07-06",
       "tickers": [
         "MARKET"
       ],
@@ -145,75 +156,21 @@
       "source_count": 1
     },
     {
-      "title": "Trump Accounts Auto-Buy SPYM on July 4. Here\u2019s the ETF Nobody\u2019s Heard Of",
-      "link": "https://247wallst.com/personal-finance/2026/07/03/trump-accounts-auto-buy-spym-on-july-4-heres-the-etf-nobodys-heard-of/?.tsrc=rss",
-      "pub_date": "2026-07-03",
+      "title": "Microsoft Is Cutting 4,800 Jobs to Feed the AI Machine. Should You Still Own It?",
+      "link": "https://247wallst.com/investing/2026/07/06/microsoft-is-cutting-4800-jobs-to-feed-the-ai-machine-should-you-still-own-it/?.tsrc=rss",
+      "pub_date": "2026-07-06",
       "tickers": [
-        "SPY"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "What Actually Drove IWD Over The Past Year",
-      "link": "https://www.trefis.com/articles/605699/what-actually-drove-iwd-over-the-past-year/2026-07-03?.tsrc=rss",
-      "pub_date": "2026-07-03",
-      "tickers": [
-        "MARKET"
+        "MSFT",
+        "QQQ"
       ],
       "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "EWY's Dip Looks Familiar, But Is It A Trap?",
-      "link": "https://www.trefis.com/articles/605701/ewys-dip-looks-familiar-but-is-it-a-trap/2026-07-03?.tsrc=rss",
-      "pub_date": "2026-07-03",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETF Zoo: Mid-Year Check-In  the AI Trade That Won\u2019t Quit",
-      "link": "http://www.etf.com/sections/podcasts/etf-zoo-mid-year-check-ai-trade-wont-quit?utm_source=yahoo-financeutm_medium=rssutm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-07-03",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "SPYI\u2019s 0.68% Fee Could Cost You Thousands Over 20 Years\u2014Here\u2019s Why",
-      "link": "https://247wallst.com/investing/2026/07/02/spyis-0-68-fee-could-cost-you-thousands-over-20-years-heres-why/?.tsrc=rss",
-      "pub_date": "2026-07-02",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The 41-Day Dividend Trap That Quietly Erodes SPY Returns Every Quarter",
-      "link": "https://247wallst.com/investing/2026/07/02/the-41-day-dividend-trap-that-quietly-erodes-spy-returns-every-quarter/?.tsrc=rss",
-      "pub_date": "2026-07-02",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": true,
       "sources": [],
       "source_count": 1
     },
     {
       "title": "\u201cDiversification Means Always Having to Say You\u2019re Sorry\"",
       "link": "http://www.etf.com/sections/conferences/diversification-means-always-having-say-youre-sorry?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-07-02",
+      "pub_date": "2026-07-06",
       "tickers": [
         "MARKET"
       ],
@@ -222,9 +179,9 @@
       "source_count": 1
     },
     {
-      "title": "Stocks Soaring, Gas Falling: Inside the July 4th Economy Everyone\u2019s Arguing About",
-      "link": "https://247wallst.com/investing/2026/07/02/stocks-soaring-gas-falling-inside-the-july-4th-economy-everyones-arguing-about/?.tsrc=rss",
-      "pub_date": "2026-07-02",
+      "title": "AI Crushed Software Stocks. IGV Is Betting the \u2018SaaSpocalypse\u2019 Is Overblown",
+      "link": "https://247wallst.com/personal-finance/2026/07/06/ai-crushed-software-stocks-igv-is-betting-the-saaspocalypse-is-overblown/?.tsrc=rss",
+      "pub_date": "2026-07-06",
       "tickers": [
         "MARKET"
       ],
@@ -233,9 +190,53 @@
       "source_count": 1
     },
     {
-      "title": "Fed Chair Warsh Just Said the One Thing About Inflation Every Investor Wanted to Hear",
-      "link": "https://247wallst.com/investing/2026/07/02/fed-chair-warsh-just-said-the-one-thing-about-inflation-every-investor-wanted-to-hear/?.tsrc=rss",
-      "pub_date": "2026-07-02",
+      "title": "AI\u2019s Next Act Isn\u2019t Chatbots. It\u2019s Robots, and BOTZ Is the Bet",
+      "link": "https://247wallst.com/personal-finance/2026/07/06/ais-next-act-isnt-chatbots-its-robots-and-botz-is-the-bet/?.tsrc=rss",
+      "pub_date": "2026-07-06",
+      "tickers": [
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "$300 a Month at 25 Beats $800 a Month at 40. Most People Start Too Late.",
+      "link": "https://247wallst.com/personal-finance/2026/07/06/300-a-month-at-25-beats-800-a-month-at-40-most-people-start-too-late/?.tsrc=rss",
+      "pub_date": "2026-07-06",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "The Anti-Magnificent Seven Trade? VGK Is Quietly Creeping Toward Record Highs",
+      "link": "https://247wallst.com/personal-finance/2026/07/06/the-anti-magnificent-seven-trade-vgk-is-quietly-creeping-toward-record-highs/?.tsrc=rss",
+      "pub_date": "2026-07-06",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "A 2.86% Yield, 0.08% Fee, and 75 Stocks: Is HDV the Anti-Hype ETF?",
+      "link": "https://247wallst.com/personal-finance/2026/07/06/a-2-86-yield-0-08-fee-and-75-stocks-is-hdv-the-anti-hype-etf/?.tsrc=rss",
+      "pub_date": "2026-07-06",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Why Retirees Choose 4% Income (or 2% income post forward split) Over 10% Growth in One ETF",
+      "link": "https://247wallst.com/investing/2026/07/06/why-retirees-choose-4-income-or-2-income-post-forward-split-over-10-growth-in-one-etf/?.tsrc=rss",
+      "pub_date": "2026-07-06",
       "tickers": [
         "MARKET"
       ],
