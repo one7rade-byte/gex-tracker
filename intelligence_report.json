@@ -1,27 +1,27 @@
 {
-  "date": "2026-07-09",
+  "date": "2026-07-10",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-8.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.9 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "TSLA WATCH \u2014 score 5/10, RSI at 42th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 39th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Meta set to overtake Google\u2019s frontier AI models in six mont...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.9, needs +5.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-8.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.9 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: TSLA WATCH \u2014 score 5/10, RSI at 42th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 39th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Meta set to overtake Google\u2019s frontier AI models in six mont...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.9, needs +5.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "voo_vgt_action": "HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$8.6B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.",
+  "macro_picture": "SPY GEX is positive at +$8.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 15.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "AAPL AVOID \u2014 company-specific negative news detected: 'Apple sues OpenAI over alleged trade secret theft...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 4/10, RSI at 44th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$8.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 15.8 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$8.6B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.\n\nMAG 7 OPPORTUNITIES: AAPL AVOID \u2014 company-specific negative news detected: 'Apple sues OpenAI over alleged trade secret theft...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 4/10, RSI at 44th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
+    "regime": "strong_bull",
     "vix_trend": "falling",
-    "vix_current": 16.9,
+    "vix_current": 15.84,
     "gex_trend": "improving",
-    "gex_current": -8.4,
-    "fear_trend": "building",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
-    "bull_current": 4.0,
-    "neg_gex_days": 7,
-    "skew_current": 149.79,
+    "gex_current": 8.6,
+    "fear_trend": "easing",
+    "fear_current": 1.0,
+    "bear_current": 1.0,
+    "bull_current": 7.0,
+    "neg_gex_days": 6,
+    "skew_current": 144.67,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 46.33
+    "spy_rsi": 58.38
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,113 +30,113 @@
     "news": ""
   },
   "avoid_names": [
-    "GOOGL"
+    "AAPL"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 38.0,
+      "rsi_pct": 54.2,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "company_negative",
       "rsi_dir": "recovering",
-      "days_oversold": 4,
+      "days_oversold": 3,
       "headlines": [
-        "Broadcom Stock Investors Just Got Incredible News from Apple CEO Tim Cook",
-        "Top Stock Reports for Apple, KLA Corp. &amp; Western Digital",
-        "'Because I Could' \u2014 Mark Cuban Holds the Guinness World Record for the Largest Single E-Commerce Transaction. He Spent $40M in One Email",
-        "Forget BTS. South Korea\u2019s Biggest Export Might Be Memory."
+        "Apple is suing OpenAI over alleged trade secret theft",
+        "Apple sues OpenAI over alleged trade secret theft",
+        "Apple is suing OpenAI for theft of trade secrets. Here's what we know.",
+        "Micron Jumps as Chip Sentiment Improves"
       ]
     },
     "MSFT": {
       "score": 2.0,
-      "rsi_pct": 47.9,
+      "rsi_pct": 65.3,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 4,
+      "days_oversold": 3,
       "headlines": [
-        "Datadog, IBD Stock Of The Day, Breaks Away From Software Pack",
-        "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-        "Starbucks (SBUX) Stock Is Up, What You Need To Know",
-        "Meet the leadership of the Fed's new task forces"
+        "Amazon, Microsoft and Meta Among HSBC Earnings Picks",
+        "Three Enticing Clues Put This Broadcom Partner, Nvidia Rival In Focus",
+        "UK Brings Amazon Web Services Under Direct Financial Oversight",
+        "Starbucks tries something it failed at before"
       ]
     },
     "NVDA": {
       "score": 4.0,
-      "rsi_pct": 39.4,
+      "rsi_pct": 44.4,
       "above_200ma": true,
-      "news": "company_positive",
-      "rsi_dir": "stable",
-      "days_oversold": 8,
+      "news": "macro_fear",
+      "rsi_dir": "recovering",
+      "days_oversold": 7,
       "headlines": [
-        "Why Micron Stock Surged Today",
-        "Broadcom Stock Investors Just Got Incredible News from Apple CEO Tim Cook",
-        "Dow Jones Futures: Micron, Sandisk Jump As Nasdaq Tops Key Level; Delta, Taiwan Semi, SK Hynix Due",
-        "Want $1,000 in Annual Passive Income? Invest This Much in This Ultra-High-Yield Energy Stock."
+        "Why Figma Stock Lost 52% in the First Half of 2026",
+        "Why Is Meta (META) Stock Soaring Today",
+        "Why the Pure Bitcoin-Miner Fund Crushed the Blockchain Basket, Up 184%",
+        "Dow Jones Futures: Big Earnings Due As Market Sets Up; Nvidia, Micron, Sandisk, Robinhood, SpaceX In Focus"
       ]
     },
     "GOOGL": {
       "score": 2.0,
-      "rsi_pct": 35.2,
+      "rsi_pct": 45.8,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-        "Meta set to overtake Google\u2019s frontier AI models in six months, SemiAnalysis says",
-        "Musk calls rival Anthropic the current frontrunner in AI",
-        "Meta Takes Aim at Google and OpenAI"
+        "Tesla Faces Possible Robotaxi Ban In New Jersey, But It Gains Market Share In China",
+        "What Meta's Muse AI image tool means for Instagram privacy",
+        "Amazon, Microsoft and Meta Among HSBC Earnings Picks",
+        "UK Brings Amazon Web Services Under Direct Financial Oversight"
       ]
     },
     "META": {
       "score": 1.0,
-      "rsi_pct": 62.0,
+      "rsi_pct": 83.3,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Meta launches paid Muse Spark 1.1 API to compete with OpenAI, Anthropic",
-        "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-        "Does Meta pay dividends? Its yield and payouts explained",
-        "Meta Stock Jumps As AI Battle Heats Up. Zuckerberg Says Cloud Business 'Make Sense.'"
+        "Stock Market Today, July 10: Markets Edge Higher and SK Hynix Soars on Debut",
+        "Why Is Meta (META) Stock Soaring Today",
+        "S&amp;P 500 Posts Weekly Gain as Technology, Energy Rally",
+        "SK Hynix, Micron, Meta, Delta, Circle Internet, and More Stocks That Explain Today\u2019s Market"
       ]
     },
     "AMZN": {
-      "score": 2.0,
-      "rsi_pct": 42.3,
+      "score": 3.0,
+      "rsi_pct": 63.9,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "days_oversold": 0,
       "headlines": [
-        "Collect 15% On DASH Stock Now, And Still Keep 21% Of Upside",
-        "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-        "AI could cause a huge electricity shortfall in the US, Bank of America says: A closer look",
-        "Instacart remains insulated from Amazon's grocery push, Jefferies survey suggests"
+        "The Real Risk Inside Home Depot Stock",
+        "Own Walmart For Value? Dollar Tree's Numbers Tell A Sharper Story.",
+        "Tesla Faces Possible Robotaxi Ban In New Jersey, But It Gains Market Share In China",
+        "Why Is Amazon so Much Cheaper Than Walmart and Costco? This Is the Only Answer I Can Think of."
       ]
     },
     "TSLA": {
-      "score": 5.0,
-      "rsi_pct": 42.3,
+      "score": 3.0,
+      "rsi_pct": 55.6,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "days_oversold": 0,
       "headlines": [
-        "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-        "Is Tesla (TSLA) One of the Best QQQ Stocks to Invest in?",
-        "Tesla Stock Gets Stunning Price Target Hike From UBS on AI Boom",
-        "Nasdaq Leads the Market's Climb Higher"
+        "Subversive Capital files 'Ex-Elon' ETFs with the SEC that strip Tesla and SpaceX from the S&amp;P 500 and Nasdaq-100",
+        "Tesla Faces Possible Robotaxi Ban In New Jersey, But It Gains Market Share In China",
+        "Tesla Stock Is Waiting For Godot",
+        "SpaceX Will Be \u2018Worth More Than the Rest of Earth,\u2019 Musk Says. How He Gets There."
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Your Fund May Carry An Unearned Price",
-      "link": "https://www.trefis.com/articles/606424/your-fund-may-carry-an-unearned-price/2026-07-09?.tsrc=rss",
-      "pub_date": "2026-07-09",
+      "title": "He Claimed Social Security at 62 Against His Advisor\u2019s Advice. At 78, His $900,000 Portfolio Says It Was the Right Call.",
+      "link": "https://247wallst.com/personal-finance/2026/07/10/he-claimed-social-security-at-62-against-his-advisors-advice-at-78-his-900000-portfolio-says-it-was-the-right-call/?.tsrc=rss",
+      "pub_date": "2026-07-10",
       "tickers": [
         "MARKET"
       ],
@@ -145,9 +145,9 @@
       "source_count": 1
     },
     {
-      "title": "Top Wall Street Strategist: Tech Earnings Are the \u201cBest I\u2019ve Seen in My Career.\u201d Here\u2019s the Catch.",
-      "link": "https://247wallst.com/investing/2026/07/09/top-wall-street-strategist-tech-earnings-are-the-best-ive-seen-in-my-career-heres-the-catch/?.tsrc=rss",
-      "pub_date": "2026-07-09",
+      "title": "Fundstrat\u2019s Tom Lee: July will be stronger for stocks as valuations become more reasonable",
+      "link": "https://247wallst.com/investing/2026/07/10/fundstrats-tom-lee-july-will-be-stronger-for-stocks-as-valuations-become-more-reasonable/?.tsrc=rss",
+      "pub_date": "2026-07-10",
       "tickers": [
         "MARKET"
       ],
@@ -156,42 +156,9 @@
       "source_count": 1
     },
     {
-      "title": "U.S. Stock Market \u2018About As Expensive As It\u2019s Ever Been\u2019 \u2014 Here\u2019s How to Retirement Plan Around It",
-      "link": "https://247wallst.com/investing/2026/07/09/u-s-stock-market-about-as-expensive-as-its-ever-been-heres-how-to-retirement-plan-around-it/?.tsrc=rss",
-      "pub_date": "2026-07-09",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "What ICLN's Concentrated Holdings Say About This Dip",
-      "link": "https://www.trefis.com/articles/606416/what-iclns-concentrated-holdings-say-about-this-dip/2026-07-09?.tsrc=rss",
-      "pub_date": "2026-07-09",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "IVE Hit A New High. Is It Time To Act?",
-      "link": "https://www.trefis.com/articles/606417/ive-hit-a-new-high-is-it-time-to-act/2026-07-09?.tsrc=rss",
-      "pub_date": "2026-07-09",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "What Will Push This Market Into Its Next Gear? Maybe the $7 Trillion Cash Pile on the Sidelines.",
-      "link": "https://247wallst.com/investing/2026/07/09/what-will-push-this-market-into-its-next-gear-maybe-the-7-trillion-cash-pile-on-the-sidelines/?.tsrc=rss",
-      "pub_date": "2026-07-09",
+      "title": "Time to Buy Wide Moat &amp; HALO ETFs?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/time-buy-wide-moat-halo-150000939.html?.tsrc=rss",
+      "pub_date": "2026-07-10",
       "tickers": [
         "MARKET"
       ],
@@ -200,9 +167,9 @@
       "source_count": 1
     },
     {
-      "title": "How Much Palo Alto Networks (PANW) Do You Own By Accident?",
-      "link": "https://www.trefis.com/articles/606418/how-much-palo-alto-networks-panw-do-you-own-by-accident/2026-07-09?.tsrc=rss",
-      "pub_date": "2026-07-09",
+      "title": "Defined Outcome ETF (GMAR) Hits New 52-Week High",
+      "link": "https://finance.yahoo.com/markets/options/articles/defined-outcome-etf-gmar-hits-145200704.html?.tsrc=rss",
+      "pub_date": "2026-07-10",
       "tickers": [
         "MARKET"
       ],
@@ -211,9 +178,9 @@
       "source_count": 1
     },
     {
-      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Thursday as Chip Stocks Rebound Despite US-Iran Tensions",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-131219951.html?.tsrc=rss",
-      "pub_date": "2026-07-09",
+      "title": "Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Friday Amid Renewed US-Iran Tensions Ahead of Q2 Earnings Season",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130717862.html?.tsrc=rss",
+      "pub_date": "2026-07-10",
       "tickers": [
         "SPY"
       ],
@@ -222,8 +189,42 @@
       "source_count": 1
     },
     {
-      "title": "Coca-Cola vs Exxon: Which Blue Chip Won the Decade?",
-      "link": "https://247wallst.com/investing/2026/07/09/coca-cola-vs-exxon-which-blue-chip-won-the-decade/?.tsrc=rss",
+      "title": "What ICLN's Basket Says About Buying This Dip",
+      "link": "https://www.trefis.com/articles/606627/what-iclns-basket-says-about-buying-this-dip/2026-07-10?.tsrc=rss",
+      "pub_date": "2026-07-10",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "These Precious Metals ETFs Beat The S&amp;P 500 Over The Past Year \u2014 Can The Rally Survive The Iran Whiplash?",
+      "link": "https://stocktwits.com/news-articles/markets/equity/these-precious-metals-etfs-beat-the-sp500-over-the-past-year/cZmAMRFR7FW?.tsrc=rss",
+      "pub_date": "2026-07-10",
+      "tickers": [
+        "META"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Dow, Nasdaq, S&amp;P 500 Futures Retreat After Chip-Led Gains At Close: META, ONDS, FUBO, FRMI Stocks In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/dow-nasdaq-sp500-futures-retreat-after-chip-led-gains-at-close/cZmAFbyR7F3?.tsrc=rss",
+      "pub_date": "2026-07-10",
+      "tickers": [
+        "META",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Convert Your IRA While the Market Is Crashing and the IRS Basically Gives You a Discount",
+      "link": "https://247wallst.com/personal-finance/2026/07/09/convert-your-ira-while-the-market-is-crashing-and-the-irs-basically-gives-you-a-discount/?.tsrc=rss",
       "pub_date": "2026-07-09",
       "tickers": [
         "MARKET"
@@ -233,11 +234,11 @@
       "source_count": 1
     },
     {
-      "title": "Wall Street Is Warning of a Market Snapback. For a 73-Year-Old, an RMD Locked to Last Year\u2019s Balance Could Force a Sale at the Bottom.",
-      "link": "https://247wallst.com/personal-finance/2026/07/09/wall-street-is-warning-of-a-market-snapback-for-a-73-year-old-an-rmd-locked-to-last-years-balance-could-force-a-sale-at-the-bottom/?.tsrc=rss",
+      "title": "S&amp;P 500, Nasdaq, Dow End Higher Led By Chipmaker Stocks As Investors Look Past US-Iran Hostility \u2014 ORCL, SBUX, WULF, PANW, FATE In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-higher-led-by-chipmaker-stocks-as-investors-look-past-us-iran-hostility/cZmY9vSR7nz?.tsrc=rss",
       "pub_date": "2026-07-09",
       "tickers": [
-        "MARKET"
+        "QQQ"
       ],
       "high_impact": false,
       "sources": [],
