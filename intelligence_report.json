@@ -1,27 +1,27 @@
 {
-  "date": "2026-07-14",
+  "date": "2026-07-15",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-7.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.2 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA WATCH \u2014 score 5/10, RSI at 34th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, July 14: Lucid Group Plunges but Denies ...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Apple Lawsuit Threatens OpenAI's Hardware Push as 400+ Ex-Ap...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta layoffs take disturbing turn in new lawsuit...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 17.2, needs +4.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-7.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.2 (calm, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 5/10, RSI at 34th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, July 14: Lucid Group Plunges but Denies ...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Apple Lawsuit Threatens OpenAI's Hardware Push as 400+ Ex-Ap...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta layoffs take disturbing turn in new lawsuit...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.2, needs +4.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is positive at +$3.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.",
+  "mag7_section": "AAPL WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Struggling EV maker reels as Chapter 11 bankruptcy rumors sw...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta employees sue over alleged AI-driven layoffs targeting ...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$3.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Struggling EV maker reels as Chapter 11 bankruptcy rumors sw...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta employees sue over alleged AI-driven layoffs targeting ...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
-    "vix_trend": "falling",
-    "vix_current": 17.16,
+    "regime": "mixed",
+    "vix_trend": "stable",
+    "vix_current": 16.5,
     "gex_trend": "improving",
-    "gex_current": -7.0,
+    "gex_current": 3.6,
     "fear_trend": "easing",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
-    "bull_current": 4.0,
+    "fear_current": 2.0,
+    "bear_current": 2.0,
+    "bull_current": 6.0,
     "neg_gex_days": 6,
-    "skew_current": 145.69,
+    "skew_current": 145.13,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 53.68
+    "spy_rsi": 66.05
   },
   "top_opportunity": {
     "ticker": null,
@@ -31,126 +31,113 @@
   },
   "avoid_names": [
     "TSLA",
-    "AAPL",
     "META"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 3.0,
-      "rsi_pct": 55.4,
+      "score": 4.0,
+      "rsi_pct": 57.3,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "days_oversold": 0,
       "headlines": [
-        "Apple Lawsuit Threatens OpenAI's Hardware Push as 400+ Ex-Apple Staff Join",
-        "AAPL Stock Slips \u2014 OpenAI Says It Sees No \u2018Evidence\u2019 That Apple Lawsuit Has Merit",
-        "Broadcom Inc. (AVGO) Agreement a Strategic Positive for Apple, says Evercore ISI",
-        "What You Actually Pay To Join The AAPL Run"
+        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
+        "Is This Why Memory Stocks Are Plunging?",
+        "Hardware Bears Are Wrong and That\u2019s Why I Keep Buying Apple on Repeat",
+        "What rising memory chip prices could mean for Apple's iPhones"
       ]
     },
     "MSFT": {
-      "score": 2.0,
-      "rsi_pct": 77.0,
+      "score": 3.0,
+      "rsi_pct": 70.7,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "days_oversold": 0,
       "headlines": [
-        "Microsoft Corporation (MSFT) to Cut 4,800 Jobs",
-        "Amazon.com, Inc. (AMZN) Aims to Raise $25 billion from Bond Sale",
-        "What You Actually Pay To Join The AAPL Run",
-        "Chevron Entered The AI Power Business. The Oil Patch Won't Be The Same."
+        "Microsoft Stock Hit With Price-Target Cuts After Flaccid Performance",
+        "Update: Wall Street Extends Gains on Further Signs of Cooling Inflation",
+        "Microsoft Stock Rises After Evercore Hikes Price Target on AI Growth",
+        "Citi Trims Microsoft Target"
       ]
     },
     "NVDA": {
-      "score": 5.0,
-      "rsi_pct": 33.8,
+      "score": 4.0,
+      "rsi_pct": 70.7,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 5,
+      "days_oversold": 4,
       "headlines": [
-        "Elon Musk's Tesla Posts Best Quarter in Two Years",
-        "China plans to let top AI firms buy limited NVIDIA Corporation (NVDA) H200 chips, the Information reports",
-        "Nvidia (NVDA) Stock Trades Up, Here Is Why",
-        "S&amp;P 500, Nasdaq End Higher On Support From Chipmakers, Cybersecurity Stocks And Soft Inflation Data \u2014 NVDA, GS, SKHY, VZ, LCID In Focus"
+        "Predicting Where SpaceX Is Headed by the End of 2026",
+        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
+        "Stripe and Advent Reportedly Bid $60.50 a Share for PayPal. Here's the Real Prize: Venmo.",
+        "If You Invest $5,000 in the Vanguard Information Technology ETF Today, Here's What You Might Have in 20 Years"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 55.4,
+      "rsi_pct": 64.0,
       "above_200ma": true,
       "news": "macro_fear",
-      "rsi_dir": "stable",
+      "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Is Alphabet Inc. (GOOGL) Among the Ray Dalio Stock Portfolio: 10 Best Stocks to Buy?",
-        "Amazon.com, Inc. (AMZN) Aims to Raise $25 billion from Bond Sale",
-        "What You Actually Pay To Join The AAPL Run",
-        "Chinese AI model developer DeepSeek preps for IPO: What to know"
+        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
+        "What Meta, Google, and BlackRock get for training electricians",
+        "AMZN Stock Is Cheaper Than WMT And GOOGL \u2014 Why Jefferies Calls Amazon A Top Pick Among Hyperscalers",
+        "What rising memory chip prices could mean for Apple's iPhones"
       ]
     },
     "META": {
-      "score": 2.0,
-      "rsi_pct": 87.8,
+      "score": 3.0,
+      "rsi_pct": 88.0,
       "above_200ma": true,
       "news": "company_negative",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Amazon.com, Inc. (AMZN) Aims to Raise $25 billion from Bond Sale",
-        "Meta layoffs take disturbing turn in new lawsuit",
-        "Chinese AI model developer DeepSeek preps for IPO: What to know",
-        "Jim Cramer Sticks With His Big Prediction About Meta Platforms Inc. (META)"
+        "What Meta, Google, and BlackRock get for training electricians",
+        "Better Artificial Intelligence (AI) Stock: Alphabet Versus Meta Platforms",
+        "Why I Won\u2019t Stop Buying Meta Before September",
+        "Dell, Micron, SanDisk tumble as AI hardware rally hits reversal"
       ]
     },
     "AMZN": {
       "score": 3.0,
-      "rsi_pct": 68.9,
+      "rsi_pct": 68.0,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Is Alphabet Inc. (GOOGL) Among the Ray Dalio Stock Portfolio: 10 Best Stocks to Buy?",
-        "Amazon.com, Inc. (AMZN) Aims to Raise $25 billion from Bond Sale",
-        "What You Actually Pay To Join The AAPL Run",
-        "Jim Cramer Shares Take On Amazon.com, Inc. (AMZN) &amp; AI"
+        "AMZN Stock Is Cheaper Than WMT And GOOGL \u2014 Why Jefferies Calls Amazon A Top Pick Among Hyperscalers",
+        "Update: Wall Street Extends Gains on Further Signs of Cooling Inflation",
+        "Better Artificial Intelligence (AI) Stock: Amazon vs. Alphabet",
+        "OpenAI's AI speaker marks its entry into consumer hardware"
       ]
     },
     "TSLA": {
       "score": 4.0,
-      "rsi_pct": 43.2,
+      "rsi_pct": 60.0,
       "above_200ma": false,
       "news": "fundamental_change",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Tesla Stock Rises After Wave of Wall Street Target Hikes",
-        "Elon Musk's Tesla Posts Best Quarter in Two Years",
-        "Stock Market Today, July 14: Lucid Group Plunges but Denies Reports About Bankruptcy Filing",
-        "Zipline Accelerates U.S. Growth with 13X Marketplace Expansion, New Leadership Hires, and Launches in Austin and Cleveland"
+        "Battery X Metals Completes First-Generation Proprietary Battery Adaptor for Tesla Model 3 and Model Y, Marking a Significant Commercial Readiness Milestone for its Patent-Pending Lithium-Ion Battery Rebalancing Platform",
+        "YieldMax launches a new SpaceX options ETF: What investors should know",
+        "Struggling EV maker reels as Chapter 11 bankruptcy rumors swirl",
+        "Liberty All-Star\u00ae Equity Fund June 2026 Monthly Update"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "S&amp;P 500, Nasdaq End Higher On Support From Chipmakers, Cybersecurity Stocks And Soft Inflation Data \u2014 NVDA, GS, SKHY, VZ, LCID In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-higher-as-consumer-price-inflation-eases/cZZRBCFR7qq?.tsrc=rss",
-      "pub_date": "2026-07-14",
-      "tickers": [
-        "NVDA",
-        "QQQ"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETF Share Class: Everyone\u2019s Filing but No One\u2019s Launching",
-      "link": "http://www.etf.com/sections/conferences/etf-share-class-everyones-filing-no-ones-launching?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-07-14",
+      "title": "The Cheapest S&amp;P 500 ETF Was Just Picked for Trump Accounts and $30 Billion Followed",
+      "link": "https://247wallst.com/investing/etf/2026/07/15/the-cheapest-sp-500-etf-was-just-picked-for-trump-accounts-and-30-billion-followed/?.tsrc=rss",
+      "pub_date": "2026-07-15",
       "tickers": [
         "MARKET"
       ],
@@ -159,20 +146,75 @@
       "source_count": 1
     },
     {
-      "title": "June CPI Shakes Up 2026 Rate Hike Odds",
-      "link": "https://finance.yahoo.com/economy/policy/articles/june-cpi-shakes-2026-rate-185700608.html?.tsrc=rss",
-      "pub_date": "2026-07-14",
+      "title": "DTCC Executes First Live Trades With Tokenized Wall Street Assets",
+      "link": "https://www.bankless.com/read/news/dtcc-executes-first-live-trades-with-tokenized-wall-street-assets?.tsrc=rss",
+      "pub_date": "2026-07-15",
       "tickers": [
         "MARKET"
       ],
-      "high_impact": true,
+      "high_impact": false,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "SPYI vs. JEPI: Which Monthly \u2018Paycheck\u2019 ETF Actually Wins When the Market Gets Ugly?",
-      "link": "https://247wallst.com/investing/etf/2026/07/14/spyi-vs-jepi-which-monthly-paycheck-etf-actually-wins-when-the-market-gets-ugly/?.tsrc=rss",
-      "pub_date": "2026-07-14",
+      "title": "This Growth ETF Costs 3 Cents and Has Beaten the S&amp;P 500 in 95% of 5-Year Windows",
+      "link": "https://247wallst.com/investing/etf/2026/07/15/this-growth-etf-costs-3-cents-and-has-beaten-the-sp-500-in-95-of-5-year-windows/?.tsrc=rss",
+      "pub_date": "2026-07-15",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "IBB ETF Holds Fewer Bets Than You Think",
+      "link": "https://www.trefis.com/articles/607327/ibb-etf-holds-fewer-bets-than-you-think/2026-07-15?.tsrc=rss",
+      "pub_date": "2026-07-15",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "3 Covered Call ETFs to Buy for Monthly Income in 2026",
+      "link": "https://247wallst.com/investing/etf/2026/07/15/3-covered-call-etfs-to-buy-for-monthly-income-in-2026/?.tsrc=rss",
+      "pub_date": "2026-07-15",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "The Company Behind Wall Street's Plumbing Is Looking To Tokenize MSFT Stock: Report",
+      "link": "https://stocktwits.com/news-articles/markets/equity/msft-dtcc-stocks-treasurys-wall-street/cZZPEe2R7At?.tsrc=rss",
+      "pub_date": "2026-07-15",
+      "tickers": [
+        "MSFT"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Here\u2019s the Clear Reason to Buy Intel Before Its July 23 Earnings Report",
+      "link": "https://247wallst.com/investing/2026/07/15/heres-the-clear-reason-to-buy-intel-before-its-july-23-earnings-report/?.tsrc=rss",
+      "pub_date": "2026-07-15",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Wednesday Amid Economic Reports",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125305699.html?.tsrc=rss",
+      "pub_date": "2026-07-15",
       "tickers": [
         "SPY"
       ],
@@ -181,20 +223,9 @@
       "source_count": 1
     },
     {
-      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Tuesday Ahead of Warsh Testimony",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-130421454.html?.tsrc=rss",
-      "pub_date": "2026-07-14",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Which Hot Funds Have Staying Power?",
-      "link": "https://www.trefis.com/articles/607071/which-hot-funds-have-staying-power/2026-07-14?.tsrc=rss",
-      "pub_date": "2026-07-14",
+      "title": "Is XLF's New High A Quiet Warning?",
+      "link": "https://www.trefis.com/articles/607337/is-xlfs-new-high-a-quiet-warning/2026-07-15?.tsrc=rss",
+      "pub_date": "2026-07-15",
       "tickers": [
         "MARKET"
       ],
@@ -203,44 +234,9 @@
       "source_count": 1
     },
     {
-      "title": "VOE Is At A Record. Is It Time To Act?",
-      "link": "https://www.trefis.com/articles/607066/voe-is-at-a-record-is-it-time-to-act/2026-07-14?.tsrc=rss",
-      "pub_date": "2026-07-14",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Is This Dip In ARKQ A Gift Or A Trap?",
-      "link": "https://www.trefis.com/articles/607063/is-this-dip-in-arkq-a-gift-or-a-trap/2026-07-14?.tsrc=rss",
-      "pub_date": "2026-07-14",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "S&amp;P 500, Nasdaq, Dow End Lower As US-Iran War Fear Remerges \u2014 PSKY, META, GOOGL, INTC, NFLX In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-lower-as-us-iran-war-fear-remerges-meta-skhvy-crcl-ba-dal-in-focus/cZmC5BQR7YA?.tsrc=rss",
-      "pub_date": "2026-07-13",
-      "tickers": [
-        "GOOGL",
-        "META",
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The Hidden Price Of A High Yield",
-      "link": "https://www.trefis.com/articles/606861/the-hidden-price-of-a-high-yield/2026-07-13?.tsrc=rss",
-      "pub_date": "2026-07-13",
+      "title": "Traders Bet There's An 88% Chance The S&amp;P 500 Will Plunge Soon",
+      "link": "https://finance.yahoo.com/m/872bdc12-0f36-3e42-887c-c54cd750fd24/traders-bet-there%27s-an-88%25.html?.tsrc=rss",
+      "pub_date": "2026-07-15",
       "tickers": [
         "MARKET"
       ],
