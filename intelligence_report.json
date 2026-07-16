@@ -1,27 +1,27 @@
 {
-  "date": "2026-07-15",
+  "date": "2026-07-16",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is positive at +$3.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.",
-  "mag7_section": "AAPL WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Struggling EV maker reels as Chapter 11 bankruptcy rumors sw...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta employees sue over alleged AI-driven layoffs targeting ...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$3.6B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 145 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Struggling EV maker reels as Chapter 11 bankruptcy rumors sw...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'Meta employees sue over alleged AI-driven layoffs targeting ...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "voo_vgt_action": "HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$8.3B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.",
+  "macro_picture": "SPY GEX is positive at +$8.3B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 15.7 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "NVDA WATCH \u2014 score 6/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, July 16: Lucid Group Surges on CEO's Den...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 15.7, needs +6.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$8.3B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 15.7 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$8.3B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 6/10, RSI at 71th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, July 16: Lucid Group Surges on CEO's Den...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.7, needs +6.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "mixed",
+    "regime": "strong_bull",
     "vix_trend": "stable",
-    "vix_current": 16.5,
+    "vix_current": 15.67,
     "gex_trend": "improving",
-    "gex_current": 3.6,
+    "gex_current": 8.3,
     "fear_trend": "easing",
     "fear_current": 2.0,
     "bear_current": 2.0,
-    "bull_current": 6.0,
-    "neg_gex_days": 6,
-    "skew_current": 145.13,
+    "bull_current": 7.0,
+    "neg_gex_days": 5,
+    "skew_current": 148.51,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 66.05
+    "spy_rsi": 68.13
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,114 +30,113 @@
     "news": ""
   },
   "avoid_names": [
-    "TSLA",
-    "META"
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 4.0,
-      "rsi_pct": 57.3,
+      "score": 2.0,
+      "rsi_pct": 75.0,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
-        "Is This Why Memory Stocks Are Plunging?",
-        "Hardware Bears Are Wrong and That\u2019s Why I Keep Buying Apple on Repeat",
-        "What rising memory chip prices could mean for Apple's iPhones"
+        "Why Apple\u2019s \u2018Standard Oil\u2019 Strategy Is Driving the Stock to All-Time Highs",
+        "Silicon Valley Midas Investor Michael Moritz on AI, Venture Capital, and Just About Everything",
+        "The \"Magnificent Seven\" Are at Their Lowest Relative Valuations in a Decade. My 3 Favorite Mag 7 Stocks to Buy.",
+        "Apple's New iPhone Is Going to Cost Significantly More Than Last Year. That's Great News for These 2 Potential Millionaire-Maker Stocks."
       ]
     },
     "MSFT": {
       "score": 3.0,
-      "rsi_pct": 70.7,
+      "rsi_pct": 81.6,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Microsoft Stock Hit With Price-Target Cuts After Flaccid Performance",
-        "Update: Wall Street Extends Gains on Further Signs of Cooling Inflation",
-        "Microsoft Stock Rises After Evercore Hikes Price Target on AI Growth",
-        "Citi Trims Microsoft Target"
+        "Why Apple\u2019s \u2018Standard Oil\u2019 Strategy Is Driving the Stock to All-Time Highs",
+        "The \"Magnificent Seven\" Are at Their Lowest Relative Valuations in a Decade. My 3 Favorite Mag 7 Stocks to Buy.",
+        "This Data Center IPO Is the Next Big Test for the AI Trade",
+        "Anthropic just made a move that changes the AI investing story"
       ]
     },
     "NVDA": {
-      "score": 4.0,
-      "rsi_pct": 70.7,
+      "score": 6.0,
+      "rsi_pct": 71.1,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 4,
       "headlines": [
-        "Predicting Where SpaceX Is Headed by the End of 2026",
-        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
-        "Stripe and Advent Reportedly Bid $60.50 a Share for PayPal. Here's the Real Prize: Venmo.",
-        "If You Invest $5,000 in the Vanguard Information Technology ETF Today, Here's What You Might Have in 20 Years"
+        "Nvidia\u2019s Rubin reassurance protects a much bigger AI bet",
+        "Boeing Delivered 64 Jets in June. Here's What That Means for Its July 28 Earnings.",
+        "Chip Stocks Pummeled. SK Hynix Dives. SOX Socked Again.",
+        "Amazon: A Deeper Look at the Cloud Growth Story (NASDAQ:AMZN)"
       ]
     },
     "GOOGL": {
-      "score": 3.0,
-      "rsi_pct": 64.0,
+      "score": 2.0,
+      "rsi_pct": 65.8,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
-        "What Meta, Google, and BlackRock get for training electricians",
-        "AMZN Stock Is Cheaper Than WMT And GOOGL \u2014 Why Jefferies Calls Amazon A Top Pick Among Hyperscalers",
-        "What rising memory chip prices could mean for Apple's iPhones"
+        "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, But These Groups Are Strong; SpaceX Starship Launch Due",
+        "Why Apple\u2019s \u2018Standard Oil\u2019 Strategy Is Driving the Stock to All-Time Highs",
+        "Update: Wall Street Snaps Two-Day Advance as Chip-Related Stocks Slump",
+        "GOOGL Stock Falls 5% As Google\u2019s Flagship AI Model Reportedly Runs Behind Schedule \u2014 Why Retail Traders Aren\u2019t Worried"
       ]
     },
     "META": {
       "score": 3.0,
-      "rsi_pct": 88.0,
+      "rsi_pct": 89.5,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "What Meta, Google, and BlackRock get for training electricians",
-        "Better Artificial Intelligence (AI) Stock: Alphabet Versus Meta Platforms",
-        "Why I Won\u2019t Stop Buying Meta Before September",
-        "Dell, Micron, SanDisk tumble as AI hardware rally hits reversal"
+        "Why Apple\u2019s \u2018Standard Oil\u2019 Strategy Is Driving the Stock to All-Time Highs",
+        "GOOGL Stock Falls 5% As Google\u2019s Flagship AI Model Reportedly Runs Behind Schedule \u2014 Why Retail Traders Aren\u2019t Worried",
+        "Google Stock Falls Amid Delay In AI Model Release, Nasdaq Retreat",
+        "The \"Magnificent Seven\" Are at Their Lowest Relative Valuations in a Decade. My 3 Favorite Mag 7 Stocks to Buy."
       ]
     },
     "AMZN": {
       "score": 3.0,
-      "rsi_pct": 68.0,
+      "rsi_pct": 71.1,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "AMZN Stock Is Cheaper Than WMT And GOOGL \u2014 Why Jefferies Calls Amazon A Top Pick Among Hyperscalers",
-        "Update: Wall Street Extends Gains on Further Signs of Cooling Inflation",
-        "Better Artificial Intelligence (AI) Stock: Amazon vs. Alphabet",
-        "OpenAI's AI speaker marks its entry into consumer hardware"
+        "Amazon: A Deeper Look at the Cloud Growth Story (NASDAQ:AMZN)",
+        "Minutes after Amazon switched on its new AI staffing enforcement, a manager begged an engineer to shut it down",
+        "Update: Wall Street Snaps Two-Day Advance as Chip-Related Stocks Slump",
+        "The \"Magnificent Seven\" Are at Their Lowest Relative Valuations in a Decade. My 3 Favorite Mag 7 Stocks to Buy."
       ]
     },
     "TSLA": {
       "score": 4.0,
-      "rsi_pct": 60.0,
+      "rsi_pct": 60.5,
       "above_200ma": false,
       "news": "fundamental_change",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Battery X Metals Completes First-Generation Proprietary Battery Adaptor for Tesla Model 3 and Model Y, Marking a Significant Commercial Readiness Milestone for its Patent-Pending Lithium-Ion Battery Rebalancing Platform",
-        "YieldMax launches a new SpaceX options ETF: What investors should know",
-        "Struggling EV maker reels as Chapter 11 bankruptcy rumors swirl",
-        "Liberty All-Star\u00ae Equity Fund June 2026 Monthly Update"
+        "Stock Market Today, July 16: Lucid Group Surges on CEO's Denial of Bankruptcy and Take-Private Rumors",
+        "Silicon Valley Midas Investor Michael Moritz on AI, Venture Capital, and Just About Everything",
+        "Should You Buy Tesla Stock Before July 22?",
+        "The \"Magnificent Seven\" Are at Their Lowest Relative Valuations in a Decade. My 3 Favorite Mag 7 Stocks to Buy."
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "The Cheapest S&amp;P 500 ETF Was Just Picked for Trump Accounts and $30 Billion Followed",
-      "link": "https://247wallst.com/investing/etf/2026/07/15/the-cheapest-sp-500-etf-was-just-picked-for-trump-accounts-and-30-billion-followed/?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "Analyst: \u2018We\u2019re In One Of The Most Dangerous Times In History\u2019 For Passive Investors",
+      "link": "https://247wallst.com/investing/2026/07/16/analyst-were-in-one-of-the-most-dangerous-times-in-history-for-passive-investors/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -146,9 +145,9 @@
       "source_count": 1
     },
     {
-      "title": "DTCC Executes First Live Trades With Tokenized Wall Street Assets",
-      "link": "https://www.bankless.com/read/news/dtcc-executes-first-live-trades-with-tokenized-wall-street-assets?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "ICI\u2019s Weinberg: An Insider's View of ETF Industry Priorities",
+      "link": "http://www.etf.com/sections/conferences/icis-weinberg-insiders-view-etf-industry-priorities?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -157,9 +156,9 @@
       "source_count": 1
     },
     {
-      "title": "This Growth ETF Costs 3 Cents and Has Beaten the S&amp;P 500 in 95% of 5-Year Windows",
-      "link": "https://247wallst.com/investing/etf/2026/07/15/this-growth-etf-costs-3-cents-and-has-beaten-the-sp-500-in-95-of-5-year-windows/?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "Small Caps Are Beating the S&amp;P 500 by the Widest Margin Since 2003.  These ETFs Let You Ride the Rally",
+      "link": "https://247wallst.com/investing/etf/2026/07/16/small-caps-are-beating-the-sp-500-by-the-widest-margin-since-2003-these-etfs-let-you-ride-the-rally/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -168,9 +167,9 @@
       "source_count": 1
     },
     {
-      "title": "IBB ETF Holds Fewer Bets Than You Think",
-      "link": "https://www.trefis.com/articles/607327/ibb-etf-holds-fewer-bets-than-you-think/2026-07-15?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "Marvell Crashed Below $200: This Wall Street Firm Thinks It Doubles From Here",
+      "link": "https://247wallst.com/investing/2026/07/16/marvell-crashed-below-200-this-wall-street-firm-thinks-it-doubles-from-here/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -179,9 +178,9 @@
       "source_count": 1
     },
     {
-      "title": "3 Covered Call ETFs to Buy for Monthly Income in 2026",
-      "link": "https://247wallst.com/investing/etf/2026/07/15/3-covered-call-etfs-to-buy-for-monthly-income-in-2026/?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "Intel Is Down 17% Over 1 Month: This Wall Street Analyst Thinks Doubles From Here",
+      "link": "https://247wallst.com/investing/2026/07/16/intel-is-down-17-over-1-month-this-wall-street-analyst-thinks-doubles-from-here/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -190,31 +189,9 @@
       "source_count": 1
     },
     {
-      "title": "The Company Behind Wall Street's Plumbing Is Looking To Tokenize MSFT Stock: Report",
-      "link": "https://stocktwits.com/news-articles/markets/equity/msft-dtcc-stocks-treasurys-wall-street/cZZPEe2R7At?.tsrc=rss",
-      "pub_date": "2026-07-15",
-      "tickers": [
-        "MSFT"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Here\u2019s the Clear Reason to Buy Intel Before Its July 23 Earnings Report",
-      "link": "https://247wallst.com/investing/2026/07/15/heres-the-clear-reason-to-buy-intel-before-its-july-23-earnings-report/?.tsrc=rss",
-      "pub_date": "2026-07-15",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Wednesday Amid Economic Reports",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125305699.html?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "XYLD Versus SPY: The 28% Price Return Gap Nobody Discusses",
+      "link": "https://247wallst.com/investing/etf/2026/07/16/xyld-versus-spy-the-28-price-return-gap-nobody-discusses/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "SPY"
       ],
@@ -223,9 +200,22 @@
       "source_count": 1
     },
     {
-      "title": "Is XLF's New High A Quiet Warning?",
-      "link": "https://www.trefis.com/articles/607337/is-xlfs-new-high-a-quiet-warning/2026-07-15?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "BlackRock, Vanguard and JPMorgan Join DTCC's Tokenization Pilot: Which Crypto Could Benefit?",
+      "link": "https://www.ccn.com/news/crypto/dtcc-tokenization-pilot-blackrock-jpmorgan-chainlink-xrp-ethereum/?.tsrc=rss",
+      "pub_date": "2026-07-16",
+      "tickers": [
+        "MSFT",
+        "SPY",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "SpaceX Falls Back to $135 IPO Price But Raymond James Thinks The Stock Is Going To The Moon",
+      "link": "https://247wallst.com/investing/2026/07/16/spacex-falls-back-to-135-ipo-price-but-raymond-james-thinks-the-stock-is-going-to-the-moon/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
@@ -234,9 +224,20 @@
       "source_count": 1
     },
     {
-      "title": "Traders Bet There's An 88% Chance The S&amp;P 500 Will Plunge Soon",
-      "link": "https://finance.yahoo.com/m/872bdc12-0f36-3e42-887c-c54cd750fd24/traders-bet-there%27s-an-88%25.html?.tsrc=rss",
-      "pub_date": "2026-07-15",
+      "title": "Does LIT's History Justify Buying This Dip?",
+      "link": "https://www.trefis.com/articles/607521/does-lits-history-justify-buying-this-dip/2026-07-16?.tsrc=rss",
+      "pub_date": "2026-07-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Can You Build a Retirement Portfolio Using Only ETFs?",
+      "link": "https://www.fool.com/investing/2026/07/16/can-you-build-retirement-portfolio-using-only-etf/?.tsrc=rss",
+      "pub_date": "2026-07-16",
       "tickers": [
         "MARKET"
       ],
