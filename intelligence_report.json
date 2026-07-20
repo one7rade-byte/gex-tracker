@@ -1,27 +1,27 @@
 {
-  "date": "2026-07-17",
+  "date": "2026-07-20",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-7.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.7 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "NVDA WATCH \u2014 score 5/10, RSI at 69th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Why Tesla Might Not Merge With SpaceX After All...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'What Lucid, SpaceX, and Amazon All Have In Common. (Hint: Th...' Do not buy this dip until news clears. AMZN AVOID \u2014 company-specific negative news detected: 'What Lucid, SpaceX, and Amazon All Have In Common. (Hint: Th...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.7, needs +5.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-7.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.7 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 5/10, RSI at 69th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Why Tesla Might Not Merge With SpaceX After All...' Do not buy this dip until news clears. META AVOID \u2014 company-specific negative news detected: 'What Lucid, SpaceX, and Amazon All Have In Common. (Hint: Th...' Do not buy this dip until news clears. AMZN AVOID \u2014 company-specific negative news detected: 'What Lucid, SpaceX, and Amazon All Have In Common. (Hint: Th...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.7, needs +5.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is deeply negative at $-18.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.8 (moderately elevated, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "NVDA WATCH \u2014 score 5/10, RSI at 65th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s Lawsuit Against OpenAI Could Be the Opening Move in ...' Do not buy this dip until news clears. AMZN WATCH \u2014 score 4/10, RSI at 67th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'US judge approves Anthropic's $1.5 billion settlement of cop...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 18.8, needs +3.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-18.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.8 (moderately elevated, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 5/10, RSI at 65th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s Lawsuit Against OpenAI Could Be the Opening Move in ...' Do not buy this dip until news clears. AMZN WATCH \u2014 score 4/10, RSI at 67th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'US judge approves Anthropic's $1.5 billion settlement of cop...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.8, needs +3.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
+    "regime": "bear_warning",
     "vix_trend": "stable",
-    "vix_current": 16.73,
-    "gex_trend": "improving",
-    "gex_current": -7.6,
-    "fear_trend": "easing",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
-    "bull_current": 5.0,
+    "vix_current": 18.77,
+    "gex_trend": "deteriorating",
+    "gex_current": -18.0,
+    "fear_trend": "building",
+    "fear_current": 5.0,
+    "bear_current": 5.0,
+    "bull_current": 4.0,
     "neg_gex_days": 5,
-    "skew_current": 145.72,
+    "skew_current": 147.28,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 63.13
+    "spy_rsi": 61.06
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,115 +30,114 @@
     "news": ""
   },
   "avoid_names": [
-    "TSLA",
-    "META",
-    "AMZN"
+    "AAPL",
+    "GOOGL"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 2.0,
-      "rsi_pct": 98.7,
+      "score": 4.0,
+      "rsi_pct": 97.4,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Top Stock Reports for Apple, JPMorgan &amp; ExxonMobil",
-        "Nvidia Narrowly Holds Off Apple to Keep World\u2019s Most Valuable Company Title",
-        "Tech share selloff rolls on, oil prices jump on Mideast clashes",
-        "Micron, Nvidia, Netflix, SK Hynix, Alphabet, Intuitive Surgical, and More Stocks That Explain Today\u2019s Market"
+        "I\u2019m Buying Apple\u2019s AI Advantage That Keeps It Ahead of the Mag 7 At Least Until This Point",
+        "Apple\u2019s Lawsuit Against OpenAI Could Be the Opening Move in the Next AI Hardware War",
+        "Apple Faces Margin Test Before Earnings",
+        "Will Alphabet's Q2 Earnings Reignite the Tech Rally?"
       ]
     },
     "MSFT": {
       "score": 3.0,
-      "rsi_pct": 93.5,
+      "rsi_pct": 76.9,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Meta in talks to rent some of its billions in AI infrastructure to Anthropic",
-        "Nvidia Narrowly Holds Off Apple to Keep World\u2019s Most Valuable Company Title",
-        "Did AI Just Cannibalize Microsoft\u2019s Greatest Narrative?",
-        "CrowdStrike Eyes Next Act As AI Security Business Takes Shape"
+        "Bank of America doubles down on Microsoft stock ahead of earnings",
+        "I\u2019m Buying Apple\u2019s AI Advantage That Keeps It Ahead of the Mag 7 At Least Until This Point",
+        "IREN Lifts AI Cloud Revenue Target; Hut 8 Lands $9.8 Billion Deal",
+        "UBS Trading Desk Says Buy Momentum Stocks as Selloff Nears End"
       ]
     },
     "NVDA": {
       "score": 5.0,
-      "rsi_pct": 68.8,
+      "rsi_pct": 65.4,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "recovering",
-      "days_oversold": 3,
+      "days_oversold": 2,
       "headlines": [
-        "UiPath Vs. ServiceNow: Which Agentic AI Stock Is the Better Buy?",
-        "Stock Market Today, July 17: Stocks Slide as Semiconductor Rout Deepens",
-        "Dell Technologies vs. NVIDIA: Which Artificial Intelligence Stock Is a Better Buy in 2026?",
-        "Jim Cramer Says Semiconductor Stocks Are \u201cGoing Down.\u201d Buy These 2 Dividend Stocks Instead"
+        "Ryanair CFO: Rival Airlines Could Fail This Winter; Industry Shakeout Could Lead to Pricing Power",
+        "Bank of America doubles down on Microsoft stock ahead of earnings",
+        "3 Reasons I\u2019m Buying Amazon Over and Over Until Late 2026",
+        "What History Reveals About the Road Ahead for Memory Sector Giants"
       ]
     },
     "GOOGL": {
       "score": 2.0,
-      "rsi_pct": 59.7,
+      "rsi_pct": 57.7,
+      "above_200ma": true,
+      "news": "company_negative",
+      "rsi_dir": "recovering",
+      "days_oversold": 0,
+      "headlines": [
+        "Google is working on a new AI chip designed to make Gemini more efficient",
+        "Update: US Equity Indexes Fall, Crude Oil Rises After Trump Warns More Strikes on Iran Amid Risk to Saudi Arabian Supplies",
+        "SpaceX Has Lost $1.4 Trillion in Market Value. A Defense Department Deal Would Help.",
+        "US judge approves Anthropic's $1.5 billion settlement of copyright lawsuit"
+      ]
+    },
+    "META": {
+      "score": 2.0,
+      "rsi_pct": 82.1,
+      "above_200ma": true,
+      "news": "neutral",
+      "rsi_dir": "recovering",
+      "days_oversold": 0,
+      "headlines": [
+        "Nebius Group (NBIS) Secures $775 Million In Debt To Expand Its AI Cloud",
+        "Who is the tenant for Hut 8\u2019s 1 GW Beacon Point data center?",
+        "Why Nvidia Stock is Flat Since November Despite Tripling Its Net Income",
+        "Will Alphabet's Q2 Earnings Reignite the Tech Rally?"
+      ]
+    },
+    "AMZN": {
+      "score": 4.0,
+      "rsi_pct": 66.7,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Stock Market Today, July 17: Stocks Slide as Semiconductor Rout Deepens",
-        "Meta in talks to rent some of its billions in AI infrastructure to Anthropic",
-        "Dow Jones Futures: Google, Tesla, AMD Loom After AI Stock Sell-Off",
-        "Here\u2019s What Can End Micron\u2019s Stock Pain"
-      ]
-    },
-    "META": {
-      "score": 3.0,
-      "rsi_pct": 88.3,
-      "above_200ma": true,
-      "news": "fundamental_change",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
-      "headlines": [
-        "Meta in talks to rent some of its billions in AI infrastructure to Anthropic",
-        "Update: US Equity Indexes Drop as Chipmakers Head for Bear Market, Crude Oil Surges After Iran Expands Attack in Middle East",
-        "Meta Platforms: AI Return on Invested Capital Is Uncertain (NASDAQ:META)",
-        "How Starlink is SpaceX's key to making big 'star bucks'"
-      ]
-    },
-    "AMZN": {
-      "score": 3.0,
-      "rsi_pct": 76.6,
-      "above_200ma": true,
-      "news": "fundamental_change",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
-      "headlines": [
-        "Meta in talks to rent some of its billions in AI infrastructure to Anthropic",
-        "Did AI Just Cannibalize Microsoft\u2019s Greatest Narrative?",
-        "Agility Robotics plants its flag in Tesla\u2019s backyard",
-        "What Lucid, SpaceX, and Amazon All Have In Common. (Hint: Think Cash.)"
+        "3 Reasons I\u2019m Buying Amazon Over and Over Until Late 2026",
+        "US judge approves Anthropic's $1.5 billion settlement of copyright lawsuit",
+        "Who is the tenant for Hut 8\u2019s 1 GW Beacon Point data center?",
+        "Breakout Watch: Twilio Stock Rides AI Cloud Toward Buy Point"
       ]
     },
     "TSLA": {
-      "score": 4.0,
-      "rsi_pct": 59.7,
+      "score": 3.0,
+      "rsi_pct": 48.7,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Dow Jones Futures: Google, Tesla, AMD Loom After AI Stock Sell-Off",
-        "Yahoo Finance test drives Mercedes-Benz's new luxury EV, the CLA 250+",
-        "Agility Robotics plants its flag in Tesla\u2019s backyard",
-        "SpaceX Aborts Starship Test Flight 13 After Engine Failure, Completes SDA Mission"
+        "Tesla (TSLA) Faces A New Fremont Neighbor As Agility Opens Robot Training Center",
+        "Dow Jones Futures: Trump Comments Spark Stock Market Losses; Elon Musk-Led SpaceX, Tesla Tumble",
+        "Strong earnings growth needed to justify tech valuations, says expert",
+        "Update: Wall Street Falls as Traders Await Earnings, Track Middle East Developments"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Kevin O\u2019Leary Says Investing $100 a Week Will Make You a Millionaire by Retirement",
-      "link": "https://247wallst.com/personal-finance/2026/02/13/kevin-oleary-says-investing-100-a-week-will-make-you-a-millionaire-by-retirement/?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "Are You Paying A Fair Price For What's Inside VOO?",
+      "link": "https://www.trefis.com/articles/607981/are-you-paying-a-fair-price-for-whats-inside-voo/2026-07-20?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "MARKET"
       ],
@@ -147,9 +146,20 @@
       "source_count": 1
     },
     {
-      "title": "SPYI Investors: Watch These 2 Macro Factors Before the Next Distribution",
-      "link": "https://247wallst.com/investing/etf/2026/07/17/spyi-investors-watch-these-2-macro-factors-before-the-next-distribution/?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "Are You Paying For Skill Or Just The Market?",
+      "link": "https://www.trefis.com/articles/607979/are-you-paying-for-skill-or-just-the-market/2026-07-20?.tsrc=rss",
+      "pub_date": "2026-07-20",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "When The Stock Market Fell JEPI ETF Outperformed",
+      "link": "https://www.trefis.com/articles/607978/when-the-stock-market-fell-jepi-etf-did-not/2026-07-20?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "SPY"
       ],
@@ -158,9 +168,9 @@
       "source_count": 1
     },
     {
-      "title": "The Tech Shakeout: Market Extremes &amp; Gavin Baker's Bold Call",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/tech-shakeout-market-extremes-gavin-155600615.html?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "Tom Lee\u2019s \u2018Granny Shots\u2019 ETF Is Beating the S&amp;P Again, and He\u2019s Calling for 8,000",
+      "link": "https://247wallst.com/investing/etf/2026/07/20/tom-lees-granny-shots-etf-is-beating-the-sp-again-and-hes-calling-for-8000/?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "MARKET"
       ],
@@ -169,33 +179,9 @@
       "source_count": 1
     },
     {
-      "title": "Meta, Tesla, Nvidia: This ETF Went All-In on the Magnificent Seven. Is It Paying Off?",
-      "link": "https://247wallst.com/investing/etf/2026/07/17/meta-tesla-nvidia-this-etf-went-all-in-on-the-magnificent-seven-is-it-paying-off/?.tsrc=rss",
-      "pub_date": "2026-07-17",
-      "tickers": [
-        "NVDA",
-        "META",
-        "TSLA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Alphabet Drops 4%, But Analyst Believes There Is Massive Upside",
-      "link": "https://247wallst.com/investing/2026/07/17/alphabet-drops-4-but-analyst-believes-there-is-massive-upside/?.tsrc=rss",
-      "pub_date": "2026-07-17",
-      "tickers": [
-        "GOOGL"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The Megacap Growth ETF That\u2019s Been Beating the S&amp;P 500 for a Decade Straight",
-      "link": "https://247wallst.com/investing/etf/2026/07/17/the-megacap-growth-etf-thats-been-beating-the-sp-500-for-a-decade-straight/?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "How Much CVS Stock Are You Really Betting On?",
+      "link": "https://www.trefis.com/articles/607972/how-much-cvs-stock-are-you-really-betting-on/2026-07-20?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "MARKET"
       ],
@@ -204,20 +190,43 @@
       "source_count": 1
     },
     {
-      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday as Investors Retreat From Chipmaker Stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130030829.html?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "The Russell 2000 Is Outpacing the S&amp;P 500 in 2026. Is It Too Late to Buy Small-Cap ETFs?",
+      "link": "https://247wallst.com/investing/etf/2026/07/20/the-russell-2000-is-outpacing-the-sp-500-in-2026-is-it-too-late-to-buy-small-cap-etfs/?.tsrc=rss",
+      "pub_date": "2026-07-20",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Zacks Investment Ideas feature highlights: QQQ, SPY, Micron, Western Digital, SanDisk and Marvell",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-investment-ideas-feature-highlights-145100077.html?.tsrc=rss",
+      "pub_date": "2026-07-20",
+      "tickers": [
+        "SPY",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Forget SPY. Its Momentum Cousin Is Crushing the Index With 26% Returns This Year, for Only 0.13%",
+      "link": "https://247wallst.com/investing/2026/07/20/forget-spy-its-momentum-cousin-is-crushing-the-index-with-26-returns-this-year-for-only-0-13/?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "SPY"
       ],
-      "high_impact": false,
+      "high_impact": true,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "A $10,000 Investment in Cisco When Chuck Robbins Became CEO Is Worth This Much Today",
-      "link": "https://247wallst.com/investing/2026/07/17/a-10000-investment-in-cisco-when-chuck-robbins-became-ceo-is-worth-this-much-today/?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "The Dollar\u2019s \u201cDemise\u201d Is Back in the Headlines. Before a Retiree Panics and Piles Into Gold, Here\u2019s What a Weaker Dollar Actually Does to a Social Security Check.",
+      "link": "https://247wallst.com/personal-finance/social-security/2026/07/20/the-dollars-demise-is-back-in-the-headlines-before-a-retiree-panics-and-piles-into-gold-heres-what-a-weaker-dollar-actually-does-to-a-social-security-check/?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
         "MARKET"
       ],
@@ -226,22 +235,11 @@
       "source_count": 1
     },
     {
-      "title": "What Is Kimi K3? The Chinese AI Model That Has Wall Street Talking",
-      "link": "https://stocktwits.com/news-articles/markets/equity/what-is-kimi-k3-the-chinese-ai-model-that-has-wall-street-talking/cZZ7KZzR7ts?.tsrc=rss",
-      "pub_date": "2026-07-17",
+      "title": "A $10,000 Investment in Bank of America When Brian Moynihan Became CEO Is Worth This Much Today",
+      "link": "https://247wallst.com/investing/2026/07/20/a-10000-investment-in-bank-of-america-when-brian-moynihan-became-ceo-is-worth-this-much-today/?.tsrc=rss",
+      "pub_date": "2026-07-20",
       "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "How Much Of Your Portfolio Is Really CVS?",
-      "link": "https://www.trefis.com/articles/607745/how-much-of-your-portfolio-is-really-cvs/2026-07-17?.tsrc=rss",
-      "pub_date": "2026-07-17",
-      "tickers": [
-        "MARKET"
+        "AMZN"
       ],
       "high_impact": false,
       "sources": [],
