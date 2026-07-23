@@ -1,190 +1,142 @@
 {
-  "date": "2026-07-22",
+  "date": "2026-07-23",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is positive at +$2.9B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.1 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Earnings Miss Despite Strong EV Sales; Elon Musk On Ca...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 82th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 59th pct. Not yet at peak oversold but building. MSFT AVOID \u2014 company-specific negative news detected: 'Will SpaceX buy Tesla? Musk may soon offer clues on his plan...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 17.1, needs +4.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$2.9B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.1 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Earnings Miss Despite Strong EV Sales; Elon Musk On Ca...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 82th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 59th pct. Not yet at peak oversold but building. MSFT AVOID \u2014 company-specific negative news detected: 'Will SpaceX buy Tesla? Musk may soon offer clues on his plan...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.1, needs +4.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is negative at $-3.0B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.6 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "TSLA OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 78th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 74th pct. Not yet at peak oversold but building. AMZN AVOID \u2014 company-specific negative news detected: 'Why Amazon Stock is Down Today...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.6, needs +5.4 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-3.0B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 16.6 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: TSLA OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 78th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 74th pct. Not yet at peak oversold but building. AMZN AVOID \u2014 company-specific negative news detected: 'Why Amazon Stock is Down Today...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.6, needs +5.4 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "mixed",
     "vix_trend": "rising",
-    "vix_current": 17.05,
+    "vix_current": 16.64,
     "gex_trend": "deteriorating",
-    "gex_current": 2.9,
+    "gex_current": -3.0,
     "fear_trend": "building",
-    "fear_current": 2.0,
-    "bear_current": 2.0,
-    "bull_current": 5.0,
+    "fear_current": 3.0,
+    "bear_current": 3.0,
+    "bull_current": 4.0,
     "neg_gex_days": 5,
-    "skew_current": 151.66,
+    "skew_current": 150.19,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 51.39
+    "spy_rsi": 51.52
   },
   "top_opportunity": {
-    "ticker": null,
-    "score": 0,
-    "reason": "",
-    "news": ""
+    "ticker": "TSLA",
+    "score": 6.0,
+    "reason": "RSI extremely oversold (bottom 5% of own history) | Heavy put buying (P/C top 0% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [
-    "TSLA",
-    "MSFT",
-    "META"
+    "AMZN"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 82.5,
+      "rsi_pct": 77.8,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "company_positive",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Alphabet Stock Falls as AI Spending Continues to Mount",
-        "Elon Musk is 'in denial' that Tesla is just an EV company: Ross Gerber",
-        "Apple Eyes AI Demand With Mac Updates",
-        "The Risk in Apple's Stock That Nobody Is Talking About"
+        "When AI CapEx Eats Cash: Is Alphabet\u2019s Huge Bet Building a Moat or Sinking Margins?",
+        "Intel Stock Jumps as Earnings Nearly Double Analyst Estimates",
+        "MoonPay Now Accepts Discover Cards For Crypto Purchases",
+        "'Magnificent 7' stocks erase $797 billion in market value in worst day since April 2025"
       ]
     },
     "MSFT": {
       "score": 3.0,
-      "rsi_pct": 77.5,
+      "rsi_pct": 63.0,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Alphabet Stock Falls as AI Spending Continues to Mount",
-        "Here\u2019s Why Retail Investors Are Buying Microsoft (MSFT) on the Dip",
-        "This $222 Billion Vanguard ETF Is Trailing the S&amp;P 500. That Almost Never Happens.",
-        "Will SpaceX buy Tesla? Musk may soon offer clues on his plans"
+        "Stock Market Today, July 23: Alphabet Slides 7% After Announcing 2026 Capex of Roughly $200 Billion",
+        "Oklo (OKLO) Could Be 45% Below Fair Value Following $200 Million Federal Program",
+        "Pentagon awards Oracle nearly $7 billion deal in latest software consolidation push",
+        "When AI CapEx Eats Cash: Is Alphabet\u2019s Huge Bet Building a Moat or Sinking Margins?"
       ]
     },
     "NVDA": {
       "score": 4.0,
-      "rsi_pct": 58.8,
+      "rsi_pct": 74.1,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Why Metropolitan Bank Stock Sank by Nearly 9% Today",
-        "VPFF: Virtus\u2019s Latest Income Play Charges 0.80% to Beat Preferred Stock Indexes",
-        "Rocket Lab Shares Are Sliding: What Investors Need to Know",
-        "SpaceX Plans Starship Launch For Tomorrow. Here's What Investors Need To Know"
+        "Nvidia, Amkor strike $1.5 billion chip packaging deal",
+        "Nvidia's Stock Hasn't Been This Cheap Since 2019. Here's Why It's the Best Buy in the Market Now.",
+        "Why Eos Energy Stock Just Hit a 52-Week Low After a 49% Plunge in the First Half of 2026",
+        "Pacific Gas &amp; Electric Co. Q2 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 33.8,
+      "rsi_pct": 22.2,
       "above_200ma": true,
+      "news": "macro_fear",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 1,
+      "headlines": [
+        "Europe\u2019s Tech Fine Could Trigger New Tariffs, Undermining US Trade Deal",
+        "Dow Jones Futures: Market Sells Off On Oil Prices, Google, Tesla; Intel Jumps Late, SpaceX Starship Launch Due",
+        "Stock Market Today, July 23: Tesla Drops 15%, Leading Tech Stock Slide",
+        "Stock Market Today, July 23: Alphabet Slides 7% After Announcing 2026 Capex of Roughly $200 Billion"
+      ]
+    },
+    "META": {
+      "score": 2.0,
+      "rsi_pct": 58.0,
+      "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Dow Jones Futures: Google, Tesla Fall On Earnings, But Strong Capex Lifts AI Stocks",
-        "Google Earnings, Revenue Top Views As Cloud Growth Accelerates. Search Results In-Line.",
-        "Alphabet Stock Falls as AI Spending Continues to Mount",
-        "Google reports 12th consecutive quarter of strong revenue gains"
-      ]
-    },
-    "META": {
-      "score": 3.0,
-      "rsi_pct": 76.2,
-      "above_200ma": true,
-      "news": "company_negative",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
-      "headlines": [
-        "Alphabet Stock Falls as AI Spending Continues to Mount",
-        "Meta Platforms (META): \u2018Dead Money\u2019 or Best Cheap AI Stock?  \u2013 Retail Investors Debate",
-        "Social media addiction lawsuit against Meta is dropped",
-        "Majority of Residents Oppose AI Data Center Construction in Their Area, Redfin Survey Shows"
+        "Stock Market Today, July 23: Alphabet Slides 7% After Announcing 2026 Capex of Roughly $200 Billion",
+        "When AI CapEx Eats Cash: Is Alphabet\u2019s Huge Bet Building a Moat or Sinking Margins?",
+        "Why Nvidia Stock Isn\u2019t Rallying as It Should After Alphabet Earnings",
+        "Smart glasses are selling hot at National Vision, CEO ties it to the premium consumer"
       ]
     },
     "AMZN": {
       "score": 3.0,
-      "rsi_pct": 61.3,
+      "rsi_pct": 55.6,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "company_negative",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Alphabet Stock Falls as AI Spending Continues to Mount",
-        "Amazon Cuts More Jobs, This Time in AGI",
-        "Molina Healthcare Earnings Beat Estimates. The Medicaid Insurer Is Confronting Investor Doubts.",
-        "Amazon Cuts Jobs in AGI Group"
+        "When AI CapEx Eats Cash: Is Alphabet\u2019s Huge Bet Building a Moat or Sinking Margins?",
+        "Why Nvidia Stock Isn\u2019t Rallying as It Should After Alphabet Earnings",
+        "Why Amazon Stock is Down Today",
+        "Amazon (AMZN) Faces Senate Probe As FTC Settlement Puts Prime Practices In Focus"
       ]
     },
     "TSLA": {
-      "score": 5.0,
-      "rsi_pct": 12.5,
+      "score": 6.0,
+      "rsi_pct": 4.9,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "Dow Jones Futures: Google, Tesla Fall On Earnings, But Strong Capex Lifts AI Stocks",
-        "Tesla\u2019s (NASDAQ:TSLA) Q2 CY2026: Beats On Revenue",
-        "Tesla Earnings Miss Despite Strong EV Sales; Elon Musk On Call (Live Coverage)",
-        "Why Tesla Stock Isn't Down More"
+        "Dow Jones Futures: Market Sells Off On Oil Prices, Google, Tesla; Intel Jumps Late, SpaceX Starship Launch Due",
+        "Stock Market Today, July 23: Tesla Drops 15%, Leading Tech Stock Slide",
+        "Tesla sends a quiet but powerful message on Bitcoin",
+        "Stock Market Today, July 23: Tesla Stock Crashes on Earnings Miss and Rising AI Spending"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "This $222 Billion Vanguard ETF Is Trailing the S&amp;P 500. That Almost Never Happens.",
-      "link": "https://247wallst.com/investing/etf/2026/07/22/this-222-billion-vanguard-etf-is-trailing-the-sp-500-that-almost-never-happens/?.tsrc=rss",
-      "pub_date": "2026-07-22",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Stock Market Today: Nasdaq Slides, Nvidia Can't Lift The Dow; Super Micro Shines",
-      "link": "https://finance.yahoo.com/m/1c679c39-b73f-3cc1-abf9-648d2f1a9328/stock-market-today%3A-nasdaq.html?.tsrc=rss",
-      "pub_date": "2026-07-22",
-      "tickers": [
-        "NVDA",
-        "SPY",
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Everyone\u2019s Launching an ETF\u2026 But Should They?",
-      "link": "http://www.etf.com/sections/conferences/everyones-launching-etf-should-they?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-07-22",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "VIG\u2019s 1.5% yield masks a 20-year streak of uncut dividend growth",
-      "link": "https://247wallst.com/investing/2026/07/22/vigs-1-5-yield-masks-a-20-year-streak-of-uncut-dividend-growth/?.tsrc=rss",
-      "pub_date": "2026-07-22",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Want an Extra $100 Per Month? Put This Much Into the SPYI ETF",
-      "link": "https://247wallst.com/investing/etf/2026/07/22/want-an-extra-100-per-month-put-this-much-into-the-spyi-etf/?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "HDV Delivers 3.1% Yield While Beating SPY Year to Date by 9 Points",
+      "link": "https://247wallst.com/investing/2026/07/23/hdv-delivers-3-1-yield-while-beating-spy-year-to-date-by-9-points/?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "SPY"
       ],
@@ -193,9 +145,9 @@
       "source_count": 1
     },
     {
-      "title": "SPHD\u2019s 4.4% Yield Grows While Market Swings Slow to Half Speed",
-      "link": "https://247wallst.com/investing/2026/07/22/sphds-4-4-yield-grows-while-market-swings-slow-to-half-speed/?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "These Growth Funds Are On Quiet Sale",
+      "link": "https://www.trefis.com/articles/608565/these-growth-funds-are-on-quiet-sale/2026-07-23?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "MARKET"
       ],
@@ -204,9 +156,9 @@
       "source_count": 1
     },
     {
-      "title": "Vanguard\u2019s VIG Dividend ETF\u2019s Top Stock Is\u2026 Broadcom? Here\u2019s Why",
-      "link": "https://247wallst.com/investing/etf/2026/07/22/vanguards-vig-dividend-etfs-top-stock-is-broadcom-heres-why/?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "XOP ETF Holds Fewer Bets Than You Think",
+      "link": "https://www.trefis.com/articles/608562/xop-etf-holds-fewer-bets-than-you-think/2026-07-23?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "MARKET"
       ],
@@ -215,9 +167,33 @@
       "source_count": 1
     },
     {
-      "title": "What An INTC Pullback Costs Your ETFs",
-      "link": "https://www.trefis.com/articles/608376/what-an-intc-pullback-costs-your-etfs-2/2026-07-22?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "TSLA, GOOGL Stocks Lead 'Magnificent Seven' Rout \u2013 MAGS ETF On Track For Biggest Single-Day Loss This Year",
+      "link": "https://stocktwits.com/news-articles/markets/equity/tsla-googl-stocks-lead-mag-7-biggest-single-day-loss-this-year/cZZnvDSR7UW?.tsrc=rss",
+      "pub_date": "2026-07-23",
+      "tickers": [
+        "GOOGL",
+        "TSLA",
+        "QQQ"
+      ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "What Does SPY's Price Tag Buy You Today?",
+      "link": "https://www.trefis.com/articles/608563/what-does-spys-price-tag-buy-you-today/2026-07-23?.tsrc=rss",
+      "pub_date": "2026-07-23",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "How Much Micron (MU) Do You Unknowingly Own?",
+      "link": "https://www.trefis.com/articles/608571/how-much-micron-mu-do-you-unknowingly-own/2026-07-23?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "MARKET"
       ],
@@ -226,9 +202,21 @@
       "source_count": 1
     },
     {
-      "title": "Nike Continues a Troubled 2026 But Has Potential to Double According to Morningstar",
-      "link": "https://247wallst.com/investing/2026/07/22/nike-continues-a-troubled-2026-but-has-potential-to-double-according-to-morningstar/?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Thursday Amid Major Tech Stocks Sell-Off",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130626891.html?.tsrc=rss",
+      "pub_date": "2026-07-23",
+      "tickers": [
+        "SPY",
+        "QQQ"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "DGRO Is Near A High, Resist The Urge To Act",
+      "link": "https://www.trefis.com/articles/608560/dgro-is-near-a-high-resist-the-urge-to-act/2026-07-23?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "MARKET"
       ],
@@ -237,11 +225,25 @@
       "source_count": 1
     },
     {
-      "title": "Nervous About This Market? The Buffer Fund That Caps Your Losses, Without Going to Cash",
-      "link": "https://247wallst.com/investing/2026/07/22/nervous-about-this-market-the-buffer-fund-that-caps-your-losses-without-going-to-cash/?.tsrc=rss",
-      "pub_date": "2026-07-22",
+      "title": "Nancy Pelosi\u2019s Family Turned $30 Million Into $278 Million Trading Stocks. Congress Just Voted to Ban It During Her Final Term.",
+      "link": "https://247wallst.com/investing/2026/07/23/nancy-pelosis-family-turned-30-million-into-278-million-trading-stocks-congress-just-voted-to-ban-it-during-her-final-term/?.tsrc=rss",
+      "pub_date": "2026-07-23",
       "tickers": [
         "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Nasdaq, S&amp;P 500 Futures Fall As Tesla, Alphabet Earnings Revive AI Spending Fears: Why TSLA, GOOGL, SPCX, NOW, INTC, AMD, SLS Are In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-tsla-googl-ai-capex-spcx-amd-now-intc-sls-stock-focus/cZZn1LmR7x1?.tsrc=rss",
+      "pub_date": "2026-07-23",
+      "tickers": [
+        "GOOGL",
+        "TSLA",
+        "SPY",
+        "QQQ"
       ],
       "high_impact": false,
       "sources": [],
