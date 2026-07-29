@@ -1,202 +1,142 @@
 {
-  "date": "2026-07-28",
+  "date": "2026-07-29",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-13.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.7 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX Erased Tesla\u2019s Marketcap in Little Over a Month...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Alphabet Stock's Biggest Risk Is A Profit Margin Built On Bo...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 4/10, RSI at 42th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Alphabet Stock's Biggest Risk Is A Profit Margin Built On Bo...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 18.7, needs +3.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-13.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.7 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX Erased Tesla\u2019s Marketcap in Little Over a Month...' Do not buy this dip until news clears. AAPL AVOID \u2014 company-specific negative news detected: 'Alphabet Stock's Biggest Risk Is A Profit Margin Built On Bo...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 4/10, RSI at 42th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Alphabet Stock's Biggest Risk Is A Profit Margin Built On Bo...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.7, needs +3.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is deeply negative at $-12.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.2 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "TSLA OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 7 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 74th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 29th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 18th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 4/10. Below 200MA \u2014 scale in slowly.",
+  "watch_section": "VIX pushing above 22-25 (currently 18.2, needs +3.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.2 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: TSLA OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 7 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 74th pct. Not yet at peak oversold but building. NVDA WATCH \u2014 score 4/10, RSI at 29th pct. Not yet at peak oversold but building. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 18th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 4/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.2, needs +3.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "bear_warning",
+    "regime": "negative_gex",
     "vix_trend": "rising",
-    "vix_current": 18.67,
+    "vix_current": 18.21,
     "gex_trend": "deteriorating",
-    "gex_current": -13.4,
+    "gex_current": -12.4,
     "fear_trend": "building",
-    "fear_current": 5.0,
-    "bear_current": 6.0,
-    "bull_current": 2.0,
-    "neg_gex_days": 7,
-    "skew_current": 146.6,
+    "fear_current": 4.0,
+    "bear_current": 4.0,
+    "bull_current": 3.0,
+    "neg_gex_days": 8,
+    "skew_current": 142.98,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 41.9
+    "spy_rsi": 45.69
   },
   "top_opportunity": {
-    "ticker": null,
-    "score": 0,
-    "reason": "",
-    "news": ""
+    "ticker": "TSLA",
+    "score": 5.0,
+    "reason": "RSI extremely oversold (bottom 4% of own history) | Options moderately priced (IV 35th pct) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "neutral"
   },
   "avoid_names": [
-    "TSLA",
-    "AAPL",
-    "GOOGL",
-    "AMZN",
-    "MSFT",
     "META"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 73.8,
+      "rsi_pct": 74.1,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "company_positive",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Update: US Equity Indexes Mixed as Chipmakers Weigh Ahead of Mag-7 Results, Crude Oil Drops Amid Halt in Middle East Strikes",
-        "Stock Market Today: Dow Gains 500 Points; SpaceX, SK Hynix Make These Moves (Live Coverage)",
-        "Alphabet Stock's Biggest Risk Is A Profit Margin Built On Borrowed Gains",
-        "Apple Reports Q3 Earnings on July 30. Here's What Investors Should Watch For During Tim Cook's Final Earnings Call as CEO"
+        "Klarna (NYSE:KLAR) Lands Apple Upgrade Role In New US Hardware Leasing Program",
+        "Apple Stock Misses the $5 Trillion Mark, Snapping Three-Day Winning Streak",
+        "Apple options trades: What's a covered call and how does it work?",
+        "Qualcomm forecasts weak quarterly profit, expects Apple revenue drop to accelerate"
       ]
     },
     "MSFT": {
       "score": 3.0,
-      "rsi_pct": 57.1,
+      "rsi_pct": 68.2,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Market Talk: Investors trying to 'bully' Mag 7 to lower AI spending",
-        "Does New Partner AI Integrations Shift the Risk\u2011Reward Around Microsoft\u2019s (MSFT) Massive Cloud Capex?",
-        "Update: US Equity Indexes Mixed as Chipmakers Weigh Ahead of Mag-7 Results, Crude Oil Drops Amid Halt in Middle East Strikes",
-        "Alphabet Stock's Biggest Risk Is A Profit Margin Built On Borrowed Gains"
+        "Dow Jones Futures: Stock Market Tumbles, Oil Prices Soar On Trump's Iran Threats; Microsoft, Meta, Fortinet Earnings Late",
+        "Microsoft's Q4 results are 'narrative changing,' according to one analyst",
+        "Microsoft's Cloud Accelerates to Fastest Growth Since 2022",
+        "Stock Market Today, July 29: Stocks Slide on Hawkish Fed and Increased Middle East Tensions"
       ]
     },
     "NVDA": {
       "score": 4.0,
-      "rsi_pct": 41.7,
+      "rsi_pct": 29.4,
       "above_200ma": true,
-      "news": "macro_fear",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
+      "news": "neutral",
+      "rsi_dir": "stable",
+      "days_oversold": 1,
       "headlines": [
-        "Why Navitas Semiconductor Stock Plummeted by 12% Today",
-        "Exxon Mobil's Next Earnings Report on July 31 Could Send the Stock Soaring. Here's Why.",
-        "Coca-Cola Earnings Are in. 3 Reasons Why the Dividend Stock Just Hit an All-Time High.",
-        "How Far Could Marvell Technology Stock Actually Fall From Here?"
+        "Bunge Global S.A. Q2 2026 Earnings Call Summary",
+        "Blackbaud, Inc. Q2 2026 Earnings Call Summary",
+        "Wabash National Corporation Q2 2026 Earnings Call Summary",
+        "V.F. Corporation Q1 2027 Earnings Call Summary"
       ]
     },
     "GOOGL": {
-      "score": 4.0,
-      "rsi_pct": 14.3,
+      "score": 3.0,
+      "rsi_pct": 23.5,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 4,
+      "days_oversold": 5,
       "headlines": [
-        "Market Talk: Investors trying to 'bully' Mag 7 to lower AI spending",
-        "\u2018Big Short\u2019 investor warns AI has become one dangerous trade",
-        "Alphabet Stock's Biggest Risk Is A Profit Margin Built On Borrowed Gains",
-        "Apple Reaches Rare Market Value Milestone"
+        "Microsoft Stock Rises on Strong Earnings. The Cloud\u2014And Software\u2014Are Bright Spots.",
+        "Alphabet Adds a Surprising Twist to Waymo Rides",
+        "Meta's revenue forecast is 'barely passable': D.A. Davidson analyst",
+        "Meta Stock Falls Sharply on Weak Earnings and CapEx Boost"
       ]
     },
     "META": {
-      "score": 2.0,
-      "rsi_pct": 44.0,
+      "score": 3.0,
+      "rsi_pct": 49.4,
       "above_200ma": false,
       "news": "company_negative",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Freddie Mac Announces Release Date for Second Quarter 2026 Financial Results",
-        "Update: US Equity Indexes Mixed as Chipmakers Weigh Ahead of Mag-7 Results, Crude Oil Drops Amid Halt in Middle East Strikes",
-        "Alphabet Stock's Biggest Risk Is A Profit Margin Built On Borrowed Gains",
-        "IFF Declares Dividend for Third Quarter 2026"
+        "META Stock Tumbles 11% After-Hours \u2014 Soaring AI Costs Squeeze Profits And Soft Q3 Outlook Disappoints",
+        "Dow Jones Futures: Stock Market Tumbles, Oil Prices Soar On Trump's Iran Threats; Microsoft, Meta, Fortinet Earnings Late",
+        "Oklo vs. Plug Power: Which Utilities Stock Is a Better Buy in 2026?",
+        "Meta misses earnings forecasts after Zuckerberg media push to promote AI"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 19.0,
+      "rsi_pct": 17.6,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 3,
+      "days_oversold": 4,
       "headlines": [
-        "Market Talk: Investors trying to 'bully' Mag 7 to lower AI spending",
-        "United Parcel Service Q2 Earnings Call Highlights",
-        "UPS Is Back to Growth. The Worst Should Be Over.",
-        "Alphabet Stock's Biggest Risk Is A Profit Margin Built On Borrowed Gains"
+        "Microsoft Stock Rises on Strong Earnings. The Cloud\u2014And Software\u2014Are Bright Spots.",
+        "MSFT Stock Jumps 3% After-Hours \u2014 Lower-Than-Expected Q4 Capex, Strong Azure Sales Boost Sentiment",
+        "Arm shares dive after hours despite forecasts above estimates",
+        "Oracle Is Sending a Different Signal Than Big Tech"
       ]
     },
     "TSLA": {
       "score": 5.0,
-      "rsi_pct": 2.4,
+      "rsi_pct": 3.5,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 6,
+      "days_oversold": 7,
       "headlines": [
-        "SpaceX Erased Tesla\u2019s Marketcap in Little Over a Month",
-        "Veteran Bank Revises Tesla Stock Price Target for 2027",
-        "Tesla-SpaceX Merger Math Gets RBC View",
-        "Mag 7 earnings: Alphabet 'really set the tone,' strategist says"
+        "Tesla Closed Tuesday 3% Above Its 52-Week Low. Here's What Happened the Last 3 Times It Got This Close.",
+        "An economist dared Elon Musk to give away his $1t fortune in the next decade \u2013 Musk says he\u2019s planning something similar",
+        "Tesla Stock Breaks $300. How Far It Needs to Fall to Lose Trillion-Dollar Status.",
+        "ARK Buys Millions In Falling Space Names. SpaceX Preps Classified Mission."
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Why Investors Should Wait For Meta\u2019s Post Earnings Dip",
-      "link": "https://247wallst.com/investing/2026/07/28/why-investors-should-wait-for-metas-post-earnings-dip/?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "META"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "A Goldman Economist Says AI Will Take 15 Years to Show Up in the Economy. A 63-Year-Old Banking His Nest Egg on the AI Boom Should Listen.",
-      "link": "https://247wallst.com/personal-finance/social-security/2026/07/28/a-goldman-economist-says-ai-will-take-15-years-to-show-up-in-the-economy-a-63-year-old-banking-his-nest-egg-on-the-ai-boom-should-listen/?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Is This Wall Street Bank Insane to Believe Tesla Will Nearly Double From Current Prices? Maybe Not.",
-      "link": "https://247wallst.com/investing/2026/07/28/is-this-wall-street-bank-insane-to-believe-tesla-will-nearly-double-from-current-prices-maybe-not/?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "TSLA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Prediction: This \u2018Boring\u2019 Dividend ETF Secretly Rides the AI Trade and Out-Earns Your High-Yield Fund by 2036",
-      "link": "https://247wallst.com/investing/etf/2026/07/28/prediction-this-boring-dividend-etf-secretly-rides-the-ai-trade-and-out-earns-your-high-yield-fund-by-2036/?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "How Much Of Your Portfolio Is Really Apple (AAPL)?",
-      "link": "https://www.trefis.com/articles/609130/how-much-of-your-portfolio-is-really-apple-aapl/2026-07-28?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "AAPL"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Tuesday Amid Renewed Pressure on Semiconductor Stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130015574.html?.tsrc=rss",
-      "pub_date": "2026-07-28",
+      "title": "Forget SPY. iShares Runs the Same S&amp;P 500 for a Third of the Fee",
+      "link": "https://247wallst.com/investing/2026/07/29/forget-spy-ishares-runs-the-same-sp-500-for-a-third-of-the-fee/?.tsrc=rss",
+      "pub_date": "2026-07-29",
       "tickers": [
         "SPY"
       ],
@@ -205,33 +145,31 @@
       "source_count": 1
     },
     {
-      "title": "VTV Just Hit A Record. Let It Ride?",
-      "link": "https://www.trefis.com/articles/609119/vtv-just-hit-a-record-let-it-ride/2026-07-28?.tsrc=rss",
-      "pub_date": "2026-07-28",
+      "title": "Wall Street Sends Fresh Warning as AI Tech Stocks Stumble After Earnings",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-sends-fresh-warning-180754732.html?.tsrc=rss",
+      "pub_date": "2026-07-29",
       "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Nasdaq, S&amp;P 500 Futures Slip As Korea Chip Shock Dents AI Memory Heavyweights Ahead Of Fed Decision: Why NVDA, SNDK, MU, APLD, SPCX, SLS, CAPR Are In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-slip-korea-chip-shock-ai-memory-fed-decision-why-nvda-sndk-mu-apld-spcx-sls-capr-in-focus/cZZCK96RJG0?.tsrc=rss",
-      "pub_date": "2026-07-28",
-      "tickers": [
-        "NVDA",
-        "SPY",
         "QQQ"
       ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Forget SPY: This Shareholder Yield ETF Has Beaten It by 12 Points This Year",
+      "link": "https://247wallst.com/investing/2026/07/29/forget-spy-this-shareholder-yield-etf-has-beaten-it-by-12-points-this-year/?.tsrc=rss",
+      "pub_date": "2026-07-29",
+      "tickers": [
+        "SPY"
+      ],
       "high_impact": false,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "The Tech Bet Hiding Inside EWY ETF",
-      "link": "https://www.trefis.com/articles/608960/the-tech-bet-hiding-inside-ewy-etf/2026-07-27?.tsrc=rss",
-      "pub_date": "2026-07-28",
+      "title": "The Playbook for Palantir Ahead of Q3 Earnings",
+      "link": "https://247wallst.com/investing/2026/07/29/the-playbook-for-palantir-ahead-of-q3-earnings/?.tsrc=rss",
+      "pub_date": "2026-07-29",
       "tickers": [
         "MARKET"
       ],
@@ -240,11 +178,67 @@
       "source_count": 1
     },
     {
-      "title": "What Should You Do With DVY At A New High?",
-      "link": "https://www.trefis.com/articles/608958/what-should-you-do-with-dvy-at-a-new-high/2026-07-27?.tsrc=rss",
-      "pub_date": "2026-07-28",
+      "title": "Max Out a Trump Account and Your Kid Could Have $185,000 at 18",
+      "link": "https://247wallst.com/investing/2026/07/29/max-out-a-trump-account-and-your-kid-could-have-185000-at-18/?.tsrc=rss",
+      "pub_date": "2026-07-29",
       "tickers": [
         "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "SOXQ ETF Is A Sharper Bet Than Its Name Suggests",
+      "link": "https://www.trefis.com/articles/609291/soxq-etf-is-a-sharper-bet-than-its-name-suggests/2026-07-29?.tsrc=rss",
+      "pub_date": "2026-07-29",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Time To Take Profits In XLV?",
+      "link": "https://www.trefis.com/articles/609290/time-to-take-profits-in-xlv/2026-07-29?.tsrc=rss",
+      "pub_date": "2026-07-29",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds Lower, Equity Futures Mixed Pre-Bell Wednesday Ahead of Fed's Interest Rate Announcement",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-lower-equity-123842313.html?.tsrc=rss",
+      "pub_date": "2026-07-29",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "CSD and VEGN Both Beat the S&amp;P 500 but One Thrives When Markets Punish Tech",
+      "link": "https://247wallst.com/investing/etf/2026/07/29/csd-and-vegn-both-beat-the-sp-500-but-one-thrives-when-markets-punish-tech/?.tsrc=rss",
+      "pub_date": "2026-07-29",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Dow Ends Higher For Third Straight Session As Oil Cools, Nasdaq Slides On Chipmaker Rout \u2014 PYPL, SPCX, AAPL, V, F Stocks In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/nasdaq-continues-to-drop-on-chipmaker-rout/cZZ6TnzRJbt?.tsrc=rss",
+      "pub_date": "2026-07-28",
+      "tickers": [
+        "AAPL",
+        "QQQ"
       ],
       "high_impact": false,
       "sources": [],
