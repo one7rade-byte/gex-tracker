@@ -305,3 +305,12 @@ MAG 7 OPPORTUNITIES: TSLA AVOID — company-specific negative news detected: 'Te
 WATCH FOR: VIX pushing above 22-25 (currently 16.0, needs +6.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization — that's the technical all-clear for loading.
 
 OVERALL SIGNAL: HOLD",HOLD — No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.
+2026-08-04,strong_bull,1.0,1.0,7.0,15.86,139.96,11.6,contango,Corning Dropped 25% Over a Month: A Major U.S. Bank Expects 66% Gains Over The Near Term; Here's Why You Should Buy Quality ETFs Now; What SCHD's Own History Suggests About Its Price Today,company_positive,,0,,"TSLA,GOOGL,AAPL,META",HOLD,"MACRO PICTURE: SPY GEX is strongly positive at +$11.6B — dealers are long gamma and actively stabilizing the market. Low volatility, pinned range likely. VIX is 15.9 (calm, stable trend over 5 days). Term structure in contango — calm, orderly vol curve. SKEW at 140 is elevated — smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days — this is a prolonged negative regime, not a one-day event. No dominant negative news theme today — market moves appear technical rather than news-driven.
+
+VOO/VGT ACTION: HOLD — Strong bull regime (bull score 7/10, GEX +$11.6B). Hold all positions. Market is elevated and stable — not a new entry point but not an exit either.
+
+MAG 7 OPPORTUNITIES: TSLA AVOID — company-specific negative news detected: 'Here's Why SpaceX Earnings Could Affect Tesla Stock...' Do not buy this dip until news clears. NVDA WATCH — score 6/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT WATCH — score 4/10, RSI at 94th pct. Not yet at peak oversold but building. GOOGL AVOID — company-specific negative news detected: 'Alphabet (GOOGL) Could Be 14% Undervalued On Ad Tech Lawsuit...' Do not buy this dip until news clears.
+
+WATCH FOR: VIX pushing above 22-25 (currently 15.9, needs +6.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding — a sign the fear peak is passing.
+
+OVERALL SIGNAL: HOLD","HOLD — Strong bull regime (bull score 7/10, GEX +$11.6B). Hold all positions. Market is elevated and stable — not a new entry point but not an exit either."
