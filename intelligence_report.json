@@ -1,141 +1,183 @@
 {
-  "date": "2026-08-04",
+  "date": "2026-08-05",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$11.6B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.",
-  "macro_picture": "SPY GEX is strongly positive at +$11.6B \u2014 dealers are long gamma and actively stabilizing the market. Low volatility, pinned range likely. VIX is 15.9 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 140 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "TSLA AVOID \u2014 company-specific negative news detected: 'Here's Why SpaceX Earnings Could Affect Tesla Stock...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 6/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 94th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Alphabet (GOOGL) Could Be 14% Undervalued On Ad Tech Lawsuit...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 15.9, needs +6.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is strongly positive at +$11.6B \u2014 dealers are long gamma and actively stabilizing the market. Low volatility, pinned range likely. VIX is 15.9 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 140 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 Strong bull regime (bull score 7/10, GEX +$11.6B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.\n\nMAG 7 OPPORTUNITIES: TSLA AVOID \u2014 company-specific negative news detected: 'Here's Why SpaceX Earnings Could Affect Tesla Stock...' Do not buy this dip until news clears. NVDA WATCH \u2014 score 6/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 94th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'Alphabet (GOOGL) Could Be 14% Undervalued On Ad Tech Lawsuit...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.9, needs +6.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "voo_vgt_action": "HOLD \u2014 Strong bull regime (bull score 8/10, GEX +$10.2B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.",
+  "macro_picture": "SPY GEX is strongly positive at +$10.2B \u2014 dealers are long gamma and actively stabilizing the market. Low volatility, pinned range likely. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 126 is in the normal range \u2014 no unusual institutional tail hedging. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "TSLA AVOID \u2014 company-specific negative news detected: 'Rivian Could Be a Surprise Robotaxi Winner After Scoring a $...' Do not buy this dip until news clears. META OPPORTUNITY (high confidence) \u2014 RSI at 10th percentile of own history, 5 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL OPPORTUNITY (high confidence) \u2014 RSI at 10th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. MSFT WATCH \u2014 score 4/10, RSI at 93th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is strongly positive at +$10.2B \u2014 dealers are long gamma and actively stabilizing the market. Low volatility, pinned range likely. VIX is 16.5 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 126 is in the normal range \u2014 no unusual institutional tail hedging. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 Strong bull regime (bull score 8/10, GEX +$10.2B). Hold all positions. Market is elevated and stable \u2014 not a new entry point but not an exit either.\n\nMAG 7 OPPORTUNITIES: TSLA AVOID \u2014 company-specific negative news detected: 'Rivian Could Be a Surprise Robotaxi Winner After Scoring a $...' Do not buy this dip until news clears. META OPPORTUNITY (high confidence) \u2014 RSI at 10th percentile of own history, 5 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL OPPORTUNITY (high confidence) \u2014 RSI at 10th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. MSFT WATCH \u2014 score 4/10, RSI at 93th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.5, needs +5.5 pts) with GEX remaining negative would trigger a high-conviction buy zone.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "strong_bull",
     "vix_trend": "stable",
-    "vix_current": 15.86,
+    "vix_current": 16.5,
     "gex_trend": "improving",
-    "gex_current": 11.6,
+    "gex_current": 10.2,
     "fear_trend": "easing",
-    "fear_current": 1.0,
-    "bear_current": 1.0,
-    "bull_current": 7.0,
+    "fear_current": 0.0,
+    "bear_current": 0.0,
+    "bull_current": 8.0,
     "neg_gex_days": 8,
-    "skew_current": 139.96,
+    "skew_current": 126.41,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 53.93
+    "spy_rsi": 59.72
   },
   "top_opportunity": {
-    "ticker": null,
-    "score": 0,
-    "reason": "",
-    "news": ""
+    "ticker": "META",
+    "score": 6.0,
+    "reason": "RSI extremely oversold (bottom 10% of own history) | Heavy put buying (P/C top 19% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [
     "TSLA",
-    "GOOGL",
-    "AAPL",
-    "META"
+    "AMZN"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 3.0,
-      "rsi_pct": 20.2,
+      "score": 5.0,
+      "rsi_pct": 10.0,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "OpenAI Dumps Apple Employees' Text Messages to Fight Trade Secret Suit",
-        "Google Should Be Forced To Shed Chrome, Advocacy Group Argues",
-        "Apple Scores Major Win in One of Its Biggest Markets",
-        "Apple's India Sales Cross $10 Billion for the First Time"
+        "The Calm Surface of Alphabet Stock Hides a Turbulent Forecast",
+        "SpaceX\u2019s $1T Goal and 3 More Shockers From Musk on the Earnings Call",
+        "Price hikes on consumer electronics could be here to stay. Here's why.",
+        "Spain's 'Warren Buffett' Bets Against the Crowd--and It's Paying Off"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 94.4,
+      "rsi_pct": 93.3,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "company_positive",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "What Southern Copper (SCCO)'s Record Q2 Dividend and Earnings Amid Lower Output Means For Shareholders",
-        "The Toughest Questions AMZN Faced On Its Latest Call",
-        "The Unusual Cash Offer Sitting In IBM Stock",
-        "Advanced Micro Devices vs. Intel: Which Technology Stock Is a Better Buy in 2026?"
+        "Microsoft Copilot EVP on AI growth and adoption",
+        "Here's Why Oracle's Stock Continues to Lag its Peers Like Amazon, Microsoft, and Alphabet",
+        "Microsoft (MSFT) Deepens AI Partnerships As $500 Billion Chip Funding Wave Builds",
+        "Sector Update: Tech Stocks Mixed Late Afternoon"
       ]
     },
     "NVDA": {
-      "score": 6.0,
-      "rsi_pct": 33.7,
+      "score": 4.0,
+      "rsi_pct": 44.4,
       "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "Is Parker-Hannifin a Buy Before It Reports Earnings Aug. 6?",
-        "Harmony Biosciences Holdings, Inc. Q2 2026 Earnings Call Summary",
-        "Arvinas, Inc. Q2 2026 Earnings Call Summary",
-        "Ingredion Incorporated Q2 2026 Earnings Call Summary"
+        "The Walt Disney Company Q3 2026 Earnings Call Summary",
+        "Cushman &amp; Wakefield plc Q2 2026 Earnings Call Summary",
+        "The Brink's Company Q2 2026 Earnings Call Summary",
+        "fuboTV Inc. Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
       "score": 4.0,
-      "rsi_pct": 61.8,
+      "rsi_pct": 57.8,
       "above_200ma": true,
-      "news": "company_negative",
-      "rsi_dir": "stable",
+      "news": "company_positive",
+      "rsi_dir": "recovering",
       "days_oversold": 7,
       "headlines": [
-        "SpaceX Second-Quarter Loss Narrows, Revenue Tops Views on Connectivity, AI Gains",
-        "Chatham Lodging Trust Q2 2026 Earnings Call Summary",
-        "Alphabet (GOOGL) Could Be 14% Undervalued On Ad Tech Lawsuit Scrutiny",
-        "Google Should Be Forced To Shed Chrome, Advocacy Group Argues"
+        "Dow Jones Futures: Nvidia Lifts Dow, But Google, SpaceX Skid; Sandisk, Western Digital Lead Earnings Losers Late",
+        "Travis Kalanick\u2019s robotics startup Atoms taps former Uber finance chief as CFO",
+        "Rivian Could Be a Surprise Robotaxi Winner After Scoring a $1.25 Billion Partnership With Uber",
+        "The Toughest Questions AMZN Faced On Its Latest Call"
       ]
     },
     "META": {
-      "score": 3.0,
-      "rsi_pct": 20.2,
+      "score": 6.0,
+      "rsi_pct": 10.0,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 4,
+      "days_oversold": 5,
       "headlines": [
-        "Companies laying off staff this year include Meta, Amazon, and Visa \u2014 see the list",
+        "Meta debuts Muse Spark 1.2  and first coding agent, as it ramps up competition with OpenAI, Anthropic",
+        "Meta launches new AI coding tool powered by Muse Spark 1.2",
         "The Toughest Questions AMZN Faced On Its Latest Call",
-        "Wall Street Short Sellers Piled Into Amazon and Microsoft at Historic Rates Before Earnings. Now They\u2019re Rallying.",
-        "Should You Buy Nvidia Stock Before Aug. 26? Here's What History Suggests."
+        "How Zigazoo built a safe social platform where Big Tech has struggled"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 71.9,
+      "rsi_pct": 62.2,
       "above_200ma": true,
-      "news": "macro_fear",
-      "rsi_dir": "getting_more_oversold",
+      "news": "company_negative",
+      "rsi_dir": "stable",
       "days_oversold": 6,
       "headlines": [
-        "Stock Market Today: Dow, S&amp;P 500 Hit New Highs; SpaceX Jumps Ahead Of Q2 Report",
-        "Jeff Bezos Is Pushing Amazon's Prime Video Into an AI Showcase, a Sign of How the Company Plans to Justify Its AI Spending",
         "The Toughest Questions AMZN Faced On Its Latest Call",
-        "The Unusual Cash Offer Sitting In IBM Stock"
+        "Amazon CEO Andy Jassy Says AWS Would Be 24th on the Fortune 500 List. Here's What That Means for the Stock",
+        "Companies laying off staff this year include Meta, Amazon, and Visa \u2014 see the list",
+        "Trump administration pays out milestone $100 billion in tariff refunds"
       ]
     },
     "TSLA": {
-      "score": 7.0,
-      "rsi_pct": 7.9,
+      "score": 8.0,
+      "rsi_pct": 8.9,
       "above_200ma": false,
       "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "SpaceX Second-Quarter Loss Narrows, Revenue Tops Views on Connectivity, AI Gains",
-        "SpaceX has bought $329M worth of Tesla Megapacks so far this year",
-        "How Tesla Stock Could Get a Boost From SpaceX Earnings",
-        "Chamath Palihapitiya Draws Parallel Between SpaceX Short Sellers And Early Tesla Bears, Warning They Could 'Go Broke'"
+        "Rivian Could Be a Surprise Robotaxi Winner After Scoring a $1.25 Billion Partnership With Uber",
+        "SpaceX\u2019s $1T Goal and 3 More Shockers From Musk on the Earnings Call",
+        "Tesla and SpaceX Are Secretly Merging\u2014Not on Paper, But in AI Power",
+        "SpaceX And Tesla Earnings Have A Similar Theme: Capex Spending"
       ]
     }
   },
   "macro_headlines": [
+    {
+      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Amid Corporate Earnings, Hormuz Reopening Hopes",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-131015495.html?.tsrc=rss",
+      "pub_date": "2026-08-05",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "What Happens When Stock Implied Volatility Outpaces the SPY",
+      "link": "https://finance.yahoo.com/markets/options/articles/happens-stock-implied-volatility-outpaces-124208065.html?.tsrc=rss",
+      "pub_date": "2026-08-05",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "The Dow Just Gained 1000 Points for the 27th Day Ever. 25 of These Days Happened Under Donald Trump.",
+      "link": "https://247wallst.com/investing/2026/08/04/the-dow-just-gained-1000-points-for-the-27th-day-ever-25-of-these-days-happened-under-donald-trump/?.tsrc=rss",
+      "pub_date": "2026-08-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "US Stock Futures Flat After S&amp;P500, Dow End At Record Highs On Strong Earnings, Easing Geopolitical Concerns \u2014 PLTR, AZN, CMG, MRNA In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/us-stock-futures-flat-after-s-and-p500-dow-end-at-record-highs/cZo5yAlRJ4k?.tsrc=rss",
+      "pub_date": "2026-08-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
     {
       "title": "Corning Dropped 25% Over a Month: A Major U.S. Bank Expects 66% Gains Over The Near Term",
       "link": "https://247wallst.com/investing/2026/08/04/corning-dropped-25-over-a-month-a-major-u-s-bank-expects-66-gains-over-the-near-term/?.tsrc=rss",
@@ -150,6 +192,17 @@
     {
       "title": "Here's Why You Should Buy Quality ETFs Now",
       "link": "https://finance.yahoo.com/markets/stocks/articles/heres-why-buy-quality-etfs-143700764.html?.tsrc=rss",
+      "pub_date": "2026-08-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Market Minute 8-4-26- Stocks Up, Oil Down - Day 2",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/market-minute-8-4-26-141500450.html?.tsrc=rss",
       "pub_date": "2026-08-04",
       "tickers": [
         "MARKET"
@@ -186,61 +239,6 @@
       "pub_date": "2026-08-04",
       "tickers": [
         "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Ordinary Income Trap: Why JEPI\u2019s Monthly Distributions Are Quietly Gutting Your After-Tax Returns",
-      "link": "https://247wallst.com/investing/etf/2026/08/04/ordinary-income-trap-why-jepis-monthly-distributions-are-quietly-gutting-your-after-tax-returns/?.tsrc=rss",
-      "pub_date": "2026-08-04",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The Hidden Price of Monthly Income: DIVO\u2019s Option Overlay Cost Investors Billions in Foregone Gains",
-      "link": "https://247wallst.com/investing/etf/2026/08/03/the-hidden-price-of-monthly-income-divos-option-overlay-cost-investors-billions-in-foregone-gains/?.tsrc=rss",
-      "pub_date": "2026-08-04",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "S&amp;P500, Nasdaq End Higher, Dow Hits Record High On Strong Mag 7 Performance And Falling Oil Prices \u2014 BA, XOM, CVX, HOOD, AMD In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p500-nasdaq-end-higher-dow-hits-record-high-on-strong-mag-7-performance/cZoTYo1RJ3K?.tsrc=rss",
-      "pub_date": "2026-08-03",
-      "tickers": [
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Apple\u2019s Predictable August News Vacuum Tells You Exactly What to Expect This Month",
-      "link": "https://247wallst.com/investing/2026/08/03/apples-predictable-august-news-vacuum-tells-you-exactly-what-to-expect-this-month/?.tsrc=rss",
-      "pub_date": "2026-08-03",
-      "tickers": [
-        "AAPL"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Amid US-Iran Truce Hopes",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130651670.html?.tsrc=rss",
-      "pub_date": "2026-08-03",
-      "tickers": [
-        "SPY"
       ],
       "high_impact": false,
       "sources": [],
