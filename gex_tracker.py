@@ -319,19 +319,56 @@ def compute_divergence(spy_bull, spy_bear, qqq_bear, qqq_bull):
 
 # ── Signal + context ──────────────────────────────────────────────────────────
 
-def compute_signal(gex, vix):
+def compute_signal(gex, vix, rsi=None, term_structure=None, neg_day_streak=0):
+    """
+    Refined signal logic — v2 (Aug 2026)
+    Key finding from 95-day backtest:
+      - RSI is the critical separator between BUY and EXIT
+      - RSI < 50 + deep neg GEX = buy zone (avg +4-6% 5-day return)
+      - RSI > 70 + neg GEX = overbought pullback, NOT an exit
+      - "RED Watch" was actually best signal (79% win rate, +3% avg)
+      - True EXIT is very rare: needs backwardation OR GEX < -15B + VIX > 21
+    """
     if gex is None or vix is None:
         return "Unknown - check data"
-    if gex < 0 and vix > 19.5:
-        return "RED EXIT - neg GEX + VIX elevated"
-    if gex < -5 and vix > 18:
-        return "RED Watch - GEX deeply neg, VIX rising"
-    if gex < 0:
+
+    rsi_val = rsi if rsi is not None else 50  # default neutral if missing
+
+    # ── STRONG BUY: deep neg GEX + oversold RSI + elevated VIX ──────────────
+    # Backtest: Jun 10 (+4.2%), Jul 29 (+6.3%), Jul 23-28 cluster (+4-5%)
+    if gex < -10 and rsi_val < 50 and vix > 18 and neg_day_streak >= 3:
+        return "STRONG BUY - deep neg GEX + oversold + fear elevated"
+
+    # ── BUY WATCH: neg GEX + RSI not overbought + multi-day setup ────────────
+    # Backtest: 79% win rate, +3% avg 5-day return — best signal in dataset
+    if gex < -5 and rsi_val < 57 and vix > 17:
+        return "BUY WATCH - neg GEX + RSI neutral + vol elevated"
+
+    # ── TRUE EXIT: very specific conditions (backwardation OR extreme GEX+VIX) ─
+    # Only 1 genuine exit in 95-day dataset (Jun 5: -1.5%)
+    # Requires VIX backwardation OR (GEX < -15B AND VIX > 21)
+    if gex < -5 and vix > 21 and (term_structure == "backwardation" or (gex < -15 and vix > 20.5)):
+        if rsi_val < 65:  # not overbought — real fear, not just pullback
+            return "RED EXIT - confirmed stress: deep neg GEX + VIX spike"
+
+    # ── OVERBOUGHT CAUTION: neg GEX but RSI elevated ─────────────────────────
+    # Apr 21-23: RSI 86-90, market just needed to cool — NOT a real exit
+    # These averaged +1.7% over 5 days — do NOT exit long-term positions
+    if gex < 0 and rsi_val > 70:
+        return "AMBER Caution - overbought pullback, tighten stops only"
+
+    # ── STANDARD CAUTION: mild neg GEX, RSI neutral ───────────────────────────
+    if gex < 0 and vix < 19:
         return "AMBER Caution - neg GEX, watch VIX"
+
+    # ── STRONG HOLD: max positive GEX, vol crushed ────────────────────────────
     if gex > 10 and vix < 18:
         return "GREEN Strong hold - GEX high, vol suppressed"
+
+    # ── HOLD: standard positive regime ────────────────────────────────────────
     if gex > 0 and vix < 19:
         return "GREEN Hold - pos GEX, vol controlled"
+
     return "NEUTRAL - monitor"
 
 
@@ -453,7 +490,32 @@ def main():
 
     # ── Compute SPY scores ────────────────────────────────────────────────────
     gex_val = spy_data.get("net_gex_b")
-    signal  = compute_signal(gex_val, vix)
+    # Count consecutive negative GEX days from CSV history
+    neg_streak = 0
+    try:
+        if os.path.exists(OUTPUT_CSV):
+            import csv as _csv
+            with open(OUTPUT_CSV, newline="", encoding="utf-8") as _f:
+                rows_hist = list(_csv.DictReader(_f))
+            spy_rows = [r for r in rows_hist if r.get("ticker") == "SPY"]
+            for _r in reversed(spy_rows):
+                try:
+                    _g = float(_r.get("net_gex_b", 0) or 0)
+                    if _g < 0:
+                        neg_streak += 1
+                    else:
+                        break
+                except:
+                    break
+    except:
+        pass
+
+    signal  = compute_signal(
+        gex_val, vix,
+        rsi=technicals.get("spy_rsi_14"),
+        term_structure=structure,
+        neg_day_streak=neg_streak,
+    )
     l1_ctx  = compute_l1_context(
         technicals.get("spy_above_200ma"),
         technicals.get("spy_rsi_14"),
@@ -559,8 +621,23 @@ def main():
     print(summary)
     save_csv(row)
 
-    fear_flag = " 🔴 BUY ZONE" if fear_score >= 8 else (" ⚠️ WATCH" if fear_score >= 6 else "")
-    bear_flag = " 🐻 EXIT" if bear_score >= 7 else ""
+    # Signal-driven email subject flags
+    if "STRONG BUY" in signal:
+        fear_flag = " 🟢 STRONG BUY"
+    elif "BUY WATCH" in signal:
+        fear_flag = " 🟡 BUY WATCH"
+    elif fear_score >= 8:
+        fear_flag = " 🔴 BUY ZONE"
+    elif fear_score >= 6:
+        fear_flag = " ⚠️ WATCH"
+    else:
+        fear_flag = ""
+    if "RED EXIT" in signal:
+        bear_flag = " 🔴 EXIT"
+    elif bear_score >= 7:
+        bear_flag = " 🐻 EXIT"
+    else:
+        bear_flag = ""
     div_flag  = " ⚡ DIVERGENCE" if "DIVERGENCE" in divergence or "WARNING" in divergence else ""
     subject   = f"GEX {today} | SPY F{fear_score}/Be{bear_score}/Bu{bull_score} · QQQ F{qqq_fear}/Be{qqq_bear}/Bu{qqq_bull}{fear_flag}{bear_flag}{div_flag}"
     send_email(subject, summary)
