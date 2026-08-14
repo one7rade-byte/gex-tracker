@@ -336,6 +336,7 @@ function parseCSV(text){
       z:n('zero_gamma'),cw:n('call_wall'),pw:n('put_wall'),sig:obj.signal||'',
       ma200:n('spy_200ma'),aboveMa:bp(obj.spy_above_200ma),rsi:n('spy_rsi_14'),
       vix3m:n('vix_3m'),termSpread:n('vix_term_spread'),termStruct:obj.vix_term_structure||null,
+      yield10y:n('yield_10y'),vix9d:n('vix9d'),vix9dRatio:n('vix9d_vix_ratio'),
       skew:n('skew_index'),l1ctx:obj.l1_context||'',
       fearScore:n('fear_score'),bullScore:n('bull_score'),bearScore:n('bear_score'),
       scoreLabel:obj.score_label||'',
@@ -346,7 +347,7 @@ function parseCSV(text){
   }).filter(e=>e.d&&e.s&&e.v);
 }
 
-function computeSignal(g,v,prev,rsi,termSpread){
+function computeSignal(g,v,prev,rsi,termSpread,yield10y,vix9dRatio){
   // v2 refined Aug 2026 — 95-day backtest findings:
   // RSI separates BUY (oversold) from EXIT (overbought pullback)
   // Low term spread (<1.5) = buy zone proximity
@@ -355,17 +356,21 @@ function computeSignal(g,v,prev,rsi,termSpread){
   const rsiVal=(rsi!=null)?rsi:50;
   const lowSpread=(termSpread!=null)&&termSpread<1.5;
   const backwardation=(termSpread!=null)&&termSpread<0;
+  const yieldHigh=(yield10y!=null)&&yield10y>4.5;       // headwind for equities
+  const yieldFalling=(yield10y!=null)&&yield10y<3.8;    // tailwind for equities
+  const vix9dSpike=(vix9dRatio!=null)&&vix9dRatio>1.10; // near-term fear spike = entry signal
+  const vix9dBuilding=(vix9dRatio!=null)&&vix9dRatio>1.05;
 
   // STRONG BUY: deep neg GEX + oversold + 3+ days + elevated VIX
   if(g<-10&&rsiVal<50&&v>18&&neg>=3)
     return{cls:'sig-g',bc:'bg',label:'🟢 Strong buy — load positions',
-      body:'GEX '+g.toFixed(1)+'B deeply neg for '+neg+' days. RSI '+rsiVal.toFixed(0)+' oversold. VIX '+v.toFixed(2)+'. Dealers maximally short — spring fully coiled.'+(lowSpread?' Low term spread confirms buy zone.':''),
+      body:'GEX '+g.toFixed(1)+'B deeply neg for '+neg+' days. RSI '+rsiVal.toFixed(0)+' oversold. VIX '+v.toFixed(2)+'.'+(vix9dSpike?' VIX9D spiking above VIX ('+vix9dRatio.toFixed(2)+') — near-term capitulation signal.':'')+' Dealers maximally short — spring fully coiled.'+(yieldFalling?' Yield '+yield10y.toFixed(2)+'% falling = equity tailwind.':yieldHigh?' Yield '+yield10y.toFixed(2)+'% elevated = macro headwind, be selective.':'')+(lowSpread?' Low term spread confirms buy zone.':''),
       port:'This is the setup. Load long-term positions over 2-3 days. Use put wall as stop reference.'};
 
   // BUY WATCH: neg GEX + RSI not overbought — 79% win rate in backtest
   if(g<-5&&rsiVal<57&&v>17)
     return{cls:'sig-g',bc:'bg',label:'🟡 Buy watch — scaling opportunity',
-      body:'GEX '+g.toFixed(1)+'B negative. RSI '+rsiVal.toFixed(0)+'. VIX '+v.toFixed(2)+'. Dealers short gamma — bounces get amplified.'+(lowSpread?' Term spread '+termSpread.toFixed(2)+' compressed.':''),
+      body:'GEX '+g.toFixed(1)+'B negative. RSI '+rsiVal.toFixed(0)+'. VIX '+v.toFixed(2)+'.'+(vix9dSpike?' VIX9D/VIX ratio '+vix9dRatio.toFixed(2)+' — near-term fear elevated, entry signal active.':vix9dBuilding?' VIX9D building ('+vix9dRatio.toFixed(2)+').':'')+' Dealers short gamma — bounces get amplified.'+(yieldHigh?' Note: 10Y yield '+yield10y.toFixed(2)+'% is elevated — macro headwind. Focus on quality names only.':'')+(lowSpread?' Term spread '+termSpread.toFixed(2)+' compressed.':''),
       port:'Begin scaling into long-term positions. Wait for RSI < 45 or GEX to deepen for full position.'};
 
   // LOW SPREAD DIP: compressed term spread even with modest neg GEX
@@ -401,7 +406,7 @@ function computeSignal(g,v,prev,rsi,termSpread){
   // HOLD
   if(g>0&&v<19)
     return{cls:'sig-b',bc:'bb',label:'Hold — positive regime intact',
-      body:'GEX positive, VIX controlled. Bull regime active.',
+      body:'GEX positive, VIX controlled. Bull regime active.'+(yieldFalling?' 10Y yield '+yield10y.toFixed(2)+'% falling — macro tailwind supporting equities.':yieldHigh?' 10Y yield '+yield10y.toFixed(2)+'% elevated — monitor for rotation pressure.':'')+(vix9dSpike?' VIX9D spiking ('+vix9dRatio.toFixed(2)+') despite positive GEX — watch closely.':''),
       port:'Hold. Not a loading opportunity at current prices.'};
 
   return{cls:'sig-a',bc:'ba',label:'Neutral — monitor',body:'Mixed signals. Track daily.',port:'No clear action.'};
@@ -858,6 +863,7 @@ function renderCharts(data){
   const labels=data.map(e=>e.d),spyD=data.map(e=>e.s),vixD=data.map(e=>e.v),gexD=data.map(e=>e.g);
   const wallD=data.map(e=>e.cw),putD=data.map(e=>e.pw),ma200D=data.map(e=>e.ma200),rsiD=data.map(e=>e.rsi);
   const skewD=data.map(e=>e.skew),termD=data.map(e=>e.termSpread),qqqD=data.map(e=>e.qqqSpot);
+  const yieldD=data.map(e=>e.yield10y),vix9dD=data.map(e=>e.vix9d),ratioD=data.map(e=>e.vix9dRatio);
   // Low term spread buy zone markers (spread < 1.5 = compressed, spread < 0 = backwardation)
   const lowSpreadZone=termD.map(function(v){return v!==null&&v<1.5?v:null;});
   const gc='rgba(0,0,0,0.06)',tc='#888';
@@ -956,6 +962,47 @@ function renderCharts(data){
   }}}},
     scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
   },plugins:[termBuyPlugin]});
+
+  // ── Macro chart: 10Y Yield + VIX9D ratio ──────────────────────────────
+  if(macroChart)macroChart.destroy();
+  var yieldValid=yieldD.filter(function(v){return v!==null;});
+  var yMin=yieldValid.length?Math.floor((Math.min.apply(null,yieldValid)-0.2)*10)/10:3.5;
+  var yMax=yieldValid.length?Math.ceil((Math.max.apply(null,yieldValid)+0.2)*10)/10:5.0;
+  macroChart=new Chart(document.getElementById('c6'),{type:'line',data:{labels:labels,datasets:[
+    {label:'10Y Yield',data:yieldD,borderColor:'#e67e22',borderWidth:2,tension:0.35,
+     pointRadius:1,yAxisID:'yY',backgroundColor:'transparent',spanGaps:true},
+    {label:'VIX9D/VIX',data:ratioD,borderColor:'#8e44ad',borderWidth:1.5,borderDash:[4,3],tension:0.35,
+     pointRadius:ratioD.map(function(v){return v!==null&&v>1.10?4:1;}),
+     pointBackgroundColor:ratioD.map(function(v){return v!==null&&v>1.10?'#A32D2D':'#8e44ad';}),
+     pointBorderColor:'#fff',pointBorderWidth:1,
+     yAxisID:'yR2',backgroundColor:'transparent',spanGaps:true}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+      if(ctx.parsed.y===null)return null;
+      if(ctx.dataset.label==='10Y Yield')return' 10Y Yield '+ctx.parsed.y.toFixed(2)+'%';
+      return'  VIX9D/VIX '+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>1.10?' ⚠️ spike':'');
+    }}}},
+    scales:{
+      x:xAxis,
+      yY:{position:'left',min:yMin,max:yMax,
+          ticks:{font:{size:9},color:'#e67e22',callback:function(v){return v.toFixed(1)+'%';}},
+          grid:{color:gc}},
+      yR2:{position:'right',min:0.85,max:1.30,
+           ticks:{font:{size:9},color:'#8e44ad',callback:function(v){return v.toFixed(2);}},
+           grid:{display:false}}
+    }
+  },plugins:[{id:'ratioLine',afterDraw:function(chart){
+    var ctx2=chart.ctx,ca=chart.chartArea,ys=chart.scales.yR2;
+    if(!ca)return;
+    var py=ys.getPixelForValue(1.10);
+    ctx2.save();
+    ctx2.strokeStyle='rgba(163,45,45,0.35)';ctx2.lineWidth=1;ctx2.setLineDash([3,3]);
+    ctx2.beginPath();ctx2.moveTo(ca.left,py);ctx2.lineTo(ca.right,py);ctx2.stroke();
+    ctx2.fillStyle='rgba(163,45,45,0.6)';ctx2.font='9px Arial';ctx2.setLineDash([]);
+    ctx2.fillText('1.10 spike threshold',ca.left+4,py-3);
+    ctx2.restore();
+  }}]});
 }
 
 function updateCharts(){
@@ -1017,7 +1064,9 @@ function buildUI(data){
       '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
       '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
       '<div class="m"><div class="ml">QQQ spot</div><div class="mv" style="color:#9b59b6">'+(last.qqqSpot?'$'+last.qqqSpot.toFixed(2):'—')+'</div><div class="ms">tech proxy</div></div>'+
-      '<div class="m"><div class="ml">Days logged</div><div class="mv">'+total+'</div><div class="ms">entries</div></div>'+
+      '<div class="m"><div class="ml">10Y Yield</div><div class="mv" style="color:'+(last.yield10y>4.5?'#A32D2D':last.yield10y<3.8?'#3B6D11':'#BA7517')+'">'+(last.yield10y?last.yield10y.toFixed(2)+'%':'—')+'</div><div class="ms">'+(last.yield10y>4.5?'elevated — headwind':last.yield10y<3.8?'falling — tailwind':'neutral range')+'</div></div>'+
+      '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
+            '<div class="m"><div class="ml">Days logged</div><div class="mv">'+total+'</div><div class="ms">entries</div></div>'+
     '</div>'+
     '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
     '<div class="card"><div class="cl">Daily signal insight — '+last.d+'</div><div class="insight-grid">'+insightHTML+'</div></div>'+
