@@ -341,15 +341,64 @@ function parseCSV(text){
   }).filter(e=>e.d&&e.s&&e.v);
 }
 
-function computeSignal(g,v,prev){
+function computeSignal(g,v,prev,rsi,termSpread){
+  // v2 refined Aug 2026 — 95-day backtest findings:
+  // RSI separates BUY (oversold) from EXIT (overbought pullback)
+  // Low term spread (<1.5) = buy zone proximity
+  // RED Watch was 79% win rate +3% avg — it's a BUY signal not a warning
   const neg=prev.filter(e=>e.g<0).length;
-  const vRise=prev.length>=2&&v>prev[prev.length-1].v;
-  if(g<0&&v>19.5)return{cls:'sig-r',bc:'br',label:'Exit / sell signal',body:'GEX negative + VIX above 19.5 — dual exit condition. Dealers amplifying moves.',port:'Avoid new long positions. Wait for VIX to peak before loading.'};
-  if(g<-5&&v>22)return{cls:'sig-g',bc:'bg',label:'Buy zone loading',body:'GEX deeply negative + VIX elevated — spring coiling. Watch for price to stop making new lows.',port:'Early buy zone. Begin scaling into long-term positions.'};
-  if(g<-4&&neg>=2&&v>18&&vRise)return{cls:'sig-a',bc:'ba',label:'Watch — setup building',body:'GEX deeply negative '+neg+' days, VIX rising. Setup loading but not at peak fear yet.',port:'Potential buying opportunity building. Monitor daily.'};
-  if(g<0&&v<19)return{cls:'sig-b',bc:'bb',label:'Weekly noise — hold',body:'GEX negative but VIX low. Likely expiry oscillation, not a real regime change.',port:'No action. This snaps back quickly. Wait and watch.'};
-  if(g>10&&v<17.5)return{cls:'sig-g',bc:'bg',label:'Strong hold — maximum positive regime',body:'GEX '+g.toFixed(2)+'B at near all-time high. VIX '+v.toFixed(2)+' at cycle lows. Dealers fully long gamma.',port:'Hold existing positions. Not a new entry point.'};
-  if(g>0&&v<19)return{cls:'sig-b',bc:'bb',label:'Hold — positive regime intact',body:'GEX positive, VIX controlled. Bull regime active. Dealers buying dips mechanically.',port:'Hold. Not a portfolio loading opportunity at current prices.'};
+  const rsiVal=(rsi!=null)?rsi:50;
+  const lowSpread=(termSpread!=null)&&termSpread<1.5;
+  const backwardation=(termSpread!=null)&&termSpread<0;
+
+  // STRONG BUY: deep neg GEX + oversold + 3+ days + elevated VIX
+  if(g<-10&&rsiVal<50&&v>18&&neg>=3)
+    return{cls:'sig-g',bc:'bg',label:'🟢 Strong buy — load positions',
+      body:'GEX '+g.toFixed(1)+'B deeply neg for '+neg+' days. RSI '+rsiVal.toFixed(0)+' oversold. VIX '+v.toFixed(2)+'. Dealers maximally short — spring fully coiled.'+(lowSpread?' Low term spread confirms buy zone.':''),
+      port:'This is the setup. Load long-term positions over 2-3 days. Use put wall as stop reference.'};
+
+  // BUY WATCH: neg GEX + RSI not overbought — 79% win rate in backtest
+  if(g<-5&&rsiVal<57&&v>17)
+    return{cls:'sig-g',bc:'bg',label:'🟡 Buy watch — scaling opportunity',
+      body:'GEX '+g.toFixed(1)+'B negative. RSI '+rsiVal.toFixed(0)+'. VIX '+v.toFixed(2)+'. Dealers short gamma — bounces get amplified.'+(lowSpread?' Term spread '+termSpread.toFixed(2)+' compressed.':''),
+      port:'Begin scaling into long-term positions. Wait for RSI < 45 or GEX to deepen for full position.'};
+
+  // LOW SPREAD DIP: compressed term spread even with modest neg GEX
+  if(g<-2&&lowSpread&&rsiVal<60&&v>16)
+    return{cls:'sig-a',bc:'ba',label:'🟡 Dip — low term spread signal',
+      body:'VIX term spread '+termSpread.toFixed(2)+(backwardation?' (backwardation)':' (compressed)')+'. GEX '+g.toFixed(1)+'B. RSI '+rsiVal.toFixed(0)+'. Near-term risk being priced in.',
+      port:'Consider partial entry. Low spread precedes bounces. Watch for GEX flip positive as confirmation.'};
+
+  // TRUE EXIT: backwardation OR extreme GEX+VIX, RSI not overbought (rare)
+  if(g<-5&&v>21&&(backwardation||(g<-15&&v>20.5))&&rsiVal<65)
+    return{cls:'sig-r',bc:'br',label:'🔴 Exit — confirmed stress',
+      body:'GEX '+g.toFixed(1)+'B + VIX '+v.toFixed(2)+(backwardation?' + backwardation — triple confirmation.':' extreme.')+' RSI '+rsiVal.toFixed(0)+'.',
+      port:'Reduce long exposure. Rare signal — only 1 true exit in 95-day dataset. Do not confuse with Buy Watch.'};
+
+  // OVERBOUGHT PULLBACK: neg GEX but RSI elevated — NOT an exit
+  if(g<0&&rsiVal>70)
+    return{cls:'sig-a',bc:'ba',label:'⚠️ Overbought pullback — tighten stops',
+      body:'GEX negative but RSI '+rsiVal.toFixed(0)+' elevated. Overbought market cooling — not a regime flip. Backtest avg: +1.7% over 5 days after this signal.',
+      port:'Do NOT exit long-term positions. Tighten stop to put wall. Wait for RSI to normalize.'};
+
+  // STANDARD CAUTION
+  if(g<0&&v<19)
+    return{cls:'sig-b',bc:'bb',label:'Weekly noise — hold',
+      body:'GEX negative but VIX low. Likely expiry oscillation — snaps back within 1-2 days.',
+      port:'No action needed.'};
+
+  // STRONG HOLD
+  if(g>10&&v<18)
+    return{cls:'sig-g',bc:'bg',label:'Strong hold — maximum positive regime',
+      body:'GEX '+g.toFixed(2)+'B. VIX '+v.toFixed(2)+'. Dealers fully long gamma, vol crushed.',
+      port:'Hold existing positions. Trail stop at put wall.'};
+
+  // HOLD
+  if(g>0&&v<19)
+    return{cls:'sig-b',bc:'bb',label:'Hold — positive regime intact',
+      body:'GEX positive, VIX controlled. Bull regime active.',
+      port:'Hold. Not a loading opportunity at current prices.'};
+
   return{cls:'sig-a',bc:'ba',label:'Neutral — monitor',body:'Mixed signals. Track daily.',port:'No clear action.'};
 }
 
@@ -670,27 +719,31 @@ function makeRsiPlugin(){
 
 function renderCharts(data){
   const labels=data.map(e=>e.d),spyD=data.map(e=>e.s),vixD=data.map(e=>e.v),gexD=data.map(e=>e.g);
-  const wallD=data.map(e=>e.cw),ma200D=data.map(e=>e.ma200),rsiD=data.map(e=>e.rsi);
+  const wallD=data.map(e=>e.cw),putD=data.map(e=>e.pw),ma200D=data.map(e=>e.ma200),rsiD=data.map(e=>e.rsi);
   const skewD=data.map(e=>e.skew),termD=data.map(e=>e.termSpread),qqqD=data.map(e=>e.qqqSpot);
+  // Low term spread buy zone markers (spread < 1.5 = compressed, spread < 0 = backwardation)
+  const lowSpreadZone=termD.map(function(v){return v!==null&&v<1.5?v:null;});
   const gc='rgba(0,0,0,0.06)',tc='#888';
   const zones=[];let zs=0,zt=data[0]&&data[0].g<0?'n':'p';
   data.forEach(function(e,i){const t=e.g<0?'n':'p';if(t!==zt||i===data.length-1){zones.push([zs,i,zt]);zs=i;zt=t;}});
   const xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:14},grid:{color:gc}};
-  const hidden=[false,false,false,false,false];
+  const hidden=[false,false,false,false,false,false];
   if(pChart){pChart.data.datasets.forEach(function(ds,i){if(ds.hidden)hidden[i]=true;});pChart.destroy();}
   pChart=new Chart(document.getElementById('c1'),{type:'line',data:{labels:labels,datasets:[
     {label:'SPY',data:spyD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent',hidden:hidden[0]},
     {label:'QQQ',data:qqqD,borderColor:'#9b59b6',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yQ',backgroundColor:'transparent',spanGaps:true,hidden:hidden[1]},
     {label:'VIX',data:vixD,borderColor:'#E24B4A',borderWidth:1.5,borderDash:[4,3],tension:0.35,pointRadius:1,yAxisID:'yV',backgroundColor:'transparent',hidden:hidden[2]},
-    {label:'Wall',data:wallD,borderColor:'#FF6B00',borderWidth:2,borderDash:[3,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false,hidden:hidden[3]},
-    {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:2,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true,hidden:hidden[4]}
+    {label:'Call Wall',data:wallD,borderColor:'rgba(255,140,0,0.45)',borderWidth:1.5,borderDash:[4,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false,hidden:hidden[3]},
+    {label:'Put Wall',data:putD,borderColor:'rgba(180,50,50,0.45)',borderWidth:1.5,borderDash:[4,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false,hidden:hidden[4]},
+    {label:'200MA',data:ma200D,borderColor:'#00BCD4',borderWidth:1.5,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true,hidden:hidden[5]}
   ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
       if(ctx.dataset.label==='SPY')return' SPY $'+ctx.parsed.y.toFixed(2);
       if(ctx.dataset.label==='QQQ'&&ctx.parsed.y)return'  QQQ $'+ctx.parsed.y.toFixed(2);
       if(ctx.dataset.label==='VIX')return'  VIX '+ctx.parsed.y.toFixed(2);
       if(ctx.dataset.label==='200MA'&&ctx.parsed.y)return'  200MA $'+ctx.parsed.y.toFixed(2);
-      if(ctx.dataset.label==='Wall'&&ctx.parsed.y)return'  Wall $'+ctx.parsed.y;
+      if(ctx.dataset.label==='Call Wall'&&ctx.parsed.y)return'  Call Wall $'+ctx.parsed.y;
+      if(ctx.dataset.label==='Put Wall'&&ctx.parsed.y)return'  Put Wall $'+ctx.parsed.y;
       return null;
     }}}},
     scales:{x:xAxis,yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:function(v){return'$'+v;}},grid:{color:gc}},yQ:{position:'right',ticks:{font:{size:9},color:'#9b59b6',callback:function(v){return'$'+v;}},grid:{display:false}},yV:{display:false,min:13,max:32}}
@@ -731,12 +784,41 @@ function renderCharts(data){
     scales:{x:xAxis,yR:{position:'left',min:rsiMin,max:rsiMax,ticks:{font:{size:9},color:'#3B6D11'},grid:{color:gc}},yS:{position:'right',min:skewMin,max:skewMax,ticks:{font:{size:9},color:'#9b59b6'},grid:{display:false}}}
   },plugins:[makeRsiPlugin()]});
   if(termChart)termChart.destroy();
+  // Term spread buy zone plugin — highlight bars where spread < 1.5
+  var termBuyPlugin={id:'termBuyZone',afterDraw:function(chart){
+    var ctx2=chart.ctx,ca=chart.chartArea,xs=chart.scales.x,ys=chart.scales.y;
+    if(!ca)return;
+    var thresh=ys.getPixelForValue(1.5);
+    ctx2.save();
+    ctx2.fillStyle='rgba(99,153,34,0.08)';
+    ctx2.fillRect(ca.left,thresh,ca.width,ca.bottom-thresh);
+    ctx2.strokeStyle='rgba(99,153,34,0.4)';ctx2.lineWidth=1;ctx2.setLineDash([4,3]);
+    ctx2.beginPath();ctx2.moveTo(ca.left,thresh);ctx2.lineTo(ca.right,thresh);ctx2.stroke();
+    ctx2.fillStyle='rgba(99,153,34,0.7)';ctx2.font='500 9px Arial';ctx2.setLineDash([]);
+    ctx2.fillText('Buy zone threshold (spread < 1.5)',ca.left+4,thresh-3);
+    ctx2.restore();
+  }};
   termChart=new Chart(document.getElementById('c5'),{type:'bar',data:{labels:labels,datasets:[{label:'Term Spread',data:termD,borderRadius:2,borderWidth:1,
-    backgroundColor:termD.map(function(v){return v===null?'transparent':v>0?'rgba(99,153,34,0.65)':'rgba(163,45,45,0.65)';}),
-    borderColor:termD.map(function(v){return v===null?'transparent':v>0?'#3B6D11':'#A32D2D';})}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){if(ctx.parsed.y===null)return null;return' Spread '+(ctx.parsed.y>0?'+':'')+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>0?' (contango)':' (backwardation)');}}}},
+    backgroundColor:termD.map(function(v){
+      if(v===null)return'transparent';
+      if(v<0)return'rgba(163,45,45,0.80)';       // backwardation = deep red
+      if(v<1.5)return'rgba(255,165,0,0.75)';     // low contango = orange buy signal
+      return'rgba(99,153,34,0.65)';               // normal contango = green
+    }),
+    borderColor:termD.map(function(v){
+      if(v===null)return'transparent';
+      if(v<0)return'#A32D2D';
+      if(v<1.5)return'#BA7517';
+      return'#3B6D11';
+    })}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+    if(ctx.parsed.y===null)return null;
+    var v=ctx.parsed.y;
+    var zone=v<0?' ⚠️ BACKWARDATION — stress signal':v<1.5?' 🟡 LOW SPREAD — buy zone proximity':' contango (calm)';
+    return' Spread '+(v>0?'+':'')+v.toFixed(2)+zone;
+  }}}},
     scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
-  }});
+  },plugins:[termBuyPlugin]});
 }
 
 function updateCharts(){
@@ -803,10 +885,11 @@ function buildUI(data){
     '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
     '<div class="card"><div class="cl">Daily signal insight — '+last.d+'</div><div class="insight-grid">'+insightHTML+'</div></div>'+
     '<div class="card">'+
-      '<div class="cl">SPY + QQQ price · VIX · 200MA · call wall</div>'+
+      '<div class="cl">SPY + QQQ price · VIX · 200MA · call wall · put wall</div>'+
       '<div class="leg">'+
         '<span class="toggle-btn active" data-idx="0" style="--tc:#378ADD">SPY</span>'+
         '<span class="toggle-btn active" data-idx="1" style="--tc:#9b59b6">QQQ</span>'+
+        '<span class="toggle-btn active" data-idx="4" style="--tc:#A32D2D">Put wall</span>'+
         '<span class="toggle-btn active" data-idx="2" style="--tc:#E24B4A">VIX</span>'+
         '<span class="toggle-btn active" data-idx="3" style="--tc:#FF6B00">Call wall</span>'+
         '<span class="toggle-btn active" data-idx="4" style="--tc:#00BCD4">200MA</span>'+
