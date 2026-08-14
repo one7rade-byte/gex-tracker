@@ -119,6 +119,10 @@ tr:last-child td{border-bottom:none}
 .mag7-tbl th{text-align:left;padding:7px 8px;background:#f8f8f6;color:#888;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e5e5e0}
 .mag7-tbl td{padding:7px 8px;border-bottom:0.5px solid #f0ede8;vertical-align:middle}
 .mag7-tbl tr:last-child td{border-bottom:none}
+.tk-btn{display:inline-block;padding:5px 12px;border-radius:20px;border:1.5px solid #e5e5e0;background:#fff;font-size:12px;font-weight:500;cursor:pointer;color:#555;transition:all .15s;margin:3px}
+.tk-btn.active{border-color:#378ADD;background:#378ADD;color:#fff}
+.tk-btn:hover:not(.active){border-color:#aaa;background:#f8f8f6}
+.m7chart-wrap{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px;margin-top:10px}
 .sbar{display:flex;align-items:center;gap:5px}
 .sbar-track{width:50px;height:5px;border-radius:3px;background:#f0ede8;overflow:hidden;flex-shrink:0}
 .sbar-fill{height:100%;border-radius:3px}
@@ -292,6 +296,7 @@ async function fetchMag7(){
         ma200:n('ma_200'),above:obj.above_200ma==='True'?true:obj.above_200ma==='False'?false:null,
         rsiPct:n('rsi_pct'),ivPct:n('iv_pct'),pcPct:n('pc_pct'),
         iv:n('iv_current'),pc:n('pc_ratio'),gex:n('gex_b'),gexReg:obj.gex_regime||'',
+        cw:n('call_wall'),pw:n('put_wall'),zg:n('zero_gamma'),
         score:n('opportunity_score'),signal:obj.signal||'',detail:obj.signal_detail||''};
     }).filter(e=>e.d&&e.tk);
   }catch(e){return[];}
@@ -417,6 +422,137 @@ function bearColor(s){if(s>=7)return'#7B1F1F';if(s>=5)return'#A32D2D';if(s>=3)re
 function bullColor(s){if(s>=8)return'#27500A';if(s>=6)return'#3B6D11';if(s>=4)return'#639922';return'#aaa';}
 function gexColor(g){if(g===null)return'#aaa';if(g<-5)return'#A32D2D';if(g<0)return'#BA7517';if(g>5)return'#27500A';return'#3B6D11';}
 
+
+function buildMag7ChartSection(rows){
+  const tickers=['AAPL','MSFT','NVDA','GOOGL','META','AMZN','TSLA'];
+  const btns=tickers.map(function(t){
+    return'<button class="tk-btn" id="tkbtn_'+t+'" onclick="showM7Chart(\''+t+'\')" >'+t+'</button>';
+  }).join('');
+  // Return static HTML — canvases are always in the DOM, just hidden until a ticker is clicked
+  return'<div class="m7chart-wrap" id="m7WrapOuter">'+
+    '<div style="font-size:10px;font-weight:600;color:#999;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Individual ticker chart — select to display</div>'+
+    '<div style="margin-bottom:10px">'+btns+'</div>'+
+    '<div id="m7ChartArea" style="display:none">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'+
+        '<div id="m7ChartTitle" style="font-size:13px;font-weight:600;color:#222"></div>'+
+        '<div style="font-size:10px;color:#888">Price · 200MA · Walls &nbsp;|&nbsp; RSI &nbsp;|&nbsp; Score trend</div>'+
+      '</div>'+
+      '<div style="position:relative;width:100%;height:210px;"><canvas id="m7PriceChart" style="display:block"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:85px;margin-top:8px;"><canvas id="m7RsiChart" style="display:block"></canvas></div>'+
+      '<div style="position:relative;width:100%;height:75px;margin-top:6px;"><canvas id="m7ScoreChart" style="display:block"></canvas></div>'+
+      '<div style="margin-top:8px;font-size:10px;color:#aaa;display:flex;gap:14px;flex-wrap:wrap">'+
+        '<span><span style="color:#378ADD">—</span> Price</span>'+
+        '<span><span style="color:#00BCD4">--</span> 200MA</span>'+
+        '<span><span style="color:rgba(255,140,0,0.8)">--</span> Call wall</span>'+
+        '<span><span style="color:rgba(163,45,45,0.8)">--</span> Put wall</span>'+
+        '<span><span style="color:#9b59b6">—</span> RSI</span>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
+}
+
+var ALL_MAG7=[],m7Chart=null,m7RsiChart=null,m7ScoreChart=null;
+function showM7Chart(ticker){
+  // Update button states
+  ['AAPL','MSFT','NVDA','GOOGL','META','AMZN','TSLA'].forEach(function(t){
+    var btn=document.getElementById('tkbtn_'+t);
+    if(btn)btn.className=t===ticker?'tk-btn active':'tk-btn';
+  });
+
+  // Filter and sort data for this ticker
+  var rows=ALL_MAG7.filter(function(r){return r.tk===ticker;}).sort(function(a,b){return a.d<b.d?-1:1;});
+  console.log('showM7Chart: ticker='+ticker+' ALL_MAG7.length='+ALL_MAG7.length+' rows='+rows.length);
+
+  // Show the area FIRST so canvases have dimensions before Chart.js renders
+  var area=document.getElementById('m7ChartArea');
+  area.style.display='block';
+
+  if(!rows.length){
+    document.getElementById('m7ChartTitle').textContent=ticker+' — no data yet';
+    return;
+  }
+  document.getElementById('m7ChartTitle').textContent=ticker+' — '+rows.length+' days · click another ticker to switch';
+
+  var labels=rows.map(function(r){return r.d.replace('2026-','');});
+  var priceD=rows.map(function(r){return r.spot||null;});
+  var ma200D=rows.map(function(r){return r.ma200||null;});
+  var callD=rows.map(function(r){return r.cw||null;});
+  var putD=rows.map(function(r){return r.pw||null;});
+  var rsiD=rows.map(function(r){return r.rsi||null;});
+  var scoreD=rows.map(function(r){return r.score||null;});
+  var gc='rgba(0,0,0,0.06)',tc='#888';
+  var xAxis={ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:14},grid:{color:gc}};
+
+  // Price chart
+  if(m7Chart)m7Chart.destroy();
+  m7Chart=new Chart(document.getElementById('m7PriceChart'),{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'Price',data:priceD,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,pointRadius:1,yAxisID:'yP',backgroundColor:'transparent'},
+      {label:'200MA',data:ma200D,borderColor:'rgba(0,188,212,0.8)',borderWidth:1.5,borderDash:[8,3],tension:0.2,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:true},
+      {label:'Call Wall',data:callD,borderColor:'rgba(255,140,0,0.6)',borderWidth:1.5,borderDash:[4,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
+      {label:'Put Wall',data:putD,borderColor:'rgba(163,45,45,0.6)',borderWidth:1.5,borderDash:[4,4],tension:0,pointRadius:0,yAxisID:'yP',backgroundColor:'transparent',spanGaps:false},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+        if(ctx.parsed.y===null)return null;
+        return' '+ctx.dataset.label+' $'+ctx.parsed.y.toFixed(2);
+      }}}},
+      scales:{x:xAxis,yP:{position:'left',ticks:{font:{size:9},color:'#378ADD',callback:function(v){return'$'+v;}},grid:{color:gc}}}
+    }
+  });
+
+  // RSI chart
+  if(m7RsiChart)m7RsiChart.destroy();
+  m7RsiChart=new Chart(document.getElementById('m7RsiChart'),{
+    type:'line',
+    data:{labels:labels,datasets:[{
+      label:'RSI',data:rsiD,borderColor:'#9b59b6',borderWidth:2,tension:0.35,
+      pointRadius:rsiD.map(function(v){return v!==null&&(v<30||v>70)?4:1;}),
+      pointBackgroundColor:rsiD.map(function(v){return v===null?'transparent':v<30?'#A32D2D':v>70?'#BA7517':'#9b59b6';}),
+      pointBorderColor:'#fff',pointBorderWidth:1,
+      backgroundColor:'transparent',spanGaps:true
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return ctx.parsed.y!==null?' RSI '+ctx.parsed.y.toFixed(1):null;}}}},
+      scales:{x:xAxis,y:{min:20,max:85,ticks:{font:{size:9},color:tc},grid:{color:gc}}}
+    },
+    plugins:[{id:'rsiLines',afterDraw:function(chart){
+      var ctx2=chart.ctx,ca=chart.chartArea,ys=chart.scales.y;
+      if(!ca)return;
+      ctx2.save();
+      [30,70].forEach(function(level){
+        var py=ys.getPixelForValue(level);
+        ctx2.strokeStyle=level===30?'rgba(163,45,45,0.4)':'rgba(186,117,23,0.4)';
+        ctx2.lineWidth=1;ctx2.setLineDash([3,3]);
+        ctx2.beginPath();ctx2.moveTo(ca.left,py);ctx2.lineTo(ca.right,py);ctx2.stroke();
+      });
+      ctx2.restore();
+    }}]
+  });
+
+  // Score trend chart
+  if(m7ScoreChart)m7ScoreChart.destroy();
+  m7ScoreChart=new Chart(document.getElementById('m7ScoreChart'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{
+      label:'Score',data:scoreD,borderRadius:3,borderWidth:1,
+      backgroundColor:scoreD.map(function(v){
+        return v===null?'transparent':v>=8?'rgba(39,80,10,0.75)':v>=6?'rgba(99,153,34,0.7)':v>=4?'rgba(186,117,23,0.7)':'rgba(200,200,200,0.5)';
+      }),
+      borderColor:scoreD.map(function(v){
+        return v===null?'transparent':v>=8?'#27500A':v>=6?'#3B6D11':v>=4?'#BA7517':'#ccc';
+      })
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return ctx.parsed.y!==null?' Score '+ctx.parsed.y+'/10':null;}}}},
+      scales:{x:xAxis,y:{min:0,max:10,ticks:{font:{size:9},color:tc,stepSize:2},grid:{color:gc}}}
+    }
+  });
+}
+
+
 function buildMag7Card(rows,signalRows){
   if(!rows||!rows.length)return'<div class="card"><div class="cl">Mag 7 opportunity scanner</div><div style="font-size:12px;color:#aaa;padding:8px 0">Runs daily at 6pm. First data appears after tonight\'s run and backfill.</div></div>';
   const dates=[...new Set(rows.map(r=>r.d))].sort();
@@ -504,6 +640,7 @@ function buildMag7Card(rows,signalRows){
     '<th>Score /10</th><th>Signal</th><th>20d trend</th>'+
     '</tr></thead><tbody>'+tblRows+'</tbody></table></div>'+
     '<div style="margin-top:8px;font-size:10px;color:#aaa">8-10 = strong buy · 6-7 = buy · 4-5 = watch · RSI percentile historical · Options + GEX from today forward · Squeeze scores delayed 30min (InsiderFinance free tier)</div>'+
+    buildMag7ChartSection(rows)+
   '</div>';
 }
 
@@ -955,6 +1092,7 @@ function buildUI(data){
     });
     Promise.all([fetchMag7(),fetchMag7Signals()]).then(function(results){
       var m7=results[0],sig=results[1];
+      ALL_MAG7=m7||[];
       var ph=document.getElementById('mag7placeholder');
       if(ph){
         ph.outerHTML=buildMag7Card(m7,sig);
