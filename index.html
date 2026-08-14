@@ -985,46 +985,7 @@ function renderCharts(data){
     scales:{x:xAxis,y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(1);}},grid:{color:gc}}}
   },plugins:[termBuyPlugin]});
 
-  // ── Macro chart: 10Y Yield + VIX9D ratio ──────────────────────────────
-  if(macroChart)macroChart.destroy();
-  var yieldValid=yieldD.filter(function(v){return v!==null;});
-  var yMin=yieldValid.length?Math.floor((Math.min.apply(null,yieldValid)-0.2)*10)/10:3.5;
-  var yMax=yieldValid.length?Math.ceil((Math.max.apply(null,yieldValid)+0.2)*10)/10:5.0;
-  macroChart=new Chart(document.getElementById('c6'),{type:'line',data:{labels:labels,datasets:[
-    {label:'10Y Yield',data:yieldD,borderColor:'#e67e22',borderWidth:2,tension:0.35,
-     pointRadius:1,yAxisID:'yY',backgroundColor:'transparent',spanGaps:true},
-    {label:'VIX9D/VIX',data:ratioD,borderColor:'#8e44ad',borderWidth:1.5,borderDash:[4,3],tension:0.35,
-     pointRadius:ratioD.map(function(v){return v!==null&&v>1.10?4:1;}),
-     pointBackgroundColor:ratioD.map(function(v){return v!==null&&v>1.10?'#A32D2D':'#8e44ad';}),
-     pointBorderColor:'#fff',pointBorderWidth:1,
-     yAxisID:'yR2',backgroundColor:'transparent',spanGaps:true}
-  ]},options:{responsive:true,maintainAspectRatio:false,
-    interaction:{mode:'index',intersect:false},
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
-      if(ctx.parsed.y===null)return null;
-      if(ctx.dataset.label==='10Y Yield')return' 10Y Yield '+ctx.parsed.y.toFixed(2)+'%';
-      return'  VIX9D/VIX '+ctx.parsed.y.toFixed(2)+(ctx.parsed.y>1.10?' ⚠️ spike':'');
-    }}}},
-    scales:{
-      x:xAxis,
-      yY:{position:'left',min:yMin,max:yMax,
-          ticks:{font:{size:9},color:'#e67e22',callback:function(v){return v.toFixed(1)+'%';}},
-          grid:{color:gc}},
-      yR2:{position:'right',min:0.85,max:1.30,
-           ticks:{font:{size:9},color:'#8e44ad',callback:function(v){return v.toFixed(2);}},
-           grid:{display:false}}
-    }
-  },plugins:[{id:'ratioLine',afterDraw:function(chart){
-    var ctx2=chart.ctx,ca=chart.chartArea,ys=chart.scales.yR2;
-    if(!ca)return;
-    var py=ys.getPixelForValue(1.10);
-    ctx2.save();
-    ctx2.strokeStyle='rgba(163,45,45,0.35)';ctx2.lineWidth=1;ctx2.setLineDash([3,3]);
-    ctx2.beginPath();ctx2.moveTo(ca.left,py);ctx2.lineTo(ca.right,py);ctx2.stroke();
-    ctx2.fillStyle='rgba(163,45,45,0.6)';ctx2.font='9px Arial';ctx2.setLineDash([]);
-    ctx2.fillText('1.10 spike threshold',ca.left+4,py-3);
-    ctx2.restore();
-  }}]});
+  // Macro chart (yield/vix9d) — rendered in metric cards only, no separate canvas needed
 }
 
 function updateCharts(){
@@ -1086,8 +1047,8 @@ function buildUI(data){
       '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
       '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
       '<div class="m"><div class="ml">QQQ spot</div><div class="mv" style="color:#9b59b6">'+(last.qqqSpot?'$'+last.qqqSpot.toFixed(2):'—')+'</div><div class="ms">tech proxy</div></div>'+
-      '<div class="m"><div class="ml">10Y Yield</div><div class="mv" style="color:'+(last.yield10y&&last.yield10y>4.5?'#A32D2D':last.yield10y&&last.yield10y<3.8?'#3B6D11':'#BA7517')+'">'+(last.yield10y?last.yield10y.toFixed(2)+'%':'—')+'</div><div class="ms">'+(last.yield10y>4.5?'elevated — headwind':last.yield10y<3.8?'falling — tailwind':'neutral range')+'</div></div>'+
-      '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio&&last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio&&last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
+      '<div class="m"><div class="ml">10Y Yield</div><div class="mv" style="color:'+(last.yield10y&&last.yield10y>4.5?'#A32D2D':last.yield10y&&last.yield10y<3.8?'#3B6D11':'#BA7517')+'">'+(last.yield10y?last.yield10y.toFixed(2)+'%':'—')+'</div><div class="ms">'+(last.yield10y&&last.yield10y>4.5?'elevated — headwind':last.yield10y&&last.yield10y<3.8?'falling — tailwind':'neutral range')+'</div></div>'+
+      '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio&&last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio&&last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio&&last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio&&last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
             '<div class="m"><div class="ml">Days logged</div><div class="mv">'+total+'</div><div class="ms">entries</div></div>'+
     '</div>'+
     '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
