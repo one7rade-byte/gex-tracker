@@ -34,6 +34,10 @@ CSV_HEADERS = [
     "qqq_spot", "qqq_gex_b", "qqq_fear_score", "qqq_bear_score", "qqq_bull_score",
     "qqq_divergence",   # SPY_bull + QQQ_bear = bearish divergence warning
     "signal", "l1_context",
+    # Macro context — added Aug 2026
+    "yield_10y",    # 10-year Treasury yield (^TNX) — key macro input
+    "vix9d",        # 9-day VIX (^VIX9D) — near-term fear gauge
+    "vix9d_vix_ratio",  # VIX9D/VIX30 ratio >1.10 = near-term capitulation signal
 ]
 
 HEADERS = {
@@ -372,6 +376,25 @@ def compute_signal(gex, vix, rsi=None, term_structure=None, neg_day_streak=0):
     return "NEUTRAL - monitor"
 
 
+def compute_yield_context(yield_10y, vix9d_val, vix9d_ratio):
+    """Add 10Y yield and VIX9D context to signal narrative."""
+    parts = []
+    if yield_10y is not None:
+        if yield_10y > 4.5:
+            parts.append(f"10Y yield {yield_10y:.2f}% — elevated, headwind for growth stocks")
+        elif yield_10y < 3.8:
+            parts.append(f"10Y yield {yield_10y:.2f}% — falling, tailwind for equities")
+        else:
+            parts.append(f"10Y yield {yield_10y:.2f}% — neutral range")
+    if vix9d_ratio is not None:
+        if vix9d_ratio > 1.15:
+            parts.append(f"VIX9D/VIX ratio {vix9d_ratio:.2f} — near-term fear spike, short-term entry signal")
+        elif vix9d_ratio > 1.05:
+            parts.append(f"VIX9D/VIX ratio {vix9d_ratio:.2f} — near-term fear building")
+        else:
+            parts.append(f"VIX9D/VIX ratio {vix9d_ratio:.2f} — term structure calm")
+    return " | ".join(parts) if parts else ""
+
 def compute_l1_context(spy_above_200ma, rsi, term_structure, skew, vix):
     parts = []
     if spy_above_200ma is True:
@@ -488,6 +511,14 @@ def main():
     print("\n[6/6] Fetching SKEW...")
     skew = fetch_skew()
 
+    print("\n[7/7] Fetching 10Y yield + VIX9D...")
+    yield_10y = fetch_yahoo_price("%5ETNX", "10Y Yield")
+    vix9d_val = fetch_yahoo_price("%5EVIX9D", "VIX9D")
+    vix9d_ratio = None
+    if vix9d_val is not None and vix is not None and vix > 0:
+        vix9d_ratio = round(vix9d_val / vix, 3)
+    print(f"      10Y Yield = {yield_10y}  VIX9D = {vix9d_val}  Ratio = {vix9d_ratio}")
+
     # ── Compute SPY scores ────────────────────────────────────────────────────
     gex_val = spy_data.get("net_gex_b")
     # Count consecutive negative GEX days from CSV history
@@ -568,6 +599,9 @@ def main():
         "qqq_bear_score":     qqq_bear,
         "qqq_bull_score":     qqq_bull,
         "qqq_divergence":     divergence,
+        "yield_10y":          yield_10y,
+        "vix9d":              vix9d_val,
+        "vix9d_vix_ratio":    vix9d_ratio,
         "signal":             signal,
         "l1_context":         l1_ctx,
     }
@@ -610,6 +644,8 @@ def main():
         "|  200MA       :  " + f(row["spy_200ma"]) + "  (above: " + str(row["spy_above_200ma"]) + ")\n"
         "|  RSI-14      :  " + fb(row["spy_rsi_14"]) + "\n"
         "|  VIX3M       :  " + fb(vix_3m) + "\n"
+        "|  VIX9D       :  " + fb(vix9d_val) + ("  (ratio " + str(vix9d_ratio) + ("  ⚠️ near-term spike" if vix9d_ratio and vix9d_ratio > 1.10 else "") + ")" if vix9d_ratio else "") + "\n"
+        "|  10Y Yield   :  " + fb(yield_10y) + ("%" if yield_10y else "") + "\n"
         "|  Term spread :  " + fb(spread) + "  [" + (structure or "---") + "]\n"
         "|  SKEW        :  " + fb(skew) + "\n"
         "+--------------------------------------------------+\n"
