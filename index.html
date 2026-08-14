@@ -289,8 +289,17 @@ async function fetchMag7(){
     if(lines.length<2)return[];
     const hdrs=lines[0].split(',').map(h=>h.trim());
     return lines.slice(1).map(line=>{
-      const vals=line.split(','),obj={};
-      hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+      // Proper CSV parser that handles quoted fields containing commas
+      const vals=[];let cur='',inQ=false;
+      for(let i=0;i<line.length;i++){
+        const ch=line[i];
+        if(ch==='"'){inQ=!inQ;}
+        else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}
+        else{cur+=ch;}
+      }
+      vals.push(cur.trim());
+      const obj={};
+      hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
       const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
       return{d:obj.date||'',tk:obj.ticker||'',spot:n('spot_price'),rsi:n('rsi_14'),
         ma200:n('ma_200'),above:obj.above_200ma==='True'?true:obj.above_200ma==='False'?false:null,
@@ -311,8 +320,17 @@ async function fetchMag7Signals(){
     if(lines.length<2)return[];
     const hdrs=lines[0].split(',').map(h=>h.trim());
     return lines.slice(1).map(line=>{
-      const vals=line.split(','),obj={};
-      hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+      // Proper CSV parser that handles quoted fields containing commas
+      const vals=[];let cur='',inQ=false;
+      for(let i=0;i<line.length;i++){
+        const ch=line[i];
+        if(ch==='"'){inQ=!inQ;}
+        else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}
+        else{cur+=ch;}
+      }
+      vals.push(cur.trim());
+      const obj={};
+      hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
       const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
       return{d:obj.date||'',tk:obj.ticker||'',signals:obj.signals_summary||'',
         bullLabel:obj.bullish_squeeze_label||'',bullScore:n('bullish_squeeze_score'),
@@ -326,9 +344,11 @@ function parseCSV(text){
   if(lines.length<2)return[];
   const headers=lines[0].split(',').map(h=>h.trim());
   return lines.slice(1).map(line=>{
-    const vals=line.split(',');
+    const vals=[];let cur='',inQ=false;
+    for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){inQ=!inQ;}else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}else{cur+=ch;}}
+    vals.push(cur.trim());
     const obj={};
-    headers.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+    headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
     const bp=v=>v==='True'?true:v==='False'?false:null;
     const n=k=>{const v=parseFloat(obj[k]);return isNaN(v)?null:v;};
     return{
