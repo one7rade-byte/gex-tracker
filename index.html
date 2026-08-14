@@ -368,6 +368,8 @@ function parseCSV(text){
 }
 
 function computeSignal(g,v,prev,rsi,termSpread,yield10y,vix9dRatio){
+  if(yield10y===undefined)yield10y=null;
+  if(vix9dRatio===undefined)vix9dRatio=null;
   // v2 refined Aug 2026 — 95-day backtest findings:
   // RSI separates BUY (oversold) from EXIT (overbought pullback)
   // Low term spread (<1.5) = buy zone proximity
@@ -1084,8 +1086,8 @@ function buildUI(data){
       '<div class="m"><div class="ml">Call wall</div><div class="mv">'+(last.cw?'$'+last.cw:'—')+'</div><div class="ms">resistance</div></div>'+
       '<div class="m"><div class="ml">Put wall</div><div class="mv">'+(last.pw?'$'+last.pw:'—')+'</div><div class="ms">support</div></div>'+
       '<div class="m"><div class="ml">QQQ spot</div><div class="mv" style="color:#9b59b6">'+(last.qqqSpot?'$'+last.qqqSpot.toFixed(2):'—')+'</div><div class="ms">tech proxy</div></div>'+
-      '<div class="m"><div class="ml">10Y Yield</div><div class="mv" style="color:'+(last.yield10y>4.5?'#A32D2D':last.yield10y<3.8?'#3B6D11':'#BA7517')+'">'+(last.yield10y?last.yield10y.toFixed(2)+'%':'—')+'</div><div class="ms">'+(last.yield10y>4.5?'elevated — headwind':last.yield10y<3.8?'falling — tailwind':'neutral range')+'</div></div>'+
-      '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
+      '<div class="m"><div class="ml">10Y Yield</div><div class="mv" style="color:'+(last.yield10y&&last.yield10y>4.5?'#A32D2D':last.yield10y&&last.yield10y<3.8?'#3B6D11':'#BA7517')+'">'+(last.yield10y?last.yield10y.toFixed(2)+'%':'—')+'</div><div class="ms">'+(last.yield10y>4.5?'elevated — headwind':last.yield10y<3.8?'falling — tailwind':'neutral range')+'</div></div>'+
+      '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio&&last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio&&last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
             '<div class="m"><div class="ml">Days logged</div><div class="mv">'+total+'</div><div class="ms">entries</div></div>'+
     '</div>'+
     '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
@@ -1098,7 +1100,7 @@ function buildUI(data){
         '<span class="toggle-btn active" data-idx="4" style="--tc:#A32D2D">Put wall</span>'+
         '<span class="toggle-btn active" data-idx="2" style="--tc:#E24B4A">VIX</span>'+
         '<span class="toggle-btn active" data-idx="3" style="--tc:#FF6B00">Call wall</span>'+
-        '<span class="toggle-btn active" data-idx="4" style="--tc:#00BCD4">200MA</span>'+
+        '<span class="toggle-btn active" data-idx="5" style="--tc:#00BCD4">200MA</span>'+
         '<span style="font-size:11px;color:#bbb;margin-left:4px">click to hide/show</span>'+
       '</div>'+
       '<div class="range-row"><span style="font-size:11px;color:#888;white-space:nowrap">\u25c4 Scroll history</span><input type="range" id="rangeSlider" min="'+WIN+'" max="'+total+'" value="'+total+'" step="1"><span class="range-label" id="rangeLabel">—</span></div>'+
