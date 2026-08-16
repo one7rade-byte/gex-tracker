@@ -1010,41 +1010,123 @@ function renderCrossAssetChart(data){
   if(!caEl)return;
   if(window.caChartInst)window.caChartInst.destroy();
 
-  var labels=data.map(function(e){return e.d.replace('2026-','');});
-  var goldD=data.map(function(e){return e.gold||null;});
-  var dxyD=data.map(function(e){return e.dxy?e.dxy*4:null;}); // scale to ~400 range
-  var hygD=data.map(function(e){return e.hyg?e.hyg*5:null;}); // scale ×5 ~400 range
-  var yieldD=data.map(function(e){return e.yield10y?e.yield10y*20:null;}); // ×20 ~90
   var gc='rgba(0,0,0,0.06)',tc='#888';
 
+  // Normalize each series to % change from first value so they're comparable
+  function normalizeToBase(arr){
+    var first=null;
+    for(var i=0;i<arr.length;i++){if(arr[i]!==null){first=arr[i];break;}}
+    if(!first)return arr;
+    return arr.map(function(v){return v!==null?parseFloat(((v-first)/first*100).toFixed(2)):null;});
+  }
+
+  var labels=data.map(function(e){return e.d.replace('2026-','');});
+  var goldRaw=data.map(function(e){return e.gold||null;});
+  var dxyRaw=data.map(function(e){return e.dxy||null;});
+  var hygRaw=data.map(function(e){return e.hyg||null;});
+  var yieldRaw=data.map(function(e){return e.yield10y||null;});
+  var spyRaw=data.map(function(e){return e.s||null;});
+
+  var goldN=normalizeToBase(goldRaw);
+  var dxyN=normalizeToBase(dxyRaw);
+  var hygN=normalizeToBase(hygRaw);
+  var yieldN=normalizeToBase(yieldRaw);
+  var spyN=normalizeToBase(spyRaw);
+
+  // Flow regime background zones
+  var regimes=data.map(function(e){return e.flowRegime;});
+  var bgPlugin={id:'flowBg',beforeDraw:function(chart){
+    var ctx2=chart.ctx,ca=chart.chartArea,xs=chart.scales.x;
+    if(!ca)return;
+    var bw=xs.width/labels.length;
+    ctx2.save();
+    regimes.forEach(function(reg,i){
+      var color='transparent';
+      if(reg==='mild_risk_on')color='rgba(99,153,34,0.12)';
+      else if(reg==='cash_hoarding')color='rgba(24,95,165,0.10)';
+      else if(reg==='recession_fear')color='rgba(163,45,45,0.08)';
+      else if(reg==='credit_crisis')color='rgba(163,45,45,0.20)';
+      if(color!=='transparent'){
+        ctx2.fillStyle=color;
+        ctx2.fillRect(xs.getPixelForValue(i)-bw*.5,ca.top,bw,ca.height);
+      }
+    });
+    // Zero line
+    var y0=chart.scales.y.getPixelForValue(0);
+    ctx2.strokeStyle='rgba(0,0,0,0.15)';ctx2.lineWidth=1;ctx2.setLineDash([]);
+    ctx2.beginPath();ctx2.moveTo(ca.left,y0);ctx2.lineTo(ca.right,y0);ctx2.stroke();
+    ctx2.restore();
+  }};
+
+  // Mark buy signals (mild_risk_on with neg GEX)
+  var buySignals=data.map(function(e){
+    return(e.flowRegime==='mild_risk_on'&&e.g<-5)?spyN[data.indexOf(e)]:null;
+  });
+
+  // Set initial view to last 40 days
+  window._caData=data;
   window.caChartInst=new Chart(caEl,{
     type:'line',
     data:{labels:labels,datasets:[
-      {label:'Gold',data:goldD,borderColor:'#FFD700',borderWidth:2,tension:0.35,
-       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
-      {label:'DXY×4',data:dxyD,borderColor:'#378ADD',borderWidth:1.5,borderDash:[4,3],tension:0.35,
-       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
-      {label:'HYG×5',data:hygD,borderColor:'#27ae60',borderWidth:1.5,borderDash:[2,4],tension:0.35,
-       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
-      {label:'Yield×20',data:yieldD,borderColor:'#e67e22',borderWidth:1.5,borderDash:[6,3],tension:0.35,
-       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
+      {label:'SPY',data:spyN,borderColor:'#378ADD',borderWidth:2.5,tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true,order:1},
+      {label:'Gold',data:goldN,borderColor:'#e6b800',borderWidth:2,tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true,order:2},
+      {label:'DXY',data:dxyN,borderColor:'#e74c3c',borderWidth:1.5,borderDash:[5,3],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true,order:3},
+      {label:'HYG',data:hygN,borderColor:'#27ae60',borderWidth:1.5,borderDash:[2,4],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true,order:4},
+      {label:'10Y',data:yieldN,borderColor:'#e67e22',borderWidth:1.5,borderDash:[8,3],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true,order:5},
+      {label:'Buy zone',data:buySignals,borderColor:'transparent',backgroundColor:'#27ae60',
+       pointRadius:6,pointStyle:'triangle',showLine:false,order:0},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       interaction:{mode:'index',intersect:false},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
-        var v=ctx.parsed.y;if(v===null)return null;
-        if(ctx.dataset.label==='Gold')return' Gold $'+v.toFixed(2);
-        if(ctx.dataset.label==='DXY×4')return' DXY '+(v/4).toFixed(2);
-        if(ctx.dataset.label==='HYG×5')return' HYG $'+(v/5).toFixed(2);
-        if(ctx.dataset.label==='Yield×20')return' 10Y '+(v/20).toFixed(2)+'%';
-        return null;
-      }}}},
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title:function(items){return labels[items[0].dataIndex];},
+          label:function(ctx){
+            var v=ctx.parsed.y;if(v===null||ctx.dataset.label==='Buy zone')return null;
+            var raw='';
+            if(ctx.dataset.label==='SPY')raw=' ($'+spyRaw[ctx.dataIndex]+')';
+            if(ctx.dataset.label==='Gold')raw=' ($'+goldRaw[ctx.dataIndex]+')';
+            if(ctx.dataset.label==='DXY')raw=' ('+dxyRaw[ctx.dataIndex]+')';
+            if(ctx.dataset.label==='HYG')raw=' ($'+hygRaw[ctx.dataIndex]+')';
+            if(ctx.dataset.label==='10Y')raw=' ('+yieldRaw[ctx.dataIndex]+'%)';
+            return' '+ctx.dataset.label+' '+(v>=0?'+':'')+v.toFixed(1)+'%'+raw;
+          },
+          afterBody:function(items){
+            var i=items[0].dataIndex;
+            return regimes[i]?['','Flow: '+regimes[i]]:'';
+          }
+        }}
+      },
       scales:{
-        x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
-        y:{ticks:{font:{size:9},color:tc,callback:function(v){return'$'+v.toFixed(0);}},grid:{color:gc}}
+        x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:18},grid:{color:gc}},
+        y:{ticks:{font:{size:9},color:tc,callback:function(v){return(v>=0?'+':'')+v.toFixed(0)+'%';}},
+           grid:{color:gc},title:{display:true,text:'% change from start',font:{size:9},color:tc}}
       }
-    }
+    },plugins:[bgPlugin]
   });
+}
+
+function scrollCaChart(val){
+  if(!window.caChartInst)return;
+  var chart=window.caChartInst;
+  var total=chart.data.labels.length;
+  var windowSize=Math.min(total,40); // show 40 days at a time
+  var pct=parseInt(val)/100;
+  var maxStart=total-windowSize;
+  var start=Math.round(pct*maxStart);
+  var end=start+windowSize-1;
+  chart.options.scales.x.min=start;
+  chart.options.scales.x.max=end;
+  var lbl=chart.data.labels;
+  var el=document.getElementById('caDateRange');
+  if(el)el.textContent=lbl[start]+' – '+lbl[end];
+  chart.update('none');
 }
 
 function updateCharts(){
@@ -1156,12 +1238,23 @@ function buildFlowCard(last, data){
     '<div style="margin-top:10px">'+
       '<div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px">Cross-asset chart</div>'+
       '<div class="leg" style="margin-bottom:6px">'+
-        '<span class="li"><span class="ll" style="background:#FFD700"></span>Gold</span>'+
-        '<span class="li"><span class="ll" style="background:#378ADD;border-top:2px dashed #378ADD"></span>DXY</span>'+
-        '<span class="li"><span class="ll" style="background:#27ae60;border-top:2px dotted #27ae60"></span>HYG×10</span>'+
-        '<span class="li"><span class="ll" style="background:#e67e22"></span>10Y Yield×20</span>'+
+        '<span style="font-size:10px;color:#888">All lines normalized to % change from Mar 30. Green zones = mild_risk_on. Blue zones = cash_hoarding (buy signals). ▲ = confirmed buy entry.</span>'+
+        '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">'+
+        '<span class="li"><span class="ll" style="background:#378ADD"></span>SPY</span>'+
+        '<span class="li"><span class="ll" style="background:#e6b800"></span>Gold</span>'+
+        '<span class="li"><span class="ll" style="background:#e74c3c;border-top:2px dashed #e74c3c"></span>DXY (↑ = cash hoard)</span>'+
+        '<span class="li"><span class="ll" style="background:#27ae60;border-top:2px dotted #27ae60"></span>HYG (↑ = credit healthy)</span>'+
+        '<span class="li"><span class="ll" style="background:#e67e22;border-top:2px dashed #e67e22"></span>10Y Yield</span>'+
+        '<span class="li"><span style="color:#27ae60;font-size:12px">▲</span> Buy entry</span>'+
+        '</div>'+
       '</div>'+
-      '<div style="position:relative;width:100%;height:180px"><canvas id="caChart"></canvas></div>'+
+      '<div style="margin-bottom:6px;display:flex;align-items:center;gap:8px">'+
+        '<span style="font-size:10px;color:#888">↔ Scroll history</span>'+
+        '<input type="range" id="caScroll" min="0" max="100" value="100" '+
+          'style="flex:1;height:4px;cursor:pointer" oninput="scrollCaChart(this.value)">'+
+        '<span id="caDateRange" style="font-size:10px;color:#888;min-width:120px;text-align:right"></span>'+
+      '</div>'+
+      '<div style="position:relative;width:100%;height:200px"><canvas id="caChart"></canvas></div>'+
     '</div>';
 }
 
