@@ -119,6 +119,20 @@ tr:last-child td{border-bottom:none}
 .mag7-tbl th{text-align:left;padding:7px 8px;background:#f8f8f6;color:#888;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e5e5e0}
 .mag7-tbl td{padding:7px 8px;border-bottom:0.5px solid #f0ede8;vertical-align:middle}
 .mag7-tbl tr:last-child td{border-bottom:none}
+.flow-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.flow-risk-on{background:#EAF3DE;color:#27500A}
+.flow-mild{background:#FAEEDA;color:#633806}
+.flow-cash{background:#E6F1FB;color:#0C447C}
+.flow-recession{background:#FCEBEB;color:#791F1F}
+.flow-crisis{background:#7B1111;color:#fff}
+.flow-neutral{background:#f0ede8;color:#555}
+.ca-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:6px;margin:10px 0}
+.ca-item{background:#f8f8f6;border-radius:6px;padding:8px 10px;text-align:center}
+.ca-label{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.ca-val{font-size:14px;font-weight:600;color:#222}
+.ca-chg{font-size:10px;margin-top:2px}
+.flow-score-bar{height:8px;border-radius:20px;background:#f0ede8;overflow:hidden;margin-top:4px}
+.flow-score-fill{height:100%;border-radius:20px;transition:width .3s}
 .tk-btn{display:inline-block;padding:5px 12px;border-radius:20px;border:1.5px solid #e5e5e0;background:#fff;font-size:12px;font-weight:500;cursor:pointer;color:#555;transition:all .15s;margin:3px}
 .tk-btn.active{border-color:#378ADD;background:#378ADD;color:#fff}
 .tk-btn:hover:not(.active){border-color:#aaa;background:#f8f8f6}
@@ -357,6 +371,9 @@ function parseCSV(text){
       ma200:n('spy_200ma'),aboveMa:bp(obj.spy_above_200ma),rsi:n('spy_rsi_14'),
       vix3m:n('vix_3m'),termSpread:n('vix_term_spread'),termStruct:obj.vix_term_structure||null,
       yield10y:n('yield_10y'),vix9d:n('vix9d'),vix9dRatio:n('vix9d_vix_ratio'),
+      gold:n('gold'),dxy:n('dxy'),tlt:n('tlt'),hyg:n('hyg'),
+      copper:n('copper'),oil:n('oil'),eem:n('eem'),xlre:n('xlre'),
+      flowRegime:obj.flow_regime||null,flowScore:n('flow_score'),
       skew:n('skew_index'),l1ctx:obj.l1_context||'',
       fearScore:n('fear_score'),bullScore:n('bull_score'),bearScore:n('bear_score'),
       scoreLabel:obj.score_label||'',
@@ -988,6 +1005,48 @@ function renderCharts(data){
   // Macro chart (yield/vix9d) — rendered in metric cards only, no separate canvas needed
 }
 
+function renderCrossAssetChart(data){
+  var caEl=document.getElementById('caChart');
+  if(!caEl)return;
+  if(window.caChartInst)window.caChartInst.destroy();
+
+  var labels=data.map(function(e){return e.d.replace('2026-','');});
+  var goldD=data.map(function(e){return e.gold||null;});
+  var dxyD=data.map(function(e){return e.dxy?e.dxy*4:null;}); // scale to ~400 range
+  var hygD=data.map(function(e){return e.hyg?e.hyg*5:null;}); // scale ×5 ~400 range
+  var yieldD=data.map(function(e){return e.yield10y?e.yield10y*20:null;}); // ×20 ~90
+  var gc='rgba(0,0,0,0.06)',tc='#888';
+
+  window.caChartInst=new Chart(caEl,{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'Gold',data:goldD,borderColor:'#FFD700',borderWidth:2,tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
+      {label:'DXY×4',data:dxyD,borderColor:'#378ADD',borderWidth:1.5,borderDash:[4,3],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
+      {label:'HYG×5',data:hygD,borderColor:'#27ae60',borderWidth:1.5,borderDash:[2,4],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
+      {label:'Yield×20',data:yieldD,borderColor:'#e67e22',borderWidth:1.5,borderDash:[6,3],tension:0.35,
+       pointRadius:1,backgroundColor:'transparent',spanGaps:true},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){
+        var v=ctx.parsed.y;if(v===null)return null;
+        if(ctx.dataset.label==='Gold')return' Gold $'+v.toFixed(2);
+        if(ctx.dataset.label==='DXY×4')return' DXY '+(v/4).toFixed(2);
+        if(ctx.dataset.label==='HYG×5')return' HYG $'+(v/5).toFixed(2);
+        if(ctx.dataset.label==='Yield×20')return' 10Y '+(v/20).toFixed(2)+'%';
+        return null;
+      }}}},
+      scales:{
+        x:{ticks:{font:{size:9},color:tc,maxRotation:45,autoSkip:true,maxTicksLimit:16},grid:{color:gc}},
+        y:{ticks:{font:{size:9},color:tc,callback:function(v){return'$'+v.toFixed(0);}},grid:{color:gc}}
+      }
+    }
+  });
+}
+
 function updateCharts(){
   const total=ALL_DATA.length;
   if(!total)return;
@@ -1000,6 +1059,110 @@ function updateCharts(){
   const lb=document.getElementById('rangeLabel');
   if(lb&&slice.length)lb.textContent=slice[0].d+' \u2013 '+slice[slice.length-1].d;
   renderCharts(slice);
+}
+
+function getFlowClass(regime){
+  if(!regime)return'flow-neutral';
+  if(regime==='risk_on'||regime==='mild_risk_on')return'flow-risk-on';
+  if(regime==='cash_hoarding')return'flow-cash';
+  if(regime==='inflation_rotation')return'flow-mild';
+  if(regime==='recession_fear')return'flow-mild';
+  if(regime==='credit_crisis')return'flow-crisis';
+  return'flow-neutral';
+}
+
+function getFlowLabel(regime){
+  const map={
+    'risk_on':'Risk On — bull regime intact',
+    'mild_risk_on':'Mild Risk On — dip opportunity building',
+    'cash_hoarding':'Cash Hoarding — panic sell, buy signal',
+    'inflation_rotation':'Inflation Rotation — real assets favored',
+    'recession_fear':'Recession Fear — wait for confirmation',
+    'credit_crisis':'Credit Crisis — systemic stress',
+    'neutral':'Neutral — mixed signals',
+    'unknown':'Insufficient data'
+  };
+  return map[regime]||regime;
+}
+
+function getFlowInterpretation(regime, last, prev5){
+  if(!regime)return'Insufficient cross-asset data.';
+  const hyg=last.hyg,dxy=last.dxy,gold=last.gold,vix=last.v;
+  const prevDxy=prev5.length?prev5[prev5.length-1].dxy:null;
+  const dxyTrend=prevDxy&&dxy?(dxy>prevDxy?'rising':'falling'):null;
+
+  if(regime==='cash_hoarding')
+    return'DXY '+dxy.toFixed(2)+' elevated and '+(dxyTrend||'stable')+'. Gold dipping alongside stocks — investors selling everything for cash. Historical pattern: temporary panic. HYG at $'+hyg.toFixed(2)+' confirms no credit stress. This is a buying opportunity, not a structural break.';
+  if(regime==='risk_on')
+    return'All systems green. HYG $'+hyg.toFixed(2)+' (credit healthy), DXY '+dxy.toFixed(2)+' (dollar calm), Gold $'+gold.toFixed(2)+'. Money flowing into risk assets. Hold existing positions — not a new entry point at these levels.';
+  if(regime==='mild_risk_on')
+    return'Mild risk-on with some stress signals. HYG $'+hyg.toFixed(2)+' holding above 78 — no credit crisis. DXY '+dxy.toFixed(2)+'. Combined with negative GEX this is historically the highest win-rate entry signal in the dataset (+6.14% avg 5-day return, 100% win rate).';
+  if(regime==='inflation_rotation')
+    return'Gold rising while bonds fall — inflation hedging active. DXY '+dxy.toFixed(2)+'. Money rotating from bonds into real assets (gold, commodities, real estate). Equities mixed — favor value over growth.';
+  if(regime==='recession_fear')
+    return'Gold and bonds both rising, copper weakening — recession probability increasing. Wait for HYG to confirm (below $74 = credit stress confirmed). Do not add aggressively until credit stabilizes.';
+  if(regime==='credit_crisis')
+    return'CREDIT STRESS DETECTED. HYG $'+hyg.toFixed(2)+' — credit markets freezing. This is the most dangerous regime (2008/COVID pattern). Reduce exposure aggressively. Wait for HYG to stabilize above $74 before re-entering.';
+  return'Mixed cross-asset signals. Monitor daily for regime change.';
+}
+
+function buildFlowCard(last, data){
+  if(!last.flowRegime||last.flowRegime==='unknown')
+    return'<div style="color:#888;font-size:12px;padding:8px 0">Cross-asset data loading — will populate after next daily run.</div>';
+
+  var prev5=data.slice(-6,-1);
+  var regime=last.flowRegime;
+  var score=last.flowScore||0;
+  var scoreWidth=Math.round(((score+5)/10)*100);
+  var scoreColor=score>=3?'#3B6D11':score>=0?'#BA7517':'#A32D2D';
+  var interp=getFlowInterpretation(regime, last, prev5);
+
+  // Compute 5-day changes
+  function chg(cur, col){
+    var p=prev5.length>=5?prev5[0][col]:null;
+    if(!cur||!p)return'';
+    var d=((cur-p)/p*100).toFixed(1);
+    return'<div class="ca-chg" style="color:'+(d>=0?'#3B6D11':'#A32D2D')+'">'+(d>=0?'+':'')+d+'%</div>';
+  }
+
+  var assets=[
+    {label:'Gold',val:last.gold,prefix:'$',chgCol:'gold',color:last.gold>400?'#3B6D11':last.gold<370?'#A32D2D':'#BA7517'},
+    {label:'DXY',val:last.dxy,prefix:'',chgCol:'dxy',color:last.dxy>104?'#A32D2D':last.dxy<100?'#3B6D11':'#BA7517'},
+    {label:'TLT',val:last.tlt,prefix:'$',chgCol:'tlt',color:last.tlt>87?'#3B6D11':last.tlt<80?'#A32D2D':'#BA7517'},
+    {label:'HYG',val:last.hyg,prefix:'$',chgCol:'hyg',color:last.hyg>79?'#3B6D11':last.hyg<74?'#A32D2D':'#BA7517'},
+    {label:'Copper',val:last.copper,prefix:'$',chgCol:'copper',color:last.copper>38?'#3B6D11':last.copper<28?'#A32D2D':'#BA7517'},
+    {label:'Oil',val:last.oil,prefix:'$',chgCol:'oil',color:'#555'},
+    {label:'EEM',val:last.eem,prefix:'$',chgCol:'eem',color:last.eem>60?'#3B6D11':last.eem<40?'#A32D2D':'#BA7517'},
+    {label:'XLRE',val:last.xlre,prefix:'$',chgCol:'xlre',color:'#555'},
+  ];
+
+  var grid=assets.map(function(a){
+    return'<div class="ca-item">'+
+      '<div class="ca-label">'+a.label+'</div>'+
+      '<div class="ca-val" style="color:'+a.color+'">'+(a.val?(a.prefix+a.val.toFixed(2)):'—')+'</div>'+
+      (a.val?chg(a.val,a.chgCol):'')+'</div>';
+  }).join('');
+
+  return'<div style="margin-bottom:10px">'+
+    '<span class="flow-badge '+getFlowClass(regime)+'">'+getFlowLabel(regime)+'</span>'+
+    '<span style="font-size:11px;color:#888;margin-left:10px">Flow score '+score+'/5</span>'+
+    '<div class="flow-score-bar" style="max-width:200px;margin-top:6px">'+
+      '<div class="flow-score-fill" style="width:'+scoreWidth+'%;background:'+scoreColor+'"></div>'+
+    '</div></div>'+
+    '<div class="ca-grid">'+grid+'</div>'+
+    '<div style="font-size:12px;color:#555;line-height:1.6;margin-top:10px;padding:10px;background:#f8f8f6;border-radius:6px;border-left:3px solid '+scoreColor+'">'+
+      interp+
+    '</div>'+
+    '<div style="margin-top:10px">'+
+      '<div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px">Cross-asset chart</div>'+
+      '<div class="leg" style="margin-bottom:6px">'+
+        '<span class="li"><span class="ll" style="background:#FFD700"></span>Gold</span>'+
+        '<span class="li"><span class="ll" style="background:#378ADD;border-top:2px dashed #378ADD"></span>DXY</span>'+
+        '<span class="li"><span class="ll" style="background:#27ae60;border-top:2px dotted #27ae60"></span>HYG×10</span>'+
+        '<span class="li"><span class="ll" style="background:#e67e22"></span>10Y Yield×20</span>'+
+      '</div>'+
+      '<div style="position:relative;width:100%;height:180px"><canvas id="caChart"></canvas></div>'+
+    '</div>';
 }
 
 function buildUI(data){
@@ -1051,6 +1214,9 @@ function buildUI(data){
       '<div class="m"><div class="ml">VIX9D / VIX</div><div class="mv" style="color:'+(last.vix9dRatio&&last.vix9dRatio>1.10?'#A32D2D':last.vix9dRatio&&last.vix9dRatio>1.05?'#BA7517':'#3B6D11')+'">'+(last.vix9dRatio?last.vix9dRatio.toFixed(2):'—')+'</div><div class="ms">'+(last.vix9dRatio&&last.vix9dRatio>1.10?'⚠️ near-term spike':last.vix9dRatio&&last.vix9dRatio>1.05?'fear building':'calm')+'</div></div>'+
             '<div class="m"><div class="ml">Days logged</div><div class="mv">'+total+'</div><div class="ms">entries</div></div>'+
     '</div>'+
+    '<div class="card" id="crossAssetCard"><div class="cl">Cross-asset flow — where is money going?</div>'+
+      buildFlowCard(last, data)+
+    '</div>'+
     '<div class="card"><div class="cl">Layer 1 — macro context</div>'+buildL1Panel(last)+'</div>'+
     '<div class="card"><div class="cl">Daily signal insight — '+last.d+'</div><div class="insight-grid">'+insightHTML+'</div></div>'+
     '<div class="card">'+
@@ -1097,6 +1263,7 @@ function buildUI(data){
     var sl=document.getElementById('rangeSlider');
     if(sl)sl.addEventListener('input',function(){updateCharts();});
     wireToggles();
+    renderCrossAssetChart(ALL_DATA);
     var histBtn=document.getElementById('histToggleBtn');
     var histExpanded=false;
     if(histBtn){
@@ -1139,6 +1306,7 @@ async function init(){
     const text=await fetchCSV();
     const data=parseCSV(text);
     if(!data.length)throw new Error('No data');
+    ALL_DATA=data;
     buildUI(data);
     const last=data[data.length-1];
     document.getElementById('statusDot').style.background='#639922';
