@@ -35,6 +35,13 @@ INTEL_CSV_HEADERS = [
     "macro_news_summary", "macro_news_sentiment",
     "top_opportunity", "top_opportunity_score", "top_opportunity_reason",
     "avoid_names", "overall_signal", "ai_brief", "voo_vgt_action",
+    # Enhanced news intelligence — added Aug 2026
+    "fear_greed_score",      # CNN Fear & Greed 0-100
+    "fear_greed_rating",     # extreme_fear/fear/neutral/greed/extreme_greed
+    "reddit_top_tickers",    # comma-separated ticker:count pairs
+    "news_lead_score",       # composite news lead score -5 to +5
+    "news_alerts",           # pipe-separated alert strings
+    "upcoming_catalysts",    # pipe-separated upcoming market events
 ]
 
 # ── Data loaders ──────────────────────────────────────────────────────────────
@@ -266,6 +273,180 @@ def fetch_yahoo_news(symbol, max_items=10):
     except Exception as e:
         print(f"  News fetch failed ({symbol}): {e}")
     return headlines
+
+
+def fetch_fear_greed():
+    """
+    CNN Fear & Greed Index — contrarian indicator.
+    Below 20 = extreme fear = historical buy zone.
+    Above 80 = extreme greed = trim positions.
+    Fetched via CNN's public data endpoint.
+    """
+    urls = [
+        "https://production.dataviz.cnn.io/index/fearandgreed/graphdata",
+        "https://fear-and-greed-index.p.rapidapi.com/v1/fgi",  # backup
+    ]
+    for url in urls:
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=10)
+            if r.status_code == 200:
+                data = r.json()
+                # CNN format
+                if "fear_and_greed" in data:
+                    fg = data["fear_and_greed"]
+                    score = fg.get("score", 0)
+                    rating = fg.get("rating", "unknown")
+                    prev = data.get("fear_and_greed_historical", {}).get("data", [{}])[-2:]
+                    trend = "rising" if len(prev) >= 2 and float(prev[-1].get("x", 0)) > float(prev[-2].get("x", 0)) else "falling"
+                    return {"score": round(float(score), 1), "rating": rating, "trend": trend}
+        except Exception as e:
+            print(f"  Fear/Greed fetch failed ({url[:40]}): {e}")
+    return None
+
+
+def fetch_reddit_sentiment(subreddit="wallstreetbets", limit=25):
+    """
+    Reddit hot posts — retail sentiment proxy.
+    Spike in post volume = retail panic or chase = contrarian signal.
+    High upvote posts about a ticker = crowded trade warning.
+    """
+    try:
+        url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit={limit}"
+        r = requests.get(url, headers={"User-Agent": "gex-tracker/1.0 (market research)"}, timeout=10)
+        if r.status_code != 200:
+            return None
+        posts = r.json().get("data", {}).get("children", [])
+        ticker_mentions = {}
+        high_upvote = []
+        for post in posts:
+            d = post.get("data", {})
+            title = d.get("title", "")
+            ups = d.get("ups", 0)
+            # Count ticker mentions
+            for ticker in ["SPY", "QQQ", "AAPL", "NVDA", "TSLA", "META", "AMZN", "MSFT", "GOOGL",
+                          "VIX", "SQQQ", "TQQQ", "SPX", "GME", "AMC"]:
+                if ticker in title.upper():
+                    ticker_mentions[ticker] = ticker_mentions.get(ticker, 0) + 1
+            if ups > 1000:
+                high_upvote.append({"title": title[:100], "ups": ups})
+        # Sort by mentions
+        top_tickers = sorted(ticker_mentions.items(), key=lambda x: x[1], reverse=True)[:5]
+        return {
+            "top_tickers": top_tickers,
+            "high_upvote": high_upvote[:3],
+            "total_posts": len(posts),
+            "subreddit": subreddit
+        }
+    except Exception as e:
+        print(f"  Reddit fetch failed: {e}")
+        return None
+
+
+def fetch_upcoming_catalysts():
+    """
+    Key upcoming market catalysts from Google News search.
+    Looks for FOMC, CPI, PCE, earnings dates in headlines.
+    """
+    catalyst_keywords = [
+        "fomc meeting", "fed decision", "cpi report", "pce data",
+        "jobs report", "nonfarm payroll", "earnings date",
+        "gdp report", "rate decision"
+    ]
+    found = []
+    try:
+        url = f"https://news.google.com/rss/search?q=upcoming+fed+cpi+earnings+catalyst+market&hl=en-US&gl=US&ceid=US:en"
+        r = requests.get(url, headers=HEADERS, timeout=10)
+        if r.status_code == 200:
+            items = re.findall(r'<item>(.*?)</item>', r.text, re.DOTALL)[:10]
+            for item in items:
+                title_m = re.search(r'<title>(.*?)</title>', item)
+                if title_m:
+                    title = re.sub(r'<[^>]+>', '', title_m.group(1)).strip()
+                    title_lower = title.lower()
+                    for kw in catalyst_keywords:
+                        if kw in title_lower:
+                            found.append(title[:120])
+                            break
+    except Exception as e:
+        print(f"  Catalyst fetch failed: {e}")
+    return list(set(found))[:5]
+
+
+def fetch_multi_source_alerts():
+    """
+    Stories covered by 3+ sources simultaneously = high conviction market-moving event.
+    This is the most reliable news signal — when multiple wires all cover the same
+    thing at once, it's real and the market will react.
+    """
+    try:
+        # Use Google News to find stories mentioned across multiple sources
+        url = "https://news.google.com/rss/search?q=market+fed+earnings+economy&hl=en-US&gl=US&ceid=US:en"
+        r = requests.get(url, headers=HEADERS, timeout=10)
+        if r.status_code != 200:
+            return []
+        items = re.findall(r'<item>(.*?)</item>', r.text, re.DOTALL)
+        headlines = []
+        for item in items[:20]:
+            title_m = re.search(r'<title>(.*?)</title>', item)
+            src_m = re.search(r'<source[^>]*>(.*?)</source>', item)
+            date_m = re.search(r'<pubDate>(.*?)</pubDate>', item)
+            if title_m:
+                headlines.append({
+                    "title": re.sub(r'<[^>]+>', '', title_m.group(1)).strip(),
+                    "source": re.sub(r'<[^>]+>', '', src_m.group(1)).strip() if src_m else "Unknown",
+                    "high_impact": is_high_impact(title_m.group(1))
+                })
+        return headlines
+    except Exception as e:
+        print(f"  Multi-source fetch failed: {e}")
+        return []
+
+
+def compute_news_lead_score(headlines, fear_greed, reddit):
+    """
+    Compute a composite news lead score — how likely is this news
+    to precede a market move in the next 1-5 days?
+    
+    Scoring:
+    - Fear/Greed below 20: +3 (extreme fear = contrarian buy)
+    - Fear/Greed above 80: -3 (extreme greed = trim)  
+    - High-impact headline (Fed/CPI/recession): +2 per headline
+    - Reddit spike on SPY/QQQ: ±1
+    - Multi-source confirmation: +1 per story
+    """
+    score = 0
+    alerts = []
+    
+    if fear_greed:
+        fg_score = fear_greed.get("score", 50)
+        if fg_score < 20:
+            score += 3
+            alerts.append(f"EXTREME FEAR: Fear & Greed {fg_score:.0f}/100 — historical buy zone")
+        elif fg_score < 35:
+            score += 2
+            alerts.append(f"Fear dominant: Fear & Greed {fg_score:.0f}/100 — market fearful")
+        elif fg_score > 80:
+            score -= 2
+            alerts.append(f"EXTREME GREED: Fear & Greed {fg_score:.0f}/100 — consider trimming")
+        elif fg_score > 65:
+            score -= 1
+            alerts.append(f"Greed building: Fear & Greed {fg_score:.0f}/100")
+    
+    if headlines:
+        hi_count = sum(1 for h in headlines if h.get("high_impact"))
+        if hi_count >= 3:
+            score += 2
+            alerts.append(f"{hi_count} high-impact headlines — major catalyst in play")
+        elif hi_count >= 1:
+            score += 1
+    
+    if reddit:
+        spy_mentions = dict(reddit.get("top_tickers", [])).get("SPY", 0)
+        qqq_mentions = dict(reddit.get("top_tickers", [])).get("QQQ", 0)
+        if spy_mentions + qqq_mentions >= 5:
+            alerts.append(f"Reddit: SPY/QQQ heavily discussed — crowded retail trade")
+    
+    return score, alerts
 
 
 def fetch_market_news():
@@ -571,6 +752,12 @@ OVERALL SIGNAL: {overall}"""
     return {
         "overall_signal": overall,
         "voo_vgt_action": voo_action,
+        "fear_greed_score":   fear_greed.get("score","") if fear_greed else "",
+        "fear_greed_rating":  fear_greed.get("rating","") if fear_greed else "",
+        "reddit_top_tickers": ",".join(f"{t}:{c}" for t,c in reddit.get("top_tickers",[])[:5]) if reddit else "",
+        "news_lead_score":    news_lead_score,
+        "news_alerts":        " | ".join(news_alerts) if news_alerts else "",
+        "upcoming_catalysts": " | ".join(catalysts) if catalysts else "",
         "macro_picture":  macro_picture,
         "mag7_section":   mag7_section,
         "watch_section":  watch_section,
@@ -622,8 +809,21 @@ def main():
                           "trend":trend}
         print(f"  {tk}: score={score}  rsi_pct={rsi_pct}  direction={trend.get('rsi_direction')}")
 
-    print("\n[4] Fetching news...")
+    print("\n[4] Fetching news + sentiment signals...")
     macro_headlines = fetch_market_news()
+
+    fear_greed = fetch_fear_greed()
+    print(f"  Fear & Greed: {fear_greed['score'] if fear_greed else 'unavailable'}")
+
+    reddit = fetch_reddit_sentiment("wallstreetbets")
+    print(f"  Reddit top: {reddit['top_tickers'][:3] if reddit else 'unavailable'}")
+
+    catalysts = fetch_upcoming_catalysts()
+    print(f"  Catalysts: {len(catalysts)} found")
+
+    multi_headlines = fetch_multi_source_alerts()
+    news_lead_score, news_alerts = compute_news_lead_score(multi_headlines, fear_greed, reddit)
+    print(f"  News lead score: {news_lead_score}  Alerts: {len(news_alerts)}")
     macro_news_cls  = classify_headlines(macro_headlines)
     print(f"  Macro: {len(macro_headlines)} headlines, dominant={macro_news_cls['dominant']}")
 
