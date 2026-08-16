@@ -38,6 +38,18 @@ CSV_HEADERS = [
     "yield_10y",    # 10-year Treasury yield (^TNX) — key macro input
     "vix9d",        # 9-day VIX (^VIX9D) — near-term fear gauge
     "vix9d_vix_ratio",  # VIX9D/VIX30 ratio >1.10 = near-term capitulation signal
+    # Cross-asset flow tracking — added Aug 2026
+    # Goal: track where money is flowing to identify crash vs panic vs rotation
+    "gold",         # GLD ETF price — safe haven demand
+    "dxy",          # US Dollar Index (^DXY) — cash hoarding signal
+    "tlt",          # TLT 20Y Treasury ETF — bond market stress
+    "hyg",          # HYG High Yield Bond ETF — credit stress indicator
+    "copper",       # CPER copper ETF — global economic health (Dr. Copper)
+    "oil",          # USO oil ETF — inflation/demand signal
+    "eem",          # EEM Emerging Markets ETF — global risk appetite
+    "xlre",         # XLRE Real Estate ETF — rate sensitivity
+    "flow_regime",  # computed: cash_hoard|inflation|recession|credit_crisis|risk_on|rotation
+    "flow_score",   # -5 to +5: negative=risk-off, positive=risk-on
 ]
 
 HEADERS = {
@@ -477,6 +489,99 @@ def send_email(subject, body):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+
+def compute_flow_regime(spy, gold, dxy, tlt, hyg, vix, copper, eem):
+    """
+    Determine where money is flowing based on cross-asset behavior.
+    
+    Key patterns:
+    - Cash hoarding:   stocks↓ gold↓ dxy↑ tlt↑  → temporary panic, buy opportunity
+    - Inflation fear:  stocks↓ gold↑ dxy↓ tlt↓  → real asset rotation
+    - Recession fear:  stocks↓ gold↑ dxy↑ tlt↑  → flight to safety, wait
+    - Credit crisis:   stocks↓ gold↓ dxy↑↑ tlt↓ → systemic (2008/COVID), be careful
+    - Risk on:         stocks↑ gold flat dxy↓    → bull regime
+    - Rotation:        stocks↓ gold↑ eem↓        → sector rotation
+    
+    Returns (regime_label, flow_score)
+    flow_score: -5 (max risk-off) to +5 (max risk-on)
+    """
+    if not all([spy, gold, dxy, tlt, hyg, vix]):
+        return "unknown", 0
+
+    score = 0
+    signals = []
+
+    # VIX regime
+    if vix < 15:
+        score += 2
+        signals.append("vix_low")
+    elif vix < 20:
+        score += 1
+        signals.append("vix_calm")
+    elif vix > 25:
+        score -= 2
+        signals.append("vix_elevated")
+    elif vix > 20:
+        score -= 1
+        signals.append("vix_rising")
+
+    # Credit stress — HYG is the key early warning
+    if hyg and hyg > 78:
+        score += 1
+        signals.append("credit_healthy")
+    elif hyg and hyg < 74:
+        score -= 2
+        signals.append("credit_stress")
+    elif hyg and hyg < 70:
+        score -= 3
+        signals.append("credit_crisis")
+
+    # Copper — global growth proxy
+    if copper and copper > 22:
+        score += 1
+        signals.append("copper_strong")
+    elif copper and copper < 18:
+        score -= 1
+        signals.append("copper_weak")
+
+    # Emerging markets — global risk appetite
+    if eem and eem > 42:
+        score += 1
+        signals.append("global_risk_on")
+    elif eem and eem < 36:
+        score -= 1
+        signals.append("global_risk_off")
+
+    # Determine regime from pattern
+    # Get today's previous close for comparison (use score as proxy)
+    if score >= 3:
+        regime = "risk_on"
+    elif score >= 1:
+        regime = "mild_risk_on"
+    elif score == 0:
+        regime = "neutral"
+    elif score >= -1:
+        # Check gold vs DXY for cash hoard vs inflation
+        if dxy and gold and dxy > 104 and gold < 220:
+            regime = "cash_hoarding"  # panic sell — buy opportunity
+        elif gold and gold > 240:
+            regime = "inflation_rotation"
+        else:
+            regime = "mild_risk_off"
+    elif score >= -3:
+        if dxy and dxy > 107:
+            regime = "cash_hoarding"  # stronger panic
+        else:
+            regime = "recession_fear"
+    else:
+        if hyg and hyg < 70:
+            regime = "credit_crisis"  # most dangerous — 2008/COVID pattern
+        else:
+            regime = "risk_off"
+
+    return regime, max(-5, min(5, score))
+
+
 def main():
     today = datetime.now(ZoneInfo("America/New_York")).date().strftime("%Y-%m-%d")
     now   = datetime.now().strftime("%I:%M %p")
@@ -511,13 +616,32 @@ def main():
     print("\n[6/6] Fetching SKEW...")
     skew = fetch_skew()
 
-    print("\n[7/7] Fetching 10Y yield + VIX9D...")
+    print("\n[7/8] Fetching 10Y yield + VIX9D...")
     yield_10y = fetch_yahoo_price("%5ETNX", "10Y Yield")
     vix9d_val = fetch_yahoo_price("%5EVIX9D", "VIX9D")
     vix9d_ratio = None
     if vix9d_val is not None and vix is not None and vix > 0:
         vix9d_ratio = round(vix9d_val / vix, 3)
     print(f"      10Y Yield = {yield_10y}  VIX9D = {vix9d_val}  Ratio = {vix9d_ratio}")
+
+    print("\n[8/8] Fetching cross-asset flow data...")
+    gold  = fetch_yahoo_price("GLD",  "Gold/GLD")
+    dxy   = fetch_yahoo_price("%5EDXY", "DXY Dollar")
+    tlt   = fetch_yahoo_price("TLT",  "TLT Bonds")
+    hyg   = fetch_yahoo_price("HYG",  "HYG Credit")
+    copper= fetch_yahoo_price("CPER", "Copper/CPER")
+    oil   = fetch_yahoo_price("USO",  "Oil/USO")
+    eem   = fetch_yahoo_price("EEM",  "EEM Emerging")
+    xlre  = fetch_yahoo_price("XLRE", "XLRE Real Estate")
+    print(f"      GLD={gold} DXY={dxy} TLT={tlt} HYG={hyg}")
+    print(f"      Copper={copper} Oil={oil} EEM={eem} XLRE={xlre}")
+
+    # Compute flow regime — where is money going?
+    flow_regime, flow_score = compute_flow_regime(
+        spy=spot, gold=gold, dxy=dxy, tlt=tlt, hyg=hyg,
+        vix=vix, copper=copper, eem=eem
+    )
+    print(f"      Flow regime: {flow_regime}  Score: {flow_score}")
 
     # ── Compute SPY scores ────────────────────────────────────────────────────
     gex_val = spy_data.get("net_gex_b")
@@ -602,6 +726,16 @@ def main():
         "yield_10y":          yield_10y,
         "vix9d":              vix9d_val,
         "vix9d_vix_ratio":    vix9d_ratio,
+        "gold":               gold,
+        "dxy":                dxy,
+        "tlt":                tlt,
+        "hyg":                hyg,
+        "copper":             copper,
+        "oil":                oil,
+        "eem":                eem,
+        "xlre":               xlre,
+        "flow_regime":        flow_regime,
+        "flow_score":         flow_score,
         "signal":             signal,
         "l1_context":         l1_ctx,
     }
@@ -646,6 +780,18 @@ def main():
         "|  VIX3M       :  " + fb(vix_3m) + "\n"
         "|  VIX9D       :  " + fb(vix9d_val) + ("  (ratio " + str(vix9d_ratio) + ("  ⚠️ near-term spike" if vix9d_ratio and vix9d_ratio > 1.10 else "") + ")" if vix9d_ratio else "") + "\n"
         "|  10Y Yield   :  " + fb(yield_10y) + ("%" if yield_10y else "") + "\n"
+        "|--------------------------------------------------" + "\n"
+        "|  CROSS-ASSET FLOW" + "\n"
+        "|  Flow regime :  " + str(flow_regime) + "\n"
+        "|  Flow score  :  " + str(flow_score) + "/5\n"
+        "|  Gold (GLD)  :  " + fb(gold) + "\n"
+        "|  USD (DXY)   :  " + fb(dxy) + "\n"
+        "|  Bonds (TLT) :  " + fb(tlt) + "\n"
+        "|  Credit (HYG):  " + fb(hyg) + "\n"
+        "|  Copper      :  " + fb(copper) + "\n"
+        "|  Oil (USO)   :  " + fb(oil) + "\n"
+        "|  EM (EEM)    :  " + fb(eem) + "\n"
+        "|  Real Est    :  " + fb(xlre) + "\n"
         "|  Term spread :  " + fb(spread) + "  [" + (structure or "---") + "]\n"
         "|  SKEW        :  " + fb(skew) + "\n"
         "+--------------------------------------------------+\n"
