@@ -625,23 +625,42 @@ def main():
     print(f"      10Y Yield = {yield_10y}  VIX9D = {vix9d_val}  Ratio = {vix9d_ratio}")
 
     print("\n[8/8] Fetching cross-asset flow data...")
-    gold  = fetch_yahoo_price("GLD",  "Gold/GLD")
-    dxy   = fetch_yahoo_price("%5EDXY", "DXY Dollar")
-    tlt   = fetch_yahoo_price("TLT",  "TLT Bonds")
-    hyg   = fetch_yahoo_price("HYG",  "HYG Credit")
-    copper= fetch_yahoo_price("CPER", "Copper/CPER")
-    oil   = fetch_yahoo_price("USO",  "Oil/USO")
-    eem   = fetch_yahoo_price("EEM",  "EEM Emerging")
-    xlre  = fetch_yahoo_price("XLRE", "XLRE Real Estate")
-    print(f"      GLD={gold} DXY={dxy} TLT={tlt} HYG={hyg}")
-    print(f"      Copper={copper} Oil={oil} EEM={eem} XLRE={xlre}")
+    try:
+        gold  = fetch_yahoo_price("GLD",  "Gold/GLD")
+        # DXY — try multiple Yahoo symbols for Dollar Index
+        dxy = None
+        for dxy_sym in ["DX=F", "DX-Y.NYB", "%5EDXY"]:
+            dxy = fetch_yahoo_price(dxy_sym, f"DXY({dxy_sym})")
+            if dxy is not None:
+                break
+        tlt   = fetch_yahoo_price("TLT",  "TLT Bonds")
+        hyg   = fetch_yahoo_price("HYG",  "HYG Credit")
+        copper= fetch_yahoo_price("CPER", "Copper/CPER")
+        oil   = fetch_yahoo_price("USO",  "Oil/USO")
+        eem   = fetch_yahoo_price("EEM",  "EEM Emerging")
+        xlre  = fetch_yahoo_price("XLRE", "XLRE Real Estate")
+        print(f"      GLD={gold} DXY={dxy} TLT={tlt} HYG={hyg}")
+        print(f"      Copper={copper} Oil={oil} EEM={eem} XLRE={xlre}")
+    except Exception as e:
+        print(f"      Cross-asset fetch error: {e}")
+        gold=dxy=tlt=hyg=copper=oil=eem=xlre=None
 
     # Compute flow regime — where is money going?
-    flow_regime, flow_score = compute_flow_regime(
-        spy=spot, gold=gold, dxy=dxy, tlt=tlt, hyg=hyg,
-        vix=vix, copper=copper, eem=eem
-    )
-    print(f"      Flow regime: {flow_regime}  Score: {flow_score}")
+    try:
+        spy_price = spy_data.get("spot_price")
+        try:
+            spy_price = float(spy_price) if spy_price else None
+        except:
+            spy_price = None
+        flow_regime, flow_score = compute_flow_regime(
+            spy=spy_price, gold=gold, dxy=dxy, tlt=tlt, hyg=hyg,
+            vix=vix, copper=copper, eem=eem
+        )
+        print(f"      Flow regime: {flow_regime}  Score: {flow_score}")
+    except Exception as e:
+        print(f"      Flow regime error: {e}")
+        flow_regime = "unknown"
+        flow_score = 0
 
     # ── Compute SPY scores ────────────────────────────────────────────────────
     gex_val = spy_data.get("net_gex_b")
