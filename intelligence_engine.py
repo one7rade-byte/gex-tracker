@@ -607,11 +607,13 @@ def analyze_stock_trend(ticker):
 
 # ── Rule-based brief generator ────────────────────────────────────────────────
 
-def generate_brief(macro, mag7_data, macro_news_class, today):
+def generate_brief(macro, mag7_data, macro_news_class, today, fear_greed=None, reddit=None, news_lead_score=0, news_alerts=None, catalysts=None):
     """
     Generates a structured plain-English brief purely from data.
     No API calls. Returns dict with sections.
     """
+    if news_alerts is None: news_alerts = []
+    if catalysts is None: catalysts = []
     vix    = macro.get("vix_current") or 0
     gex    = macro.get("gex_current") or 0
     skew   = macro.get("skew_current") or 0
@@ -837,7 +839,7 @@ def main():
         time.sleep(0.5)
 
     print("\n[5] Generating intelligence brief...")
-    result = generate_brief(macro, mag7_data, macro_news_cls, today)
+    result = generate_brief(macro, mag7_data, macro_news_cls, today, fear_greed=fear_greed, reddit=reddit, news_lead_score=news_lead_score, news_alerts=news_alerts, catalysts=catalysts)
     print(f"  Signal: {result['overall_signal']}")
     print(f"  Top opportunity: {result['top_opportunity']} ({result['top_score']}/10)")
     print(f"  Avoid: {result['avoid_names']}")
