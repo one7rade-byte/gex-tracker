@@ -3007,6 +3007,7 @@ function buildUI(data){
   const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
 
   document.getElementById('app').innerHTML=
+    '<div id="regimePanel" class="card" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
     buildScorePanel(last,data)+
     '<div class="card"><div class="cl">QQQ GEX layer — divergence signals</div>'+buildQQQPanel(last)+'</div>'+
