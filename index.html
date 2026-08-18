@@ -3215,64 +3215,24 @@ function buildSystemPrompt(){
 
 var chatHistory = [];
 
-async function sendChat(){
+function sendChat(){
   var input = document.getElementById('chatInput');
-  var btn = document.getElementById('chatSendBtn');
-  var msgs = document.getElementById('chatMsgs');
   var question = input.value.trim();
-  if(!question || btn.disabled) return;
-
-  // Add user message
-  var userDiv = document.createElement('div');
-  userDiv.className = 'chat-msg chat-user';
-  userDiv.textContent = question;
-  msgs.appendChild(userDiv);
+  if(!question) return;
   input.value = '';
-  btn.disabled = true;
-
-  // Add thinking indicator
-  var thinkDiv = document.createElement('div');
-  thinkDiv.className = 'chat-msg chat-ai-thinking';
-  thinkDiv.textContent = 'Analyzing your data...';
-  msgs.appendChild(thinkDiv);
-  msgs.scrollTop = msgs.scrollHeight;
-
-  // Build messages array
-  chatHistory.push({role:'user', content: question});
-
-  try{
-    var systemPrompt = buildSystemPrompt();
-    var response = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-6',
-        max_tokens:1000,
-        system: systemPrompt,
-        messages: chatHistory
-      })
-    });
-    var data = await response.json();
-    var answer = data.content && data.content[0] ? data.content[0].text : 'No response received.';
-
-    // Add to history
-    chatHistory.push({role:'assistant', content: answer});
-
-    // Replace thinking with answer
-    thinkDiv.className = 'chat-msg chat-ai';
-    thinkDiv.innerHTML = answer.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  } catch(e){
-    thinkDiv.className = 'chat-msg chat-ai';
-    thinkDiv.textContent = 'Error: ' + e.message;
+  var ctx = buildSystemPrompt();
+  var fullPrompt = ctx + '\n\nMY QUESTION: ' + question;
+  if(typeof sendPrompt === 'function'){
+    sendPrompt(fullPrompt);
   }
-
-  btn.disabled = false;
-  msgs.scrollTop = msgs.scrollHeight;
 }
-
 function sendChip(el){
-  document.getElementById('chatInput').value = el.textContent;
-  sendChat();
+  var question = el.textContent;
+  var ctx = buildSystemPrompt();
+  var fullPrompt = ctx + '\n\nMY QUESTION: ' + question;
+  if(typeof sendPrompt === 'function'){
+    sendPrompt(fullPrompt);
+  }
 }
 
 function chatKeydown(e){
