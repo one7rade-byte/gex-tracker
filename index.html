@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SPY GEX Tracker</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -190,7 +190,6 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
 const REGIME_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/regime_log.csv';
-var ALL_DATA=[];
 var ALL_REGIME=[];
 
 async function fetchRegime(){
