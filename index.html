@@ -164,6 +164,20 @@ tr:last-child td{border-bottom:none}
 .hist-scroll{max-height:560px;overflow-y:auto;border:0.5px solid #f0ede8;border-radius:6px}
 .hist-scroll table{margin:0}
 .hist-scroll thead th{position:sticky;top:0;background:#f8f8f6;z-index:1}
+.chat-wrap{background:#fff;border:0.5px solid #e5e5e0;border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.chat-msgs{max-height:420px;overflow-y:auto;margin-bottom:12px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{padding:10px 14px;border-radius:8px;font-size:13px;line-height:1.7;max-width:90%}
+.chat-user{background:#378ADD;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.chat-ai{background:#f8f8f6;color:#222;align-self:flex-start;border:0.5px solid #e5e5e0;border-bottom-left-radius:2px}
+.chat-ai-thinking{background:#f0ede8;color:#888;align-self:flex-start;font-style:italic;font-size:12px}
+.chat-input-row{display:flex;gap:8px;align-items:flex-end}
+.chat-input-row textarea{flex:1;padding:10px 12px;border-radius:8px;border:0.5px solid #e5e5e0;font-size:13px;font-family:inherit;resize:none;height:44px;line-height:1.5;background:#f8f8f6}
+.chat-input-row textarea:focus{outline:none;border-color:#378ADD;background:#fff}
+.chat-send{padding:10px 18px;border-radius:8px;background:#378ADD;color:#fff;border:none;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;height:44px}
+.chat-send:disabled{background:#ccc;cursor:not-allowed}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chat-chip{padding:5px 12px;border-radius:20px;border:0.5px solid #e5e5e0;background:#f8f8f6;font-size:11px;color:#555;cursor:pointer;transition:all .15s}
+.chat-chip:hover{border-color:#378ADD;color:#378ADD;background:#EEF6FF}
 .hist-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:11px;color:#888}
 .hist-toggle{background:none;border:1px solid #d8d5cf;border-radius:14px;padding:3px 12px;font-size:11px;color:#555;cursor:pointer}
 .hist-toggle:hover{background:#f4f2ee}
@@ -3059,6 +3073,27 @@ function buildUI(data){
       '<div style="margin-top:10px;padding-top:8px;border-top:0.5px solid #f0ede8;font-size:11px;color:#888">Cycle 1 buy zone: VIX 25.78 + GEX deeply neg \u00b7 SPY $629\u2013$659 \u00b7 +18% return in 7 weeks</div>'+
     '</div>'+
     '<div id="intelplaceholder"></div>'+'<div id="mag7placeholder"></div>'+
+    '<div class="chat-wrap">'+
+      '<div class="cl" style="display:flex;justify-content:space-between;align-items:center">'+
+        '<span>📊 Market intelligence chat</span>'+
+        '<span style="font-size:10px;color:#aaa;font-weight:400">Answers grounded in your actual data</span>'+
+      '</div>'+
+      '<div class="chat-chips" id="chatChips">'+
+        '<span class="chat-chip" onclick="sendChip(this)">Is today a good time to buy?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">How does today compare to Jul 29 bottom?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">What would trigger a buy signal?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">Is the composite score improving?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">Analyze the cross-asset flow</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">What is the black swan risk right now?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">Should I be worried about the 10Y yield?</span>'+
+        '<span class="chat-chip" onclick="sendChip(this)">Compare today to the 2022 bear market signals</span>'+
+      '</div>'+
+      '<div class="chat-msgs" id="chatMsgs"></div>'+
+      '<div class="chat-input-row">'+
+        '<textarea id="chatInput" placeholder="Ask anything about your market data..." onkeydown="chatKeydown(event)"></textarea>'+
+        '<button class="chat-send" id="chatSendBtn" onclick="sendChat()">Send</button>'+
+      '</div>'+
+    '</div>'+
     '<div class="card"><div class="cl">Full history</div>'+
       '<div class="hist-scroll" id="histScrollBox"><table id="histTable"><thead><tr><th>Date</th><th>SPY</th><th>SPY GEX</th><th>VIX</th><th>200MA</th><th>RSI</th><th>Fear</th><th>Bear</th><th>Bull</th><th>QQQ Bear</th><th>QQQ GEX</th><th>Signal</th></tr></thead><tbody id="histTbody">'+tableRows+'</tbody></table></div>'+
       '<div class="hist-footer"><span id="histCountLabel">Showing last '+Math.min(DEFAULT_HIST_DAYS,total)+' of '+total+' days</span>'+
@@ -3108,6 +3143,143 @@ function buildUI(data){
       }
     });
   },50);
+}
+
+// ── AI Chat ───────────────────────────────────────────────────────────────
+
+function buildSystemPrompt(){
+  // Build context from ALL_DATA and ALL_REGIME
+  var last = ALL_DATA && ALL_DATA.length ? ALL_DATA[ALL_DATA.length-1] : null;
+  var lastRegime = ALL_REGIME && ALL_REGIME.length ? ALL_REGIME[ALL_REGIME.length-1] : null;
+  var recent = ALL_DATA ? ALL_DATA.slice(-15) : [];
+  var recentRegime = ALL_REGIME ? ALL_REGIME.slice(-15) : [];
+
+  var ctx = 'You are a market intelligence assistant for a systematic GEX + cross-asset trading framework. ';
+  ctx += 'Answer questions using ONLY the data provided below. Be specific, data-driven, and concise. ';
+  ctx += 'Never give generic financial advice — always reference the specific numbers from the data.\n\n';
+
+  if(last){
+    ctx += '=== TODAY\'S DATA (' + last.d + ') ===\n';
+    ctx += 'SPY: $' + last.s + ' | GEX: ' + (last.g>=0?'+':'') + last.g + 'B | VIX: ' + last.v + '\n';
+    ctx += 'RSI: ' + (last.rsi||'N/A') + ' | Zero-gamma: $' + (last.zg||'N/A') + '\n';
+    ctx += 'Call wall: $' + (last.cw||'N/A') + ' | Put wall: $' + (last.pw||'N/A') + '\n';
+    ctx += '10Y Yield: ' + (last.yield10y||'N/A') + '% | VIX9D/VIX: ' + (last.vix9dRatio||'N/A') + '\n';
+    ctx += 'Gold: $' + (last.gold||'N/A') + ' | DXY: ' + (last.dxy||'N/A') + '\n';
+    ctx += 'TLT: $' + (last.tlt||'N/A') + ' | HYG: $' + (last.hyg||'N/A') + '\n';
+    ctx += 'Copper: $' + (last.copper||'N/A') + ' | Oil: $' + (last.oil||'N/A') + '\n';
+    ctx += 'EEM: $' + (last.eem||'N/A') + ' | XLRE: $' + (last.xlre||'N/A') + '\n';
+    ctx += 'Flow regime: ' + (last.flowRegime||'N/A') + ' | Flow score: ' + (last.flowScore||'N/A') + '/5\n\n';
+  }
+
+  if(lastRegime){
+    ctx += '=== REGIME ANALYSIS ===\n';
+    ctx += 'Signal: ' + lastRegime.signal + '\n';
+    ctx += 'Composite score: ' + lastRegime.composite + '/8\n';
+    ctx += 'Flow regime: ' + lastRegime.flowRegime + '\n';
+    ctx += 'Black swan watch: ' + (lastRegime.bsWatch?'YES — '+lastRegime.bsReasons:'No') + '\n';
+    ctx += 'Brief: ' + lastRegime.brief + '\n\n';
+  }
+
+  // Recent history
+  if(recent.length > 1){
+    ctx += '=== RECENT 15-DAY HISTORY ===\n';
+    ctx += 'Date | SPY | GEX | VIX | RSI | HYG | Signal\n';
+    recent.forEach(function(r){
+      ctx += r.d + ' | $' + r.s + ' | ' + (r.g>=0?'+':'') + r.g + 'B | ' + r.v + ' | ' + (r.rsi||'?') + ' | $' + (r.hyg||'?') + ' | ' + (r.flowRegime||'?') + '\n';
+    });
+    ctx += '\n';
+  }
+
+  // Regime history
+  if(recentRegime.length > 1){
+    ctx += '=== RECENT REGIME SCORES ===\n';
+    recentRegime.forEach(function(r){
+      ctx += r.d + ': ' + r.signal + ' composite=' + r.composite + '/8 credit=' + r.creditScore + ' vol=' + r.volScore + '\n';
+    });
+    ctx += '\n';
+  }
+
+  ctx += '=== YOUR SIGNAL FRAMEWORK ===\n';
+  ctx += 'STRONG BUY: GEX < -10B + RSI < 50 + SKEW > 138 + HYG > 78 + composite >= 1\n';
+  ctx += 'BUY WATCH: GEX < -5B + RSI < 57 + composite >= 0\n';
+  ctx += 'STRONG HOLD: composite >= 6 — max positive regime\n';
+  ctx += 'CAUTION: overbought RSI > 75 + negative GEX\n';
+  ctx += 'DEFENSIVE: HYG < 74 — credit stress\n';
+  ctx += 'CRISIS: HYG < 68 — credit crisis\n\n';
+  ctx += 'Key thresholds: HYG > $78 = buy all dips | HYG $74-78 = caution | HYG < $74 = defensive\n';
+  ctx += 'Cash hoarding pattern: DXY rising + gold falling + HYG stable = panic sell = buy\n';
+  ctx += 'Black swan watch: SKEW > 150 + VIX < 20 = institutions hedging quietly\n';
+
+  return ctx;
+}
+
+var chatHistory = [];
+
+async function sendChat(){
+  var input = document.getElementById('chatInput');
+  var btn = document.getElementById('chatSendBtn');
+  var msgs = document.getElementById('chatMsgs');
+  var question = input.value.trim();
+  if(!question || btn.disabled) return;
+
+  // Add user message
+  var userDiv = document.createElement('div');
+  userDiv.className = 'chat-msg chat-user';
+  userDiv.textContent = question;
+  msgs.appendChild(userDiv);
+  input.value = '';
+  btn.disabled = true;
+
+  // Add thinking indicator
+  var thinkDiv = document.createElement('div');
+  thinkDiv.className = 'chat-msg chat-ai-thinking';
+  thinkDiv.textContent = 'Analyzing your data...';
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Build messages array
+  chatHistory.push({role:'user', content: question});
+
+  try{
+    var systemPrompt = buildSystemPrompt();
+    var response = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system: systemPrompt,
+        messages: chatHistory
+      })
+    });
+    var data = await response.json();
+    var answer = data.content && data.content[0] ? data.content[0].text : 'No response received.';
+
+    // Add to history
+    chatHistory.push({role:'assistant', content: answer});
+
+    // Replace thinking with answer
+    thinkDiv.className = 'chat-msg chat-ai';
+    thinkDiv.innerHTML = answer.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  } catch(e){
+    thinkDiv.className = 'chat-msg chat-ai';
+    thinkDiv.textContent = 'Error: ' + e.message;
+  }
+
+  btn.disabled = false;
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sendChip(el){
+  document.getElementById('chatInput').value = el.textContent;
+  sendChat();
+}
+
+function chatKeydown(e){
+  if(e.key==='Enter' && !e.shiftKey){
+    e.preventDefault();
+    sendChat();
+  }
 }
 
 async function init(){
