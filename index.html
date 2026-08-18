@@ -3218,40 +3218,34 @@ var chatHistory = [];
 function sendChat(){
   var input=document.getElementById('chatInput');
   var msgs=document.getElementById('chatMsgs');
-  var btn=document.getElementById('chatSendBtn');
   var question=input.value.trim();
   if(!question)return;
 
-  // User bubble
   var ud=document.createElement('div');
   ud.className='chat-msg chat-user';
   ud.textContent=question;
   msgs.appendChild(ud);
   input.value='';
 
-  // Build full context prompt
   var ctx=buildSystemPrompt();
   var full=ctx+'\n\nMY QUESTION: '+question;
 
-  // Show copy button
   var ad=document.createElement('div');
   ad.className='chat-msg chat-ai';
-  ad.innerHTML='<div style="font-size:11px;color:#888;margin-bottom:6px">✅ Data-grounded prompt ready — copy and paste into Claude.ai or ChatGPT:</div>'+
-    '<div style="font-size:11px;color:#333;background:#f0ede8;border-radius:4px;padding:8px;margin-bottom:6px;max-height:80px;overflow:auto;font-family:monospace;line-height:1.4">'+
-      full.slice(0,300).replace(/</g,'&lt;')+'...'+
-    '</div>'+
-    '<button id="cpyBtn" style="padding:6px 14px;border-radius:6px;border:0.5px solid #378ADD;background:#EEF6FF;color:#378ADD;font-size:12px;cursor:pointer;font-weight:500">'+
-      '📋 Copy full prompt to clipboard'+
-    '</button>';
+  ad.innerHTML=
+    '<div style="font-size:11px;color:#888;margin-bottom:6px">Select all text below and copy (Ctrl+A then Ctrl+C), then paste into Claude.ai:</div>'+
+    '<textarea id="promptTA" style="width:100%;height:120px;font-size:10px;border:0.5px solid #378ADD;border-radius:4px;padding:8px;background:#f8f8f6;resize:vertical;font-family:monospace;line-height:1.4"></textarea>'+
+    '<div style="display:flex;gap:8px;margin-top:6px">'+
+      '<button onclick="var t=document.getElementById('promptTA');t.select();document.execCommand('copy');this.textContent='✅ Copied!'" '+
+        'style="padding:6px 14px;border-radius:6px;border:0.5px solid #378ADD;background:#378ADD;color:#fff;font-size:12px;cursor:pointer;font-weight:500">'+
+        '📋 Copy prompt</button>'+
+      '<a href="https://claude.ai" target="_blank" '+
+        'style="padding:6px 14px;border-radius:6px;border:0.5px solid #e5e5e0;background:#f8f8f6;color:#555;font-size:12px;text-decoration:none;display:inline-flex;align-items:center">'+
+        'Open Claude.ai →</a>'+
+    '</div>';
   msgs.appendChild(ad);
   msgs.scrollTop=msgs.scrollHeight;
-
-  // Wire copy button
-  document.getElementById('cpyBtn').addEventListener('click',function(){
-    navigator.clipboard.writeText(full).then(function(){
-      document.getElementById('cpyBtn').textContent='✅ Copied! Paste into Claude.ai';
-    });
-  });
+  document.getElementById('promptTA').value=full;
 }
 
 function sendChip(el){
