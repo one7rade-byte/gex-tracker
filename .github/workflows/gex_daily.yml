@@ -23,18 +23,14 @@ jobs:
         env:
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
         run: python gex_tracker.py
-      - name: Save CSV to repository
+      - name: Run Regime Analyzer
+        run: python regime_analyzer.py
+      - name: Save CSVs to repository
         run: |
           git config user.name "GEX Bot"
           git config user.email "one7rade@gmail.com"
-          git add gex_log.csv
-          git diff --staged --quiet || git commit -m "GEX log update $(date +'%Y-%m-%d')"
-
-          # All daily workflows fire from the same repository_dispatch
-          # event simultaneously, so two jobs can race to push -- whoever
-          # pushes second gets rejected. Retry with pull --rebase before
-          # each attempt so this job replays its commit on top of
-          # whatever another workflow already pushed, instead of failing.
+          git add gex_log.csv regime_log.csv
+          git diff --staged --quiet || git commit -m "Daily update $(date +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
             git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main
             git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
