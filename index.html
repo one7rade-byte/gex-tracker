@@ -1518,9 +1518,36 @@ function buildUI(data){
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
   const allReversed=[...data].reverse();
   const DEFAULT_HIST_DAYS=30;
+  // Build regime lookup by date for history table
+  var regimeLookup={};
+  if(ALL_REGIME&&ALL_REGIME.length){
+    ALL_REGIME.forEach(function(r){regimeLookup[r.d]=r;});
+  }
+  function getSignalBadge(e){
+    var reg=regimeLookup[e.d];
+    if(reg&&reg.signal){
+      var sig=reg.signal;
+      var colors={
+        'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
+        'STRONG_HOLD':'#185FA5','HOLD':'#555',
+        'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
+      };
+      var bgs={
+        'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
+        'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
+        'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
+      };
+      var score=reg.composite?'+'+reg.composite+'/8':'';
+      return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+
+        sig.replace(/_/g,' ')+'</span>'+(score?'<span style="font-size:9px;color:#aaa;margin-left:3px">'+score+'</span>':'');
+    }
+    var si=computeSignal(e.g,e.v,[]);
+    var label=si.bc==='bg'?'HOLD':si.bc==='br'?'EXIT':si.bc==='ba'?'WATCH':'HOLD';
+    return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;background:#f0ede8;color:#555">'+label+'</span>';
+  }
   function buildTableRows(rows){
     return rows.map(function(e){
-    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
+    var signalBadge=getSignalBadge(e);
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     const qb=e.qqqBear!==null?e.qqqBear:'—',qg=e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—';
@@ -2999,9 +3026,36 @@ function buildUI(data){
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
   const allReversed=[...data].reverse();
   const DEFAULT_HIST_DAYS=30;
+  // Build regime lookup by date for history table
+  var regimeLookup={};
+  if(ALL_REGIME&&ALL_REGIME.length){
+    ALL_REGIME.forEach(function(r){regimeLookup[r.d]=r;});
+  }
+  function getSignalBadge(e){
+    var reg=regimeLookup[e.d];
+    if(reg&&reg.signal){
+      var sig=reg.signal;
+      var colors={
+        'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
+        'STRONG_HOLD':'#185FA5','HOLD':'#555',
+        'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
+      };
+      var bgs={
+        'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
+        'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
+        'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
+      };
+      var score=reg.composite?'+'+reg.composite+'/8':'';
+      return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+
+        sig.replace(/_/g,' ')+'</span>'+(score?'<span style="font-size:9px;color:#aaa;margin-left:3px">'+score+'</span>':'');
+    }
+    var si=computeSignal(e.g,e.v,[]);
+    var label=si.bc==='bg'?'HOLD':si.bc==='br'?'EXIT':si.bc==='ba'?'WATCH':'HOLD';
+    return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;background:#f0ede8;color:#555">'+label+'</span>';
+  }
   function buildTableRows(rows){
     return rows.map(function(e){
-    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
+    var signalBadge=getSignalBadge(e);
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     const qb=e.qqqBear!==null?e.qqqBear:'—',qg=e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—';
@@ -3015,7 +3069,7 @@ function buildUI(data){
       '<td style="color:'+(e.bullScore>=6?'#3B6D11':e.bullScore>=4?'#639922':'#aaa')+';font-weight:600">'+bls+'</td>'+
       '<td style="color:'+(e.qqqBear>=5?'#A32D2D':e.qqqBear>=3?'#BA7517':'#aaa')+';font-weight:600">'+qb+'</td>'+
       '<td style="color:'+gexColor(e.qqqGex)+';font-size:11px">'+qg+'</td>'+
-      '<td><span class="badge '+si.bc+'">'+label+'</span></td></tr>';
+      '<td>'+signalBadge+'</td></tr>';
     }).join('');
   }
   const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
@@ -3268,6 +3322,40 @@ async function init(){
     fetchRegime().then(function(regime){
       ALL_REGIME=regime;
       buildRegimePanel(regime);
+      // Rebuild table with regime signals now that data is loaded
+      if(ALL_DATA&&ALL_DATA.length){
+        var allRev=[...ALL_DATA].reverse();
+        var showing=document.getElementById('histShowAll')?allRev:allRev.slice(0,30);
+        var tb=document.getElementById('histTbody');
+        if(tb){
+          // rebuild regimeLookup
+          var rl={};
+          regime.forEach(function(r){rl[r.d]=r;});
+          // re-render rows
+          var rows=allRev.slice(0,30);
+          tb.innerHTML=rows.map(function(e){
+            var reg=rl[e.d];
+            var sigBadge='';
+            if(reg&&reg.signal){
+              var sig=reg.signal;
+              var colors={'STRONG_BUY':'#27500A','BUY_WATCH':'#633806','STRONG_HOLD':'#185FA5','HOLD':'#555','CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'};
+              var bgs={'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA','STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8','CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'};
+              sigBadge='<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+sig.replace(/_/g,' ')+'</span>';
+              if(reg.composite)sigBadge+='<span style="font-size:9px;color:#aaa;margin-left:3px">+'+reg.composite+'/8</span>';
+            }
+            var gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11';
+            var vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
+            return'<tr><td style="color:#666">'+e.d+'</td><td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
+              '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
+              '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
+              '<td style="color:'+(e.aboveMa===true?'#3B6D11':'#A32D2D')+';font-size:11px">'+(e.aboveMa===true?'✓':'✗')+'</td>'+
+              '<td style="color:'+(e.rsi>70?'#BA7517':e.rsi<30?'#A32D2D':'#3B6D11')+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
+              '<td>'+(e.fearScore||'—')+'</td><td>'+(e.bearScore||'—')+'</td><td>'+(e.bullScore||'—')+'</td>'+
+              '<td>'+(e.qqqBear||'—')+'</td><td>'+(e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—')+'</td>'+
+              '<td>'+(sigBadge||'<span style="font-size:10px;color:#aaa">—</span>')+'</td></tr>';
+          }).join('');
+        }
+      }
     }).catch(function(){});
     ALL_DATA=data;
     buildUI(data);
