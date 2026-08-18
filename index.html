@@ -1198,110 +1198,6 @@ function updateCharts(){
 }
 
 
-function buildRegimePanel(regime){
-  var el=document.getElementById('regimePanel');
-  if(!el||!regime||!regime.length)return;
-
-  var last=regime[regime.length-1];
-  var prev=regime.slice(-6,-1);
-  var score=last.composite;
-  var scoreWidth=Math.round(((score+8)/16)*100);
-  var scoreColor=score>=5?'#3B6D11':score>=2?'#BA7517':score>=-1?'#888':'#A32D2D';
-
-  // Signal badge color
-  var sigColor={
-    'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
-    'STRONG_HOLD':'#185FA5','HOLD':'#555',
-    'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
-  }[last.signal]||'#555';
-  var sigBg={
-    'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
-    'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
-    'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
-  }[last.signal]||'#f0ede8';
-
-  // Composite trend (last 10 days)
-  var trend=regime.slice(-10).map(function(r){return r.composite;});
-  var trendUp=trend.length>=2&&trend[trend.length-1]>trend[0];
-
-  // Black swan warning
-  var bsHTML='';
-  if(last.bsWatch){
-    bsHTML='<div style="margin-top:10px;padding:10px;background:#FCEBEB;border-left:4px solid #A32D2D;border-radius:6px">'+
-      '<div style="font-size:12px;font-weight:600;color:#791F1F;margin-bottom:4px">⚠️ BLACK SWAN WATCH ACTIVE</div>'+
-      '<div style="font-size:11px;color:#555">'+last.bsReasons.split('|').map(function(r){return'• '+r.trim();}).join('<br>')+'</div>'+
-    '</div>';
-  }
-
-  // HYG trend warning
-  var hygHTML='';
-  if(last.hyg5d!==null&&last.hyg5d<-1.0){
-    hygHTML='<div style="font-size:11px;color:#A32D2D;margin-top:4px">⚠️ HYG dropped $'+Math.abs(last.hyg5d).toFixed(2)+' in 5 days — monitor credit</div>';
-  }
-
-  // Score breakdown bars
-  var breakdown=[
-    {label:'Credit (HYG)',score:last.creditScore,max:3,color:'#27ae60'},
-    {label:'Volatility (VIX)',score:last.volScore,max:3,color:'#378ADD'},
-  ];
-
-  var breakHTML=breakdown.map(function(b){
-    var pct=Math.round(((b.score+b.max)/(b.max*2))*100);
-    return'<div style="margin-bottom:6px">'+
-      '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-bottom:2px">'+
-        '<span>'+b.label+'</span><span>'+(b.score>=0?'+':'')+b.score+'/'+b.max+'</span>'+
-      '</div>'+
-      '<div style="background:#f0ede8;border-radius:10px;height:6px;overflow:hidden">'+
-        '<div style="width:'+pct+'%;height:100%;background:'+b.color+';border-radius:10px"></div>'+
-      '</div></div>';
-  }).join('');
-
-  // Mini sparkline of composite score last 20 days
-  var spark=regime.slice(-20).map(function(r){return r.composite;});
-  var sparkMin=Math.min.apply(null,spark)-1;
-  var sparkMax=Math.max.apply(null,spark)+1;
-  var sparkH=40,sparkW=160;
-  var pts=spark.map(function(v,i){
-    var x=Math.round(i/(spark.length-1)*sparkW);
-    var y=Math.round(sparkH-((v-sparkMin)/(sparkMax-sparkMin)*sparkH));
-    return x+','+y;
-  }).join(' ');
-
-  el.innerHTML=
-    '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">'+
-      '<div>'+
-        '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Regime signal — '+last.d+'</div>'+
-        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'+
-          '<span style="padding:6px 14px;border-radius:20px;background:'+sigBg+';color:'+sigColor+';font-size:14px;font-weight:600">'+last.signal.replace(/_/g,' ')+'</span>'+
-          '<span style="font-size:12px;color:#888">'+last.flowRegime.replace(/_/g,' ')+'</span>'+
-        '</div>'+
-        '<div style="margin-bottom:6px">'+
-          '<div style="display:flex;justify-content:space-between;font-size:11px;color:#888;margin-bottom:3px">'+
-            '<span>Composite score</span><span style="font-weight:600;color:'+scoreColor+'">'+(score>=0?'+':'')+score+'/8</span>'+
-          '</div>'+
-          '<div style="background:#f0ede8;border-radius:10px;height:8px;overflow:hidden">'+
-            '<div style="width:'+scoreWidth+'%;height:100%;background:'+scoreColor+';border-radius:10px"></div>'+
-          '</div>'+
-        '</div>'+
-        breakHTML+
-        hygHTML+
-        bsHTML+
-      '</div>'+
-      '<div>'+
-        '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">20-day composite trend</div>'+
-        '<svg width="'+sparkW+'" height="'+sparkH+'" style="overflow:visible">'+
-          '<polyline points="'+pts+'" fill="none" stroke="'+scoreColor+'" stroke-width="2" stroke-linejoin="round"/>'+
-          '<circle cx="'+Math.round((spark.length-1)/(spark.length-1)*sparkW)+'" cy="'+Math.round(sparkH-((spark[spark.length-1]-sparkMin)/(sparkMax-sparkMin)*sparkH))+'" r="4" fill="'+scoreColor+'"/>'+
-        '</svg>'+
-        '<div style="font-size:10px;color:'+(trendUp?'#3B6D11':'#A32D2D')+'">'+
-          (trendUp?'↑ Improving':'↓ Declining')+
-        '</div>'+
-      '</div>'+
-    '</div>'+
-    '<div style="margin-top:10px;padding:10px 12px;background:#f8f8f6;border-radius:6px;font-size:12px;color:#333;line-height:1.6;border-left:3px solid '+scoreColor+'">'+
-      last.brief+
-    '</div>';
-}
 
 function getFlowClass(regime){
   if(!regime)return'flow-neutral';
@@ -1518,36 +1414,9 @@ function buildUI(data){
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
   const allReversed=[...data].reverse();
   const DEFAULT_HIST_DAYS=30;
-  // Build regime lookup by date for history table
-  var regimeLookup={};
-  if(ALL_REGIME&&ALL_REGIME.length){
-    ALL_REGIME.forEach(function(r){regimeLookup[r.d]=r;});
-  }
-  function getSignalBadge(e){
-    var reg=regimeLookup[e.d];
-    if(reg&&reg.signal){
-      var sig=reg.signal;
-      var colors={
-        'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
-        'STRONG_HOLD':'#185FA5','HOLD':'#555',
-        'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
-      };
-      var bgs={
-        'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
-        'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
-        'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
-      };
-      var score=reg.composite?'+'+reg.composite+'/8':'';
-      return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+
-        sig.replace(/_/g,' ')+'</span>'+(score?'<span style="font-size:9px;color:#aaa;margin-left:3px">'+score+'</span>':'');
-    }
-    var si=computeSignal(e.g,e.v,[]);
-    var label=si.bc==='bg'?'HOLD':si.bc==='br'?'EXIT':si.bc==='ba'?'WATCH':'HOLD';
-    return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;background:#f0ede8;color:#555">'+label+'</span>';
-  }
   function buildTableRows(rows){
     return rows.map(function(e){
-    var signalBadge=getSignalBadge(e);
+    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     const qb=e.qqqBear!==null?e.qqqBear:'—',qg=e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—';
@@ -3026,36 +2895,9 @@ function buildUI(data){
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
   const allReversed=[...data].reverse();
   const DEFAULT_HIST_DAYS=30;
-  // Build regime lookup by date for history table
-  var regimeLookup={};
-  if(ALL_REGIME&&ALL_REGIME.length){
-    ALL_REGIME.forEach(function(r){regimeLookup[r.d]=r;});
-  }
-  function getSignalBadge(e){
-    var reg=regimeLookup[e.d];
-    if(reg&&reg.signal){
-      var sig=reg.signal;
-      var colors={
-        'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
-        'STRONG_HOLD':'#185FA5','HOLD':'#555',
-        'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
-      };
-      var bgs={
-        'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
-        'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
-        'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
-      };
-      var score=reg.composite?'+'+reg.composite+'/8':'';
-      return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+
-        sig.replace(/_/g,' ')+'</span>'+(score?'<span style="font-size:9px;color:#aaa;margin-left:3px">'+score+'</span>':'');
-    }
-    var si=computeSignal(e.g,e.v,[]);
-    var label=si.bc==='bg'?'HOLD':si.bc==='br'?'EXIT':si.bc==='ba'?'WATCH':'HOLD';
-    return'<span style="padding:2px 7px;border-radius:10px;font-size:10px;background:#f0ede8;color:#555">'+label+'</span>';
-  }
   function buildTableRows(rows){
     return rows.map(function(e){
-    var signalBadge=getSignalBadge(e);
+    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     const qb=e.qqqBear!==null?e.qqqBear:'—',qg=e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—';
@@ -3069,7 +2911,7 @@ function buildUI(data){
       '<td style="color:'+(e.bullScore>=6?'#3B6D11':e.bullScore>=4?'#639922':'#aaa')+';font-weight:600">'+bls+'</td>'+
       '<td style="color:'+(e.qqqBear>=5?'#A32D2D':e.qqqBear>=3?'#BA7517':'#aaa')+';font-weight:600">'+qb+'</td>'+
       '<td style="color:'+gexColor(e.qqqGex)+';font-size:11px">'+qg+'</td>'+
-      '<td>'+signalBadge+'</td></tr>';
+      '<td><span class="badge '+si.bc+'">'+label+'</span></td></tr>';
     }).join('');
   }
   const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
@@ -3319,44 +3161,6 @@ async function init(){
     const data=parseCSV(text);
     if(!data.length)throw new Error('No data');
     // Fetch regime log in parallel
-    fetchRegime().then(function(regime){
-      ALL_REGIME=regime;
-      buildRegimePanel(regime);
-      // Rebuild table with regime signals now that data is loaded
-      if(ALL_DATA&&ALL_DATA.length){
-        var allRev=[...ALL_DATA].reverse();
-        var showing=document.getElementById('histShowAll')?allRev:allRev.slice(0,30);
-        var tb=document.getElementById('histTbody');
-        if(tb){
-          // rebuild regimeLookup
-          var rl={};
-          regime.forEach(function(r){rl[r.d]=r;});
-          // re-render rows
-          var rows=allRev.slice(0,30);
-          tb.innerHTML=rows.map(function(e){
-            var reg=rl[e.d];
-            var sigBadge='';
-            if(reg&&reg.signal){
-              var sig=reg.signal;
-              var colors={'STRONG_BUY':'#27500A','BUY_WATCH':'#633806','STRONG_HOLD':'#185FA5','HOLD':'#555','CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'};
-              var bgs={'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA','STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8','CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'};
-              sigBadge='<span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;background:'+(bgs[sig]||'#f0ede8')+';color:'+(colors[sig]||'#555')+'">'+sig.replace(/_/g,' ')+'</span>';
-              if(reg.composite)sigBadge+='<span style="font-size:9px;color:#aaa;margin-left:3px">+'+reg.composite+'/8</span>';
-            }
-            var gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11';
-            var vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
-            return'<tr><td style="color:#666">'+e.d+'</td><td style="font-weight:500">$'+e.s.toFixed(2)+'</td>'+
-              '<td style="color:'+gC+';font-weight:500">'+(e.g>=0?'+':'')+e.g.toFixed(2)+'B</td>'+
-              '<td style="color:'+vC+'">'+e.v.toFixed(2)+'</td>'+
-              '<td style="color:'+(e.aboveMa===true?'#3B6D11':'#A32D2D')+';font-size:11px">'+(e.aboveMa===true?'✓':'✗')+'</td>'+
-              '<td style="color:'+(e.rsi>70?'#BA7517':e.rsi<30?'#A32D2D':'#3B6D11')+'">'+(e.rsi?e.rsi.toFixed(1):'—')+'</td>'+
-              '<td>'+(e.fearScore||'—')+'</td><td>'+(e.bearScore||'—')+'</td><td>'+(e.bullScore||'—')+'</td>'+
-              '<td>'+(e.qqqBear||'—')+'</td><td>'+(e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—')+'</td>'+
-              '<td>'+(sigBadge||'<span style="font-size:10px;color:#aaa">—</span>')+'</td></tr>';
-          }).join('');
-        }
-      }
-    }).catch(function(){});
     ALL_DATA=data;
     buildUI(data);
     fetchRegime().then(function(regime){
