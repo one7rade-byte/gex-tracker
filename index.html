@@ -3216,25 +3216,48 @@ function buildSystemPrompt(){
 var chatHistory = [];
 
 function sendChat(){
-  var input = document.getElementById('chatInput');
-  var question = input.value.trim();
-  if(!question) return;
-  input.value = '';
-  var ctx = buildSystemPrompt();
-  var fullPrompt = ctx + '\n\nMY QUESTION: ' + question;
-  if(typeof sendPrompt === 'function'){
-    sendPrompt(fullPrompt);
-  }
-}
-function sendChip(el){
-  var question = el.textContent;
-  var ctx = buildSystemPrompt();
-  var fullPrompt = ctx + '\n\nMY QUESTION: ' + question;
-  if(typeof sendPrompt === 'function'){
-    sendPrompt(fullPrompt);
-  }
+  var input=document.getElementById('chatInput');
+  var msgs=document.getElementById('chatMsgs');
+  var btn=document.getElementById('chatSendBtn');
+  var question=input.value.trim();
+  if(!question)return;
+
+  // User bubble
+  var ud=document.createElement('div');
+  ud.className='chat-msg chat-user';
+  ud.textContent=question;
+  msgs.appendChild(ud);
+  input.value='';
+
+  // Build full context prompt
+  var ctx=buildSystemPrompt();
+  var full=ctx+'\n\nMY QUESTION: '+question;
+
+  // Show copy button
+  var ad=document.createElement('div');
+  ad.className='chat-msg chat-ai';
+  ad.innerHTML='<div style="font-size:11px;color:#888;margin-bottom:6px">✅ Data-grounded prompt ready — copy and paste into Claude.ai or ChatGPT:</div>'+
+    '<div style="font-size:11px;color:#333;background:#f0ede8;border-radius:4px;padding:8px;margin-bottom:6px;max-height:80px;overflow:auto;font-family:monospace;line-height:1.4">'+
+      full.slice(0,300).replace(/</g,'&lt;')+'...'+
+    '</div>'+
+    '<button id="cpyBtn" style="padding:6px 14px;border-radius:6px;border:0.5px solid #378ADD;background:#EEF6FF;color:#378ADD;font-size:12px;cursor:pointer;font-weight:500">'+
+      '📋 Copy full prompt to clipboard'+
+    '</button>';
+  msgs.appendChild(ad);
+  msgs.scrollTop=msgs.scrollHeight;
+
+  // Wire copy button
+  document.getElementById('cpyBtn').addEventListener('click',function(){
+    navigator.clipboard.writeText(full).then(function(){
+      document.getElementById('cpyBtn').textContent='✅ Copied! Paste into Claude.ai';
+    });
+  });
 }
 
+function sendChip(el){
+  document.getElementById('chatInput').value=el.textContent;
+  sendChat();
+}
 function chatKeydown(e){
   if(e.key==='Enter' && !e.shiftKey){
     e.preventDefault();
