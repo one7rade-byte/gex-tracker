@@ -627,12 +627,23 @@ def main():
     print("\n[8/8] Fetching cross-asset flow data...")
     try:
         gold  = fetch_yahoo_price("GLD",  "Gold/GLD")
-        # DXY — try multiple Yahoo symbols for Dollar Index
+        # DXY — Dollar Index via multiple symbols
+        # DX=F is the futures contract (most reliable on Yahoo)
+        # DX-Y.NYB is the spot index
         dxy = None
-        for dxy_sym in ["DX=F", "DX-Y.NYB", "%5EDXY"]:
-            dxy = fetch_yahoo_price(dxy_sym, f"DXY({dxy_sym})")
-            if dxy is not None:
+        for dxy_sym in ["DX=F", "DX-Y.NYB", "UUP"]:
+            # UUP is the dollar ETF (tracks DXY) as final fallback
+            dxy_raw = fetch_yahoo_price(dxy_sym, f"DXY({dxy_sym})")
+            if dxy_raw is not None:
+                # UUP trades at ~28, scale to DXY-equivalent (~100)
+                if dxy_sym == "UUP":
+                    dxy = round(dxy_raw * 3.57, 2)  # approximate DXY from UUP
+                else:
+                    dxy = dxy_raw
+                print(f"      DXY fetched via {dxy_sym}: {dxy}")
                 break
+        if dxy is None:
+            print("      DXY: all symbols failed")
         tlt   = fetch_yahoo_price("TLT",  "TLT Bonds")
         hyg   = fetch_yahoo_price("HYG",  "HYG Credit")
         copper= fetch_yahoo_price("CPER", "Copper/CPER")
@@ -841,6 +852,23 @@ def main():
         bear_flag = ""
     div_flag  = " ⚡ DIVERGENCE" if "DIVERGENCE" in divergence or "WARNING" in divergence else ""
     subject   = f"GEX {today} | SPY F{fear_score}/Be{bear_score}/Bu{bull_score} · QQQ F{qqq_fear}/Be{qqq_bear}/Bu{qqq_bull}{fear_flag}{bear_flag}{div_flag}"
+
+    # ── Black swan email alert ────────────────────────────────────────────
+    try:
+        import csv as _csv
+        if os.path.exists("regime_log.csv"):
+            with open("regime_log.csv", newline="", encoding="utf-8") as _f:
+                regime_rows = list(_csv.DictReader(_f))
+            if regime_rows:
+                last_regime = regime_rows[-1]
+                if last_regime.get("black_swan_watch") == "True":
+                    reasons = last_regime.get("black_swan_reasons", "")
+                    subject = f"⚠️ BLACK SWAN WATCH — {today} | {reasons[:60]}"
+                    summary += f"\n|\n|  ⚠️  BLACK SWAN WATCH ACTIVE\n|  {reasons}\n|"
+                    print(f"  BLACK SWAN WATCH active — overriding subject line")
+    except Exception as e:
+        print(f"  Black swan check: {e}")
+
     send_email(subject, summary)
     print("Done.")
 
