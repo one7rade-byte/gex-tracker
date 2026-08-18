@@ -189,6 +189,7 @@ footer{text-align:center;font-size:11px;color:#aaa;padding:20px;margin-top:8px}
 <footer>Data pulled daily · InsiderFinance + Yahoo Finance · GitHub Actions · one7rade-byte/gex-tracker</footer>
 <script>
 const CSV_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/gex_log.csv';
+const REGIME_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/regime_log.csv';
 const MAG7_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/mag7_log.csv';
 const MAG7_SIGNALS_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/mag7_signals_log.csv';
 const INTEL_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/intelligence_report.json';
@@ -202,6 +203,45 @@ async function fetchCSV(){
   return r.text();
 }
 
+
+async function fetchRegime(){
+  try{
+    const r=await fetch(REGIME_URL+'?t='+Date.now());
+    if(!r.ok)return[];
+    const text=await r.text();
+    const lines=text.trim().split('\n');
+    if(lines.length<2)return[];
+    const hdrs=lines[0].split(',').map(h=>h.trim());
+    return lines.slice(1).map(function(line){
+      const vals=[];let cur='',inQ=false;
+      for(let i=0;i<line.length;i++){
+        const ch=line[i];
+        if(ch==='"'){inQ=!inQ;}
+        else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}
+        else{cur+=ch;}
+      }
+      vals.push(cur.trim());
+      const obj={};
+      hdrs.forEach(function(h,i){obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim();});
+      return{
+        d:obj.date||'',
+        signal:obj.regime_signal||'',
+        composite:parseFloat(obj.composite_score)||0,
+        flowRegime:obj.flow_regime||'',
+        creditScore:parseFloat(obj.credit_score)||0,
+        volScore:parseFloat(obj.vol_score)||0,
+        hyg:parseFloat(obj.hyg)||null,
+        skew:parseFloat(obj.skew)||null,
+        gexSignal:obj.gex_signal||'',
+        skewSignal:obj.skew_signal||'',
+        bsWatch:obj.black_swan_watch==='True',
+        bsReasons:obj.black_swan_reasons||'',
+        brief:obj.brief||'',
+        hyg5d:parseFloat(obj.hyg_5d_change)||null,
+      };
+    }).filter(function(r){return r.d;});
+  }catch(e){console.error('fetchRegime failed:',e);return[];}
+}
 
 async function fetchIntel(){
   try{
@@ -1143,6 +1183,112 @@ function updateCharts(){
   renderCharts(slice);
 }
 
+
+function buildRegimePanel(regime){
+  var el=document.getElementById('regimePanel');
+  if(!el||!regime||!regime.length)return;
+
+  var last=regime[regime.length-1];
+  var prev=regime.slice(-6,-1);
+  var score=last.composite;
+  var scoreWidth=Math.round(((score+8)/16)*100);
+  var scoreColor=score>=5?'#3B6D11':score>=2?'#BA7517':score>=-1?'#888':'#A32D2D';
+
+  // Signal badge color
+  var sigColor={
+    'STRONG_BUY':'#27500A','BUY_WATCH':'#633806',
+    'STRONG_HOLD':'#185FA5','HOLD':'#555',
+    'CAUTION':'#854F0B','DEFENSIVE':'#791F1F','CRISIS':'#fff'
+  }[last.signal]||'#555';
+  var sigBg={
+    'STRONG_BUY':'#EAF3DE','BUY_WATCH':'#FAEEDA',
+    'STRONG_HOLD':'#E6F1FB','HOLD':'#f0ede8',
+    'CAUTION':'#FAEEDA','DEFENSIVE':'#FCEBEB','CRISIS':'#7B1111'
+  }[last.signal]||'#f0ede8';
+
+  // Composite trend (last 10 days)
+  var trend=regime.slice(-10).map(function(r){return r.composite;});
+  var trendUp=trend.length>=2&&trend[trend.length-1]>trend[0];
+
+  // Black swan warning
+  var bsHTML='';
+  if(last.bsWatch){
+    bsHTML='<div style="margin-top:10px;padding:10px;background:#FCEBEB;border-left:4px solid #A32D2D;border-radius:6px">'+
+      '<div style="font-size:12px;font-weight:600;color:#791F1F;margin-bottom:4px">⚠️ BLACK SWAN WATCH ACTIVE</div>'+
+      '<div style="font-size:11px;color:#555">'+last.bsReasons.split('|').map(function(r){return'• '+r.trim();}).join('<br>')+'</div>'+
+    '</div>';
+  }
+
+  // HYG trend warning
+  var hygHTML='';
+  if(last.hyg5d!==null&&last.hyg5d<-1.0){
+    hygHTML='<div style="font-size:11px;color:#A32D2D;margin-top:4px">⚠️ HYG dropped $'+Math.abs(last.hyg5d).toFixed(2)+' in 5 days — monitor credit</div>';
+  }
+
+  // Score breakdown bars
+  var breakdown=[
+    {label:'Credit (HYG)',score:last.creditScore,max:3,color:'#27ae60'},
+    {label:'Volatility (VIX)',score:last.volScore,max:3,color:'#378ADD'},
+  ];
+
+  var breakHTML=breakdown.map(function(b){
+    var pct=Math.round(((b.score+b.max)/(b.max*2))*100);
+    return'<div style="margin-bottom:6px">'+
+      '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-bottom:2px">'+
+        '<span>'+b.label+'</span><span>'+(b.score>=0?'+':'')+b.score+'/'+b.max+'</span>'+
+      '</div>'+
+      '<div style="background:#f0ede8;border-radius:10px;height:6px;overflow:hidden">'+
+        '<div style="width:'+pct+'%;height:100%;background:'+b.color+';border-radius:10px"></div>'+
+      '</div></div>';
+  }).join('');
+
+  // Mini sparkline of composite score last 20 days
+  var spark=regime.slice(-20).map(function(r){return r.composite;});
+  var sparkMin=Math.min.apply(null,spark)-1;
+  var sparkMax=Math.max.apply(null,spark)+1;
+  var sparkH=40,sparkW=160;
+  var pts=spark.map(function(v,i){
+    var x=Math.round(i/(spark.length-1)*sparkW);
+    var y=Math.round(sparkH-((v-sparkMin)/(sparkMax-sparkMin)*sparkH));
+    return x+','+y;
+  }).join(' ');
+
+  el.innerHTML=
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">'+
+      '<div>'+
+        '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Regime signal — '+last.d+'</div>'+
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'+
+          '<span style="padding:6px 14px;border-radius:20px;background:'+sigBg+';color:'+sigColor+';font-size:14px;font-weight:600">'+last.signal.replace(/_/g,' ')+'</span>'+
+          '<span style="font-size:12px;color:#888">'+last.flowRegime.replace(/_/g,' ')+'</span>'+
+        '</div>'+
+        '<div style="margin-bottom:6px">'+
+          '<div style="display:flex;justify-content:space-between;font-size:11px;color:#888;margin-bottom:3px">'+
+            '<span>Composite score</span><span style="font-weight:600;color:'+scoreColor+'">'+(score>=0?'+':'')+score+'/8</span>'+
+          '</div>'+
+          '<div style="background:#f0ede8;border-radius:10px;height:8px;overflow:hidden">'+
+            '<div style="width:'+scoreWidth+'%;height:100%;background:'+scoreColor+';border-radius:10px"></div>'+
+          '</div>'+
+        '</div>'+
+        breakHTML+
+        hygHTML+
+        bsHTML+
+      '</div>'+
+      '<div>'+
+        '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">20-day composite trend</div>'+
+        '<svg width="'+sparkW+'" height="'+sparkH+'" style="overflow:visible">'+
+          '<polyline points="'+pts+'" fill="none" stroke="'+scoreColor+'" stroke-width="2" stroke-linejoin="round"/>'+
+          '<circle cx="'+Math.round((spark.length-1)/(spark.length-1)*sparkW)+'" cy="'+Math.round(sparkH-((spark[spark.length-1]-sparkMin)/(sparkMax-sparkMin)*sparkH))+'" r="4" fill="'+scoreColor+'"/>'+
+        '</svg>'+
+        '<div style="font-size:10px;color:'+(trendUp?'#3B6D11':'#A32D2D')+'">'+
+          (trendUp?'↑ Improving':'↓ Declining')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<div style="margin-top:10px;padding:10px 12px;background:#f8f8f6;border-radius:6px;font-size:12px;color:#333;line-height:1.6;border-left:3px solid '+scoreColor+'">'+
+      last.brief+
+    '</div>';
+}
+
 function getFlowClass(regime){
   if(!regime)return'flow-neutral';
   if(regime==='risk_on'||regime==='mild_risk_on')return'flow-risk-on';
@@ -1380,6 +1526,7 @@ function buildUI(data){
   const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
 
   document.getElementById('app').innerHTML=
+    '<div class="card" id="regimePanel" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
     '<div class="card" style="border-left:4px solid '+(info.cls==='sig-g'?'#3B6D11':info.cls==='sig-r'?'#A32D2D':'#BA7517')+';padding:14px 16px;margin-bottom:12px">'+
       '<div style="font-size:10px;font-weight:600;color:#999;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">📋 Daily brief — '+last.d+'</div>'+
       buildDailyBrief(last, prev, info)+
@@ -2819,6 +2966,11 @@ async function init(){
     const text=await fetchCSV();
     const data=parseCSV(text);
     if(!data.length)throw new Error('No data');
+    // Fetch regime log in parallel
+    fetchRegime().then(function(regime){
+      ALL_REGIME=regime;
+      buildRegimePanel(regime);
+    }).catch(function(){});
     ALL_DATA=data;
     buildUI(data);
     const last=data[data.length-1];
