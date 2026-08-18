@@ -318,6 +318,56 @@ def load_regime_history():
         return list(csv.DictReader(f))
 
 
+def update_gex_signal(date, regime_signal, composite_score, flow_regime):
+    """
+    Write the composite regime signal back to gex_log.csv
+    so the history table shows the unified signal instead of the old GEX-only signal.
+    """
+    if not os.path.exists(GEX_CSV):
+        return
+    try:
+        with open(GEX_CSV, newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            headers = list(reader.fieldnames)
+
+        # Add regime_signal column if not present
+        if 'regime_signal' not in headers:
+            headers.append('regime_signal')
+        if 'composite_score' not in headers:
+            headers.append('composite_score')
+
+        # Map signal to display label
+        signal_map = {
+            'STRONG_BUY':  'STRONG BUY — deep neg GEX + oversold + macro healthy',
+            'BUY_WATCH':   'BUY WATCH — setup building, scale in',
+            'STRONG_HOLD': 'GREEN Strong hold — max positive regime',
+            'HOLD':        'GREEN Hold - pos GEX, vol controlled',
+            'CAUTION':     'AMBER Caution — overbought pullback, tighten stops',
+            'DEFENSIVE':   'RED Defensive — credit stress, reduce exposure',
+            'CRISIS':      'RED CRISIS — credit crisis, exit longs',
+        }
+        display = signal_map.get(regime_signal, regime_signal)
+
+        updated = 0
+        for row in rows:
+            if row.get('date') == date and row.get('ticker','').strip() == 'SPY':
+                row['signal'] = display
+                row['regime_signal'] = regime_signal
+                row['composite_score'] = composite_score
+                updated += 1
+
+        with open(GEX_CSV, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=headers, extrasaction='ignore')
+            writer.writeheader()
+            writer.writerows(rows)
+
+        if updated:
+            print(f"  Updated gex_log.csv signal for {date}: {display}")
+    except Exception as e:
+        print(f"  Warning: could not update gex_log signal: {e}")
+
+
 def save_regime_row(row):
     exists = os.path.exists(REGIME_CSV)
     # Remove existing row for same date then append
@@ -489,6 +539,7 @@ def main():
         'brief': brief,
     }
     save_regime_row(row)
+    update_gex_signal(date, signal, composite, flow_reg)
     print("\n  ✅ Done")
 
 
