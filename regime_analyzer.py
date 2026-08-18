@@ -48,7 +48,7 @@ REGIME_CSV_HEADERS = [
     "skew_signal",        # panic_buy/normal/warning/black_swan_watch
     "gex_signal",         # positive/negative/deeply_negative
     # Combined signal
-    "regime_signal",      # STRONG_BUY/BUY_WATCH/HOLD/CAUTION/DEFENSIVE/CRISIS
+    "regime_signal",      # STRONG_BUY/BUY_WATCH/STRONG_HOLD/HOLD/CAUTION/DEFENSIVE/CRISIS
     "black_swan_watch",   # True/False
     "black_swan_reasons", # pipe-separated list of warning signals
     "brief",              # one-sentence plain English summary
@@ -193,13 +193,27 @@ def get_regime_signal(composite, hyg, gex, rsi, skew, vix):
         rsi is not None and rsi < 57):
         return "BUY_WATCH"
 
-    # Overbought caution: negative GEX but RSI elevated
-    if gex is not None and gex < 0 and rsi is not None and rsi > 70:
+    # Overbought caution: negative GEX + RSI elevated + macro not strongly positive
+    # Only fires if composite < 5 — when macro is at +8 and GEX is just mildly
+    # negative (-0 to -5B) it's weekly expiry noise not a real caution signal
+    if (gex is not None and gex < -5 and
+        rsi is not None and rsi > 70 and
+        composite < 5):
+        return "CAUTION"
+
+    # Mild overbought pullback — note it but don't flag caution if macro is strong
+    if (gex is not None and gex < 0 and
+        rsi is not None and rsi > 75 and
+        composite < 3):
         return "CAUTION"
 
     # Caution: macro score declining
     if composite <= -1:
         return "CAUTION"
+
+    # Strong hold: max positive regime
+    if composite >= 6:
+        return "STRONG_HOLD"
 
     # Normal hold
     if composite >= 3:
@@ -271,8 +285,10 @@ def get_brief(signal, composite, hyg, vix, gex, skew, flow_regime, bs_watch):
         return f"Defensive positioning — HYG ${hyg:.2f} showing credit stress. No new longs until HYG recovers above $76."
     if signal == "CAUTION":
         return f"Caution — composite score {composite:+.1f}, VIX {vix:.1f}. Reduce new positions, tighten stops."
+    if signal == "STRONG_HOLD":
+        return f"Maximum bull regime — composite {composite:+.1f}/8, HYG ${hyg:.2f} healthy, VIX {vix:.1f} suppressed. Hold all positions. Not a new entry point."
     if composite >= 5:
-        return f"Maximum bull regime — composite {composite:+.1f}, HYG ${hyg:.2f} healthy. Hold all positions."
+        return f"Strong bull regime — composite {composite:+.1f}, HYG ${hyg:.2f} healthy. Hold all positions."
     return f"Positive regime — composite {composite:+.1f}, HYG ${hyg:.2f}, VIX {vix:.1f}. Hold existing positions."
 
 
