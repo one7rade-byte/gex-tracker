@@ -21,7 +21,8 @@ def ask_gemini(prompt):
         json={"contents": [{"parts": [{"text": prompt}]}]},
         timeout=30,
     )
-    r.raise_for_status()
+    if not r.ok:
+        raise RuntimeError(f"{r.status_code}: {r.text[:500]}")
     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
 
 def send_message(chat_id, text):
