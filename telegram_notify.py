@@ -315,7 +315,7 @@ XLRE (real estate): ${xlre:.2f}
 
 *Technical Signals*
 SKEW: {skew:.1f} {"⚠️ elevated tail hedging" if skew and skew>145 else "✅ normal"}
-VIX9D/VIX ratio: {vix9d_r:.3f if vix9d_r else "—"} {"⚠️ near-term spike" if vix9d_r and vix9d_r>1.10 else "✅ calm"}
+VIX9D/VIX ratio: {round(vix9d_r,3) if vix9d_r else "—"} {"⚠️ near-term spike" if vix9d_r and vix9d_r>1.10 else "✅ calm"}
 
 *Key Thresholds*
 • HYG >$78 = buy all dips aggressively
