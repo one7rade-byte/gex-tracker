@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 TELEGRAM_TOKEN   = os.environ["TELEGRAM_TOKEN"]
 GEMINI_API_KEY   = os.environ["GEMINI_API_KEY"]
-ALLOWED_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID")  # optional lockdown to just you
 
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
@@ -21,9 +20,6 @@ DATA_SOURCES = {
 }
 
 def fetch_dashboard_context():
-    """Pull the current dashboard data files so Gemini can ground its
-    answer in real history instead of guessing. Fetched fresh every
-    request so it's never stale; failures on one file don't block others."""
     parts = []
     for label, url in DATA_SOURCES.items():
         try:
@@ -37,7 +33,7 @@ def fetch_dashboard_context():
     return "\n\n".join(parts)
 
 SYSTEM_PROMPT = (
-    "You are the assistant for one7rade's SPY GEX Tracker, a personal market "
+    "You are the assistant for one7rade's SPY GEX Tracker, a public market "
     "dashboard tracking SPY/QQQ gamma exposure (GEX), VIX, RSI, SKEW, VIX term "
     "structure, dealer positioning, cross-asset flow, and Magnificent 7 options "
     "signals, with roughly 5 years of daily history. "
@@ -52,7 +48,9 @@ SYSTEM_PROMPT = (
     "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy zone) "
     "in this options/market-structure context, never other meanings. "
     "Answer like a knowledgeable trading assistant: concise, direct, no "
-    "unnecessary hedging or disclaimers."
+    "unnecessary hedging or disclaimers. This is not financial advice — if a "
+    "question asks you to make a trade decision for someone, give the factual "
+    "analysis and let them decide."
 )
 
 def ask_gemini(prompt):
@@ -103,8 +101,6 @@ def webhook():
         return "ok"
 
     chat_id = str(msg["chat"]["id"])
-    if ALLOWED_CHAT_ID and chat_id != str(ALLOWED_CHAT_ID):
-        return "ok"
 
     stop_typing = threading.Event()
     typing_thread = threading.Thread(target=keep_typing, args=(chat_id, stop_typing), daemon=True)
