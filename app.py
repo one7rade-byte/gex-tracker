@@ -9,12 +9,18 @@ GEMINI_API_KEY   = os.environ["GEMINI_API_KEY"]
 ALLOWED_CHAT_ID  = os.environ.get("TELEGRAM_CHAT_ID")  # optional lockdown to just you
 
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
-GEMINI_API   = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 
 def ask_gemini(prompt):
-    r = requests.post(GEMINI_API, json={
-        "contents": [{"parts": [{"text": prompt}]}]
-    }, timeout=30)
+    r = requests.post(
+        GEMINI_URL,
+        headers={
+            "x-goog-api-key": GEMINI_API_KEY,
+            "Content-Type": "application/json",
+        },
+        json={"contents": [{"parts": [{"text": prompt}]}]},
+        timeout=30,
+    )
     r.raise_for_status()
     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
 
