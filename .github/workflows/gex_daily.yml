@@ -43,8 +43,8 @@ jobs:
             sleep $((i*5))
           done
 
-      - name: Wait 30 minutes for GitHub Pages to update
-        run: sleep 1800
+      - name: Wait 1 minutes for GitHub Pages to update
+        run: sleep 60
 
       - name: Send Telegram summary
         env:
