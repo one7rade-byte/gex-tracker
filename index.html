@@ -1409,7 +1409,7 @@ function buildFlowCard(last, data){
 function buildUI(data){
   ALL_DATA=data;
   const total=data.length;
-  const last=data[total-1],prev=data.slice(-6,-1),info=computeSignal(last.g,last.v,prev);
+  const last=data[total-1],prev=data.slice(-6,-1),info=computeSignal(last.g,last.v,prev,last.rsi,last.termSpread,last.yield10y,last.vix9dRatio);
   const change=total>=2?(last.s-data[total-2].s):0,chSign=change>=0?'+':'';
   const spyHigh=Math.max(...data.map(e=>e.s)),vLow=Math.min(...data.map(e=>e.v));
   const gColor=last.g>=0?'#3B6D11':'#A32D2D',vColor=last.v<=17?'#3B6D11':last.v<=19?'#BA7517':'#A32D2D',sColor=change>=0?'#3B6D11':'#A32D2D';
