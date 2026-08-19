@@ -166,10 +166,13 @@ def format_mag7(mag7_rows):
     lines = []
     for r in top[:3]:
         ticker = r.get("ticker","?")
-        score = r.get("opportunity_score","?")
         signal = r.get("signal","?")
-        if float(score or 0) >= 6:
-            lines.append(f"  • {ticker}: Score {score}/10 — {signal}")
+        try:
+            score = float(r.get("opportunity_score") or 0)
+        except:
+            score = 0
+        if score >= 6:
+            lines.append(f"  • {ticker}: Score {score:.0f}/10 — {signal}")
     if not lines: return ""
     return "\n🏢 Top MAG7 Opportunities:\n" + "\n".join(lines)
 
