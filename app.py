@@ -1,4 +1,5 @@
 import os
+import re
 import threading
 from flask import Flask, request
 import requests
@@ -47,10 +48,18 @@ SYSTEM_PROMPT = (
     "in the data or your knowledge, say so plainly rather than guessing. "
     "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy zone) "
     "in this options/market-structure context, never other meanings. "
-    "Answer like a knowledgeable trading assistant: concise, direct, no "
-    "unnecessary hedging or disclaimers. This is not financial advice — if a "
-    "question asks you to make a trade decision for someone, give the factual "
-    "analysis and let them decide."
+    "\n\n"
+    "FORMATTING — this is a Telegram chat, not a report: write like you're "
+    "texting a knowledgeable friend, not drafting a document. Keep it short — "
+    "a few sentences to a short paragraph for simple questions, at most 3-4 "
+    "short sections for genuinely complex ones. Never use markdown headers "
+    "(no #, ##, ###). Never use double-asterisk bold (**text**) — if you need "
+    "to emphasize a key number or word, use single asterisks (*text*) and only "
+    "for a handful of the most important terms, not most of the message. Avoid "
+    "long bullet-point lists; prefer plain conversational sentences. No em-dash "
+    "section dividers (---). Get to the point fast. This is not financial "
+    "advice — give the analysis and let them decide, without excessive "
+    "disclaimers."
 )
 
 def ask_gemini(prompt):
@@ -85,13 +94,31 @@ def keep_typing(chat_id, stop_event):
         send_typing(chat_id)
         stop_event.wait(4)
 
+def clean_for_telegram(text):
+    # Defensive cleanup in case Gemini still slips into GFM habits despite
+    # the prompt: convert headers/bold to Telegram's legacy Markdown style.
+    text = re.sub(r'^#{1,6}\s*(.+)$', r'*\1*', text, flags=re.MULTILINE)
+    text = re.sub(r'\*\*(.+?)\*\*', r'*\1*', text)
+    text = re.sub(r'^-{3,}\s*$', '', text, flags=re.MULTILINE)
+    return text.strip()
+
 def send_message(chat_id, text):
+    text = clean_for_telegram(text)
     if len(text) > 4000:
         text = text[:4000] + "\n\n[truncated]"
+
+    # Try with Markdown rendering first; if Telegram rejects it for
+    # unbalanced/invalid entities, fall back to plain text so the reply
+    # still arrives instead of silently failing.
     r = requests.post(f"{TELEGRAM_API}/sendMessage",
-                       json={"chat_id": chat_id, "text": text}, timeout=15)
+                       json={"chat_id": chat_id, "text": text, "parse_mode": "Markdown"},
+                       timeout=15)
     if not r.ok:
-        print(f"Telegram send failed: {r.status_code} {r.text}")
+        print(f"Telegram send (markdown) failed: {r.status_code} {r.text}")
+        r2 = requests.post(f"{TELEGRAM_API}/sendMessage",
+                            json={"chat_id": chat_id, "text": text}, timeout=15)
+        if not r2.ok:
+            print(f"Telegram send (plain) failed: {r2.status_code} {r2.text}")
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
