@@ -1,6 +1,8 @@
 import os
 import re
 import threading
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from flask import Flask, request
 import requests
 
@@ -25,19 +27,16 @@ NEWS_HEADERS = {
     "Accept": "text/html,application/json,*/*",
 }
 
-# Words that look like tickers (1-5 caps) but almost never are, in a
-# finance-chat context — kept short on purpose, false positives are cheap
-# (worst case: one extra harmless Yahoo RSS fetch that returns nothing useful).
 TICKER_STOPWORDS = {
     "I","A","ON","IF","OR","AND","THE","FOR","ARE","IS","BE","TO","OF","IN",
     "GEX","VIX","RSI","SKEW","CEO","CFO","IPO","ETF","FED","GDP","CPI","AI",
     "US","USA","UK","EU","OK","MA","MACD","ATH","YTD","EPS","PE","ER","Q1",
-    "Q2","Q3","Q4","LOL","OMG","WTF","FYI","ASAP","DM","AM","PM",
+    "Q2","Q3","Q4","LOL","OMG","WTF","FYI","ASAP","DM","AM","PM","FOMC",
 }
 
 def extract_tickers(text):
     candidates = set(re.findall(r'\b[A-Z]{1,5}\b', text))
-    return [t for t in candidates if t not in TICKER_STOPWORDS][:3]  # cap at 3 to bound latency
+    return [t for t in candidates if t not in TICKER_STOPWORDS][:3]
 
 def parse_rss_items(xml_text, max_items):
     headlines = []
@@ -47,7 +46,7 @@ def parse_rss_items(xml_text, max_items):
         pub   = re.search(r'<pubDate>(.*?)</pubDate>', item)
         if title:
             t = re.sub(r'<.*?>', '', title.group(1)).strip()
-            t = re.sub(r'\s*-\s*[A-Za-z0-9 .]+$', '', t).strip()  # strip " - Source Name"
+            t = re.sub(r'\s*-\s*[A-Za-z0-9 .]+$', '', t).strip()
             l = link.group(1).strip() if link else ""
             p = pub.group(1).strip() if pub else ""
             headlines.append(f"- {t}" + (f" ({p})" if p else "") + (f" [{l}]" if l else ""))
@@ -75,6 +74,29 @@ def fetch_macro_news(max_items=8):
         print(f"macro news fetch failed: {e}")
         return []
 
+def fetch_economic_calendar():
+    """Free, no-key weekly economic calendar feed — impact levels map to
+    the classic red (High) / orange (Medium) / yellow (Low) folder colors."""
+    try:
+        r = requests.get("https://nfs.faireconomy.media/ff_calendar_thisweek.json",
+                          headers=NEWS_HEADERS, timeout=12)
+        if not r.ok:
+            return "[calendar unavailable: HTTP %d]" % r.status_code
+        events = r.json()
+        lines = []
+        for e in events:
+            impact = e.get("impact", "")
+            folder = {"High": "RED", "Medium": "ORANGE", "Low": "yellow"}.get(impact, impact)
+            actual = e.get("actual", "")
+            forecast = e.get("forecast", "")
+            previous = e.get("previous", "")
+            vals = f"actual={actual or '—'} forecast={forecast or '—'} previous={previous or '—'}"
+            lines.append(f"- [{folder} folder] {e.get('date','')} | {e.get('country','')} | {e.get('title','')} | {vals}")
+        return "\n".join(lines) if lines else "[no events this week]"
+    except Exception as e:
+        print(f"calendar fetch failed: {e}")
+        return f"[calendar unavailable: {e}]"
+
 def fetch_dashboard_context():
     parts = []
     for label, url in DATA_SOURCES.items():
@@ -90,6 +112,12 @@ def fetch_dashboard_context():
 
 def fetch_live_news_context(user_question):
     parts = []
+
+    now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
+    parts.append(f"=== Current date/time ===\n{now_et}")
+
+    parts.append("=== This week's economic calendar (red=High impact, orange=Medium, yellow=Low) ===\n"
+                  + fetch_economic_calendar())
 
     macro = fetch_macro_news()
     if macro:
@@ -107,19 +135,21 @@ SYSTEM_PROMPT = (
     "dashboard tracking SPY/QQQ gamma exposure (GEX), VIX, RSI, SKEW, VIX term "
     "structure, dealer positioning, cross-asset flow, and Magnificent 7 options "
     "signals, with roughly 5 years of daily history. "
-    "Every request includes the current contents of the dashboard's real data "
-    "files, plus live macro news headlines and — when the question names a "
-    "specific ticker — live news for that stock, fetched fresh via RSS. Use "
-    "all of this as ground truth for anything about specific dates, levels, "
-    "signals, scores, or recent headlines. This news coverage is NOT limited "
-    "to the Magnificent 7 — if asked about any stock, use its live headlines "
-    "if provided, and your own general knowledge otherwise. "
-    "Combine the provided data with your own general knowledge of markets, "
-    "macro conditions, and financial history to give a complete, accurate, "
-    "well-reasoned answer — don't limit yourself to only what's provided, but "
-    "don't contradict it either. If something needs information you don't "
-    "have (e.g. breaking news in the last few minutes, or a specific social "
-    "media post), say so plainly rather than guessing or inventing a source. "
+    "Every request includes: the dashboard's real data files, the current "
+    "date/time, this week's economic calendar (with red/orange/yellow folder "
+    "impact ratings — the same system traders mean by 'red folder news'), "
+    "live macro headlines, and — when the question names a specific ticker — "
+    "live news for that stock. Use all of this as ground truth, and use the "
+    "current date/time to correctly identify what 'today' means among the "
+    "week's calendar events. This news and calendar coverage is NOT limited "
+    "to the Magnificent 7 — answer about any stock or any scheduled economic "
+    "release (jobless claims, CPI, FOMC, NFP, etc.) using the provided data. "
+    "Combine all of this with your own general knowledge of markets, macro "
+    "conditions, and financial history for a complete, accurate answer — "
+    "don't limit yourself to only what's provided, but don't contradict it "
+    "either. If something needs info you truly don't have (e.g. a release "
+    "that hasn't happened yet, or a specific social media post), say so "
+    "plainly rather than guessing or inventing a source. "
     "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy "
     "zone) in this options/market-structure context, never other meanings. "
     "\n\n"
