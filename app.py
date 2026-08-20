@@ -1,5 +1,6 @@
 import os
 import re
+import time
 import threading
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -74,14 +75,22 @@ def fetch_macro_news(max_items=8):
         print(f"macro news fetch failed: {e}")
         return []
 
+_calendar_cache = {"data": None, "fetched_at": 0}
+CALENDAR_CACHE_TTL = 20 * 60  # refresh at most every 20 minutes
+
 def fetch_economic_calendar():
-    """Free, no-key weekly economic calendar feed — impact levels map to
-    the classic red (High) / orange (Medium) / yellow (Low) folder colors."""
+    """Free, no-key weekly economic calendar — impact levels map to the
+    classic red (High) / orange (Medium) / yellow (Low) folder colors.
+    Cached for CALENDAR_CACHE_TTL to avoid hammering the feed and to
+    survive occasional rate-limiting with a stale-but-usable copy."""
+    now = time.time()
+    if _calendar_cache["data"] and (now - _calendar_cache["fetched_at"] < CALENDAR_CACHE_TTL):
+        return _calendar_cache["data"]
     try:
         r = requests.get("https://nfs.faireconomy.media/ff_calendar_thisweek.json",
                           headers=NEWS_HEADERS, timeout=12)
         if not r.ok:
-            return "[calendar unavailable: HTTP %d]" % r.status_code
+            raise RuntimeError(f"HTTP {r.status_code}")
         events = r.json()
         lines = []
         for e in events:
@@ -92,9 +101,14 @@ def fetch_economic_calendar():
             previous = e.get("previous", "")
             vals = f"actual={actual or '—'} forecast={forecast or '—'} previous={previous or '—'}"
             lines.append(f"- [{folder} folder] {e.get('date','')} | {e.get('country','')} | {e.get('title','')} | {vals}")
-        return "\n".join(lines) if lines else "[no events this week]"
+        result = "\n".join(lines) if lines else "[no events this week]"
+        _calendar_cache["data"] = result
+        _calendar_cache["fetched_at"] = now
+        return result
     except Exception as e:
         print(f"calendar fetch failed: {e}")
+        if _calendar_cache["data"]:
+            return _calendar_cache["data"] + "\n[note: using a cached copy, live refresh just failed]"
         return f"[calendar unavailable: {e}]"
 
 def fetch_dashboard_context():
