@@ -20,6 +20,61 @@ DATA_SOURCES = {
     "Latest daily intelligence report (intelligence_report.json)": f"{RAW_BASE}/intelligence_report.json",
 }
 
+NEWS_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/json,*/*",
+}
+
+# Words that look like tickers (1-5 caps) but almost never are, in a
+# finance-chat context — kept short on purpose, false positives are cheap
+# (worst case: one extra harmless Yahoo RSS fetch that returns nothing useful).
+TICKER_STOPWORDS = {
+    "I","A","ON","IF","OR","AND","THE","FOR","ARE","IS","BE","TO","OF","IN",
+    "GEX","VIX","RSI","SKEW","CEO","CFO","IPO","ETF","FED","GDP","CPI","AI",
+    "US","USA","UK","EU","OK","MA","MACD","ATH","YTD","EPS","PE","ER","Q1",
+    "Q2","Q3","Q4","LOL","OMG","WTF","FYI","ASAP","DM","AM","PM",
+}
+
+def extract_tickers(text):
+    candidates = set(re.findall(r'\b[A-Z]{1,5}\b', text))
+    return [t for t in candidates if t not in TICKER_STOPWORDS][:3]  # cap at 3 to bound latency
+
+def parse_rss_items(xml_text, max_items):
+    headlines = []
+    for item in re.findall(r'<item>(.*?)</item>', xml_text, re.DOTALL)[:max_items]:
+        title = re.search(r'<title><!\[CDATA\[(.*?)\]\]></title>', item) or re.search(r'<title>(.*?)</title>', item)
+        link  = re.search(r'<link>(.*?)</link>', item) or re.search(r'<guid>(.*?)</guid>', item)
+        pub   = re.search(r'<pubDate>(.*?)</pubDate>', item)
+        if title:
+            t = re.sub(r'<.*?>', '', title.group(1)).strip()
+            t = re.sub(r'\s*-\s*[A-Za-z0-9 .]+$', '', t).strip()  # strip " - Source Name"
+            l = link.group(1).strip() if link else ""
+            p = pub.group(1).strip() if pub else ""
+            headlines.append(f"- {t}" + (f" ({p})" if p else "") + (f" [{l}]" if l else ""))
+    return headlines
+
+def fetch_ticker_news(symbol, max_items=6):
+    try:
+        url = f"https://feeds.finance.yahoo.com/rss/2.0/headline?s={symbol}&region=US&lang=en-US"
+        r = requests.get(url, headers=NEWS_HEADERS, timeout=10)
+        if not r.ok:
+            return []
+        return parse_rss_items(r.text, max_items)
+    except Exception as e:
+        print(f"ticker news fetch failed ({symbol}): {e}")
+        return []
+
+def fetch_macro_news(max_items=8):
+    try:
+        url = "https://news.google.com/rss/search?q=market+fed+earnings+economy+stocks&hl=en-US&gl=US&ceid=US:en"
+        r = requests.get(url, headers=NEWS_HEADERS, timeout=10)
+        if not r.ok:
+            return []
+        return parse_rss_items(r.text, max_items)
+    except Exception as e:
+        print(f"macro news fetch failed: {e}")
+        return []
+
 def fetch_dashboard_context():
     parts = []
     for label, url in DATA_SOURCES.items():
@@ -33,21 +88,40 @@ def fetch_dashboard_context():
             parts.append(f"=== {label} ===\n[unavailable: {e}]")
     return "\n\n".join(parts)
 
+def fetch_live_news_context(user_question):
+    parts = []
+
+    macro = fetch_macro_news()
+    if macro:
+        parts.append("=== Live macro/market headlines (Google News, recent) ===\n" + "\n".join(macro))
+
+    for ticker in extract_tickers(user_question):
+        items = fetch_ticker_news(ticker)
+        if items:
+            parts.append(f"=== Live news for {ticker} (Yahoo Finance, recent) ===\n" + "\n".join(items))
+
+    return "\n\n".join(parts)
+
 SYSTEM_PROMPT = (
     "You are the assistant for one7rade's SPY GEX Tracker, a public market "
     "dashboard tracking SPY/QQQ gamma exposure (GEX), VIX, RSI, SKEW, VIX term "
     "structure, dealer positioning, cross-asset flow, and Magnificent 7 options "
     "signals, with roughly 5 years of daily history. "
     "Every request includes the current contents of the dashboard's real data "
-    "files below — use them as ground truth for anything about specific dates, "
-    "GEX/VIX levels, signals, scores, or historical patterns in this data. "
-    "Combine that with your own general knowledge of markets, macro conditions, "
-    "and financial news to give a complete, accurate, well-reasoned answer — "
-    "don't limit yourself to only what's in the data, but don't contradict it "
-    "either. If a question needs current news or price action beyond what's "
-    "in the data or your knowledge, say so plainly rather than guessing. "
-    "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy zone) "
-    "in this options/market-structure context, never other meanings. "
+    "files, plus live macro news headlines and — when the question names a "
+    "specific ticker — live news for that stock, fetched fresh via RSS. Use "
+    "all of this as ground truth for anything about specific dates, levels, "
+    "signals, scores, or recent headlines. This news coverage is NOT limited "
+    "to the Magnificent 7 — if asked about any stock, use its live headlines "
+    "if provided, and your own general knowledge otherwise. "
+    "Combine the provided data with your own general knowledge of markets, "
+    "macro conditions, and financial history to give a complete, accurate, "
+    "well-reasoned answer — don't limit yourself to only what's provided, but "
+    "don't contradict it either. If something needs information you don't "
+    "have (e.g. breaking news in the last few minutes, or a specific social "
+    "media post), say so plainly rather than guessing or inventing a source. "
+    "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy "
+    "zone) in this options/market-structure context, never other meanings. "
     "\n\n"
     "FORMATTING — this is a Telegram chat, not a report: write like you're "
     "texting a knowledgeable friend, not drafting a document. Keep it short — "
@@ -62,9 +136,12 @@ SYSTEM_PROMPT = (
     "disclaimers."
 )
 
-def ask_gemini(prompt):
-    context = fetch_dashboard_context()
-    full_prompt = f"{context}\n\n=== USER QUESTION ===\n{prompt}"
+def ask_gemini(user_question):
+    dashboard_context = fetch_dashboard_context()
+    news_context = fetch_live_news_context(user_question)
+    full_prompt = (
+        f"{dashboard_context}\n\n{news_context}\n\n=== USER QUESTION ===\n{user_question}"
+    )
 
     r = requests.post(
         GEMINI_URL,
@@ -95,8 +172,6 @@ def keep_typing(chat_id, stop_event):
         stop_event.wait(4)
 
 def clean_for_telegram(text):
-    # Defensive cleanup in case Gemini still slips into GFM habits despite
-    # the prompt: convert headers/bold to Telegram's legacy Markdown style.
     text = re.sub(r'^#{1,6}\s*(.+)$', r'*\1*', text, flags=re.MULTILINE)
     text = re.sub(r'\*\*(.+?)\*\*', r'*\1*', text)
     text = re.sub(r'^-{3,}\s*$', '', text, flags=re.MULTILINE)
@@ -107,9 +182,6 @@ def send_message(chat_id, text):
     if len(text) > 4000:
         text = text[:4000] + "\n\n[truncated]"
 
-    # Try with Markdown rendering first; if Telegram rejects it for
-    # unbalanced/invalid entities, fall back to plain text so the reply
-    # still arrives instead of silently failing.
     r = requests.post(f"{TELEGRAM_API}/sendMessage",
                        json={"chat_id": chat_id, "text": text, "parse_mode": "Markdown"},
                        timeout=15)
