@@ -1,0 +1,31 @@
+name: Sector Rotation Daily
+on:
+  schedule:
+    - cron: '10 20 * * 1-5'   # ~4:10 PM ET Mon-Fri, shortly after market_scan_daily
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rotation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: python sector_rotation.py
+      - run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add sector_rotation_log.csv sector_rotation_top.json
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Sector rotation update $(date +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && \
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
+            echo "Push attempt $i failed, retrying in $((i*5))s..."
+            sleep $((i*5))
+          done
