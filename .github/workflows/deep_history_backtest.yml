@@ -1,0 +1,33 @@
+name: Deep History Backtest
+# workflow_dispatch ONLY — no schedule. This is a one-time (or occasional
+# re-run, e.g. after regime_analyzer.py's scoring logic changes) analysis
+# script, not a growing daily log like the other trackers in this repo.
+# Run it manually from the Actions tab whenever you want a refreshed view.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: python deep_history_backtest.py
+      - run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add deep_history_backtest_log.csv deep_history_backtest_summary.json
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Deep history backtest refresh $(date +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && \
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
+            echo "Push attempt $i failed, retrying in $((i*5))s..."
+            sleep $((i*5))
+          done
