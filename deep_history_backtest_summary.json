@@ -1,0 +1,219 @@
+{
+  "total_days": 204,
+  "date_range": "2009-10-01 to 2026-08-21",
+  "note": "regime_signal here was computed with gex=None (no free historical dealer-positioning data exists) \u2014 STRONG_BUY/BUY_WATCH never appear. flow_regime doesn't depend on gex and is the more complete signal. Bucket boundaries match regime_analyzer.py's own documented composite_score ranges.",
+  "by_composite_bucket": {
+    "strong_bull (+6 to +8)": {
+      "5d": {
+        "n": 76,
+        "avg_return_pct": 3.22,
+        "hit_rate_pct": 73.7
+      },
+      "10d": {
+        "n": 72,
+        "avg_return_pct": 7.8,
+        "hit_rate_pct": 81.9
+      },
+      "20d": {
+        "n": 68,
+        "avg_return_pct": 15.96,
+        "hit_rate_pct": 88.2
+      }
+    },
+    "mild_bull (+3 to +5)": {
+      "5d": {
+        "n": 79,
+        "avg_return_pct": 5.19,
+        "hit_rate_pct": 77.2
+      },
+      "10d": {
+        "n": 78,
+        "avg_return_pct": 8.84,
+        "hit_rate_pct": 83.3
+      },
+      "20d": {
+        "n": 73,
+        "avg_return_pct": 20.19,
+        "hit_rate_pct": 95.9
+      }
+    },
+    "neutral (0 to +2)": {
+      "5d": {
+        "n": 34,
+        "avg_return_pct": 9.23,
+        "hit_rate_pct": 88.2
+      },
+      "10d": {
+        "n": 34,
+        "avg_return_pct": 18.92,
+        "hit_rate_pct": 94.1
+      },
+      "20d": {
+        "n": 33,
+        "avg_return_pct": 31.6,
+        "hit_rate_pct": 93.9
+      }
+    },
+    "stress (-1 to -3)": {
+      "5d": {
+        "n": 6,
+        "avg_return_pct": 4.84,
+        "hit_rate_pct": 66.7
+      },
+      "10d": {
+        "n": 6,
+        "avg_return_pct": 12.86,
+        "hit_rate_pct": 83.3
+      },
+      "20d": {
+        "n": 6,
+        "avg_return_pct": 36.04,
+        "hit_rate_pct": 100.0
+      }
+    },
+    "crisis (-4 to -8)": {
+      "5d": {
+        "n": 4,
+        "avg_return_pct": 13.83,
+        "hit_rate_pct": 100.0
+      },
+      "10d": {
+        "n": 4,
+        "avg_return_pct": 25.13,
+        "hit_rate_pct": 100.0
+      },
+      "20d": {
+        "n": 4,
+        "avg_return_pct": 48.08,
+        "hit_rate_pct": 100.0
+      }
+    }
+  },
+  "by_flow_regime": {
+    "cash_hoarding": {
+      "5d": {
+        "n": 5,
+        "avg_return_pct": 4.41,
+        "hit_rate_pct": 60.0
+      },
+      "10d": {
+        "n": 5,
+        "avg_return_pct": 14.64,
+        "hit_rate_pct": 100.0
+      },
+      "20d": {
+        "n": 5,
+        "avg_return_pct": 30.86,
+        "hit_rate_pct": 100.0
+      }
+    },
+    "mild_risk_on": {
+      "5d": {
+        "n": 79,
+        "avg_return_pct": 5.19,
+        "hit_rate_pct": 77.2
+      },
+      "10d": {
+        "n": 78,
+        "avg_return_pct": 8.84,
+        "hit_rate_pct": 83.3
+      },
+      "20d": {
+        "n": 73,
+        "avg_return_pct": 20.19,
+        "hit_rate_pct": 95.9
+      }
+    },
+    "neutral": {
+      "5d": {
+        "n": 30,
+        "avg_return_pct": 9.49,
+        "hit_rate_pct": 90.0
+      },
+      "10d": {
+        "n": 30,
+        "avg_return_pct": 19.05,
+        "hit_rate_pct": 93.3
+      },
+      "20d": {
+        "n": 29,
+        "avg_return_pct": 31.57,
+        "hit_rate_pct": 93.1
+      }
+    },
+    "recession_fear": {
+      "5d": {
+        "n": 7,
+        "avg_return_pct": 10.66,
+        "hit_rate_pct": 85.7
+      },
+      "10d": {
+        "n": 7,
+        "avg_return_pct": 18.78,
+        "hit_rate_pct": 85.7
+      },
+      "20d": {
+        "n": 7,
+        "avg_return_pct": 41.87,
+        "hit_rate_pct": 100.0
+      }
+    },
+    "risk_off": {
+      "5d": {
+        "n": 2,
+        "avg_return_pct": 8.47,
+        "hit_rate_pct": 100.0
+      },
+      "10d": {
+        "n": 2,
+        "avg_return_pct": 22.39,
+        "hit_rate_pct": 100.0
+      },
+      "20d": {
+        "n": 2,
+        "avg_return_pct": 44.28,
+        "hit_rate_pct": 100.0
+      }
+    },
+    "risk_on": {
+      "5d": {
+        "n": 76,
+        "avg_return_pct": 3.22,
+        "hit_rate_pct": 73.7
+      },
+      "10d": {
+        "n": 72,
+        "avg_return_pct": 7.8,
+        "hit_rate_pct": 81.9
+      },
+      "20d": {
+        "n": 68,
+        "avg_return_pct": 15.96,
+        "hit_rate_pct": 88.2
+      }
+    }
+  },
+  "crash_window_analysis": {
+    "2008_GFC": {
+      "note": "no data available for this window with current history"
+    },
+    "2020_COVID": {
+      "trading_days": 1,
+      "date_range_actual": "2020-03-01 to 2020-03-01",
+      "avg_composite_score": -4.1,
+      "min_composite_score": -4.1,
+      "pct_days_flow_regime_flagged_defensive": 100.0,
+      "pct_days_regime_signal_flagged_defensive": 100.0,
+      "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
+    },
+    "2022_BEAR": {
+      "trading_days": 9,
+      "date_range_actual": "2022-02-01 to 2022-10-01",
+      "avg_composite_score": -1.78,
+      "min_composite_score": -7.4,
+      "pct_days_flow_regime_flagged_defensive": 66.7,
+      "pct_days_regime_signal_flagged_defensive": 66.7,
+      "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
+    }
+  }
+}
