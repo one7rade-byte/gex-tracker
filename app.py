@@ -17,10 +17,18 @@ GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3
 
 RAW_BASE = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
 DATA_SOURCES = {
-    "SPY/QQQ daily GEX + VIX + macro log (gex_log.csv, ~5yr history)": f"{RAW_BASE}/gex_log.csv",
+    "SPY/QQQ daily GEX + VIX + macro log (gex_log.csv, since 2026-03-30, growing daily)": f"{RAW_BASE}/gex_log.csv",
     "Regime signal log (regime_log.csv)": f"{RAW_BASE}/regime_log.csv",
     "Mag 7 opportunity scanner + squeeze signals (mag7_signals_log.csv)": f"{RAW_BASE}/mag7_signals_log.csv",
     "Latest daily intelligence report (intelligence_report.json)": f"{RAW_BASE}/intelligence_report.json",
+    "Regime signal historical accuracy — hit rate & avg forward return by signal type (signal_performance_summary.json)": f"{RAW_BASE}/signal_performance_summary.json",
+    # market_scan_top.json intentionally NOT included yet — its ranking still
+    # relies on cross-sectional data only (no accumulated own-history), see
+    # project notes. Add it here once market_scan_log.csv has ~2-4 weeks of
+    # daily rows.
+    # sector_rotation_top.json intentionally NOT included yet — sector_rotation.py
+    # hasn't completed its first run, so the file doesn't exist. Add it here
+    # once that workflow has run at least once.
 }
 
 NEWS_HEADERS = {
@@ -148,8 +156,14 @@ SYSTEM_PROMPT = (
     "You are the assistant for one7rade's SPY GEX Tracker, a public market "
     "dashboard tracking SPY/QQQ gamma exposure (GEX), VIX, RSI, SKEW, VIX term "
     "structure, dealer positioning, cross-asset flow, and Magnificent 7 options "
-    "signals, with roughly 5 years of daily history. "
-    "Every request includes: the dashboard's real data files, the current "
+    "signals. The daily history log started 2026-03-30 and grows by one "
+    "trading day every day the tracker runs — always describe its depth as "
+    "'since inception' or by the actual date range in the data, never guess "
+    "a round number like '5 years' for it. "
+    "Every request includes: the dashboard's real data files (including a "
+    "signal_performance_summary.json showing the ACTUAL historical hit rate "
+    "and average forward return of each regime signal — use this, not a "
+    "guess, whenever asked how reliable a signal has been), the current "
     "date/time, this week's economic calendar (with red/orange/yellow folder "
     "impact ratings — the same system traders mean by 'red folder news'), "
     "live macro headlines, and — when the question names a specific ticker — "
