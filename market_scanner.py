@@ -55,6 +55,8 @@ from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 
+from signal_tiers import classify_and_size
+
 LOG_CSV   = "market_scan_log.csv"
 TOP_JSON  = "market_scan_top.json"
 
@@ -74,6 +76,10 @@ LOG_CSV_HEADERS = [
     "iv_current", "pc_ratio",
     "gex_b", "gex_regime", "zero_gamma", "call_wall", "put_wall",
     "opportunity_score", "signal", "signal_detail",
+    # Added later — symmetric buy/sell tier + sizing layer (signal_tiers.py),
+    # on top of the one-directional opportunity_score above. Older rows
+    # logged before this existed will just read blank for these columns.
+    "conviction_score", "tier", "size_multiplier",
 ]
 
 
@@ -447,6 +453,10 @@ def main():
         score, signal, detail = compute_opportunity_score(
             d["rsi_pct"], d["iv_pct"], pc_pct, gex_data["gex_regime"], d["above_200ma"], d["rsi"]
         )
+        conviction_score, tier, size_multiplier, _tier_note = classify_and_size(
+            rsi_raw=d["rsi"], rsi_pct=d["rsi_pct"], iv_pct=d["iv_pct"],
+            gex_regime=gex_data["gex_regime"], above_200ma=d["above_200ma"],
+        )
         row = {
             "date": today, "ticker": tk,
             "spot_price": d["spot"], "rsi_14": d["rsi"], "ma_200": d["ma200"],
@@ -457,6 +467,7 @@ def main():
             "zero_gamma": gex_data["zero_gamma"], "call_wall": gex_data["call_wall"],
             "put_wall": gex_data["put_wall"],
             "opportunity_score": score, "signal": signal, "signal_detail": detail,
+            "conviction_score": conviction_score, "tier": tier, "size_multiplier": size_multiplier,
         }
         final_rows.append(row)
         scored.append(row)
@@ -468,6 +479,15 @@ def main():
     for tk, d in stage1.items():
         if tk in stage2_candidates:
             continue
+        # No GEX/P-C for these (never fetched — see stage 2 note above), but
+        # RSI + IV percentile alone are still enough for a technical-only
+        # conviction/tier read, so every S&P 500 name gets a signal, not just
+        # today's top 40. Naturally weaker conviction than a stage-2 row
+        # (fewer inputs feed it) — that's expected, not a bug.
+        conviction_score, tier, size_multiplier, _tier_note = classify_and_size(
+            rsi_raw=d["rsi"], rsi_pct=d["rsi_pct"], iv_pct=d["iv_pct"],
+            gex_regime=None, above_200ma=d["above_200ma"],
+        )
         final_rows.append({
             "date": today, "ticker": tk,
             "spot_price": d["spot"], "rsi_14": d["rsi"], "ma_200": d["ma200"],
@@ -477,6 +497,7 @@ def main():
             "gex_b": None, "gex_regime": "not_scanned", "zero_gamma": None,
             "call_wall": None, "put_wall": None,
             "opportunity_score": None, "signal": "", "signal_detail": "",
+            "conviction_score": conviction_score, "tier": tier, "size_multiplier": size_multiplier,
         })
 
     save_log_rows(final_rows)
@@ -491,6 +512,8 @@ def main():
                 "ticker": r["ticker"], "score": r["opportunity_score"], "signal": r["signal"],
                 "detail": r["signal_detail"], "spot_price": r["spot_price"],
                 "rsi_14": r["rsi_14"], "gex_regime": r["gex_regime"],
+                "tier": r["tier"], "conviction_score": r["conviction_score"],
+                "size_multiplier": r["size_multiplier"],
             }
             for r in top
         ],
