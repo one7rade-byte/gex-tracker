@@ -1,0 +1,122 @@
+{
+  "generated_from_rows": 259,
+  "unique_signal_days": 93,
+  "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof.",
+  "by_regime_signal": {
+    "BUY_WATCH": {
+      "5": {
+        "n": 10,
+        "avg_return_pct": 0.64,
+        "hit_rate_pct": 60.0,
+        "best_pct": 2.26,
+        "worst_pct": -0.85
+      },
+      "10": {
+        "n": 10,
+        "avg_return_pct": 0.7,
+        "hit_rate_pct": 80.0,
+        "best_pct": 2.41,
+        "worst_pct": -1.5
+      },
+      "20": {
+        "n": 10,
+        "avg_return_pct": 1.58,
+        "hit_rate_pct": 80.0,
+        "best_pct": 4.08,
+        "worst_pct": -1.07
+      }
+    },
+    "CAUTION": {
+      "5": {
+        "n": 1,
+        "avg_return_pct": 6.78,
+        "hit_rate_pct": 100.0,
+        "best_pct": 6.78,
+        "worst_pct": 6.78
+      },
+      "10": {
+        "n": 1,
+        "avg_return_pct": 11.33,
+        "hit_rate_pct": 100.0,
+        "best_pct": 11.33,
+        "worst_pct": 11.33
+      },
+      "20": {
+        "n": 1,
+        "avg_return_pct": 13.37,
+        "hit_rate_pct": 100.0,
+        "best_pct": 13.37,
+        "worst_pct": 13.37
+      }
+    },
+    "HOLD": {
+      "5": {
+        "n": 4,
+        "avg_return_pct": 3.64,
+        "hit_rate_pct": 75.0,
+        "best_pct": 10.1,
+        "worst_pct": -2.15
+      },
+      "10": {
+        "n": 4,
+        "avg_return_pct": 5.15,
+        "hit_rate_pct": 50.0,
+        "best_pct": 13.87,
+        "worst_pct": -0.35
+      },
+      "20": {
+        "n": 4,
+        "avg_return_pct": 6.17,
+        "hit_rate_pct": 50.0,
+        "best_pct": 15.44,
+        "worst_pct": -0.51
+      }
+    },
+    "STRONG_BUY": {
+      "5": {
+        "n": 10,
+        "avg_return_pct": 2.55,
+        "hit_rate_pct": 90.0,
+        "best_pct": 5.98,
+        "worst_pct": -0.29
+      },
+      "10": {
+        "n": 10,
+        "avg_return_pct": 3.66,
+        "hit_rate_pct": 100.0,
+        "best_pct": 5.7,
+        "worst_pct": 1.57
+      },
+      "20": {
+        "n": 5,
+        "avg_return_pct": 1.99,
+        "hit_rate_pct": 100.0,
+        "best_pct": 3.01,
+        "worst_pct": 1.0
+      }
+    },
+    "STRONG_HOLD": {
+      "5": {
+        "n": 68,
+        "avg_return_pct": 0.69,
+        "hit_rate_pct": 63.2,
+        "best_pct": 10.19,
+        "worst_pct": -3.45
+      },
+      "10": {
+        "n": 63,
+        "avg_return_pct": 1.36,
+        "hit_rate_pct": 61.9,
+        "best_pct": 12.98,
+        "worst_pct": -3.64
+      },
+      "20": {
+        "n": 58,
+        "avg_return_pct": 2.68,
+        "hit_rate_pct": 77.6,
+        "best_pct": 15.22,
+        "worst_pct": -3.26
+      }
+    }
+  }
+}
