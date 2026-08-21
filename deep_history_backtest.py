@@ -26,19 +26,31 @@ neither will ever appear in this backtest — expect only STRONG_HOLD / HOLD
 so it's the more complete signal here and the primary one this script
 reports on.
 
-DATA WINDOW PER TICKER (free Yahoo history, "max" range — actual coverage,
-not a promise): SPY/^VIX back to the 1990s; GLD from Nov 2004; TLT from
-Jul 2002; HYG from Apr 2007; USO from Apr 2006; EEM from Apr 2003; CPER
-(copper) only from Nov 2011 — the one real gap, meaning score_growth runs
-EEM-only (still real, just less complete) for anything before Nov 2011.
-^VIX9D and ^VIX3M are also newer (~2011) and degrade gracefully the same
-way (their modifiers only apply "if not None"). DXY tries "DX-Y.NYB" first
-(long index history) before falling back to UUP (ETF, since 2007) scaled
-by 3.57x — same fallback gex_tracker.py already uses for the live daily run.
+DATA WINDOW PER TICKER (free Yahoo history, actual coverage, not a promise):
+SPY/^VIX back to the 1990s; GLD from Nov 2004; TLT from Jul 2002; HYG from
+Apr 2007; USO from Apr 2006; EEM from Apr 2003; CPER (copper) only from Nov
+2011 — the one real gap, meaning score_growth runs EEM-only (still real,
+just less complete) for anything before Nov 2011. ^VIX9D and ^VIX3M are
+also newer (~2011) and degrade gracefully the same way (their modifiers
+only apply "if not None"). DXY tries "DX-Y.NYB" first (long index history)
+before falling back to UUP (ETF, since 2007) scaled by 3.57x — same
+fallback gex_tracker.py already uses for the live daily run.
 
 This means 2008's crash (Sept-Nov 2008) IS coverable (every ticker except
 copper/VIX9D/VIX3M already existed), and both the 2020 COVID crash and the
-2022 bear market are fully coverable.
+2022 bear market are fully coverable — PROVIDED the fetch actually returns
+daily bars. Yahoo's chart API silently downsamples interval=1d to a coarser
+bar size (observed: monthly) once a single request's range gets long
+enough, with no error — so yf_fetch_dated() below fetches in explicit
+multi-year chunks (period1/period2, not range=max) specifically to avoid
+that trap. A first run that used range=max hit this exact failure: SPY
+came back as ~204 monthly bars instead of ~4,300+ daily ones, which
+silently collapsed the crash-window analysis (2020 COVID down to 1 sampled
+day; 2008 GFC showing zero days, since monthly-bar coverage didn't even
+reach that far back). If a future edit ever reintroduces range=max for a
+long window, re-check total_days in the summary against the expected
+trading-day count for the date range — a suspiciously low number is this
+same bug recurring.
 
 Output:
   - deep_history_backtest_log.csv     — every trading day: raw inputs,
@@ -96,28 +108,55 @@ COMPOSITE_BUCKETS = [
 ]
 
 
-def yf_fetch_dated(ticker, period="max"):
-    """(date_str, close) pairs, longest free history Yahoo has for this ticker."""
-    for base in ["query1", "query2"]:
-        try:
-            url = f"https://{base}.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={period}"
-            r = requests.get(url, headers=HEADERS, timeout=20)
-            data = r.json()
-            result = data.get("chart", {}).get("result")
-            if not result:
+CHUNK_YEARS = 3          # fetch this many years per request
+FETCH_START_YEAR = 1995  # oldest year to attempt (SPY/^VIX predate this; other
+                          # tickers just return empty chunks before their own
+                          # inception, which is harmless)
+
+
+def yf_fetch_dated(ticker):
+    """(date_str, close) pairs, TRUE DAILY granularity, covering as much
+    history as Yahoo has for this ticker.
+
+    IMPORTANT: a single request with interval=1d&range=max is NOT safe for
+    long-history tickers — Yahoo's chart API silently substitutes a coarser
+    bar size (observed: ~monthly) once the requested range would produce
+    "too many" daily points, with NO error returned. A first real run of
+    this script hit exactly that: SPY came back as ~204 monthly bars over
+    17 years instead of ~4,300 daily bars, which silently collapsed the
+    2008/2020/2022 crash-window analysis (2020 COVID showed only 1 sampled
+    day; 2008 GFC showed none at all, since coverage didn't even reach that
+    far back). Fetching in explicit period1/period2 chunks of a few years
+    each forces Yahoo to return real daily bars for every chunk, and the
+    chunks are merged by date afterward."""
+    all_pairs = {}
+    now = int(time.time())
+    chunk_seconds = CHUNK_YEARS * 365 * 24 * 3600
+    p1 = int(datetime(FETCH_START_YEAR, 1, 1).timestamp())
+    while p1 < now:
+        p2 = min(p1 + chunk_seconds, now)
+        for base in ["query1", "query2"]:
+            try:
+                url = (
+                    f"https://{base}.finance.yahoo.com/v8/finance/chart/{ticker}"
+                    f"?interval=1d&period1={p1}&period2={p2}"
+                )
+                r = requests.get(url, headers=HEADERS, timeout=20)
+                data = r.json()
+                result = data.get("chart", {}).get("result")
+                if not result:
+                    continue
+                timestamps = result[0].get("timestamp") or []
+                closes = result[0]["indicators"]["quote"][0]["close"]
+                for ts, c in zip(timestamps, closes):
+                    if c is not None:
+                        all_pairs[datetime.utcfromtimestamp(ts).date().isoformat()] = c
+                break  # this chunk succeeded (even if empty, e.g. pre-inception) — move on
+            except Exception:
                 continue
-            timestamps = result[0].get("timestamp") or []
-            closes = result[0]["indicators"]["quote"][0]["close"]
-            pairs = [
-                (datetime.utcfromtimestamp(ts).date().isoformat(), c)
-                for ts, c in zip(timestamps, closes)
-                if c is not None
-            ]
-            if pairs:
-                return dict(pairs)
-        except Exception:
-            continue
-    return {}
+        p1 = p2
+        time.sleep(0.15)
+    return all_pairs
 
 
 def calc_rsi(closes, period=14):
