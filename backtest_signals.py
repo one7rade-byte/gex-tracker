@@ -14,8 +14,16 @@ Documented rules being tested (from project notes):
 
 For each day a rule condition fires, this looks forward N trading days
 (5, 10, 20) and reports what SPY actually did — giving a rough, low-N
-sanity check rather than a statistically rigorous backtest. With only
-~54 days of history, treat results as directional signal, not proof.
+sanity check rather than a statistically rigorous backtest. Treat results
+as directional signal, not proof, until the dataset covers enough history
+to include more than one kind of market regime (this file prints the
+current day count each run so you can judge that for yourself).
+
+See also track_signal_performance.py, which does the same kind of check
+but for the regime_signal system (STRONG_BUY/BUY_WATCH/HOLD/CAUTION/
+STRONG_HOLD) and — unlike this one-off report — accumulates a persistent,
+continuously-growing track record in signal_performance_log.csv instead of
+just printing a snapshot.
 """
 
 import csv
@@ -174,8 +182,9 @@ def test_noise_filter(data):
 def main():
     data = load_data()
     print(f"Loaded {len(data)} days of history: {data[0]['date']} to {data[-1]['date']}")
-    print("NOTE: with only ~50 days of data, treat all results below as")
-    print("directional / exploratory, not statistically significant.")
+    print("NOTE: this whole window has been a broadly rising market — treat")
+    print("results below as directional / exploratory, not proof the rules")
+    print("work in a decline or chop, which this dataset hasn't seen yet.")
 
     test_enter_rule(data)
     test_exit_rule(data)
