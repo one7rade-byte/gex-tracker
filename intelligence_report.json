@@ -1,27 +1,27 @@
 {
-  "date": "2026-08-20",
+  "date": "2026-08-21",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-8.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 14.9 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s New CEO Could Shake Up Its Spending Strategy to Win ...' Do not buy this dip until news clears. GOOGL WATCH \u2014 score 6/10, RSI at 66th pct. Not yet at peak oversold but building. TSLA WATCH \u2014 score 5/10, RSI at 97th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 70th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 14.9, needs +7.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-8.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 14.9 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX is improving over the past week \u2014 dealer positioning is becoming more supportive. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s New CEO Could Shake Up Its Spending Strategy to Win ...' Do not buy this dip until news clears. GOOGL WATCH \u2014 score 6/10, RSI at 66th pct. Not yet at peak oversold but building. TSLA WATCH \u2014 score 5/10, RSI at 97th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 70th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 14.9, needs +7.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is deeply negative at $-14.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "GOOGL WATCH \u2014 score 5/10, RSI at 24th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 5/10, RSI at 26th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Jefferies Just Said Sell Apple (AAPL). Here\u2019s the iPhone Fea...' Do not buy this dip until news clears. MSFT WATCH \u2014 score 4/10, RSI at 60th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.0, needs +6.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-14.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 16.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 143 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: GOOGL WATCH \u2014 score 5/10, RSI at 24th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 5/10, RSI at 26th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Jefferies Just Said Sell Apple (AAPL). Here\u2019s the iPhone Fea...' Do not buy this dip until news clears. MSFT WATCH \u2014 score 4/10, RSI at 60th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.0, needs +6.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "negative_gex",
     "vix_trend": "stable",
-    "vix_current": 14.89,
-    "gex_trend": "improving",
-    "gex_current": -8.6,
+    "vix_current": 16.01,
+    "gex_trend": "deteriorating",
+    "gex_current": -14.4,
     "fear_trend": "building",
-    "fear_current": 3.0,
+    "fear_current": 4.0,
     "bear_current": 4.0,
     "bull_current": 5.0,
-    "neg_gex_days": 4,
-    "skew_current": 142.93,
+    "neg_gex_days": 5,
+    "skew_current": 143.23,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 73.13
+    "spy_rsi": 62.91
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,109 +30,143 @@
     "news": ""
   },
   "avoid_names": [
-    "AAPL"
+    "AAPL",
+    "META"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 7.0,
-      "rsi_pct": 17.8,
+      "score": 4.0,
+      "rsi_pct": 35.3,
       "above_200ma": true,
-      "news": "fundamental_change",
-      "rsi_dir": "getting_more_oversold",
-      "days_oversold": 10,
+      "news": "company_negative",
+      "rsi_dir": "stable",
+      "days_oversold": 9,
       "headlines": [
-        "Waymo is making its own AI chip for its robotaxi service",
-        "Apple\u2019s New CEO Could Shake Up Its Spending Strategy to Win in AI",
-        "Apple must relearn how to surprise under new CEO Ternus, says BofA",
-        "Apple's AI AirPods Are Still Coming in 2027"
+        "Jefferies Just Said Sell Apple (AAPL). Here\u2019s the iPhone Feature That Got Canceled",
+        "The Premium On AAPL Stock Vs What Its Peers Deliver",
+        "Apple's Next CEO Could Spend More to Catch Up in AI",
+        "Apple Falls as Leadership Questions Deepen Its AI Dilemma"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 70.3,
+      "rsi_pct": 59.8,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Meta Is Now One of Microsoft's Largest AI Customers",
-        "Sector Update: Tech Stocks Decline Thursday Afternoon",
-        "Microsoft Slips as 4.68% Yield Tests Its $678 Billion Backlog",
-        "Australia Hits Meta, Google With 2.5% News Levy"
+        "Microsoft Just Won One of Its Biggest AI Customers",
+        "Microsoft (MSFT)\u2019s Betting Big on Its Own AI Chips. Is It Already Too Late?",
+        "Is Microsoft a Screaming Buy Under $500 Per Share?",
+        "Microsoft Stock Gets Cheaper Only If The Forecast Arrives"
       ]
     },
     "NVDA": {
-      "score": 3.0,
-      "rsi_pct": 86.1,
+      "score": 4.0,
+      "rsi_pct": 80.4,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Michael Burry says Nvidia rival is quietly getting serious",
-        "Data Centers Don't Just Need Power -- They Need Cooling. Trane and Carrier Sell It.",
-        "Hovnanian Enterprises, Inc. Q3 2026 Earnings Call Summary",
-        "The SEC Hands Crypto Projects a $75 Million Shortcut"
+        "The Buckle, Inc. Q2 2026 Earnings Call Summary",
+        "Nvidia Reportedly Strikes $7B Licensing And Investment Deal With AI Startup Poolside \u2014 NVDA Stock Ends Week 5% Lower",
+        "Dow Jones Futures: Market Rally Repairs Some Damage; Nvidia, CrowdStrike, Warsh In Focus",
+        "NVIDIA Corporation (NVDA) &amp; Advanced Micro Devices (AMD): Nvidia Might Ship AI Chips With Less Memory. AMD Says It\u2019s Not Worried"
       ]
     },
     "GOOGL": {
-      "score": 6.0,
-      "rsi_pct": 66.3,
+      "score": 5.0,
+      "rsi_pct": 23.5,
       "above_200ma": true,
       "news": "neutral",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
+      "rsi_dir": "stable",
+      "days_oversold": 1,
       "headlines": [
         "Why tech stock bulls may not shake this AI problem",
         "Alphabet Seeks $3.6 Billion in First Australian Bond Sale",
-        "AI hyperscalers or memory chips: Which is the better investment right now?",
+        "Anthropic's IPO could come sooner than you think \u2014 likely beating OpenAI to the punch",
         "Waymo is making its own AI chip for its robotaxi service"
       ]
     },
     "META": {
       "score": 1.0,
-      "rsi_pct": 63.4,
+      "rsi_pct": 52.9,
+      "above_200ma": false,
+      "news": "company_negative",
+      "rsi_dir": "recovering",
+      "days_oversold": 2,
+      "headlines": [
+        "Meta Platforms (META) Undercuts Anthropic and OpenAI on Price With New Coding Agent",
+        "Meta's $800 Bull Case Comes Down to One AI Win",
+        "Meta Rises as Investors Look Beyond $200 Billion Trial Risk",
+        "Meta Platforms (META) Pitches AI for Everyone While Apple (AAPL) Quietly Turns to China"
+      ]
+    },
+    "AMZN": {
+      "score": 5.0,
+      "rsi_pct": 25.5,
+      "above_200ma": true,
+      "news": "macro_fear",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 1,
+      "headlines": [
+        "Nvidia earnings are on deck next week. These 3 themes will be mission-critical.",
+        "DeepSeek Creates New Headache for AI Stocks",
+        "Elon Musk: \u201cStarlink Now Has 11k Satellites in Orbit.\u201d Amazon Hasn\u2019t Even Cracked 1,000.",
+        "Amazon Slips as Walmart Raises a Fresh Consumer Warning"
+      ]
+    },
+    "TSLA": {
+      "score": 3.0,
+      "rsi_pct": 95.1,
       "above_200ma": false,
       "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "Win or lose, Meta still faces real risks in its social media addiction trial",
-        "Meta Slips as $200 Billion Youth-Safety Trial Intensifies",
-        "Meta Is Now One of Microsoft's Largest AI Customers",
-        "Sector Update: Tech Stocks Decline Thursday Afternoon"
-      ]
-    },
-    "AMZN": {
-      "score": 4.0,
-      "rsi_pct": 67.3,
-      "above_200ma": true,
-      "news": "neutral",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
-      "headlines": [
-        "Billionaire investor makes Amazon his biggest stock bet",
-        "Sector Update: Tech Stocks Decline Late Afternoon",
-        "Cathie Wood and Stanley Druckenmiller Agree On Amazon (AMZN) and Alphabet (GOOGL)",
-        "Amazon commits $2 billion to expand Prime Video across Latin America through 2030"
-      ]
-    },
-    "TSLA": {
-      "score": 5.0,
-      "rsi_pct": 97.0,
-      "above_200ma": false,
-      "news": "neutral",
-      "rsi_dir": "recovering",
-      "days_oversold": 4,
-      "headlines": [
-        "Prediction: Cybercab Adds Less Than 5% to Tesla's Revenue in Its First Full Year",
-        "Einride targets 1,500 trucks by 2028 with Tesla and DAF deals",
-        "JPMorgan Hints At Another Delay For Tesla Optimus Release",
-        "Ford Drops 4% as Bronco Pickup Rally Fades, Tesla Slips, General Motors Inches Higher: What\u2019s Behind the Auto Stock Differential?"
+        "Why Is Tesla Stock Up Today?",
+        "Stock Market Today, Aug. 21: Tesla Gains on Nevada Robotaxi Permit Approval",
+        "Elon Musk's SpaceX and Tesla Are Building a $16.8 Billion Chip Factory 5 Times Bigger Than Earth's Largest Building. What Does That Mean for Both Stocks?",
+        "Moderna, Robinhood, Marvell, Tesla, SpaceX, and More Stocks That Explain Today\u2019s Market"
       ]
     }
   },
   "macro_headlines": [
+    {
+      "title": "SPY Has a Nearly Identical Twin That Costs 80 Percent Less and Pays the Same Dividends",
+      "link": "https://247wallst.com/investing/etf/2026/08/21/spy-has-a-nearly-identical-twin-that-costs-80-percent-less-and-pays-the-same-dividends/?.tsrc=rss",
+      "pub_date": "2026-08-21",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "BofA Sees a Stock Market Setup Starting to Change",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bofa-sees-stock-market-setup-193717505.html?.tsrc=rss",
+      "pub_date": "2026-08-21",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "There Are Two SPY ETFs Now, and You Probably Own the Wrong One",
+      "link": "https://247wallst.com/investing/etf/2026/08/21/there-are-two-spy-etfs-now-and-you-probably-own-the-wrong-one/?.tsrc=rss",
+      "pub_date": "2026-08-21",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
     {
       "title": "How Much of Your Portfolio Should Actually Be in FTXL",
       "link": "https://247wallst.com/investing/etf/2026/08/20/how-much-of-your-portfolio-should-actually-be-in-ftxl/?.tsrc=rss",
@@ -145,9 +179,32 @@
       "source_count": 1
     },
     {
-      "title": "US Stock Indices End Lower As Trump\u2019s \u2018Economic Warfare\u2019 Threats Push Yields, Oil Higher \u2014 WMT, CRWV, SBUX, DE, RKLB In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/us-stock-indices-end-lower-as-trump-s-economic-warfare-threats-push-yields-oil-higher/cZYeR5dRJZA?.tsrc=rss",
+      "title": "US Stock Indices End Week Lower On Pressure From Elevated Long-Duration Treasury Yields \u2014 PSKY, MSTR, WMT, TSLA, NVDA In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/us-stock-indices-end-week-lower-on-pressure-from-elevated-long-duration-treasury-yields-psky/cZY97YMRJVO?.tsrc=rss",
+      "pub_date": "2026-08-21",
+      "tickers": [
+        "NVDA",
+        "TSLA"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "5 Reasons the S&amp;P 500 Could Keep Rallying Through Year-End",
+      "link": "https://www.marketbeat.com/articles/5-reasons-the-s-and-p-500-could-keep-rallying-through-year-end/?utm_source=yahoofinance&amp;utm_medium=yahoofinance&amp;.tsrc=rss",
       "pub_date": "2026-08-20",
+      "tickers": [
+        "NVDA"
+      ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "You Do Not Need $1 Million to Retire: These 3 ETFs Pay About $49,000 a Year on $600,000",
+      "link": "https://247wallst.com/investing/etf/2026/08/21/you-do-not-need-1-million-to-retire-these-3-etfs-pay-about-49000-a-year-on-600000/?.tsrc=rss",
+      "pub_date": "2026-08-21",
       "tickers": [
         "MARKET"
       ],
@@ -156,88 +213,34 @@
       "source_count": 1
     },
     {
-      "title": "Your Active ETF Manager Lost Again, and 87% of Them Have Been Losing for a Decade",
-      "link": "https://247wallst.com/investing/2026/08/20/your-active-etf-manager-lost-again-and-87-of-them-have-been-losing-for-a-decade/?.tsrc=rss",
-      "pub_date": "2026-08-20",
+      "title": "Bank of America's Stock Market Signal Flashes Warning",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bank-americas-stock-market-signal-182955978.html?.tsrc=rss",
+      "pub_date": "2026-08-21",
       "tickers": [
-        "MARKET"
+        "SPY"
       ],
       "high_impact": false,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "We Told You to Forget SCHD. It Just Beat the S&amp;P by 12 Points, Its Biggest Win Ever",
-      "link": "https://247wallst.com/investing/2026/08/20/we-told-you-to-forget-schd-it-just-beat-the-sp-by-12-points-its-biggest-win-ever/?.tsrc=rss",
-      "pub_date": "2026-08-20",
+      "title": "UBS Sees S&amp;P 500 at 8,100 but Prediction Markets Don't Buy It",
+      "link": "https://www.benzinga.com/markets/prediction-markets/26/08/61356024/sp-500-8100-ubs-prediction-markets?utm_source=yahooFinance&amp;utm_campaign=partner_feed&amp;utm_medium=referral&amp;.tsrc=rss",
+      "pub_date": "2026-08-21",
       "tickers": [
-        "MARKET"
+        "SPY",
+        "QQQ"
       ],
       "high_impact": false,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "Ask Anything: Six Weeks of Investors Putting ETF Questions to AI",
-      "link": "http://www.etf.com/sections/news/ask-anything-six-weeks-investors-putting-etf-questions-ai?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss&amp;.tsrc=rss",
-      "pub_date": "2026-08-20",
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday as Bitcoin Moves Past $77,000",
+      "link": "https://finance.yahoo.com/markets/articles/exchange-traded-funds-equity-futures-131505482.html?.tsrc=rss",
+      "pub_date": "2026-08-21",
       "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Median Stock Portfolio Hits Record $350,000  \u2014 Household Share of Nation Debt Grows to $296,500",
-      "link": "https://247wallst.com/investing/2026/08/20/median-stock-portfolio-hits-record-350000-household-share-of-nation-debt-grows-to-296500/?.tsrc=rss",
-      "pub_date": "2026-08-20",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Warning: The Buffett Portfolio Your OMAH ETF Copies Is Disappearing One 13F at a Time",
-      "link": "https://247wallst.com/investing/etf/2026/08/20/warning-the-buffett-portfolio-your-omah-etf-copies-is-disappearing-one-13f-at-a-time/?.tsrc=rss",
-      "pub_date": "2026-08-20",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "History Says 2026\u2019s Market Rally Starts in 42 Days, Per JP Morgan Data",
-      "link": "https://247wallst.com/investing/2026/08/20/history-says-2026s-market-rally-starts-in-42-days-per-jp-morgan-data/?.tsrc=rss",
-      "pub_date": "2026-08-20",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Walmart Drops 8% on Slowest Same-Store Sales Growth Since 2020; Target Holds Steady, Costco Eases",
-      "link": "https://247wallst.com/investing/2026/08/20/walmart-drops-8-on-slowest-same-store-sales-growth-since-2020-target-holds-steady-costco-eases/?.tsrc=rss",
-      "pub_date": "2026-08-20",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Strategy Rallies 9%, Bitmine Climbs 7%, Coinbase Jumps 6% as $3.3B Short Squeeze Powers Bitcoin Past $71K",
-      "link": "https://247wallst.com/investing/2026/08/20/strategy-rallies-9-bitmine-climbs-7-coinbase-jumps-6-as-3-3b-short-squeeze-powers-bitcoin-past-71k/?.tsrc=rss",
-      "pub_date": "2026-08-20",
-      "tickers": [
-        "MARKET"
+        "SPY"
       ],
       "high_impact": false,
       "sources": [],
