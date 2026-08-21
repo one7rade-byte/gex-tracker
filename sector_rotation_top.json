@@ -1,0 +1,182 @@
+{
+  "date": "2026-08-21",
+  "benchmark": "SPY",
+  "rs_window_days": 21,
+  "momentum_lag_days": 5,
+  "note": "LEADING/IMPROVING = money flowing TOWARD (outperforming SPY and gaining, or still lagging but starting to gain). WEAKENING/LAGGING = money flowing AWAY FROM. Ranked by rs_momentum, most inflow-like first.",
+  "ranked": [
+    {
+      "ticker": "BTC-USD",
+      "label": "Bitcoin",
+      "quadrant": "LEADING",
+      "rs_now": 114.26,
+      "rs_momentum": 18.79,
+      "return_21d": 18.56
+    },
+    {
+      "ticker": "XLY",
+      "label": "Consumer Discretionary",
+      "quadrant": "LEADING",
+      "rs_now": 104.8,
+      "rs_momentum": 7.39,
+      "return_21d": 8.75
+    },
+    {
+      "ticker": "XLC",
+      "label": "Communication Services",
+      "quadrant": "LEADING",
+      "rs_now": 102.0,
+      "rs_momentum": 5.05,
+      "return_21d": 5.84
+    },
+    {
+      "ticker": "XLV",
+      "label": "Healthcare",
+      "quadrant": "LEADING",
+      "rs_now": 104.25,
+      "rs_momentum": 4.22,
+      "return_21d": 8.17
+    },
+    {
+      "ticker": "GLD",
+      "label": "Gold",
+      "quadrant": "LEADING",
+      "rs_now": 110.0,
+      "rs_momentum": 3.63,
+      "return_21d": 14.14
+    },
+    {
+      "ticker": "XLB",
+      "label": "Materials",
+      "quadrant": "LEADING",
+      "rs_now": 102.68,
+      "rs_momentum": 2.84,
+      "return_21d": 6.54
+    },
+    {
+      "ticker": "XLP",
+      "label": "Consumer Staples",
+      "quadrant": "IMPROVING",
+      "rs_now": 99.48,
+      "rs_momentum": 2.47,
+      "return_21d": 3.23
+    },
+    {
+      "ticker": "TLT",
+      "label": "Long-Term US Treasuries (20yr+)",
+      "quadrant": "IMPROVING",
+      "rs_now": 95.06,
+      "rs_momentum": 0.85,
+      "return_21d": -1.36
+    },
+    {
+      "ticker": "XLRE",
+      "label": "Real Estate",
+      "quadrant": "IMPROVING",
+      "rs_now": 96.64,
+      "rs_momentum": 0.34,
+      "return_21d": 0.28
+    },
+    {
+      "ticker": "HYG",
+      "label": "High-Yield Credit",
+      "quadrant": "IMPROVING",
+      "rs_now": 96.84,
+      "rs_momentum": 0.25,
+      "return_21d": 0.49
+    },
+    {
+      "ticker": "XLF",
+      "label": "Financials",
+      "quadrant": "IMPROVING",
+      "rs_now": 99.22,
+      "rs_momentum": 0.12,
+      "return_21d": 2.96
+    },
+    {
+      "ticker": "EEM",
+      "label": "Emerging Market Equities",
+      "quadrant": "WEAKENING",
+      "rs_now": 100.05,
+      "rs_momentum": -0.3,
+      "return_21d": 3.82
+    },
+    {
+      "ticker": "IWM",
+      "label": "Small Caps (Russell 2000)",
+      "quadrant": "LAGGING",
+      "rs_now": 99.02,
+      "rs_momentum": -0.79,
+      "return_21d": 2.75
+    },
+    {
+      "ticker": "XLE",
+      "label": "Energy",
+      "quadrant": "WEAKENING",
+      "rs_now": 103.41,
+      "rs_momentum": -1.59,
+      "return_21d": 7.3
+    },
+    {
+      "ticker": "UUP",
+      "label": "US Dollar Index",
+      "quadrant": "LAGGING",
+      "rs_now": 94.18,
+      "rs_momentum": -1.74,
+      "return_21d": -2.28
+    },
+    {
+      "ticker": "XLK",
+      "label": "Technology",
+      "quadrant": "LAGGING",
+      "rs_now": 98.97,
+      "rs_momentum": -4.53,
+      "return_21d": 2.7
+    },
+    {
+      "ticker": "XLI",
+      "label": "Industrials",
+      "quadrant": "LAGGING",
+      "rs_now": 95.52,
+      "rs_momentum": -4.59,
+      "return_21d": -0.88
+    },
+    {
+      "ticker": "XLU",
+      "label": "Utilities",
+      "quadrant": "LAGGING",
+      "rs_now": 89.25,
+      "rs_momentum": -4.99,
+      "return_21d": -7.39
+    }
+  ],
+  "by_quadrant": {
+    "LEADING": [
+      "BTC-USD",
+      "XLY",
+      "XLC",
+      "XLV",
+      "GLD",
+      "XLB"
+    ],
+    "IMPROVING": [
+      "XLP",
+      "TLT",
+      "XLRE",
+      "HYG",
+      "XLF"
+    ],
+    "WEAKENING": [
+      "EEM",
+      "XLE"
+    ],
+    "LAGGING": [
+      "IWM",
+      "UUP",
+      "XLK",
+      "XLI",
+      "XLU"
+    ],
+    "unknown": []
+  }
+}
