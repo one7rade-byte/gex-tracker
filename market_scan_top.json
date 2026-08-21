@@ -1,0 +1,187 @@
+{
+  "date": "2026-08-21",
+  "universe_size": 503,
+  "stage2_scanned": 40,
+  "top_opportunities": [
+    {
+      "ticker": "AFL",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (19.36) | Options cheap (IV bottom 6% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 116.43499755859375,
+      "rsi_14": 19.36,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "CVS",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (21.42) | Options cheap (IV bottom 10% of own history) | GEX negative \u2014 unstable, watch for stabilization | Above 200MA \u2014 uptrend intact",
+      "spot_price": 93.19989776611328,
+      "rsi_14": 21.42,
+      "gex_regime": "negative"
+    },
+    {
+      "ticker": "DAL",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (27.17) | Options cheap (IV bottom 10% of own history) | GEX negative \u2014 unstable, watch for stabilization | Above 200MA \u2014 uptrend intact",
+      "spot_price": 82.4000015258789,
+      "rsi_14": 27.17,
+      "gex_regime": "negative"
+    },
+    {
+      "ticker": "UAL",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (28.17) | Options cheap (IV bottom 10% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 113.02999877929688,
+      "rsi_14": 28.17,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "AMZN",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (24.38) | Options cheap (IV bottom 18% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 258.3299865722656,
+      "rsi_14": 24.38,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "GOOGL",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (25.65) | Options cheap (IV bottom 20% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 344.8599853515625,
+      "rsi_14": 25.65,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "SPG",
+      "score": 7,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (29.71) | Options cheap (IV bottom 17% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 218.67149353027344,
+      "rsi_14": 29.71,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "CNP",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (19.23) | Options cheap (IV bottom 1% of own history) | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+      "spot_price": 39.10499954223633,
+      "rsi_14": 19.23,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "REG",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (21.36) | Options cheap (IV bottom 13% of own history) | Above 200MA \u2014 uptrend intact",
+      "spot_price": 76.01000213623047,
+      "rsi_14": 21.36,
+      "gex_regime": "unknown"
+    },
+    {
+      "ticker": "VST",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (26.4) | Options cheap (IV bottom 3% of own history) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+      "spot_price": 136.6300048828125,
+      "rsi_14": 26.4,
+      "gex_regime": "negative"
+    },
+    {
+      "ticker": "BA",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (26.04) | Options cheap (IV bottom 9% of own history) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+      "spot_price": 213.7550048828125,
+      "rsi_14": 26.04,
+      "gex_regime": "negative"
+    },
+    {
+      "ticker": "SO",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (27.29) | Options cheap (IV bottom 7% of own history) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+      "spot_price": 89.79499816894531,
+      "rsi_14": 27.29,
+      "gex_regime": "negative"
+    },
+    {
+      "ticker": "PEG",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (27.89) | Options cheap (IV bottom 12% of own history) | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+      "spot_price": 73.29000091552734,
+      "rsi_14": 27.89,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "RF",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (33.53) | Options cheap (IV bottom 1% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 30.3700008392334,
+      "rsi_14": 33.53,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "GOOG",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI absolute oversold (20.89) | Options moderately priced (IV 28th pct) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 341.9200134277344,
+      "rsi_14": 20.89,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "KEY",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (35.22) | Options cheap (IV bottom 0% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 21.920000076293945,
+      "rsi_14": 35.22,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "USB",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (34.67) | Options cheap (IV bottom 2% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 62.03499984741211,
+      "rsi_14": 34.67,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "PNC",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (35.85) | Options cheap (IV bottom 1% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 243.24249267578125,
+      "rsi_14": 35.85,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "HIG",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (31.47) | Options cheap (IV bottom 11% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 136.67100524902344,
+      "rsi_14": 31.47,
+      "gex_regime": "positive"
+    },
+    {
+      "ticker": "MTB",
+      "score": 6,
+      "signal": "BUY \u2014 oversold, good loading zone",
+      "detail": "RSI weak (36.05) | Options cheap (IV bottom 2% of own history) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact",
+      "spot_price": 241.1649932861328,
+      "rsi_14": 36.05,
+      "gex_regime": "positive"
+    }
+  ]
+}
