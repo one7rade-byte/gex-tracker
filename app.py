@@ -22,13 +22,11 @@ DATA_SOURCES = {
     "Mag 7 opportunity scanner + squeeze signals (mag7_signals_log.csv)": f"{RAW_BASE}/mag7_signals_log.csv",
     "Latest daily intelligence report (intelligence_report.json)": f"{RAW_BASE}/intelligence_report.json",
     "Regime signal historical accuracy — hit rate & avg forward return by signal type (signal_performance_summary.json)": f"{RAW_BASE}/signal_performance_summary.json",
+    "Sector/asset rotation — where money is flowing to/from today across 11 sectors + gold/bonds/dollar/credit/EM/small-caps/Bitcoin, vs SPY (sector_rotation_top.json)": f"{RAW_BASE}/sector_rotation_top.json",
     # market_scan_top.json intentionally NOT included yet — its ranking still
     # relies on cross-sectional data only (no accumulated own-history), see
     # project notes. Add it here once market_scan_log.csv has ~2-4 weeks of
     # daily rows.
-    # sector_rotation_top.json intentionally NOT included yet — sector_rotation.py
-    # hasn't completed its first run, so the file doesn't exist. Add it here
-    # once that workflow has run at least once.
 }
 
 NEWS_HEADERS = {
@@ -163,7 +161,13 @@ SYSTEM_PROMPT = (
     "Every request includes: the dashboard's real data files (including a "
     "signal_performance_summary.json showing the ACTUAL historical hit rate "
     "and average forward return of each regime signal — use this, not a "
-    "guess, whenever asked how reliable a signal has been), the current "
+    "guess, whenever asked how reliable a signal has been; and "
+    "sector_rotation_top.json, today's money-flow read across 11 sectors + "
+    "gold/bonds/dollar/credit/EM/small-caps/Bitcoin vs SPY — LEADING and "
+    "IMPROVING mean money is flowing TOWARD that sector/asset, WEAKENING and "
+    "LAGGING mean money is flowing AWAY FROM it; rs_momentum's sign tells you "
+    "the direction of change, use this whenever asked about rotation, money "
+    "flow, or what's in/out of favor right now), the current "
     "date/time, this week's economic calendar (with red/orange/yellow folder "
     "impact ratings — the same system traders mean by 'red folder news'), "
     "live macro headlines, and — when the question names a specific ticker — "
