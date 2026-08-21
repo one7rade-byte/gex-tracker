@@ -107,6 +107,28 @@ COMPOSITE_BUCKETS = [
     ("crisis (-4 to -8)", -8, -3),
 ]
 
+# Fixed structural-regime eras — chosen because they mark real market-structure
+# shifts (pre-GFC vs post-GFC/ZIRP vs post-2018 volatility-regime/0DTE-options
+# growth era), not arbitrary date cuts. Added 2026-08-21 after a pooled 30-year
+# read of the "stress" bucket showed NEGATIVE forward returns overall, but that
+# turned out to be almost entirely a pre-2010 artifact — every era since 2010
+# actually shows POSITIVE forward returns for the same bucket. Pooling decades
+# of data can hide exactly this kind of regime change, so every summary now
+# reports each era separately rather than only one blended lifetime number.
+ERAS = {
+    "pre_2010": ("0001-01-01", "2009-12-31"),
+    "2010_2017_zirp_recovery": ("2010-01-01", "2017-12-31"),
+    "2018_present": ("2018-01-01", "9999-12-31"),
+}
+
+# Rolling recency windows, anchored to the most recent date in the data (not
+# wall-clock "today") so a re-run with a shorter data pull still self-labels
+# correctly — same purpose as ERAS, just re-checked from "now" backward instead
+# of at fixed calendar boundaries. Use both: ERAS shows whether a real
+# structural regime shift changed the relationship; recency windows show
+# whether it's holding up right now.
+RECENCY_WINDOW_YEARS = [5, 10, 15]
+
 
 CHUNK_YEARS = 3          # fetch this many years per request
 FETCH_START_YEAR = 1995  # oldest year to attempt (SPY/^VIX predate this; other
@@ -286,16 +308,60 @@ def stats_for(rows_subset, horizon_key):
     return {"n": n, "avg_return_pct": avg, "hit_rate_pct": round(hits / n * 100, 1)}
 
 
+def composite_bucket_stats(rows_subset):
+    return {
+        label: {f"{h}d": stats_for([r for r in rows_subset if bucket_for(r["composite_score"]) == label], f"return_{h}d")
+                for h in HORIZONS}
+        for label, _, _ in COMPOSITE_BUCKETS
+    }
+
+
+def years_back_date(date_str, years):
+    """date_str minus `years` calendar years, as an ISO string — handles the
+    Feb-29 edge case by falling back to Feb 28."""
+    y, m, d = (int(x) for x in date_str.split("-"))
+    try:
+        return f"{y - years:04d}-{m:02d}-{d:02d}"
+    except ValueError:
+        return f"{y - years:04d}-{m:02d}-28"
+
+
 def build_summary(rows):
-    by_bucket = {}
-    for label, _, _ in COMPOSITE_BUCKETS:
-        subset = [r for r in rows if bucket_for(r["composite_score"]) == label]
-        by_bucket[label] = {f"{h}d": stats_for(subset, f"return_{h}d") for h in HORIZONS}
+    by_bucket = composite_bucket_stats(rows)
 
     by_flow_regime = {}
     for regime in sorted(set(r["flow_regime"] for r in rows)):
         subset = [r for r in rows if r["flow_regime"] == regime]
         by_flow_regime[regime] = {f"{h}d": stats_for(subset, f"return_{h}d") for h in HORIZONS}
+
+    # Fixed structural eras — does a real regime shift change the relationship?
+    by_era = {}
+    for era_name, (start, end) in ERAS.items():
+        subset = [r for r in rows if start <= r["date"] <= end]
+        if not subset:
+            by_era[era_name] = {"note": "no data in this window"}
+            continue
+        by_era[era_name] = {
+            "trading_days": len(subset),
+            "date_range_actual": f"{subset[0]['date']} to {subset[-1]['date']}",
+            "by_composite_bucket": composite_bucket_stats(subset),
+        }
+
+    # Rolling recency windows anchored to the latest date actually in the data.
+    recency_windows = {}
+    latest_date = rows[-1]["date"]
+    for years in RECENCY_WINDOW_YEARS:
+        start = years_back_date(latest_date, years)
+        subset = [r for r in rows if r["date"] >= start]
+        key = f"last_{years}y"
+        if not subset:
+            recency_windows[key] = {"note": "no data in this window"}
+            continue
+        recency_windows[key] = {
+            "trading_days": len(subset),
+            "date_range_actual": f"{subset[0]['date']} to {subset[-1]['date']}",
+            "by_composite_bucket": composite_bucket_stats(subset),
+        }
 
     crash_analysis = {}
     for name, (start, end) in CRASH_WINDOWS.items():
@@ -333,10 +399,19 @@ def build_summary(rows):
             "regime_signal here was computed with gex=None (no free historical dealer-"
             "positioning data exists) — STRONG_BUY/BUY_WATCH never appear. flow_regime "
             "doesn't depend on gex and is the more complete signal. Bucket boundaries "
-            "match regime_analyzer.py's own documented composite_score ranges."
+            "match regime_analyzer.py's own documented composite_score ranges. "
+            "IMPORTANT: by_composite_bucket and by_flow_regime below pool the ENTIRE "
+            "date range into one number, which can hide a regime change — confirmed "
+            "2026-08-21: the 'stress' bucket looked bearish (negative forward returns) "
+            "pooled across all 30 years, but that was almost entirely a pre-2010 "
+            "artifact; every era since 2010 shows the OPPOSITE (positive forward "
+            "returns) for the same bucket. Always cross-check a pooled finding against "
+            "by_era and recency_windows below before treating it as current."
         ),
         "by_composite_bucket": by_bucket,
         "by_flow_regime": by_flow_regime,
+        "by_era": by_era,
+        "recency_windows": recency_windows,
         "crash_window_analysis": crash_analysis,
     }
     with open(SUMMARY_JSON, "w", encoding="utf-8") as f:
