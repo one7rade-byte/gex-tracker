@@ -1,79 +1,76 @@
 {
-  "date": "2026-08-24",
+  "date": "2026-08-25",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-15.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 15.1 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "AMZN OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 9/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 6/10, RSI at 37th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla and Other Electric Vehicle Companies Begin Massive Chi...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 15.1, needs +6.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-15.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 15.1 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 144 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AMZN OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 9/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 6/10, RSI at 37th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla and Other Electric Vehicle Companies Begin Massive Chi...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.1, needs +6.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is deeply negative at $-17.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 15.8 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 7/10. Below 200MA \u2014 scale in slowly. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 3 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-17.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 15.8 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 146 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 3 of last 10 days oversold, macro-driven selloff. Score 7/10. Below 200MA \u2014 scale in slowly. AMZN OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 3 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 15.8, needs +6.2 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "negative_gex",
+    "regime": "bear_warning",
     "vix_trend": "stable",
-    "vix_current": 15.13,
+    "vix_current": 15.85,
     "gex_trend": "deteriorating",
-    "gex_current": -15.0,
+    "gex_current": -17.2,
     "fear_trend": "building",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
-    "bull_current": 5.0,
-    "neg_gex_days": 6,
-    "skew_current": 143.9,
+    "fear_current": 5.0,
+    "bear_current": 6.0,
+    "bull_current": 3.0,
+    "neg_gex_days": 7,
+    "skew_current": 145.64,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 57.63
+    "spy_rsi": 40.5
   },
   "top_opportunity": {
-    "ticker": "AMZN",
-    "score": 9.0,
-    "reason": "RSI extremely oversold (bottom 2% of own history) | Options cheap (IV bottom 18% of own history) \u2014 good entry cost | Heavy put buying (P/C top 0% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "macro_fear"
+    "ticker": "GOOGL",
+    "score": 7.0,
+    "reason": "RSI extremely oversold (bottom 3% of own history) | Options moderately priced (IV 22th pct) | Elevated put buying (P/C 72th pct) | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "neutral"
   },
-  "avoid_names": [
-    "TSLA",
-    "META"
-  ],
+  "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 6.0,
-      "rsi_pct": 36.9,
+      "score": 4.0,
+      "rsi_pct": 33.7,
       "above_200ma": true,
       "news": "company_positive",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
-        "Q2 Earnings Season Winds Down: 3 Companies That Broke Records",
-        "Apple (AAPL) Cut Its Europe App Store Fees. Its Own Earnings Show Why It Had To",
-        "Apple (AAPL)\u2019s China AI Strategy: Why Remove the Alibaba (BABA) Guide?",
-        "Xiaomi Takes Another Page From Apple"
+        "Apple Announces Mac mini and Mac Studio; More Info at B&amp;H",
+        "Cramer Warns iPhone Prices Will Rise Without Chinese Memory \u2014 Here\u2019s Why Apple Can\u2019t Wait for U.S. Production",
+        "S&amp;P 100 Is Quietly Sending a Powerful Signal",
+        "Clark Howard Warned Apple Traps You in Forever Leases and Now Three New Macs Just Landed"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 37.9,
+      "rsi_pct": 35.6,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Microsoft Rises as $678 Billion Backlog Defies Tech Selloff",
-        "Can NOW's Tech Mahindra Deal Boost Its AI Edge Over CRM &amp; MSFT?",
-        "Microsoft Stock in 2027: My Prediction Is That It Still Beats the Market",
-        "Microsoft Stock's Upside Now Runs Through Its Data Center Build"
+        "S&amp;P 100 Is Quietly Sending a Powerful Signal",
+        "Xendoo Named No. 3828 on the 2026 Inc. 5000 List, the Most Prestigious Ranking of America\u2019s Fastest-Growing Private Companies",
+        "Microsoft Just Ripped 28% in a Month. What Would It Take to Get MSFT Stock Up to $600?",
+        "Microsoft Stalls as $678 Billion Backlog Meets Falling Yields"
       ]
     },
     "NVDA": {
       "score": 4.0,
-      "rsi_pct": 62.1,
+      "rsi_pct": 29.8,
       "above_200ma": true,
       "news": "macro_fear",
-      "rsi_dir": "recovering",
-      "days_oversold": 0,
+      "rsi_dir": "stable",
+      "days_oversold": 1,
       "headlines": [
-        "Stock Market Today, Aug. 24: Nvidia Extends Losses as Tech Stocks Retreat",
-        "Alibaba Dilutes Shares To Feed Its AI Spending Spree",
-        "NVIDIA Earnings: A Quick Look at Expectations",
-        "Dow Jones Futures: Trump, Bessent Comments Spark Tech Losses; Nvidia Sells Off Before Earnings"
+        "Louis Navellier has blunt message on Nvidia\u2019s reign before earnings",
+        "Dow Jones Futures: Stocks Rise Cautiously Into Fed Inflation Data, Nvidia Earnings; Robinhood In Buy Area",
+        "If I Could Tell Everyone 1 Thing About the Stock Market, It's This: It Will Crash",
+        "Best Value Stocks to Buy Now and in September"
       ]
     },
     "GOOGL": {
@@ -82,54 +79,54 @@
       "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
         "Why tech stock bulls may not shake this AI problem",
+        "The real question investors should be asking ahead of Nvidia earnings",
         "Tesla Cybercab to launch Sept. 3 as robotaxi bet ramps up",
-        "Anthropic's IPO could come sooner than you think \u2014 likely beating OpenAI to the punch",
-        "Waymo is making its own AI chip for its robotaxi service"
+        "Anthropic's IPO could come sooner than you think \u2014 likely beating OpenAI to the punch"
       ]
     },
     "META": {
-      "score": 3.0,
-      "rsi_pct": 17.5,
+      "score": 4.0,
+      "rsi_pct": 33.7,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "neutral",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Meta and Google Face a New Social Media Threat",
-        "Meta Needs to Start Renting Out Its AI Capacity, Analyst Says. Here\u2019s Why.",
-        "Snap Rises 4%, Meta Platforms and Alphabet Tick Up, Reddit Slips as the Social Media Trade Splits",
-        "META Rides on Ad Growth: Can It Stay Ahead of RDDT and SNAP?"
+        "OpenAI\u2019s Data-Center Chief Has Reportedly Left \u2014 Executive Exodus Grows Ahead Of Planned IPO",
+        "Reddit (RDDT) Stock Is Up, What You Need To Know",
+        "Meta's Next AI Bet Could Arrive Sooner Than Expected",
+        "S&amp;P 100 Is Quietly Sending a Powerful Signal"
       ]
     },
     "AMZN": {
-      "score": 9.0,
-      "rsi_pct": 1.9,
+      "score": 7.0,
+      "rsi_pct": 12.5,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "Amazon Has Been Lagging the S&amp;P 500 in 2026. This Is the Only Reason I'd Need to Buy the Stock in August Without Hesitation.",
-        "Amazon hikes hardware prices by 60%, blaming memory shortage",
-        "Sector Update: Tech Stocks Fall Late Afternoon",
-        "Amazon Jumps 1.8% as AWS Growth Overpowers Tech Anxiety"
+        "S&amp;P 100 Is Quietly Sending a Powerful Signal",
+        "Anthropic Has a New Problem Before IPO",
+        "Amazon Slips as $220 Billion AI Bill Returns",
+        "Prediction: Amazon Stock Could Be the Sleeper Winner of the AI Boom"
       ]
     },
     "TSLA": {
-      "score": 5.0,
-      "rsi_pct": 95.1,
+      "score": 3.0,
+      "rsi_pct": 72.1,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Tesla to launch Cybercabs in Austin starting Sept. 3",
-        "Tesla and Other Electric Vehicle Companies Begin Massive China Recall",
-        "Tesla Just Took a Blow to Its AI Chip Plans",
-        "Why Tesla (TSLA) Is Up 6.9% After Robotaxi Approvals And 500 Semi Deal News - And What's Next"
+        "SpaceX unveils Starbase launch site in Louisiana, moves up orbital data center launch timeline",
+        "Tesla\u2019s Cybertruck Base Version Hits $74,990 \u2014 Nearly 2X Its 2019 Promised Price",
+        "Nevada Just Raised Tesla's Las Vegas Robotaxi Cap From 10 Vehicles to 5,000",
+        "Tesla Rises as 2.98 Million-Car Recall Tests China"
       ]
     }
   },
@@ -146,9 +143,9 @@
       "source_count": 1
     },
     {
-      "title": "DIVO Holders Gave Up $79,300 on a $500,000 Position Over Five Years for Downside Comfort",
-      "link": "https://247wallst.com/investing/etf/2026/08/21/divo-holders-gave-up-79300-on-a-500000-position-over-five-years-for-downside-comfort/?.tsrc=rss",
-      "pub_date": "2026-08-21",
+      "title": "Jane Street turns bullish on volatile AI stock",
+      "link": "https://www.thestreet.com/investing/stocks/jane-street-bullish-sandisk-sndk-stock?.tsrc=rss",
+      "pub_date": "2026-08-25",
       "tickers": [
         "MARKET"
       ],
@@ -157,9 +154,42 @@
       "source_count": 1
     },
     {
-      "title": "SPY Has a Nearly Identical Twin That Costs 80 Percent Less and Pays the Same Dividends",
-      "link": "https://247wallst.com/investing/etf/2026/08/21/spy-has-a-nearly-identical-twin-that-costs-80-percent-less-and-pays-the-same-dividends/?.tsrc=rss",
-      "pub_date": "2026-08-21",
+      "title": "Core Compounders Should Do This With Walmart",
+      "link": "https://247wallst.com/investing/2026/08/25/core-compounders-should-do-this-with-walmart/?.tsrc=rss",
+      "pub_date": "2026-08-25",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Johnson &amp; Johnson Is Near a Record High. Is There Still Room to Run?",
+      "link": "https://247wallst.com/investing/2026/08/25/johnson-johnson-is-near-a-record-high-is-there-still-room-to-run/?.tsrc=rss",
+      "pub_date": "2026-08-25",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Long-Term Investors Know Exactly What to Do With Nvidia Before Aug. 26 Earnings Drop",
+      "link": "https://247wallst.com/investing/2026/08/25/long-term-investors-know-exactly-what-to-do-with-nvidia-before-aug-26-earnings-drop/?.tsrc=rss",
+      "pub_date": "2026-08-25",
+      "tickers": [
+        "NVDA"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Nuclear Stocks Rebound on an Oversold Bounce: Uranium Energy Jumps 6%, NuScale Power and Oklo Climb 5%",
+      "link": "https://247wallst.com/investing/2026/08/25/nuclear-stocks-rebound-on-an-oversold-bounce-uranium-energy-jumps-6-nuscale-power-and-oklo-climb-5/?.tsrc=rss",
+      "pub_date": "2026-08-25",
       "tickers": [
         "SPY"
       ],
@@ -168,9 +198,20 @@
       "source_count": 1
     },
     {
-      "title": "BofA Sees a Stock Market Setup Starting to Change",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/bofa-sees-stock-market-setup-193717505.html?.tsrc=rss",
-      "pub_date": "2026-08-21",
+      "title": "Apple at $310: Little Room to Grow But Still a Buy",
+      "link": "https://247wallst.com/investing/2026/08/25/apple-at-310-little-room-to-grow-but-still-a-buy/?.tsrc=rss",
+      "pub_date": "2026-08-25",
+      "tickers": [
+        "AAPL"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Tuesday as Chip Stocks Recover",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130924933.html?.tsrc=rss",
+      "pub_date": "2026-08-25",
       "tickers": [
         "SPY"
       ],
@@ -179,13 +220,14 @@
       "source_count": 1
     },
     {
-      "title": "There Are Two SPY ETFs Now, and You Probably Own the Wrong One",
-      "link": "https://247wallst.com/investing/etf/2026/08/21/there-are-two-spy-etfs-now-and-you-probably-own-the-wrong-one/?.tsrc=rss",
-      "pub_date": "2026-08-21",
+      "title": "S&amp;P 500, Nasdaq End Lower On Chipmaker Weakness, While Traders Position For Nvidia Earnings This Week \u2014 AVGO, INTC, BE, NVDA, PSKY In Focus",
+      "link": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-lower-on-chipmaker-weakness/cZYKu7wRJFn?.tsrc=rss",
+      "pub_date": "2026-08-24",
       "tickers": [
-        "SPY"
+        "NVDA",
+        "QQQ"
       ],
-      "high_impact": false,
+      "high_impact": true,
       "sources": [],
       "source_count": 1
     },
@@ -197,51 +239,6 @@
         "MARKET"
       ],
       "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "US Stock Indices End Week Lower On Pressure From Elevated Long-Duration Treasury Yields \u2014 PSKY, MSTR, WMT, TSLA, NVDA In Focus",
-      "link": "https://stocktwits.com/news-articles/markets/equity/us-stock-indices-end-week-lower-on-pressure-from-elevated-long-duration-treasury-yields-psky/cZY97YMRJVO?.tsrc=rss",
-      "pub_date": "2026-08-21",
-      "tickers": [
-        "NVDA",
-        "TSLA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "A Two-Year Market Run Let Them Retire at 62. Claiming Social Security to Protect the Gains Could Cost Them for Life.",
-      "link": "https://247wallst.com/personal-finance/social-security/2026/08/24/a-two-year-market-run-let-them-retire-at-62-claiming-social-security-to-protect-the-gains-could-cost-them-for-life/?.tsrc=rss",
-      "pub_date": "2026-08-24",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Exchange-Traded Funds, Equity Futures Fall Pre-Bell Monday as Investors Await Details on US Sanctions Against Iran",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131908789.html?.tsrc=rss",
-      "pub_date": "2026-08-24",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Dollar at 3-Month Lows on Treasury Buyback Plans: ETF Strategies to Play",
-      "link": "https://finance.yahoo.com/markets/currencies/articles/dollar-3-month-lows-treasury-130000835.html?.tsrc=rss",
-      "pub_date": "2026-08-24",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
       "sources": [],
       "source_count": 1
     }
