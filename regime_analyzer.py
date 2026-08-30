@@ -43,7 +43,15 @@ REGIME_CSV_HEADERS = [
     "composite_score",    # -8 to +8: weighted total
     "flow_regime",        # plain-English regime label
     # Change signals
-    "hyg_5d_change",      # HYG change over 5 days — early warning
+    "hyg_5d_change",      # HYG $ change over 5 days — early warning
+    "hyg_5d_pct",         # HYG % change over 5 days — validated 2026-08-30 (real
+                           # lead-time edge over the level-based flow_regime signal;
+                           # see roc_early_warning_backtest.py)
+    "composite_5d_chg",   # composite_score change over 5 days — validated 2026-08-30,
+                           # same backtest: fired 10 trading days earlier than the
+                           # level signal in 2020 COVID and 66 days earlier in the
+                           # 2022 bear, and also flagged each recovery within
+                           # 3-23 days of the actual bottom
     "vix_term_signal",    # contango/backwardation
     "skew_signal",        # panic_buy/normal/warning/black_swan_watch
     "gex_signal",         # positive/negative/deeply_negative
@@ -239,6 +247,7 @@ def detect_black_swan(today_row, history_rows):
     composite = today_row.get('composite_score', 0)
     vix_term = today_row.get('vix_term_signal')
     hyg_5d = today_row.get('hyg_5d_change')
+    composite_5d = today_row.get('composite_5d_chg')
 
     # Signal 1: SKEW extremely elevated while VIX still low (smart money hedging quietly)
     if skew and vix and skew > 150 and vix < 20:
@@ -266,6 +275,13 @@ def detect_black_swan(today_row, history_rows):
     # Signal 6: HYG below 76 (meaningful credit stress)
     if hyg and hyg < 76:
         warnings.append(f"HYG ${hyg:.2f} below $76 — credit stress building")
+
+    # Signal 7: composite score dropping fast over 5 days (not 10 — validated
+    # 2026-08-30 as an earlier-firing companion to signal 4: caught the 2020
+    # COVID top 3 trading days in and the 2022 bear 12 days in, well before
+    # the 10-day version or the level-based flow_regime signal fired)
+    if composite_5d is not None and composite_5d <= -3:
+        warnings.append(f"Composite score dropped {composite_5d:+.1f} in 5 days — fast regime deterioration")
 
     is_watch = len(warnings) >= 3
     return is_watch, warnings
@@ -437,6 +453,7 @@ def main():
 
     # HYG 5-day change — look back in macro history
     hyg_5d_change = None
+    hyg_5d_pct = None
     if hyg and macro_hist:
         # Find rows from 5-7 trading days ago
         old_rows = [r for r in macro_hist[-10:] if r.get('hyg')]
@@ -444,6 +461,7 @@ def main():
             old_hyg = n(old_rows[-5].get('hyg'))
             if old_hyg:
                 hyg_5d_change = round(hyg - old_hyg, 3)
+                hyg_5d_pct = round((hyg / old_hyg - 1) * 100, 3)
 
     # SKEW signal
     if skew and vix:
@@ -488,11 +506,26 @@ def main():
     flow_reg  = get_flow_regime(composite, hyg, dxy, vix)
     signal    = get_regime_signal(composite, hyg, gex, rsi, skew, vix)
 
+    # Composite score 5-day change — look back in regime history. Validated
+    # 2026-08-30 against 30 years of composite_score/HYG history
+    # (deep_history_backtest_log.csv): composite_5d_chg <= -3 fired 10 trading
+    # days earlier than the level-based flow_regime signal in the 2020 COVID
+    # crash and 66 days earlier in the 2022 bear, with a real (not base-rate)
+    # lift in forward-drawdown hit rate that held up in the 2016-present
+    # subsample too. See roc_early_warning_backtest.py / WEEKLY_RESEARCH_LOG.md.
+    composite_5d_chg = None
+    if regime_hist:
+        old_rows = [r for r in regime_hist[-10:] if r.get('composite_score') not in (None, '')]
+        if len(old_rows) >= 5:
+            old_composite = n(old_rows[-5].get('composite_score'))
+            if old_composite is not None:
+                composite_5d_chg = round(composite - old_composite, 2)
+
     # Build today's row for black swan detection
     today_data = {
         'hyg': hyg, 'skew': skew, 'vix': vix, 'dxy': dxy,
         'composite_score': composite, 'vix_term_signal': vix_term,
-        'hyg_5d_change': hyg_5d_change,
+        'hyg_5d_change': hyg_5d_change, 'composite_5d_chg': composite_5d_chg,
     }
     bs_watch, bs_reasons = detect_black_swan(today_data, regime_hist)
 
@@ -510,7 +543,8 @@ def main():
     print(f"  GROWTH:     Copper={copper} EEM={eem} (score={growth_s})")
     print(f"  SKEW:       {skew} signal={skew_signal} (score={skew_s})")
     print(f"  GEX:        {gex}B signal={gex_signal}")
-    print(f"  HYG 5D CHG: {hyg_5d_change}")
+    print(f"  HYG 5D CHG: {hyg_5d_change} ({hyg_5d_pct}%)")
+    print(f"  COMPOSITE 5D CHG: {composite_5d_chg}")
     print(f"  BS WATCH:   {bs_watch}")
     if bs_reasons:
         for r in bs_reasons:
@@ -530,6 +564,8 @@ def main():
         'skew_score': skew_s, 'composite_score': composite,
         'flow_regime': flow_reg,
         'hyg_5d_change': hyg_5d_change,
+        'hyg_5d_pct': hyg_5d_pct,
+        'composite_5d_chg': composite_5d_chg,
         'vix_term_signal': vix_term,
         'skew_signal': skew_signal,
         'gex_signal': gex_signal,
