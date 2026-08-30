@@ -44,6 +44,8 @@ REGIME_CSV_HEADERS = [
     "flow_regime",        # plain-English regime label
     # Change signals
     "hyg_5d_change",      # HYG change over 5 days — early warning
+    "composite_5d_chg",   # composite_score change over 5 days — see WEEKLY_RESEARCH_LOG.md 2026-08-30
+    "early_warning",      # True when composite_5d_chg <= -3 — WATCH tier, not an action signal
     "vix_term_signal",    # contango/backwardation
     "skew_signal",        # panic_buy/normal/warning/black_swan_watch
     "gex_signal",         # positive/negative/deeply_negative
@@ -53,6 +55,8 @@ REGIME_CSV_HEADERS = [
     "black_swan_reasons", # pipe-separated list of warning signals
     "brief",              # one-sentence plain English summary
 ]
+
+EARLY_WARNING_THRESHOLD = -3.0  # composite_5d_chg at/below this = early_warning flag
 
 
 # ── Scoring functions ─────────────────────────────────────────────────────────
@@ -488,6 +492,14 @@ def main():
     flow_reg  = get_flow_regime(composite, hyg, dxy, vix)
     signal    = get_regime_signal(composite, hyg, gex, rsi, skew, vix)
 
+    # Composite score 5-day change — early warning (validated WEEKLY_RESEARCH_LOG.md 2026-08-30)
+    composite_5d_chg = None
+    if len(regime_hist) >= 5:
+        old_composite = n(regime_hist[-5].get('composite_score'))
+        if old_composite is not None:
+            composite_5d_chg = round(composite - old_composite, 2)
+    early_warning = composite_5d_chg is not None and composite_5d_chg <= EARLY_WARNING_THRESHOLD
+
     # Build today's row for black swan detection
     today_data = {
         'hyg': hyg, 'skew': skew, 'vix': vix, 'dxy': dxy,
@@ -511,6 +523,7 @@ def main():
     print(f"  SKEW:       {skew} signal={skew_signal} (score={skew_s})")
     print(f"  GEX:        {gex}B signal={gex_signal}")
     print(f"  HYG 5D CHG: {hyg_5d_change}")
+    print(f"  COMP 5D CHG: {composite_5d_chg}  EARLY WARNING: {early_warning}")
     print(f"  BS WATCH:   {bs_watch}")
     if bs_reasons:
         for r in bs_reasons:
@@ -530,6 +543,8 @@ def main():
         'skew_score': skew_s, 'composite_score': composite,
         'flow_regime': flow_reg,
         'hyg_5d_change': hyg_5d_change,
+        'composite_5d_chg': composite_5d_chg,
+        'early_warning': early_warning,
         'vix_term_signal': vix_term,
         'skew_signal': skew_signal,
         'gex_signal': gex_signal,
