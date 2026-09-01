@@ -3520,3 +3520,506 @@ date,ticker,spot_price,rsi_14,ma_200,above_200ma,rsi_pct,iv_pct,pc_pct,iv_curren
 2026-08-31,ZBRA,353.54998779296875,26.31,255.02,True,0.0,51,,40.88,,,not_scanned,,,,,,,4.94,BUY,1.0
 2026-08-31,ZBH,100.04000091552734,57.69,91.18,True,16.7,72,,32.0,,,not_scanned,,,,,,,2.35,HOLD / NEUTRAL,0.0
 2026-08-31,ZTS,77.0999984741211,54.16,103.92,False,50.0,81,,38.94,,,not_scanned,,,,,,,-2.86,HOLD / NEUTRAL,0.0
+2026-09-01,BAC,61.9900016784668,37.79,54.68,True,0.0,1,,20.59,1.02,0.086,positive,57.41,65.0,50.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 1% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.93,STRONG BUY,1.5
+2026-09-01,TECH,72.18000030517578,50.93,60.76,True,0.0,1,,25.23,0.02,0.038,positive,66.93,75.0,65.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 1% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.93,STRONG BUY,1.5
+2026-09-01,RDDT,144.63999938964844,43.31,175.3,False,0.0,2,,56.49,0.77,-0.004,negative,147.8,220.0,115.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 2% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",3.87,BUY,1.0
+2026-09-01,KEY,21.209999084472656,26.87,21.33,False,0.0,3,,24.11,0.88,,unknown,20.11,25.0,20.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 3% of own history) | Below 200MA — downtrend, scale in slowly",5.81,BUY,1.0
+2026-09-01,STE,229.64999389648438,34.65,233.52,False,0.0,3,,23.03,0.22,,unknown,214.29,230.0,210.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 3% of own history) | Below 200MA — downtrend, scale in slowly",5.81,BUY,1.0
+2026-09-01,LYV,177.1999969482422,41.24,159.61,True,0.0,4,,28.35,1.26,0.014,positive,,180.0,130.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 4% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.75,STRONG BUY,1.5
+2026-09-01,JPM,354.95001220703125,38.86,317.34,True,0.0,6,,19.95,0.91,0.141,positive,332.97,360.0,355.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 6% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.63,STRONG BUY,1.5
+2026-09-01,PSA,302.8599853515625,23.23,297.11,True,0.0,6,,19.92,1.68,0.001,positive,307.31,330.0,300.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 6% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.63,STRONG BUY,1.5
+2026-09-01,WSM,222.1199951171875,17.43,203.55,True,0.0,6,,36.97,0.78,,unknown,215.86,250.0,210.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 6% of own history) | Above 200MA — uptrend intact,7.63,STRONG BUY,1.5
+2026-09-01,DOV,189.92999267578125,21.08,209.79,False,0.0,7,,21.46,0.2,0.004,positive,,210.0,195.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 7% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",7.57,STRONG BUY,1.5
+2026-09-01,EL,100.0,67.27,92.0,True,0.0,7,,33.31,0.94,0.005,positive,87.81,105.0,75.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 7% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.57,STRONG BUY,1.5
+2026-09-01,RJF,173.5,37.26,159.98,True,0.0,7,,22.62,0.39,0.003,positive,,175.0,145.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 7% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.57,STRONG BUY,1.5
+2026-09-01,USB,61.209999084472656,29.19,56.4,True,0.0,8,,22.32,0.6,0.011,positive,53.55,65.0,47.5,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 8% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.51,STRONG BUY,1.5
+2026-09-01,BKNG,195.69000244140625,30.54,185.89,True,0.0,9,,32.54,0.86,0.011,positive,189.66,224.0,176.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 9% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.46,STRONG BUY,1.5
+2026-09-01,PNC,237.49000549316406,20.98,223.49,True,0.0,9,,22.9,0.85,,unknown,237.81,260.0,235.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 9% of own history) | Above 200MA — uptrend intact,7.46,STRONG BUY,1.5
+2026-09-01,HLT,311.989990234375,47.84,311.94,True,0.0,10,,23.39,0.99,,unknown,309.21,320.0,300.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 10% of own history) | Above 200MA — uptrend intact,7.4,STRONG BUY,1.5
+2026-09-01,HOOD,103.51000213623047,57.58,95.13,True,0.0,10,,59.01,0.6,0.044,positive,89.08,120.0,99.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 10% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.4,STRONG BUY,1.5
+2026-09-01,BA,205.66000366210938,8.86,219.92,False,0.0,11,,30.13,0.98,-0.053,negative,214.64,250.0,200.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 11% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",3.34,BUY,1.0
+2026-09-01,PLTR,179.9199981689453,58.28,151.33,True,0.0,11,,47.5,1.05,0.124,positive,160.4,190.0,140.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 11% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.34,STRONG BUY,1.5
+2026-09-01,AMCR,45.81999969482422,39.74,42.68,True,0.0,12,,23.71,0.49,0.001,positive,,49.0,43.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 12% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.28,STRONG BUY,1.5
+2026-09-01,SYF,76.62000274658203,43.97,74.98,True,0.0,13,,31.08,0.85,0.001,positive,73.01,80.0,75.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 13% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.22,STRONG BUY,1.5
+2026-09-01,AXP,324.19000244140625,30.81,337.7,False,0.0,15,,24.43,0.67,-0.006,negative,327.53,480.0,320.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 15% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",3.1,BUY,1.0
+2026-09-01,NDSN,314.3999938964844,52.32,277.43,True,0.0,15,,26.27,0.61,0.001,positive,279.08,330.0,260.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 15% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.1,STRONG BUY,1.5
+2026-09-01,ABNB,182.5449981689453,46.77,138.12,True,0.0,16,,31.07,0.97,0.016,positive,,190.0,180.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 16% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.04,STRONG BUY,1.5
+2026-09-01,DXCM,90.13999938964844,52.08,70.29,True,0.0,16,,37.31,0.98,0.003,positive,77.95,95.0,60.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 16% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,9.04,STRONG BUY,1.5
+2026-09-01,MMM,170.24000549316406,16.9,160.86,True,0.0,17,,23.83,0.94,0.002,positive,167.96,190.0,160.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 17% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.98,STRONG BUY,1.5
+2026-09-01,GEHC,70.41999816894531,39.75,72.8,False,0.0,18,,26.82,0.77,0.002,positive,66.43,72.5,60.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 18% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",6.92,BUY,1.0
+2026-09-01,RF,29.290000915527344,20.16,28.35,True,0.0,18,,25.05,1.24,,unknown,27.28,30.0,25.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 18% of own history) | Above 200MA — uptrend intact,6.92,BUY,1.0
+2026-09-01,FSLR,199.64999389648438,17.19,231.66,False,0.0,19,,51.04,0.65,0.017,positive,195.27,210.0,180.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 19% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",6.86,BUY,1.0
+2026-09-01,AWK,137.39999389648438,52.97,131.36,True,0.0,20,,20.99,0.5,0.004,positive,129.18,140.0,120.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 20% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.8,STRONG BUY,1.5
+2026-09-01,FDX,324.8800048828125,52.27,289.48,True,0.0,20,,26.17,0.47,0.038,positive,300.87,330.0,320.0,7,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 20% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.8,STRONG BUY,1.5
+2026-09-01,PSKY,10.550000190734863,73.31,11.1,False,0.0,20,,53.12,0.94,,unknown,10.34,12.0,8.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | Options cheap (IV bottom 20% of own history) | Below 200MA — downtrend, scale in slowly",4.8,BUY,1.0
+2026-09-01,BLK,1128.0999755859375,44.42,1057.89,True,0.0,21,,20.91,0.64,0.021,positive,1026.38,1300.0,1120.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 21th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.74,STRONG BUY,1.5
+2026-09-01,GM,85.62999725341797,36.94,79.55,True,0.0,22,,30.36,0.55,0.023,positive,,90.0,84.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 22th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.68,STRONG BUY,1.5
+2026-09-01,SWK,94.51000213623047,22.46,81.35,True,0.0,22,,31.2,0.12,0.008,positive,,115.0,87.5,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 22th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.68,STRONG BUY,1.5
+2026-09-01,COIN,176.82000732421875,61.69,194.15,False,0.0,23,,64.35,0.71,0.034,positive,164.3,200.0,160.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 23th pct) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",6.62,BUY,1.0
+2026-09-01,SBUX,106.1500015258789,48.52,97.23,True,0.0,23,,27.22,0.93,0.021,positive,95.86,110.0,100.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 23th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.62,STRONG BUY,1.5
+2026-09-01,SMCI,36.709999084472656,47.18,31.32,True,0.0,23,,70.96,0.86,0.03,positive,,38.5,30.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 23th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.62,STRONG BUY,1.5
+2026-09-01,BNY,160.50999450683594,50.43,131.85,True,0.0,24,,23.1,1.6,0.004,positive,151.6,170.0,150.0,6,"BUY — oversold, good loading zone",RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 24th pct) | GEX positive — dealers providing support | Above 200MA — uptrend intact,8.56,STRONG BUY,1.5
+2026-09-01,DAL,76.37999725341797,17.98,73.78,True,0.0,24,,37.5,1.08,-0.002,negative,77.2,90.0,75.0,6,"BUY — oversold, good loading zone","RSI extremely oversold (bottom 0% of own history) | Options moderately priced (IV 24th pct) | GEX negative — unstable, watch for stabilization | Above 200MA — uptrend intact",4.56,BUY,1.0
+2026-09-01,AOS,58.4900016784668,30.11,65.3,False,0.0,64,,28.01,,,not_scanned,,,,,,,2.16,HOLD / NEUTRAL,0.0
+2026-09-01,ABT,108.93000030517578,47.69,106.7,True,0.0,73,,26.19,,,not_scanned,,,,,,,3.62,BUY,0.75
+2026-09-01,ABBV,259.989990234375,61.46,227.83,True,28.6,64,,26.86,,,not_scanned,,,,,,,1.87,HOLD / NEUTRAL,0.0
+2026-09-01,ACN,188.08999633789062,58.86,204.02,False,0.0,83,,47.35,,,not_scanned,,,,,,,1.02,HOLD / NEUTRAL,0.0
+2026-09-01,ADBE,286.0799865722656,63.2,268.95,True,71.4,90,,54.34,,,not_scanned,,,,,,,-3.11,REDUCE / AVOID NEW,0.0
+2026-09-01,AMD,459.6099853515625,42.65,337.72,True,14.3,42,,48.53,,,not_scanned,,,,,,,4.34,BUY,1.0
+2026-09-01,AES,14.770000457763672,62.07,14.57,True,100.0,59,,42.54,,,not_scanned,,,,,,,-3.54,REDUCE / AVOID NEW,0.0
+2026-09-01,AFL,116.0199966430664,33.31,114.51,True,100.0,24,,19.26,,,not_scanned,,,,,,,-1.44,HOLD / NEUTRAL,0.0
+2026-09-01,A,149.92999267578125,50.7,131.51,True,0.0,50,,31.62,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,APD,305.32000732421875,45.46,281.58,True,0.0,30,,24.33,,,not_scanned,,,,,,,6.2,BUY,1.0
+2026-09-01,AKAM,106.45999908447266,37.0,109.23,False,28.6,75,,53.22,,,not_scanned,,,,,,,-0.79,HOLD / NEUTRAL,0.0
+2026-09-01,ALB,135.5399932861328,58.35,156.2,False,42.9,5,,45.75,,,not_scanned,,,,,,,2.26,HOLD / NEUTRAL,0.0
+2026-09-01,ARE,51.630001068115234,62.16,50.13,True,71.4,71,,39.72,,,not_scanned,,,,,,,-1.97,HOLD / NEUTRAL,0.0
+2026-09-01,ALGN,154.9600067138672,29.46,170.12,False,14.3,39,,42.45,,,not_scanned,,,,,,,2.51,HOLD / NEUTRAL,0.0
+2026-09-01,ALLE,151.82000732421875,16.71,151.24,True,0.0,47,,28.54,,,not_scanned,,,,,,,5.18,BUY,1.0
+2026-09-01,LNT,67.91999816894531,45.54,70.43,False,57.1,60,,21.39,,,not_scanned,,,,,,,-2.17,HOLD / NEUTRAL,0.0
+2026-09-01,ALL,257.8699951171875,44.95,220.75,True,71.4,81,,28.22,,,not_scanned,,,,,,,-2.57,HOLD / NEUTRAL,0.0
+2026-09-01,GOOGL,335.0199890136719,39.92,335.05,False,85.7,18,,27.8,,,not_scanned,,,,,,,-1.94,HOLD / NEUTRAL,0.0
+2026-09-01,GOOG,332.0299987792969,36.19,333.95,False,85.7,26,,28.84,,,not_scanned,,,,,,,-2.42,HOLD / NEUTRAL,0.0
+2026-09-01,MO,69.56999969482422,65.42,66.16,True,100.0,41,,18.91,,,not_scanned,,,,,,,-2.46,HOLD / NEUTRAL,0.0
+2026-09-01,AMZN,254.9199981689453,38.2,238.79,True,85.7,28,,29.36,,,not_scanned,,,,,,,-0.54,HOLD / NEUTRAL,0.0
+2026-09-01,AEE,106.08999633789062,41.38,107.8,False,71.4,20,,18.2,,,not_scanned,,,,,,,-0.92,HOLD / NEUTRAL,0.0
+2026-09-01,AEP,122.95999908447266,47.5,126.86,False,85.7,53,,20.1,,,not_scanned,,,,,,,-4.04,REDUCE / AVOID NEW,0.0
+2026-09-01,AIG,75.87999725341797,40.85,77.39,False,71.4,19,,22.39,,,not_scanned,,,,,,,-0.86,HOLD / NEUTRAL,0.0
+2026-09-01,AMT,176.02000427246094,64.71,177.78,False,71.4,32,,23.71,,,not_scanned,,,,,,,-1.63,HOLD / NEUTRAL,0.0
+2026-09-01,AMP,542.6400146484375,34.32,485.53,True,0.0,33,,23.99,,,not_scanned,,,,,,,6.02,BUY,1.0
+2026-09-01,AME,231.32000732421875,20.8,225.16,True,0.0,53,,26.28,,,not_scanned,,,,,,,4.82,BUY,1.0
+2026-09-01,AMGN,438.1199951171875,66.04,356.42,True,28.6,91,,34.43,,,not_scanned,,,,,,,0.26,HOLD / NEUTRAL,0.0
+2026-09-01,APH,163.17999267578125,45.82,145.21,True,100.0,72,,42.9,,,not_scanned,,,,,,,-4.32,REDUCE / AVOID NEW,0.0
+2026-09-01,ADI,354.5199890136719,26.98,346.44,True,0.0,65,,36.63,,,not_scanned,,,,,,,4.1,BUY,0.75
+2026-09-01,AON,326.29998779296875,31.37,337.56,False,14.3,78,,29.49,,,not_scanned,,,,,,,0.18,HOLD / NEUTRAL,0.0
+2026-09-01,APA,44.29999923706055,66.17,33.19,True,28.6,35,,41.89,,,not_scanned,,,,,,,3.61,BUY,1.0
+2026-09-01,APO,131.69000244140625,36.66,127.68,True,0.0,39,,35.22,,,not_scanned,,,,,,,5.66,BUY,1.0
+2026-09-01,AAPL,325.1300048828125,75.37,283.07,True,100.0,38,,24.74,,,not_scanned,,,,,,,-2.28,HOLD / NEUTRAL,0.0
+2026-09-01,AMAT,441.8500061035156,28.0,402.65,True,0.0,67,,50.37,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,APP,311.739990234375,45.06,490.88,False,85.7,17,,55.15,,,not_scanned,,,,,,,-1.88,HOLD / NEUTRAL,0.0
+2026-09-01,APTV,44.849998474121094,28.72,67.05,False,0.0,81,,45.61,,,not_scanned,,,,,,,1.14,HOLD / NEUTRAL,0.0
+2026-09-01,ACGL,98.61000061035156,51.55,95.97,True,42.9,3,,20.8,,,not_scanned,,,,,,,4.38,BUY,1.0
+2026-09-01,ADM,84.55000305175781,61.37,71.61,True,100.0,71,,31.11,,,not_scanned,,,,,,,-4.26,REDUCE / AVOID NEW,0.0
+2026-09-01,ARES,139.08999633789062,44.04,133.37,True,0.0,52,,35.68,,,not_scanned,,,,,,,4.88,BUY,1.0
+2026-09-01,ANET,189.25999450683594,44.48,150.73,True,0.0,41,,47.55,,,not_scanned,,,,,,,5.54,BUY,1.0
+2026-09-01,AJG,262.0,58.95,233.78,True,14.3,71,,31.01,,,not_scanned,,,,,,,2.6,HOLD / NEUTRAL,0.0
+2026-09-01,AIZ,280.7799987792969,48.92,244.65,True,57.1,37,,28.13,,,not_scanned,,,,,,,1.21,HOLD / NEUTRAL,0.0
+2026-09-01,T,26.0,72.73,25.14,True,14.3,46,,23.38,,,not_scanned,,,,,,,4.1,BUY,1.0
+2026-09-01,ATO,167.6999969482422,44.87,175.75,False,85.7,69,,23.25,,,not_scanned,,,,,,,-4.99,REDUCE / AVOID NEW,0.0
+2026-09-01,ADSK,247.69000244140625,47.72,248.16,False,0.0,69,,39.3,,,not_scanned,,,,,,,1.86,HOLD / NEUTRAL,0.0
+2026-09-01,ADP,283.489990234375,63.83,236.46,True,57.1,66,,25.82,,,not_scanned,,,,,,,-0.53,HOLD / NEUTRAL,0.0
+2026-09-01,AZO,2965.830078125,41.56,3398.81,False,28.6,100,,32.88,,,not_scanned,,,,,,,-2.28,HOLD / NEUTRAL,0.0
+2026-09-01,AVY,173.07000732421875,38.58,173.06,True,0.0,45,,26.68,,,not_scanned,,,,,,,5.3,BUY,1.0
+2026-09-01,AXON,518.2999877929688,30.21,505.87,True,0.0,67,,54.29,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,BKR,63.654998779296875,42.62,58.19,True,28.6,62,,33.57,,,not_scanned,,,,,,,1.99,HOLD / NEUTRAL,0.0
+2026-09-01,BALL,62.77000045776367,49.02,58.78,True,14.3,34,,27.91,,,not_scanned,,,,,,,4.81,BUY,1.0
+2026-09-01,BAX,25.479999542236328,27.1,20.2,True,0.0,58,,41.41,,,not_scanned,,,,,,,4.52,BUY,1.0
+2026-09-01,BDX,187.1199951171875,61.51,159.08,True,0.0,63,,28.12,,,not_scanned,,,,,,,4.22,BUY,0.75
+2026-09-01,BRK-B,502.3299865722656,33.41,492.43,True,14.3,,,,,,not_scanned,,,,,,,3.86,BUY,1.0
+2026-09-01,BBY,82.62999725341797,48.83,71.25,True,14.3,31,,32.08,,,not_scanned,,,,,,,4.99,BUY,1.0
+2026-09-01,BIIB,216.0399932861328,65.0,189.91,True,28.6,58,,38.49,,,not_scanned,,,,,,,2.23,HOLD / NEUTRAL,0.0
+2026-09-01,BX,136.66000366210938,32.95,130.88,True,0.0,64,,35.33,,,not_scanned,,,,,,,4.16,BUY,0.75
+2026-09-01,XYZ,77.87999725341797,47.61,68.36,True,28.6,1,,38.69,,,not_scanned,,,,,,,5.65,BUY,1.0
+2026-09-01,BSX,48.08000183105469,39.22,67.88,False,14.3,81,,39.04,,,not_scanned,,,,,,,-0.0,HOLD / NEUTRAL,0.0
+2026-09-01,BMY,66.91999816894531,64.45,57.75,True,85.7,38,,27.27,,,not_scanned,,,,,,,-1.14,HOLD / NEUTRAL,0.0
+2026-09-01,AVGO,369.67999267578125,26.06,369.55,True,71.4,82,,53.94,,,not_scanned,,,,,,,-2.63,HOLD / NEUTRAL,0.0
+2026-09-01,BR,180.38999938964844,64.02,178.06,True,0.0,66,,33.84,,,not_scanned,,,,,,,4.04,BUY,0.75
+2026-09-01,BRO,72.05000305175781,52.25,69.61,True,14.3,67,,31.26,,,not_scanned,,,,,,,2.84,HOLD / NEUTRAL,0.0
+2026-09-01,BF-B,26.360000610351562,35.87,27.26,False,0.0,,,,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,BLDR,62.790000915527344,24.87,90.88,False,0.0,75,,56.28,,,not_scanned,,,,,,,1.5,HOLD / NEUTRAL,0.0
+2026-09-01,BG,121.04000091552734,67.2,113.72,True,85.7,78,,33.58,,,not_scanned,,,,,,,-3.53,REDUCE / AVOID NEW,0.0
+2026-09-01,BXP,67.05999755859375,48.65,63.62,True,28.6,10,,26.35,,,not_scanned,,,,,,,5.11,BUY,1.0
+2026-09-01,CHRW,147.8800048828125,55.36,172.83,False,71.4,73,,37.42,,,not_scanned,,,,,,,-4.09,REDUCE / AVOID NEW,0.0
+2026-09-01,CDNS,313.0400085449219,42.12,327.2,False,28.6,56,,38.6,,,not_scanned,,,,,,,0.35,HOLD / NEUTRAL,0.0
+2026-09-01,CPT,105.95999908447266,40.6,107.26,False,71.4,13,,21.13,,,not_scanned,,,,,,,-0.5,HOLD / NEUTRAL,0.0
+2026-09-01,COF,211.33999633789062,39.45,207.47,True,0.0,26,,29.9,,,not_scanned,,,,,,,6.44,BUY,1.0
+2026-09-01,CAH,239.35000610351562,48.84,214.99,True,85.7,69,,31.27,,,not_scanned,,,,,,,-2.99,HOLD / NEUTRAL,0.0
+2026-09-01,CCL,23.229999542236328,20.48,27.82,False,0.0,25,,42.8,,,not_scanned,,,,,,,4.5,BUY,1.0
+2026-09-01,CARR,57.25,10.14,61.3,False,28.6,24,,29.16,,,not_scanned,,,,,,,2.27,HOLD / NEUTRAL,0.0
+2026-09-01,CVNA,72.18000030517578,50.28,72.83,False,14.3,23,,53.86,,,not_scanned,,,,,,,3.47,BUY,1.0
+2026-09-01,CASY,766.9099731445312,36.82,722.72,True,42.9,86,,36.89,,,not_scanned,,,,,,,-0.59,HOLD / NEUTRAL,0.0
+2026-09-01,CAT,779.1599731445312,33.07,768.35,True,28.6,65,,35.38,,,not_scanned,,,,,,,1.81,HOLD / NEUTRAL,0.0
+2026-09-01,CBOE,307.6199951171875,64.96,284.46,True,42.9,87,,33.81,,,not_scanned,,,,,,,-0.65,HOLD / NEUTRAL,0.0
+2026-09-01,CBRE,144.4600067138672,45.01,147.29,False,0.0,34,,30.33,,,not_scanned,,,,,,,3.96,BUY,1.0
+2026-09-01,CDW,150.3000030517578,65.02,131.65,True,85.7,89,,46.33,,,not_scanned,,,,,,,-4.19,REDUCE / AVOID NEW,0.0
+2026-09-01,COR,330.9700012207031,47.8,322.57,True,28.6,65,,28.64,,,not_scanned,,,,,,,1.81,HOLD / NEUTRAL,0.0
+2026-09-01,CNC,65.2300033569336,51.23,49.73,True,57.1,42,,40.09,,,not_scanned,,,,,,,0.91,HOLD / NEUTRAL,0.0
+2026-09-01,CNP,39.470001220703125,42.46,41.46,False,85.7,93,,25.28,,,not_scanned,,,,,,,-6.43,REDUCE / AVOID NEW,0.0
+2026-09-01,CF,135.60000610351562,76.21,107.07,True,100.0,77,,40.97,,,not_scanned,,,,,,,-4.62,REDUCE / AVOID NEW,0.0
+2026-09-01,CRL,282.3399963378906,50.29,197.68,True,0.0,48,,46.22,,,not_scanned,,,,,,,5.12,BUY,1.0
+2026-09-01,SCHW,108.27999877929688,51.48,97.14,True,14.3,24,,25.7,,,not_scanned,,,,,,,5.41,BUY,1.0
+2026-09-01,CHTR,146.19000244140625,41.0,183.2,False,0.0,75,,52.7,,,not_scanned,,,,,,,1.5,HOLD / NEUTRAL,0.0
+2026-09-01,CVX,211.0500030517578,76.67,180.3,True,100.0,70,,25.43,,,not_scanned,,,,,,,-4.2,REDUCE / AVOID NEW,0.0
+2026-09-01,CMG,37.5099983215332,80.58,34.72,True,71.4,42,,35.87,,,not_scanned,,,,,,,-0.23,HOLD / NEUTRAL,0.0
+2026-09-01,CB,338.739990234375,38.2,325.41,True,42.9,73,,23.47,,,not_scanned,,,,,,,0.19,HOLD / NEUTRAL,0.0
+2026-09-01,CHD,99.43000030517578,39.98,94.62,True,0.0,94,,32.21,,,not_scanned,,,,,,,2.37,HOLD / NEUTRAL,0.0
+2026-09-01,CIEN,360.3299865722656,44.36,374.25,False,14.3,73,,75.24,,,not_scanned,,,,,,,0.48,HOLD / NEUTRAL,0.0
+2026-09-01,CI,283.05999755859375,60.52,279.34,True,100.0,14,,24.73,,,not_scanned,,,,,,,-0.84,HOLD / NEUTRAL,0.0
+2026-09-01,CINF,170.38999938964844,40.24,167.15,True,85.7,61,,26.74,,,not_scanned,,,,,,,-2.51,HOLD / NEUTRAL,0.0
+2026-09-01,CTAS,200.58999633789062,40.94,186.54,True,0.0,84,,30.97,,,not_scanned,,,,,,,2.96,HOLD / NEUTRAL,0.0
+2026-09-01,CSCO,109.73999786376953,30.34,94.1,True,28.6,67,,29.81,,,not_scanned,,,,,,,1.69,HOLD / NEUTRAL,0.0
+2026-09-01,C,132.5399932861328,41.91,122.47,True,42.9,23,,26.6,,,not_scanned,,,,,,,3.18,BUY,1.0
+2026-09-01,CFG,68.16000366210938,27.37,63.63,True,0.0,36,,28.96,,,not_scanned,,,,,,,5.84,BUY,1.0
+2026-09-01,CLX,94.97000122070312,20.2,103.32,False,0.0,69,,29.86,,,not_scanned,,,,,,,1.86,HOLD / NEUTRAL,0.0
+2026-09-01,CME,286.45001220703125,80.86,278.79,True,100.0,62,,22.2,,,not_scanned,,,,,,,-3.72,REDUCE / AVOID NEW,0.0
+2026-09-01,CMS,67.95999908447266,38.38,73.65,False,57.1,93,,28.63,,,not_scanned,,,,,,,-4.14,REDUCE / AVOID NEW,0.0
+2026-09-01,KO,88.0,56.93,78.09,True,0.0,46,,17.52,,,not_scanned,,,,,,,5.24,BUY,1.0
+2026-09-01,CTSH,63.38999938964844,65.66,62.96,True,0.0,82,,40.54,,,not_scanned,,,,,,,3.08,BUY,0.5
+2026-09-01,COHR,272.0299987792969,26.69,274.45,False,0.0,54,,70.2,,,not_scanned,,,,,,,2.76,HOLD / NEUTRAL,0.0
+2026-09-01,CL,89.62999725341797,40.13,87.49,True,0.0,65,,22.74,,,not_scanned,,,,,,,4.1,BUY,0.75
+2026-09-01,CMCSA,26.299999237060547,56.78,26.9,False,0.0,58,,29.39,,,not_scanned,,,,,,,2.52,HOLD / NEUTRAL,0.0
+2026-09-01,FIX,1554.3699951171875,39.98,1479.01,True,57.1,95,,60.56,,,not_scanned,,,,,,,-2.26,HOLD / NEUTRAL,0.0
+2026-09-01,COP,136.19000244140625,69.33,111.84,True,28.6,58,,29.76,,,not_scanned,,,,,,,2.23,HOLD / NEUTRAL,0.0
+2026-09-01,ED,107.69999694824219,50.96,107.16,True,85.7,68,,20.39,,,not_scanned,,,,,,,-2.93,HOLD / NEUTRAL,0.0
+2026-09-01,STZ,130.6300048828125,43.99,145.17,False,28.6,64,,32.35,,,not_scanned,,,,,,,-0.13,HOLD / NEUTRAL,0.0
+2026-09-01,CEG,280.30999755859375,51.9,297.44,False,28.6,7,,41.92,,,not_scanned,,,,,,,3.29,BUY,1.0
+2026-09-01,COO,69.27999877929688,15.48,73.42,False,0.0,88,,41.85,,,not_scanned,,,,,,,0.72,HOLD / NEUTRAL,0.0
+2026-09-01,CPRT,32.46500015258789,67.46,34.61,False,0.0,93,,40.18,,,not_scanned,,,,,,,0.43,HOLD / NEUTRAL,0.0
+2026-09-01,GLW,145.55999755859375,40.79,142.48,True,0.0,77,,56.88,,,not_scanned,,,,,,,3.38,BUY,0.75
+2026-09-01,CPAY,404.80999755859375,48.92,334.26,True,14.3,49,,30.26,,,not_scanned,,,,,,,3.92,BUY,1.0
+2026-09-01,CTVA,87.7300033569336,87.06,76.94,True,100.0,42,,26.91,,,not_scanned,,,,,,,-2.52,HOLD / NEUTRAL,0.0
+2026-09-01,CSGP,31.979999542236328,53.7,44.46,False,14.3,79,,52.47,,,not_scanned,,,,,,,0.12,HOLD / NEUTRAL,0.0
+2026-09-01,COST,939.9600219726562,48.54,960.06,False,42.9,37,,22.19,,,not_scanned,,,,,,,0.35,HOLD / NEUTRAL,0.0
+2026-09-01,CRH,91.19999694824219,25.96,111.82,False,0.0,57,,34.19,,,not_scanned,,,,,,,2.58,HOLD / NEUTRAL,0.0
+2026-09-01,CRWD,215.07000732421875,47.37,141.33,True,71.4,68,,51.38,,,not_scanned,,,,,,,-1.79,HOLD / NEUTRAL,0.0
+2026-09-01,CCI,75.83999633789062,61.65,85.08,False,71.4,54,,25.98,,,not_scanned,,,,,,,-2.95,HOLD / NEUTRAL,0.0
+2026-09-01,CSX,48.70000076293945,39.42,42.86,True,0.0,51,,25.27,,,not_scanned,,,,,,,4.94,BUY,1.0
+2026-09-01,CMI,551.1500244140625,17.13,598.27,False,14.3,71,,34.43,,,not_scanned,,,,,,,0.6,HOLD / NEUTRAL,0.0
+2026-09-01,CVS,97.5999984741211,60.57,86.21,True,100.0,13,,27.83,,,not_scanned,,,,,,,-0.78,HOLD / NEUTRAL,0.0
+2026-09-01,DHR,206.92999267578125,49.39,203.01,True,0.0,70,,31.69,,,not_scanned,,,,,,,3.8,BUY,0.75
+2026-09-01,DRI,215.55999755859375,46.97,200.4,True,14.3,81,,32.98,,,not_scanned,,,,,,,2.0,HOLD / NEUTRAL,0.0
+2026-09-01,DDOG,223.83999633789062,38.3,175.71,True,42.9,64,,57.29,,,not_scanned,,,,,,,0.73,HOLD / NEUTRAL,0.0
+2026-09-01,DVA,176.13999938964844,45.68,162.88,True,71.4,67,,39.99,,,not_scanned,,,,,,,-1.73,HOLD / NEUTRAL,0.0
+2026-09-01,DECK,84.58000183105469,32.84,102.5,False,57.1,34,,39.88,,,not_scanned,,,,,,,-0.61,HOLD / NEUTRAL,0.0
+2026-09-01,DE,676.0800170898438,64.82,564.13,True,100.0,49,,28.91,,,not_scanned,,,,,,,-2.94,HOLD / NEUTRAL,0.0
+2026-09-01,DELL,425.0,32.73,247.74,True,0.0,86,,75.81,,,not_scanned,,,,,,,2.84,HOLD / NEUTRAL,0.0
+2026-09-01,DVN,49.04999923706055,67.2,43.25,True,57.1,33,,32.6,,,not_scanned,,,,,,,1.45,HOLD / NEUTRAL,0.0
+2026-09-01,FANG,203.16000366210938,52.32,179.78,True,28.6,70,,36.47,,,not_scanned,,,,,,,1.51,HOLD / NEUTRAL,0.0
+2026-09-01,DLR,183.27000427246094,40.55,178.33,True,0.0,36,,27.5,,,not_scanned,,,,,,,5.84,BUY,1.0
+2026-09-01,DG,131.08999633789062,70.17,125.59,True,100.0,24,,33.35,,,not_scanned,,,,,,,-1.44,HOLD / NEUTRAL,0.0
+2026-09-01,DLTR,131.7100067138672,55.88,116.59,True,71.4,17,,34.76,,,not_scanned,,,,,,,1.26,HOLD / NEUTRAL,0.0
+2026-09-01,D,66.37999725341797,31.22,64.02,True,14.3,20,,18.92,,,not_scanned,,,,,,,5.65,BUY,1.0
+2026-09-01,DPZ,340.3699951171875,37.92,365.85,False,57.1,57,,30.4,,,not_scanned,,,,,,,-1.99,HOLD / NEUTRAL,0.0
+2026-09-01,DASH,225.66000366210938,65.25,188.05,True,0.0,37,,40.19,,,not_scanned,,,,,,,5.78,BUY,1.0
+2026-09-01,DOW,30.459999084472656,44.2,31.32,False,0.0,43,,34.82,,,not_scanned,,,,,,,3.42,BUY,1.0
+2026-09-01,DHI,141.3699951171875,37.21,149.8,False,0.0,44,,36.19,,,not_scanned,,,,,,,3.36,BUY,1.0
+2026-09-01,DTE,136.05999755859375,44.53,141.53,False,85.7,77,,22.55,,,not_scanned,,,,,,,-5.47,REDUCE / AVOID NEW,0.0
+2026-09-01,DUK,120.38999938964844,38.35,124.34,False,42.9,48,,17.83,,,not_scanned,,,,,,,-0.31,HOLD / NEUTRAL,0.0
+2026-09-01,DD,132.11000061035156,24.17,136.4,False,0.0,53,,29.95,,,not_scanned,,,,,,,2.82,HOLD / NEUTRAL,0.0
+2026-09-01,ETN,390.7099914550781,17.97,380.12,True,0.0,48,,38.23,,,not_scanned,,,,,,,5.12,BUY,1.0
+2026-09-01,EBAY,104.9800033569336,47.87,98.24,True,100.0,44,,30.17,,,not_scanned,,,,,,,-2.64,HOLD / NEUTRAL,0.0
+2026-09-01,ECHO,86.04000091552734,44.21,107.27,False,42.9,2,,50.12,,,not_scanned,,,,,,,2.44,HOLD / NEUTRAL,0.0
+2026-09-01,ECL,280.25,44.81,272.42,True,0.0,67,,26.09,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,EIX,58.79999923706055,35.54,68.47,False,14.3,85,,37.25,,,not_scanned,,,,,,,-0.24,HOLD / NEUTRAL,0.0
+2026-09-01,EW,90.73999786376953,34.82,84.86,True,0.0,36,,29.82,,,not_scanned,,,,,,,5.84,BUY,1.0
+2026-09-01,ELV,403.0400085449219,59.52,357.72,True,71.4,22,,26.89,,,not_scanned,,,,,,,0.96,HOLD / NEUTRAL,0.0
+2026-09-01,EME,735.25,33.62,756.8,False,28.6,88,,44.51,,,not_scanned,,,,,,,-1.56,HOLD / NEUTRAL,0.0
+2026-09-01,EMR,147.6300048828125,22.02,142.25,True,0.0,74,,32.77,,,not_scanned,,,,,,,3.56,BUY,0.75
+2026-09-01,ETR,107.0199966430664,51.88,105.28,True,85.7,61,,23.59,,,not_scanned,,,,,,,-2.51,HOLD / NEUTRAL,0.0
+2026-09-01,EOG,148.35000610351562,59.51,127.96,True,42.9,83,,34.31,,,not_scanned,,,,,,,-0.41,HOLD / NEUTRAL,0.0
+2026-09-01,EQT,55.59000015258789,59.81,56.24,False,57.1,9,,30.97,,,not_scanned,,,,,,,0.89,HOLD / NEUTRAL,0.0
+2026-09-01,EFX,186.1999969482422,55.09,188.2,False,0.0,71,,39.69,,,not_scanned,,,,,,,1.74,HOLD / NEUTRAL,0.0
+2026-09-01,EQIX,1027.5899658203125,48.82,956.21,True,0.0,26,,24.83,,,not_scanned,,,,,,,6.44,BUY,1.0
+2026-09-01,ERIE,256.0899963378906,49.55,254.85,True,14.3,82,,41.72,,,not_scanned,,,,,,,1.94,HOLD / NEUTRAL,0.0
+2026-09-01,ESS,279.0,45.83,266.51,True,14.3,34,,24.42,,,not_scanned,,,,,,,4.81,BUY,1.0
+2026-09-01,EG,378.6099853515625,63.78,341.71,True,100.0,15,,24.11,,,not_scanned,,,,,,,-0.9,HOLD / NEUTRAL,0.0
+2026-09-01,EVRG,81.5199966430664,46.98,80.56,True,100.0,79,,21.7,,,not_scanned,,,,,,,-4.74,REDUCE / AVOID NEW,0.0
+2026-09-01,ES,70.5,46.12,70.23,True,71.4,5,,17.87,,,not_scanned,,,,,,,1.98,HOLD / NEUTRAL,0.0
+2026-09-01,EXC,43.83000183105469,38.74,45.98,False,71.4,8,,17.93,,,not_scanned,,,,,,,-0.2,HOLD / NEUTRAL,0.0
+2026-09-01,EXE,99.9800033569336,56.49,101.46,False,42.9,60,,30.52,,,not_scanned,,,,,,,-1.03,HOLD / NEUTRAL,0.0
+2026-09-01,EXPE,304.2300109863281,40.71,257.75,True,0.0,48,,40.64,,,not_scanned,,,,,,,5.12,BUY,1.0
+2026-09-01,EXPD,187.6999969482422,72.7,157.75,True,28.6,41,,27.33,,,not_scanned,,,,,,,3.25,BUY,1.0
+2026-09-01,EXR,140.1199951171875,27.31,141.17,False,14.3,8,,22.45,,,not_scanned,,,,,,,4.37,BUY,1.0
+2026-09-01,XOM,164.5500030517578,58.44,143.9,True,57.1,74,,27.56,,,not_scanned,,,,,,,-1.01,HOLD / NEUTRAL,0.0
+2026-09-01,FFIV,395.7200012207031,41.86,324.07,True,42.9,80,,42.65,,,not_scanned,,,,,,,-0.23,HOLD / NEUTRAL,0.0
+2026-09-01,FDS,305.44000244140625,62.57,249.07,True,14.3,64,,45.09,,,not_scanned,,,,,,,3.02,BUY,0.75
+2026-09-01,FICO,1103.6800537109375,58.93,1318.14,False,14.3,92,,57.53,,,not_scanned,,,,,,,-0.66,HOLD / NEUTRAL,0.0
+2026-09-01,FAST,48.75,25.44,45.19,True,0.0,53,,26.55,,,not_scanned,,,,,,,4.82,BUY,1.0
+2026-09-01,FRT,117.02999877929688,51.77,110.77,True,100.0,87,,29.51,,,not_scanned,,,,,,,-5.22,REDUCE / AVOID NEW,0.0
+2026-09-01,FDXF,127.56999969482422,37.75,151.18,False,42.9,5,,44.16,,,not_scanned,,,,,,,2.26,HOLD / NEUTRAL,0.0
+2026-09-01,FERG,218.91000366210938,17.58,240.05,False,14.3,55,,33.8,,,not_scanned,,,,,,,1.56,HOLD / NEUTRAL,0.0
+2026-09-01,FIS,40.83000183105469,39.15,50.07,False,71.4,61,,32.85,,,not_scanned,,,,,,,-3.37,REDUCE / AVOID NEW,0.0
+2026-09-01,FITB,53.0099983215332,16.59,50.65,True,0.0,41,,27.09,,,not_scanned,,,,,,,5.54,BUY,1.0
+2026-09-01,FE,46.15999984741211,42.13,47.53,False,100.0,97,,24.94,,,not_scanned,,,,,,,-7.81,STRONG AVOID / EXIT,0.0
+2026-09-01,FISV,51.66999816894531,46.39,58.53,False,57.1,57,,37.36,,,not_scanned,,,,,,,-1.99,HOLD / NEUTRAL,0.0
+2026-09-01,FLEX,106.86000061035156,34.05,93.88,True,14.3,88,,67.45,,,not_scanned,,,,,,,1.58,HOLD / NEUTRAL,0.0
+2026-09-01,F,13.84000015258789,50.15,13.48,True,85.7,73,,34.53,,,not_scanned,,,,,,,-3.23,REDUCE / AVOID NEW,0.0
+2026-09-01,FTNT,161.85000610351562,49.97,108.53,True,57.1,71,,46.6,,,not_scanned,,,,,,,-0.83,HOLD / NEUTRAL,0.0
+2026-09-01,FTV,56.79999923706055,25.7,57.94,False,0.0,89,,39.27,,,not_scanned,,,,,,,0.66,HOLD / NEUTRAL,0.0
+2026-09-01,FOXA,65.93000030517578,62.38,63.4,True,14.3,59,,31.17,,,not_scanned,,,,,,,3.32,BUY,1.0
+2026-09-01,FOX,59.029998779296875,63.97,56.94,True,14.3,39,,29.39,,,not_scanned,,,,,,,4.51,BUY,1.0
+2026-09-01,BEN,33.099998474121094,46.78,28.3,True,28.6,44,,27.07,,,not_scanned,,,,,,,3.07,BUY,1.0
+2026-09-01,FCX,72.47000122070312,56.41,60.26,True,0.0,73,,48.85,,,not_scanned,,,,,,,3.62,BUY,0.75
+2026-09-01,GRMN,275.1700134277344,12.03,236.68,True,0.0,61,,32.35,,,not_scanned,,,,,,,4.34,BUY,0.75
+2026-09-01,IT,189.92999267578125,52.13,178.34,True,0.0,67,,49.07,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,GE,331.0899963378906,31.22,320.7,True,14.3,40,,30.59,,,not_scanned,,,,,,,4.45,BUY,1.0
+2026-09-01,GEV,898.530029296875,31.22,878.98,True,14.3,9,,43.68,,,not_scanned,,,,,,,6.31,BUY,1.0
+2026-09-01,GEN,30.020000457763672,56.14,24.52,True,28.6,36,,29.93,,,not_scanned,,,,,,,3.55,BUY,1.0
+2026-09-01,GNRC,181.4199981689453,23.66,207.87,False,0.0,72,,52.83,,,not_scanned,,,,,,,1.68,HOLD / NEUTRAL,0.0
+2026-09-01,GD,369.4100036621094,26.74,354.09,True,0.0,46,,21.91,,,not_scanned,,,,,,,5.24,BUY,1.0
+2026-09-01,GIS,41.09000015258789,67.83,40.05,True,14.3,82,,30.32,,,not_scanned,,,,,,,1.94,HOLD / NEUTRAL,0.0
+2026-09-01,GPC,134.83999633789062,49.42,119.64,True,0.0,37,,26.44,,,not_scanned,,,,,,,5.78,BUY,1.0
+2026-09-01,GILD,149.9199981689453,74.51,133.86,True,57.1,32,,25.83,,,not_scanned,,,,,,,1.51,HOLD / NEUTRAL,0.0
+2026-09-01,GPN,90.05999755859375,59.72,75.32,True,0.0,57,,40.47,,,not_scanned,,,,,,,4.58,BUY,1.0
+2026-09-01,GL,172.3000030517578,33.98,153.15,True,71.4,67,,35.53,,,not_scanned,,,,,,,-1.73,HOLD / NEUTRAL,0.0
+2026-09-01,GDDY,100.55000305175781,62.82,96.75,True,71.4,76,,48.0,,,not_scanned,,,,,,,-2.27,HOLD / NEUTRAL,0.0
+2026-09-01,GS,1002.5599975585938,41.74,943.56,True,0.0,46,,28.12,,,not_scanned,,,,,,,5.24,BUY,1.0
+2026-09-01,HAL,36.79999923706055,70.82,34.65,True,100.0,36,,34.5,,,not_scanned,,,,,,,-2.16,HOLD / NEUTRAL,0.0
+2026-09-01,HIG,137.1300048828125,44.14,136.13,True,85.7,33,,21.74,,,not_scanned,,,,,,,-0.84,HOLD / NEUTRAL,0.0
+2026-09-01,HAS,93.19999694824219,36.59,89.29,True,0.0,89,,38.13,,,not_scanned,,,,,,,2.66,HOLD / NEUTRAL,0.0
+2026-09-01,HCA,413.5799865722656,51.67,453.31,False,0.0,65,,32.76,,,not_scanned,,,,,,,2.1,HOLD / NEUTRAL,0.0
+2026-09-01,DOC,20.81999969482422,55.68,18.54,True,85.7,91,,26.83,,,not_scanned,,,,,,,-4.31,REDUCE / AVOID NEW,0.0
+2026-09-01,HSIC,88.5199966430664,45.74,78.73,True,0.0,75,,36.0,,,not_scanned,,,,,,,3.5,BUY,0.75
+2026-09-01,HSY,176.0,41.85,192.49,False,0.0,49,,27.65,,,not_scanned,,,,,,,3.06,BUY,1.0
+2026-09-01,HPE,50.869998931884766,26.29,32.8,True,0.0,94,,75.05,,,not_scanned,,,,,,,2.37,HOLD / NEUTRAL,0.0
+2026-09-01,HD,319.7699890136719,18.51,344.76,False,0.0,27,,22.24,,,not_scanned,,,,,,,4.38,BUY,1.0
+2026-09-01,HONA,154.24000549316406,37.29,202.51,False,42.9,5,,44.68,,,not_scanned,,,,,,,2.26,HOLD / NEUTRAL,0.0
+2026-09-01,HON,209.97999572753906,26.24,229.72,False,71.4,81,,28.97,,,not_scanned,,,,,,,-4.57,REDUCE / AVOID NEW,0.0
+2026-09-01,HRL,21.989999771118164,28.65,23.45,False,100.0,36,,25.08,,,not_scanned,,,,,,,-4.16,REDUCE / AVOID NEW,0.0
+2026-09-01,HST,21.639999389648438,38.75,20.84,True,71.4,0,,20.33,,,not_scanned,,,,,,,2.28,HOLD / NEUTRAL,0.0
+2026-09-01,HWM,254.88999938964844,33.71,244.4,True,71.4,15,,30.43,,,not_scanned,,,,,,,1.38,HOLD / NEUTRAL,0.0
+2026-09-01,HPQ,31.31999969482422,60.16,22.72,True,71.4,70,,42.55,,,not_scanned,,,,,,,-1.91,HOLD / NEUTRAL,0.0
+2026-09-01,HUBB,443.30999755859375,13.47,485.14,False,0.0,68,,35.5,,,not_scanned,,,,,,,1.92,HOLD / NEUTRAL,0.0
+2026-09-01,HUM,394.8800048828125,64.84,276.49,True,85.7,76,,54.97,,,not_scanned,,,,,,,-3.41,REDUCE / AVOID NEW,0.0
+2026-09-01,HBAN,16.420000076293945,18.31,16.96,False,0.0,55,,27.44,,,not_scanned,,,,,,,2.7,HOLD / NEUTRAL,0.0
+2026-09-01,HII,292.4200134277344,17.22,348.4,False,28.6,58,,36.1,,,not_scanned,,,,,,,0.23,HOLD / NEUTRAL,0.0
+2026-09-01,IBM,231.39999389648438,43.51,263.75,False,0.0,65,,33.0,,,not_scanned,,,,,,,2.1,HOLD / NEUTRAL,0.0
+2026-09-01,IEX,222.86000061035156,29.28,204.71,True,0.0,54,,30.74,,,not_scanned,,,,,,,4.76,BUY,1.0
+2026-09-01,IDXX,545.1599731445312,34.18,610.22,False,28.6,76,,34.19,,,not_scanned,,,,,,,-0.84,HOLD / NEUTRAL,0.0
+2026-09-01,ITW,269.8800048828125,16.09,266.32,True,14.3,71,,24.04,,,not_scanned,,,,,,,2.6,HOLD / NEUTRAL,0.0
+2026-09-01,INCY,125.01000213623047,59.24,104.29,True,28.6,65,,43.8,,,not_scanned,,,,,,,1.81,HOLD / NEUTRAL,0.0
+2026-09-01,IR,74.63999938964844,18.12,82.02,False,28.6,33,,29.16,,,not_scanned,,,,,,,1.73,HOLD / NEUTRAL,0.0
+2026-09-01,PODD,148.3800048828125,54.94,213.9,False,57.1,54,,44.39,,,not_scanned,,,,,,,-1.81,HOLD / NEUTRAL,0.0
+2026-09-01,INTC,88.97000122070312,30.63,73.3,True,28.6,51,,56.87,,,not_scanned,,,,,,,2.65,HOLD / NEUTRAL,0.0
+2026-09-01,IBKR,90.38999938964844,51.06,78.39,True,0.0,58,,39.75,,,not_scanned,,,,,,,4.52,BUY,1.0
+2026-09-01,ICE,159.60000610351562,74.17,155.04,True,0.0,77,,26.02,,,not_scanned,,,,,,,3.38,BUY,0.75
+2026-09-01,IFF,85.77999877929688,53.2,74.23,True,14.3,18,,28.28,,,not_scanned,,,,,,,5.77,BUY,1.0
+2026-09-01,IP,36.459999084472656,24.38,38.39,False,0.0,73,,38.93,,,not_scanned,,,,,,,1.62,HOLD / NEUTRAL,0.0
+2026-09-01,INTU,344.92999267578125,53.14,433.46,False,0.0,75,,45.58,,,not_scanned,,,,,,,1.5,HOLD / NEUTRAL,0.0
+2026-09-01,ISRG,369.25,28.7,467.57,False,0.0,74,,36.79,,,not_scanned,,,,,,,1.56,HOLD / NEUTRAL,0.0
+2026-09-01,IVZ,31.989999771118164,55.54,27.06,True,14.3,65,,35.19,,,not_scanned,,,,,,,2.96,HOLD / NEUTRAL,0.0
+2026-09-01,INVH,29.1299991607666,40.73,27.87,True,14.3,42,,22.48,,,not_scanned,,,,,,,4.34,BUY,1.0
+2026-09-01,IQV,258.3500061035156,67.7,200.97,True,0.0,55,,39.3,,,not_scanned,,,,,,,4.7,BUY,1.0
+2026-09-01,IRM,114.22000122070312,35.66,109.1,True,0.0,43,,30.71,,,not_scanned,,,,,,,5.42,BUY,1.0
+2026-09-01,JBHT,256.4800109863281,43.44,235.39,True,28.6,79,,39.77,,,not_scanned,,,,,,,0.98,HOLD / NEUTRAL,0.0
+2026-09-01,JBL,299.1400146484375,24.62,290.83,True,0.0,81,,53.64,,,not_scanned,,,,,,,3.14,BUY,0.5
+2026-09-01,JKHY,168.10000610351562,67.86,159.89,True,57.1,76,,34.49,,,not_scanned,,,,,,,-1.12,HOLD / NEUTRAL,0.0
+2026-09-01,J,146.3300018310547,47.01,132.82,True,0.0,68,,33.51,,,not_scanned,,,,,,,3.92,BUY,0.75
+2026-09-01,JNJ,271.19000244140625,63.67,234.26,True,42.9,85,,24.45,,,not_scanned,,,,,,,-0.53,HOLD / NEUTRAL,0.0
+2026-09-01,JCI,139.25,21.79,134.28,True,14.3,53,,30.14,,,not_scanned,,,,,,,3.68,BUY,1.0
+2026-09-01,KVUE,18.75,43.8,17.91,True,14.3,42,,26.3,,,not_scanned,,,,,,,4.34,BUY,1.0
+2026-09-01,KDP,31.889999389648438,69.17,29.02,True,85.7,81,,27.98,,,not_scanned,,,,,,,-3.71,REDUCE / AVOID NEW,0.0
+2026-09-01,KEYS,319.2699890136719,36.57,285.64,True,14.3,69,,39.79,,,not_scanned,,,,,,,2.72,HOLD / NEUTRAL,0.0
+2026-09-01,KMB,107.08000183105469,45.17,103.16,True,0.0,59,,22.66,,,not_scanned,,,,,,,4.46,BUY,1.0
+2026-09-01,KIM,24.1200008392334,53.49,22.97,True,100.0,4,,18.56,,,not_scanned,,,,,,,-0.25,HOLD / NEUTRAL,0.0
+2026-09-01,KMI,32.099998474121094,54.6,30.99,True,57.1,70,,25.03,,,not_scanned,,,,,,,-0.77,HOLD / NEUTRAL,0.0
+2026-09-01,KKR,106.41000366210938,41.75,105.91,True,0.0,52,,37.28,,,not_scanned,,,,,,,4.88,BUY,1.0
+2026-09-01,KLAC,170.88999938964844,11.24,170.58,True,0.0,88,,55.04,,,not_scanned,,,,,,,2.72,HOLD / NEUTRAL,0.0
+2026-09-01,KHC,25.8700008392334,62.3,24.01,True,100.0,47,,24.03,,,not_scanned,,,,,,,-2.82,HOLD / NEUTRAL,0.0
+2026-09-01,KR,57.939998626708984,59.44,64.21,False,85.7,90,,35.53,,,not_scanned,,,,,,,-6.25,REDUCE / AVOID NEW,0.0
+2026-09-01,LHX,263.55999755859375,28.01,314.71,False,42.9,58,,26.66,,,not_scanned,,,,,,,-0.91,HOLD / NEUTRAL,0.0
+2026-09-01,LH,327.6099853515625,55.99,274.26,True,0.0,69,,29.76,,,not_scanned,,,,,,,3.86,BUY,0.75
+2026-09-01,LRCX,290.20001220703125,41.81,257.99,True,0.0,72,,59.3,,,not_scanned,,,,,,,3.68,BUY,0.75
+2026-09-01,LVS,43.84000015258789,38.34,54.64,False,0.0,28,,33.25,,,not_scanned,,,,,,,4.32,BUY,1.0
+2026-09-01,LDOS,139.17999267578125,46.96,154.27,False,0.0,63,,34.3,,,not_scanned,,,,,,,2.22,HOLD / NEUTRAL,0.0
+2026-09-01,LEN,82.75,37.8,99.08,False,0.0,46,,39.04,,,not_scanned,,,,,,,3.24,BUY,1.0
+2026-09-01,LII,377.25,19.16,499.82,False,0.0,39,,31.78,,,not_scanned,,,,,,,3.66,BUY,1.0
+2026-09-01,LLY,1160.0,40.66,1060.55,True,28.6,17,,30.15,,,not_scanned,,,,,,,4.69,BUY,1.0
+2026-09-01,LIN,486.760009765625,46.8,479.29,True,28.6,78,,24.9,,,not_scanned,,,,,,,1.04,HOLD / NEUTRAL,0.0
+2026-09-01,LMT,544.5,30.87,555.34,False,0.0,57,,24.74,,,not_scanned,,,,,,,2.58,HOLD / NEUTRAL,0.0
+2026-09-01,L,108.70999908447266,26.83,108.72,False,100.0,91,,35.18,,,not_scanned,,,,,,,-7.46,STRONG AVOID / EXIT,0.0
+2026-09-01,LOW,200.0500030517578,21.12,236.76,False,0.0,57,,27.64,,,not_scanned,,,,,,,2.58,HOLD / NEUTRAL,0.0
+2026-09-01,LULU,118.0,46.02,153.58,False,85.7,86,,60.56,,,not_scanned,,,,,,,-6.01,REDUCE / AVOID NEW,0.0
+2026-09-01,LITE,868.9500122070312,53.42,672.53,True,14.3,55,,67.56,,,not_scanned,,,,,,,3.56,BUY,1.0
+2026-09-01,LYB,65.16999816894531,53.85,60.08,True,42.9,55,,38.05,,,not_scanned,,,,,,,1.27,HOLD / NEUTRAL,0.0
+2026-09-01,MTB,232.02000427246094,20.33,219.69,True,0.0,50,,28.28,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,MPC,383.0,79.21,237.95,True,42.9,92,,43.13,,,not_scanned,,,,,,,-0.95,HOLD / NEUTRAL,0.0
+2026-09-01,MAR,334.54998779296875,34.96,343.71,False,0.0,41,,27.55,,,not_scanned,,,,,,,3.54,BUY,1.0
+2026-09-01,MRSH,187.5800018310547,42.54,177.82,True,0.0,61,,24.58,,,not_scanned,,,,,,,4.34,BUY,0.75
+2026-09-01,MLM,504.9200134277344,26.2,602.67,False,0.0,62,,28.8,,,not_scanned,,,,,,,2.28,HOLD / NEUTRAL,0.0
+2026-09-01,MRVL,210.38999938964844,47.66,149.86,True,0.0,63,,63.0,,,not_scanned,,,,,,,4.22,BUY,0.75
+2026-09-01,MAS,70.25,23.2,69.38,True,0.0,60,,32.41,,,not_scanned,,,,,,,4.4,BUY,0.75
+2026-09-01,MA,581.0999755859375,62.96,529.61,True,14.3,44,,21.63,,,not_scanned,,,,,,,4.22,BUY,1.0
+2026-09-01,MKC,54.2599983215332,56.49,57.36,False,14.3,77,,29.02,,,not_scanned,,,,,,,0.24,HOLD / NEUTRAL,0.0
+2026-09-01,MCD,261.1099853515625,32.97,296.87,False,14.3,34,,18.61,,,not_scanned,,,,,,,2.81,HOLD / NEUTRAL,0.0
+2026-09-01,MCK,906.77001953125,51.17,841.91,True,14.3,22,,23.17,,,not_scanned,,,,,,,5.53,BUY,1.0
+2026-09-01,MDT,92.04000091552734,54.46,89.79,True,14.3,91,,28.58,,,not_scanned,,,,,,,1.4,HOLD / NEUTRAL,0.0
+2026-09-01,MRK,149.86000061035156,69.99,117.24,True,28.6,54,,28.03,,,not_scanned,,,,,,,2.47,HOLD / NEUTRAL,0.0
+2026-09-01,META,578.5399780273438,49.88,622.3,False,100.0,54,,34.46,,,not_scanned,,,,,,,-5.24,REDUCE / AVOID NEW,0.0
+2026-09-01,MET,94.41999816894531,39.45,81.57,True,14.3,73,,26.54,,,not_scanned,,,,,,,2.48,HOLD / NEUTRAL,0.0
+2026-09-01,MTD,1375.9599609375,29.69,1320.39,True,0.0,37,,22.78,,,not_scanned,,,,,,,5.78,BUY,1.0
+2026-09-01,MGM,40.77000045776367,16.27,39.41,True,0.0,30,,36.04,,,not_scanned,,,,,,,6.2,BUY,1.0
+2026-09-01,MCHP,71.41000366210938,28.56,77.08,False,28.6,58,,47.45,,,not_scanned,,,,,,,0.23,HOLD / NEUTRAL,0.0
+2026-09-01,MU,933.4400024414062,53.07,595.45,True,14.3,44,,54.04,,,not_scanned,,,,,,,4.22,BUY,1.0
+2026-09-01,MSFT,501.0199890136719,55.88,431.12,True,100.0,54,,25.47,,,not_scanned,,,,,,,-3.24,REDUCE / AVOID NEW,0.0
+2026-09-01,MAA,129.36000061035156,42.53,132.25,False,42.9,51,,23.66,,,not_scanned,,,,,,,-0.49,HOLD / NEUTRAL,0.0
+2026-09-01,MRNA,154.27000427246094,69.65,52.97,True,42.9,62,,76.15,,,not_scanned,,,,,,,0.85,HOLD / NEUTRAL,0.0
+2026-09-01,TAP,39.7599983215332,38.04,44.19,False,14.3,58,,28.52,,,not_scanned,,,,,,,1.38,HOLD / NEUTRAL,0.0
+2026-09-01,MDLZ,61.61000061035156,49.05,59.0,True,14.3,38,,21.55,,,not_scanned,,,,,,,4.57,BUY,1.0
+2026-09-01,MPWR,1225.9599609375,28.71,1244.48,False,0.0,70,,52.76,,,not_scanned,,,,,,,1.8,HOLD / NEUTRAL,0.0
+2026-09-01,MNST,44.9900016784668,47.28,78.4,False,57.1,51,,27.33,,,not_scanned,,,,,,,-1.63,HOLD / NEUTRAL,0.0
+2026-09-01,MCO,494.7099914550781,61.34,472.71,True,0.0,38,,24.0,,,not_scanned,,,,,,,5.72,BUY,1.0
+2026-09-01,MS,211.0399932861328,43.85,189.91,True,0.0,38,,26.98,,,not_scanned,,,,,,,5.72,BUY,1.0
+2026-09-01,MOS,24.780000686645508,61.29,24.52,True,85.7,73,,44.86,,,not_scanned,,,,,,,-3.23,REDUCE / AVOID NEW,0.0
+2026-09-01,MSI,491.239990234375,67.16,420.8,True,57.1,50,,26.3,,,not_scanned,,,,,,,0.43,HOLD / NEUTRAL,0.0
+2026-09-01,MSCI,563.0900268554688,50.76,573.08,False,57.1,69,,29.02,,,not_scanned,,,,,,,-2.71,HOLD / NEUTRAL,0.0
+2026-09-01,NDAQ,97.54000091552734,63.94,90.18,True,0.0,73,,27.32,,,not_scanned,,,,,,,3.62,BUY,0.75
+2026-09-01,NTAP,183.16000366210938,33.89,129.11,True,0.0,99,,63.47,,,not_scanned,,,,,,,2.07,HOLD / NEUTRAL,0.0
+2026-09-01,NFLX,80.80999755859375,67.46,87.35,False,42.9,49,,33.01,,,not_scanned,,,,,,,-0.37,HOLD / NEUTRAL,0.0
+2026-09-01,NEM,122.62999725341797,55.67,107.73,True,0.0,60,,42.5,,,not_scanned,,,,,,,4.4,BUY,0.75
+2026-09-01,NWSA,30.6299991607666,74.75,26.12,True,57.1,79,,33.67,,,not_scanned,,,,,,,-1.3,HOLD / NEUTRAL,0.0
+2026-09-01,NWS,34.22999954223633,66.53,29.76,True,14.3,61,,37.19,,,not_scanned,,,,,,,3.2,BUY,0.75
+2026-09-01,NEE,82.93000030517578,26.93,87.85,False,14.3,2,,20.71,,,not_scanned,,,,,,,4.73,BUY,1.0
+2026-09-01,NKE,38.119998931884766,39.3,51.81,False,57.1,49,,35.43,,,not_scanned,,,,,,,-1.51,HOLD / NEUTRAL,0.0
+2026-09-01,NI,40.959999084472656,35.21,45.09,False,85.7,77,,23.74,,,not_scanned,,,,,,,-5.47,REDUCE / AVOID NEW,0.0
+2026-09-01,NSC,332.9599914550781,48.44,307.93,True,0.0,39,,25.85,,,not_scanned,,,,,,,5.66,BUY,1.0
+2026-09-01,NTRS,182.67999267578125,39.58,157.31,True,0.0,49,,28.15,,,not_scanned,,,,,,,5.06,BUY,1.0
+2026-09-01,NOC,532.9099731445312,32.33,603.53,False,0.0,70,,27.68,,,not_scanned,,,,,,,1.8,HOLD / NEUTRAL,0.0
+2026-09-01,NCLH,15.430000305175781,19.97,19.88,False,0.0,26,,45.86,,,not_scanned,,,,,,,4.44,BUY,1.0
+2026-09-01,NRG,109.51000213623047,38.25,147.73,False,14.3,47,,45.27,,,not_scanned,,,,,,,2.04,HOLD / NEUTRAL,0.0
+2026-09-01,NUE,251.9199981689453,32.65,203.78,True,71.4,57,,36.7,,,not_scanned,,,,,,,-1.13,HOLD / NEUTRAL,0.0
+2026-09-01,NVDA,217.44000244140625,44.58,196.08,True,28.6,1,,33.04,,,not_scanned,,,,,,,5.65,BUY,1.0
+2026-09-01,NVR,6275.81982421875,41.67,6826.14,False,0.0,,,,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,NXPI,222.39999389648438,33.78,243.24,False,28.6,72,,43.68,,,not_scanned,,,,,,,-0.61,HOLD / NEUTRAL,0.0
+2026-09-01,ORLY,87.94999694824219,31.9,92.39,False,14.3,74,,29.15,,,not_scanned,,,,,,,0.42,HOLD / NEUTRAL,0.0
+2026-09-01,OXY,60.95000076293945,58.73,52.04,True,28.6,38,,30.7,,,not_scanned,,,,,,,3.43,BUY,1.0
+2026-09-01,ODFL,187.00999450683594,24.7,195.44,False,0.0,36,,36.41,,,not_scanned,,,,,,,3.84,BUY,1.0
+2026-09-01,OMC,86.08999633789062,50.53,77.8,True,0.0,57,,29.38,,,not_scanned,,,,,,,4.58,BUY,1.0
+2026-09-01,ON,72.6500015258789,26.81,77.95,False,0.0,60,,54.23,,,not_scanned,,,,,,,2.4,HOLD / NEUTRAL,0.0
+2026-09-01,OKE,95.69000244140625,63.1,84.41,True,14.3,54,,27.78,,,not_scanned,,,,,,,3.62,BUY,1.0
+2026-09-01,ORCL,141.32000732421875,37.45,169.79,False,0.0,95,,71.62,,,not_scanned,,,,,,,0.31,HOLD / NEUTRAL,0.0
+2026-09-01,OTIS,70.5999984741211,38.6,80.35,False,0.0,80,,25.84,,,not_scanned,,,,,,,1.2,HOLD / NEUTRAL,0.0
+2026-09-01,PCAR,122.44999694824219,21.13,119.27,True,0.0,72,,31.58,,,not_scanned,,,,,,,3.68,BUY,0.75
+2026-09-01,PKG,229.1199951171875,16.1,222.43,True,0.0,75,,32.65,,,not_scanned,,,,,,,3.5,BUY,0.75
+2026-09-01,PANW,362.0899963378906,42.75,230.36,True,28.6,95,,61.61,,,not_scanned,,,,,,,0.02,HOLD / NEUTRAL,0.0
+2026-09-01,PH,952.0900268554688,23.27,933.48,True,0.0,67,,28.35,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,PAYX,125.63999938964844,58.48,103.77,True,0.0,73,,29.3,,,not_scanned,,,,,,,3.62,BUY,0.75
+2026-09-01,PYPL,52.400001525878906,29.88,51.14,True,0.0,51,,35.84,,,not_scanned,,,,,,,4.94,BUY,1.0
+2026-09-01,PNR,60.45000076293945,27.62,86.62,False,0.0,77,,34.28,,,not_scanned,,,,,,,1.38,HOLD / NEUTRAL,0.0
+2026-09-01,PEP,139.7899932861328,53.73,148.9,False,14.3,34,,19.47,,,not_scanned,,,,,,,2.81,HOLD / NEUTRAL,0.0
+2026-09-01,PFE,28.549999237060547,70.23,26.1,True,57.1,26,,22.72,,,not_scanned,,,,,,,1.87,HOLD / NEUTRAL,0.0
+2026-09-01,PCG,14.0600004196167,30.7,16.8,False,14.3,96,,54.69,,,not_scanned,,,,,,,-0.9,HOLD / NEUTRAL,0.0
+2026-09-01,PM,187.14999389648438,51.4,173.75,True,14.3,66,,26.58,,,not_scanned,,,,,,,2.9,HOLD / NEUTRAL,0.0
+2026-09-01,PSX,252.02000427246094,76.9,170.12,True,14.3,93,,39.72,,,not_scanned,,,,,,,1.28,HOLD / NEUTRAL,0.0
+2026-09-01,PNW,97.66000366210938,35.2,98.34,False,71.4,24,,18.78,,,not_scanned,,,,,,,-1.16,HOLD / NEUTRAL,0.0
+2026-09-01,PPG,109.69999694824219,26.42,111.07,False,0.0,53,,27.09,,,not_scanned,,,,,,,2.82,HOLD / NEUTRAL,0.0
+2026-09-01,PPL,34.470001220703125,40.69,36.33,False,42.9,44,,19.12,,,not_scanned,,,,,,,-0.07,HOLD / NEUTRAL,0.0
+2026-09-01,PFG,109.36000061035156,34.38,98.26,True,14.3,56,,25.36,,,not_scanned,,,,,,,3.5,BUY,1.0
+2026-09-01,PG,146.2100067138672,53.15,147.59,False,100.0,53,,18.99,,,not_scanned,,,,,,,-5.18,REDUCE / AVOID NEW,0.0
+2026-09-01,PGR,220.5399932861328,59.07,210.66,True,57.1,41,,27.09,,,not_scanned,,,,,,,0.97,HOLD / NEUTRAL,0.0
+2026-09-01,PLD,139.67999267578125,50.81,137.03,True,14.3,0,,19.06,,,not_scanned,,,,,,,6.85,BUY,1.0
+2026-09-01,PRU,117.13999938964844,33.18,107.7,True,0.0,74,,25.41,,,not_scanned,,,,,,,3.56,BUY,0.75
+2026-09-01,PEG,73.4800033569336,37.7,80.13,False,71.4,18,,20.33,,,not_scanned,,,,,,,-0.8,HOLD / NEUTRAL,0.0
+2026-09-01,PTC,152.80999755859375,52.79,149.26,True,0.0,88,,44.43,,,not_scanned,,,,,,,2.72,HOLD / NEUTRAL,0.0
+2026-09-01,PHM,123.12999725341797,33.24,125.07,False,0.0,39,,35.96,,,not_scanned,,,,,,,3.66,BUY,1.0
+2026-09-01,PWR,611.3900146484375,36.41,584.23,True,42.9,69,,42.81,,,not_scanned,,,,,,,0.43,HOLD / NEUTRAL,0.0
+2026-09-01,QCOM,166.61000061035156,56.63,167.93,False,71.4,54,,37.69,,,not_scanned,,,,,,,-2.95,HOLD / NEUTRAL,0.0
+2026-09-01,DGX,236.22000122070312,47.44,200.02,True,0.0,42,,23.73,,,not_scanned,,,,,,,5.48,BUY,1.0
+2026-09-01,Q,115.48999786376953,26.04,120.95,False,0.0,24,,54.04,,,not_scanned,,,,,,,4.56,BUY,1.0
+2026-09-01,RL,340.82000732421875,2.66,365.93,False,0.0,27,,34.93,,,not_scanned,,,,,,,4.38,BUY,1.0
+2026-09-01,RTX,205.16000366210938,24.8,192.53,True,0.0,63,,25.77,,,not_scanned,,,,,,,4.22,BUY,0.75
+2026-09-01,O,61.36000061035156,45.49,61.76,False,42.9,9,,14.16,,,not_scanned,,,,,,,2.02,HOLD / NEUTRAL,0.0
+2026-09-01,REG,76.05999755859375,51.83,75.81,True,100.0,0,,14.34,,,not_scanned,,,,,,,-0.01,HOLD / NEUTRAL,0.0
+2026-09-01,REGN,823.8200073242188,59.56,729.46,True,42.9,14,,27.56,,,not_scanned,,,,,,,3.72,BUY,1.0
+2026-09-01,RSG,223.2899932861328,67.1,214.7,True,42.9,64,,23.6,,,not_scanned,,,,,,,0.73,HOLD / NEUTRAL,0.0
+2026-09-01,RMD,231.36000061035156,57.45,228.72,True,0.0,58,,35.72,,,not_scanned,,,,,,,4.52,BUY,1.0
+2026-09-01,RVTY,126.58999633789062,68.81,101.62,True,14.3,39,,38.35,,,not_scanned,,,,,,,4.51,BUY,1.0
+2026-09-01,ROK,417.5299987792969,27.13,419.55,False,0.0,57,,34.34,,,not_scanned,,,,,,,2.58,HOLD / NEUTRAL,0.0
+2026-09-01,ROL,36.189998626708984,41.09,52.72,False,57.1,85,,32.34,,,not_scanned,,,,,,,-3.66,REDUCE / AVOID NEW,0.0
+2026-09-01,ROP,418.30999755859375,64.76,376.73,True,14.3,75,,33.22,,,not_scanned,,,,,,,2.36,HOLD / NEUTRAL,0.0
+2026-09-01,ROST,229.24000549316406,28.31,211.23,True,42.9,39,,26.25,,,not_scanned,,,,,,,2.23,HOLD / NEUTRAL,0.0
+2026-09-01,RCL,265.70001220703125,14.75,287.56,False,0.0,46,,39.27,,,not_scanned,,,,,,,3.24,BUY,1.0
+2026-09-01,SPGI,440.2099914550781,74.4,430.63,True,100.0,69,,26.25,,,not_scanned,,,,,,,-4.14,REDUCE / AVOID NEW,0.0
+2026-09-01,CRM,258.1099853515625,84.46,200.45,True,100.0,58,,39.24,,,not_scanned,,,,,,,-3.48,REDUCE / AVOID NEW,0.0
+2026-09-01,SNDK,1536.8699951171875,60.06,983.54,True,28.6,32,,66.14,,,not_scanned,,,,,,,3.79,BUY,1.0
+2026-09-01,SBAC,188.80999755859375,63.58,193.12,False,57.1,78,,33.41,,,not_scanned,,,,,,,-3.24,REDUCE / AVOID NEW,0.0
+2026-09-01,SLB,57.150001525878906,61.32,48.63,True,14.3,60,,34.34,,,not_scanned,,,,,,,3.26,BUY,0.75
+2026-09-01,STX,816.6400146484375,49.61,582.32,True,42.9,71,,62.02,,,not_scanned,,,,,,,0.31,HOLD / NEUTRAL,0.0
+2026-09-01,SRE,84.26000213623047,46.99,91.17,False,42.9,39,,22.75,,,not_scanned,,,,,,,0.23,HOLD / NEUTRAL,0.0
+2026-09-01,NOW,142.89999389648438,66.29,119.0,True,57.1,78,,54.42,,,not_scanned,,,,,,,-1.24,HOLD / NEUTRAL,0.0
+2026-09-01,SHW,329.95001220703125,21.99,334.16,False,0.0,54,,25.88,,,not_scanned,,,,,,,2.76,HOLD / NEUTRAL,0.0
+2026-09-01,SPG,211.8699951171875,35.12,201.22,True,28.6,15,,19.3,,,not_scanned,,,,,,,4.81,BUY,1.0
+2026-09-01,SWKS,67.41000366210938,45.4,63.81,True,57.1,71,,46.8,,,not_scanned,,,,,,,-0.83,HOLD / NEUTRAL,0.0
+2026-09-01,SJM,131.4199981689453,80.09,106.41,True,85.7,54,,25.43,,,not_scanned,,,,,,,-2.1,HOLD / NEUTRAL,0.0
+2026-09-01,SW,45.43000030517578,33.49,42.19,True,0.0,50,,38.2,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,SNA,381.20001220703125,14.44,375.51,True,0.0,92,,30.79,,,not_scanned,,,,,,,2.49,HOLD / NEUTRAL,0.0
+2026-09-01,SOLV,90.94999694824219,78.61,77.06,True,71.4,26,,31.87,,,not_scanned,,,,,,,0.73,HOLD / NEUTRAL,0.0
+2026-09-01,SO,88.08999633789062,27.01,92.46,False,28.6,31,,18.2,,,not_scanned,,,,,,,1.85,HOLD / NEUTRAL,0.0
+2026-09-01,LUV,37.68000030517578,9.59,42.94,False,0.0,50,,39.11,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,STT,187.7899932861328,50.87,147.47,True,0.0,65,,29.73,,,not_scanned,,,,,,,4.1,BUY,0.75
+2026-09-01,STLD,234.08999633789062,29.19,208.57,True,57.1,75,,42.36,,,not_scanned,,,,,,,-1.07,HOLD / NEUTRAL,0.0
+2026-09-01,SYK,317.3999938964844,24.54,339.5,False,0.0,87,,31.26,,,not_scanned,,,,,,,0.78,HOLD / NEUTRAL,0.0
+2026-09-01,SNPS,414.82000732421875,51.23,446.71,False,14.3,34,,36.45,,,not_scanned,,,,,,,2.81,HOLD / NEUTRAL,0.0
+2026-09-01,SYY,82.11000061035156,38.77,79.28,True,42.9,61,,22.15,,,not_scanned,,,,,,,0.91,HOLD / NEUTRAL,0.0
+2026-09-01,TMUS,182.16000366210938,56.72,195.2,False,57.1,69,,29.26,,,not_scanned,,,,,,,-2.71,HOLD / NEUTRAL,0.0
+2026-09-01,TROW,108.9749984741211,28.9,103.46,True,0.0,67,,26.18,,,not_scanned,,,,,,,3.98,BUY,0.75
+2026-09-01,TTWO,216.67999267578125,17.94,228.22,False,0.0,76,,43.56,,,not_scanned,,,,,,,1.44,HOLD / NEUTRAL,0.0
+2026-09-01,TPR,122.13999938964844,12.63,137.92,False,0.0,32,,37.21,,,not_scanned,,,,,,,4.08,BUY,1.0
+2026-09-01,TRGP,296.05999755859375,70.04,235.55,True,71.4,85,,36.46,,,not_scanned,,,,,,,-2.81,HOLD / NEUTRAL,0.0
+2026-09-01,TGT,163.75,62.76,121.03,True,14.3,23,,29.08,,,not_scanned,,,,,,,5.47,BUY,1.0
+2026-09-01,TEL,208.0,36.72,216.88,False,71.4,77,,37.92,,,not_scanned,,,,,,,-4.33,REDUCE / AVOID NEW,0.0
+2026-09-01,TDY,610.510009765625,18.72,611.74,False,0.0,,,,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,TER,335.4599914550781,30.89,313.64,True,0.0,76,,65.73,,,not_scanned,,,,,,,3.44,BUY,0.75
+2026-09-01,TSLA,356.0899963378906,61.54,400.2,False,28.6,0,,38.22,,,not_scanned,,,,,,,3.71,BUY,1.0
+2026-09-01,TXN,253.33999633789062,27.52,237.45,True,0.0,80,,39.44,,,not_scanned,,,,,,,3.2,BUY,0.5
+2026-09-01,TPL,369.92999267578125,52.64,390.91,False,42.9,13,,43.07,,,not_scanned,,,,,,,1.78,HOLD / NEUTRAL,0.0
+2026-09-01,TXT,79.70999908447266,21.28,90.06,False,0.0,53,,28.15,,,not_scanned,,,,,,,2.82,HOLD / NEUTRAL,0.0
+2026-09-01,TMO,600.5,47.82,535.33,True,0.0,57,,29.39,,,not_scanned,,,,,,,4.58,BUY,1.0
+2026-09-01,TJX,133.27000427246094,5.47,154.99,False,28.6,56,,22.5,,,not_scanned,,,,,,,0.35,HOLD / NEUTRAL,0.0
+2026-09-01,TKO,182.27000427246094,36.24,197.24,False,0.0,40,,34.05,,,not_scanned,,,,,,,3.6,BUY,1.0
+2026-09-01,TTD,13.779999732971191,53.81,25.44,False,100.0,50,,57.93,,,not_scanned,,,,,,,-5.0,REDUCE / AVOID NEW,0.0
+2026-09-01,TSCO,34.709999084472656,45.65,42.29,False,0.0,72,,34.35,,,not_scanned,,,,,,,1.68,HOLD / NEUTRAL,0.0
+2026-09-01,TT,440.1499938964844,20.55,443.83,False,0.0,51,,30.22,,,not_scanned,,,,,,,2.94,HOLD / NEUTRAL,0.0
+2026-09-01,TDG,1155.760009765625,28.21,1272.6,False,0.0,69,,29.76,,,not_scanned,,,,,,,1.86,HOLD / NEUTRAL,0.0
+2026-09-01,TRV,363.9200134277344,35.64,310.75,True,28.6,49,,23.92,,,not_scanned,,,,,,,2.77,HOLD / NEUTRAL,0.0
+2026-09-01,TRMB,58.939998626708984,53.05,65.17,False,0.0,63,,36.56,,,not_scanned,,,,,,,2.22,HOLD / NEUTRAL,0.0
+2026-09-01,TFC,49.439998626708984,27.4,49.55,False,0.0,33,,24.93,,,not_scanned,,,,,,,4.02,BUY,1.0
+2026-09-01,TYL,376.42999267578125,78.93,359.41,True,71.4,83,,49.86,,,not_scanned,,,,,,,-2.69,HOLD / NEUTRAL,0.0
+2026-09-01,TSN,55.060001373291016,41.7,60.48,False,42.9,31,,22.52,,,not_scanned,,,,,,,0.71,HOLD / NEUTRAL,0.0
+2026-09-01,UBER,75.23999786376953,39.6,76.63,False,0.0,32,,36.94,,,not_scanned,,,,,,,4.08,BUY,1.0
+2026-09-01,UDR,36.869998931884766,45.17,37.07,False,42.9,41,,22.09,,,not_scanned,,,,,,,0.11,HOLD / NEUTRAL,0.0
+2026-09-01,ULTA,545.6599731445312,51.53,555.89,False,100.0,100,,69.54,,,not_scanned,,,,,,,-7.99,STRONG AVOID / EXIT,0.0
+2026-09-01,UNP,290.6199951171875,47.7,258.84,True,0.0,72,,24.53,,,not_scanned,,,,,,,3.68,BUY,0.75
+2026-09-01,UAL,104.62999725341797,20.17,108.06,False,14.3,25,,44.74,,,not_scanned,,,,,,,3.35,BUY,1.0
+2026-09-01,UPS,102.66000366210938,43.78,104.73,False,42.9,31,,24.79,,,not_scanned,,,,,,,0.71,HOLD / NEUTRAL,0.0
+2026-09-01,URI,990.1500244140625,20.47,924.02,True,0.0,28,,32.21,,,not_scanned,,,,,,,6.32,BUY,1.0
+2026-09-01,UNH,396.29998779296875,45.7,350.11,True,85.7,26,,27.46,,,not_scanned,,,,,,,-0.42,HOLD / NEUTRAL,0.0
+2026-09-01,UHS,170.75,53.61,187.18,False,42.9,13,,30.94,,,not_scanned,,,,,,,1.78,HOLD / NEUTRAL,0.0
+2026-09-01,VLO,361.989990234375,74.58,235.94,True,57.1,,,,,,not_scanned,,,,,,,0.43,HOLD / NEUTRAL,0.0
+2026-09-01,VEEV,279.2300109863281,71.88,198.83,True,14.3,,,,,,not_scanned,,,,,,,3.86,BUY,1.0
+2026-09-01,VTR,92.06999969482422,72.96,84.89,True,100.0,,,,,,not_scanned,,,,,,,-3.0,REDUCE / AVOID NEW,0.0
+2026-09-01,VLTO,97.05000305175781,46.35,93.45,True,0.0,,,,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,VRSN,288.3699951171875,50.61,260.93,True,100.0,,,,,,not_scanned,,,,,,,-3.0,REDUCE / AVOID NEW,0.0
+2026-09-01,VRSK,194.35000610351562,67.19,195.12,False,100.0,,,,,,not_scanned,,,,,,,-5.0,REDUCE / AVOID NEW,0.0
+2026-09-01,VZ,50.29999923706055,73.56,45.53,True,42.9,,,,,,not_scanned,,,,,,,1.57,HOLD / NEUTRAL,0.0
+2026-09-01,VRTX,547.6500244140625,58.37,463.83,True,28.6,,,,,,not_scanned,,,,,,,2.71,HOLD / NEUTRAL,0.0
+2026-09-01,VRT,255.97000122070312,35.38,255.46,True,0.0,,,,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,VTRS,16.6299991607666,58.88,14.6,True,71.4,,,,,,not_scanned,,,,,,,-0.71,HOLD / NEUTRAL,0.0
+2026-09-01,VICI,25.540000915527344,42.81,27.95,False,28.6,,,,,,not_scanned,,,,,,,0.71,HOLD / NEUTRAL,0.0
+2026-09-01,V,372.6700134277344,59.33,333.15,True,14.3,29,,20.03,,,not_scanned,,,,,,,5.11,BUY,1.0
+2026-09-01,VST,138.0800018310547,34.16,158.18,False,14.3,,,,,,not_scanned,,,,,,,1.86,HOLD / NEUTRAL,0.0
+2026-09-01,VMRK,65.27999877929688,50.78,63.76,True,85.7,,,,,,not_scanned,,,,,,,-1.86,HOLD / NEUTRAL,0.0
+2026-09-01,VMC,259.69000244140625,25.49,288.78,False,0.0,,,,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,WRB,67.72000122070312,34.55,69.42,False,85.7,,,,,,not_scanned,,,,,,,-3.86,REDUCE / AVOID NEW,0.0
+2026-09-01,GWW,1309.2099609375,52.51,1170.05,True,28.6,56,,23.63,,,not_scanned,,,,,,,2.35,HOLD / NEUTRAL,0.0
+2026-09-01,WAB,279.79998779296875,30.36,252.64,True,0.0,,,,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,WMT,105.91999816894531,28.97,118.6,False,0.0,,,,,,not_scanned,,,,,,,3.0,BUY,1.0
+2026-09-01,DIS,106.22000122070312,56.25,104.0,True,14.3,26,,24.36,,,not_scanned,,,,,,,5.29,BUY,1.0
+2026-09-01,WBD,28.31999969482422,68.44,27.18,True,0.0,,,,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,WM,219.77000427246094,31.92,224.95,False,42.9,,,,,,not_scanned,,,,,,,-0.43,HOLD / NEUTRAL,0.0
+2026-09-01,WAT,405.8399963378906,43.84,360.15,True,0.0,,,,,,not_scanned,,,,,,,5.0,BUY,1.0
+2026-09-01,WEC,106.19999694824219,48.31,111.84,False,71.4,,,,,,not_scanned,,,,,,,-2.71,HOLD / NEUTRAL,0.0
+2026-09-01,WFC,87.04000091552734,48.29,84.92,True,100.0,,,,,,not_scanned,,,,,,,-3.0,REDUCE / AVOID NEW,0.0
+2026-09-01,WELL,240.4199981689453,78.27,210.01,True,100.0,,,,,,not_scanned,,,,,,,-3.0,REDUCE / AVOID NEW,0.0
+2026-09-01,WST,338.6499938964844,33.61,292.24,True,14.3,19,,34.22,,,not_scanned,,,,,,,5.71,BUY,1.0
+2026-09-01,WDC,450.44000244140625,52.36,366.95,True,42.9,,,,,,not_scanned,,,,,,,1.57,HOLD / NEUTRAL,0.0
+2026-09-01,WY,23.3799991607666,28.87,24.25,False,42.9,24,,23.75,,,not_scanned,,,,,,,1.12,HOLD / NEUTRAL,0.0
+2026-09-01,WMB,75.2300033569336,58.36,69.87,True,85.7,65,,27.22,,,not_scanned,,,,,,,-2.75,HOLD / NEUTRAL,0.0
+2026-09-01,WTW,334.4700012207031,43.09,299.86,True,0.0,70,,31.59,,,not_scanned,,,,,,,3.8,BUY,0.75
+2026-09-01,WDAY,198.3800048828125,60.51,160.67,True,28.6,,,,,,not_scanned,,,,,,,2.71,HOLD / NEUTRAL,0.0
+2026-09-01,WYNN,90.5999984741211,6.71,107.7,False,0.0,28,,35.09,,,not_scanned,,,,,,,4.32,BUY,1.0
+2026-09-01,XEL,75.88999938964844,39.93,78.72,False,14.3,99,,29.91,,,not_scanned,,,,,,,-1.08,HOLD / NEUTRAL,0.0
+2026-09-01,XYL,106.88999938964844,15.44,124.99,False,0.0,76,,29.91,,,not_scanned,,,,,,,1.44,HOLD / NEUTRAL,0.0
+2026-09-01,YUM,152.02999877929688,60.39,154.78,False,57.1,69,,23.11,,,not_scanned,,,,,,,-2.71,HOLD / NEUTRAL,0.0
+2026-09-01,ZBRA,343.70001220703125,22.72,254.96,True,0.0,51,,40.88,,,not_scanned,,,,,,,4.94,BUY,1.0
+2026-09-01,ZBH,99.4000015258789,56.32,91.17,True,0.0,72,,32.0,,,not_scanned,,,,,,,3.68,BUY,0.75
+2026-09-01,ZTS,77.25,54.59,103.92,False,57.1,81,,38.94,,,not_scanned,,,,,,,-3.42,REDUCE / AVOID NEW,0.0
