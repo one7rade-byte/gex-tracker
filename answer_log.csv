@@ -1,0 +1,2 @@
+timestamp,chat_id,question,tools_called,answer_preview
+2026-09-02 17:21:30,5758072296,what's GEX doing today,get_intelligence_report;get_gex_data,"SPY Net GEX dropped deeper into negative territory to *-$10.3B* (down from -$7.8B previously), with QQQ GEX also turning negative at *-$5.9B*.   When GEX is negative and SPY is trading below the *Zero Gamma level (767.50)*, options dealers are net short gamma. That means they're forced to sell as pr"
