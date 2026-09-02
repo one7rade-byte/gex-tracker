@@ -1,6 +1,9 @@
 import os
 import re
+import io
+import csv
 import time
+import base64
 import threading
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -11,26 +14,29 @@ app = Flask(__name__)
 
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+GITHUB_TOKEN   = os.environ.get("GITHUB_TOKEN")
 
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
+GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
 
-RAW_BASE = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
+RAW_BASE     = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
+GITHUB_REPO  = "one7rade-byte/gex-tracker"
+LOG_PATH     = "answer_log.csv"
+GITHUB_API   = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{LOG_PATH}"
 
 NEWS_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
     "Accept": "text/html,application/json,*/*",
 }
 
-MAX_TOOL_ROUNDS = 5  # safety cap on tool-call back-and-forth per question
+MAX_TOOL_ROUNDS = 5
+_log_lock = threading.Lock()
 
 # ---------------------------------------------------------------------------
-# Raw fetch helpers — these do the actual HTTP work. Tools below call these.
+# Raw fetch helpers
 # ---------------------------------------------------------------------------
 
 def fetch_csv_tail(url, days=30):
-    """Fetch a CSV and return only the header + last `days` data rows,
-    instead of dumping the whole growing file into every request."""
     try:
         r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
         if not r.ok:
@@ -120,7 +126,7 @@ def fetch_economic_calendar():
         return f"[calendar unavailable: {e}]"
 
 # ---------------------------------------------------------------------------
-# Tools — one function per data source, each callable by Gemini on demand.
+# Tools
 # ---------------------------------------------------------------------------
 
 def tool_get_gex_data(days=30):
@@ -260,20 +266,30 @@ SYSTEM_PROMPT = (
 # Gemini call + tool-dispatch loop
 # ---------------------------------------------------------------------------
 
-def call_gemini(contents):
-    r = requests.post(
-        GEMINI_URL,
-        headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
-        json={
-            "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
-            "contents": contents,
-            "tools": GEMINI_TOOLS,
-        },
-        timeout=60,
-    )
-    if not r.ok:
-        raise RuntimeError(f"{r.status_code}: {r.text[:500]}")
-    return r.json()
+def call_gemini(contents, retries=1):
+    """Calls Gemini. On a 429 (rate limit), waits 15s and retries once
+    before giving up — makes single stray rate-limit hits non-fatal."""
+    last_error = None
+    for attempt in range(retries + 1):
+        r = requests.post(
+            GEMINI_URL,
+            headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
+            json={
+                "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+                "contents": contents,
+                "tools": GEMINI_TOOLS,
+            },
+            timeout=60,
+        )
+        if r.ok:
+            return r.json()
+        last_error = f"{r.status_code}: {r.text[:500]}"
+        if r.status_code == 429 and attempt < retries:
+            print(f"Gemini 429, retrying in 15s (attempt {attempt + 1}/{retries})")
+            time.sleep(15)
+            continue
+        break
+    raise RuntimeError(last_error)
 
 def ask_gemini(user_question):
     now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
@@ -305,14 +321,66 @@ def ask_gemini(user_question):
             tools_called.append({"name": name, "args": args})
             response_parts.append({"functionResponse": {"name": name, "response": {"result": result}}})
 
-        # FIX: Gemini's REST API does not accept role "function" — it must
-        # be "user" when sending functionResponse parts back to the model.
         contents.append({"role": "user", "parts": response_parts})
 
     return "I gathered a lot of data but couldn't settle on an answer — try rephrasing.", tools_called
 
 # ---------------------------------------------------------------------------
-# Telegram plumbing (unchanged)
+# Persistent answer logging (GitHub-backed — Render's disk is ephemeral)
+# ---------------------------------------------------------------------------
+
+def _csv_row(fields):
+    buf = io.StringIO()
+    csv.writer(buf).writerow(fields)
+    return buf.getvalue()
+
+def append_to_github_log(row_fields):
+    if not GITHUB_TOKEN:
+        print("GITHUB_TOKEN not set — skipping persistent log")
+        return
+    with _log_lock:
+        try:
+            headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github+json"}
+            r = requests.get(GITHUB_API, headers=headers, timeout=15)
+            if r.status_code == 200:
+                info = r.json()
+                sha = info["sha"]
+                existing = base64.b64decode(info["content"]).decode("utf-8")
+            elif r.status_code == 404:
+                sha = None
+                existing = _csv_row(["timestamp", "chat_id", "question", "tools_called", "answer_preview"])
+            else:
+                print(f"log fetch failed: {r.status_code} {r.text[:200]}")
+                return
+
+            if not existing.endswith("\n"):
+                existing += "\n"
+            updated = existing + _csv_row(row_fields)
+
+            payload = {
+                "message": f"log: answer {row_fields[0]}",
+                "content": base64.b64encode(updated.encode("utf-8")).decode("utf-8"),
+            }
+            if sha:
+                payload["sha"] = sha
+
+            put = requests.put(GITHUB_API, headers=headers, json=payload, timeout=15)
+            if not put.ok:
+                print(f"log push failed: {put.status_code} {put.text[:300]}")
+            else:
+                print("log push succeeded")
+        except Exception as e:
+            print(f"append_to_github_log error: {e}")
+
+def log_answer(chat_id, question, tools_called, answer_text):
+    timestamp = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M:%S")
+    tools_str = ";".join(t["name"] for t in tools_called) or "none"
+    preview = answer_text.replace("\n", " ")[:300]
+    row = [timestamp, chat_id, question[:300], tools_str, preview]
+    threading.Thread(target=append_to_github_log, args=(row,), daemon=True).start()
+
+# ---------------------------------------------------------------------------
+# Telegram plumbing
 # ---------------------------------------------------------------------------
 
 def send_typing(chat_id):
@@ -330,14 +398,9 @@ def clean_for_telegram(text):
     text = re.sub(r'^#{1,6}\s*(.+)$', r'*\1*', text, flags=re.MULTILINE)
     text = re.sub(r'\*\*(.+?)\*\*', r'*\1*', text)
     text = re.sub(r'^-{3,}\s*$', '', text, flags=re.MULTILINE)
-
-    # Telegram's legacy Markdown parser fails hard on unmatched * or _.
-    # If either appears an odd number of times, strip all of them rather
-    # than let the whole message fail to send.
     for ch in ('*', '_'):
         if text.count(ch) % 2 != 0:
             text = text.replace(ch, '')
-
     return text.strip()
 
 def send_message(chat_id, text):
@@ -369,11 +432,13 @@ def webhook():
         print(f"[{chat_id}] tools used: {[t['name'] for t in tools_called]}")
     except Exception as e:
         reply = f"Error: {e}"
+        tools_called = []
         print(f"ask_gemini failed: {e}")
     finally:
         stop_typing.set()
 
     send_message(chat_id, reply)
+    log_answer(chat_id, msg["text"], tools_called, reply)
     return "ok"
 
 @app.route("/")
