@@ -304,7 +304,10 @@ def ask_gemini(user_question):
                 result = f"[tool error: {e}]"
             tools_called.append({"name": name, "args": args})
             response_parts.append({"functionResponse": {"name": name, "response": {"result": result}}})
-        contents.append({"role": "function", "parts": response_parts})
+
+        # FIX: Gemini's REST API does not accept role "function" — it must
+        # be "user" when sending functionResponse parts back to the model.
+        contents.append({"role": "user", "parts": response_parts})
 
     return "I gathered a lot of data but couldn't settle on an answer — try rephrasing.", tools_called
 
