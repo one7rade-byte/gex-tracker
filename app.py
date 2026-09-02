@@ -330,6 +330,14 @@ def clean_for_telegram(text):
     text = re.sub(r'^#{1,6}\s*(.+)$', r'*\1*', text, flags=re.MULTILINE)
     text = re.sub(r'\*\*(.+?)\*\*', r'*\1*', text)
     text = re.sub(r'^-{3,}\s*$', '', text, flags=re.MULTILINE)
+
+    # Telegram's legacy Markdown parser fails hard on unmatched * or _.
+    # If either appears an odd number of times, strip all of them rather
+    # than let the whole message fail to send.
+    for ch in ('*', '_'):
+        if text.count(ch) % 2 != 0:
+            text = text.replace(ch, '')
+
     return text.strip()
 
 def send_message(chat_id, text):
