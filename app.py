@@ -9,41 +9,49 @@ import requests
 
 app = Flask(__name__)
 
-TELEGRAM_TOKEN   = os.environ["TELEGRAM_TOKEN"]
-GEMINI_API_KEY   = os.environ["GEMINI_API_KEY"]
+TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
+GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
-GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
 
 RAW_BASE = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
-DATA_SOURCES = {
-    "SPY/QQQ daily GEX + VIX + macro log (gex_log.csv, since 2026-03-30, growing daily)": f"{RAW_BASE}/gex_log.csv",
-    "Regime signal log (regime_log.csv)": f"{RAW_BASE}/regime_log.csv",
-    "Mag 7 opportunity scanner + squeeze signals (mag7_signals_log.csv)": f"{RAW_BASE}/mag7_signals_log.csv",
-    "Latest daily intelligence report (intelligence_report.json)": f"{RAW_BASE}/intelligence_report.json",
-    "Regime signal historical accuracy — hit rate & avg forward return by signal type (signal_performance_summary.json)": f"{RAW_BASE}/signal_performance_summary.json",
-    "Sector/asset rotation — where money is flowing to/from today across 11 sectors + gold/bonds/dollar/credit/EM/small-caps/Bitcoin, vs SPY (sector_rotation_top.json)": f"{RAW_BASE}/sector_rotation_top.json",
-    # market_scan_top.json intentionally NOT included yet — its ranking still
-    # relies on cross-sectional data only (no accumulated own-history), see
-    # project notes. Add it here once market_scan_log.csv has ~2-4 weeks of
-    # daily rows.
-}
 
 NEWS_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
     "Accept": "text/html,application/json,*/*",
 }
 
-TICKER_STOPWORDS = {
-    "I","A","ON","IF","OR","AND","THE","FOR","ARE","IS","BE","TO","OF","IN",
-    "GEX","VIX","RSI","SKEW","CEO","CFO","IPO","ETF","FED","GDP","CPI","AI",
-    "US","USA","UK","EU","OK","MA","MACD","ATH","YTD","EPS","PE","ER","Q1",
-    "Q2","Q3","Q4","LOL","OMG","WTF","FYI","ASAP","DM","AM","PM","FOMC",
-}
+MAX_TOOL_ROUNDS = 5  # safety cap on tool-call back-and-forth per question
 
-def extract_tickers(text):
-    candidates = set(re.findall(r'\b[A-Z]{1,5}\b', text))
-    return [t for t in candidates if t not in TICKER_STOPWORDS][:3]
+# ---------------------------------------------------------------------------
+# Raw fetch helpers — these do the actual HTTP work. Tools below call these.
+# ---------------------------------------------------------------------------
+
+def fetch_csv_tail(url, days=30):
+    """Fetch a CSV and return only the header + last `days` data rows,
+    instead of dumping the whole growing file into every request."""
+    try:
+        r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
+        if not r.ok:
+            return f"[unavailable: HTTP {r.status_code}]"
+        lines = r.text.strip().split("\n")
+        if len(lines) <= 1:
+            return r.text
+        header, rows = lines[0], lines[1:]
+        tail = rows[-days:] if days and days > 0 else rows
+        return "\n".join([header] + tail)
+    except Exception as e:
+        return f"[unavailable: {e}]"
+
+def fetch_json(url):
+    try:
+        r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
+        if not r.ok:
+            return f"[unavailable: HTTP {r.status_code}]"
+        return r.text
+    except Exception as e:
+        return f"[unavailable: {e}]"
 
 def parse_rss_items(xml_text, max_items):
     headlines = []
@@ -82,13 +90,9 @@ def fetch_macro_news(max_items=8):
         return []
 
 _calendar_cache = {"data": None, "fetched_at": 0}
-CALENDAR_CACHE_TTL = 20 * 60  # refresh at most every 20 minutes
+CALENDAR_CACHE_TTL = 20 * 60
 
 def fetch_economic_calendar():
-    """Free, no-key weekly economic calendar — impact levels map to the
-    classic red (High) / orange (Medium) / yellow (Low) folder colors.
-    Cached for CALENDAR_CACHE_TTL to avoid hammering the feed and to
-    survive occasional rate-limiting with a stale-but-usable copy."""
     now = time.time()
     if _calendar_cache["data"] and (now - _calendar_cache["fetched_at"] < CALENDAR_CACHE_TTL):
         return _calendar_cache["data"]
@@ -102,9 +106,7 @@ def fetch_economic_calendar():
         for e in events:
             impact = e.get("impact", "")
             folder = {"High": "RED", "Medium": "ORANGE", "Low": "yellow"}.get(impact, impact)
-            actual = e.get("actual", "")
-            forecast = e.get("forecast", "")
-            previous = e.get("previous", "")
+            actual, forecast, previous = e.get("actual", ""), e.get("forecast", ""), e.get("previous", "")
             vals = f"actual={actual or '—'} forecast={forecast or '—'} previous={previous or '—'}"
             lines.append(f"- [{folder} folder] {e.get('date','')} | {e.get('country','')} | {e.get('title','')} | {vals}")
         result = "\n".join(lines) if lines else "[no events this week]"
@@ -117,38 +119,108 @@ def fetch_economic_calendar():
             return _calendar_cache["data"] + "\n[note: using a cached copy, live refresh just failed]"
         return f"[calendar unavailable: {e}]"
 
-def fetch_dashboard_context():
-    parts = []
-    for label, url in DATA_SOURCES.items():
-        try:
-            r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
-            if r.ok:
-                parts.append(f"=== {label} ===\n{r.text}")
-            else:
-                parts.append(f"=== {label} ===\n[unavailable: HTTP {r.status_code}]")
-        except Exception as e:
-            parts.append(f"=== {label} ===\n[unavailable: {e}]")
-    return "\n\n".join(parts)
+# ---------------------------------------------------------------------------
+# Tools — one function per data source, each callable by Gemini on demand.
+# ---------------------------------------------------------------------------
 
-def fetch_live_news_context(user_question):
-    parts = []
+def tool_get_gex_data(days=30):
+    return fetch_csv_tail(f"{RAW_BASE}/gex_log.csv", days)
 
-    now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
-    parts.append(f"=== Current date/time ===\n{now_et}")
+def tool_get_regime_data(days=30):
+    return fetch_csv_tail(f"{RAW_BASE}/regime_log.csv", days)
 
-    parts.append("=== This week's economic calendar (red=High impact, orange=Medium, yellow=Low) ===\n"
-                  + fetch_economic_calendar())
+def tool_get_mag7_signals(days=30):
+    return fetch_csv_tail(f"{RAW_BASE}/mag7_signals_log.csv", days)
 
-    macro = fetch_macro_news()
-    if macro:
-        parts.append("=== Live macro/market headlines (Google News, recent) ===\n" + "\n".join(macro))
+def tool_get_intelligence_report():
+    return fetch_json(f"{RAW_BASE}/intelligence_report.json")
 
-    for ticker in extract_tickers(user_question):
-        items = fetch_ticker_news(ticker)
-        if items:
-            parts.append(f"=== Live news for {ticker} (Yahoo Finance, recent) ===\n" + "\n".join(items))
+def tool_get_signal_performance():
+    return fetch_json(f"{RAW_BASE}/signal_performance_summary.json")
 
-    return "\n\n".join(parts)
+def tool_get_sector_rotation():
+    return fetch_json(f"{RAW_BASE}/sector_rotation_top.json")
+
+def tool_get_ticker_news(ticker):
+    items = fetch_ticker_news(ticker.upper())
+    return "\n".join(items) if items else f"[no recent news found for {ticker}]"
+
+def tool_get_macro_news():
+    items = fetch_macro_news()
+    return "\n".join(items) if items else "[no macro headlines available]"
+
+def tool_get_economic_calendar():
+    return fetch_economic_calendar()
+
+TOOL_DISPATCH = {
+    "get_gex_data": lambda a: tool_get_gex_data(a.get("days", 30)),
+    "get_regime_data": lambda a: tool_get_regime_data(a.get("days", 30)),
+    "get_mag7_signals": lambda a: tool_get_mag7_signals(a.get("days", 30)),
+    "get_intelligence_report": lambda a: tool_get_intelligence_report(),
+    "get_signal_performance": lambda a: tool_get_signal_performance(),
+    "get_sector_rotation": lambda a: tool_get_sector_rotation(),
+    "get_ticker_news": lambda a: tool_get_ticker_news(a.get("ticker", "")),
+    "get_macro_news": lambda a: tool_get_macro_news(),
+    "get_economic_calendar": lambda a: tool_get_economic_calendar(),
+}
+
+GEMINI_TOOLS = [{
+    "function_declarations": [
+        {
+            "name": "get_gex_data",
+            "description": "SPY/QQQ daily gamma exposure (GEX), VIX, RSI, SKEW, and cross-asset macro log. Data starts 2026-03-30. Use for questions about current or recent GEX regime, dealer positioning, or SPY/QQQ options structure.",
+            "parameters": {"type": "OBJECT", "properties": {
+                "days": {"type": "INTEGER", "description": "Most recent trading days to return. Default 30."}
+            }},
+        },
+        {
+            "name": "get_regime_data",
+            "description": "Daily regime signal log: composite score, flow_regime, regime_signal (e.g. STRONG_BUY, HOLD). Use for questions about the current market regime or how the signal has behaved recently.",
+            "parameters": {"type": "OBJECT", "properties": {
+                "days": {"type": "INTEGER", "description": "Most recent trading days to return. Default 30."}
+            }},
+        },
+        {
+            "name": "get_mag7_signals",
+            "description": "Magnificent 7 opportunity scanner and squeeze signals, per ticker, over recent days.",
+            "parameters": {"type": "OBJECT", "properties": {
+                "days": {"type": "INTEGER", "description": "Most recent trading days to return. Default 30."}
+            }},
+        },
+        {
+            "name": "get_intelligence_report",
+            "description": "Latest daily intelligence report summarizing today's overall market conditions.",
+            "parameters": {"type": "OBJECT", "properties": {}},
+        },
+        {
+            "name": "get_signal_performance",
+            "description": "Real historical accuracy of each regime signal type — hit rate and average forward return at 5/10/20 trading days. Use this, never a guess, whenever asked how reliable a signal has been.",
+            "parameters": {"type": "OBJECT", "properties": {}},
+        },
+        {
+            "name": "get_sector_rotation",
+            "description": "Today's money-flow/rotation read across 11 GICS sectors plus gold/bonds/dollar/credit/EM/small-caps/Bitcoin, vs SPY. LEADING/IMPROVING = money flowing toward; WEAKENING/LAGGING = money flowing away.",
+            "parameters": {"type": "OBJECT", "properties": {}},
+        },
+        {
+            "name": "get_ticker_news",
+            "description": "Live recent news headlines for one specific stock ticker.",
+            "parameters": {"type": "OBJECT", "properties": {
+                "ticker": {"type": "STRING", "description": "Stock ticker symbol, e.g. AAPL"}
+            }, "required": ["ticker"]},
+        },
+        {
+            "name": "get_macro_news",
+            "description": "Live macro/market headlines (Fed, earnings, economy) from Google News.",
+            "parameters": {"type": "OBJECT", "properties": {}},
+        },
+        {
+            "name": "get_economic_calendar",
+            "description": "This week's economic calendar with High/Medium/Low impact ratings (red/orange/yellow folders) and actual/forecast/previous values where released.",
+            "parameters": {"type": "OBJECT", "properties": {}},
+        },
+    ]
+}]
 
 SYSTEM_PROMPT = (
     "You are the assistant for one7rade's SPY GEX Tracker, a public market "
@@ -157,74 +229,92 @@ SYSTEM_PROMPT = (
     "signals. The daily history log started 2026-03-30 and grows by one "
     "trading day every day the tracker runs — always describe its depth as "
     "'since inception' or by the actual date range in the data, never guess "
-    "a round number like '5 years' for it. "
-    "Every request includes: the dashboard's real data files (including a "
-    "signal_performance_summary.json showing the ACTUAL historical hit rate "
-    "and average forward return of each regime signal — use this, not a "
-    "guess, whenever asked how reliable a signal has been; and "
-    "sector_rotation_top.json, today's money-flow read across 11 sectors + "
-    "gold/bonds/dollar/credit/EM/small-caps/Bitcoin vs SPY — LEADING and "
-    "IMPROVING mean money is flowing TOWARD that sector/asset, WEAKENING and "
-    "LAGGING mean money is flowing AWAY FROM it; rs_momentum's sign tells you "
-    "the direction of change, use this whenever asked about rotation, money "
-    "flow, or what's in/out of favor right now), the current "
-    "date/time, this week's economic calendar (with red/orange/yellow folder "
-    "impact ratings — the same system traders mean by 'red folder news'), "
-    "live macro headlines, and — when the question names a specific ticker — "
-    "live news for that stock. Use all of this as ground truth, and use the "
-    "current date/time to correctly identify what 'today' means among the "
-    "week's calendar events. This news and calendar coverage is NOT limited "
-    "to the Magnificent 7 — answer about any stock or any scheduled economic "
-    "release (jobless claims, CPI, FOMC, NFP, etc.) using the provided data. "
-    "Combine all of this with your own general knowledge of markets, macro "
-    "conditions, and financial history for a complete, accurate answer — "
-    "don't limit yourself to only what's provided, but don't contradict it "
-    "either. If something needs info you truly don't have (e.g. a release "
-    "that hasn't happened yet, or a specific social media post), say so "
-    "plainly rather than guessing or inventing a source. "
+    "a round number like '5 years'. "
+    "\n\n"
+    "You have tools to pull the dashboard's real data on demand — call "
+    "whichever ones are actually relevant to the question, not all of them. "
+    "Don't guess at numbers a tool could give you exactly. If a question "
+    "doesn't need any tool (e.g. general market education), just answer. "
+    "\n\n"
     "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy "
     "zone) in this options/market-structure context, never other meanings. "
+    "Combine tool results with your own general knowledge of markets, macro "
+    "conditions, and financial history for a complete, accurate answer — "
+    "don't limit yourself to only what tools return, but don't contradict "
+    "them either. If something needs info you truly don't have (a release "
+    "that hasn't happened yet, a specific social media post), say so "
+    "plainly rather than guessing or inventing a source. "
     "\n\n"
     "FORMATTING — this is a Telegram chat, not a report: write like you're "
-    "texting a knowledgeable friend, not drafting a document. Keep it short — "
-    "a few sentences to a short paragraph for simple questions, at most 3-4 "
-    "short sections for genuinely complex ones. Never use markdown headers "
-    "(no #, ##, ###). Never use double-asterisk bold (**text**) — if you need "
-    "to emphasize a key number or word, use single asterisks (*text*) and only "
-    "for a handful of the most important terms, not most of the message. Avoid "
-    "long bullet-point lists; prefer plain conversational sentences. No em-dash "
-    "section dividers (---). Get to the point fast. This is not financial "
-    "advice — give the analysis and let them decide, without excessive "
-    "disclaimers."
+    "texting a knowledgeable friend. Keep it short — a few sentences to a "
+    "short paragraph for simple questions, at most 3-4 short sections for "
+    "genuinely complex ones. Never use markdown headers (#, ##, ###). Never "
+    "use double-asterisk bold (**text**) — for emphasis use single asterisks "
+    "(*text*) sparingly. Avoid long bullet lists; prefer plain conversational "
+    "sentences. No em-dash section dividers (---). Get to the point fast. "
+    "This is not financial advice — give the analysis and let them decide, "
+    "without excessive disclaimers."
 )
 
-def ask_gemini(user_question):
-    dashboard_context = fetch_dashboard_context()
-    news_context = fetch_live_news_context(user_question)
-    full_prompt = (
-        f"{dashboard_context}\n\n{news_context}\n\n=== USER QUESTION ===\n{user_question}"
-    )
+# ---------------------------------------------------------------------------
+# Gemini call + tool-dispatch loop
+# ---------------------------------------------------------------------------
 
+def call_gemini(contents):
     r = requests.post(
         GEMINI_URL,
-        headers={
-            "x-goog-api-key": GEMINI_API_KEY,
-            "Content-Type": "application/json",
-        },
+        headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
         json={
             "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
-            "contents": [{"parts": [{"text": full_prompt}]}],
+            "contents": contents,
+            "tools": GEMINI_TOOLS,
         },
         timeout=60,
     )
     if not r.ok:
         raise RuntimeError(f"{r.status_code}: {r.text[:500]}")
-    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+    return r.json()
+
+def ask_gemini(user_question):
+    now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
+    opening = f"Current date/time: {now_et}\n\nUser question: {user_question}"
+    contents = [{"role": "user", "parts": [{"text": opening}]}]
+
+    tools_called = []
+
+    for _ in range(MAX_TOOL_ROUNDS):
+        data = call_gemini(contents)
+        candidate = data["candidates"][0]
+        parts = candidate["content"]["parts"]
+
+        function_calls = [p["functionCall"] for p in parts if "functionCall" in p]
+        if not function_calls:
+            text = "".join(p.get("text", "") for p in parts if "text" in p)
+            return text, tools_called
+
+        contents.append({"role": "model", "parts": parts})
+
+        response_parts = []
+        for fc in function_calls:
+            name, args = fc.get("name"), fc.get("args", {}) or {}
+            fn = TOOL_DISPATCH.get(name)
+            try:
+                result = fn(args) if fn else f"[unknown tool: {name}]"
+            except Exception as e:
+                result = f"[tool error: {e}]"
+            tools_called.append({"name": name, "args": args})
+            response_parts.append({"functionResponse": {"name": name, "response": {"result": result}}})
+        contents.append({"role": "function", "parts": response_parts})
+
+    return "I gathered a lot of data but couldn't settle on an answer — try rephrasing.", tools_called
+
+# ---------------------------------------------------------------------------
+# Telegram plumbing (unchanged)
+# ---------------------------------------------------------------------------
 
 def send_typing(chat_id):
     try:
-        requests.post(f"{TELEGRAM_API}/sendChatAction",
-                      json={"chat_id": chat_id, "action": "typing"}, timeout=10)
+        requests.post(f"{TELEGRAM_API}/sendChatAction", json={"chat_id": chat_id, "action": "typing"}, timeout=10)
     except Exception as e:
         print(f"typing indicator failed: {e}")
 
@@ -243,14 +333,11 @@ def send_message(chat_id, text):
     text = clean_for_telegram(text)
     if len(text) > 4000:
         text = text[:4000] + "\n\n[truncated]"
-
     r = requests.post(f"{TELEGRAM_API}/sendMessage",
-                       json={"chat_id": chat_id, "text": text, "parse_mode": "Markdown"},
-                       timeout=15)
+                       json={"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}, timeout=15)
     if not r.ok:
         print(f"Telegram send (markdown) failed: {r.status_code} {r.text}")
-        r2 = requests.post(f"{TELEGRAM_API}/sendMessage",
-                            json={"chat_id": chat_id, "text": text}, timeout=15)
+        r2 = requests.post(f"{TELEGRAM_API}/sendMessage", json={"chat_id": chat_id, "text": text}, timeout=15)
         if not r2.ok:
             print(f"Telegram send (plain) failed: {r2.status_code} {r2.text}")
 
@@ -262,13 +349,13 @@ def webhook():
         return "ok"
 
     chat_id = str(msg["chat"]["id"])
-
     stop_typing = threading.Event()
     typing_thread = threading.Thread(target=keep_typing, args=(chat_id, stop_typing), daemon=True)
     typing_thread.start()
 
     try:
-        reply = ask_gemini(msg["text"])
+        reply, tools_called = ask_gemini(msg["text"])
+        print(f"[{chat_id}] tools used: {[t['name'] for t in tools_called]}")
     except Exception as e:
         reply = f"Error: {e}"
         print(f"ask_gemini failed: {e}")
