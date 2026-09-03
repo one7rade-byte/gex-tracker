@@ -1,19 +1,23 @@
 {
-  "generated_at": "2026-09-03T00:43:38.526762",
+  "generated_at": "2026-09-03T00:53:55.525115",
   "total_answer_rows": 5,
   "extraction_accuracy": {
-    "numeric_claims_checked": 1,
-    "numeric_claims_matched": 0,
-    "match_rate_pct": 0.0,
+    "numeric_claims_checked": 2,
+    "numeric_claims_matched": 1,
+    "match_rate_pct": 50.0,
     "flagged_examples": [
       {
-        "timestamp": "2026-09-02 19:20:02",
-        "question": "What\u2019s the next buy opportunity",
-        "reason": "no numbers from the answer found in signal_performance_summary.json",
-        "answer_preview": "Right now, the broad market (SPY/QQQ) is in a *HOLD* status, meaning it's not a fresh broad-market entry point today. SPY GEX just flipped back positive to +$3.0B after deep negative territory, and VIX sits at a calm 15.2.   To catch the next high-conviction buy opportunity, watch for two main setup"
+        "timestamp": "2026-09-02 17:21:30",
+        "question": "what's GEX doing today",
+        "tools_used": [
+          "get_intelligence_report",
+          "get_gex_data"
+        ],
+        "reason": "no numbers from the answer found in any of the tools it actually called",
+        "answer_preview": "SPY Net GEX dropped deeper into negative territory to *-$10.3B* (down from -$7.8B previously), with QQQ GEX also turning negative at *-$5.9B*.   When GEX is negative and SPY is trading below the *Zero Gamma level (767.50)*, options dealers are net short gamma. That means they're forced to sell as pr"
       }
     ]
   },
   "predictive_accuracy_by_signal": {},
-  "note": "extraction_accuracy checks whether numbers in an answer citing get_signal_performance appear in the real source file \u2014 a proxy for hallucination, not a full fact-check. predictive_accuracy_by_signal only includes rows 30+ days old with a resolved 20-day forward return. Small n means these are provisional, not proven."
+  "note": "extraction_accuracy checks whether numbers in an answer appear somewhere in the real content of every tool actually called for that row - a proxy for outright invention, not a full fact-check of whether the right number was attached to the right claim. predictive_accuracy_by_signal only includes rows 30+ days old with a resolved 20-day forward return. Small n means these results are provisional, not proven."
 }
