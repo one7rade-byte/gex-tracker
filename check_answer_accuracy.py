@@ -136,4 +136,77 @@ def resolve_predictions(rows, regime_by_date, gex_by_date):
 
         date_str = row_date.isoformat()
         regime_row = regime_by_date.get(date_str)
-        if not regime_row or
+        if not regime_row or date_str not in dates_sorted:
+            continue
+
+        idx = dates_sorted.index(date_str)
+        if idx + 20 >= len(dates_sorted):
+            continue
+
+        try:
+            start_price = float(gex_by_date[dates_sorted[idx]].get("spy_close", 0) or 0)
+            end_price = float(gex_by_date[dates_sorted[idx + 20]].get("spy_close", 0) or 0)
+        except ValueError:
+            continue
+        if start_price <= 0:
+            continue
+
+        resolved.append({
+            "date": date_str,
+            "signal": regime_row.get("regime_signal"),
+            "fwd_return_20d_pct": round((end_price - start_price) / start_price * 100, 2),
+        })
+    return resolved
+
+def summarize_predictions(resolved):
+    by_signal = {}
+    for r in resolved:
+        by_signal.setdefault(r["signal"], []).append(r["fwd_return_20d_pct"])
+    return {
+        signal: {
+            "n": len(rets),
+            "avg_fwd_return_20d_pct": round(sum(rets) / len(rets), 2),
+            "hit_rate_pct": round(100 * sum(1 for x in rets if x > 0) / len(rets), 1),
+        }
+        for signal, rets in by_signal.items()
+    }
+
+# ---------------------------------------------------------------------------
+
+def main():
+    rows = load_answer_log()
+    regime_by_date = load_csv_by_date(REGIME_LOG)
+    gex_by_date = load_csv_by_date(GEX_LOG)
+
+    checked, matched, flagged = check_extraction_accuracy(rows)
+    resolved = resolve_predictions(rows, regime_by_date, gex_by_date)
+    pred_summary = summarize_predictions(resolved)
+
+    output = {
+        "generated_at": datetime.utcnow().isoformat(),
+        "total_answer_rows": len(rows),
+        "extraction_accuracy": {
+            "numeric_claims_checked": checked,
+            "numeric_claims_matched": matched,
+            "match_rate_pct": round(100 * matched / checked, 1) if checked else None,
+            "flagged_examples": flagged[:10],
+        },
+        "predictive_accuracy_by_signal": pred_summary,
+        "note": (
+            "extraction_accuracy checks whether numbers in an answer appear "
+            "somewhere in the real content of every tool actually called for "
+            "that row - a proxy for outright invention, not a full fact-check "
+            "of whether the right number was attached to the right claim. "
+            "predictive_accuracy_by_signal only includes rows 30+ days old "
+            "with a resolved 20-day forward return. Small n means these "
+            "results are provisional, not proven."
+        ),
+    }
+
+    with open(OUTPUT, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2)
+    print(f"{len(rows)} rows scanned, {checked} numeric claims checked, "
+          f"{len(resolved)} predictions resolved")
+
+if __name__ == "__main__":
+    main()
