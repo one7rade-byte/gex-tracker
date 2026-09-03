@@ -132,7 +132,7 @@ def resolve_predictions(rows, regime_by_date, gex_by_date):
         except ValueError:
             continue
         if (today - row_date).days < 30:
-            continue  # not enough time to resolve a 20-trading-day forward return
+            continue
 
         date_str = row_date.isoformat()
         regime_row = regime_by_date.get(date_str)
