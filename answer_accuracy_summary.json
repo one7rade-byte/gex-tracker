@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-09-03T00:43:38.526762",
+  "total_answer_rows": 5,
+  "extraction_accuracy": {
+    "numeric_claims_checked": 1,
+    "numeric_claims_matched": 0,
+    "match_rate_pct": 0.0,
+    "flagged_examples": [
+      {
+        "timestamp": "2026-09-02 19:20:02",
+        "question": "What\u2019s the next buy opportunity",
+        "reason": "no numbers from the answer found in signal_performance_summary.json",
+        "answer_preview": "Right now, the broad market (SPY/QQQ) is in a *HOLD* status, meaning it's not a fresh broad-market entry point today. SPY GEX just flipped back positive to +$3.0B after deep negative territory, and VIX sits at a calm 15.2.   To catch the next high-conviction buy opportunity, watch for two main setup"
+      }
+    ]
+  },
+  "predictive_accuracy_by_signal": {},
+  "note": "extraction_accuracy checks whether numbers in an answer citing get_signal_performance appear in the real source file \u2014 a proxy for hallucination, not a full fact-check. predictive_accuracy_by_signal only includes rows 30+ days old with a resolved 20-day forward return. Small n means these are provisional, not proven."
+}
