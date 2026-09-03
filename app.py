@@ -20,7 +20,7 @@ TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 GEMINI_URL   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
 
 RAW_BASE     = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
-GITHUB_REPO  = "one7rade-byte/gex-tracker"
+GITHUB_REPO  = "one7rade-byte/gex-tracker-logs"
 LOG_PATH     = "answer_log.csv"
 GITHUB_API   = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{LOG_PATH}"
 
