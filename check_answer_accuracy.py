@@ -1,16 +1,56 @@
 import csv
 import json
 import re
+import os
+import requests
 from datetime import datetime
 
 ANSWER_LOG = "answer_log.csv"
 REGIME_LOG = "regime_log.csv"
 GEX_LOG = "gex_log.csv"
-SIGNAL_PERF = "signal_performance_summary.json"
 OUTPUT = "answer_accuracy_summary.json"
 
+RAW_BASE = "https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main"
+
 # ---------------------------------------------------------------------------
-# Loading
+# Shared fetch helpers (mirrors app.py's versions, kept standalone here since
+# this script runs independently in GitHub Actions, not inside the Flask app)
+# ---------------------------------------------------------------------------
+
+def fetch_csv_tail(url, days=60):
+    try:
+        r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
+        if not r.ok:
+            return ""
+        lines = r.text.strip().split("\n")
+        if len(lines) <= 1:
+            return r.text
+        header, rows = lines[0], lines[1:]
+        tail = rows[-days:] if days and days > 0 else rows
+        return "\n".join([header] + tail)
+    except Exception as e:
+        print(f"fetch_csv_tail failed ({url}): {e}")
+        return ""
+
+def fetch_json(url):
+    try:
+        r = requests.get(f"{url}?t={os.urandom(4).hex()}", timeout=15)
+        return r.text if r.ok else ""
+    except Exception as e:
+        print(f"fetch_json failed ({url}): {e}")
+        return ""
+
+SOURCE_FETCHERS = {
+    "get_signal_performance": lambda: fetch_json(f"{RAW_BASE}/signal_performance_summary.json"),
+    "get_sector_rotation": lambda: fetch_json(f"{RAW_BASE}/sector_rotation_top.json"),
+    "get_intelligence_report": lambda: fetch_json(f"{RAW_BASE}/intelligence_report.json"),
+    "get_gex_data": lambda: fetch_csv_tail(f"{RAW_BASE}/gex_log.csv", days=60),
+    "get_regime_data": lambda: fetch_csv_tail(f"{RAW_BASE}/regime_log.csv", days=60),
+    "get_mag7_signals": lambda: fetch_csv_tail(f"{RAW_BASE}/mag7_signals_log.csv", days=60),
+}
+
+# ---------------------------------------------------------------------------
+# Loading local files
 # ---------------------------------------------------------------------------
 
 def load_answer_log():
@@ -32,18 +72,33 @@ def extract_numbers(text):
     return set(re.findall(r'-?\d+\.?\d*%?', text))
 
 # ---------------------------------------------------------------------------
-# 1. Extraction accuracy: do cited numbers actually appear in source data?
+# 1. Extraction accuracy: do cited numbers appear in the tools actually used?
 # ---------------------------------------------------------------------------
 
-def check_extraction_accuracy(rows, signal_perf_text):
+def check_extraction_accuracy(rows):
+    """Compares numbers cited in each answer against the real content of
+    every data source actually called for that row - not just one fixed
+    file - so a number correctly pulled from get_gex_data isn't wrongly
+    flagged just because get_signal_performance was also called that turn.
+
+    Limitation, stated plainly: this only checks whether a cited number
+    appears SOMEWHERE in the tools used, not whether it was attributed to
+    the right claim. It catches outright invention, not misattribution."""
     checked, matched, flagged = 0, 0, []
-    source_nums = extract_numbers(signal_perf_text)
+
     for row in rows:
-        if "get_signal_performance" not in row.get("tools_called", ""):
+        tools_used = [t for t in row.get("tools_called", "").split(";") if t in SOURCE_FETCHERS]
+        if not tools_used:
             continue
         nums = extract_numbers(row.get("answer_preview", ""))
         if not nums:
             continue
+
+        combined_source_text = ""
+        for tool in tools_used:
+            combined_source_text += SOURCE_FETCHERS[tool]() + "\n"
+        source_nums = extract_numbers(combined_source_text)
+
         checked += 1
         if nums & source_nums:
             matched += 1
@@ -51,7 +106,8 @@ def check_extraction_accuracy(rows, signal_perf_text):
             flagged.append({
                 "timestamp": row.get("timestamp"),
                 "question": row.get("question"),
-                "reason": "no numbers from the answer found in signal_performance_summary.json",
+                "tools_used": tools_used,
+                "reason": "no numbers from the answer found in any of the tools it actually called",
                 "answer_preview": row.get("answer_preview"),
             })
     return checked, matched, flagged
@@ -80,77 +136,4 @@ def resolve_predictions(rows, regime_by_date, gex_by_date):
 
         date_str = row_date.isoformat()
         regime_row = regime_by_date.get(date_str)
-        if not regime_row or date_str not in dates_sorted:
-            continue
-
-        idx = dates_sorted.index(date_str)
-        if idx + 20 >= len(dates_sorted):
-            continue
-
-        try:
-            start_price = float(gex_by_date[dates_sorted[idx]].get("spy_close", 0) or 0)
-            end_price = float(gex_by_date[dates_sorted[idx + 20]].get("spy_close", 0) or 0)
-        except ValueError:
-            continue
-        if start_price <= 0:
-            continue
-
-        resolved.append({
-            "date": date_str,
-            "signal": regime_row.get("regime_signal"),
-            "fwd_return_20d_pct": round((end_price - start_price) / start_price * 100, 2),
-        })
-    return resolved
-
-def summarize_predictions(resolved):
-    by_signal = {}
-    for r in resolved:
-        by_signal.setdefault(r["signal"], []).append(r["fwd_return_20d_pct"])
-    return {
-        signal: {
-            "n": len(rets),
-            "avg_fwd_return_20d_pct": round(sum(rets) / len(rets), 2),
-            "hit_rate_pct": round(100 * sum(1 for x in rets if x > 0) / len(rets), 1),
-        }
-        for signal, rets in by_signal.items()
-    }
-
-# ---------------------------------------------------------------------------
-
-def main():
-    rows = load_answer_log()
-    with open(SIGNAL_PERF, encoding="utf-8") as f:
-        signal_perf_text = f.read()
-    regime_by_date = load_csv_by_date(REGIME_LOG)
-    gex_by_date = load_csv_by_date(GEX_LOG)
-
-    checked, matched, flagged = check_extraction_accuracy(rows, signal_perf_text)
-    resolved = resolve_predictions(rows, regime_by_date, gex_by_date)
-    pred_summary = summarize_predictions(resolved)
-
-    output = {
-        "generated_at": datetime.utcnow().isoformat(),
-        "total_answer_rows": len(rows),
-        "extraction_accuracy": {
-            "numeric_claims_checked": checked,
-            "numeric_claims_matched": matched,
-            "match_rate_pct": round(100 * matched / checked, 1) if checked else None,
-            "flagged_examples": flagged[:10],
-        },
-        "predictive_accuracy_by_signal": pred_summary,
-        "note": (
-            "extraction_accuracy checks whether numbers in an answer citing "
-            "get_signal_performance appear in the real source file — a proxy "
-            "for hallucination, not a full fact-check. predictive_accuracy_by_signal "
-            "only includes rows 30+ days old with a resolved 20-day forward "
-            "return. Small n means these are provisional, not proven."
-        ),
-    }
-
-    with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
-    print(f"{len(rows)} rows scanned, {checked} numeric claims checked, "
-          f"{len(resolved)} predictions resolved")
-
-if __name__ == "__main__":
-    main()
+        if not regime_row or
