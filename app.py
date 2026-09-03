@@ -239,8 +239,10 @@ SYSTEM_PROMPT = (
     "\n\n"
     "You have tools to pull the dashboard's real data on demand — call "
     "whichever ones are actually relevant to the question, not all of them. "
-    "Don't guess at numbers a tool could give you exactly. If a question "
-    "doesn't need any tool (e.g. general market education), just answer. "
+    "Call the minimum number of tools needed to answer well — usually just "
+    "one, rarely more than two. Don't guess at numbers a tool could give you "
+    "exactly. If a question doesn't need any tool (e.g. general market "
+    "education), just answer. "
     "\n\n"
     "Always interpret ambiguous short terms (GEX, dip, wall, regime, buy "
     "zone) in this options/market-structure context, never other meanings. "
@@ -267,8 +269,8 @@ SYSTEM_PROMPT = (
 # ---------------------------------------------------------------------------
 
 def call_gemini(contents, retries=1):
-    """Calls Gemini. On a 429 (rate limit), waits 15s and retries once
-    before giving up — makes single stray rate-limit hits non-fatal."""
+    """Calls Gemini. On a 429 (rate limit) or 503 (Google-side overload),
+    waits 15s and retries once before giving up."""
     last_error = None
     for attempt in range(retries + 1):
         r = requests.post(
@@ -284,8 +286,8 @@ def call_gemini(contents, retries=1):
         if r.ok:
             return r.json()
         last_error = f"{r.status_code}: {r.text[:500]}"
-        if r.status_code == 429 and attempt < retries:
-            print(f"Gemini 429, retrying in 15s (attempt {attempt + 1}/{retries})")
+        if r.status_code in (429, 503) and attempt < retries:
+            print(f"Gemini {r.status_code}, retrying in 15s (attempt {attempt + 1}/{retries})")
             time.sleep(15)
             continue
         break
@@ -415,20 +417,20 @@ def send_message(chat_id, text):
         if not r2.ok:
             print(f"Telegram send (plain) failed: {r2.status_code} {r2.text}")
 
-@app.route("/webhook", methods=["POST"])
-def webhook():
-    update = request.get_json(force=True)
-    msg = update.get("message")
-    if not msg or "text" not in msg:
-        return "ok"
+# ---------------------------------------------------------------------------
+# Webhook — acknowledges Telegram immediately, does the real work in the
+# background. This stops Telegram from retrying/resending the same message
+# if ask_gemini takes longer than Telegram's webhook timeout, which was
+# likely doubling up Gemini calls and contributing to hitting the 429 limit.
+# ---------------------------------------------------------------------------
 
-    chat_id = str(msg["chat"]["id"])
+def process_question(chat_id, question):
     stop_typing = threading.Event()
     typing_thread = threading.Thread(target=keep_typing, args=(chat_id, stop_typing), daemon=True)
     typing_thread.start()
 
     try:
-        reply, tools_called = ask_gemini(msg["text"])
+        reply, tools_called = ask_gemini(question)
         print(f"[{chat_id}] tools used: {[t['name'] for t in tools_called]}")
     except Exception as e:
         reply = f"Error: {e}"
@@ -438,7 +440,20 @@ def webhook():
         stop_typing.set()
 
     send_message(chat_id, reply)
-    log_answer(chat_id, msg["text"], tools_called, reply)
+    log_answer(chat_id, question, tools_called, reply)
+
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    update = request.get_json(force=True)
+    msg = update.get("message")
+    if not msg or "text" not in msg:
+        return "ok"
+
+    chat_id = str(msg["chat"]["id"])
+    question = msg["text"]
+
+    threading.Thread(target=process_question, args=(chat_id, question), daemon=True).start()
+
     return "ok"
 
 @app.route("/")
