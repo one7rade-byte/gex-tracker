@@ -1,0 +1,122 @@
+{
+  "data_source": "deep_history_backtest_log.csv",
+  "hyg_era_range": "2007-04-18 to 2026-08-21",
+  "recent_era_range": "2016-01-04 to 2026-08-21",
+  "forward_window_days": 15,
+  "drawdown_hit_threshold_pct": -5.0,
+  "thresholds": {
+    "composite_5d_chg": -3,
+    "hyg_5d_pct": -1.5
+  },
+  "hyg_era_full_history": {
+    "composite_alone": {
+      "label": "composite_5d_chg<=-3",
+      "n_total": 4853,
+      "n_triggered": 246,
+      "trigger_rate_pct": 5.07,
+      "base_rate_pct": 13.8,
+      "hit_rate_pct": 26.4,
+      "lift_pct_points": 12.6,
+      "avg_fwd_max_dd_15d_pct": -3.49
+    },
+    "hyg_alone": {
+      "label": "hyg_5d_pct<=-1.5",
+      "n_total": 4853,
+      "n_triggered": 411,
+      "trigger_rate_pct": 8.47,
+      "base_rate_pct": 13.8,
+      "hit_rate_pct": 29.0,
+      "lift_pct_points": 15.2,
+      "avg_fwd_max_dd_15d_pct": -3.69
+    },
+    "confirmed_both": {
+      "label": "both same day",
+      "n_total": 4853,
+      "n_triggered": 117,
+      "trigger_rate_pct": 2.41,
+      "base_rate_pct": 13.8,
+      "hit_rate_pct": 34.2,
+      "lift_pct_points": 20.4,
+      "avg_fwd_max_dd_15d_pct": -4.29
+    }
+  },
+  "hyg_era_since_2016": {
+    "composite_alone": {
+      "label": "composite_5d_chg<=-3",
+      "n_total": 2659,
+      "n_triggered": 147,
+      "trigger_rate_pct": 5.53,
+      "base_rate_pct": 11.4,
+      "hit_rate_pct": 23.8,
+      "lift_pct_points": 12.4,
+      "avg_fwd_max_dd_15d_pct": -3.06
+    },
+    "hyg_alone": {
+      "label": "hyg_5d_pct<=-1.5",
+      "n_total": 2659,
+      "n_triggered": 144,
+      "trigger_rate_pct": 5.42,
+      "base_rate_pct": 11.4,
+      "hit_rate_pct": 29.2,
+      "lift_pct_points": 17.8,
+      "avg_fwd_max_dd_15d_pct": -3.38
+    },
+    "confirmed_both": {
+      "label": "both same day",
+      "n_total": 2659,
+      "n_triggered": 60,
+      "trigger_rate_pct": 2.26,
+      "base_rate_pct": 11.4,
+      "hit_rate_pct": 36.7,
+      "lift_pct_points": 25.3,
+      "avg_fwd_max_dd_15d_pct": -4.08
+    }
+  },
+  "crash_window_report": {
+    "2008_GFC": {
+      "window": "2008-09-01 to 2009-03-09",
+      "composite_alone_first_trigger": "2008-09-09",
+      "composite_alone_lead_days_vs_window_start": 5,
+      "hyg_alone_first_trigger": "2008-09-15",
+      "hyg_alone_lead_days_vs_window_start": 9,
+      "confirmed_first_trigger": "2008-09-15",
+      "confirmed_lead_days_vs_window_start": 9,
+      "confirmed_lag_vs_composite_alone_days": 4,
+      "confirmed_lag_vs_hyg_alone_days": 0
+    },
+    "2020_COVID": {
+      "window": "2020-02-19 to 2020-03-23",
+      "composite_alone_first_trigger": "2020-02-24",
+      "composite_alone_lead_days_vs_window_start": 3,
+      "hyg_alone_first_trigger": "2020-02-25",
+      "hyg_alone_lead_days_vs_window_start": 4,
+      "confirmed_first_trigger": "2020-02-25",
+      "confirmed_lead_days_vs_window_start": 4,
+      "confirmed_lag_vs_composite_alone_days": 1,
+      "confirmed_lag_vs_hyg_alone_days": 0
+    },
+    "2022_BEAR": {
+      "window": "2022-01-03 to 2022-10-13",
+      "composite_alone_first_trigger": "2022-01-20",
+      "composite_alone_lead_days_vs_window_start": 12,
+      "hyg_alone_first_trigger": "2022-03-07",
+      "hyg_alone_lead_days_vs_window_start": 43,
+      "confirmed_first_trigger": "2022-04-11",
+      "confirmed_lead_days_vs_window_start": 68,
+      "confirmed_lag_vs_composite_alone_days": 56,
+      "confirmed_lag_vs_hyg_alone_days": 25
+    },
+    "2025_SELLOFF": {
+      "window": "2025-02-19 to 2025-04-08",
+      "composite_alone_first_trigger": "2025-02-21",
+      "composite_alone_lead_days_vs_window_start": 2,
+      "hyg_alone_first_trigger": "2025-04-04",
+      "hyg_alone_lead_days_vs_window_start": 32,
+      "confirmed_first_trigger": "2025-04-04",
+      "confirmed_lead_days_vs_window_start": 32,
+      "confirmed_lag_vs_composite_alone_days": 30,
+      "confirmed_lag_vs_hyg_alone_days": 0
+    }
+  },
+  "note": "Question is whether confirmed_both's hit_rate_pct/lift_pct_points beats both single-signal rows by more than sampling noise would explain given its much smaller n_triggered, and whether confirmation still fires early enough in each crash window to be useful rather than just filtering the single signal down to near the window's own trough."
+}
