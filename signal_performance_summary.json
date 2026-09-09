@@ -1,6 +1,6 @@
 {
-  "generated_from_rows": 298,
-  "unique_signal_days": 106,
+  "generated_from_rows": 301,
+  "unique_signal_days": 107,
   "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof.",
   "by_regime_signal": {
     "BUY_WATCH": {
@@ -12,9 +12,9 @@
         "worst_pct": -0.85
       },
       "10": {
-        "n": 12,
-        "avg_return_pct": 0.68,
-        "hit_rate_pct": 83.3,
+        "n": 13,
+        "avg_return_pct": 0.61,
+        "hit_rate_pct": 76.9,
         "best_pct": 2.41,
         "worst_pct": -1.5
       },
@@ -97,9 +97,9 @@
     },
     "STRONG_HOLD": {
       "5": {
-        "n": 76,
-        "avg_return_pct": 0.6,
-        "hit_rate_pct": 60.5,
+        "n": 77,
+        "avg_return_pct": 0.58,
+        "hit_rate_pct": 59.7,
         "best_pct": 10.19,
         "worst_pct": -3.45
       },
@@ -111,9 +111,9 @@
         "worst_pct": -3.64
       },
       "20": {
-        "n": 66,
-        "avg_return_pct": 2.39,
-        "hit_rate_pct": 74.2,
+        "n": 67,
+        "avg_return_pct": 2.34,
+        "hit_rate_pct": 73.1,
         "best_pct": 15.22,
         "worst_pct": -3.26
       }
