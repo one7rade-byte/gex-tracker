@@ -97,6 +97,10 @@ CRASH_WINDOWS = {
     "2008_GFC": ("2008-09-01", "2009-03-09"),
     "2020_COVID": ("2020-02-19", "2020-03-23"),
     "2022_BEAR": ("2022-01-03", "2022-10-13"),
+    # Added 2026-09-13 — independently hand-derived by two prior research runs
+    # (2026-08-30 x2) and this one; codified here so future scripts don't
+    # have to re-derive it. SPY -19.0% peak-to-trough.
+    "2025_SELLOFF": ("2025-02-19", "2025-04-08"),
 }
 
 COMPOSITE_BUCKETS = [
