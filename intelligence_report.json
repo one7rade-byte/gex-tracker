@@ -1,27 +1,27 @@
 {
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "generated_at": "10:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-12.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.1 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "NVDA WATCH \u2014 score 6/10, RSI at 44th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple Stock: New CEO, Foldable iPhone-Time to Buy the Dip?...' Do not buy this dip until news clears. AMZN WATCH \u2014 score 5/10, RSI at 33th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 66th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 17.1, needs +4.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.1 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 6/10, RSI at 44th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple Stock: New CEO, Foldable iPhone-Time to Buy the Dip?...' Do not buy this dip until news clears. AMZN WATCH \u2014 score 5/10, RSI at 33th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 66th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.1, needs +4.9 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is deeply negative at $-23.9B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "NVDA WATCH \u2014 score 5/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 5/10, RSI at 23th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s Biggest Win This Week Isn\u2019t the New iPhone...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 17.2, needs +4.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-23.9B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 17.2 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA WATCH \u2014 score 5/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 5/10, RSI at 23th pct. Not yet at peak oversold but building. AAPL AVOID \u2014 company-specific negative news detected: 'Apple\u2019s Biggest Win This Week Isn\u2019t the New iPhone...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.2, needs +4.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "bear_warning",
     "vix_trend": "rising",
-    "vix_current": 17.1,
+    "vix_current": 17.2,
     "gex_trend": "deteriorating",
-    "gex_current": -12.0,
+    "gex_current": -23.9,
     "fear_trend": "building",
     "fear_current": 5.0,
-    "bear_current": 5.0,
-    "bull_current": 4.0,
+    "bear_current": 6.0,
+    "bull_current": 3.0,
     "neg_gex_days": 8,
-    "skew_current": 152.09,
+    "skew_current": 146.61,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 47.58
+    "spy_rsi": 42.2
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,115 +30,113 @@
     "news": ""
   },
   "avoid_names": [
-    "AAPL",
-    "TSLA",
-    "GOOGL"
+    "AAPL"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 5.0,
-      "rsi_pct": 74.8,
+      "score": 3.0,
+      "rsi_pct": 71.7,
       "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "stable",
       "days_oversold": 1,
       "headlines": [
-        "Dow Jones Tech Titan Apple, Nvidia Chipmaker TSMC, AMD, Bloom Energy In Or Near Buy Zones",
-        "Jim Cramer Believes Apple (AAPL) Could See \u201cOff The Charts\u201d Demand For Its New Foldable",
-        "Apple Falls as Siri AI Arrives Behind a Beta Label",
-        "Apple Stock: New CEO, Foldable iPhone-Time to Buy the Dip?"
+        "Hedy Adds Apple Private Cloud Compute to Its AI Meeting Assistant in iOS 27",
+        "Apple may build AI servers with its own chips and Nvidia networking",
+        "Apple Talks to Nvidia About NVLink for Its Own AI Server",
+        "Apple\u2019s Biggest Win This Week Isn\u2019t the New iPhone"
       ]
     },
     "MSFT": {
-      "score": 4.0,
-      "rsi_pct": 65.5,
+      "score": 3.0,
+      "rsi_pct": 47.5,
       "above_200ma": true,
       "news": "company_positive",
-      "rsi_dir": "recovering",
+      "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Microsoft Pays Out More in Dividends Than It Spends Buying Back Stock. Here's What That Does for Investors.",
-        "Microsoft At Key Level After Earnings Surge; Is Microsoft A Buy Now?",
-        "Magnificent Seven Stocks Eye Breakout After Sideways 2026",
-        "Sunrise Technologies Achieves the 2026-2027 Microsoft AI Business Solutions Inner Circle Award"
+        "Microsoft Slips as Its Quarterly Dividend Climbs 8%",
+        "Zeta Live 2026: Expanded Lineup Featuring Kevin Hart, Lindsey Vonn, Russell Westbrook and Tiffany Haddish with Performances by Steve Aoki and Oz Pearlman",
+        "Microsoft Leads S&amp;P 500 Stocks Going Nowhere",
+        "Sector Update: Tech Stocks Mixed Late Afternoon"
       ]
     },
     "NVDA": {
-      "score": 6.0,
-      "rsi_pct": 44.5,
+      "score": 5.0,
+      "rsi_pct": 37.5,
       "above_200ma": true,
-      "news": "company_positive",
-      "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "news": "macro_fear",
+      "rsi_dir": "stable",
+      "days_oversold": 0,
       "headlines": [
-        "Why Rule Breakers Dig Stocks With Multiple Futures",
-        "TSMC\u2019s 2nm Era Is Accelerating With MediaTek. Nvidia and Alphabet Already Have Money on the Table",
-        "Nvidia Bought Hugging Face for $12.9 Billion. This Software Acquisition Changes Everything.",
-        "NVIDIA (NVDA) Gets A Fresh Platform Test After Salesforce Deal Sparks Undervalued View"
+        "The E-Commerce Stocks to Buy Before the Holiday Quarter",
+        "The Fed Hiked Interest Rates for the First Time in 3 Years. Are AI Stocks in Trouble?",
+        "XRP Keeps Sliding Despite Ripple's Global Growth: Buy, Hold, or Sell?",
+        "Jim Cramer drops 5-word verdict on Nvidia stock"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 55.5,
-      "above_200ma": true,
-      "news": "fundamental_change",
-      "rsi_dir": "recovering",
-      "days_oversold": 2,
-      "headlines": [
-        "Apple Stock: New CEO, Foldable iPhone-Time to Buy the Dip?",
-        "TSMC\u2019s 2nm Era Is Accelerating With MediaTek. Nvidia and Alphabet Already Have Money on the Table",
-        "Tesla\u2019s Cybercab Launch Fizzles, Leaving Waymo as the Robotaxi Leader",
-        "Magnificent Seven Stocks Eye Breakout After Sideways 2026"
-      ]
-    },
-    "META": {
-      "score": 4.0,
-      "rsi_pct": 95.8,
+      "rsi_pct": 50.0,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
+      "days_oversold": 2,
+      "headlines": [
+        "Anthropic IPO Underwriter Says AI Spending Won't Slow: Can He Be Neutral?",
+        "GOOGL, BX Stock In Focus \u2014 Banking Consortium Reportedly Lines Up $22B AI Chip Financing For Blackstone-Alphabet Venture",
+        "Greg Abel Grew Berkshire Hathaway's Alphabet Stake by 83% Last Quarter, One of His Boldest Equity Bets Yet as CEO. Is Alphabet Now a Core Berkshire Holding?",
+        "Alphabet Gains as Carbon Removal Scales Tenfold"
+      ]
+    },
+    "META": {
+      "score": 2.0,
+      "rsi_pct": 95.0,
+      "above_200ma": true,
+      "news": "neutral",
+      "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Meta Launches Creator Marketing Hub, IG Live Video Ads",
-        "Meta is making a bigger AI chip move to cut costs",
-        "Meta Platforms Inc. (META) Stock Could Surge as AI Monetization Gains Momentum, Says JPMorgan",
-        "Meta Rises Despite Europe's Under-15 Ban Threat"
+        "Noise wants to help everyday people  become paid content creators",
+        "Meta Event Next Week Could Spark Stock Gains, Says Citi",
+        "Citi Sees Bigger Opportunity Ahead for Meta Stock",
+        "Meta Rises as Zuckerberg Rejects an Industrywide AI Brake"
       ]
     },
     "AMZN": {
       "score": 5.0,
-      "rsi_pct": 32.8,
+      "rsi_pct": 23.3,
       "above_200ma": true,
       "news": "macro_fear",
-      "rsi_dir": "recovering",
+      "rsi_dir": "stable",
       "days_oversold": 3,
       "headlines": [
-        "Amazon (AMZN) Dips More Than Broader Market: What You Should Know",
-        "Amazon sells luxury solar-powered watches from brands like Seiko and Citizen starting at $210",
-        "AMZN Stock Slips 2%: Amazon Unable To Recover Data Lost From Middle East Centers Affected By Iran War",
-        "Sector Update: Tech Stocks Mixed Late Afternoon"
+        "The E-Commerce Stocks to Buy Before the Holiday Quarter",
+        "Sector Update: Tech Stocks Mixed Late Afternoon",
+        "Amazon Slips as a $1 Raise Becomes a $2,080 Commitment",
+        "Amazon's Delivery War Is About to Get Bigger"
       ]
     },
     "TSLA": {
-      "score": 4.0,
-      "rsi_pct": 53.8,
+      "score": 3.0,
+      "rsi_pct": 50.0,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "TSLA Edges Lower After Regulator Asks If Wheel-Less Cybercab Can Be Driven By A Human",
-        "The Tesla Roadster Will \u2018Blow People\u2019s Minds\u2019",
-        "Elon Musk Is Teasing a Tesla and SpaceX Merger Again",
-        "Tesla\u2019s Cybercab Launch Fizzles, Leaving Waymo as the Robotaxi Leader"
+        "SpaceX stock pops ahead of Starship launch",
+        "Tesla must prove Cybercab is legal to sell, NHTSA says",
+        "Tesla Gains Over 2% as Cybercab Faces a September 30 Compliance Test",
+        "Musk Warns of AI Control Problem After Agents Secretly Accessed OpenAI Servers for a Week"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "12 Investment Must Reads for This Week (Sept. 15, 2026)",
-      "link": "https://www.wealthmanagement.com/etfs/12-investment-must-reads-for-this-week-sept-15-2026-?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Buffer ETFs Promise 100 Percent Downside Protection. Here Is How That Actually Works and What You Give Up",
+      "link": "https://247wallst.com/investing/etf/2026/09/16/buffer-etfs-promise-100-percent-downside-protection-here-is-how-that-actually-works-and-what-you-give-up/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -147,42 +145,20 @@
       "source_count": 1
     },
     {
-      "title": "Wells Fargo's new S&amp;P 500 call signals trouble ahead",
-      "link": "https://www.thestreet.com/investing/wells-fargo-sp500-pullback-warning-spy-voo-etfs?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Musk Warns of AI Control Problem After Agents Secretly Accessed OpenAI Servers for a Week",
+      "link": "https://247wallst.com/investing/2026/09/16/musk-warns-of-ai-control-problem-after-agents-secretly-accessed-openai-servers-for-a-week/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
-        "SPY"
+        "TSLA"
       ],
       "high_impact": false,
       "sources": [],
       "source_count": 1
     },
     {
-      "title": "Norwegian Falls 3% as Wells Fargo Trims Carnival Target on Caribbean Pricing Pressure; Carnival Slips, Royal Caribbean Dips",
-      "link": "https://247wallst.com/investing/2026/09/15/norwegian-falls-3-as-wells-fargo-trims-carnival-target-on-caribbean-pricing-pressure-carnival-slips-royal-caribbean-dips/?.tsrc=rss",
-      "pub_date": "2026-09-15",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Offshore Oil Stocks Rally While the Broad Market Slips: Transocean Climbs 6%, Valaris Rises 6%, W&amp;T Offshore Gains 6%",
-      "link": "https://247wallst.com/investing/2026/09/15/offshore-oil-stocks-rally-while-the-broad-market-slips-transocean-climbs-6-valaris-rises-6-wt-offshore-gains-6/?.tsrc=rss",
-      "pub_date": "2026-09-15",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "QuantumScape Is Down 51% This Year. Is QS Stock Dead Money or Due for a Bounce?",
-      "link": "https://247wallst.com/investing/2026/09/15/quantumscape-is-down-51-this-year-is-qs-stock-dead-money-or-due-for-a-bounce/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Bloom Energy Gains 4% as S&amp;P 500 Entry Nears; FuelCell Energy Ticks Up, Plug Power Slips",
+      "link": "https://247wallst.com/investing/2026/09/16/bloom-energy-gains-4-as-sp-500-entry-nears-fuelcell-energy-ticks-up-plug-power-slips/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -191,9 +167,9 @@
       "source_count": 1
     },
     {
-      "title": "Klarna Is Down 51% This Year. Is KLAR Stock Dead Money or Due for a Bounce?",
-      "link": "https://247wallst.com/investing/2026/09/15/klarna-is-down-51-this-year-is-klar-stock-dead-money-or-due-for-a-bounce/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Robinhood Sinks 5% After Prosecutors Reportedly Charge Two Former Engineers Over Crypto Trades; Webull Drops 9%",
+      "link": "https://247wallst.com/investing/2026/09/16/robinhood-sinks-5-after-prosecutors-reportedly-charge-two-former-engineers-over-crypto-trades-webull-drops-9/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -202,9 +178,9 @@
       "source_count": 1
     },
     {
-      "title": "Sirius XM Stock Is Up 53% in 2026: Take Profits, or Buy More?",
-      "link": "https://247wallst.com/investing/2026/09/15/sirius-xm-stock-is-up-53-in-2026-take-profits-or-buy-more/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Oil Producers Slide as Crude Retreats: EOG Resources Drops 6%, ConocoPhillips and Occidental Petroleum Fall 5%",
+      "link": "https://247wallst.com/investing/2026/09/16/oil-producers-slide-as-crude-retreats-eog-resources-drops-6-conocophillips-and-occidental-petroleum-fall-5/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -213,9 +189,9 @@
       "source_count": 1
     },
     {
-      "title": "Applied Digital Falls 4% and Turns Negative for the Year as the AI Buildout Trade Bleeds Out; Core Scientific Drops 5%, Cipher Mining Sinks 4%",
-      "link": "https://247wallst.com/investing/2026/09/15/applied-digital-falls-4-and-turns-negative-for-the-year-as-the-ai-buildout-trade-bleeds-out-core-scientific-drops-5-cipher-mining-sinks-4/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Oil Surges, Tanker Rates Soar: ETFs in Play",
+      "link": "https://finance.yahoo.com/energy/articles/oil-surges-tanker-rates-soar-195500447.html?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -224,9 +200,9 @@
       "source_count": 1
     },
     {
-      "title": "Western Digital Falls 4% Despite Its AI Storage Pitch; Seagate Drops 5%, Micron Holds Steady",
-      "link": "https://247wallst.com/investing/2026/09/15/western-digital-falls-4-despite-its-ai-storage-pitch-seagate-drops-5-micron-holds-steady/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "The $75,000 Retirement Budget That JEPQ May Struggle to Support in 10 Years",
+      "link": "https://247wallst.com/investing/etf/2026/09/16/the-75000-retirement-budget-that-jepq-may-struggle-to-support-in-10-years/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
@@ -235,9 +211,31 @@
       "source_count": 1
     },
     {
-      "title": "Joby Slips and Is Down 53% This Year as the eVTOL Trade Keeps Unwinding; Archer Dips, EHang Eases",
-      "link": "https://247wallst.com/investing/2026/09/15/joby-slips-and-is-down-53-this-year-as-the-evtol-trade-keeps-unwinding-archer-dips-ehang-eases/?.tsrc=rss",
-      "pub_date": "2026-09-15",
+      "title": "Fed Hikes 25 Basis Points, Projects Another Hike in 2026: Do Prediction Markets Agree?",
+      "link": "https://www.benzinga.com/markets/prediction-markets/26/09/61827327/fed-rate-hike-another-increase-2026?utm_source=yahooFinance&amp;utm_campaign=partner_feed&amp;utm_medium=referral&amp;.tsrc=rss",
+      "pub_date": "2026-09-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": true,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "JEPI Income ETF Stumbles 3% Year-Over-Year, But One Number Is Spooking Investors",
+      "link": "https://247wallst.com/investing/etf/2026/09/16/jepi-income-etf-stumbles-3-year-over-year-but-one-number-is-spooking-investors/?.tsrc=rss",
+      "pub_date": "2026-09-16",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Okta Just Rallied 28% in a Month and Cybersecurity Stocks Are Red-Hot Now. Is $200 Coming Soon?",
+      "link": "https://247wallst.com/investing/2026/09/16/okta-just-rallied-28-in-a-month-and-cybersecurity-stocks-are-red-hot-now-is-200-coming-soon/?.tsrc=rss",
+      "pub_date": "2026-09-16",
       "tickers": [
         "MARKET"
       ],
