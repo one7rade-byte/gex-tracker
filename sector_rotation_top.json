@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -9,172 +9,172 @@
       "ticker": "XLC",
       "label": "Communication Services",
       "quadrant": "LEADING",
-      "rs_now": 103.48,
-      "rs_momentum": 2.28,
-      "return_21d": 0.96
+      "rs_now": 104.49,
+      "rs_momentum": 4.0,
+      "return_21d": 1.97
     },
     {
       "ticker": "UUP",
       "label": "US Dollar Index",
       "quadrant": "LEADING",
-      "rs_now": 102.9,
-      "rs_momentum": 2.24,
-      "return_21d": 0.39
-    },
-    {
-      "ticker": "BTC-USD",
-      "label": "Bitcoin",
-      "quadrant": "LEADING",
-      "rs_now": 123.18,
-      "rs_momentum": 1.13,
-      "return_21d": 20.18
+      "rs_now": 103.56,
+      "rs_momentum": 2.75,
+      "return_21d": 1.07
     },
     {
       "ticker": "XLV",
       "label": "Healthcare",
       "quadrant": "LEADING",
-      "rs_now": 102.68,
-      "rs_momentum": 0.84,
-      "return_21d": 0.17
+      "rs_now": 102.91,
+      "rs_momentum": 2.64,
+      "return_21d": 0.43
     },
     {
-      "ticker": "TLT",
-      "label": "Long-Term US Treasuries (20yr+)",
+      "ticker": "XLP",
+      "label": "Consumer Staples",
       "quadrant": "LEADING",
       "rs_now": 100.84,
-      "rs_momentum": 0.57,
-      "return_21d": -1.62
-    },
-    {
-      "ticker": "HYG",
-      "label": "High-Yield Credit",
-      "quadrant": "LEADING",
-      "rs_now": 100.79,
-      "rs_momentum": 0.46,
-      "return_21d": -1.67
+      "rs_momentum": 1.71,
+      "return_21d": -1.59
     },
     {
       "ticker": "XLY",
       "label": "Consumer Discretionary",
       "quadrant": "IMPROVING",
-      "rs_now": 96.15,
-      "rs_momentum": 0.15,
-      "return_21d": -6.19
+      "rs_now": 96.7,
+      "rs_momentum": 1.42,
+      "return_21d": -5.63
     },
     {
-      "ticker": "XLP",
-      "label": "Consumer Staples",
-      "quadrant": "IMPROVING",
-      "rs_now": 99.69,
-      "rs_momentum": 0.04,
-      "return_21d": -2.74
-    },
-    {
-      "ticker": "XLF",
-      "label": "Financials",
-      "quadrant": "WEAKENING",
-      "rs_now": 100.19,
-      "rs_momentum": -0.23,
-      "return_21d": -2.25
+      "ticker": "TLT",
+      "label": "Long-Term US Treasuries (20yr+)",
+      "quadrant": "LEADING",
+      "rs_now": 101.88,
+      "rs_momentum": 0.89,
+      "return_21d": -0.58
     },
     {
       "ticker": "XLB",
       "label": "Materials",
-      "quadrant": "LAGGING",
-      "rs_now": 98.97,
-      "rs_momentum": -0.23,
-      "return_21d": -3.44
+      "quadrant": "IMPROVING",
+      "rs_now": 98.78,
+      "rs_momentum": 0.8,
+      "return_21d": -3.6
     },
     {
-      "ticker": "GLD",
-      "label": "Gold",
-      "quadrant": "WEAKENING",
-      "rs_now": 100.63,
-      "rs_momentum": -0.64,
-      "return_21d": -1.83
+      "ticker": "HYG",
+      "label": "High-Yield Credit",
+      "quadrant": "LEADING",
+      "rs_now": 100.94,
+      "rs_momentum": 0.18,
+      "return_21d": -1.49
+    },
+    {
+      "ticker": "XLF",
+      "label": "Financials",
+      "quadrant": "LAGGING",
+      "rs_now": 99.53,
+      "rs_momentum": -0.55,
+      "return_21d": -2.87
     },
     {
       "ticker": "XLRE",
       "label": "Real Estate",
       "quadrant": "LAGGING",
-      "rs_now": 97.52,
-      "rs_momentum": -1.01,
-      "return_21d": -4.86
-    },
-    {
-      "ticker": "XLK",
-      "label": "Technology",
-      "quadrant": "LAGGING",
-      "rs_now": 99.12,
-      "rs_momentum": -1.78,
-      "return_21d": -3.3
+      "rs_now": 97.85,
+      "rs_momentum": -1.28,
+      "return_21d": -4.51
     },
     {
       "ticker": "XLI",
       "label": "Industrials",
       "quadrant": "LAGGING",
-      "rs_now": 92.8,
-      "rs_momentum": -2.29,
-      "return_21d": -9.47
+      "rs_now": 92.78,
+      "rs_momentum": -1.57,
+      "return_21d": -9.45
     },
     {
       "ticker": "IWM",
       "label": "Small Caps (Russell 2000)",
       "quadrant": "LAGGING",
-      "rs_now": 95.8,
-      "rs_momentum": -2.85,
-      "return_21d": -6.54
+      "rs_now": 95.68,
+      "rs_momentum": -2.56,
+      "return_21d": -6.62
     },
     {
-      "ticker": "XLE",
-      "label": "Energy",
-      "quadrant": "WEAKENING",
-      "rs_now": 109.16,
-      "rs_momentum": -4.56,
-      "return_21d": 6.49
+      "ticker": "GLD",
+      "label": "Gold",
+      "quadrant": "LAGGING",
+      "rs_now": 98.99,
+      "rs_momentum": -2.6,
+      "return_21d": -3.39
     },
     {
-      "ticker": "EEM",
-      "label": "Emerging Market Equities",
+      "ticker": "XLK",
+      "label": "Technology",
+      "quadrant": "LAGGING",
+      "rs_now": 99.03,
+      "rs_momentum": -3.21,
+      "return_21d": -3.36
+    },
+    {
+      "ticker": "BTC-USD",
+      "label": "Bitcoin",
       "quadrant": "WEAKENING",
-      "rs_now": 101.19,
-      "rs_momentum": -4.67,
-      "return_21d": -1.28
+      "rs_now": 120.09,
+      "rs_momentum": -4.07,
+      "return_21d": 17.19
     },
     {
       "ticker": "XLU",
       "label": "Utilities",
       "quadrant": "LAGGING",
-      "rs_now": 95.59,
-      "rs_momentum": -5.0,
-      "return_21d": -6.75
+      "rs_now": 95.84,
+      "rs_momentum": -5.11,
+      "return_21d": -6.47
+    },
+    {
+      "ticker": "XLE",
+      "label": "Energy",
+      "quadrant": "WEAKENING",
+      "rs_now": 104.84,
+      "rs_momentum": -5.19,
+      "return_21d": 2.32
+    },
+    {
+      "ticker": "EEM",
+      "label": "Emerging Market Equities",
+      "quadrant": "WEAKENING",
+      "rs_now": 100.03,
+      "rs_momentum": -6.51,
+      "return_21d": -2.38
     }
   ],
   "by_quadrant": {
     "LEADING": [
       "XLC",
       "UUP",
-      "BTC-USD",
       "XLV",
+      "XLP",
       "TLT",
       "HYG"
     ],
     "IMPROVING": [
       "XLY",
-      "XLP"
+      "XLB"
     ],
     "WEAKENING": [
-      "XLF",
-      "GLD",
+      "BTC-USD",
       "XLE",
       "EEM"
     ],
     "LAGGING": [
-      "XLB",
+      "XLF",
       "XLRE",
-      "XLK",
       "XLI",
       "IWM",
+      "GLD",
+      "XLK",
       "XLU"
     ],
     "unknown": []
