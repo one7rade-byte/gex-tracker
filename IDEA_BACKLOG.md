@@ -34,9 +34,9 @@ ideas 1-7.
 8. HYG/LQD spread (rather than HYG level or HYG-alone ROC) as a credit-market-specific
    stress detector — a spread nets out generic rate moves that push both HYG and LQD the
    same direction, which a HYG-only ROC can't distinguish from real credit-spread
-   widening. Needs LQD history; check whether it's fetchable before attempting (Yahoo
-   currently denied, so likely blocked too, but worth a quick allowlist check first since
-   it only needs one more ticker).
+   widening. Needs LQD history — **BLOCKED**: re-checked 2026-09-20, `query1.finance.yahoo.com`
+   and `stooq.com` (tried as an alternate free source) both still return connect_rejected
+   (403) from the egress proxy. Same status as items 1-7.
 9. Once `regime_log.csv` has 6-12 months of real accumulated history (currently 115 rows
    since 2026-03-30), re-run the composite_5d_chg/hyg_5d_pct early-warning test against
    LIVE data (not just the `deep_history_backtest.py` historical replay) to confirm the
@@ -47,24 +47,22 @@ ideas 1-7.
     episode has been checked so far (2026-08-30, 2026-09-06, and 2026-09-13 runs). A
     signal that toggles is much less actionable in practice than one that fires once —
     matters for deciding whether this ever graduates past WATCH tier.
-11. VIX/SKEW 5-day-ROC as an alternative confirmation signal for `composite_5d_chg` —
-    this run (2026-09-13) found that HYG-based confirmation (same-day AND sequential,
-    any window 3-20 trading days) only fails to preserve lead time in the specifically
-    equity/vol-driven selloffs (2022, 2025) where credit lagged badly (30-68 trading
-    days to independently confirm). A vol-based confirming signal (vix or skew 5-day
-    change, both already columns in `deep_history_backtest_log.csv`) might not have the
-    same lag in exactly those episodes. Directly testable, no fetch needed.
-12. Why does `regime_signal` badly underperform `flow_regime` specifically in the 2025
-    selloff (17.1% vs 68.6% of days flagged defensive — the largest gap of the four crash
-    windows now in `crash_window_analysis`; 2008/2020/2022 don't show this size of gap)?
-    Surfaced this run (2026-09-13) when the 2025 window was added to
-    `deep_history_backtest.py` directly. Candidate causes: `get_regime_signal`'s
-    positive-conviction gating (STRONG_BUY/BUY_WATCH require `gex` not None) incidentally
-    making its defensive branches slower too, or the 2025 selloff's specific character
-    (fast, avg_composite_score only +0.79 — barely negative on a pooled basis despite
-    SPY -19%) not tripping regime_signal's stricter thresholds the way the other three
-    crashes did. Directly testable from `deep_history_backtest_log.csv` and
-    `regime_analyzer.py`'s own scoring functions, no fetch needed.
+11. Candidate fix for the `regime_signal` 2025 blind spot: test adding a narrow
+    `composite_score < 0 AND vix_5d_pct >= [threshold]` override to `get_regime_signal`'s
+    DEFENSIVE branch, false-positive-checked the same way `composite_5d_chg` was validated
+    2026-08-30, to see if it catches 2025-style equity/vol-driven selloffs (which spare
+    credit markets, so the existing `composite<=-3 OR hyg<74` gate barely fires — 8.6%/
+    0.0% of days respectively in 2025 vs 30-75%/15-59% in 2008/2020/2022) without raising
+    the whipsaw rate in calm periods. Root cause diagnosed 2026-09-20, not yet tested as a
+    wired-in change. Now the top item — directly testable, no fetch needed.
+12. A confirming signal for `composite_5d_chg` built from composite's own sub-scores MINUS
+    `vol_score` (credit_score + flow_score + growth_score + skew_score 5-day change, VIX's
+    contribution stripped out) — motivated by 2026-09-20's finding that `vix_5d_pct` fails
+    as a confirming signal specifically because it's not independent of composite_score
+    (r=-0.73, since VIX is a direct input via vol_score). A "composite-without-vol" ROC
+    would be independent of VIX by construction; might behave like HYG (informative,
+    doesn't just double-count) without HYG's specific 2022/2025 lag problem, since it
+    still includes credit_score. Directly testable, no fetch needed.
 
 ## Done / superseded
 
@@ -86,3 +84,18 @@ ideas 1-7.
 - ~~Add the 2025 tariff selloff to `deep_history_backtest.py`'s own `crash_window_analysis`
   table directly~~ — done 2026-09-13 (found independently by two prior runs' scripts
   first — a real, avoidable cost). See `WEEKLY_RESEARCH_LOG.md` 2026-09-13 entry.
+- ~~VIX/SKEW 5-day-ROC as an alternative confirmation signal for composite_5d_chg~~ —
+  tested 2026-09-20. VIX confirmation looked like a win (zero crash-window lag in all
+  four episodes) but is an artifact: vix_5d_pct correlates -0.73 with composite_5d_chg
+  because VIX is a direct input to composite_score, so it isn't an independent confirming
+  signal (90% trigger overlap with composite alone at the loosest threshold). SKEW
+  confirmation is independent but has no standalone edge (negative lift alone) and fails
+  to confirm in 3 of 4 crash windows. REJECTED, both variants. See `WEEKLY_RESEARCH_LOG.md`
+  2026-09-20 entry.
+- ~~Why does regime_signal badly underperform flow_regime specifically in the 2025
+  selloff?~~ — root-caused 2026-09-20: HYG never traded below $74 during the entire
+  35-day episode (0.0% of days vs 15-59% in the other three crashes) and composite_score
+  only hit <=-3 on 8.6% of days (vs 29-75% elsewhere), so regime_signal's DEFENSIVE gate
+  (composite<=-3 OR hyg<74) barely fires. A real, quantified blind spot for fast
+  equity/vol-driven selloffs that spare credit markets — not yet fixed, candidate gate
+  added to backlog above. See `WEEKLY_RESEARCH_LOG.md` 2026-09-20 entry.
