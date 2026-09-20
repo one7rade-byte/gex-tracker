@@ -782,7 +782,7 @@
       "trading_days": 130,
       "date_range_actual": "2008-09-02 to 2009-03-09",
       "avg_composite_score": -4.4,
-      "min_composite_score": -8,
+      "min_composite_score": -8.0,
       "pct_days_flow_regime_flagged_defensive": 91.5,
       "pct_days_regime_signal_flagged_defensive": 81.5,
       "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
@@ -791,7 +791,7 @@
       "trading_days": 24,
       "date_range_actual": "2020-02-19 to 2020-03-23",
       "avg_composite_score": -0.7,
-      "min_composite_score": -8,
+      "min_composite_score": -8.0,
       "pct_days_flow_regime_flagged_defensive": 41.7,
       "pct_days_regime_signal_flagged_defensive": 33.3,
       "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
@@ -800,9 +800,18 @@
       "trading_days": 197,
       "date_range_actual": "2022-01-03 to 2022-10-13",
       "avg_composite_score": 0.19,
-      "min_composite_score": -8,
+      "min_composite_score": -8.0,
       "pct_days_flow_regime_flagged_defensive": 53.8,
       "pct_days_regime_signal_flagged_defensive": 44.7,
+      "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
+    },
+    "2025_SELLOFF": {
+      "trading_days": 35,
+      "date_range_actual": "2025-02-19 to 2025-04-08",
+      "avg_composite_score": 0.79,
+      "min_composite_score": -4.1,
+      "pct_days_flow_regime_flagged_defensive": 68.6,
+      "pct_days_regime_signal_flagged_defensive": 17.1,
       "note": "Higher pct_days figures = the system correctly recognized stress during this real crash more often. Lower figures mean it stayed bullish/neutral through part of a real crash \u2014 a genuine miss, not just a caveat."
     }
   }

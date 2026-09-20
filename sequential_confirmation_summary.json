@@ -1,0 +1,274 @@
+{
+  "data_source": "deep_history_backtest_log.csv",
+  "hyg_era_range": "2007-04-18 to 2026-08-21",
+  "recent_era_range": "2016-01-04 to 2026-08-21",
+  "forward_window_days": 15,
+  "drawdown_hit_threshold_pct": -5.0,
+  "thresholds": {
+    "composite_5d_chg": -3,
+    "hyg_5d_pct": -1.5
+  },
+  "confirm_windows_tested_days": [
+    3,
+    5,
+    10,
+    20
+  ],
+  "baseline_single_signals": {
+    "composite_alone": {
+      "hyg_era_full_history": {
+        "label": "composite_5d_chg<=-3",
+        "n_total": 4853,
+        "n_triggered": 246,
+        "trigger_rate_pct": 5.07,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 26.4,
+        "lift_pct_points": 12.6,
+        "avg_fwd_max_dd_15d_pct": -3.49
+      },
+      "hyg_era_since_2016": {
+        "label": "composite_5d_chg<=-3",
+        "n_total": 2659,
+        "n_triggered": 147,
+        "trigger_rate_pct": 5.53,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 23.8,
+        "lift_pct_points": 12.4,
+        "avg_fwd_max_dd_15d_pct": -3.06
+      }
+    },
+    "hyg_alone": {
+      "hyg_era_full_history": {
+        "label": "hyg_5d_pct<=-1.5",
+        "n_total": 4853,
+        "n_triggered": 411,
+        "trigger_rate_pct": 8.47,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 29.0,
+        "lift_pct_points": 15.2,
+        "avg_fwd_max_dd_15d_pct": -3.69
+      },
+      "hyg_era_since_2016": {
+        "label": "hyg_5d_pct<=-1.5",
+        "n_total": 2659,
+        "n_triggered": 144,
+        "trigger_rate_pct": 5.42,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 29.2,
+        "lift_pct_points": 17.8,
+        "avg_fwd_max_dd_15d_pct": -3.38
+      }
+    }
+  },
+  "sequential_confirmation_by_window": {
+    "N=3": {
+      "hyg_era_full_history": {
+        "label": "seq_confirmed_3d",
+        "n_total": 4853,
+        "n_triggered": 120,
+        "trigger_rate_pct": 2.47,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 34.2,
+        "lift_pct_points": 20.4,
+        "avg_fwd_max_dd_15d_pct": -4.28
+      },
+      "hyg_era_since_2016": {
+        "label": "seq_confirmed_3d",
+        "n_total": 2659,
+        "n_triggered": 61,
+        "trigger_rate_pct": 2.29,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 36.1,
+        "lift_pct_points": 24.7,
+        "avg_fwd_max_dd_15d_pct": -3.98
+      },
+      "crash_window_report": {
+        "2008_GFC": {
+          "composite_alone_first_trigger": "2008-09-09",
+          "hyg_alone_first_trigger": "2008-09-15",
+          "sequential_confirmed_first_trigger": "2008-09-15",
+          "seq_lag_vs_composite_alone_days": 4,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2020_COVID": {
+          "composite_alone_first_trigger": "2020-02-24",
+          "hyg_alone_first_trigger": "2020-02-25",
+          "sequential_confirmed_first_trigger": "2020-02-25",
+          "seq_lag_vs_composite_alone_days": 1,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2022_BEAR": {
+          "composite_alone_first_trigger": "2022-01-20",
+          "hyg_alone_first_trigger": "2022-03-07",
+          "sequential_confirmed_first_trigger": "2022-04-11",
+          "seq_lag_vs_composite_alone_days": 56,
+          "seq_lag_vs_hyg_alone_days": 25
+        },
+        "2025_SELLOFF": {
+          "composite_alone_first_trigger": "2025-02-21",
+          "hyg_alone_first_trigger": "2025-04-04",
+          "sequential_confirmed_first_trigger": "2025-04-04",
+          "seq_lag_vs_composite_alone_days": 30,
+          "seq_lag_vs_hyg_alone_days": 0
+        }
+      }
+    },
+    "N=5": {
+      "hyg_era_full_history": {
+        "label": "seq_confirmed_5d",
+        "n_total": 4853,
+        "n_triggered": 121,
+        "trigger_rate_pct": 2.49,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 33.9,
+        "lift_pct_points": 20.1,
+        "avg_fwd_max_dd_15d_pct": -4.22
+      },
+      "hyg_era_since_2016": {
+        "label": "seq_confirmed_5d",
+        "n_total": 2659,
+        "n_triggered": 61,
+        "trigger_rate_pct": 2.29,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 36.1,
+        "lift_pct_points": 24.7,
+        "avg_fwd_max_dd_15d_pct": -3.98
+      },
+      "crash_window_report": {
+        "2008_GFC": {
+          "composite_alone_first_trigger": "2008-09-09",
+          "hyg_alone_first_trigger": "2008-09-15",
+          "sequential_confirmed_first_trigger": "2008-09-15",
+          "seq_lag_vs_composite_alone_days": 4,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2020_COVID": {
+          "composite_alone_first_trigger": "2020-02-24",
+          "hyg_alone_first_trigger": "2020-02-25",
+          "sequential_confirmed_first_trigger": "2020-02-25",
+          "seq_lag_vs_composite_alone_days": 1,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2022_BEAR": {
+          "composite_alone_first_trigger": "2022-01-20",
+          "hyg_alone_first_trigger": "2022-03-07",
+          "sequential_confirmed_first_trigger": "2022-04-11",
+          "seq_lag_vs_composite_alone_days": 56,
+          "seq_lag_vs_hyg_alone_days": 25
+        },
+        "2025_SELLOFF": {
+          "composite_alone_first_trigger": "2025-02-21",
+          "hyg_alone_first_trigger": "2025-04-04",
+          "sequential_confirmed_first_trigger": "2025-04-04",
+          "seq_lag_vs_composite_alone_days": 30,
+          "seq_lag_vs_hyg_alone_days": 0
+        }
+      }
+    },
+    "N=10": {
+      "hyg_era_full_history": {
+        "label": "seq_confirmed_10d",
+        "n_total": 4853,
+        "n_triggered": 126,
+        "trigger_rate_pct": 2.6,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 33.3,
+        "lift_pct_points": 19.5,
+        "avg_fwd_max_dd_15d_pct": -4.13
+      },
+      "hyg_era_since_2016": {
+        "label": "seq_confirmed_10d",
+        "n_total": 2659,
+        "n_triggered": 63,
+        "trigger_rate_pct": 2.37,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 34.9,
+        "lift_pct_points": 23.5,
+        "avg_fwd_max_dd_15d_pct": -3.89
+      },
+      "crash_window_report": {
+        "2008_GFC": {
+          "composite_alone_first_trigger": "2008-09-09",
+          "hyg_alone_first_trigger": "2008-09-15",
+          "sequential_confirmed_first_trigger": "2008-09-15",
+          "seq_lag_vs_composite_alone_days": 4,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2020_COVID": {
+          "composite_alone_first_trigger": "2020-02-24",
+          "hyg_alone_first_trigger": "2020-02-25",
+          "sequential_confirmed_first_trigger": "2020-02-25",
+          "seq_lag_vs_composite_alone_days": 1,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2022_BEAR": {
+          "composite_alone_first_trigger": "2022-01-20",
+          "hyg_alone_first_trigger": "2022-03-07",
+          "sequential_confirmed_first_trigger": "2022-03-07",
+          "seq_lag_vs_composite_alone_days": 31,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2025_SELLOFF": {
+          "composite_alone_first_trigger": "2025-02-21",
+          "hyg_alone_first_trigger": "2025-04-04",
+          "sequential_confirmed_first_trigger": "2025-04-04",
+          "seq_lag_vs_composite_alone_days": 30,
+          "seq_lag_vs_hyg_alone_days": 0
+        }
+      }
+    },
+    "N=20": {
+      "hyg_era_full_history": {
+        "label": "seq_confirmed_20d",
+        "n_total": 4853,
+        "n_triggered": 130,
+        "trigger_rate_pct": 2.68,
+        "base_rate_pct": 13.8,
+        "hit_rate_pct": 32.3,
+        "lift_pct_points": 18.5,
+        "avg_fwd_max_dd_15d_pct": -4.03
+      },
+      "hyg_era_since_2016": {
+        "label": "seq_confirmed_20d",
+        "n_total": 2659,
+        "n_triggered": 64,
+        "trigger_rate_pct": 2.41,
+        "base_rate_pct": 11.4,
+        "hit_rate_pct": 34.4,
+        "lift_pct_points": 23.0,
+        "avg_fwd_max_dd_15d_pct": -3.82
+      },
+      "crash_window_report": {
+        "2008_GFC": {
+          "composite_alone_first_trigger": "2008-09-09",
+          "hyg_alone_first_trigger": "2008-09-15",
+          "sequential_confirmed_first_trigger": "2008-09-15",
+          "seq_lag_vs_composite_alone_days": 4,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2020_COVID": {
+          "composite_alone_first_trigger": "2020-02-24",
+          "hyg_alone_first_trigger": "2020-02-25",
+          "sequential_confirmed_first_trigger": "2020-02-25",
+          "seq_lag_vs_composite_alone_days": 1,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2022_BEAR": {
+          "composite_alone_first_trigger": "2022-01-20",
+          "hyg_alone_first_trigger": "2022-03-07",
+          "sequential_confirmed_first_trigger": "2022-03-07",
+          "seq_lag_vs_composite_alone_days": 31,
+          "seq_lag_vs_hyg_alone_days": 0
+        },
+        "2025_SELLOFF": {
+          "composite_alone_first_trigger": "2025-02-21",
+          "hyg_alone_first_trigger": "2025-04-04",
+          "sequential_confirmed_first_trigger": "2025-04-04",
+          "seq_lag_vs_composite_alone_days": 30,
+          "seq_lag_vs_hyg_alone_days": 0
+        }
+      }
+    }
+  },
+  "note": "Actionable trigger date for sequential confirmation is the day the confirmation is actually known (whichever of composite/hyg fires second, within N days) -- not day T itself if hyg hasn't fired yet. Compare seq_lag_vs_composite_alone_days across N to the same-day confirmation lags already in confirmation_signal_summary.json (N=0 equivalent: 2008 +4d, 2020 +1d, 2022 +56d, 2025 +30d)."
+}

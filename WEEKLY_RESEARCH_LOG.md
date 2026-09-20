@@ -1,0 +1,434 @@
+# Weekly Research Log
+
+## 2026-08-30 — Composite/HYG 5-day rate-of-change as an early-warning overlay
+
+**VERDICT: PASS — ready for review**
+
+*(Backfilled into this log 2026-09-06 — see that entry's housekeeping note for why. The
+work and numbers below are unchanged from when they were first produced on 2026-08-30;
+they just never reached `main` until now.)*
+
+### What was tested (idea backlog #8: "wire the ROC layer into regime_analyzer.py")
+
+`deep_history_backtest_summary.json` (from `deep_history_backtest.py`'s real Yahoo
+history replay, 1995-10-17 to 2026-08-21) already shows the LEVEL-based signal missing a
+meaningful share of real crash days: during 2020 COVID only 33.3-41.7% of days in the
+crash window were flagged defensive by `regime_signal`/`flow_regime`; during the 2022
+bear only 44.7-53.8%. A level threshold only fires once `composite_score` actually
+crosses into stress/crisis territory, which can lag a fast unwind.
+
+Tested whether the RATE OF CHANGE of the same inputs — `composite_5d_chg`
+(composite_score minus its value 5 trading days back) and `hyg_5d_pct` (HYG's
+5-trading-day % change) — fires earlier, using data already on disk
+(`deep_history_backtest_log.csv`, no new fetch needed — this sandbox's network policy
+denies Yahoo/FRED/CFTC directly, see notes file). Script: `roc_early_warning_backtest.py`,
+output `roc_early_warning_summary.json`.
+
+### Method
+
+- Derived `composite_5d_chg`/`hyg_5d_pct` for every day in the 7,762-day log (HYG data
+  starts 2007-04-11, so the HYG half only covers 2007-present).
+- For each candidate threshold, checked the REAL forward max drawdown in SPY over the
+  next 15 trading days (from `spy_close` directly, not the point-estimate `return_Nd`
+  columns, so a fast interim drop isn't averaged away).
+- Compared trigger hit rate (forward drawdown ≤ -5% within 15 days) against the
+  UNCONDITIONAL base rate over the same sample.
+- Re-ran on the 2016-present subsample (same by-era discipline as
+  `deep_history_backtest.py`) to check the finding isn't a pre-2016 artifact.
+- For four real crash windows (2008 GFC, 2020 COVID, 2022 BEAR, and a newly identified
+  2025 SELLOFF window — SPY -19.0% from 2025-02-19 to 2025-04-08, found by scanning the
+  log directly), measured lead time vs. the existing LEVEL-based `flow_regime` signal.
+- For the recovery side: searched the 40 trading days after each window's actual SPY low
+  for the first `composite_5d_chg >= +3` reversal, and recorded forward 20-day SPY return.
+
+### Results — false-positive / base-rate check (the real test)
+
+| metric, threshold | n days | trigger rate | hit rate (≤-5% dd/15d) | base rate | lift |
+|---|---|---|---|---|---|
+| composite_5d_chg ≤ -3, full history (n=7,742) | | 3.4% | 25.1% | 14.2% | +10.9pp |
+| composite_5d_chg ≤ -3, since 2016 (n=2,659) | | 5.5% | 23.8% | 11.4% | +12.4pp |
+| hyg_5d_pct ≤ -1.5%, since 2007 (n=4,853) | | 8.5% | 29.0% | 13.8% | +15.2pp |
+| hyg_5d_pct ≤ -1.5%, since 2016 (n=2,659) | | 5.4% | 29.2% | 11.4% | +17.8pp |
+
+Both signals show a real, consistent lift over the unconditional base rate, and the lift
+does NOT decay in the 2016-present subsample — if anything it's slightly larger recently.
+HYG is the stronger of the two on pure hit-rate lift. Honest caveat: hit rate is still
+only ~24-35%, i.e. roughly 65-75% of individual triggers are NOT followed by a real
+15-day drawdown — a real edge, not a reliable per-trigger call.
+
+### Results — named crash windows (lead time vs the existing level signal)
+
+| episode | composite_5d_chg≤-3 first fires | hyg_5d_pct≤-1.5% first fires | existing level signal first fires defensive | ROC lead vs level |
+|---|---|---|---|---|
+| 2008 GFC (2008-09-01 start) | 2008-09-09 (+5d) | 2008-09-15 (+9d) | 2008-09-15 (+9d) | composite: 4 days earlier |
+| 2020 COVID (2020-02-19 start) | 2020-02-24 (+3d) | 2020-02-25 (+4d) | 2020-03-09 (+13d) | composite: 10 days earlier |
+| 2022 BEAR (2022-01-03 start) | 2022-01-20 (+12d) | 2022-03-07 (+43d) | 2022-04-26 (+78d) | composite: 66 days earlier |
+| 2025 SELLOFF (2025-02-19 start) | 2025-02-21 (+2d) | 2025-04-04 (+32d) | 2025-02-21 (+2d) | composite: tied, no improvement |
+
+`composite_5d_chg` beats the existing level signal in 3 of 4 named crashes, dramatically
+so in 2020 (10 trading days) and 2022 (66 trading days — the level signal missed nearly
+the entire first leg of that bear market). `hyg_5d_pct` is a weaker lead-time indicator
+than composite_5d_chg in three of four episodes despite the better base-rate lift
+overall — lead time in specific episodes and hit-rate lift across the full sample are two
+different properties, not to be conflated.
+
+### Results — catching the bottom/recovery
+
+| episode | actual SPY bottom | composite_5d_chg≥+3 reversal fires | days after bottom | fwd 20d SPY return from trigger |
+|---|---|---|---|---|
+| 2008 GFC | 2009-03-09 | 2009-04-09 | +23d | +8.36% |
+| 2020 COVID | 2020-03-23 | 2020-03-26 | +3d | +8.33% |
+| 2022 BEAR | 2022-10-12 | 2022-11-04 | +17d | +6.18% |
+| 2025 SELLOFF | 2025-04-08 | 2025-04-11 | +3d | +9.19% |
+
+Consistently positive and sizable across all four real episodes, firing within 3-23
+trading days of the actual low every time — the strongest, most consistent part of the
+finding, and it directly hits the mission's second benchmark (flag the turn early enough
+to participate in the recovery).
+
+### Caveats
+
+- Only 4 named crash episodes — the lead-time/reversal table is illustrative, not a
+  statistically large sample on its own; the base-rate table (thousands of days) is the
+  real statistical backbone of the PASS verdict.
+- HYG data starts 2007-04-11, so `hyg_5d_pct` cannot be checked against the dot-com bust.
+- `deep_history_backtest_log.csv` was built with `gex=None` — same structural caveat
+  `deep_history_backtest.py` already documents.
+- `fwd_max_dd_15d` uses daily closes, not intraday lows — slightly understates real
+  drawdown risk in fast single-day moves.
+- The 2025 SELLOFF window is defined ad hoc inside this research script, not yet
+  codified in `deep_history_backtest.py`'s own `crash_window_analysis` table.
+
+### What was wired in (landed on `main` 2026-09-06 — see that entry)
+
+Added `hyg_5d_pct` and `composite_5d_chg` as persisted, live-accumulating columns in
+`regime_log.csv` (`regime_analyzer.py`). Added `composite_5d_chg ≤ -3` as a 7th
+black-swan advisory warning condition (text-only, same as the existing 6 — does not
+change `get_regime_signal()`'s BUY/SELL logic or any position sizing).
+
+---
+
+## 2026-09-06 — Housekeeping: two duplicate unmerged PRs found, then confirmation-signal follow-up test
+
+**Housekeeping first.** This run's first step (read `claude/gex-tracker-notes.md`) found
+nothing on `main` — the file didn't exist there. Checking further: two prior runs, both
+dated 2026-08-30, had independently built this exact notes/backlog/log infrastructure and
+the ROC early-warning finding above on two separate branches (`claude/beautiful-goodall-
+d1odxv` and `claude/beautiful-goodall-92fsty`), opened as PRs #1 and #2, and **both are
+still open and unmerged** a week later. Neither run saw the other's work. This run brings
+the more complete of the two `regime_analyzer.py` implementations (PR #2's — it wires
+both `composite_5d_chg` and `hyg_5d_pct` into the black-swan detector, vs PR #1's single
+column) forward onto current `main`, and reconstructs the notes/backlog/log trio from
+both. **PRs #1 and #2 should be closed as superseded once this run's PR is reviewed.**
+This is a process gap, not a data finding — flagged in `claude/gex-tracker-notes.md` →
+Known open items.
+
+### What was tested (idea backlog #8, `92fsty` numbering): confirmation-signal follow-up
+
+Natural next question after the finding above: does requiring `composite_5d_chg <= -3`
+**AND** `hyg_5d_pct <= -1.5%` to fire on the *same day* (rather than either alone) raise
+the forward-drawdown hit rate meaningfully, or does it just filter the single signal down
+without adding real information? Script: `confirmation_signal_backtest.py`, output
+`confirmation_signal_summary.json`. Same data source, same 15-trading-day forward
+max-drawdown / ≥5% hit definition as the 2026-08-30 test above, for direct comparability.
+
+### Results — base rate (real test)
+
+HYG era, full history (2007-04-18 to 2026-08-21, n=4,853 days with both metrics valid):
+
+| signal | n triggered | trigger rate | hit rate | base rate | lift |
+|---|---|---|---|---|---|
+| composite_5d_chg ≤ -3 alone | 246 | 5.07% | 26.4% | 13.8% | +12.6pp |
+| hyg_5d_pct ≤ -1.5% alone | 411 | 8.47% | 29.0% | 13.8% | +15.2pp |
+| **both, same day (confirmed)** | **117** | **2.41%** | **34.2%** | 13.8% | **+20.4pp** |
+
+Since 2016 (n=2,659): composite alone 23.8% hit rate (+12.4pp lift, n=147 triggers), HYG
+alone 29.2% (+17.8pp, n=144), confirmed **36.7%** (+25.3pp, n=60). The lift from
+confirmation is real and gets larger in the recent-era check, not smaller — same
+direction as the underlying signals, not an artifact of the pooled sample.
+
+### Results — crash-window lead time (where this fails)
+
+| episode | composite alone fires | hyg alone fires | confirmed fires | confirmed lag vs composite alone | confirmed lag vs hyg alone |
+|---|---|---|---|---|---|
+| 2008 GFC | 2008-09-09 (+5d) | 2008-09-15 (+9d) | 2008-09-15 (+9d) | +4 days | +0 days |
+| 2020 COVID | 2020-02-24 (+3d) | 2020-02-25 (+4d) | 2020-02-25 (+4d) | +1 day | +0 days |
+| 2022 BEAR | 2022-01-20 (+12d) | 2022-03-07 (+43d) | 2022-04-11 (+68d) | **+56 days** | +25 days |
+| 2025 SELLOFF | 2025-02-21 (+2d) | 2025-04-04 (+32d) | 2025-04-04 (+32d) | **+30 days** | +0 days |
+
+In 2008 and 2020, confirmation costs almost nothing (0-4 trading days) because both
+signals already agreed close together. In 2022 and 2025 — the two episodes where
+`composite_5d_chg` alone gave the biggest lead-time edge over the existing level signal
+last week (66 days and tied-fastest, respectively) — confirmation throws that edge away:
+it doesn't fire until 56 days after composite-alone in 2022 (68 days into a bear that
+eventually ran ~200 trading days — not immediately actionable, but no longer an early
+warning either) and 30 days after composite-alone in 2025 (by which point HYG had
+already caught up and the SPY trough was only 4 trading days away — the "warning" arrives
+essentially at the bottom, not ahead of the drop).
+
+### Verdict: tested and rejected as an early-warning upgrade
+
+The hit-rate lift is real (not sampling noise — holds up and gets larger in the
+2016-present subsample, n=60-117 triggers is small but not tiny), so confirmation is
+a legitimately higher-precision signal in isolation. But it fails the mission's actual
+bar — "would this have helped de-risk ahead of a real crash" — for exactly the two
+episodes (2022, 2025) where speed mattered most and where the single-signal version's
+lead time was the whole point of validating it last week. Requiring agreement between
+two signals that "solve different problems" (per this project's existing framing) turns
+out to mean they typically only agree once the move is already well underway. **Not
+wired into `regime_analyzer.py`** — the existing single-signal `composite_5d_chg`/
+`hyg_5d_pct` columns from the 2026-08-30 entry remain as shipped, unchanged.
+
+### Caveats
+
+- n_triggered for the confirmed signal (60-117) is meaningfully smaller than either
+  single signal — the base-rate lift number is directionally trustworthy (same sign and
+  magnitude in both the full-history and 2016+ cuts) but shouldn't be treated as
+  precisely estimated.
+- This only tests the AND-of-thresholds confirmation design. A different combination
+  (e.g., either signal fires, then the other confirms within N days rather than the same
+  day) might preserve more lead time while still filtering noise — not tested this run;
+  candidate for a future pass if there's ever a reason to revisit this family of signal.
+- Same structural caveats as the 2026-08-30 entry apply (gex=None in deep history,
+  daily-close-based drawdown, HYG-era-only for the hyg half).
+
+### New ideas added to `IDEA_BACKLOG.md` this run
+
+- **Sequential (not same-day) confirmation** — does requiring hyg_5d_pct to confirm
+  within N trading days AFTER composite_5d_chg fires (rather than the same day) preserve
+  more of composite's lead-time edge while still cutting false positives? Directly
+  suggested by this run's finding that same-day AND-confirmation destroys lead time in
+  exactly the episodes where it matters most.
+- **HYG/LQD spread ROC** — carried forward from `92fsty`'s prior backlog (its item #10);
+  still untested, still the most promising "no local data yet" credit-market gap now that
+  the HYG-alone version is fully validated and (mostly) shipped.
+- **Codify the two open stale PRs' resolution** — after this run's PR is reviewed, PRs #1
+  and #2 need to be explicitly closed as superseded; otherwise a future run may find three
+  divergent unmerged research branches instead of two.
+
+---
+
+## 2026-09-13 — Housekeeping (worse, not fixed) + sequential-confirmation test + crash-window fix
+
+**Housekeeping first, and this is now the second consecutive run flagging it, not the
+first.** PRs #1 (`d1odxv`) and #2 (`92fsty`) from 2026-08-30 are STILL open and unmerged,
+exactly as the 2026-09-06 run found them. On top of that, PR #3 (`a7ueon`,
+"land stranded ROC early-warning wiring, test AND-confirmation," opened 2026-09-06) is
+now *also* open and unmerged a week later. None of the three has been reviewed or closed.
+This run found nothing on `main` again (same "no notes file" bootstrap situation as the
+last two runs) and had to reconstruct context by reading `origin/claude/beautiful-goodall-
+a7ueon` directly, same as that run had to read the two before it. The validated
+`composite_5d_chg`/`hyg_5d_pct` wiring into `regime_analyzer.py` — real, checked,
+committed code, sitting in PR #3 — has now been ready for 7 days and has not gone live.
+This run's branch (`claude/beautiful-goodall-07xlj5`) re-applies that same diff cleanly
+onto current `main` and carries the work forward as PR #4. **This is a process problem,
+not a research problem — flagged to the user directly this run (see notification), not
+just left in this log for a fifth run to rediscover.**
+
+### Small fix: 2025 tariff selloff codified into `deep_history_backtest.py` directly
+
+`IDEA_BACKLOG.md` item 11 flagged that the 2025-02-19 to 2025-04-08 SPY -19% window had
+been independently hand-derived by two separate prior research scripts instead of being
+part of `deep_history_backtest.py`'s own `crash_window_analysis`. Added it to the
+`CRASH_WINDOWS` dict directly and regenerated `deep_history_backtest_summary.json` from
+the existing `deep_history_backtest_log.csv` (no live fetch needed — `build_summary()` is
+a pure function of already-derived rows). One new fact this surfaced: the 2025 selloff
+has the WORST `regime_signal` defensive-detection rate of the four crash windows —
+17.1% of days flagged CAUTION/DEFENSIVE/CRISIS, versus 68.6% for the level-based
+`flow_regime` label on the same days (avg_composite_score during the window was actually
++0.79, barely negative at all despite SPY -19%). The other three crashes (2008/2020/2022)
+show `regime_signal` and `flow_regime` roughly in the same range as each other. This gap
+is new-idea material — see below.
+
+### What was tested (`IDEA_BACKLOG.md` item 8): sequential (not same-day) confirmation
+
+Last run's same-day AND-confirmation test found real hit-rate lift (+20.4pp) but threw
+away composite_5d_chg's lead-time edge specifically in the 2022 bear (+56 trading days
+lag) and 2025 selloff (+30 days lag) — the two episodes where lead time mattered most.
+Backlog item 8 asked: does relaxing "same day" to "hyg_5d_pct confirms within N trading
+days after composite_5d_chg fires" recover more of that lead time while still filtering
+some false positives? Script: `sequential_confirmation_backtest.py`, output
+`sequential_confirmation_summary.json`. Same data (`deep_history_backtest_log.csv`), same
+15-day forward-max-drawdown / ≥5% hit definition, same HYG-era-only and since-2016 cuts
+as the two prior scripts in this family, for direct comparability. Tested N = 3, 5, 10,
+and 20 trading days. Signal definition: the actionable trigger date is whichever of
+composite/hyg fires SECOND (within the N-day window) — the realistic walk-forward date,
+since you can't know a composite trigger is "confirmed" until hyg actually follows.
+
+### Results — base rate (holds up, similar to same-day version)
+
+HYG era, full history (n=4,853): composite alone 26.4% hit rate (+12.6pp lift, n=246
+triggers), hyg alone 29.0% (+15.2pp, n=411). Sequential confirmation at every N tested
+lands in the same 32-34% hit-rate range regardless of window width (N=3: 34.2%/n=120,
+N=5: 33.9%/n=121, N=10: 33.3%/n=126, N=20: 32.3%/n=130) — essentially matching last run's
+same-day confirmed result (34.2%/n=117) and NOT meaningfully improving with a wider
+window. Since 2016 the pattern repeats (36.1% at N=3/5, 34.9% at N=10, 34.4% at N=20,
+n=61-64) — real, consistent lift over base rate, not decaying with a wider confirmation
+window, but not growing either.
+
+### Results — crash-window lead time (this is where the idea fails, and why)
+
+| episode | composite alone | hyg alone | seq-confirmed (any N 3-20) | lag vs composite alone |
+|---|---|---|---|---|
+| 2008 GFC | 2008-09-09 | 2008-09-15 | 2008-09-15 (all N) | +4 days (all N) |
+| 2020 COVID | 2020-02-24 | 2020-02-25 | 2020-02-25 (all N) | +1 day (all N) |
+| 2022 BEAR | 2022-01-20 | 2022-03-07 | N=3/5: 2022-04-11 (+56d); N=10/20: 2022-03-07 (+31d) | +31 to +56 days |
+| 2025 SELLOFF | 2025-02-21 | 2025-04-04 | 2025-04-04 (all N) | +30 days (all N) |
+
+Widening the confirmation window from 3 to 20 trading days barely moves the crash-window
+lag at all, and in the two episodes that matter (2022, 2025) the lag stays 30+ days
+regardless. The reason: the bottleneck was never the same-day requirement — it's that
+`hyg_5d_pct` itself genuinely takes 30-68 trading days to independently cross its
+threshold in these two episodes (credit lagging equity stress badly, consistent with
+2022 and 2025 both being equity/rate-driven selloffs rather than credit-driven ones).
+Waiting longer for HYG to confirm doesn't help when HYG is the slow signal in exactly
+these cases — sequential confirmation inherits the same weakness as same-day
+confirmation for a structural reason, not an implementation-choice one.
+
+### Verdict: tested and rejected as an early-warning upgrade
+
+Same conclusion as the same-day version, now with the mechanism understood rather than
+just observed: confirming `composite_5d_chg` with `hyg_5d_pct` (in any time window) only
+helps precision in the crashes where credit and equity stress move together quickly
+(2008, 2020) — exactly the crashes where the level-based signal already did fine. In the
+crashes where `composite_5d_chg` alone gave the biggest edge (2022, 2025), HYG confirmation
+of any kind arrives too late to be useful as an early warning. **Not wired into
+`regime_analyzer.py`** — single-signal `composite_5d_chg`/`hyg_5d_pct` remain as shipped.
+
+### Caveats
+
+- Same structural caveats as the two prior scripts in this family apply (gex=None,
+  daily-close drawdown, HYG-era-only, small crash-window sample of 4 episodes).
+- This only tests HYG as the confirming signal. Whether a faster-moving, non-credit
+  signal (VIX or SKEW 5-day change) would confirm sooner in equity-driven selloffs like
+  2022/2025 specifically — not tested this run, added to backlog below.
+- `n_triggered` for sequential confirmation (61-130) is still smaller than either single
+  signal, same precision caveat as last run's same-day version.
+
+### New ideas added to `IDEA_BACKLOG.md` this run
+
+- **VIX/SKEW 5-day-ROC as an alternative confirmation signal for `composite_5d_chg`** —
+  directly suggested by this run's finding that HYG-based confirmation (same-day or
+  sequential) only fails in the specifically equity/vol-driven selloffs (2022, 2025)
+  where credit lagged badly. A vol-based confirming signal might not have the same lag in
+  exactly those episodes. Testable from `deep_history_backtest_log.csv` (vix, skew
+  columns already present), no fetch needed.
+- **Why does `regime_signal` badly underperform `flow_regime` specifically in the 2025
+  selloff (17.1% vs 68.6% days flagged defensive, the largest gap of the four crash
+  windows)?** — surfaced directly by this run's `crash_window_analysis` fix. The other
+  three crashes don't show this size of gap. Worth checking whether `get_regime_signal`'s
+  positive-conviction gating (STRONG_BUY/BUY_WATCH require `gex` not None) is incidentally
+  making its defensive branches slower to fire too, or whether this is specific to a
+  fast, low-average-composite-score (+0.79) selloff that never got deep enough on a
+  pooled basis to trip the stricter regime_signal thresholds.
+
+## 2026-09-20 — VIX/SKEW confirmation (rejected, causality artifact) + regime_signal 2025 gap root-caused
+
+**Process note first: this run is PR #5.** PRs #1 (`d1odxv`), #2 (`92fsty`), #3 (`a7ueon`),
+and #4 (`07xlj5`) — opened 2026-08-30, 2026-08-30, 2026-09-06, and 2026-09-13 respectively
+— are all STILL open and unreviewed as of today (2026-09-20), confirmed directly via the
+GitHub API this run. PR #1 is now 21 days old. The validated `composite_5d_chg`/
+`hyg_5d_pct` ROC wiring (real, tested, already PASS-graded 2026-08-30) has been sitting
+unmerged for three full weeks. This run's branch again cherry-picks that same diff
+cleanly onto current `main` and carries it forward as PR #5, which should be treated as
+the one to review — #1 through #4 are stale duplicates once #5 merges. Flagged to the
+user directly via notification this run, not just logged here.
+
+### Part 1 — idea backlog #11: VIX/SKEW 5-day change as an alternative same-day
+confirmation signal for `composite_5d_chg` (replacing HYG, which was rejected 2026-09-06
+and 2026-09-13 for losing lead time in the 2022/2025 crash windows specifically)
+
+Script: `vix_skew_confirmation_backtest.py`, output `vix_skew_confirmation_summary.json`.
+Same data source and forward-drawdown methodology as the two prior confirmation scripts
+(`deep_history_backtest_log.csv`, 15-day forward max drawdown, ≤-5% = hit). Thresholds for
+`vix_5d_pct` (+9.65 / +17.36 / +25.11) and `skew_5d_chg` (+3.32 / +5.63 / +8.22) are the
+actual 80th/90th/95th percentiles of each series' 5-day change over the full 1995-2026
+history, computed directly rather than hand-picked, and all three are reported per signal.
+
+**Headline result looked great, then fell apart under a mechanism check.** At the 80th
+and 90th percentile VIX thresholds, same-day `composite_5d_chg ≤ -3 AND vix_5d_pct ≥
+threshold` fired with **zero trading-day lag vs. composite alone in all four crash
+windows** (2008, 2020, 2022, 2025) — exactly the outcome HYG confirmation failed to
+deliver (+56d lag in 2022, +30d in 2025). Hit-rate lift also looked real: +9.0 to +13.4pp
+over base rate, in the same range as composite alone (+10.9/+12.4pp).
+
+That result is an artifact, not a finding. `vix_5d_pct` and `composite_5d_chg` have a
+**-0.727 correlation** over the full 7,757-day sample — because VIX is a direct input to
+`composite_score`'s `vol_score` sub-score, not an independent market. At the loosest
+(80th-pctile) threshold, the "AND-confirmed" trigger set overlaps 90.3% with composite
+alone (241 of 267 triggers); even at the strictest (95th-pctile) threshold it's 58.4%
+overlap. The near-zero crash-window lag isn't VIX confirming composite faster than
+credit — it's VIX and composite moving together because one is built from the other.
+Unlike HYG (a `credit_score` input that behaves on a genuinely different timescale from
+`vol_score` in some episodes), VIX confirmation of composite is close to confirming
+composite with itself.
+
+`skew_5d_chg` confirmation doesn't have the circularity problem (SKEW's contribution to
+`composite_score` is contrarian and structured differently), but it fails on its own
+terms: `skew_5d_chg` alone is **negatively** predictive of forward drawdowns (hit rate
+9.2% vs 14.2% base rate, lift -5.0pp) — rising SKEW alone doesn't mean stress is coming,
+consistent with the existing black-swan Signal 1 logic that only treats SKEW as a warning
+when paired with LOW VIX, not on its own. AND-confirmed trigger counts are tiny (18-33
+across the full 30-year history) and confirmation is **absent entirely** (`null`) in 3 of
+4 crash windows at every threshold tested except the loosest, where it still misses 2020
+and 2022 outright.
+
+**Verdict: REJECTED, both variants.** VIX confirmation is not independent of the signal
+it's confirming (measured directly, not assumed) — it narrows the trigger set by only
+10-42% while adding no real information. SKEW confirmation is independent but too rare
+and inconsistent to use; it fails to confirm in most real crash windows and has no
+standalone edge. Neither is wired into `regime_analyzer.py`. This closes out the
+VIX/SKEW-confirmation line of investigation from idea #11 — HYG, VIX, and SKEW have all
+now been tested as `composite_5d_chg` confirming signals and all three either destroy
+lead time or turn out not to be a genuinely independent signal.
+
+### Part 2 — idea backlog #12: why `regime_signal` misses 68.6% of the 2025 selloff that
+`flow_regime` catches
+
+Root cause, checked directly against `deep_history_backtest_log.csv` for all four crash
+windows (`get_regime_signal`'s DEFENSIVE gate is `composite_score ≤ -3 OR hyg < 74`):
+
+| episode | days composite≤-3 | days hyg<74 | regime_signal defensive-flagged |
+|---|---|---|---|
+| 2008 GFC (n=130) | 75.4% | 58.5% | 81.5% |
+| 2020 COVID (n=24) | 29.2% | 16.7% | 33.3% |
+| 2022 BEAR (n=197) | 31.0% | 14.7% | 44.7% |
+| 2025 SELLOFF (n=35) | 8.6% | **0.0%** | 17.1% |
+
+2025 is a genuine outlier, not noise: HYG never once traded below $74 during the entire
+35-day, SPY -19% selloff (min $75.75), and `composite_score` only touched ≤-3 on 3 of 35
+days (avg was +0.79 — barely negative on a pooled basis). Both halves of
+`regime_signal`'s DEFENSIVE gate are calibrated for either broad multi-factor macro
+deterioration (composite≤-3, which needs several sub-scores negative simultaneously) or
+outright credit distress (HYG<74) — and the 2025 tariff selloff was neither: a fast,
+narrow, policy-driven equity/vol shock that never spread into credit spreads and never
+broadly dragged the composite. `flow_regime`'s finer-grained bucketing (e.g.
+`mild_risk_off`/`recession_fear`/`cash_hoarding` off composite in [-2, 0) combined with
+DXY/VIX) catches this kind of narrow shock far more often (68.6% of days) because it
+doesn't require either blunt threshold to be breached.
+
+**This is a real, quantified blind spot in the "final" `regime_signal`**, not just a
+caveat: a repeat of a fast, macro-catalyst equity/vol selloff that spares credit markets
+would likely leave `regime_signal` sitting on HOLD through most of it, the same way it
+did in 2025 (HOLD on 29 of 35 days). Not fixed this run — no candidate gate was tested
+for false-positive impact yet, which the project's own discipline requires before wiring
+anything in. Added to backlog as the natural next step.
+
+### New ideas added to `IDEA_BACKLOG.md` this run
+
+- **Candidate fix for the regime_signal 2025 blind spot**: test adding a narrow
+  `composite_score < 0 AND vix_5d_pct ≥ [some threshold]` override to `get_regime_signal`'s
+  DEFENSIVE branch, sized and false-positive-checked the same way `composite_5d_chg` itself
+  was validated 2026-08-30, to see whether it catches 2025-style equity/vol-driven
+  selloffs without materially raising the whipsaw rate in calm periods. Direct next step
+  from this run's root-cause diagnosis — the mechanism (composite<0 as a looser gate,
+  `vix_5d_pct` as the fast-moving trigger) is now understood, just not yet tested as a
+  wired-in change.
+- **A confirming signal for `composite_5d_chg` built from composite's OWN sub-scores minus
+  `vol_score`** (i.e., credit_score + flow_score + growth_score + skew_score 5-day change,
+  with VIX's contribution stripped out first) — motivated directly by this run's finding
+  that `vix_5d_pct` fails as a confirming signal specifically because it's not independent
+  of composite (r=-0.73). A "composite-without-vol" ROC would be independent of VIX by
+  construction and might behave more like HYG (informative but slower) without HYG's
+  specific 2022/2025 lag problem, since it still includes credit_score. Directly testable
+  from `deep_history_backtest_log.csv`'s existing columns, no fetch needed.
