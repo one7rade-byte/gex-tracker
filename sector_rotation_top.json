@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-05",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -17,9 +17,9 @@
       "ticker": "BTC-USD",
       "label": "Bitcoin",
       "quadrant": "LEADING",
-      "rs_now": 108.74,
-      "rs_momentum": 3.13,
-      "return_21d": 9.38
+      "rs_now": 108.67,
+      "rs_momentum": 3.06,
+      "return_21d": 9.31
     },
     {
       "ticker": "XLU",
