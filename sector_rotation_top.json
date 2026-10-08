@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -121,9 +121,9 @@
       "ticker": "BTC-USD",
       "label": "Bitcoin",
       "quadrant": "WEAKENING",
-      "rs_now": 106.2,
-      "rs_momentum": -1.96,
-      "return_21d": 7.43
+      "rs_now": 106.16,
+      "rs_momentum": -2.01,
+      "return_21d": 7.39
     },
     {
       "ticker": "TLT",
