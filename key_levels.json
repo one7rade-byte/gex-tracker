@@ -1,0 +1,476 @@
+{
+  "date": "2026-10-13",
+  "generated_at": "2026-10-13T14:20:04.143289-04:00",
+  "method": "Per-strike GEX from CBOE delayed chain (expirations <= 30d, strikes within \u00b16.0% of spot), heaviest 6 call and put strikes, merged into zones; named levels from InsiderFinance.",
+  "how_to_read": "Resistance = heavy call gamma above spot; support = heavy put gamma below spot. Zones hold best above zero gamma (positive-gamma regime) and break more easily below it.",
+  "tickers": {
+    "SPY": {
+      "ticker": "SPY",
+      "spot": 777.83,
+      "cboe_data_timestamp": "2026-10-13 18:19:28",
+      "contracts_used": 13172,
+      "gamma_regime": "above zero gamma \u2014 positive-gamma regime: dealers dampen moves, zones tend to hold / pin",
+      "insiderfinance_levels": {
+        "call_wall": 785.0,
+        "put_wall": 772.0,
+        "zero_gamma": 776.42,
+        "peak_gex_strike": 785.0,
+        "max_pain": 766.0
+      },
+      "resistance_zones": [
+        {
+          "low": 785.0,
+          "high": 785.0,
+          "mid_pct_from_spot": 0.92,
+          "role": "resistance",
+          "call_gex_m": 1712.7,
+          "put_gex_m": 0,
+          "total_abs_gex_m": 1712.7,
+          "strikes": [
+            785.0
+          ],
+          "insiderfinance_tags": [
+            "call_wall",
+            "peak_gex_strike"
+          ],
+          "strength_rank": 3
+        }
+      ],
+      "support_zones": [
+        {
+          "low": 770.0,
+          "high": 772.0,
+          "mid_pct_from_spot": -0.88,
+          "role": "support",
+          "call_gex_m": 0,
+          "put_gex_m": -2448.1,
+          "total_abs_gex_m": 2448.1,
+          "strikes": [
+            770.0,
+            772.0
+          ],
+          "insiderfinance_tags": [
+            "put_wall"
+          ],
+          "strength_rank": 2
+        }
+      ],
+      "pivot_zones": [
+        {
+          "low": 775.0,
+          "high": 780.0,
+          "mid_pct_from_spot": -0.04,
+          "role": "pivot (price inside zone)",
+          "call_gex_m": 8740.9,
+          "put_gex_m": -7594.0,
+          "total_abs_gex_m": 16334.9,
+          "strikes": [
+            775.0,
+            775.0,
+            776.0,
+            777.0,
+            777.0,
+            778.0,
+            778.0,
+            779.0,
+            780.0
+          ],
+          "insiderfinance_tags": [
+            "zero_gamma"
+          ],
+          "strength_rank": 1
+        }
+      ],
+      "heavy_call_strikes": [
+        {
+          "rank": 1,
+          "strike": 778.0,
+          "gex_m": 2336.3,
+          "odte_gex_m": 1651.6,
+          "open_interest": 37156,
+          "pct_from_spot": 0.02,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 2,
+          "strike": 777.0,
+          "gex_m": 2121.7,
+          "odte_gex_m": 1684.1,
+          "open_interest": 23776,
+          "pct_from_spot": -0.11,
+          "role": "support (flipped call strike)",
+          "side": "call"
+        },
+        {
+          "rank": 3,
+          "strike": 780.0,
+          "gex_m": 1788.9,
+          "odte_gex_m": 362.8,
+          "open_interest": 72046,
+          "pct_from_spot": 0.28,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 4,
+          "strike": 785.0,
+          "gex_m": 1712.7,
+          "odte_gex_m": 44.8,
+          "open_interest": 103155,
+          "pct_from_spot": 0.92,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 5,
+          "strike": 775.0,
+          "gex_m": 1303.0,
+          "odte_gex_m": 424.1,
+          "open_interest": 43600,
+          "pct_from_spot": -0.36,
+          "role": "support (flipped call strike)",
+          "side": "call"
+        },
+        {
+          "rank": 6,
+          "strike": 779.0,
+          "gex_m": 1191.0,
+          "odte_gex_m": 646.4,
+          "open_interest": 30706,
+          "pct_from_spot": 0.15,
+          "role": "resistance",
+          "side": "call"
+        }
+      ],
+      "heavy_put_strikes": [
+        {
+          "rank": 1,
+          "strike": 777.0,
+          "gex_m": -3391.9,
+          "odte_gex_m": -2797.1,
+          "open_interest": 34725,
+          "pct_from_spot": -0.11,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 2,
+          "strike": 778.0,
+          "gex_m": -1682.7,
+          "odte_gex_m": -1124.8,
+          "open_interest": 27110,
+          "pct_from_spot": 0.02,
+          "role": "resistance (flipped put strike)",
+          "side": "put"
+        },
+        {
+          "rank": 3,
+          "strike": 772.0,
+          "gex_m": -1428.4,
+          "odte_gex_m": -102.8,
+          "open_interest": 68005,
+          "pct_from_spot": -0.75,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 4,
+          "strike": 776.0,
+          "gex_m": -1327.3,
+          "odte_gex_m": -970.4,
+          "open_interest": 19753,
+          "pct_from_spot": -0.24,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 5,
+          "strike": 775.0,
+          "gex_m": -1192.1,
+          "odte_gex_m": -429.2,
+          "open_interest": 37115,
+          "pct_from_spot": -0.36,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 6,
+          "strike": 770.0,
+          "gex_m": -1019.7,
+          "odte_gex_m": -50.9,
+          "open_interest": 65286,
+          "pct_from_spot": -1.01,
+          "role": "support",
+          "side": "put"
+        }
+      ],
+      "cross_check": {
+        "cboe_top_call_strike": 778.0,
+        "insiderfinance_call_wall": 785.0,
+        "call_wall_agrees": false,
+        "cboe_top_put_strike": 777.0,
+        "insiderfinance_put_wall": 772.0,
+        "put_wall_agrees": false,
+        "note": "Disagreement is normal-ish: CBOE here is limited to expirations within 30 days, InsiderFinance uses its own expiration set. Large persistent gaps are worth a look."
+      },
+      "data_ok": true
+    },
+    "QQQ": {
+      "ticker": "QQQ",
+      "spot": 741.67,
+      "cboe_data_timestamp": "2026-10-13 18:19:31",
+      "contracts_used": 11108,
+      "gamma_regime": "below zero gamma \u2014 negative-gamma regime: dealers amplify moves, zones more likely to break and run",
+      "insiderfinance_levels": {
+        "call_wall": 760.0,
+        "put_wall": 740.0,
+        "zero_gamma": 744.06,
+        "peak_gex_strike": 740.0,
+        "max_pain": 730.0
+      },
+      "resistance_zones": [
+        {
+          "low": 750.0,
+          "high": 750.0,
+          "mid_pct_from_spot": 1.12,
+          "role": "resistance",
+          "call_gex_m": 811.6,
+          "put_gex_m": 0,
+          "total_abs_gex_m": 811.6,
+          "strikes": [
+            750.0
+          ],
+          "insiderfinance_tags": [],
+          "strength_rank": 2
+        },
+        {
+          "low": 755.0,
+          "high": 755.0,
+          "mid_pct_from_spot": 1.8,
+          "role": "resistance",
+          "call_gex_m": 432.2,
+          "put_gex_m": 0,
+          "total_abs_gex_m": 432.2,
+          "strikes": [
+            755.0
+          ],
+          "insiderfinance_tags": [],
+          "strength_rank": 6
+        },
+        {
+          "low": 760.0,
+          "high": 760.0,
+          "mid_pct_from_spot": 2.47,
+          "role": "resistance",
+          "call_gex_m": 638.3,
+          "put_gex_m": 0,
+          "total_abs_gex_m": 638.3,
+          "strikes": [
+            760.0
+          ],
+          "insiderfinance_tags": [
+            "call_wall"
+          ],
+          "strength_rank": 4
+        }
+      ],
+      "support_zones": [
+        {
+          "low": 730.0,
+          "high": 730.0,
+          "mid_pct_from_spot": -1.57,
+          "role": "support",
+          "call_gex_m": 0,
+          "put_gex_m": -707.5,
+          "total_abs_gex_m": 707.5,
+          "strikes": [
+            730.0
+          ],
+          "insiderfinance_tags": [
+            "max_pain"
+          ],
+          "strength_rank": 3
+        },
+        {
+          "low": 725.0,
+          "high": 725.0,
+          "mid_pct_from_spot": -2.25,
+          "role": "support",
+          "call_gex_m": 0,
+          "put_gex_m": -631.0,
+          "total_abs_gex_m": 631.0,
+          "strikes": [
+            725.0
+          ],
+          "insiderfinance_tags": [],
+          "strength_rank": 5
+        }
+      ],
+      "pivot_zones": [
+        {
+          "low": 740.0,
+          "high": 746.0,
+          "mid_pct_from_spot": 0.18,
+          "role": "pivot (price inside zone)",
+          "call_gex_m": 1223.8,
+          "put_gex_m": -3898.0,
+          "total_abs_gex_m": 5121.8,
+          "strikes": [
+            740.0,
+            740.0,
+            742.0,
+            743.0,
+            745.0,
+            745.0,
+            746.0
+          ],
+          "insiderfinance_tags": [
+            "put_wall",
+            "zero_gamma",
+            "peak_gex_strike"
+          ],
+          "strength_rank": 1
+        }
+      ],
+      "heavy_call_strikes": [
+        {
+          "rank": 1,
+          "strike": 750.0,
+          "gex_m": 811.6,
+          "odte_gex_m": 56.1,
+          "open_interest": 68694,
+          "pct_from_spot": 1.12,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 2,
+          "strike": 760.0,
+          "gex_m": 638.3,
+          "odte_gex_m": 6.3,
+          "open_interest": 104388,
+          "pct_from_spot": 2.47,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 3,
+          "strike": 740.0,
+          "gex_m": 535.8,
+          "odte_gex_m": 44.7,
+          "open_interest": 34787,
+          "pct_from_spot": -0.23,
+          "role": "support (flipped call strike)",
+          "side": "call"
+        },
+        {
+          "rank": 4,
+          "strike": 755.0,
+          "gex_m": 432.2,
+          "odte_gex_m": 14.2,
+          "open_interest": 49738,
+          "pct_from_spot": 1.8,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 5,
+          "strike": 745.0,
+          "gex_m": 404.9,
+          "odte_gex_m": 90.1,
+          "open_interest": 23601,
+          "pct_from_spot": 0.45,
+          "role": "resistance",
+          "side": "call"
+        },
+        {
+          "rank": 6,
+          "strike": 746.0,
+          "gex_m": 283.1,
+          "odte_gex_m": 92.3,
+          "open_interest": 18013,
+          "pct_from_spot": 0.58,
+          "role": "resistance",
+          "side": "call"
+        }
+      ],
+      "heavy_put_strikes": [
+        {
+          "rank": 1,
+          "strike": 740.0,
+          "gex_m": -2113.1,
+          "odte_gex_m": -1258.9,
+          "open_interest": 79142,
+          "pct_from_spot": -0.23,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 2,
+          "strike": 745.0,
+          "gex_m": -723.7,
+          "odte_gex_m": -174.0,
+          "open_interest": 43955,
+          "pct_from_spot": 0.45,
+          "role": "resistance (flipped put strike)",
+          "side": "put"
+        },
+        {
+          "rank": 3,
+          "strike": 730.0,
+          "gex_m": -707.5,
+          "odte_gex_m": -10.9,
+          "open_interest": 82102,
+          "pct_from_spot": -1.57,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 4,
+          "strike": 725.0,
+          "gex_m": -631.0,
+          "odte_gex_m": -5.0,
+          "open_interest": 105021,
+          "pct_from_spot": -2.25,
+          "role": "support",
+          "side": "put"
+        },
+        {
+          "rank": 5,
+          "strike": 742.0,
+          "gex_m": -607.6,
+          "odte_gex_m": -426.8,
+          "open_interest": 14160,
+          "pct_from_spot": 0.04,
+          "role": "resistance (flipped put strike)",
+          "side": "put"
+        },
+        {
+          "rank": 6,
+          "strike": 743.0,
+          "gex_m": -453.6,
+          "odte_gex_m": -339.0,
+          "open_interest": 9836,
+          "pct_from_spot": 0.18,
+          "role": "resistance (flipped put strike)",
+          "side": "put"
+        }
+      ],
+      "cross_check": {
+        "cboe_top_call_strike": 750.0,
+        "insiderfinance_call_wall": 760.0,
+        "call_wall_agrees": false,
+        "cboe_top_put_strike": 740.0,
+        "insiderfinance_put_wall": 740.0,
+        "put_wall_agrees": true,
+        "note": "Disagreement is normal-ish: CBOE here is limited to expirations within 30 days, InsiderFinance uses its own expiration set. Large persistent gaps are worth a look."
+      },
+      "data_ok": true
+    }
+  },
+  "summary": [
+    "SPY @ 777.83: resistance 785 [call_wall, peak_gex_strike] | support 770-772 [put_wall]",
+    "QQQ @ 741.67: resistance 750, 755, 760 [call_wall] | support 730 [max_pain], 725"
+  ]
+}
