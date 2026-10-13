@@ -369,11 +369,121 @@ def summary_line(res):
     return f"{res['ticker']} @ {res['spot']}: resistance {r} | support {s}"
 
 
+# ── Telegram ──────────────────────────────────────────────────────────────────
+
+TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+
+# How a run decides whether to post (set by the workflow):
+#   schedule          -> post only inside the 9 AM ET hour window, once per day
+#   repository_dispatch (cron-job.org) -> post once per day, any time
+#   workflow_dispatch (manual Run button) -> always post (for testing)
+TRIGGER          = os.environ.get("KL_TRIGGER", "manual")
+SEND_WINDOW_ET   = (9, 10)   # inclusive hours; 10 tolerates GitHub cron lag
+
+
+def _money(m):
+    """$M float -> '$1.7B' / '$640M'."""
+    a = abs(m)
+    return f"${a/1000:.1f}B" if a >= 1000 else f"${a:.0f}M"
+
+
+def _band(z):
+    return f"{z['low']:g}" if z["low"] == z["high"] else f"{z['low']:g}–{z['high']:g}"
+
+
+def _tags(z):
+    names = {"call_wall": "call wall", "put_wall": "put wall",
+             "zero_gamma": "zero gamma", "peak_gex_strike": "peak GEX",
+             "max_pain": "max pain"}
+    t = [names[x] for x in z["insiderfinance_tags"] if x in names]
+    return f" · {', '.join(t)}" if t else ""
+
+
+def _zone_line(z):
+    size = z["total_abs_gex_m"]
+    size_txt = f" · {_money(size)}" if size else ""
+    return f"  {_band(z)}{_tags(z)}{size_txt}"
+
+
+def format_telegram(out):
+    d = datetime.fromisoformat(out["generated_at"])
+    lines = [f"📍 GEX Key Levels — {d.strftime('%a %b %-d')}", ""]
+    for t, r in out["tickers"].items():
+        zg = r["insiderfinance_levels"].get("zero_gamma")
+        head = f"{t}  {r['spot']:g}"
+        if zg is not None:
+            above = r["spot"] >= zg
+            head += (f"  ·  {'above' if above else 'below'} zero gamma {zg:g}")
+            head += ("\n  ↳ positive gamma: levels tend to hold / pin" if above
+                     else "\n  ↳ negative gamma: levels break easier, moves run")
+        lines.append(head)
+
+        # Resistance listed far→near (top of a price ladder), support near→far
+        res = sorted(r["resistance_zones"], key=lambda z: z["low"], reverse=True)
+        if res:
+            lines.append("🔴 Resistance")
+            lines += [_zone_line(z) for z in res]
+        if r["pivot_zones"]:
+            lines.append("⚪ In play (price inside)")
+            lines += [_zone_line(z) for z in r["pivot_zones"]]
+        if r["support_zones"]:
+            lines.append("🟢 Support")
+            lines += [_zone_line(z) for z in r["support_zones"]]
+        mp = r["insiderfinance_levels"].get("max_pain")
+        if mp is not None and not any("max_pain" in z["insiderfinance_tags"]
+                                      for z in r["resistance_zones"] + r["support_zones"] + r["pivot_zones"]):
+            lines.append(f"  max pain {mp:g}")
+        if not r["data_ok"]:
+            lines.append("  ⚠️ options chain unavailable — InsiderFinance walls only")
+        lines.append("")
+    lines.append("Call gamma = resistance, put gamma = support. $ = dealer gamma per 1% move.")
+    return "\n".join(lines)
+
+
+def send_telegram(text):
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+        print("  TELEGRAM_TOKEN / TELEGRAM_CHAT_ID not set — skipping send")
+        return False
+    try:
+        # Plain text on purpose: no Markdown means no parse failures on '_' etc.
+        r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
+                          json={"chat_id": TELEGRAM_CHAT_ID, "text": text[:4000],
+                                "disable_web_page_preview": True}, timeout=20)
+        print(f"  Telegram: HTTP {r.status_code} {r.text[:200]}")
+        return r.ok
+    except Exception as e:
+        print(f"  Telegram send failed: {e}")
+        return False
+
+
+def already_sent_today(today_str):
+    try:
+        with open(OUTPUT_JSON) as f:
+            return json.load(f).get("telegram_sent_date") == today_str
+    except Exception:
+        return False
+
+
 def main():
     now = datetime.now(ET)
     today = now.date()
     today_str = today.isoformat()
-    print(f"Key levels run {now.isoformat()}")
+    print(f"Key levels run {now.isoformat()}  trigger={TRIGGER}")
+
+    sent_already = already_sent_today(today_str)
+    if TRIGGER == "schedule":
+        # Two UTC crons cover EDT and EST; only the one landing at 9 AM ET
+        # (or a late-running one) does anything, and only once per day.
+        if not (SEND_WINDOW_ET[0] <= now.hour <= SEND_WINDOW_ET[1]):
+            print(f"  {now.hour}:xx ET is outside the 9 AM window — nothing to do")
+            return
+        if sent_already:
+            print("  Already posted today — nothing to do")
+            return
+    if TRIGGER == "repository_dispatch" and sent_already:
+        print("  Already posted today — nothing to do")
+        return
 
     results = []
     for t in TICKERS:
@@ -397,12 +507,19 @@ def main():
         "tickers": {r["ticker"]: r for r in results},
         "summary": [summary_line(r) for r in results],
     }
+    for line in out["summary"]:
+        print(line)
+
+    msg = format_telegram(out)
+    print("\n--- Telegram message ---\n" + msg + "\n------------------------")
+    if send_telegram(msg):
+        out["telegram_sent_date"] = today_str
+    elif sent_already:
+        out["telegram_sent_date"] = today_str   # keep the earlier send recorded
+
     with open(OUTPUT_JSON, "w") as f:
         json.dump(out, f, indent=2)
     save_csv(results, today_str)
-
-    for line in out["summary"]:
-        print(line)
 
 
 if __name__ == "__main__":
