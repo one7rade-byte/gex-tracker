@@ -1,0 +1,35 @@
+name: GEX Key Levels Daily
+on:
+  schedule:
+    - cron: '17 13 * * 1-5'   # 9:17 AM EDT / 8:17 AM EST, Mon-Fri — pre-market;
+                              # open interest is fixed overnight, so the day's
+                              # zones are ready before the open
+  repository_dispatch:
+    types: [run-key-levels]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  key-levels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python key_levels.py
+      - run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add key_levels.json key_levels_log.csv
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Key levels update $(date +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && \
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/one7rade-byte/gex-tracker.git main && break
+            echo "Push attempt $i failed, retrying in $((i*5))s..."
+            sleep $((i*5))
+          done
