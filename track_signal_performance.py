@@ -43,6 +43,23 @@ PERF_LOG = "signal_performance_log.csv"
 SUMMARY_JSON = "signal_performance_summary.json"
 HORIZONS = [5, 10, 20]
 
+# All labels get_regime_signal() in regime_analyzer.py can emit. Used so the
+# summary can call out signals that have NEVER fired live yet (e.g. DEFENSIVE/
+# CRISIS, which require real credit stress that hasn't occurred since this
+# system launched 2026-03-30) instead of just silently omitting them.
+ALL_REGIME_SIGNALS = ["STRONG_BUY", "BUY_WATCH", "HOLD", "CAUTION", "STRONG_HOLD", "DEFENSIVE", "CRISIS"]
+
+# Confidence tiers for n — purely a labeling discipline (no thresholds here
+# touch regime_analyzer.py's actual signal logic). Keeps the project's
+# "never treat small-n results as proven" rule enforced automatically in the
+# output, not just in a note someone has to remember to add by hand.
+def confidence_tier(n):
+    if n < 10:
+        return "small_sample — exploratory only, do not rely on this bucket"
+    if n < 30:
+        return "developing — directional, treat cautiously"
+    return "reasonably sampled — still not a guarantee, but n supports the read"
+
 
 def load_spy_prices():
     """date -> spot_price, from gex_log.csv's SPY rows, sorted by date."""
@@ -167,7 +184,11 @@ def build_summary():
             "hit_rate_pct": hit_rate,
             "best_pct": max(returns),
             "worst_pct": min(returns),
+            "confidence": confidence_tier(n),
         }
+
+    signals_seen = {r["regime_signal"] for r in rows}
+    never_fired_live = sorted(s for s in ALL_REGIME_SIGNALS if s not in signals_seen)
 
     total_rows = len(rows)
     unique_dates = len(set(r["date"] for r in rows))
@@ -177,7 +198,20 @@ def build_summary():
         "note": (
             "Directional only while sample sizes are small (this regime_signal "
             "system's history starts 2026-03-30) — treat hit_rate/avg_return_pct "
-            "as exploratory until each bucket has a meaningful n, not statistical proof."
+            "as exploratory until each bucket has a meaningful n, not statistical proof. "
+            "Each bucket below carries its own 'confidence' tag for the same reason — "
+            "read it before acting on a bucket's numbers."
+        ),
+        "never_fired_live": never_fired_live,
+        "never_fired_live_note": (
+            "Signals in this list have zero occurrences in the live log above — "
+            "either because the real triggering condition hasn't occurred since "
+            "2026-03-30 (e.g. DEFENSIVE/CRISIS need real credit stress; this window "
+            "has been a sustained bull run) or because only 1 occurrence exists "
+            "(flagged via its own 'small_sample' confidence tag instead). No live "
+            "accuracy claim can be made for anything in this list yet — see "
+            "deep_history_backtest_summary.json for the only available (historical, "
+            "pre-live) evidence on how these regimes have behaved."
         ),
         "by_regime_signal": summary,
     }
