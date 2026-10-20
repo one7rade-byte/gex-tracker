@@ -1,7 +1,12 @@
 {
-  "generated_from_rows": 382,
-  "unique_signal_days": 134,
-  "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof.",
+  "generated_from_rows": 385,
+  "unique_signal_days": 135,
+  "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof. Each bucket below carries its own 'confidence' tag for the same reason \u2014 read it before acting on a bucket's numbers.",
+  "never_fired_live": [
+    "CRISIS",
+    "DEFENSIVE"
+  ],
+  "never_fired_live_note": "Signals in this list have zero occurrences in the live log above \u2014 either because the real triggering condition hasn't occurred since 2026-03-30 (e.g. DEFENSIVE/CRISIS need real credit stress; this window has been a sustained bull run) or because only 1 occurrence exists (flagged via its own 'small_sample' confidence tag instead). No live accuracy claim can be made for anything in this list yet \u2014 see deep_history_backtest_summary.json for the only available (historical, pre-live) evidence on how these regimes have behaved.",
   "by_regime_signal": {
     "BUY_WATCH": {
       "5": {
@@ -9,21 +14,24 @@
         "avg_return_pct": 0.6,
         "hit_rate_pct": 64.0,
         "best_pct": 2.28,
-        "worst_pct": -1.25
+        "worst_pct": -1.25,
+        "confidence": "developing \u2014 directional, treat cautiously"
       },
       "10": {
         "n": 25,
         "avg_return_pct": 0.58,
         "hit_rate_pct": 72.0,
         "best_pct": 2.41,
-        "worst_pct": -1.5
+        "worst_pct": -1.5,
+        "confidence": "developing \u2014 directional, treat cautiously"
       },
       "20": {
         "n": 21,
         "avg_return_pct": 1.23,
         "hit_rate_pct": 81.0,
         "best_pct": 4.08,
-        "worst_pct": -1.07
+        "worst_pct": -1.07,
+        "confidence": "developing \u2014 directional, treat cautiously"
       }
     },
     "CAUTION": {
@@ -32,21 +40,24 @@
         "avg_return_pct": 6.78,
         "hit_rate_pct": 100.0,
         "best_pct": 6.78,
-        "worst_pct": 6.78
+        "worst_pct": 6.78,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "10": {
         "n": 1,
         "avg_return_pct": 11.33,
         "hit_rate_pct": 100.0,
         "best_pct": 11.33,
-        "worst_pct": 11.33
+        "worst_pct": 11.33,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "20": {
         "n": 1,
         "avg_return_pct": 13.37,
         "hit_rate_pct": 100.0,
         "best_pct": 13.37,
-        "worst_pct": 13.37
+        "worst_pct": 13.37,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       }
     },
     "HOLD": {
@@ -55,21 +66,24 @@
         "avg_return_pct": 2.17,
         "hit_rate_pct": 50.0,
         "best_pct": 10.1,
-        "worst_pct": -2.15
+        "worst_pct": -2.15,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "10": {
         "n": 6,
         "avg_return_pct": 3.8,
         "hit_rate_pct": 66.7,
         "best_pct": 13.87,
-        "worst_pct": -0.35
+        "worst_pct": -0.35,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "20": {
         "n": 4,
         "avg_return_pct": 6.17,
         "hit_rate_pct": 50.0,
         "best_pct": 15.44,
-        "worst_pct": -0.51
+        "worst_pct": -0.51,
+        "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       }
     },
     "STRONG_BUY": {
@@ -78,44 +92,50 @@
         "avg_return_pct": 2.39,
         "hit_rate_pct": 92.3,
         "best_pct": 5.98,
-        "worst_pct": -0.29
+        "worst_pct": -0.29,
+        "confidence": "developing \u2014 directional, treat cautiously"
       },
       "10": {
         "n": 13,
         "avg_return_pct": 3.03,
         "hit_rate_pct": 100.0,
         "best_pct": 5.7,
-        "worst_pct": 0.54
+        "worst_pct": 0.54,
+        "confidence": "developing \u2014 directional, treat cautiously"
       },
       "20": {
         "n": 13,
         "avg_return_pct": 2.88,
         "hit_rate_pct": 100.0,
         "best_pct": 5.04,
-        "worst_pct": 1.0
+        "worst_pct": 1.0,
+        "confidence": "developing \u2014 directional, treat cautiously"
       }
     },
     "STRONG_HOLD": {
       "5": {
-        "n": 89,
-        "avg_return_pct": 0.42,
-        "hit_rate_pct": 53.9,
+        "n": 90,
+        "avg_return_pct": 0.39,
+        "hit_rate_pct": 53.3,
         "best_pct": 10.19,
-        "worst_pct": -3.45
+        "worst_pct": -3.45,
+        "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "10": {
-        "n": 84,
-        "avg_return_pct": 0.96,
-        "hit_rate_pct": 56.0,
+        "n": 85,
+        "avg_return_pct": 0.93,
+        "hit_rate_pct": 55.3,
         "best_pct": 12.98,
-        "worst_pct": -3.64
+        "worst_pct": -3.64,
+        "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "20": {
-        "n": 80,
-        "avg_return_pct": 1.88,
-        "hit_rate_pct": 66.2,
+        "n": 81,
+        "avg_return_pct": 1.85,
+        "hit_rate_pct": 65.4,
         "best_pct": 15.22,
-        "worst_pct": -3.26
+        "worst_pct": -3.26,
+        "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       }
     }
   }
