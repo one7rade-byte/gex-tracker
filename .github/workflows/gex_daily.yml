@@ -1,5 +1,16 @@
 name: GEX Daily Tracker
 on:
+  schedule:
+    # 2:00 PM ET every weekday, added 2026-10-21 as a second daily pull
+    # alongside the existing 6pm ET run (still triggered externally via
+    # cron-job.org's repository_dispatch below). Two crons because GitHub
+    # Actions schedules are UTC-only and don't shift for US daylight saving:
+    #   18:00 UTC = 2:00 PM EDT (Mar-Nov), 19:00 UTC = 2:00 PM EST (Nov-Mar).
+    # The "Check it's actually 2pm ET" step below makes sure only the one
+    # that's currently correct actually runs the pipeline - the other is a
+    # fast no-op, so this never double-runs or double-posts to Telegram.
+    - cron: '0 18 * * 1-5'
+    - cron: '0 19 * * 1-5'
   repository_dispatch:
     types: [run-gex-tracker]
   workflow_dispatch:
@@ -14,23 +25,41 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check it's actually 2pm ET (only matters for the schedule trigger)
+        id: time_check
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            HOUR=$(TZ='America/New_York' date +%H)
+            if [ "$HOUR" != "14" ]; then
+              echo "It's $HOUR:00 ET right now, not 14:00 - this is the other DST-offset cron firing. Skipping the rest of this run."
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+
       - name: Set up Python
+        if: steps.time_check.outputs.proceed == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.time_check.outputs.proceed == 'true'
         run: pip install requests beautifulsoup4
 
       - name: Run GEX tracker
+        if: steps.time_check.outputs.proceed == 'true'
         env:
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
         run: python gex_tracker.py
 
       - name: Run Regime Analyzer
+        if: steps.time_check.outputs.proceed == 'true'
         run: python regime_analyzer.py
 
       - name: Save CSVs to repository
+        if: steps.time_check.outputs.proceed == 'true'
         run: |
           git config user.name "GEX Bot"
           git config user.email "one7rade@gmail.com"
@@ -45,9 +74,11 @@ jobs:
           done
 
       - name: Wait for GitHub Pages to update
+        if: steps.time_check.outputs.proceed == 'true'
         run: sleep 60
 
       - name: Send Telegram summary
+        if: steps.time_check.outputs.proceed == 'true'
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
