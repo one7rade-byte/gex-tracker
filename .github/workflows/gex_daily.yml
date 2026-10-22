@@ -1,16 +1,20 @@
 name: GEX Daily Tracker
 on:
   schedule:
-    # 2:00 PM ET every weekday, added 2026-10-21 as a second daily pull
+    # ~2:00 PM ET every weekday, added 2026-10-21 as a second daily pull
     # alongside the existing 6pm ET run (still triggered externally via
     # cron-job.org's repository_dispatch below). Two crons because GitHub
     # Actions schedules are UTC-only and don't shift for US daylight saving:
-    #   18:00 UTC = 2:00 PM EDT (Mar-Nov), 19:00 UTC = 2:00 PM EST (Nov-Mar).
+    #   18:07 UTC = 2:07 PM EDT (Mar-Nov), 19:07 UTC = 2:07 PM EST (Nov-Mar).
+    # Deliberately NOT minute 0: GitHub's own docs warn that top-of-the-hour
+    # crons are the most congested slot and get delayed or silently dropped
+    # for that cycle - confirmed happened here, the first run (minute 0,
+    # 2026-10-22) never fired at all, not even as a failed run in history.
     # The "Check it's actually 2pm ET" step below makes sure only the one
     # that's currently correct actually runs the pipeline - the other is a
     # fast no-op, so this never double-runs or double-posts to Telegram.
-    - cron: '0 18 * * 1-5'
-    - cron: '0 19 * * 1-5'
+    - cron: '7 18 * * 1-5'
+    - cron: '7 19 * * 1-5'
   repository_dispatch:
     types: [run-gex-tracker]
   workflow_dispatch:
