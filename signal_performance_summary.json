@@ -1,6 +1,6 @@
 {
-  "generated_from_rows": 394,
-  "unique_signal_days": 138,
+  "generated_from_rows": 397,
+  "unique_signal_days": 139,
   "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof. Each bucket below carries its own 'confidence' tag for the same reason \u2014 read it before acting on a bucket's numbers.",
   "never_fired_live": [
     "CRISIS",
@@ -88,9 +88,9 @@
     },
     "STRONG_BUY": {
       "5": {
-        "n": 13,
-        "avg_return_pct": 2.39,
-        "hit_rate_pct": 92.3,
+        "n": 14,
+        "avg_return_pct": 2.27,
+        "hit_rate_pct": 92.9,
         "best_pct": 5.98,
         "worst_pct": -0.29,
         "confidence": "developing \u2014 directional, treat cautiously"
@@ -122,17 +122,17 @@
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "10": {
-        "n": 88,
-        "avg_return_pct": 0.87,
-        "hit_rate_pct": 53.4,
+        "n": 89,
+        "avg_return_pct": 0.84,
+        "hit_rate_pct": 52.8,
         "best_pct": 12.98,
         "worst_pct": -3.64,
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "20": {
-        "n": 82,
-        "avg_return_pct": 1.82,
-        "hit_rate_pct": 64.6,
+        "n": 83,
+        "avg_return_pct": 1.79,
+        "hit_rate_pct": 63.9,
         "best_pct": 15.22,
         "worst_pct": -3.26,
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
