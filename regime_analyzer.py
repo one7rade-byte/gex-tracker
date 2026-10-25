@@ -44,6 +44,8 @@ REGIME_CSV_HEADERS = [
     "flow_regime",        # plain-English regime label
     # Change signals
     "hyg_5d_change",      # HYG change over 5 days — early warning
+    "hyg_5d_pct",         # HYG % change vs 5 trading days ago (ROC layer)
+    "composite_5d_chg",   # composite_score change vs 5 trading days ago (ROC layer)
     "vix_term_signal",    # contango/backwardation
     "skew_signal",        # panic_buy/normal/warning/black_swan_watch
     "gex_signal",         # positive/negative/deeply_negative
@@ -445,6 +447,17 @@ def main():
             if old_hyg:
                 hyg_5d_change = round(hyg - old_hyg, 3)
 
+    # ROC early-warning layer: change vs 5 trading days back (prior rows only)
+    hyg_5d_pct = None
+    roc_old_composite = None
+    prior = [r for r in regime_hist if r.get("date") != date]  # regime_log is live; macro_history stops 2026-08-17
+    if len(prior) >= 5:
+        old = prior[-5]
+        old_h = n(old.get('hyg'))
+        if hyg and old_h:
+            hyg_5d_pct = round((hyg / old_h - 1) * 100, 3)
+        roc_old_composite = n(old.get('composite_score'))
+
     # SKEW signal
     if skew and vix:
         if skew > 150 and vix < 20:
@@ -530,6 +543,9 @@ def main():
         'skew_score': skew_s, 'composite_score': composite,
         'flow_regime': flow_reg,
         'hyg_5d_change': hyg_5d_change,
+        'hyg_5d_pct': hyg_5d_pct,
+        'composite_5d_chg': (round(composite - roc_old_composite, 2)
+                             if roc_old_composite is not None else None),
         'vix_term_signal': vix_term,
         'skew_signal': skew_signal,
         'gex_signal': gex_signal,
