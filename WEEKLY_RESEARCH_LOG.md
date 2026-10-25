@@ -1,5 +1,22 @@
 # WEEKLY RESEARCH LOG
 
+## 2026-10-25 — Wire ROC early-warning columns into regime_analyzer.py (backlog #7)
+
+**VERDICT: IMPLEMENTATION ONLY — no new statistical claim, no PASS. Code change opened as PR for review.**
+
+Setup: main and this run's branch did not contain the notes/backlog/log; they exist only on unmerged sibling branches (latest: `claude/beautiful-goodall-hgc5fh`, 2026-10-18). Merged that branch in to continue. Network is still blocked (Yahoo, Stooq, CFTC, FRED all fail the proxy CONNECT), so seeds #1-6 and #8 could not be run; stated plainly rather than faked.
+
+Done (offline):
+- `regime_analyzer.py` now writes two new columns, `hyg_5d_pct` (HYG % change vs 5 rows back) and `composite_5d_chg` (composite_score change vs 5 rows back), computed from prior rows of `regime_log.csv` (live) rather than `macro_history.csv`, which stops at 2026-08-17.
+- Backfilled both columns in `regime_log.csv`: 144 rows, 139 with composite_5d_chg (first 5 have no lookback).
+- Sanity check on latest row (2026-10-23 vs 2026-10-16): hyg_5d_pct +0.247, composite_5d_chg 0.0.
+
+Caveats: "5 rows back" means 5 logged days, which equals 5 trading days only if regime_log has no gaps (not verified; the log has 144 rows, so gaps are possible). Thresholds from the 2026-08-25 validation are not in the repo, so no alert logic was attached; columns only accumulate. Not syntax-run end-to-end against live data (no network); parse-checked only.
+
+New ideas added to backlog:
+- #10 repo hygiene: research notes live only on unmerged branches; merge them to main so scheduled runs start with context.
+- #11 re-validate the ROC thresholds on deep_history_backtest_log.csv (offline-capable) since the original 2026-08-25 numbers are lost.
+
 ## 2026-10-18 — VIX9D/VIX term structure as an early stress flag (seed #5)
 
 **VERDICT: INCONCLUSIVE — needs more data (no PASS).**
