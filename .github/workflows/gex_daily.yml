@@ -1,20 +1,15 @@
 name: GEX Daily Tracker
 on:
-  schedule:
-    # ~2:00 PM ET every weekday, added 2026-10-21 as a second daily pull
-    # alongside the existing 6pm ET run (still triggered externally via
-    # cron-job.org's repository_dispatch below). Two crons because GitHub
-    # Actions schedules are UTC-only and don't shift for US daylight saving:
-    #   18:07 UTC = 2:07 PM EDT (Mar-Nov), 19:07 UTC = 2:07 PM EST (Nov-Mar).
-    # Deliberately NOT minute 0: GitHub's own docs warn that top-of-the-hour
-    # crons are the most congested slot and get delayed or silently dropped
-    # for that cycle - confirmed happened here, the first run (minute 0,
-    # 2026-10-22) never fired at all, not even as a failed run in history.
-    # The "Check it's actually 2pm ET" step below makes sure only the one
-    # that's currently correct actually runs the pipeline - the other is a
-    # fast no-op, so this never double-runs or double-posts to Telegram.
-    - cron: '7 18 * * 1-5'
-    - cron: '7 19 * * 1-5'
+  # 2026-10-21/22: tried adding a second native GitHub Actions `schedule:`
+  # cron here for a 2pm ET pull (first at minute 0, then jittered to minute
+  # 7 after the first attempt never fired at all). Neither ever triggered a
+  # single run - confirmed via commit history showing zero schedule-sourced
+  # commits on either attempt's first real eligible weekday, and via the
+  # Actions run history showing only repository_dispatch runs, ever.
+  # Removed. Use a second cron-job.org job (same pattern as the existing
+  # 6pm one) hitting repository_dispatch for the 2pm pull instead - that
+  # mechanism has a 100% fire rate in this repo's history, unlike GitHub's
+  # native scheduler for this workflow.
   repository_dispatch:
     types: [run-gex-tracker]
   workflow_dispatch:
@@ -29,41 +24,23 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check it's actually 2pm ET (only matters for the schedule trigger)
-        id: time_check
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            HOUR=$(TZ='America/New_York' date +%H)
-            if [ "$HOUR" != "14" ]; then
-              echo "It's $HOUR:00 ET right now, not 14:00 - this is the other DST-offset cron firing. Skipping the rest of this run."
-              echo "proceed=false" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-          fi
-          echo "proceed=true" >> "$GITHUB_OUTPUT"
-
       - name: Set up Python
-        if: steps.time_check.outputs.proceed == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        if: steps.time_check.outputs.proceed == 'true'
         run: pip install requests beautifulsoup4
 
       - name: Run GEX tracker
-        if: steps.time_check.outputs.proceed == 'true'
         env:
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
         run: python gex_tracker.py
 
       - name: Run Regime Analyzer
-        if: steps.time_check.outputs.proceed == 'true'
         run: python regime_analyzer.py
 
       - name: Save CSVs to repository
-        if: steps.time_check.outputs.proceed == 'true'
         run: |
           git config user.name "GEX Bot"
           git config user.email "one7rade@gmail.com"
@@ -78,11 +55,9 @@ jobs:
           done
 
       - name: Wait for GitHub Pages to update
-        if: steps.time_check.outputs.proceed == 'true'
         run: sleep 60
 
       - name: Send Telegram summary
-        if: steps.time_check.outputs.proceed == 'true'
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
