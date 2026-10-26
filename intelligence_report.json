@@ -1,134 +1,135 @@
 {
   "date": "2026-10-26",
-  "generated_at": "06:00 PM",
-  "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
-  "macro_picture": "SPY GEX is deeply negative at $-6.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 9 of last 10 days oversold, mixed drivers. Score 8/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 2 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 82th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-6.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 7 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 9 of last 10 days oversold, mixed drivers. Score 8/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 2 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 82th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "generated_at": "10:00 PM",
+  "overall_signal": "HOLD",
+  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
+  "macro_picture": "SPY GEX is deeply negative at $-7.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.5 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 8/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'We Support Zuckerberg's Vision: Cassidy...' Do not buy this dip until news clears. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 3 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Stock, Upgraded On SpaceX Prospects, Moves Into A Buy ...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 18.5, needs +3.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-7.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.5 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 152 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 8/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'We Support Zuckerberg's Vision: Cassidy...' Do not buy this dip until news clears. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 3 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Stock, Upgraded On SpaceX Prospects, Moves Into A Buy ...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.5, needs +3.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "bear_warning",
     "vix_trend": "rising",
-    "vix_current": 19.45,
+    "vix_current": 18.48,
     "gex_trend": "deteriorating",
-    "gex_current": -6.0,
+    "gex_current": -7.3,
     "fear_trend": "building",
     "fear_current": 4.0,
     "bear_current": 5.0,
     "bull_current": 2.0,
-    "neg_gex_days": 7,
+    "neg_gex_days": 8,
     "skew_current": 151.8,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 36.9
+    "spy_rsi": 38.77
   },
   "top_opportunity": {
     "ticker": "NVDA",
     "score": 8.0,
-    "reason": "RSI extremely oversold (bottom 1% of own history) | Options moderately priced (IV 21th pct) | Heavy put buying (P/C top 1% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "company_positive"
+    "reason": "RSI extremely oversold (bottom 2% of own history) | Options moderately priced (IV 38th pct) | Heavy put buying (P/C top 3% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "neutral"
   },
   "avoid_names": [
+    "META",
     "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 81.8,
+      "rsi_pct": 53.0,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 1,
       "headlines": [
-        "The 10 biggest stocks are faltering, and it's dragging the S&amp;P 500 down",
-        "Prediction: The Next Chapter\u00a0for Apple Could\u00a0Be Its Most\u00a0Important Yet",
-        "Retiree Alleges Morgan Stanley Covered Call Strategy Cost Him His Apple and NVIDIA Shares; Reif Law Group Files Financial Elder Abuse Claims",
-        "Apple\u2019s $5 Trillion Dilemma: 3 Reasons Earnings Could Spark a Breakout on Nov. 2 \u2014 or a Meltdown"
+        "Apple (AAPL) Stock Falls Amid Market Uptick: What Investors Need to Know",
+        "Billionaire predicts 'unhinged' future for iPhone Duo",
+        "Apple\u2019s iPhone Duo delivery times stretch to January",
+        "Why Buying Apple Stock Before Q4 Earnings Could Be Risky"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 36.5,
+      "rsi_pct": 40.3,
       "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Microsoft offers voluntary exit packages to 60,000 staff",
-        "Microsoft offers voluntary buyouts to about 60,000 employees",
-        "MSFT Stock Gains After Unveiling Massive Buyout Offer For 60,000 Employees To Trim Costs Amid AI Push",
-        "Microsoft Offers Buyouts to 60,000 Employees. What Could It Mean for Margins?"
+        "Tech Earnings Are the Market\u2019s Biggest Story This Week: Here\u2019s Why Microsoft, Amazon, Intel, SanDisk, and Alphabet Will Drive the Stock Market\u2019s Next Move",
+        "Dow Jones Futures: Elon Musk-Led Tesla Leads Market Higher; Amazon, Alphabet, Microsoft Earnings On Deck",
+        "Microsoft offers around 60,000 employees voluntary buyouts",
+        "Why Did Microsoft Stock Beat UiPath Over Five Years?"
       ]
     },
     "NVDA": {
       "score": 8.0,
-      "rsi_pct": 0.7,
+      "rsi_pct": 2.0,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 9,
       "headlines": [
-        "Anthropic makes more per employee than every Magnificent Seven company but Nvidia",
-        "Intel Rises 5% as New Street Upgrade Cites Server CPU Shortage; AMD and NVIDIA Gain 3%",
-        "Medifast, Inc. Q3 2026 Earnings Call Summary",
-        "Alliance Resource Partners, L.P. Q3 2026 Earnings Call Summary"
+        "Business First Bancshares, Inc. Q3 2026 Earnings Call Summary",
+        "Verizon Communications Inc. Q3 2026 Earnings Call Summary",
+        "Bank of Marin Bancorp Q3 2026 Earnings Call Summary",
+        "Easterly Government Properties, Inc. Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
       "score": 6.0,
-      "rsi_pct": 3.4,
+      "rsi_pct": 2.0,
       "above_200ma": false,
       "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "Update: Equities Rise Intraday as Traders Weigh Anthropic IPO",
-        "Alphabet (GOOG) Could Be a Key Rival to Meta in the Race for AI Assistants, Burke Wealth Says",
-        "Anthropic is leasing data centers to reduce reliance on Amazon, Google, others",
-        "Tesla stock leaves rest of the Magnificent 7 in the dust, surging to October's top spot"
+        "AI Headlines Pile Up as Wall Street Navigates a Volatile Week",
+        "Tech Earnings Are the Market\u2019s Biggest Story This Week: Here\u2019s Why Microsoft, Amazon, Intel, SanDisk, and Alphabet Will Drive the Stock Market\u2019s Next Move",
+        "Why Google might avoid an earnings 'reckoning' this week",
+        "Dow Jones Futures: Elon Musk-Led Tesla Leads Market Higher; Amazon, Alphabet, Microsoft Earnings On Deck"
       ]
     },
     "META": {
       "score": 7.0,
       "rsi_pct": 2.7,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 4,
+      "days_oversold": 5,
       "headlines": [
-        "Sector Update: Tech Stocks Gain Monday Afternoon",
-        "Meta Looks to Raise $95 Billion From Stock Sale to Fund AI Investments",
-        "Zuckerberg shakes California's wealth tax before the vote",
-        "Top Midday Stories: Anthropic Files With SEC for IPO; Meta Looking to Raise $95 Billion From Stock Offerings for AI Expansion"
+        "CleanSpark Stock Fell 39% in October. Its Landlord Bet Now Rides on Meta\u2019s Credit",
+        "Anthropic\u2019s IPO Will \u201cSuck a Massive Amount of Money\u201d From AI Stocks, Cramer Warns",
+        "Meta\u2019s New Convertible Stock Could Yield More Than 6%. How It Compares With Common Shares.",
+        "Why Google might avoid an earnings 'reckoning' this week"
       ]
     },
     "AMZN": {
-      "score": 4.0,
-      "rsi_pct": 41.9,
+      "score": 5.0,
+      "rsi_pct": 34.9,
       "above_200ma": true,
-      "news": "company_positive",
-      "rsi_dir": "stable",
+      "news": "neutral",
+      "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Amazon\u2019s (AMZN) Stance on Meta\u2019s AI-Driven Commerce Plans Draws Burke Wealth\u2019s Attention",
-        "If Amazon Grows At 10% a Year, Here\u2019s What $1,000 Becomes By 2030",
-        "H2O.ai's TimeH2O Beats Mistral, Google, and Amazon in Time-Series Forecasting",
-        "Anthropic makes more per employee than every Magnificent Seven company but Nvidia"
+        "Tech Earnings Are the Market\u2019s Biggest Story This Week: Here\u2019s Why Microsoft, Amazon, Intel, SanDisk, and Alphabet Will Drive the Stock Market\u2019s Next Move",
+        "Dow Jones Futures: Elon Musk-Led Tesla Leads Market Higher; Amazon, Alphabet, Microsoft Earnings On Deck",
+        "Should You Buy Amazon Stock Now or Wait for a Dip?",
+        "DoorDash in advanced talks to acquire Instacart: WSJ"
       ]
     },
     "TSLA": {
-      "score": 3.0,
-      "rsi_pct": 35.8,
-      "above_200ma": false,
+      "score": 6.0,
+      "rsi_pct": 65.1,
+      "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Tesla stock leaves rest of the Magnificent 7 in the dust, surging to October's top spot",
-        "Tesla stock jumps as Barclays bets a SpaceX takeout bump is coming",
-        "Musk: Terafab Will Rank in \u201cTop 20\u201d GDP From a Single Building",
-        "I Wouldn't Buy Tesla Stock Betting on a SpaceX Deal. Here's Why."
+        "Dow Jones Futures: Elon Musk-Led Tesla Leads Market Higher; Amazon, Alphabet, Microsoft Earnings On Deck",
+        "Tesla Isn\u2019t a Hyperscaler. Why the AI Bears Are Misreading Its $5 Billion Capex Cut.",
+        "Tesla Stock, Upgraded On SpaceX Prospects, Moves Into A Buy Zone",
+        "Fort Bend County sweetens pot to land $10B Tesla solar plant"
       ]
     }
   },
@@ -139,6 +140,72 @@
       "pub_date": "2026-10-26",
       "tickers": [
         "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "What If You Had Put $1,000 Into Bitcoin, Ethereum, XRP and Solana 5 Years Ago?",
+      "link": "https://247wallst.com/investing/cryptocurrency/2026/10/26/what-if-you-had-put-1000-into-bitcoin-ethereum-xrp-and-solana-5-years-ago/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "BUFR Holders Left $62,250 on the Table on a $300,000 Position While Chasing Calm",
+      "link": "https://247wallst.com/investing/etf/2026/10/26/bufr-holders-left-62250-on-the-table-on-a-300000-position-while-chasing-calm/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Intuitive Machines Just Dropped 30% in a Month. Is It Time to Sell?",
+      "link": "https://247wallst.com/investing/2026/10/26/intuitive-machines-just-dropped-30-in-a-month-is-it-time-to-sell/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Alibaba Is Now Down 31% This Year: Is BABA Stock a Falling Knife or Poised for a Comeback?",
+      "link": "https://247wallst.com/investing/2026/10/26/alibaba-is-now-down-31-this-year-is-baba-stock-a-falling-knife-or-poised-for-a-comeback/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Oklo Is Now Down 63% This Year: Is OKLO Stock Dead Money or Due for a Bounce?",
+      "link": "https://247wallst.com/investing/2026/10/26/oklo-is-now-down-63-this-year-is-oklo-stock-dead-money-or-due-for-a-bounce/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Skydance Sinks 6% Despite Citi Buy Call and Elon Musk\u2019s Reported $1B Investment; Roku and Disney Dip",
+      "link": "https://247wallst.com/investing/2026/10/26/skydance-sinks-6-despite-citi-buy-call-and-elon-musks-reported-1b-investment-roku-and-disney-dip/?.tsrc=rss",
+      "pub_date": "2026-10-26",
+      "tickers": [
+        "TSLA"
       ],
       "high_impact": false,
       "sources": [],
@@ -172,72 +239,6 @@
       "pub_date": "2026-10-26",
       "tickers": [
         "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "PayPal Slips 3% Ahead of Earnings Despite Truist Target Raise; Klarna and Affirm Retreat",
-      "link": "https://247wallst.com/investing/2026/10/26/paypal-slips-3-ahead-of-earnings-despite-truist-target-raise-klarna-and-affirm-retreat/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "TeraWulf Jumps 7% as CEO Pushes Back on Stranded Data Center Fears; Cipher Digital Rises 3%, Applied Digital Edges Higher",
-      "link": "https://247wallst.com/investing/2026/10/26/terawulf-jumps-7-as-ceo-pushes-back-on-stranded-data-center-fears-cipher-digital-rises-3-applied-digital-edges-higher/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Reddit Sinks 5% as Slower Growth Guidance Looms Over Earnings; Snap Drops 3%, Meta Holds Steady",
-      "link": "https://247wallst.com/investing/2026/10/26/reddit-sinks-5-as-slower-growth-guidance-looms-over-earnings-snap-drops-3-meta-holds-steady/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "META"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "JetBlue Airways Tumbles 16% as Creditors Hire Restructuring Advisers; United Airlines Rises 3%, Delta Edges Higher",
-      "link": "https://247wallst.com/investing/2026/10/26/jetblue-airways-tumbles-16-as-creditors-hire-restructuring-advisers-united-airlines-rises-3-delta-edges-higher/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Brazilian Stocks Tumble as Lula Wins Surprise Fourth Term: Nu Holdings Sinks 25%, Petrobras Tumbles 21%, MercadoLibre Drops 15%",
-      "link": "https://247wallst.com/investing/2026/10/26/brazilian-stocks-tumble-as-lula-wins-surprise-fourth-term-nu-holdings-sinks-25-petrobras-tumbles-21-mercadolibre-drops-15/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "CoreWeave Drops 5% as Musk Warns of Neocloud \u2018Guppy-Level Death\u2019; IREN Slides 3%, Nebius Slips 2%",
-      "link": "https://247wallst.com/investing/2026/10/26/coreweave-drops-5-as-musk-warns-of-neocloud-guppy-level-death-iren-slides-3-nebius-slips-2/?.tsrc=rss",
-      "pub_date": "2026-10-26",
-      "tickers": [
-        "TSLA"
       ],
       "high_impact": false,
       "sources": [],
