@@ -1418,9 +1418,22 @@ function buildUI(data){
   const insightHTML=buildDailyInsight(last,prev).map(function(b){return'<div class="insight-block '+b.cls+'"><div class="ib-title">'+b.title+'</div>'+b.body+'</div>';}).join('');
   const allReversed=[...data].reverse();
   const DEFAULT_HIST_DAYS=30;
+  function sigBadge(s){
+    // Classify the Full History row badge from the backend's own precomputed
+    // `signal` column (same source Telegram alerts use), not a client-side
+    // recompute. The old code called computeSignal(e.g,e.v,[]) with rsi/prev
+    // omitted, which silently defaulted RSI to 50 and "days negative" to 0 -
+    // so STRONG BUY could never match and real buy days showed as "Hold".
+    const u=(s||'').toUpperCase();
+    if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy'};
+    if(u.indexOf('EXIT')>=0)return{bc:'br',label:'Exit'};
+    if(u.indexOf('STRONG HOLD')>=0)return{bc:'bg',label:'Hold'};
+    if(u.indexOf('HOLD')>=0)return{bc:'bb',label:'Hold'};
+    return{bc:'ba',label:'Watch'};
+  }
   function buildTableRows(rows){
     return rows.map(function(e){
-    const si=computeSignal(e.g,e.v,[]),label=si.bc==='bg'?'Hold':si.bc==='br'?'Exit':si.bc==='ba'?'Watch':'Hold';
+    const si=sigBadge(e.sig),label=si.label;
     const gC=e.g<0?'#A32D2D':e.g<3?'#BA7517':'#3B6D11',vC=e.v<=17?'#3B6D11':e.v<=19?'#BA7517':'#A32D2D';
     const fs=e.fearScore!==null?e.fearScore:'—',bs=e.bearScore!==null?e.bearScore:'—',bls=e.bullScore!==null?e.bullScore:'—';
     const qb=e.qqqBear!==null?e.qqqBear:'—',qg=e.qqqGex!==null?(e.qqqGex>=0?'+':'')+e.qqqGex.toFixed(1)+'B':'—';
