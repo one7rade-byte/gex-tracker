@@ -12,6 +12,17 @@ from bs4 import BeautifulSoup
 
 OUTPUT_CSV = "gex_log.csv"
 TICKERS    = ["SPY", "QQQ"]   # both tracked daily
+
+# Sanity bound on scraped net GEX, added 2026-11-01 after a bad InsiderFinance
+# page parse produced net_gex_b=-147.8 for SPY on 2026-10-30 (vs. the real
+# historical range of roughly -24B to +25B across SPY and QQQ since this
+# system's 2026-03-30 launch) - almost 6x the next most extreme reading ever
+# seen, ~9.5 standard deviations from the median. That one run's 2pm pull
+# (same day, same ticker) had parsed a plausible -18.7B a few hours earlier,
+# so this wasn't a real intraday move - it was the scrape/regex grabbing the
+# wrong number off the page for that one fetch. Set generously above any real
+# reading on record so genuine volatility spikes still get through.
+GEX_SANITY_CAP_B = 60
 EMAIL_FROM = "one7rade@gmail.com"
 EMAIL_TO   = "one7rade@gmail.com"
 EMAIL_PASS = os.environ.get("GMAIL_PASS", "")
@@ -162,7 +173,15 @@ def fetch_gex(ticker):
                 gex = -gex
 
         if gex is not None:
-            result["net_gex_b"] = gex
+            if abs(gex) > GEX_SANITY_CAP_B:
+                print(f"  {ticker} GEX parse REJECTED: {gex}B exceeds the "
+                      f"{GEX_SANITY_CAP_B}B sanity bound (real history since "
+                      f"launch has stayed within roughly ±25B) - likely a "
+                      f"page-parse glitch, not a real reading. Leaving "
+                      f"net_gex_b unset for this run rather than committing "
+                      f"an implausible value.")
+            else:
+                result["net_gex_b"] = gex
 
         result["spot_price"]      = find_val([r"Spot Price[:\s\n]*\$?([\d,\.]+)", r"currently trading at \$?([\d,\.]+)"], text)
         result["call_wall"]       = find_val([r"Call Wall[:\s\n]*\$?([\d,\.]+)"], text)
