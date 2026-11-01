@@ -1421,8 +1421,9 @@ function buildUI(data){
   function sigBadge(s){
     // Classify the Full History row badge from the backend's own precomputed
     // `signal` column (same source Telegram alerts use), not a client-side
-    // recompute. The old code called computeSignal(e.g,e.v,[]) with rsi/prev
-    // omitted, which silently defaulted RSI to 50 and "days negative" to 0 -
+    // recompute. The old code re-ran the client-side signal function with only
+    // GEX and VIX plus an empty prev-days list, leaving rsi out entirely. That
+    // silently defaulted RSI to 50 and "days negative" to 0 -
     // so STRONG BUY could never match and real buy days showed as "Hold".
     const u=(s||'').toUpperCase();
     if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy'};

@@ -40,6 +40,17 @@ jobs:
       - name: Run Regime Analyzer
         run: python regime_analyzer.py
 
+      # Post-pull sanity checks (GEX sanity cap, gex vs regime signal
+      # contradiction, under-specified computeSignal calls in index.html).
+      # Alerts Telegram only on a finding. continue-on-error so a finding
+      # can never block the CSV commit below.
+      - name: Validate dashboard signal
+        continue-on-error: true
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python validate_dashboard_signal.py
+
       - name: Save CSVs to repository
         run: |
           git config user.name "GEX Bot"
