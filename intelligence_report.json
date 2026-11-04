@@ -1,134 +1,134 @@
 {
   "date": "2026-11-04",
-  "generated_at": "07:00 PM",
-  "overall_signal": "REDUCE",
-  "voo_vgt_action": "REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.",
-  "macro_picture": "SPY GEX is deeply negative at $-11.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.8 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly.",
-  "watch_section": "GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-11.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.8 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.\n\nMAG 7 OPPORTUNITIES: AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: REDUCE",
+  "generated_at": "11:00 PM",
+  "overall_signal": "HOLD",
+  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
+  "macro_picture": "SPY GEX is positive at +$1.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.9 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA WATCH \u2014 score 6/10, RSI at 72th pct. Not yet at peak oversold but building. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 16.9, needs +5.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$1.8B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.9 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA WATCH \u2014 score 6/10, RSI at 72th pct. Not yet at peak oversold but building. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.9, needs +5.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "bear_warning",
+    "regime": "mixed",
     "vix_trend": "rising",
-    "vix_current": 20.83,
+    "vix_current": 16.92,
     "gex_trend": "deteriorating",
-    "gex_current": -11.2,
+    "gex_current": 1.8,
     "fear_trend": "building",
-    "fear_current": 5.0,
-    "bear_current": 7.0,
-    "bull_current": 2.0,
+    "fear_current": 2.0,
+    "bear_current": 2.0,
+    "bull_current": 5.0,
     "neg_gex_days": 8,
     "skew_current": 150.01,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 38.87
+    "spy_rsi": 47.33
   },
   "top_opportunity": {
-    "ticker": "AAPL",
+    "ticker": "META",
     "score": 6.0,
-    "reason": "RSI very oversold (bottom 12% of own history) | Heavy put buying (P/C top 1% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "neutral"
+    "reason": "RSI extremely oversold (bottom 4% of own history) | Heavy put buying (P/C top 8% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [
-    "TSLA"
+    "GOOGL"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 6.0,
-      "rsi_pct": 12.2,
+      "score": 4.0,
+      "rsi_pct": 39.7,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 2,
       "headlines": [
-        "Cramer\u2019s Blue Wave Call: \u201cApple Winner\u201d as Slower Data Center Builds Ease the Memory Squeeze",
-        "Apple\u2019s Pain Could Be Micron\u2019s Gain as Memory Prices Surge",
-        "Big Tech Stocks Soar as Traders Bet Democrats Will Slow AI Spend",
-        "Apple opens up Siri to all apps as it continues to transform its voice assistant"
+        "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+        "Apple Reportedly Tightens The Belt On Employee AI Budgets Amid Cost-Cutting Drive",
+        "Apple\u2019s Siri AI Could Become a Paid Upgrade \u2014 CEO John Ternus Reveals Plans to Charge for More Server-Side Apple Intelligence Usage",
+        "The Apple Supply Chain Faces Its Biggest Test Yet"
       ]
     },
     "MSFT": {
-      "score": 6.0,
-      "rsi_pct": 19.2,
+      "score": 4.0,
+      "rsi_pct": 56.4,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "This Magnificent 7 Stock Is Quietly Building an AI Empire",
-        "AIMG\u00ae Sizes AI Governance Platforms Market at $12.5 Billion by 2030; Microsoft, Databricks and Salesforce Top AI LeaderMap\u00ae",
-        "U.S. Stocks Jump After Democrats Sweep Congress",
-        "Tech, AI Stocks Split After Democratic Sweep: Microsoft Jumps, Tesla and Nvidia Tank"
+        "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+        "Stock Market Today: Dow Soars 1,569 Points In postelection Rally; Microsoft Leaps Nearly 7% Off New Entry",
+        "Arm stock slips after hours as lack of blowout guidance offsets quarterly results",
+        "The Nasdaq-100 Is Outperforming Nvidia, Microsoft, Amazon, Meta Platforms, Alphabet, and Tesla This Year. Here's My Favorite Low-Cost ETF to Buy the Dip."
       ]
     },
     "NVDA": {
-      "score": 6.0,
-      "rsi_pct": 11.5,
-      "above_200ma": true,
+      "score": 5.0,
+      "rsi_pct": 12.2,
+      "above_200ma": false,
       "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Geron Corporation Q3 2026 Earnings Call Summary",
-        "Riot Platforms, Inc. Q3 2026 Earnings Call Summary",
-        "L.B. Foster Company Q3 2026 Earnings Call Summary",
-        "ArcBest Corporation Q3 2026 Earnings Call Summary"
+        "TORM plc Q3 2026 Earnings Call Summary",
+        "Performance Food Group Company Q1 2027 Earnings Call Summary",
+        "GLOBALFOUNDRIES Inc. Q3 2026 Earnings Call Summary",
+        "SFL Corporation Ltd. Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
       "score": 4.0,
-      "rsi_pct": 3.2,
+      "rsi_pct": 4.5,
       "above_200ma": false,
-      "news": "neutral",
+      "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 9,
+      "days_oversold": 10,
       "headlines": [
-        "Apple opens up Siri to all apps as it continues to transform its voice assistant",
-        "Prediction: Nov. 6 Will Be a Huge Day for the Stock Market",
-        "Nvidia And Tesla Left Behind, As Rest Of Mag7 Rally On Dem\u2019s Big Night",
-        "Alphabet (GOOGL) Is Spending $15 Billion On Malaysia Data Centers"
+        "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+        "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
+        "Black Hills Corp. Reports 2026 Third-Quarter Results and Reaffirms 2026 Earnings Guidance",
+        "Alphabet Gains 3%, Amazon Up 6% as Big Tech Leads Post-Midterm Rebound"
       ]
     },
     "META": {
       "score": 6.0,
-      "rsi_pct": 1.9,
+      "rsi_pct": 3.8,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 9,
+      "days_oversold": 10,
       "headlines": [
-        "Sector Update: Tech Stocks Mixed Wednesday Afternoon",
-        "Exclusive: Meta buys AI startup, joins race to own coding in show of outsized ambition",
-        "Amazon is saying bye-bye to Muse while Walmart is rolling out the welcome mat for Meta\u2019s shopping agent",
-        "How Facebook beat Twitter to Instagram"
+        "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+        "TV Veteran Latour To Head Meta Branding Strategy",
+        "Arm stock slips after hours as lack of blowout guidance offsets quarterly results",
+        "Ironically, the Blue Wave Could Make Hyperscalers \u201cGood Businesses Again\u201d by Forcing Capex Discipline"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 43.6,
+      "rsi_pct": 65.4,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "Sector Update: Tech Stocks Mixed Wednesday Afternoon",
-        "Nexxus Capital Strengthens Market Position with Latest E-Commerce Acquisition",
-        "Amazon is saying bye-bye to Muse while Walmart is rolling out the welcome mat for Meta\u2019s shopping agent",
-        "Amazon and Walmart's $74 Billion Ad Market Faces an AI Test"
+        "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
+        "Stock Market Today, Nov. 4: Amazon Jumps 6% From New Perspective on AWS Growth and AI Strategy Following Election Results",
+        "Alphabet Gains 3%, Amazon Up 6% as Big Tech Leads Post-Midterm Rebound",
+        "The Nasdaq-100 Is Outperforming Nvidia, Microsoft, Amazon, Meta Platforms, Alphabet, and Tesla This Year. Here's My Favorite Low-Cost ETF to Buy the Dip."
       ]
     },
     "TSLA": {
       "score": 6.0,
-      "rsi_pct": 84.6,
+      "rsi_pct": 72.4,
       "above_200ma": true,
-      "news": "fundamental_change",
+      "news": "company_positive",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Nvidia And Tesla Left Behind, As Rest Of Mag7 Rally On Dem\u2019s Big Night",
-        "Elon Musk\u2019s Tesla and SpaceX Stocks Fall After Democrats Sweep Elections, Senator Warns of \u2018Subpoenas\u2019",
-        "Morgan Stanley Calls Tesla the \u201cVery Obvious Player\u201d as Data Centers Outbuy the Grid on Batteries",
-        "Blue Wave Puts Tesla\u2019s SpaceX Merger Premium at Risk as Democrats Eye Musk\u2019s Companies"
+        "SpaceX, Tesla, Micron, AMD, Lockheed, CVS, DJT, and More Stocks That Explain Today\u2019s Market",
+        "The Nasdaq-100 Is Outperforming Nvidia, Microsoft, Amazon, Meta Platforms, Alphabet, and Tesla This Year. Here's My Favorite Low-Cost ETF to Buy the Dip.",
+        "Tesla, SpaceX Dive As Elon Musk's Big GOP Election Bet Fails",
+        "Analysts Say These Industries Will See Midterm Election Impact"
       ]
     }
   },
