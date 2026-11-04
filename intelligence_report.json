@@ -1,175 +1,142 @@
 {
-  "date": "2026-11-03",
-  "generated_at": "11:00 PM",
-  "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 20.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
-  "macro_picture": "SPY GEX is deeply negative at $-9.7B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.4 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 153 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 13th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'Snap Settled a Social Media Addiction Suit. Here\u2019s What Its ...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 20.4, needs +1.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-9.7B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.4 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 153 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 20.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 13th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'Snap Settled a Social Media Addiction Suit. Here\u2019s What Its ...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 20.4, needs +1.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "date": "2026-11-04",
+  "generated_at": "07:00 PM",
+  "overall_signal": "REDUCE",
+  "voo_vgt_action": "REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.",
+  "macro_picture": "SPY GEX is deeply negative at $-11.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.8 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly.",
+  "watch_section": "GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-11.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 20.8 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.\n\nMAG 7 OPPORTUNITIES: AAPL OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 2 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 19th percentile of own history, 4 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 12th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 9 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: REDUCE",
   "macro_trend": {
     "regime": "bear_warning",
     "vix_trend": "rising",
-    "vix_current": 20.41,
+    "vix_current": 20.83,
     "gex_trend": "deteriorating",
-    "gex_current": -9.7,
+    "gex_current": -11.2,
     "fear_trend": "building",
-    "fear_current": 4.0,
-    "bear_current": 6.0,
+    "fear_current": 5.0,
+    "bear_current": 7.0,
     "bull_current": 2.0,
     "neg_gex_days": 8,
-    "skew_current": 152.78,
+    "skew_current": 150.01,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 40.6
+    "spy_rsi": 38.87
   },
   "top_opportunity": {
     "ticker": "AAPL",
     "score": 6.0,
-    "reason": "RSI very oversold (bottom 12% of own history) | Heavy put buying (P/C top 0% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "company_positive"
+    "reason": "RSI very oversold (bottom 12% of own history) | Heavy put buying (P/C top 1% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "neutral"
   },
   "avoid_names": [
-    "META"
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 6.0,
-      "rsi_pct": 12.3,
+      "rsi_pct": 12.2,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 2,
       "headlines": [
-        "Stock Market Today: Dow Dips Amid Midterm Elections; Palantir Slips, DuPont Surges Past Entry",
-        "Apple, Palantir, Pfizer, Marvell, AMD, Bloom Energy, Gartner, and More Stocks That Explain Today\u2019s Market",
-        "Apple Stock Undercuts Key Support Level After Mixed Report",
-        "Buy the Dip in Apple or Palantir Stock After Earnings?"
+        "Cramer\u2019s Blue Wave Call: \u201cApple Winner\u201d as Slower Data Center Builds Ease the Memory Squeeze",
+        "Apple\u2019s Pain Could Be Micron\u2019s Gain as Memory Prices Surge",
+        "Big Tech Stocks Soar as Traders Bet Democrats Will Slow AI Spend",
+        "Apple opens up Siri to all apps as it continues to transform its voice assistant"
       ]
     },
     "MSFT": {
       "score": 6.0,
-      "rsi_pct": 19.4,
+      "rsi_pct": 19.2,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "Microsoft and Oracle Can't Cool AI Data Centers Without This Growth Stock. Here's Why It Could Soar.",
-        "Microsoft Corporation (MSFT) Is Betting Big on AI: Is Its Growth Story Just Getting Started?",
-        "Microsoft Corporation (MSFT) Delivered Strong Fiscal Fourth-Quarter Results: Mott Capital\u2019s Take",
-        "Microsoft Stocks Rise With $44.9 Billion Anthropic Commitment Disclosed"
+        "This Magnificent 7 Stock Is Quietly Building an AI Empire",
+        "AIMG\u00ae Sizes AI Governance Platforms Market at $12.5 Billion by 2030; Microsoft, Databricks and Salesforce Top AI LeaderMap\u00ae",
+        "U.S. Stocks Jump After Democrats Sweep Congress",
+        "Tech, AI Stocks Split After Democratic Sweep: Microsoft Jumps, Tesla and Nvidia Tank"
       ]
     },
     "NVDA": {
       "score": 6.0,
-      "rsi_pct": 12.9,
+      "rsi_pct": 11.5,
       "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Pfizer Inc. Q3 2026 Earnings Call Summary",
-        "The Marzetti Company Q1 2027 Earnings Call Summary",
-        "EnPro Industries, Inc. Q3 2026 Earnings Call Summary",
-        "Great Elm Capital Corp. Q3 2026 Earnings Call Summary"
+        "Geron Corporation Q3 2026 Earnings Call Summary",
+        "Riot Platforms, Inc. Q3 2026 Earnings Call Summary",
+        "L.B. Foster Company Q3 2026 Earnings Call Summary",
+        "ArcBest Corporation Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
-      "score": 5.0,
-      "rsi_pct": 2.6,
+      "score": 4.0,
+      "rsi_pct": 3.2,
       "above_200ma": false,
       "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 9,
       "headlines": [
-        "Do You Know How Much of Your 401(k) Is Riding on the AI Trade Voters Want Paused?",
-        "Alphabet's Free Cash Flow Just Turned Negative. Should Investors Sell the Stock Now?",
-        "Uber president Jill Hazelbaker joins OpenAI as communications chief",
-        "What Did Reddit's Quarter Change For Its Stock?"
+        "Apple opens up Siri to all apps as it continues to transform its voice assistant",
+        "Prediction: Nov. 6 Will Be a Huge Day for the Stock Market",
+        "Nvidia And Tesla Left Behind, As Rest Of Mag7 Rally On Dem\u2019s Big Night",
+        "Alphabet (GOOGL) Is Spending $15 Billion On Malaysia Data Centers"
       ]
     },
     "META": {
       "score": 6.0,
       "rsi_pct": 1.9,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 9,
       "headlines": [
-        "A Dem Sweep Could Get the Bond Market\u2019s Attention",
-        "Snap Settled a Social Media Addiction Suit. Here\u2019s What Its November 4 Report Has to Prove",
-        "Meta Platforms, Inc. (META) Is Spending Billions on AI: Will the Bet Pay Off?",
-        "As Big Tech Sheds Billions, Meta (META) Signals a Top Buying Opportunity"
+        "Sector Update: Tech Stocks Mixed Wednesday Afternoon",
+        "Exclusive: Meta buys AI startup, joins race to own coding in show of outsized ambition",
+        "Amazon is saying bye-bye to Muse while Walmart is rolling out the welcome mat for Meta\u2019s shopping agent",
+        "How Facebook beat Twitter to Instagram"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 45.2,
+      "rsi_pct": 43.6,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "Ricardo Dom\u00ednguez's Entre Cajas Academy, After Training 5,000 Entrepreneurs, is Building KILTA for Amazon Sellers",
-        "Jeff Bezos has simple advice for retirees watching the AI market",
-        "Shopify vs. Amazon: Which Stock Wins When AI Agents Do the Shopping?",
-        "Amazon.com, Inc. (AMZN) Could Be Entering Its Next Growth Phase: Here\u2019s What Investors Should Know"
+        "Sector Update: Tech Stocks Mixed Wednesday Afternoon",
+        "Nexxus Capital Strengthens Market Position with Latest E-Commerce Acquisition",
+        "Amazon is saying bye-bye to Muse while Walmart is rolling out the welcome mat for Meta\u2019s shopping agent",
+        "Amazon and Walmart's $74 Billion Ad Market Faces an AI Test"
       ]
     },
     "TSLA": {
       "score": 6.0,
-      "rsi_pct": 85.2,
+      "rsi_pct": 84.6,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "fundamental_change",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Binance deposits overtake withdrawals, and the SEC creates crypto FAQs on governance",
-        "Stock Market Election Night: AMD, Arista Earnings Lift Tech Futures, AI Stocks (Live)",
-        "Elon Musk\u2019s Tesla and SpaceX protest NYSE parent's new plan",
-        "Tesla China Brushes Off Weak October, Still Up 21% In 2026"
+        "Nvidia And Tesla Left Behind, As Rest Of Mag7 Rally On Dem\u2019s Big Night",
+        "Elon Musk\u2019s Tesla and SpaceX Stocks Fall After Democrats Sweep Elections, Senator Warns of \u2018Subpoenas\u2019",
+        "Morgan Stanley Calls Tesla the \u201cVery Obvious Player\u201d as Data Centers Outbuy the Grid on Batteries",
+        "Blue Wave Puts Tesla\u2019s SpaceX Merger Premium at Risk as Democrats Eye Musk\u2019s Companies"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "More Pain Ahead for Tech &amp; Broader Market ETFs?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/more-pain-ahead-tech-broader-140000330.html?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "They Thought This Chip Stock Could Hit $120. It Went All the Way to $354",
-      "link": "https://247wallst.com/investing/2026/11/03/they-thought-this-chip-stock-could-hit-120-it-went-all-the-way-to-354/?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "The Stock Market Has Boomed After the Last 19 Midterms. Whether Trump Wins or Loses on Tuesday, Wednesday Could be the Day to Buy",
-      "link": "https://247wallst.com/videos/the-stock-market-has-boomed-after-the-last-19-midterms-whether-trump-wins-or-loses-on-tuesday-wednesday-could-be-the-day-to-buy/?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "SPDR S&amp;P 500 ETF (SPY) Adds Vylor and Apple on Friday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110350124.html?.tsrc=rss",
-      "pub_date": "2026-11-03",
+      "title": "SPDR S&amp;P 500 ETF (SPY) Buys $297.0 Million More Apple on Nov. 2",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110409530.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
       "tickers": [
         "AAPL",
         "SPY"
@@ -179,9 +146,86 @@
       "source_count": 1
     },
     {
-      "title": "The Average Stock Just Beat the S&amp;P 500 by the Most Since 2009",
-      "link": "https://247wallst.com/investing/2026/11/03/the-average-stock-just-beat-the-sp-500-by-the-most-since-2009/?.tsrc=rss",
-      "pub_date": "2026-11-03",
+      "title": "Exchange-Traded Funds, Equity Futures Rise Pre-Bell Wednesday as Investors React to US Midterm Election Results",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-141810509.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "BofA Warned About This Exact Election Night in August",
+      "link": "https://247wallst.com/investing/2026/11/04/bofa-warned-about-this-exact-election-night-in-august/?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Buying Costco (COST) on Monday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-costco-cost-monday-110203555.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Walmart (WMT) Sees $152.6 Million in Net ETF Buying on Monday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/walmart-wmt-sees-152-6-110145544.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Buying Alphabet (GOOG) on Nov. 2",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-alphabet-goog-nov-110141008.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "GOOGL"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Micron (MU) Sees $262.9 Million in Net ETF Buying on Nov. 2",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-sees-262-9-110121077.html?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Job Openings Are Rising, but Hiring Is the Slowest Since 2013. But How?",
+      "link": "https://247wallst.com/investing/2026/11/04/job-openings-are-rising-but-hiring-is-the-slowest-since-2013-but-how/?.tsrc=rss",
+      "pub_date": "2026-11-04",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Counterparty Concentration and Depreciation Define CoreWeave Now",
+      "link": "https://247wallst.com/investing/2026/11/04/counterparty-concentration-and-depreciation-define-coreweave-now/?.tsrc=rss",
+      "pub_date": "2026-11-04",
       "tickers": [
         "NVDA"
       ],
@@ -190,55 +234,11 @@
       "source_count": 1
     },
     {
-      "title": "They Said Micron Could Hit $300. A Year Later, It\u2019s Trading Near $900",
-      "link": "https://247wallst.com/investing/2026/11/03/they-said-micron-could-hit-300-a-year-later-its-trading-near-900/?.tsrc=rss",
-      "pub_date": "2026-11-03",
+      "title": "Midterm Elections Are Over. Here\u2019s What History Says About the Next 12 Months",
+      "link": "https://247wallst.com/investing/2026/11/04/midterm-elections-are-over-heres-what-history-says-about-the-next-12-months/?.tsrc=rss",
+      "pub_date": "2026-11-04",
       "tickers": [
         "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "They Warned This Quantum Stock Had Gone Too Far. A Year Later, It\u2019s Down 75%",
-      "link": "https://247wallst.com/investing/2026/11/03/they-warned-this-quantum-stock-had-gone-too-far-a-year-later-its-down-75/?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "35 ETFs Add to Tesla (TSLA) Holdings on Friday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/35-etfs-add-tesla-tsla-110200783.html?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "TSLA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Bought $93.7 Million of McDonald's (MCD) on Oct. 30",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-93-7-million-110154318.html?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Bought $113.3 Million of Alphabet (GOOGL) on Oct. 30",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-113-3-million-110151241.html?.tsrc=rss",
-      "pub_date": "2026-11-03",
-      "tickers": [
-        "GOOGL"
       ],
       "high_impact": false,
       "sources": [],
