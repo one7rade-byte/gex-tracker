@@ -1,6 +1,6 @@
 {
-  "generated_from_rows": 415,
-  "unique_signal_days": 145,
+  "generated_from_rows": 418,
+  "unique_signal_days": 146,
   "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof. Each bucket below carries its own 'confidence' tag for the same reason \u2014 read it before acting on a bucket's numbers.",
   "never_fired_live": [
     "CRISIS",
@@ -62,19 +62,19 @@
     },
     "HOLD": {
       "5": {
-        "n": 8,
-        "avg_return_pct": 1.57,
-        "hit_rate_pct": 37.5,
+        "n": 9,
+        "avg_return_pct": 1.16,
+        "hit_rate_pct": 33.3,
         "best_pct": 10.1,
         "worst_pct": -2.15,
         "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "10": {
-        "n": 6,
-        "avg_return_pct": 3.8,
-        "hit_rate_pct": 66.7,
+        "n": 7,
+        "avg_return_pct": 2.95,
+        "hit_rate_pct": 57.1,
         "best_pct": 13.87,
-        "worst_pct": -0.35,
+        "worst_pct": -2.17,
         "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       },
       "20": {
@@ -130,9 +130,9 @@
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "20": {
-        "n": 85,
-        "avg_return_pct": 1.69,
-        "hit_rate_pct": 62.4,
+        "n": 86,
+        "avg_return_pct": 1.63,
+        "hit_rate_pct": 61.6,
         "best_pct": 15.22,
         "worst_pct": -3.26,
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
