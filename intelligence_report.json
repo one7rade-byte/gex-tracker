@@ -1,135 +1,134 @@
 {
   "date": "2026-11-05",
-  "generated_at": "07:00 PM",
-  "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is positive at +$3.7B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.6 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Tesla stocks tumble as Democratic sweep raises quest...' Do not buy this dip until news clears. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL AVOID \u2014 company-specific negative news detected: 'Apple cuts employee AI budgets as new CEO looks to rein in c...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 16.6, needs +5.4 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$3.7B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 16.6 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Tesla stocks tumble as Democratic sweep raises quest...' Do not buy this dip until news clears. NVDA OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. AAPL AVOID \u2014 company-specific negative news detected: 'Apple cuts employee AI budgets as new CEO looks to rein in c...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 16.6, needs +5.4 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "generated_at": "11:00 PM",
+  "overall_signal": "WATCH",
+  "voo_vgt_action": "WATCH \u2014 Fear building (7/10, VIX 26.4). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
+  "macro_picture": "SPY GEX is deeply negative at $-17.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.4 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Optimus Rival Agility Robotics Begins Trading After SP...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 5/10, RSI at 27th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 26.4, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-17.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.4 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (7/10, VIX 26.4). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA AVOID \u2014 company-specific negative news detected: 'Tesla Optimus Rival Agility Robotics Begins Trading After SP...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 5/10, RSI at 27th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 26.4, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "mixed",
+    "regime": "high_fear",
     "vix_trend": "rising",
-    "vix_current": 16.61,
+    "vix_current": 26.39,
     "gex_trend": "deteriorating",
-    "gex_current": 3.7,
+    "gex_current": -17.0,
     "fear_trend": "building",
-    "fear_current": 2.0,
-    "bear_current": 2.0,
-    "bull_current": 5.0,
+    "fear_current": 7.0,
+    "bear_current": 9.0,
+    "bull_current": 1.0,
     "neg_gex_days": 8,
     "skew_current": 150.9,
-    "term_struct": "contango",
+    "term_struct": "backwardation",
     "above_200ma": "True",
-    "spy_rsi": 46.84
+    "spy_rsi": 36.47
   },
   "top_opportunity": {
-    "ticker": "META",
+    "ticker": "NVDA",
     "score": 6.0,
-    "reason": "RSI extremely oversold (bottom 4% of own history) | Heavy put buying (P/C top 18% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "company_positive"
+    "reason": "RSI extremely oversold (bottom 2% of own history) | Heavy put buying (P/C top 8% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [
-    "TSLA",
-    "AAPL"
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 4.0,
-      "rsi_pct": 36.3,
+      "score": 5.0,
+      "rsi_pct": 26.8,
       "above_200ma": true,
-      "news": "fundamental_change",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "Jeenius CEO: AI's Next Frontier Is the World It Can't Yet Reach",
+        "Apple (AAPL) Stock Could Be 30% Overvalued Despite Record iPhone Sales",
         "Micron Stock Plunges As Memory-Chip Shortages Cause Ripple Effects",
-        "Qualcomm Says December Won\u2019t Be Its Biggest Quarter Anymore as Apple Walks Away",
-        "Evercore Names 5 Tech Stocks to Own After Blue Wave"
+        "Apple Reportedly Set To Raise $7.5B From Bond Offering Amid Market Selloff",
+        "Apple Stocks Move Lower as Investors Revisit Earnings Quality"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 56.7,
+      "rsi_pct": 47.8,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "Update: Market Chatter: Microsoft Declines Texas Data Center Contract Extension With Nscale, Tightening Data Center Oversight",
-        "Microsoft Reportedly Steps Back From Renewing Data Center Contract With Nvidia-Backed Nscale",
-        "Why Microsoft Stock is Down Today",
-        "Neocloud Stocks Fell More Than Hyperscalers After Election Night. Here's Why Exposure Differs."
+        "Sector Update: Tech Stocks Tumble Late Afternoon",
+        "Nvidia and Microsoft Get a New Spotlight From Bank of America",
+        "Microsoft Stocks Fall 2.59% as Cloud Returns Take Center Stage",
+        "Update: Market Chatter: Microsoft Declines Texas Data Center Contract Extension With Nscale, Tightening Data Center Oversight"
       ]
     },
     "NVDA": {
-      "score": 5.0,
-      "rsi_pct": 10.2,
+      "score": 6.0,
+      "rsi_pct": 2.5,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Not Nvidia. Not AMD. 2 Chip Stocks I'd Buy Before the End of the Year.",
-        "Flatkey Launches Flatkey Compute, a NeoCloud for Dedicated NVIDIA B300 Clusters",
-        "Verisk Analytics, Inc. Q3 2026 Earnings Call Summary",
-        "Millicom International Cellular S.A. Q3 2026 Earnings Call Summary"
+        "Dow Jones Futures: Nasdaq Dives 5.5%, Nvidia, Sandisk, CoreWeave, SpaceX Plunge, But Sell-Off Spreads Beyond AI",
+        "WW International, Inc. Q3 2026 Earnings Call Summary",
+        "Xeris Biopharma Holdings, Inc. Q3 2026 Earnings Call Summary",
+        "The Wendy's Company Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
       "score": 4.0,
-      "rsi_pct": 4.5,
+      "rsi_pct": 5.1,
       "above_200ma": false,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "Midterm Results Put These 4 Renewable, Healthcare &amp; AI Stocks in Focus",
-        "Buy Alphabet for The Limted Downside Floor if The Coiled Spring Asymmetry Doesn\u2019t Pique Your Interest",
-        "Big Tech's massive AI spending is causing another problem for investors",
-        "Superpath and JB Warranties Announce Strategic Marketing Partnership to Help Home Service Contractors Grow"
+        "OpenAI and Anthropic IPOs, volatility in markets after blue wave",
+        "Docusign vs. Monday.com: Which Technology Stock Is a Better Buy for 2027?",
+        "Marc Chaikin Sees Alphabet (GOOGL) as a Conglomerate Hiding Three World-Class Businesses",
+        "Nasdaq Stock Market Correction: History Says This Is What Happens Next"
       ]
     },
     "META": {
       "score": 6.0,
       "rsi_pct": 4.5,
       "above_200ma": false,
-      "news": "company_positive",
+      "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "Meta Has a Capex Guardrail That Few Talk About",
-        "Dan Ives Sees Cash Flow Rebound In MSFT, META, GOOGL, AMZN: Says AI Bubble Fears Thrown Out The Window",
-        "Meta's AI Buildout Runs Into a Political Problem",
-        "Snap Sinks 8% on Q3 Revenue and User Miss as Ad Growth Remains \u201cBelow Our Ambitions\u201d"
+        "Meta (META) Acquires Conductor As New U.S. AI Rules Cloud The Payoff",
+        "Meta, Google, TikTok Challenge New California Youth Social Media Law",
+        "Meta Platforms Stocks Fall 6.76% as AI Investment Tests Cash Flow",
+        "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 65.0,
+      "rsi_pct": 63.7,
       "above_200ma": true,
       "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "Layoffs Hit Lowest October Level Since 2023, Report Shows Ahead of Friday's NFPs",
-        "Amazon switches to Uber Eats for restaurant delivery perks",
-        "Amazon adds over 100 Alexa for Shopping functions",
-        "Snowflake Soars 32% Year to Date: Buy, Sell, or Hold the Stock?"
+        "Amazon-Uber Eats Deal Sends DASH Stock To Biggest Drop In A Year",
+        "Amazon.com (AMZN) Could Gain From Slower AI Data Center Expansion",
+        "Amazon Stocks Decline 3.52% With AWS Profitability in Focus",
+        "X-energy, Fluor Corporation Advance Nuclear Engineering and Design for Second Xe-100 Project"
       ]
     },
     "TSLA": {
       "score": 6.0,
-      "rsi_pct": 66.9,
-      "above_200ma": true,
+      "rsi_pct": 31.8,
+      "above_200ma": false,
       "news": "fundamental_change",
-      "rsi_dir": "recovering",
+      "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "SpaceX, Tesla stocks tumble as Democratic sweep raises questions on merger prospects, AI build-out",
-        "SpaceX and Tesla stocks extend their slide as chip stocks drop: AlphaCheck",
-        "Tesla Sinks 12%, SpaceX Down 9% as Midterm Sweep Puts Merger on \u201cA Much Tougher Regulatory Roadmap\u201d",
-        "Tesla, SpaceX Continue Postelection Plunge. Dems Pledge Investigations Into Trump."
+        "Stocks slide as Wall Street's post-election rally fizzles",
+        "Tesla, SpaceX Continue Postelection Plunge. Dems Pledge Investigations Into Trump.",
+        "SpaceX and Tesla Stock Plunges Have Wiped About $450 Billion in Value Since the Midterms. Is It Time to Buy?",
+        "Tesla Optimus Rival Agility Robotics Begins Trading After SPAC Merger"
       ]
     }
   },
@@ -201,6 +200,17 @@
       "source_count": 1
     },
     {
+      "title": "Market Jitters? How Buffer ETFs Can Help Protect Your Portfolio",
+      "link": "https://finance.yahoo.com/markets/options/articles/market-jitters-buffer-etfs-help-180400264.html?.tsrc=rss",
+      "pub_date": "2026-11-05",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
       "title": "SPY support levels: three key floors to watch",
       "link": "https://finance.yahoo.com/markets/stocks/articles/spy-support-levels-three-key-160935890.html?.tsrc=rss",
       "pub_date": "2026-11-05",
@@ -230,17 +240,6 @@
         "MARKET"
       ],
       "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Stock Market Crash Or Rally? Plan For Both",
-      "link": "https://www.trefis.com/stock/spy/articles/622741/stock-market-crash-or-rally-plan-for-both/2026-11-05?.tsrc=rss",
-      "pub_date": "2026-11-05",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": true,
       "sources": [],
       "source_count": 1
     }
