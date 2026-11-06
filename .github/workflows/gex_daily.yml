@@ -58,12 +58,19 @@ jobs:
         continue-on-error: true
         run: python flow_extras.py
 
+      # One-line "what to do now" read for the dashboard card and the top of
+      # the Telegram summary (quick_action.json).
+      - name: Quick action
+        continue-on-error: true
+        run: python quick_action.py
+
       - name: Save CSVs to repository
         run: |
           git config user.name "GEX Bot"
           git config user.email "one7rade@gmail.com"
           git add gex_log.csv regime_log.csv
           [ -f flow_history.csv ] && git add flow_history.csv
+          [ -f quick_action.json ] && git add quick_action.json
           git diff --staged --quiet || git commit -m "Daily update $(date +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
             git fetch origin main
