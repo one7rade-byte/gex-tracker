@@ -1,5 +1,5 @@
 {
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "action": "WAIT FOR CONFIRMATION",
  "tone": "amber",
  "headline": "Buy setup is building, but only 0/5 confirmations. Don't be first.",
@@ -30,7 +30,7 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Buy Watch",
+   "text": "Strong Buy",
    "tone": "green"
   },
   {
@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.4% in 5 days)",
+   "text": "calm (HYG -0.2% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 28.2, backwardation day 1",
+   "text": "VIX 24.6, backwardation day 2",
    "tone": "red"
   }
  ],
- "flow_date": "2026-11-04",
+ "flow_date": "2026-11-06",
  "flow_10d_pct": {
-  "smh_spy": -8.68,
-  "rsp_spy": 3.93,
+  "smh_spy": -9.51,
+  "rsp_spy": 2.98,
   "defensive_cyclical": 6.83,
-  "hyg_ief": -0.87
+  "hyg_ief": -0.66
  }
 }
