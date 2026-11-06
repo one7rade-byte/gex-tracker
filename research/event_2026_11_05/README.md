@@ -49,3 +49,17 @@ All of these are from **one event**. They are candidates to test against history
 
 ## Daily log
 See `DAILY_NOTES.md`.
+
+## Alert lookback (live log 2026-03-30 → 11-05, run 2026-11-05)
+Base rate: a ≥3% SPY dip within the next 10 days followed 11/143 days (7.7%).
+| Alert | Fired | Followed by ≥3% dip | Read |
+|---|---|---|---|
+| HYG "dropped $X in 5 days" | 31d | 7/30 | **Broken.** It compares to stale Aug-17 data. |
+| SKEW elevated + VIX low | 19–25d | 5/19 | ~3x live, but **no edge over 30 yrs** (11.0% vs 11.9% for all VIX<18 days). Likely a 2026 fluke. |
+| QQQ lags SPY ≥2% over 10d (new) | 32d | 6/31 | ~2.5x live. Can't test long history yet (no QQQ in deep history). |
+| QQQ lag ≥2% AND SKEW≥148/VIX<18 | 10d | 3/10 | ~4x live, fired Oct 14–27 and Nov 4. Tiny n. |
+| GEX flips + after ≥3 neg days | 15d | 3/15 | ~2.5x. Nov 4 was one of these. A one-day flip is not an all-clear. |
+| VIX9D/VIX > 1 | 13d | 0/12 | Coincident, not leading. |
+| Backwardation / composite drop | 1–2d | 0/1 | Coincident: they fire on the drop day itself. |
+| Put wall stepping down | 67d | 7/66 | Noise (≈ base rate). |
+All live numbers come from one bull-market window with overlapping 10-day windows, so they are hypotheses only.
