@@ -18,6 +18,13 @@ P0. NEW DATA (2026-11-05): flow_history.csv (repo root, 1999+, updated daily by 
     (base 22%), but the median 20d SPY return was +3.4% (base +1.2%). A shakeout, then bought. Small n. To do:
     validate it properly (episode-level, MAE, by_era), test it as a "heads-up, then wait for confirmation" rule, and
     check whether credit weakness (HYG/IEF) separates the bad cases.
+P0b. QUICK ACTION tuning (quick_action.py, live on main 2026-11-05; the dashboard card + top line of Telegram).
+    Replay over live history (147 days): HOLD 95, WAIT 39, DEFEND 10, ADD 3. DEFEND fired Oct 21-27 and Nov 2,
+    ahead of the Nov 5 drop (avg 10d fwd -1.37%), but flip-flopped with HOLD day to day. WAIT days averaged +1.48%
+    over 10d, so in this bull sample waiting cost upside. ADD n=3, too few to judge. To do: test a 2-day persistence
+    rule to stop DEFEND/HOLD whipsaw; measure cost of waiting vs drawdown avoided over deep history using
+    flow_history.csv; check whether the "Leaving stocks" flow rule (HYG/IEF 10d <= -1% AND defensive/cyclical
+    >= +3%) is what drove DEFEND and how it did since 1999. Propose changes as a PR; don't edit main directly.
 P1. STRONG_BUY macro gate: does gating on composite EXCLUDING vol_score (credit/flow/growth/skew only) give better
     forward returns / smaller max adverse excursion than the current composite>=1 gate? Recompute components over
     deep history with regime_analyzer's own score_* functions (GEX unavailable pre-2026, so test the non-GEX legs:
