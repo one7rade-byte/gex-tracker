@@ -43,6 +43,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .br{background:#FCEBEB;color:#791F1F}
 .ba{background:#FAEEDA;color:#633806}
 .bb{background:#E6F1FB;color:#0C447C}
+.b-sbuy{background:#3B6D11;color:#fff;font-weight:600}
+.b-exit{background:#791F1F;color:#fff;font-weight:600}
+.b-hold{background:#f0ede8;color:#555}
 .pw{background:#f0ede8;border-radius:20px;height:6px;overflow:hidden;margin-top:3px}
 .pb{height:100%;border-radius:20px}
 table{width:100%;border-collapse:collapse;font-size:12px}
@@ -1425,12 +1428,18 @@ function buildUI(data){
     // GEX and VIX plus an empty prev-days list, leaving rsi out entirely. That
     // silently defaulted RSI to 50 and "days negative" to 0 -
     // so STRONG BUY could never match and real buy days showed as "Hold".
+    // Shows every distinct backend label (order matters: STRONG BUY before
+    // BUY WATCH, STRONG HOLD before HOLD) instead of collapsing to Buy/Hold.
     const u=(s||'').toUpperCase();
-    if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy'};
-    if(u.indexOf('EXIT')>=0)return{bc:'br',label:'Exit'};
-    if(u.indexOf('STRONG HOLD')>=0)return{bc:'bg',label:'Hold'};
-    if(u.indexOf('HOLD')>=0)return{bc:'bb',label:'Hold'};
-    return{bc:'ba',label:'Watch'};
+    if(u.indexOf('STRONG BUY')>=0)return{bc:'b-sbuy',label:'Strong Buy'};
+    if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy Watch'};
+    if(u.indexOf('EXIT')>=0)return{bc:'b-exit',label:'Exit'};
+    if(u.indexOf('STRONG HOLD')>=0)return{bc:'bb',label:'Strong Hold'};
+    if(u.indexOf('HOLD')>=0)return{bc:'b-hold',label:'Hold'};
+    if(u.indexOf('CAUTION')>=0)return{bc:'ba',label:'Caution'};
+    if(u.indexOf('WATCH')>=0)return{bc:'br',label:'Watch'};
+    if(u.indexOf('NEUTRAL')>=0)return{bc:'b-hold',label:'Neutral'};
+    return{bc:'b-hold',label:s?s.split(' ')[0]:'—'};
   }
   function buildTableRows(rows){
     return rows.map(function(e){
