@@ -1,0 +1,10 @@
+rule,fired_date,entry_spy,ret_to_latest_pct,max_dd_after_pct,days_held
+A_trigger_day_close,2026-11-05,734.4,0.0,0.0,0
+B_first_contango_after_trigger,,,,,
+C_first_vix_below_22,,,,,
+D_first_gex_positive,,,,,
+E_first_close_above_zero_gamma,,,,,
+F_first_STABILIZING_state,,,,,
+G_spy_minus_5pct_from_high,2026-11-05,734.4,0.0,0.0,0
+H_spy_minus_10pct_from_high,,,,,
+I_rsi_below_30,,,,,
