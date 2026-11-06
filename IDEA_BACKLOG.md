@@ -8,6 +8,16 @@ were unchanged. The gate penalizes the very panic STRONG_BUY is meant to buy. Si
 don't be last, follow the whales". Confirmation over earliness.
 Event data lives on branch claude/event-2026-11-05 (research/event_2026_11_05/), updated daily.
 
+P0. NEW DATA (2026-11-05): flow_history.csv (repo root, 1999+, updated daily by gex_daily.yml) adds SMH, RSP, IWM,
+    QQQ, HYG/LQD, HYG/IEF, KRE, defensive/cyclical ratio, VVIX, MOVE, USDJPY, copper/gold, BTC, VIX/VIX3M and SPY
+    volume vs its 20d average. Use it for P5/P6 and the items below instead of saying the data isn't available.
+    First read: into Nov 4, SMH/SPY 10d was -8.7% (2.7th pctile) while RSP/SPY was +3.9% (99.6th) and defensive/
+    cyclical +6.8% (96th). Credit (HYG/IEF), VVIX, MOVE and USDJPY were all normal. That is a rotation out of
+    semis/megacap tech, not a systemic de-risk. Quick test, "SMH/SPY 10d <= -6% AND RSP/SPY 10d >= +2.5%": 6 episodes
+    since 1999 (2009-05, 2021-03, 2024-07, 2024-09, 2025-03, 2026-07); a >=3% dip within 10d followed 42% of days
+    (base 22%), but the median 20d SPY return was +3.4% (base +1.2%). A shakeout, then bought. Small n. To do:
+    validate it properly (episode-level, MAE, by_era), test it as a "heads-up, then wait for confirmation" rule, and
+    check whether credit weakness (HYG/IEF) separates the bad cases.
 P1. STRONG_BUY macro gate: does gating on composite EXCLUDING vol_score (credit/flow/growth/skew only) give better
     forward returns / smaller max adverse excursion than the current composite>=1 gate? Recompute components over
     deep history with regime_analyzer's own score_* functions (GEX unavailable pre-2026, so test the non-GEX legs:
@@ -18,7 +28,7 @@ P2. Max adverse excursion: track_signal_performance.py reports hit rate/avg retu
     as they mature.
 P3. Deeper-but-downgraded entries: historically, when the signal downgrades while price falls further below a
     recent STRONG_BUY-type entry, is the lower entry better or worse? Should a second tranche be a rule?
-P4. Fix the stale HYG 5d bug: regime_analyzer.hyg_5d_change reads macro_history.csv, frozen since 2026-08-17, so
+P4. [DONE 2026-11-05 on main, a8606d1] Fix the stale HYG 5d bug: regime_analyzer.hyg_5d_change reads macro_history.csv, frozen since 2026-08-17, so
     every "HYG dropped $X in 5 days" warning since then is false (true 5d on 11-05 was -0.39%). Compute it from
     gex_log.csv's hyg column. Small PR with a test.
 P5. Confirmation-tier entries (Simon's philosophy): across the 28 historical SPY <= -3.5% days, compare early entries
