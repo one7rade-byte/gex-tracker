@@ -1,134 +1,135 @@
 {
   "date": "2026-11-06",
-  "generated_at": "07:00 PM",
-  "overall_signal": "LOAD",
-  "voo_vgt_action": "LOAD \u2014 Fear score 8/10 with deeply negative GEX. This is a high-conviction loading zone for VOO/VGT. Add in tranches, not all at once.",
-  "macro_picture": "SPY GEX is deeply negative at $-19.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 28.2 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'Rethinking Meta Following The Blue Wave and It Isn\u2019t Just La...' Do not buy this dip until news clears. TSLA WATCH \u2014 score 6/10, RSI at 35th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 5/10, RSI at 27th pct. Not yet at peak oversold but building.",
-  "watch_section": "GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-19.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 28.2 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: LOAD \u2014 Fear score 8/10 with deeply negative GEX. This is a high-conviction loading zone for VOO/VGT. Add in tranches, not all at once.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. META AVOID \u2014 company-specific negative news detected: 'Rethinking Meta Following The Blue Wave and It Isn\u2019t Just La...' Do not buy this dip until news clears. TSLA WATCH \u2014 score 6/10, RSI at 35th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 5/10, RSI at 27th pct. Not yet at peak oversold but building.\n\nWATCH FOR: GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: LOAD",
+  "generated_at": "11:00 PM",
+  "overall_signal": "WATCH",
+  "voo_vgt_action": "WATCH \u2014 Fear building (7/10, VIX 24.6). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
+  "macro_picture": "SPY GEX is deeply negative at $-12.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 24.6 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 30th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'TeraWulf Inc (WULF) (Q3 2026) Earnings Call Highlights: Secu...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 24.6, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.4B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 24.6 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (7/10, VIX 24.6). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 4th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 30th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building. GOOGL AVOID \u2014 company-specific negative news detected: 'TeraWulf Inc (WULF) (Q3 2026) Earnings Call Highlights: Secu...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 24.6, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
     "regime": "high_fear",
     "vix_trend": "rising",
-    "vix_current": 28.18,
+    "vix_current": 24.6,
     "gex_trend": "deteriorating",
-    "gex_current": -19.4,
+    "gex_current": -12.4,
     "fear_trend": "building",
-    "fear_current": 8.0,
-    "bear_current": 9.0,
+    "fear_current": 7.0,
+    "bear_current": 8.0,
     "bull_current": 1.0,
     "neg_gex_days": 8,
     "skew_current": 149.37,
     "term_struct": "backwardation",
     "above_200ma": "True",
-    "spy_rsi": 35.46
+    "spy_rsi": 36.84
   },
   "top_opportunity": {
     "ticker": "NVDA",
     "score": 6.0,
-    "reason": "RSI extremely oversold (bottom 2% of own history) | Heavy put buying (P/C top 7% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "neutral"
+    "reason": "RSI extremely oversold (bottom 4% of own history) | Heavy put buying (P/C top 10% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [
-    "META"
+    "GOOGL",
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 5.0,
-      "rsi_pct": 27.2,
+      "rsi_pct": 30.4,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "Apple Is \u201cthe Anti-AI Large Cap Tech Trade,\u201d Says Josh Brown. Now It\u2019s Capping AI Spending",
-        "Apple, Meta, Musk Face New Threat From Democrats",
-        "Apple Stocks Edge Lower as $7.5 Billion Bond Sale Prices Across Seven Tranches",
-        "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives"
+        "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Broken; Apple, Amazon, Microsoft Strong",
+        "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+        "Dan Ives: \u201c20% of the World\u201d Will Access AI Through an Apple Device",
+        "Apple Is \u201cthe Anti-AI Large Cap Tech Trade,\u201d Says Josh Brown. Now It\u2019s Capping AI Spending"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 44.9,
+      "rsi_pct": 39.9,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "Update: Market Chatter: Microsoft to Conclude Deal With Oracle for Renting AI Compute",
-        "Oracle falls 4% as Microsoft reportedly winds down AI cloud capacity deal",
-        "Why The Blue Tsunami Rattled AI Stocks",
-        "Protesters storm Microsoft data centre"
+        "The US adds in the latest  jobs report, markets try to bounce back from an awful sell-off",
+        "A Retiree Who Bought 1,000 Oracle Shares at $39 Just Watched Microsoft Walk Away",
+        "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Broken; Apple, Amazon, Microsoft Strong",
+        "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives"
       ]
     },
     "NVDA": {
       "score": 6.0,
-      "rsi_pct": 2.5,
+      "rsi_pct": 4.4,
       "above_200ma": false,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Humana Inc. Q3 2026 Earnings Call Summary",
-        "Semiconductor Plunged in Thursday's Market Rout. These Were the Ones That Lost the Most.",
-        "Moderna, Inc. Q3 2026 Earnings Call Summary",
-        "Calumet, Inc. Q3 2026 Earnings Call Summary"
+        "Chip rally may be time for investors to 'harvest cash and wait'",
+        "Starwood Property Trust, Inc. Q3 2026 Earnings Call Summary",
+        "Vistra Corp. Q3 2026 Earnings Call Summary",
+        "Global Partners LP Q3 2026 Earnings Call Summary"
       ]
     },
     "GOOGL": {
-      "score": 5.0,
-      "rsi_pct": 5.1,
-      "above_200ma": false,
-      "news": "macro_fear",
-      "rsi_dir": "getting_more_oversold",
-      "days_oversold": 10,
-      "headlines": [
-        "Stock Market Today: Dow Wobbles, Nasdaq Rises After AI Rout; Nvidia, Intel Lead Chip Rebound (Live Coverage)",
-        "Qualcomm Rises 5% on Alphabet\u2019s $548 Million Stake as CEO Sees a \u201cDisconnect\u201d on AI",
-        "'We're rapidly moving toward a tragedy': Why an AI slowdown could be a good thing",
-        "AirSculpt Technologies, Inc. Q3 2026 Earnings Call Summary"
-      ]
-    },
-    "META": {
-      "score": 6.0,
+      "score": 4.0,
       "rsi_pct": 5.1,
       "above_200ma": false,
       "news": "company_negative",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 10,
       "headlines": [
-        "If Meta Reaches $700, Your $1,000 Investment Would Be Worth This Much",
-        "Apple, Meta, Musk Face New Threat From Democrats",
-        "Meta (META) Stock May Be A Bargain After Huge AI Fundraising",
-        "Rethinking Meta Following The Blue Wave and It Isn\u2019t Just Lawsuits"
+        "What Black Hills (BKH) Said on Its Q3 Earnings Call",
+        "Stock Market Today: Nasdaq Rallies In Tech Turnaround; Airbnb Rockets Higher",
+        "Tech Stock Sell-Off 'Golden Buying Opportunity,' Says Dan Ives",
+        "Reddit\u2019s (RDDT) Short-Term Pains May Lead to Long-Term Gains"
+      ]
+    },
+    "META": {
+      "score": 4.0,
+      "rsi_pct": 13.3,
+      "above_200ma": false,
+      "news": "neutral",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 10,
+      "headlines": [
+        "Meta Pauses Data-Scraping Terms Following Publisher Criticism",
+        "Microsoft and Google Face a New Bill as Data Centers \u201cHave to Pay Their Own Costs\u201d",
+        "Bill Ackman Bought Meta \u201cat a Huge Discount.\u201d He Says Analysts Are Missing Its Growth",
+        "Not Alphabet. Not Meta. This Is the Digital Advertising Stock I'd Buy Right Now."
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 64.6,
+      "rsi_pct": 50.0,
       "above_200ma": true,
-      "news": "company_positive",
-      "rsi_dir": "getting_more_oversold",
+      "news": "neutral",
+      "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "Why The Blue Tsunami Rattled AI Stocks",
-        "Amazon Just Delivered a Record-Breaking Quarter. But There\u2019s One Number Investors Shouldn\u2019t Ignore.",
-        "Not One Analyst Rates Amazon a Sell. Is Wall Street Right?",
-        "Walmart to take drone delivery nationwide as Zipline raises $1.5B"
+        "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Broken; Apple, Amazon, Microsoft Strong",
+        "Amazon's CEO Andy Jassy Just Announced Huge News for Amazon Investors",
+        "Microsoft and Google Face a New Bill as Data Centers \u201cHave to Pay Their Own Costs\u201d",
+        "Not Alphabet. Not Meta. This Is the Digital Advertising Stock I'd Buy Right Now."
       ]
     },
     "TSLA": {
-      "score": 6.0,
-      "rsi_pct": 34.8,
+      "score": 4.0,
+      "rsi_pct": 36.1,
       "above_200ma": false,
-      "news": "macro_fear",
-      "rsi_dir": "stable",
+      "news": "fundamental_change",
+      "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Musk bids farewell to Cybertruck as Tesla bets on robots and self-driving",
+        "Elon Musk announces Tesla will wind down Cybertruck production at Texas factory to make room for Cybercab",
         "Musk Kills Tesla Cybertruck. Why He Had to Shoot the Elephant.",
-        "Tesla's Cybertruck is a masterclass in failing upwards",
-        "Tesla Rebounds 5% as Musk Ends Cybertruck to Make Room for \u201cIncreased Cybercab Production\u201d"
+        "Elon Musk Says SpaceX Sales Are \u2018Exploding\u2019\u2014and Forecasts Revenue Twice Wall Street\u2019s Estimate",
+        "Nvidia, Intel, Tesla, AMD, Coherent, Lam Research, Moderna, and More Stocks That Explain Today\u2019s Market"
       ]
     }
   },
