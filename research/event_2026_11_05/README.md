@@ -63,3 +63,8 @@ Base rate: a ≥3% SPY dip within the next 10 days followed 11/143 days (7.7%).
 | Backwardation / composite drop | 1–2d | 0/1 | Coincident: they fire on the drop day itself. |
 | Put wall stepping down | 67d | 7/66 | Noise (≈ base rate). |
 All live numbers come from one bull-market window with overlapping 10-day windows, so they are hypotheses only.
+
+## Whale-flow read (flow_history.csv, added 2026-11-05)
+Into Nov 4 (10-day change, percentile vs 1999+): SMH/SPY −8.7% (2.7th), RSP/SPY +3.9% (99.6th), IWM/SPY +3.6% (96.6th), defensive/cyclical +6.8% (96.3rd). HYG/IEF −0.9% (26th), VVIX, MOVE and USDJPY all mid-range. **Institutions rotated out of semis/megacap tech into equal-weight, small caps and defensives for ~2 weeks. Credit, bond vol and the yen carry trade showed no systemic stress.** SPY volume ran 2.06x its 20-day average on Oct 30.
+"SMH/SPY 10d ≤ −6% AND RSP/SPY 10d ≥ +2.5%": 6 episodes since 1999, ≥3% dip within 10d 42% (base 22%), median 20d SPY +3.4% (base +1.2%). Small n, so the research agent will validate it (backlog P0).
+Note: the regime_analyzer HYG fix (main a8606d1) means Nov 5's "HYG dropped $2.23" warning was false. With only 2 real reasons, black_swan_watch would have read False.
