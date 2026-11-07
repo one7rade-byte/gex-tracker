@@ -25,11 +25,7 @@ P0b. QUICK ACTION tuning (quick_action.py, live on main 2026-11-05; the dashboar
     rule to stop DEFEND/HOLD whipsaw; measure cost of waiting vs drawdown avoided over deep history using
     flow_history.csv; check whether the "Leaving stocks" flow rule (HYG/IEF 10d <= -1% AND defensive/cyclical
     >= +3%) is what drove DEFEND and how it did since 1999. Propose changes as a PR; don't edit main directly.
-P1. STRONG_BUY macro gate: does gating on composite EXCLUDING vol_score (credit/flow/growth/skew only) give better
-    forward returns / smaller max adverse excursion than the current composite>=1 gate? Recompute components over
-    deep history with regime_analyzer's own score_* functions (GEX unavailable pre-2026, so test the non-GEX legs:
-    RSI<50, SKEW>138, VIX>17). Compare days the current gate blocks only because of vol_score vs days it passes.
-    Base rate + by_era check required.
+P1. [TESTED 2026-11-07 — rejected, see WEEKLY_RESEARCH_LOG.md] composite-ex-vol gate. Keep composite>=1.
 P2. Max adverse excursion: track_signal_performance.py reports hit rate/avg return only. Add worst drawdown after
     signal (5/10/20d). A 100% hit rate can hide a -3% dip first. Resolve Oct 30–Nov 5 STRONG_BUY/BUY_WATCH outcomes
     as they mature.
@@ -45,6 +41,12 @@ P6. QQQ lagging SPY >= 2-3% over 10d as an early heads-up (2.5x base rate live, 
     (Yahoo, 1999+). If the sandbox can't fetch it, add a fetch step to a workflow_dispatch workflow and say so.
 P7. 2-day GEX confirmation: a 1-day GEX flip positive after >=3 negative days (Nov 4) preceded a >=3% dip 3/15 times
     live. Test whether requiring 2 consecutive positive days before GREEN reduces false all-clears.
+P8. (new 2026-11-07) STRONG_BUY re-fire / "early not confirmed" problem. Live: 7 STRONG_BUYs Oct 16-Nov 3 (SPY 752-764,
+    composite 4.5-4.7, VIX 18.4-21.2) all -2.2% to -3.7% by 11-06; the gate never blocked them. Test, with the deep proxy
+    (RSI<50/SKEW>138/VIX>17 legs, no GEX): (a) first fire of a cluster vs re-fires when legs already fired >=3 of prior
+    10 days and price is below the first fire; (b) a whale-flow veto (SMH/SPY 10d <= -6% or defensive/cyclical 10d >= +3%,
+    flow_history.csv) on STRONG_BUY; (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
+    17 episodes) vs 69.2%/+1.42% at RSI<50. Report fire-rate cost (fewer signals) alongside accuracy. Overlaps P3/P0.
 
 ## General backlog (from earlier runs)
 1. COT (CFTC) positioning as a leading indicator for NQ/ES/gold futures [needs cftc.gov allowlisted]

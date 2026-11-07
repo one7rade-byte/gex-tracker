@@ -1,0 +1,14 @@
+{'blocked': '2015-12-11', 'blocked_px': 201.88, 'wait_days': 2, 'confirm': '2015-12-15', 'cost_of_wait_pct': 1.56, 'early_to_common_end': -4.07, 'late_to_common_end': -5.55, 'early_mae20': -4.93, 'late_mae20': -7.9, 'late_fwd20': -6.39}
+{'blocked': '2016-01-08', 'blocked_px': 191.92, 'wait_days': 1, 'confirm': '2016-01-11', 'cost_of_wait_pct': 0.1, 'early_to_common_end': -3.39, 'late_to_common_end': -3.48, 'early_mae20': -3.39, 'late_mae20': -3.48, 'late_fwd20': -3.48}
+{'blocked': '2016-06-24', 'blocked_px': 203.24, 'wait_days': 1, 'confirm': '2016-06-27', 'cost_of_wait_pct': -1.79, 'early_to_common_end': 6.6, 'late_to_common_end': 8.54, 'early_mae20': -1.79, 'late_mae20': 1.8, 'late_fwd20': 8.59}
+{'blocked': '2022-04-27', 'blocked_px': 417.27, 'wait_days': 5, 'confirm': '2022-05-04', 'cost_of_wait_pct': 2.83, 'early_to_common_end': -4.77, 'late_to_common_end': -7.39, 'early_mae20': -6.66, 'late_mae20': -9.23, 'late_fwd20': -2.72}
+{'blocked': '2024-08-05', 'blocked_px': 517.38, 'wait_days': 6, 'confirm': '2024-08-13', 'cost_of_wait_pct': 4.77, 'early_to_common_end': 6.71, 'late_to_common_end': 1.85, 'early_mae20': 0.25, 'late_mae20': -0.31, 'late_fwd20': 2.28}
+{'blocked': '2024-10-31', 'blocked_px': 568.64, 'wait_days': 4, 'confirm': '2024-11-06', 'cost_of_wait_pct': 3.94, 'early_to_common_end': 5.96, 'late_to_common_end': 1.95, 'early_mae20': 0.21, 'late_mae20': -0.9, 'late_fwd20': 2.64}
+{'blocked': '2025-03-03', 'blocked_px': 583.77, 'wait_days': 10, 'confirm': '2025-03-17', 'cost_of_wait_pct': -2.85, 'early_to_common_end': -4.18, 'late_to_common_end': -1.37, 'early_mae20': -5.54, 'late_mae20': -12.46, 'late_fwd20': -4.94}
+{'blocked': '2025-04-03', 'blocked_px': 536.7, 'wait_days': 13, 'confirm': '2025-04-23', 'cost_of_wait_pct': -0.24, 'early_to_common_end': 5.6, 'late_to_common_end': 5.85, 'early_mae20': -7.49, 'late_mae20': 2.1, 'late_fwd20': 8.86}
+{'blocked': '2026-03-27', 'blocked_px': 634.09, 'wait_days': 2, 'confirm': '2026-03-31', 'cost_of_wait_pct': 2.56, 'early_to_common_end': 12.79, 'late_to_common_end': 9.97, 'early_mae20': -0.33, 'late_mae20': 0.75, 'late_fwd20': 9.42}
+
+B episodes: 9  with confirmation within 20d: 9
+median cost of waiting %: 1.56  mean: 1.21
+mean MAE20 early: -3.3  late: -3.29
+mean to common end early: 2.36  late: 1.15
