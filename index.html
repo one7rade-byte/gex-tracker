@@ -43,6 +43,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .br{background:#FCEBEB;color:#791F1F}
 .ba{background:#FAEEDA;color:#633806}
 .bb{background:#E6F1FB;color:#0C447C}
+.b-sbuy{background:#3B6D11;color:#fff;font-weight:600}
+.b-exit{background:#791F1F;color:#fff;font-weight:600}
+.b-hold{background:#f0ede8;color:#555}
 .pw{background:#f0ede8;border-radius:20px;height:6px;overflow:hidden;margin-top:3px}
 .pb{height:100%;border-radius:20px}
 table{width:100%;border-collapse:collapse;font-size:12px}
@@ -343,6 +346,38 @@ const INTEL_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/mai
 let pChart=null,gChart=null,vChart=null,rsiChart=null,termChart=null,fearChart=null,bearChart=null,bullChart=null;
 let ALL_DATA=[];
 const WIN=60;
+
+// ── Quick Action card (from quick_action.json, same source as Telegram) ──
+const QA_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/quick_action.json';
+const QA_TONE={green:['#EAF3DE','#27500A','#3B6D11'],amber:['#FAEEDA','#633806','#BA7517'],
+  red:['#FCEBEB','#791F1F','#A32D2D'],blue:['#E6F1FB','#0C447C','#185FA5'],gray:['#f0ede8','#555','#999']};
+function qaEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+async function buildQuickAction(lastDate){
+  const el=document.getElementById('quickAction');if(!el)return;
+  try{
+    const r=await fetch(QA_URL+'?t='+Date.now());if(!r.ok)return;
+    const q=await r.json();
+    const t=QA_TONE[q.tone]||QA_TONE.gray;
+    const stale=lastDate&&q.date!==lastDate;
+    const reasons=(q.reasons||[]).map(function(x){
+      const c=QA_TONE[x.tone]||QA_TONE.gray;
+      return '<div style="display:flex;gap:8px;align-items:baseline;padding:3px 0">'+
+        '<span style="width:8px;height:8px;border-radius:50%;flex:none;background:'+c[2]+'"></span>'+
+        '<span style="font-size:11px;color:#888;min-width:68px">'+qaEsc(x.label)+'</span>'+
+        '<span style="font-size:12px;color:#333">'+qaEsc(x.text)+'</span></div>';}).join('');
+    const checks=(q.checks||[]).map(function(c){
+      return '<span style="font-size:10px;padding:2px 7px;border-radius:10px;margin:2px 4px 2px 0;display:inline-block;'+
+        (c.ok?'background:#EAF3DE;color:#27500A':'background:#f0ede8;color:#999')+'">'+(c.ok?'✓ ':'○ ')+qaEsc(c.label)+'</span>';}).join('');
+    el.innerHTML='<div class="card" style="margin-bottom:12px;border-left:4px solid '+t[2]+';background:'+t[0]+'">'+
+      '<div style="font-size:10px;letter-spacing:.06em;color:'+t[1]+';opacity:.8">QUICK ACTION · '+qaEsc(q.date)+(stale?' (not updated for latest pull)':'')+'</div>'+
+      '<div style="font-size:22px;font-weight:700;color:'+t[1]+';margin:2px 0 4px">'+qaEsc(q.action)+'</div>'+
+      '<div style="font-size:13px;color:'+t[1]+';margin-bottom:8px">'+qaEsc(q.headline)+'</div>'+
+      reasons+
+      '<div style="margin-top:8px;font-size:10px;color:#888">Confirmations to add ('+q.confirmations+'/'+q.confirmations_total+')</div>'+
+      '<div>'+checks+'</div>'+
+      '<div style="margin-top:6px;font-size:9px;color:#aaa">Rules-based read from this system, not financial advice.</div></div>';
+  }catch(e){console.error('quick action:',e);}
+}
 
 async function fetchCSV(){
   const r=await fetch(CSV_URL+'?t='+Date.now());
@@ -1425,12 +1460,18 @@ function buildUI(data){
     // GEX and VIX plus an empty prev-days list, leaving rsi out entirely. That
     // silently defaulted RSI to 50 and "days negative" to 0 -
     // so STRONG BUY could never match and real buy days showed as "Hold".
+    // Shows every distinct backend label (order matters: STRONG BUY before
+    // BUY WATCH, STRONG HOLD before HOLD) instead of collapsing to Buy/Hold.
     const u=(s||'').toUpperCase();
-    if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy'};
-    if(u.indexOf('EXIT')>=0)return{bc:'br',label:'Exit'};
-    if(u.indexOf('STRONG HOLD')>=0)return{bc:'bg',label:'Hold'};
-    if(u.indexOf('HOLD')>=0)return{bc:'bb',label:'Hold'};
-    return{bc:'ba',label:'Watch'};
+    if(u.indexOf('STRONG BUY')>=0)return{bc:'b-sbuy',label:'Strong Buy'};
+    if(u.indexOf('BUY')>=0)return{bc:'bg',label:'Buy Watch'};
+    if(u.indexOf('EXIT')>=0)return{bc:'b-exit',label:'Exit'};
+    if(u.indexOf('STRONG HOLD')>=0)return{bc:'bb',label:'Strong Hold'};
+    if(u.indexOf('HOLD')>=0)return{bc:'b-hold',label:'Hold'};
+    if(u.indexOf('CAUTION')>=0)return{bc:'ba',label:'Caution'};
+    if(u.indexOf('WATCH')>=0)return{bc:'br',label:'Watch'};
+    if(u.indexOf('NEUTRAL')>=0)return{bc:'b-hold',label:'Neutral'};
+    return{bc:'b-hold',label:s?s.split(' ')[0]:'—'};
   }
   function buildTableRows(rows){
     return rows.map(function(e){
@@ -1454,7 +1495,8 @@ function buildUI(data){
   const tableRows=buildTableRows(allReversed.slice(0,DEFAULT_HIST_DAYS));
 
   document.getElementById('app').innerHTML=
-    '<div id="regimePanel" class="card" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
+    '<div id="quickAction"></div>'+
+    '<div id="regimePanel"class="card" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
     buildScorePanel(last,data)+
     '<div class="card"><div class="cl">QQQ GEX layer — divergence signals</div>'+buildQQQPanel(last)+'</div>'+
@@ -1565,6 +1607,7 @@ async function init(){
     // Fetch regime log in parallel
     ALL_DATA=data;
     buildUI(data);
+    buildQuickAction(data[data.length-1].d);
     fetchRegime().then(function(regime){
       ALL_REGIME=regime;
       buildRegimePanel(regime);

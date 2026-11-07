@@ -1,0 +1,30 @@
+name: Flow Extras Backfill
+# One-time / occasional: rebuilds flow_history.csv with full daily history
+# (1999+) for the research agent. The daily rows are added by the
+# "Collect flow extras" step in gex_daily.yml.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: python flow_extras.py --backfill
+      - name: Commit flow_history.csv
+        run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add flow_history.csv
+          git diff --staged --quiet && exit 0
+          git commit -m "Flow extras backfill $(date +'%Y-%m-%d')"
+          for i in 1 2 3 4 5; do
+            git fetch origin main && git rebase origin/main || git rebase --abort
+            git push && break
+            sleep $((i*10))
+          done
