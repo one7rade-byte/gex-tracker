@@ -302,6 +302,23 @@ def load_macro_history():
         return list(csv.DictReader(f))
 
 
+def hyg_change_n_days(date, hyg, n=5):
+    """Dollar change in HYG vs the SPY row n trading days before `date`
+    in gex_log.csv. Returns None if there isn't enough history."""
+    if not os.path.exists(GEX_CSV):
+        return None
+    with open(GEX_CSV, newline='', encoding='utf-8') as f:
+        rows = [r for r in csv.DictReader(f)
+                if r.get('ticker', '').strip() == 'SPY' and r.get('date', '') < date]
+    if len(rows) < n:
+        return None
+    try:
+        old = float(rows[-n].get('hyg') or '')
+    except ValueError:
+        return None
+    return round(hyg - old, 3)
+
+
 def load_gex_latest():
     """Load the most recent SPY row from gex_log.csv."""
     if not os.path.exists(GEX_CSV):
@@ -435,15 +452,13 @@ def main():
     # VIX9D ratio
     vix9d_ratio = round(vix9d / vix, 3) if vix9d and vix and vix > 0 else None
 
-    # HYG 5-day change — look back in macro history
+    # HYG 5-day change — 5 trading days back in gex_log.csv (updated every
+    # pull). Fixed 2026-11-05: this used to read macro_history.csv, which
+    # stopped updating on 2026-08-17, so every "HYG dropped $X in 5 days"
+    # warning after that compared against mid-August HYG, not 5 days ago.
     hyg_5d_change = None
-    if hyg and macro_hist:
-        # Find rows from 5-7 trading days ago
-        old_rows = [r for r in macro_hist[-10:] if r.get('hyg')]
-        if len(old_rows) >= 5:
-            old_hyg = n(old_rows[-5].get('hyg'))
-            if old_hyg:
-                hyg_5d_change = round(hyg - old_hyg, 3)
+    if hyg:
+        hyg_5d_change = hyg_change_n_days(date, hyg, 5)
 
     # SKEW signal
     if skew and vix:

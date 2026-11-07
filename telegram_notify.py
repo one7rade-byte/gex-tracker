@@ -375,6 +375,19 @@ def main():
 
     # Send main summary
     main_msg = build_message(gex, regime, mag7)
+    # Quick Action line on top (same source as the dashboard card). Only used
+    # if quick_action.json is for today's GEX date, so a failed step never
+    # shows a stale action.
+    try:
+        import quick_action
+        with open(quick_action.OUT, encoding="utf-8") as fh:
+            qa_date = json.load(fh).get("date")
+        if qa_date == gex.get("date"):
+            qa = quick_action.telegram_line()
+            if qa:
+                main_msg = qa + "\n\n" + main_msg
+    except Exception as e:
+        print(f"  (quick action skipped: {e})")
     send_telegram(main_msg)
 
     # Send deep analysis as second message

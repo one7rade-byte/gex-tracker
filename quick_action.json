@@ -1,0 +1,59 @@
+{
+ "date": "2026-11-06",
+ "action": "WAIT FOR CONFIRMATION",
+ "tone": "amber",
+ "headline": "Buy setup is building, but only 0/5 confirmations. Don't be first.",
+ "confirmations": 0,
+ "confirmations_total": 5,
+ "checks": [
+  {
+   "label": "Fear easing: VIX curve back in contango",
+   "ok": false
+  },
+  {
+   "label": "VIX below 22",
+   "ok": false
+  },
+  {
+   "label": "Dealers supportive: GEX positive 2 days",
+   "ok": false
+  },
+  {
+   "label": "SPY back above zero gamma",
+   "ok": false
+  },
+  {
+   "label": "Credit holding: HYG flat or up over 5 days",
+   "ok": false
+  }
+ ],
+ "reasons": [
+  {
+   "label": "Signal",
+   "text": "Strong Buy",
+   "tone": "green"
+  },
+  {
+   "label": "Big money",
+   "text": "Rotating OUT of tech into the rest of the market, not leaving stocks",
+   "tone": "amber"
+  },
+  {
+   "label": "Credit",
+   "text": "calm (HYG -0.3% in 5 days)",
+   "tone": "green"
+  },
+  {
+   "label": "Fear",
+   "text": "VIX 25.6, backwardation day 2",
+   "tone": "red"
+  }
+ ],
+ "flow_date": "2026-11-06",
+ "flow_10d_pct": {
+  "smh_spy": -9.04,
+  "rsp_spy": 3.12,
+  "defensive_cyclical": 6.88,
+  "hyg_ief": -0.65
+ }
+}
