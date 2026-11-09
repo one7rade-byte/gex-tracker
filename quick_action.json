@@ -1,18 +1,18 @@
 {
- "date": "2026-11-06",
- "action": "WAIT FOR CONFIRMATION",
- "tone": "amber",
- "headline": "Buy setup is building, but only 0/5 confirmations. Don't be first.",
- "confirmations": 0,
+ "date": "2026-11-09",
+ "action": "HOLD",
+ "tone": "blue",
+ "headline": "Trend intact. Hold.",
+ "confirmations": 3,
  "confirmations_total": 5,
  "checks": [
   {
    "label": "Fear easing: VIX curve back in contango",
-   "ok": false
+   "ok": true
   },
   {
    "label": "VIX below 22",
-   "ok": false
+   "ok": true
   },
   {
    "label": "Dealers supportive: GEX positive 2 days",
@@ -24,14 +24,14 @@
   },
   {
    "label": "Credit holding: HYG flat or up over 5 days",
-   "ok": false
+   "ok": true
   }
  ],
  "reasons": [
   {
    "label": "Signal",
-   "text": "Strong Buy",
-   "tone": "green"
+   "text": "Hold",
+   "tone": "blue"
   },
   {
    "label": "Big money",
@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.3% in 5 days)",
+   "text": "calm (HYG +0.7% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 25.6, backwardation day 2",
-   "tone": "red"
+   "text": "VIX 20.2, contango",
+   "tone": "green"
   }
  ],
- "flow_date": "2026-11-06",
+ "flow_date": "2026-11-09",
  "flow_10d_pct": {
-  "smh_spy": -9.04,
-  "rsp_spy": 3.12,
-  "defensive_cyclical": 6.88,
-  "hyg_ief": -0.65
+  "smh_spy": -8.9,
+  "rsp_spy": 3.63,
+  "defensive_cyclical": 6.5,
+  "hyg_ief": -0.36
  }
 }
