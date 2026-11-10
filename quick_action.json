@@ -1,8 +1,8 @@
 {
- "date": "2026-11-09",
- "action": "HOLD",
- "tone": "blue",
- "headline": "Trend intact. Hold.",
+ "date": "2026-11-10",
+ "action": "WAIT FOR CONFIRMATION",
+ "tone": "amber",
+ "headline": "Buy setup is building, but only 3/5 confirmations. Don't be first.",
  "confirmations": 3,
  "confirmations_total": 5,
  "checks": [
@@ -30,8 +30,8 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Hold",
-   "tone": "blue"
+   "text": "Strong Buy",
+   "tone": "green"
   },
   {
    "label": "Big money",
@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG +0.8% in 5 days)",
+   "text": "calm (HYG +0.3% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 19.9, contango",
+   "text": "VIX 20.4, contango",
    "tone": "green"
   }
  ],
- "flow_date": "2026-11-09",
+ "flow_date": "2026-11-10",
  "flow_10d_pct": {
-  "smh_spy": -8.49,
-  "rsp_spy": 3.4,
-  "defensive_cyclical": 6.27,
-  "hyg_ief": -0.34
+  "smh_spy": -11.4,
+  "rsp_spy": 4.31,
+  "defensive_cyclical": 9.6,
+  "hyg_ief": -0.42
  }
 }
