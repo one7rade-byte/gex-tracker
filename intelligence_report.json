@@ -1,142 +1,140 @@
 {
-  "date": "2026-11-09",
-  "generated_at": "11:00 PM",
+  "date": "2026-11-10",
+  "generated_at": "07:00 PM",
   "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 20.2. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
-  "macro_picture": "SPY GEX is negative at $-3.7B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 20.2 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 154 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 8th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 5/10. Below 200MA \u2014 scale in slowly. META WATCH \u2014 score 5/10, RSI at 29th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 20.2, needs +1.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-3.7B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 20.2 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 154 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 20.2. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 8th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 5/10. Below 200MA \u2014 scale in slowly. META WATCH \u2014 score 5/10, RSI at 29th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 20.2, needs +1.8 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.9. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
+  "macro_picture": "SPY GEX is negative at $-3.2B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 19.9 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 7th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. META WATCH \u2014 score 5/10, RSI at 29th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 19.9, needs +2.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-3.2B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 19.9 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.9. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 3th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (high confidence) \u2014 RSI at 7th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. META WATCH \u2014 score 5/10, RSI at 29th pct. Not yet at peak oversold but building. AAPL WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.9, needs +2.1 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "bear_warning",
+    "regime": "negative_gex",
     "vix_trend": "rising",
-    "vix_current": 20.22,
+    "vix_current": 19.92,
     "gex_trend": "deteriorating",
-    "gex_current": -3.7,
+    "gex_current": -3.2,
     "fear_trend": "building",
     "fear_current": 3.0,
-    "bear_current": 5.0,
+    "bear_current": 4.0,
     "bull_current": 2.0,
     "neg_gex_days": 8,
-    "skew_current": 153.55,
+    "skew_current": 150.34,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 43.09
+    "spy_rsi": 43.06
   },
   "top_opportunity": {
     "ticker": "NVDA",
     "score": 6.0,
-    "reason": "RSI extremely oversold (bottom 2% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 10% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "macro_fear"
+    "reason": "RSI extremely oversold (bottom 3% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 13% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "neutral"
   },
-  "avoid_names": [
-    "TSLA"
-  ],
+  "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 39.6,
+      "rsi_pct": 40.0,
       "above_200ma": true,
-      "news": "company_positive",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "AI stocks have 2 major headwinds driving recent volatility",
-        "Apple Makes Major AI Pricing Move as New Revenue Opportunity Emerges",
-        "Singapore Saved Apple $2.7 Billion in Taxes",
-        "Where Will Apple Stock Be in 5 Years?"
+        "No chair and 30-year tenures: Will Nvidia's board go soft on Jensen?",
+        "Apple Just Hit $5 Trillion. Its \u201cBiggest Competition\u201d Is a SpaceX Phone, Says Gene Munster",
+        "Madonna, Bruno Mars, Megan Moroney, Detroit Lions, McDonald\u2019s and Other Leading Brands Headline Community\u2019s Launch of a New Era in Interactive Fan Engagement",
+        "Apple Is Holding Strong While Big Tech Sells Off. Is It Next?"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 50.9,
+      "rsi_pct": 53.1,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "stable",
       "days_oversold": 4,
       "headlines": [
-        "Soprano to Support Organisations Navigating Microsoft Entra MFA Changes",
-        "Bill Gates Microsoft Copilot AI Predicts a SOL Crypto Explosion",
-        "The Stock Market Is \u201cPetrified of Oracle\u2019s Balance Sheet\u201d as Microsoft Walks Away",
-        "$300,000 in Cisco, IBM and Microsoft Could Pay You $5,150 a Year"
+        "The Midterms' Biggest AI Losers Aren't the Big Spenders. They're the Borrowers.",
+        "Microsoft Pushes Trump to Halt a Ban on Chinese Optics. Coherent Is Already \u201cBasically Booked Out\u201d",
+        "Microsoft and IBM Unite for a Giant AI Agent Push",
+        "Microsoft stock falls  as Anthropic takes aim at Excel and workplace software"
       ]
     },
     "NVDA": {
       "score": 6.0,
-      "rsi_pct": 1.9,
+      "rsi_pct": 3.1,
       "above_200ma": false,
-      "news": "macro_fear",
-      "rsi_dir": "stable",
-      "days_oversold": 10,
-      "headlines": [
-        "AI infrastructure spending is still accelerating\u2014but can it last?",
-        "Why the Jensen Huang scandal is a 'net loss for China'",
-        "GTA VI Launches in 10 Days, and Take-Two's Forecast Might Be Too Low. Is the Stock a Buy Before Nov. 19?",
-        "Stock Market Today, Nov. 9: Nvidia Stock Plunges 4% on Jensen Huang Investigation as Nasdaq Surges Nearly 3%"
-      ]
-    },
-    "GOOGL": {
-      "score": 5.0,
-      "rsi_pct": 8.2,
-      "above_200ma": false,
-      "news": "company_positive",
-      "rsi_dir": "getting_more_oversold",
-      "days_oversold": 10,
-      "headlines": [
-        "Advanced Micro Devices (AMD) Lands EPYC Role In New AI Security System",
-        "Trade Desk\u2019s Earnings Beat Defies Analysts\u2019 \u2018Lost Year\u2019 Projections",
-        "Berkshire Hathaway May Have Sold More Bank of America Stock in the Third Quarter",
-        "Why Alphabet Stock Was Moving Higher Today"
-      ]
-    },
-    "META": {
-      "score": 5.0,
-      "rsi_pct": 28.9,
-      "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Meta Platforms Stock: Is it a Steal of a Deal at $650?",
-        "Instagram makes major AI change for millions of teen users",
-        "Why Meta Platforms Stock Rallied on Monday",
-        "Meta Stocks Climb 4.82% as JPMorgan Bets on AI-Driven Ad Growth"
+        "Alleged plot to spy on Jensen Huang: Why it's bullish for AI.",
+        "Top strategist: Nvidia CEO Jensen Huang's affair highlights key risk for tech companies",
+        "Prediction: This Under-the-Radar Artificial Intelligence (AI) Stock Is Going to Double Over the Next 12 Months",
+        "The Midterms' Biggest AI Losers Aren't the Big Spenders. They're the Borrowers."
+      ]
+    },
+    "GOOGL": {
+      "score": 5.0,
+      "rsi_pct": 6.9,
+      "above_200ma": false,
+      "news": "macro_fear",
+      "rsi_dir": "getting_more_oversold",
+      "days_oversold": 10,
+      "headlines": [
+        "5 AI Stock Picks and Performance of Billionaire Stanley Druckenmiller",
+        "Google, Nvidia and Microsoft \u201cLiterally Feeding Themselves Money\u201d with $26 Billion Anthropic IPO Buy",
+        "Anthropic IPO Could Value Claude Maker at $1.4 Trillion",
+        "Microsoft stock falls  as Anthropic takes aim at Excel and workplace software"
+      ]
+    },
+    "META": {
+      "score": 5.0,
+      "rsi_pct": 29.4,
+      "above_200ma": true,
+      "news": "macro_fear",
+      "rsi_dir": "stable",
+      "days_oversold": 10,
+      "headlines": [
+        "Why a Former AI Executive Changed Her Career to Help Young Workers",
+        "Meta\u2019s Lease Could Back Up to $4.6 Billion in Louisiana Bonds for Applied Digital\u2019s AI Campus",
+        "Trump Media Jumps 9% as Crypto Gains Drive $410 Million Q3 Profit; Rumble Falls 3%, Meta Holds Steady",
+        "Meta\u2019s Former Security Chief: AI Attack Costs Are \u201cGoing Towards Zero.\u201d CrowdStrike Sells the Defense"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 57.9,
+      "rsi_pct": 56.9,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "Jeff Bezos says your family is 'not going to need' 2 paychecks thanks to AI",
-        "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
-        "Amazon Stocks Rise 4.05% as JPMorgan Adds It to Focus List on AWS",
-        "Amazon Is \u201cthe Cheapest It\u2019s Been\u201d in Years. Its P/E Fell From 34 to 21"
+        "The Midterms' Biggest AI Losers Aren't the Big Spenders. They're the Borrowers.",
+        "Amazon Stock Climbs as Ring Unveils a Security Drone That Flies Around Your Home",
+        "Amazon Stocks Rise 1.15% as Anthropic IPO Range Puts a Price on Its Stake",
+        "Prediction: Amazon Stock Could Be Poised for Its Next Big Rally in 2027"
       ]
     },
     "TSLA": {
-      "score": 3.0,
-      "rsi_pct": 44.7,
+      "score": 0.0,
+      "rsi_pct": 45.0,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Elon Musk's Cybertruck pivot highlights the founder-CEO advantage",
-        "Nvidia $5T CEO scandal, AI legislation headaches, and Tesla returns deposits for Cybertrucks",
-        "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
-        "Overall Tesla China Sales Rise 10%, Sales Inside China Sink To 4-Year Low; Robotaxi Launches New Market"
+        "Sargasso Capital Management Announces Project Kepler: The Case for Combining Tesla &amp; SpaceX",
+        "Tesla Bull Predicts Democrats Will \u201cBlock Autonomy,\u201d a Bigger Risk Than Data Centers",
+        "Lucid Jumps 8% on $1.75 Billion Liquidity Boost Despite Q3 Miss; Rivian Dips, Tesla Little Changed",
+        "Elon Musk Says Tesla Will Have to Return Cybertruck Deposits to 'A Lot of People,' Rejects Unprofitability Reports"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Amid Global Market Recovery",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-141309144.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Tuesday Amid October Consumer Inflation Report",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-141241479.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "SPY"
       ],
@@ -145,11 +143,12 @@
       "source_count": 1
     },
     {
-      "title": "SPDR S&amp;P 500 ETF (SPY) Sells $182.9 Million of Apple on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110431430.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "SPDR S&amp;P 500 ETF (SPY) Sells Apple and Nvidia on Nov. 6",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110412540.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "AAPL",
+        "NVDA",
         "SPY"
       ],
       "high_impact": false,
@@ -157,9 +156,43 @@
       "source_count": 1
     },
     {
-      "title": "Citigroup\u2019s Jane Fraser Says Hedge Funds Drove the Sell-Off. Here\u2019s Why She Doesn\u2019t Expect It to Get Worse",
-      "link": "https://247wallst.com/investing/2026/11/09/citigroups-jane-fraser-says-hedge-funds-drove-the-sell-off-heres-why-she-doesnt-expect-it-to-get-worse/?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "ETF Activity: SPY Leads $4.19 Billion Outflow on Nov. 6",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etf-activity-spy-leads-4-110011320.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
+      "tickers": [
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Cathie Wood Is Buying Nvidia Again, Adding 90,443 Shares During the Huang Selloff",
+      "link": "https://247wallst.com/investing/2026/11/10/cathie-wood-is-buying-nvidia-again-adding-90443-shares-during-the-huang-selloff/?.tsrc=rss",
+      "pub_date": "2026-11-10",
+      "tickers": [
+        "NVDA"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Jensen Huang's Reported Affair With Suspected Chinese Spy Pushes Nvidia Stock to Most Oversold Level Since 2019",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huangs-reported-affair-suspected-114505663.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
+      "tickers": [
+        "NVDA",
+        "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of Teradyne (TER) on Nov. 6",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-teradyne-ter-110332108.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "MARKET"
       ],
@@ -168,9 +201,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Net Sellers of American Express (AXP) on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-american-express-110412394.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "ETFs Are Net Sellers of Applied Materials (AMAT) on Friday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-applied-materials-110246005.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "MARKET"
       ],
@@ -179,9 +212,20 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Net Sellers of NextEra Energy (NEE) on Thursday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-nextera-energy-110357659.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "NVIDIA (NVDA) Sees $275.6 Million in Net ETF Selling on Nov. 6",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-sees-275-6-110219903.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
+      "tickers": [
+        "NVDA"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of Advanced Micro Devices (AMD) on Nov. 6",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-advanced-micro-110215329.html?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "MARKET"
       ],
@@ -190,53 +234,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Net Sellers of Alphabet (GOOG) on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-alphabet-goog-110350264.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
-      "tickers": [
-        "GOOGL"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Are Net Sellers of Johnson &amp; Johnson (JNJ) on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-johnson-johnson-110343852.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Are Net Sellers of Caterpillar (CAT) on Thursday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-caterpillar-cat-110319503.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Are Net Sellers of Berkshire Hathaway (BRK.B) on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-berkshire-hathaway-110259946.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Are Net Sellers of JPMorgan Chase (JPM) on Nov. 5",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-jpmorgan-chase-110250046.html?.tsrc=rss",
-      "pub_date": "2026-11-09",
+      "title": "Fed\u2019s Goolsbee Says AI Data Centers Look Like \u2018Old-Fashioned Overheating\u2019",
+      "link": "https://247wallst.com/investing/2026/11/10/feds-goolsbee-says-ai-data-centers-look-like-old-fashioned-overheating/?.tsrc=rss",
+      "pub_date": "2026-11-10",
       "tickers": [
         "MARKET"
       ],
