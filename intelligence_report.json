@@ -1,139 +1,149 @@
 {
   "date": "2026-11-11",
-  "generated_at": "07:00 PM",
-  "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.5. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
-  "macro_picture": "SPY GEX is deeply negative at $-10.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.5 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 34th pct. Not yet at peak oversold but building. META AVOID \u2014 company-specific negative news detected: 'AI Bots Do the Shopping and Fraudsters Do the Stealing. Risk...' Do not buy this dip until news clears. MSFT WATCH \u2014 score 4/10, RSI at 39th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 19.5, needs +2.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-10.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.5 (moderately elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.5. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 34th pct. Not yet at peak oversold but building. META AVOID \u2014 company-specific negative news detected: 'AI Bots Do the Shopping and Fraudsters Do the Stealing. Risk...' Do not buy this dip until news clears. MSFT WATCH \u2014 score 4/10, RSI at 39th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.5, needs +2.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "generated_at": "11:00 PM",
+  "overall_signal": "HOLD",
+  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
+  "macro_picture": "SPY GEX is positive at +$5.1B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.4 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.",
+  "mag7_section": "NVDA OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 35th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 51th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 17.4, needs +4.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$5.1B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.4 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 151 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Warning: company-specific negative news is present in headlines \u2014 review which names are affected before loading.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA OPPORTUNITY (high confidence) \u2014 RSI at 5th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 5/10, RSI at 35th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 40th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 51th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.4, needs +4.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
-    "regime": "bear_warning",
+    "regime": "positive_gex",
     "vix_trend": "rising",
-    "vix_current": 19.46,
+    "vix_current": 17.35,
     "gex_trend": "deteriorating",
-    "gex_current": -10.3,
+    "gex_current": 5.1,
     "fear_trend": "building",
-    "fear_current": 5.0,
-    "bear_current": 6.0,
-    "bull_current": 2.0,
-    "neg_gex_days": 9,
+    "fear_current": 2.0,
+    "bear_current": 2.0,
+    "bull_current": 6.0,
+    "neg_gex_days": 8,
     "skew_current": 151.12,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 40.07
+    "spy_rsi": 49.21
   },
   "top_opportunity": {
     "ticker": "NVDA",
     "score": 6.0,
-    "reason": "RSI extremely oversold (bottom 1% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 9% of history) \u2014 extreme fear, contrarian buy | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "reason": "RSI extremely oversold (bottom 5% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 20% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
     "news": "macro_fear"
   },
   "avoid_names": [
-    "META",
     "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 5.0,
-      "rsi_pct": 34.2,
+      "rsi_pct": 34.8,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
+        "Stock Market Today, Nov. 11: Stock Market Today, Nov. 11: Nasdaq Surges as CoreWeave's 25% Rally Reignites the AI Trade",
+        "Apple Shares (AAPL) Look Expensive Heading into 2027",
         "Cramer Says Apple Investors Who Sold After Steve Jobs Missed Years Of Gains. The Stock Is Up Nearly 3,000% Since. Now He\u2019s Asking If Nvidia Needs Jensen Huang",
-        "MP Materials Clears GM Magnet Milestone, Targets Apple as Next Customer",
-        "Why the iPhone Duo Could Kick Off a \u2018New Decade\u2019 for Apple",
-        "Apple Slides 4% as Ternus Calls Memory Pricing \u201cUnprecedented\u201d Despite a Record $114.5 Billion Quarter"
+        "MP Materials Clears GM Magnet Milestone, Targets Apple as Next Customer"
       ]
     },
     "MSFT": {
       "score": 4.0,
-      "rsi_pct": 39.1,
+      "rsi_pct": 40.4,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 4,
       "headlines": [
-        "Stock Market Today: Nasdaq Soars On AI Rally, But This Major Tech Icon Gets Left Out (Live Coverage)",
-        "This Number Tells Me The Microsoft Data Center Selloff Is Excessive, Prompting Me to Buy",
-        "Microsoft Stock Suddenly Has an Anthropic Problem",
-        "Evercore Plays Down Microsoft 365 Disruption Fears After Anthropic\u2019s Claude Sheets Launch \u2013 \u2018Not Yet A Substitute For Excel\u2019"
+        "Is the AI boom hiding a jobs crisis for graduates?",
+        "Fed\u2019s Bowman Says AI Now Drives About a Quarter of America\u2019s Excess Inflation",
+        "Democrats Could Target Data Center Tax Breaks in 2027. What It Means for Meta, Microsoft, Alphabet, and Amazon",
+        "Replit Awarded 2026 Microsoft for Startups Partner of the Year"
       ]
     },
     "NVDA": {
       "score": 6.0,
-      "rsi_pct": 1.2,
+      "rsi_pct": 5.0,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "CoreWeave surges, but bigger tests loom for the AI trade",
-        "Cramer Says Apple Investors Who Sold After Steve Jobs Missed Years Of Gains. The Stock Is Up Nearly 3,000% Since. Now He\u2019s Asking If Nvidia Needs Jensen Huang",
-        "The Only 3 Tech Stocks I'd Buy With $5,000 and Never Sell",
-        "Are AI Bulls Back? Looks Like It Thanks To Anthropic, CoreWeave, Nvidia"
+        "Nvidia CEO Huang allegedly involved in a second affair with an Nvidia exec",
+        "Dow Jones Futures: CoreWeave, Sandisk, AMD, Nebius Lead Bullish Market Move; Nvidia Dives, May Oust CEO Huang",
+        "Nvidia Stock Tumbles As CEO Jensen Huang Had Second Affair, NYT Reports",
+        "Nvidia Stock Sinks Nearly 10% on Second Jensen Huang Affair Report: Is He Out as CEO?"
       ]
     },
     "GOOGL": {
-      "score": 4.0,
-      "rsi_pct": 9.3,
+      "score": 2.0,
+      "rsi_pct": 21.7,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Top Electric &amp; Autonomous Vehicle Stocks to Charge Up Your Portfolio",
-        "Will Rising AI Capex Weigh on Amazon's Free Cash Flow Prospects?",
-        "Constellation Energy\u2019s Dividend Is Small. AI Power Demand Could Change That",
-        "CoreWeave surges, but bigger tests loom for the AI trade"
+        "GE Vernova Fell 25% on Data Center Fears. Only About 20% of Its Gas Turbine Customers Are Data Centers. Time to Buy?",
+        "Hugging Face co-founder says AI hacks show even the biggest labs haven't figured out AI alignment",
+        "Anthropic's Mythos claim may put Nvidia\u2019s CUDA moat in a vulnerable spot",
+        "Tech round-up: A closer look at Anthropic, Nvidia, CoreWeave, and next week"
       ]
     },
     "META": {
-      "score": 5.0,
-      "rsi_pct": 26.7,
+      "score": 4.0,
+      "rsi_pct": 50.9,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 10,
+      "days_oversold": 9,
       "headlines": [
-        "Google and Meta fight new rule that could change online news",
-        "AI Bots Do the Shopping and Fraudsters Do the Stealing. Riskified Steps In.",
-        "Meta infrastructure chief Santosh Janardhan to step down in early 2027 - Bloomberg",
-        "Many AI companies will adopt advertising: Criteo CEO"
+        "Bots don't fly here: United Airlines restricts AI agents from booking flights",
+        "How does Meta solve Muse's monetization problem?",
+        "Billionaire venture capitalist Vinod Khosla says judge AI by usage, not stock prices",
+        "FIS to Present at Upcoming Conference"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 63.4,
+      "rsi_pct": 67.7,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 3,
       "headlines": [
-        "Prediction: 2 Stocks That Will Be Worth More Than Amazon 5 Years From Now",
+        "Amazon (AMZN) Could Face Trial In Italy Over Unpaid Import VAT",
         "Cathie Wood's ARK Pares Amazon, Adds These Aerospace Stocks",
-        "Amazon unveils $250 flying home security camera with a catch",
-        "3 Unstoppable Nasdaq-100 Stocks to Buy in November"
+        "Amazon and Google Are Sitting on a $411 Billion Anthropic Windfall",
+        "Democrats Could Target Data Center Tax Breaks in 2027. What It Means for Meta, Microsoft, Alphabet, and Amazon"
       ]
     },
     "TSLA": {
       "score": 2.0,
-      "rsi_pct": 38.5,
-      "above_200ma": false,
+      "rsi_pct": 60.2,
+      "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "TSLA Stock Climbs After Elon Musk Extends Cybertruck Run Through Summer 2027, Citing \u2018Sentimentality\u2019",
-        "Tesla (TSLA) Forms Special Committee To Review Possible All Stock Merger",
-        "Tesla Rises 4% as Finland Clears Its Driver-Assistance System Ahead of EU Vote; Lucid Slides 2% After Citi Cut, Rivian Dips",
-        "Tesla Clears Major Hurdle in European Self-Driving Push"
+        "3 Growth Stocks With At Least 18% Revenue Growth",
+        "Tesla extends Cybertruck production to clear backlog, Musk says",
+        "Tesla Extends Cybertruck\u2019s Run. Its Driving Software Matters More.",
+        "TSLA Stock Climbs After Elon Musk Extends Cybertruck Run Through Summer 2027, Citing \u2018Sentimentality\u2019"
       ]
     }
   },
   "macro_headlines": [
+    {
+      "title": "Home Equity Borrowing Jumps the Most Since 2005 as Household Debt Passes $19 Trillion",
+      "link": "https://247wallst.com/investing/2026/11/11/home-equity-borrowing-jumps-the-most-since-2005-as-household-debt-passes-19-trillion/?.tsrc=rss",
+      "pub_date": "2026-11-11",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
     {
       "title": "SPDR S&amp;P 500 ETF (SPY) Adds Apple and Nvidia on Monday",
       "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110306154.html?.tsrc=rss",
@@ -159,24 +169,12 @@
       "source_count": 1
     },
     {
-      "title": "SPY Is Still a Unit Investment Trust. Here\u2019s Why That Quirk Matters (and When It Doesn\u2019t)",
-      "link": "https://247wallst.com/investing/etf/2026/11/10/spy-is-still-a-unit-investment-trust-heres-why-that-quirk-matters-and-when-it-doesnt/?.tsrc=rss",
-      "pub_date": "2026-11-11",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
       "title": "Cramer Says Apple Investors Who Sold After Steve Jobs Missed Years Of Gains. The Stock Is Up Nearly 3,000% Since. Now He\u2019s Asking If Nvidia Needs Jensen Huang",
       "link": "https://247wallst.com/investing/2026/11/11/cramer-says-apple-investors-who-sold-after-steve-jobs-missed-years-of-gains-the-stock-is-up-nearly-3000-since-now-hes-asking-if-nvidia-needs-jensen-huang/?.tsrc=rss",
       "pub_date": "2026-11-11",
       "tickers": [
         "AAPL",
-        "NVDA",
-        "QQQ"
+        "NVDA"
       ],
       "high_impact": false,
       "sources": [],
@@ -199,6 +197,17 @@
       "pub_date": "2026-11-11",
       "tickers": [
         "NVDA"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Tractor Supply Turned $1,000 Into Over $3,200 in 10 Years. Then Came 2026",
+      "link": "https://247wallst.com/investing/2026/11/11/tractor-supply-turned-1000-into-over-3200-in-10-years-then-came-2026/?.tsrc=rss",
+      "pub_date": "2026-11-11",
+      "tickers": [
+        "MARKET"
       ],
       "high_impact": false,
       "sources": [],
@@ -233,17 +242,6 @@
       "pub_date": "2026-11-11",
       "tickers": [
         "AMZN"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Retired at 67, Single, With No Kids to Call if the Money Runs Short? The Portfolio Is the Only Backup. These 3 ETFs Are Built to Be It",
-      "link": "https://247wallst.com/investing/etf/2026/11/11/retired-at-67-single-with-no-kids-to-call-if-the-money-runs-short-the-portfolio-is-the-only-backup-these-3-etfs-are-built-to-be-it/?.tsrc=rss",
-      "pub_date": "2026-11-11",
-      "tickers": [
-        "MARKET"
       ],
       "high_impact": false,
       "sources": [],
