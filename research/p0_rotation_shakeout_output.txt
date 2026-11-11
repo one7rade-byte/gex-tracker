@@ -1,0 +1,121 @@
+flow_history rows used: 7007 (1999-01-04 .. 2026-11-10); both legs valid from 2003-05-15
+
+=== 1. Rule R: SMH/SPY10d<=-6 & RSP/SPY10d>=+2.5 ===
+[all] base                             n= 5891 dip3%10d= 19.0% hit10= 62.2% fwd10= +0.41 hit20= 65.8% fwd20= +0.80 (med +1.34) MAE10= -1.61 MAE20= -2.52 P(MAE20<=-5)=15.4%
+[all] R day-level                      n=   19 dip3%10d= 42.1% hit10= 57.9% fwd10= +0.64 hit20= 89.5% fwd20= +2.73 (med +3.38) MAE10= -2.47 MAE20= -3.06 P(MAE20<=-5)=26.3%
+[2003-09] base                         n= 1671 dip3%10d= 20.6% hit10= 59.1% fwd10= +0.18 hit20= 62.6% fwd20= +0.30 (med +0.93) MAE10= -1.87 MAE20= -2.89 P(MAE20<=-5)=16.2%
+[2003-09] R day-level                  n=    2 dip3%10d= 50.0% hit10= 50.0% fwd10= -2.10 hit20=100.0% fwd20= +2.50 (med +2.50) MAE10= -3.72 MAE20= -3.72 P(MAE20<=-5)= 0.0%
+[2010-17] base                         n= 2013 dip3%10d= 15.6% hit10= 62.7% fwd10= +0.47 hit20= 67.3% fwd20= +0.97 (med +1.39) MAE10= -1.32 MAE20= -2.05 P(MAE20<=-5)=12.1%
+[2010-17] R day-level                  n=0
+[2018+] base                           n= 2207 dip3%10d= 20.9% hit10= 64.0% fwd10= +0.53 hit20= 66.7% fwd20= +1.03 (med +1.72) MAE10= -1.68 MAE20= -2.66 P(MAE20<=-5)=17.8%
+[2018+] R day-level                    n=   17 dip3%10d= 41.2% hit10= 58.8% fwd10= +0.96 hit20= 88.2% fwd20= +2.76 (med +3.38) MAE10= -2.32 MAE20= -2.98 P(MAE20<=-5)=29.4%
+
+R fire days: 30 (0.51% of valid days); episodes: 7
+R episode-level (first day)            n=    6 dip3%10d= 33.3% hit10= 50.0% fwd10= -0.03 hit20= 83.3% fwd20= +1.84 (med +2.26) MAE10= -2.54 MAE20= -3.01 P(MAE20<=-5)=33.3%
+
+Episodes: date, SPY, smh10, rsp10, hygief10, defcyc10, dd60, fwd5/10/20, MAE10/MAE20
+  2009-05-08    92.98 smh10= -9.19 rsp10=+2.97 hygief10=+4.79 defcyc10=+3.37 dd60= +0.00 fwd= -4.59/ -4.26/ +1.27 MAE= -4.62/ -4.62
+  2021-03-04   376.70 smh10= -7.47 rsp10=+3.28 hygief10=+0.80 defcyc10=+3.87 dd60= -4.06 fwd= +4.47/ +3.92/ +6.35 MAE= +1.33/ +1.33
+  2024-07-19   548.99 smh10= -7.06 rsp10=+3.94 hygief10=+0.26 defcyc10=+4.69 dd60= -2.81 fwd= -0.83/ -2.93/ +0.97 MAE= -2.93/ -5.76
+  2024-09-04   550.95 smh10= -8.16 rsp10=+2.57 hygief10=-0.32 defcyc10=+6.66 dd60= -2.46 fwd= +0.63/ +1.90/ +3.25 MAE= -1.92/ -1.92
+  2025-03-03   583.77 smh10= -7.78 rsp10=+2.81 hygief10=-2.38 defcyc10=+11.16 dd60= -4.76 fwd= -3.97/ -2.85/ -4.18 MAE= -5.54/ -5.54
+  2026-07-28   740.86 smh10=-10.47 rsp10=+3.49 hygief10=-0.34 defcyc10=+8.46 dd60= -2.46 fwd= +4.11/ +4.01/ +3.38 MAE= -1.54/ -1.54
+  2026-10-16   763.25 smh10=-13.68 rsp10=+2.94 hygief10=-1.58 defcyc10=+12.94 dd60= -2.03 fwd= -0.43/ -0.99/  +nan MAE= -0.99/  +nan
+
+=== 2. Threshold sensitivity (episode-level, gap 10d) ===
+smh_thr rsp_thr  days  eps  dip3%10d  hit20  fwd20  med20  MAE20  | base: dip3=19.0% hit20=65.8% fwd20=+0.80
+    -4    None   582  105    25.7%   62.9%  +0.78  +0.88  -3.03  | day: dip3=26.9% hit20=63.1% fwd20=+0.58
+    -4     1.5    85   22    27.3%   68.2%  +0.98  +2.23  -2.95  | day: dip3=40.0% hit20=72.9% fwd20=+0.80
+    -4     2.5    38    8    62.5%   62.5%  -0.46  +1.82  -4.71  | day: dip3=48.0% hit20=84.0% fwd20=+1.82
+    -4     3.5    16    2     0.0%  100.0%  +2.99  +2.99  -2.04  | day: dip3=77.8% hit20=100.0% fwd20=+2.72
+    -5    None   344   74    24.3%   63.5%  +1.19  +0.73  -2.73  | day: dip3=29.5% hit20=63.2% fwd20=+0.55
+    -5     1.5    70   15    20.0%   73.3%  +0.73  +1.04  -3.06  | day: dip3=39.3% hit20=73.2% fwd20=+0.42
+    -5     2.5    34    7    42.9%   71.4%  -0.17  +1.27  -4.28  | day: dip3=45.5% hit20=86.4% fwd20=+1.89
+    -5     3.5    16    2     0.0%  100.0%  +2.99  +2.99  -2.04  | day: dip3=77.8% hit20=100.0% fwd20=+2.72
+    -6    None   221   48    20.8%   70.8%  +0.42  +0.92  -3.19  | day: dip3=30.0% hit20=70.0% fwd20=+0.60
+    -6     1.5    57   13    30.8%   69.2%  -0.55  +0.97  -4.09  | day: dip3=38.6% hit20=75.0% fwd20=+0.68
+    -6     2.5    30    6    33.3%   83.3%  +1.84  +2.26  -3.01  | day: dip3=42.1% hit20=89.5% fwd20=+2.73
+    -6     3.5    14    2     0.0%  100.0%  +2.99  +2.99  -2.04  | day: dip3=75.0% hit20=100.0% fwd20=+2.95
+    -7    None   147   32    31.2%   65.6%  +0.25  +1.11  -3.94  | day: dip3=35.1% hit20=67.2% fwd20=+0.34
+    -7     1.5    46   11    36.4%   63.6%  -1.36  +0.97  -4.73  | day: dip3=38.2% hit20=79.4% fwd20=+1.12
+    -7     2.5    26    6    33.3%   83.3%  +1.84  +2.26  -3.01  | day: dip3=43.8% hit20=93.8% fwd20=+3.58
+    -7     3.5    12    2     0.0%  100.0%  +2.99  +2.99  -2.04  | day: dip3=71.4% hit20=100.0% fwd20=+3.24
+
+=== 3. Separators within the broader family (SMH/SPY10d<=-5 & RSP/SPY10d>=+1.5), episode-level ===
+HYG/IEF10d <= -1 (credit selling)      n=    2 dip3%10d=100.0% hit10=  0.0% fwd10= -2.99 hit20=  0.0% fwd20= -7.19 (med -7.19) MAE10= -6.01 MAE20= -8.53 P(MAE20<=-5)=100.0%
+HYG/IEF10d >  -1                       n=   13 dip3%10d=  7.7% hit10= 69.2% fwd10= +1.13 hit20= 84.6% fwd20= +1.95 (med +3.00) MAE10= -1.29 MAE20= -2.22 P(MAE20<=-5)=15.4%
+HYG/IEF missing (pre-2007-04)          n=0
+def/cyc10d >= +3                       n=    8 dip3%10d= 25.0% hit10= 50.0% fwd10= -0.28 hit20= 75.0% fwd20= +0.25 (med +0.67) MAE10= -2.38 MAE20= -3.59 P(MAE20<=-5)=37.5%
+def/cyc10d <  +3                       n=    7 dip3%10d= 14.3% hit10= 71.4% fwd10= +1.56 hit20= 71.4% fwd20= +1.27 (med +3.02) MAE10= -1.39 MAE20= -2.45 P(MAE20<=-5)=14.3%
+SPY already -5% off 60d high           n=    5 dip3%10d= 40.0% hit10= 60.0% fwd10= +0.93 hit20= 60.0% fwd20= -1.33 (med +0.88) MAE10= -2.65 MAE20= -4.83 P(MAE20<=-5)=40.0%
+SPY within 5% of 60d high              n=   10 dip3%10d= 10.0% hit10= 60.0% fwd10= +0.40 hit20= 80.0% fwd20= +1.75 (med +2.02) MAE10= -1.55 MAE20= -2.18 P(MAE20<=-5)=20.0%
+SPY 10d <= -3%                         n=    3 dip3%10d= 66.7% hit10= 33.3% fwd10= -2.41 hit20= 33.3% fwd20= -2.00 (med -3.07) MAE10= -3.28 MAE20= -4.64 P(MAE20<=-5)=66.7%
+SPY 10d > -3%                          n=   12 dip3%10d=  8.3% hit10= 66.7% fwd10= +1.33 hit20= 83.3% fwd20= +1.41 (med +2.02) MAE10= -1.58 MAE20= -2.67 P(MAE20<=-5)=16.7%
+
+Family episodes (worst first by MAE20):
+  2008-09-05 smh10= -5.43 rsp10=+2.57 hygief10=-1.13 defcyc10=+0.07 dd60= -8.67 fwd20=-11.32 MAE20=-11.32
+  2022-04-11 smh10= -9.83 rsp10=+1.60 hygief10=-0.11 defcyc10=+11.47 dd60= -5.34 fwd20= -9.28 MAE20= -9.49
+  2024-07-18 smh10= -5.43 rsp10=+3.31 hygief10=-0.23 defcyc10=+3.96 dd60= -2.16 fwd20= +0.07 MAE20= -6.38
+  2025-02-27 smh10= -5.05 rsp10=+2.27 hygief10=-1.96 defcyc10=+6.37 dd60= -4.55 fwd20= -3.07 MAE20= -5.75
+  2021-05-10 smh10= -8.22 rsp10=+1.91 hygief10=-0.12 defcyc10=+6.58 dd60= -0.99 fwd20= +1.04 MAE20= -3.00
+  2009-05-07 smh10= -5.24 rsp10=+2.05 hygief10=+5.08 defcyc10=+0.46 dd60= -1.39 fwd20= +4.06 MAE20= -2.40
+  2024-09-03 smh10= -9.18 rsp10=+2.27 hygief10=-0.59 defcyc10=+6.55 dd60= -2.26 fwd20= +3.00 MAE20= -2.12
+  2026-07-02 smh10= -5.56 rsp10=+2.31 hygief10=-0.13 defcyc10=+3.27 dd60= -1.95 fwd20= +0.30 MAE20= -2.06
+  2008-12-05 smh10= -5.38 rsp10=+1.64 hygief10=-0.10 defcyc10=-11.53 dd60=-30.26 fwd20= +6.30 MAE20= -2.01
+  2026-07-24 smh10= -6.17 rsp10=+1.82 hygief10=+0.04 defcyc10=+6.95 dd60= -2.72 fwd20= +3.63 MAE20= -1.28
+  2008-07-29 smh10= -6.35 rsp10=+1.65 hygief10=+4.46 defcyc10=-5.70 dd60=-11.72 fwd20= +0.88 MAE20= -1.02
+  2025-01-27 smh10= -7.60 rsp10=+1.92 hygief10=-0.27 defcyc10=+2.01 dd60= -1.70 fwd20= -0.86 MAE20= -0.86
+  2022-10-11 smh10= -6.38 rsp10=+1.98 hygief10=+0.10 defcyc10=+1.85 dd60=-16.75 fwd20= +6.78 MAE20= -0.33
+  2025-12-17 smh10= -5.17 rsp10=+2.01 hygief10=+0.31 defcyc10=+1.58 dd60= -2.58 fwd20= +3.02 MAE20= +0.76
+  2021-03-04 smh10= -7.47 rsp10=+3.28 hygief10=+0.80 defcyc10=+3.87 dd60= -4.06 fwd20= +6.35 MAE20= +1.33
+
+=== 4. Heads-up, then wait for confirmation (family episodes) ===
+episodes with 30d of future data: 15; window to confirm: 20d; common endpoint: flag+30d
+EARLY (enter flag close): to_end avg -1.09 med +1.24, MAE avg -5.93, P(MAE<=-5) 40.0%
+C1: confirmed 15/15, median lag 6.0d, entry vs flag +0.41% | to end: late -1.60 vs early -1.09 | MAE: late -5.33 vs early -5.93 | P(MAE<=-5): late 40.0% vs early 40.0%
+C2: confirmed 15/15, median lag 3.0d, entry vs flag +1.07% | to end: late -2.15 vs early -1.09 | MAE: late -6.34 vs early -5.93 | P(MAE<=-5): late 40.0% vs early 40.0%
+C3: confirmed 9/15, median lag 7.0d, entry vs flag -1.29% | to end: late -2.95 vs early -4.16 | MAE: late -7.09 vs early -8.87 | P(MAE<=-5): late 44.4% vs early 55.6%
+
+=== Live: last 30 rows ===
+  2026-09-30   spy=  762.63 smh10=+10.37 rsp10=-3.11 hygief10=+0.02 defcyc10=-7.01 smh5=+1.95 sma10= 767.00
+  2026-10-01   spy=  763.99 smh10=+10.00 rsp10=-2.20 hygief10=-0.18 defcyc10=-6.37 smh5=+3.31 sma10= 767.13
+  2026-10-02   spy=  769.64 smh10= +8.92 rsp10=-2.23 hygief10=-0.14 defcyc10=-5.75 smh5=+4.19 sma10= 767.93
+  2026-10-05   spy=  774.83 smh10= +6.17 rsp10=-0.91 hygief10=+0.29 defcyc10=-2.64 smh5=+4.39 sma10= 768.06
+  2026-10-06   spy=  779.09 smh10= +3.36 rsp10=-0.95 hygief10=+0.46 defcyc10=-1.87 smh5=+2.23 sma10= 768.63
+  2026-10-07   spy=  777.22 smh10= +2.67 rsp10=-1.54 hygief10=+0.02 defcyc10=-1.62 smh5=+0.71 sma10= 769.57
+  2026-10-08   spy=  773.93 smh10= +0.24 rsp10=-0.11 hygief10=-0.70 defcyc10=+1.35 smh5=-2.97 sma10= 770.25
+  2026-10-09   spy=  778.57 smh10= -1.45 rsp10=-0.02 hygief10=-0.14 defcyc10=+1.11 smh5=-5.42 sma10= 770.97
+  2026-10-12   spy=  778.10 smh10= -3.08 rsp10=+0.01 hygief10=-0.21 defcyc10=+2.00 smh5=-7.16 sma10= 772.22
+  2026-10-13   spy=  778.01 smh10= -4.81 rsp10=+0.01 hygief10=-0.45 defcyc10=+2.03 smh5=-6.89 sma10= 773.60
+  2026-10-14   spy=  769.60 smh10= -8.11 rsp10=+1.03 hygief10=-0.96 defcyc10=+7.39 smh5=-8.75 sma10= 774.30
+  2026-10-15 F spy=  771.79 smh10=-10.46 rsp10=+1.83 hygief10=-0.87 defcyc10=+8.35 smh5=-7.72 sma10= 775.08
+  2026-10-16 R spy=  763.25 smh10=-13.68 rsp10=+2.94 hygief10=-1.58 defcyc10=+12.94 smh5=-8.74 sma10= 774.44
+  2026-10-19 F spy=  766.48 smh10=-12.53 rsp10=+2.18 hygief10=-1.48 defcyc10=+10.11 smh5=-5.79 sma10= 773.60
+  2026-10-20 R spy=  769.05 smh10=-12.49 rsp10=+2.99 hygief10=-1.80 defcyc10=+9.90 smh5=-6.02 sma10= 772.60
+  2026-10-21 R spy=  773.09 smh10=-10.46 rsp10=+3.42 hygief10=-1.50 defcyc10=+8.10 smh5=-1.87 sma10= 772.19
+  2026-10-22 R spy=  763.96 smh10=-12.69 rsp10=+4.34 hygief10=-1.97 defcyc10=+11.08 smh5=-5.39 sma10= 771.19
+  2026-10-23 R spy=  759.97 smh10=-10.48 rsp10=+4.13 hygief10=-2.04 defcyc10=+10.20 smh5=-1.91 sma10= 769.33
+  2026-10-26 R spy=  765.37 smh10= -6.83 rsp10=+3.62 hygief10=-1.97 defcyc10=+6.32 smh5=-1.10 sma10= 768.06
+  2026-10-27   spy=  769.66 smh10= -4.10 rsp10=+3.09 hygief10=-1.06 defcyc10=+4.38 smh5=+2.05 sma10= 767.22
+  2026-10-28   spy=  772.31 smh10= +0.17 rsp10=+2.16 hygief10=-0.25 defcyc10=-0.24 smh5=+2.07 sma10= 767.49
+  2026-10-29   spy=  769.36 smh10= +0.82 rsp10=+2.67 hygief10=-0.41 defcyc10=+1.54 smh5=+6.57 sma10= 767.25
+  2026-10-30   spy=  755.72 smh10= -2.24 rsp10=+2.99 hygief10=-0.73 defcyc10=+2.69 smh5=-0.34 sma10= 766.50
+  2026-11-02 F spy=  752.10 smh10= -5.55 rsp10=+5.05 hygief10=-1.47 defcyc10=+7.49 smh5=-4.50 sma10= 765.06
+  2026-11-03   spy=  754.35 smh10= -3.25 rsp10=+3.56 hygief10=-0.80 defcyc10=+4.58 smh5=-5.19 sma10= 763.59
+  2026-11-04 R spy=  766.81 smh10= -8.68 rsp10=+3.93 hygief10=-0.87 defcyc10=+6.83 smh5=-10.53 sma10= 762.96
+  2026-11-05 R spy=  733.00 smh10=-10.84 rsp10=+3.58 hygief10=-0.61 defcyc10=+7.54 smh5=-16.33 sma10= 759.87
+  2026-11-06 R spy=  735.29 smh10= -9.04 rsp10=+3.12 hygief10=-0.65 defcyc10=+6.88 smh5=-8.73 sma10= 757.40
+  2026-11-09 R spy=  752.69 smh10= -8.49 rsp10=+3.40 hygief10=-0.34 defcyc10=+6.27 smh5=-4.19 sma10= 756.13
+  2026-11-10 R spy=  749.92 smh10=-11.04 rsp10=+4.22 hygief10=-0.44 defcyc10=+9.02 smh5=-6.18 sma10= 754.15
+
+=== 5. Credit split robustness: family (-5/+1.5) DAY-level, and credit alone ===
+family & hygief10<=-0.5 (days)         n=   19 dip3%10d= 57.9% hit10= 47.4% fwd10= +0.61 hit20= 42.1% fwd20= -3.08 (med -3.07) MAE10= -3.39 MAE20= -5.96 P(MAE20<=-5)=52.6%
+family & hygief10> -0.5 (days)         n=   37 dip3%10d= 29.7% hit10= 54.1% fwd10= -0.16 hit20= 89.2% fwd20= +2.22 (med +3.30) MAE10= -2.33 MAE20= -3.08 P(MAE20<=-5)=21.6%
+ANY day hygief10<=-0.5 (2007+)         n= 1653 dip3%10d= 28.2% hit10= 59.3% fwd10= +0.42 hit20= 62.5% fwd20= +0.76 (med +1.41) MAE10= -2.16 MAE20= -3.43 P(MAE20<=-5)=22.8%
+family & hygief10<=-1.0 (days)         n=   13 dip3%10d= 61.5% hit10= 46.2% fwd10= +0.82 hit20= 38.5% fwd20= -1.58 (med -3.07) MAE10= -3.51 MAE20= -4.75 P(MAE20<=-5)=53.8%
+family & hygief10> -1.0 (days)         n=   43 dip3%10d= 32.6% hit10= 53.5% fwd10= -0.12 hit20= 83.7% fwd20= +1.03 (med +3.25) MAE10= -2.44 MAE20= -3.85 P(MAE20<=-5)=25.6%
+ANY day hygief10<=-1.0 (2007+)         n= 1187 dip3%10d= 31.0% hit10= 58.7% fwd10= +0.47 hit20= 61.8% fwd20= +0.87 (med +1.59) MAE10= -2.41 MAE20= -3.73 P(MAE20<=-5)=25.1%
+family & hygief10<=-1.5 (days)         n=   11 dip3%10d= 54.5% hit10= 45.5% fwd10= +0.82 hit20= 36.4% fwd20= -1.09 (med -3.07) MAE10= -3.15 MAE20= -4.15 P(MAE20<=-5)=54.5%
+family & hygief10> -1.5 (days)         n=   45 dip3%10d= 35.6% hit10= 53.3% fwd10= -0.08 hit20= 82.2% fwd20= +0.79 (med +3.25) MAE10= -2.57 MAE20= -4.03 P(MAE20<=-5)=26.7%
+ANY day hygief10<=-1.5 (2007+)         n=  838 dip3%10d= 32.0% hit10= 59.5% fwd10= +0.61 hit20= 63.2% fwd20= +1.15 (med +1.82) MAE10= -2.61 MAE20= -3.99 P(MAE20<=-5)=27.2%
+base 2007-04+                          n= 4909 dip3%10d= 21.2% hit10= 61.9% fwd10= +0.40 hit20= 65.3% fwd20= +0.78 (med +1.45) MAE10= -1.73 MAE20= -2.72 P(MAE20<=-5)=17.9%

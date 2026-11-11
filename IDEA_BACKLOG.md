@@ -8,16 +8,10 @@ were unchanged. The gate penalizes the very panic STRONG_BUY is meant to buy. Si
 don't be last, follow the whales". Confirmation over earliness.
 Event data lives on branch claude/event-2026-11-05 (research/event_2026_11_05/), updated daily.
 
-P0. NEW DATA (2026-11-05): flow_history.csv (repo root, 1999+, updated daily by gex_daily.yml) adds SMH, RSP, IWM,
-    QQQ, HYG/LQD, HYG/IEF, KRE, defensive/cyclical ratio, VVIX, MOVE, USDJPY, copper/gold, BTC, VIX/VIX3M and SPY
-    volume vs its 20d average. Use it for P5/P6 and the items below instead of saying the data isn't available.
-    First read: into Nov 4, SMH/SPY 10d was -8.7% (2.7th pctile) while RSP/SPY was +3.9% (99.6th) and defensive/
-    cyclical +6.8% (96th). Credit (HYG/IEF), VVIX, MOVE and USDJPY were all normal. That is a rotation out of
-    semis/megacap tech, not a systemic de-risk. Quick test, "SMH/SPY 10d <= -6% AND RSP/SPY 10d >= +2.5%": 6 episodes
-    since 1999 (2009-05, 2021-03, 2024-07, 2024-09, 2025-03, 2026-07); a >=3% dip within 10d followed 42% of days
-    (base 22%), but the median 20d SPY return was +3.4% (base +1.2%). A shakeout, then bought. Small n. To do:
-    validate it properly (episode-level, MAE, by_era), test it as a "heads-up, then wait for confirmation" rule, and
-    check whether credit weakness (HYG/IEF) separates the bad cases.
+P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rotation shakeout. Dip risk ~2x base
+    (42% vs 19% day-level), but the 20d upside only holds at the original thresholds (neighbors negative); confirmations
+    C1/C2/C3 don't help. Credit split (HYG/IEF 10d <= -1) 2-for-4 episodes. flow_history.csv remains the data source
+    for the items below.
 P0b. QUICK ACTION tuning (quick_action.py, live on main 2026-11-05; the dashboard card + top line of Telegram).
     Replay over live history (147 days): HOLD 95, WAIT 39, DEFEND 10, ADD 3. DEFEND fired Oct 21-27 and Nov 2,
     ahead of the Nov 5 drop (avg 10d fwd -1.37%), but flip-flopped with HOLD day to day. WAIT days averaged +1.48%
@@ -45,7 +39,8 @@ P8. (new 2026-11-07) STRONG_BUY re-fire / "early not confirmed" problem. Live: 7
     composite 4.5-4.7, VIX 18.4-21.2) all -2.2% to -3.7% by 11-06; the gate never blocked them. Test, with the deep proxy
     (RSI<50/SKEW>138/VIX>17 legs, no GEX): (a) first fire of a cluster vs re-fires when legs already fired >=3 of prior
     10 days and price is below the first fire; (b) a whale-flow veto (SMH/SPY 10d <= -6% or defensive/cyclical 10d >= +3%,
-    flow_history.csv) on STRONG_BUY; (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
+    flow_history.csv) on STRONG_BUY — P0 run 2026-11-11 suggests testing "rotation R ON AND HYG/IEF 10d <= -1" as the
+    veto (Oct-2026 cluster had it; Aug-2024 rebound also had it, so measure the upside cost); (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
     17 episodes) vs 69.2%/+1.42% at RSI<50. Report fire-rate cost (fewer signals) alongside accuracy. Overlaps P3/P0.
 
 ## General backlog (from earlier runs)

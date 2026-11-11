@@ -1,5 +1,50 @@
 # Weekly Research Log
 
+## 2026-11-11 — P0: "rotation shakeout" flag (SMH/SPY 10d ≤ −6% AND RSP/SPY 10d ≥ +2.5%), properly validated
+
+**VERDICT: inconclusive. Do not wire this in as a buy rule or a veto yet.** As a heads-up it does raise the odds of a near-term dip (a ≥3% drawdown within 10 days on 42.1% of fire days vs a 19.0% base). But the "shakeout, then bought" upside from the 11-05 first read only holds at the exact thresholds first picked, and it falls apart at neighboring ones. None of the three confirmation entries I tested improved the trade-off between waiting and drawdown. Credit (HYG/IEF) looks like the right thing to split on, but it rests on 4 episodes, 2 bad and 2 fine.
+
+**Data and method** (`research/p0_rotation_shakeout.py`; raw output in `research/p0_rotation_shakeout_output.txt`, `p0_rotation_shakeout_results.json`):
+- `flow_history.csv`, 1999-01-04 to 2026-11-10. The 11-11 row is an intraday partial bar and was dropped. Both legs exist from 2003-05-15, which gives 5,891 valid days with 20d forward data. SPY closes come from flow_history; they differ slightly from the tracker's (e.g. 11-05 733.00 vs 734.40).
+- Fwd h = SPY close-to-close. MAE h = worst close in the next h days vs entry. Episode = first fire day of a cluster whose fire days are separated by >10 trading days. "Family" = the looser SMH ≤ −5 / RSP ≥ +1.5, used to get more episodes for the separator and confirmation tests.
+
+**1. Rule R as specified (20d unless noted)**
+
+| Scope | n | Dip ≥3% in 10d | Hit10 | Fwd10 | Hit20 | Fwd20 (med) | MAE20 | P(MAE20 ≤ −5%) |
+|---|---|---|---|---|---|---|---|---|
+| base 2003+ | 5891 days | 19.0% | 62.2% | +0.41 | 65.8% | +0.80 (+1.34) | −2.52 | 15.4% |
+| R, day level | 19 days | 42.1% | 57.9% | +0.64 | 89.5% | +2.73 (+3.38) | −3.06 | 26.3% |
+| R, episode level | 6 eps | 33.3% | 50.0% | −0.03 | 83.3% | +1.84 (+2.26) | −3.01 | 33.3% |
+| R 2018+, day level (base 2018+: 20.9% / 66.7% / +1.03 / 17.8%) | 17 days | 41.2% | 58.8% | +0.96 | 88.2% | +2.76 | −2.98 | 29.4% |
+
+Fire rate: 30 days (0.51% of valid days), 7 episodes. The 7th (2026-10-16) is still open. By era: 2 fire days in 2003–09, **0 in 2010–17**, 17 in 2018+. In practice this is a post-2018 pattern, and "by era" can't be checked any further than that.
+Episodes (fwd5/10/20, MAE10/20): 2009-05-08 −4.59/−4.26/+1.27, −4.62/−4.62 · 2021-03-04 +4.47/+3.92/+6.35, +1.33/+1.33 · 2024-07-19 −0.83/−2.93/+0.97, −2.93/**−5.76** · 2024-09-04 +0.63/+1.90/+3.25, −1.92/−1.92 · **2025-03-03 −3.97/−2.85/−4.18, −5.54/−5.54** · 2026-07-28 +4.11/+4.01/+3.38, −1.54/−1.54 · 2026-10-16 (open): −3.96% max drawdown to the 11-05 close.
+
+**2. Threshold sensitivity, episode level (the key result).** Fwd20 is above base only in the RSP ≥ +2.5 / SMH ≤ −6 or −7 corner (+1.84) and at RSP ≥ +3.5 (n=2). The neighbors are flat or negative: SMH −4/RSP 2.5: −0.46 (MAE20 −4.71); −5/2.5: −0.17 (−4.28); −6/1.5: −0.55 (−4.09); −7/1.5: −1.36 (−4.73). SMH weakness alone: +0.25 to +1.19, roughly base, with worse MAE (−2.7 to −3.9). So the upside is a cherry-picked corner. The dip-risk side is more stable: at day level, a ≥3% dip within 10d occurs on 27–48% of fire days across every combo vs 19% base. (At episode level it ranges 0–62.5%, noisy.)
+
+**3. What separates the bad cases (family, 15 episodes)**
+- HYG/IEF 10d ≤ −1 at the flag: 2 episodes (2008-09-05, 2025-02-27), both bad: fwd20 −7.19, MAE20 −8.53. HYG/IEF > −1: 13 episodes, hit20 84.6%, fwd20 +1.95, MAE20 −2.22, P(MAE20 ≤ −5) 15.4%, the same as base.
+- Day-level robustness: family & HYG/IEF 10d ≤ −0.5: 19 days, hit20 42.1%, fwd20 −3.08, P(MAE20 ≤ −5) 52.6%, vs credit selling alone (any day 2007+) at 62.5% / +0.76 / 22.8%. The rotation-plus-credit combination looks worse than credit alone. **But those 19 days are just 4 episodes:** 2008-09 ✗, 2025-03 ✗, and 2024-08 (yen unwind, fwd20 +2.8 to +6.7) ✓ and 2024-09 ✓. So the split is 2-for-4, and it is a hypothesis, not a rule.
+- SPY 10d ≤ −3% at the flag: 3 episodes, hit20 33.3%, fwd20 −2.00. SPY already ≥5% off its 60d high: 5 episodes, fwd20 −1.33. Both small n.
+- Worst family cases by MAE20: 2008-09-05 −11.32, 2022-04-11 −9.49 (credit calm, −0.11, so credit would *not* have caught it), 2024-07-18 −6.38, 2025-02-27 −5.75.
+
+**4. Heads-up, then wait for confirmation?** All 15 family episodes, common endpoint flag + 30d. The confirmation definitions were fixed before I looked at results.
+- Early entry at the flag close: avg −1.09% (median +1.24%), avg MAE −5.93%, P(MAE ≤ −5%) 40.0%. The family as a whole is not a buy signal over 30 days.
+- C1 "semis back" (SMH/SPY 5d > 0): confirmed 15/15, median lag 6d, entry +0.41% above the flag. End −1.60 vs early −1.09; MAE −5.33 vs −5.93; P(MAE ≤ −5) 40% vs 40%. **No drawdown avoided, small cost.**
+- C2 "trend back" (SPY > SMA10): 15/15, lag 3d, entry +1.07% above. End −2.15 vs −1.09; MAE −6.34 vs −5.93. **Worse on both sides.**
+- C3 "dip ≥2% then +1% up day": 9/15, lag 7d, entry −1.29% below the flag. On those 9: end −2.95 vs early −4.16, MAE −7.09 vs −8.87. But the 6 episodes it never entered averaged +3.52% early, so across all 15 C3 nets about −1.77% vs early −1.09%. It buys the dips that keep going and misses the ones that don't.
+- Conclusion: none of these confirmations is "whale confirmation". When SMH/SPY turns back up for 5 days, that does not tell you institutions are back.
+
+**What this means for the live rules (feeds P8):** the Oct 16–26 STRONG_BUY cluster (761.68–763.86) fired while R was ON *and* HYG/IEF 10d was −1.48 to −2.04, which is the 2008-09 / 2025-03 subgroup. Those entries were −3.7% to −3.9% by 11-05. By 11-04 to 11-10, R is on again but HYG/IEF 10d is only −0.34 to −0.87, so credit is not confirming. A "rotation AND credit selling" veto on STRONG_BUY would have blocked the Oct cluster. But historically it would also have blocked the Aug-2024 rebound (+5.5–6.7% over 20d). It should be tested as P8(b), with fire-rate cost, not wired in from this run.
+
+**Caveats:** n=6 episodes for R and 15 for the family; 0 fires in 2010–17; overlapping windows inflate day-level n; the 11-05 first-read numbers (42% dip / median +3.4%) reproduced at day level (42.1% / +3.38%), but the episode-level and sensitivity views are much weaker; the GEX leg is not in flow_history.
+
+**Live check (signal_performance_log.csv through 11-10; event tracking_log through 11-10):**
+- Resolved STRONG_BUY: 5d n=19, 78.9% hit, +1.47%, worst −2.60%. 10d n=16, 81.2%, +2.09%, worst −3.86%. 20d n=13, 100%, +2.88%, worst +1.00% (the 20d bucket has not reached the Oct fires yet). BUY_WATCH: 5d n=29, 55.2%, +0.42%; 10d n=29, 65.5%, +0.27%, worst −4.19%; 20d n=25, 80.0%, +1.13%.
+- Newly resolved since 11-07: 10-26 STRONG_BUY 10d −1.26%; 11-02 STRONG_BUY 5d +0.14%; 11-03 STRONG_BUY 5d −0.63%. The Oct cluster's 10d outcomes are −0.88, −3.86, −1.26 (10-16/22/26). The 20d outcomes resolve 11-13 to 11-24.
+- Event (day 3, 11-10): STABILIZING, 4/6 stabilization, 0/6 escalation. Early entries A/G (734.40) +2.11%. Confirmation entries B/C/F (753.01) −0.42%. Here the cost of waiting for confirmation was 2.5%, and it bought no drawdown protection because the trigger close was the low (max DD after A = 0.0%). That matches the P1 finding (waiting costs ~1–2%) and the C1/C2 results above. One event, so a hypothesis.
+- Contradiction worth flagging: `regime_signal` went STRONG_BUY on 11-06 and 11-10 while rule R was ON (SMH/SPY 10d −9.0 / −11.0, RSP/SPY +3.1 / +4.2). The 11-10 STRONG_BUY came at composite 4.7 and VIX 19.5, the same profile as the Oct losers. Credit is calmer this time (HYG/IEF 10d −0.44 vs −1.5 to −2.0 in Oct). The 11-11 intraday print (~762, partial bar, not used in any number above) is above both entries.
+
 ## 2026-11-07 — P1: STRONG_BUY macro gate with vol_score removed (composite-ex-vol >= 1 vs composite >= 1)
 
 **VERDICT: rejected. Keep the current `composite >= 1` gate.** Removing vol_score from the gate adds a small number of coin-flip setups with roughly double the drawdown risk. The vol leg is not a useful confirmation step either: waiting for it costs about 1.2% and does not reduce drawdown. Neither version of the gate explains the live Oct 16–Nov 3 losers. Those fired with composite 4.5–4.7, far above either threshold.
