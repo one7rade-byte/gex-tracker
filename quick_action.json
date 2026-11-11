@@ -45,15 +45,15 @@
   },
   {
    "label": "Fear",
-   "text": "VIX 17.4, contango",
+   "text": "VIX 17.5, contango",
    "tone": "green"
   }
  ],
  "flow_date": "2026-11-11",
  "flow_10d_pct": {
-  "smh_spy": -8.09,
-  "rsp_spy": 3.79,
-  "defensive_cyclical": 7.23,
-  "hyg_ief": -0.35
+  "smh_spy": -9.23,
+  "rsp_spy": 4.08,
+  "defensive_cyclical": 8.48,
+  "hyg_ief": -0.41
  }
 }
