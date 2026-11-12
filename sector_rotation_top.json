@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -54,14 +54,6 @@
       "return_21d": 6.9
     },
     {
-      "ticker": "BTC-USD",
-      "label": "Bitcoin",
-      "quadrant": "IMPROVING",
-      "rs_now": 94.26,
-      "rs_momentum": 1.4,
-      "return_21d": -8.87
-    },
-    {
       "ticker": "UUP",
       "label": "US Dollar Index",
       "quadrant": "LEADING",
@@ -76,6 +68,14 @@
       "rs_now": 113.95,
       "rs_momentum": 1.01,
       "return_21d": 9.82
+    },
+    {
+      "ticker": "BTC-USD",
+      "label": "Bitcoin",
+      "quadrant": "IMPROVING",
+      "rs_now": 93.55,
+      "rs_momentum": 0.94,
+      "return_21d": -9.84
     },
     {
       "ticker": "HYG",
