@@ -1,135 +1,136 @@
 {
   "date": "2026-11-12",
-  "generated_at": "07:00 PM",
+  "generated_at": "11:00 PM",
   "overall_signal": "HOLD",
   "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is positive at +$4.5B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.5 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA AVOID \u2014 company-specific negative news detected: 'Update: US Equity Indexes Mixed After Nvidia CEO Resigns, Tr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 5/10, RSI at 37th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 67th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 17.5, needs +4.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is positive at +$4.5B \u2014 dealers are providing a cushion on dips. Bullish but not peak suppression. VIX is 17.5 (calm, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA AVOID \u2014 company-specific negative news detected: 'Update: US Equity Indexes Mixed After Nvidia CEO Resigns, Tr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 5/10, RSI at 37th pct. Not yet at peak oversold but building. MSFT WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 67th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 17.5, needs +4.5 pts) with GEX remaining negative would trigger a high-conviction buy zone. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: HOLD",
+  "macro_picture": "SPY GEX is negative at $-1.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 18.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "NVDA AVOID \u2014 company-specific negative news detected: 'Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, ...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 77th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Telsa merger talks begin to take shape...' Do not buy this dip until news clears.",
+  "watch_section": "VIX pushing above 22-25 (currently 18.0, needs +4.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-1.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 18.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA AVOID \u2014 company-specific negative news detected: 'Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, ...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 77th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Telsa merger talks begin to take shape...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.0, needs +4.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
   "macro_trend": {
     "regime": "mixed",
-    "vix_trend": "rising",
-    "vix_current": 17.49,
-    "gex_trend": "deteriorating",
-    "gex_current": 4.5,
-    "fear_trend": "building",
-    "fear_current": 2.0,
+    "vix_trend": "stable",
+    "vix_current": 17.96,
+    "gex_trend": "improving",
+    "gex_current": -1.6,
+    "fear_trend": "easing",
+    "fear_current": 3.0,
     "bear_current": 2.0,
-    "bull_current": 5.0,
+    "bull_current": 4.0,
     "neg_gex_days": 8,
     "skew_current": 149.09,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 48.23
+    "spy_rsi": 49.54
   },
   "top_opportunity": {
-    "ticker": "GOOGL",
-    "score": 3.0,
-    "reason": "RSI very oversold (bottom 20% of own history) | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "neutral"
+    "ticker": null,
+    "score": 0,
+    "reason": "",
+    "news": ""
   },
   "avoid_names": [
     "NVDA",
-    "TSLA"
+    "TSLA",
+    "MSFT"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 5.0,
-      "rsi_pct": 37.0,
-      "above_200ma": true,
-      "news": "macro_fear",
-      "rsi_dir": "getting_more_oversold",
-      "days_oversold": 4,
-      "headlines": [
-        "Wall Street Models Lag Structural Reality, Prompting Me To Add an \u2018Overvalued\u2019 Apple",
-        "Apple's Market Cap Grew From $347 Billion to $4.6 Trillion During Tim Cook's 15 Years as CEO. Here's What That Growth Curve Means for Apple's Next Chapter Under John Ternus.",
-        "Apple Stock Called 'Safe Haven,' Hits Record High",
-        "Trump to Nvidia: Hire Tim Cook so \u201ca Legend Replaces a Legend.\u201d Bad Idea."
-      ]
-    },
-    "MSFT": {
       "score": 4.0,
       "rsi_pct": 37.7,
       "above_200ma": true,
-      "news": "macro_fear",
-      "rsi_dir": "recovering",
+      "news": "company_positive",
+      "rsi_dir": "getting_more_oversold",
       "days_oversold": 4,
       "headlines": [
-        "Alphabet Climbs 3% as NVIDIA\u2019s Leadership Shake-Up Puts Google\u2019s AI Chips in the Spotlight; Microsoft Gains 2%, Amazon Ticks Up",
-        "Microsoft Stocks Edge Higher as Anthropic Ties Deepen Despite Spreadsheet Rivalry",
-        "ALSO and Intermedia Form Joint Venture to Build a Next-Generation U.S. Cloud and Technology Business",
-        "Tesla fund makes surprise Microsoft bet, keeps Nvidia stake"
+        "China Renaissance Upgraded Apple (AAPL) to Buy. DZ Bank Cut It to Sell. Here\u2019s the Split",
+        "Apple Stock Called 'Safe Haven,' Hits Record High",
+        "Apple (AAPL): A CIBC Pick Riding Record Results and a New iPhone Lineup",
+        "Warren Buffett's Successor, Greg Abel, Has Nearly $110 Billion Invested in These 2 Tech Stocks"
+      ]
+    },
+    "MSFT": {
+      "score": 3.0,
+      "rsi_pct": 37.0,
+      "above_200ma": true,
+      "news": "company_negative",
+      "rsi_dir": "recovering",
+      "days_oversold": 3,
+      "headlines": [
+        "Bill Ackman says Microsoft's position is 'really, really strong' as Anthropic pushes into enterprise software",
+        "Why Bill Ackman sees value in Microsoft",
+        "Microsoft outage disrupts Outlook, Teams, and Copilot for users 'in any region'",
+        "Azure Grew 48%, Yet Griffin Securities Downgraded Microsoft (MSFT). Here\u2019s the Catch"
       ]
     },
     "NVDA": {
       "score": 6.0,
-      "rsi_pct": 2.5,
+      "rsi_pct": 1.9,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "fundamental_change",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Neocloud stocks crash following Nvidia controversy",
-        "Update: US Equity Indexes Mixed After Nvidia CEO Resigns, Treasury Yields Soar",
-        "Jensen Huang Is Out as Nvidia Names Colette Kress Interim CEO",
-        "Analysts cut price targets in wake in Nvidia-Jensen Huang bombshell"
+        "Nvidia market cap plunges $490 billion following former CEO Huang's affair scandals",
+        "Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
+        "Nvidia needs new front man to stay on top after Huang's ousting, experts say",
+        "Stock Market Today, Nov. 12: Nvidia CEO's Stunning Exit Sends Wall Street Lower as Rivals Surge"
       ]
     },
     "GOOGL": {
-      "score": 3.0,
-      "rsi_pct": 19.8,
+      "score": 2.0,
+      "rsi_pct": 29.6,
       "above_200ma": false,
-      "news": "neutral",
-      "rsi_dir": "stable",
+      "news": "macro_fear",
+      "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
-        "Nvidia succession uncertainty opens door for Google TPU and Broadcom, analyst says",
-        "Why customer trust is everything to Yahoo CEO Jim Lanzone",
-        "Alphabet Climbs 3% as NVIDIA\u2019s Leadership Shake-Up Puts Google\u2019s AI Chips in the Spotlight; Microsoft Gains 2%, Amazon Ticks Up",
-        "Microsoft Stocks Edge Higher as Anthropic Ties Deepen Despite Spreadsheet Rivalry"
+        "5 Unrivaled Stocks to Buy for the Next Decade",
+        "Nvidia Needs a Colossus to Replace Jensen Huang, and Eric Schmidt May Be the Only One Who Fits",
+        "Why Alphabet Stock Was Moving Higher Today",
+        "Vanguard CEO Salim Ramji warns bond market volatility could be a key 2027 risk"
       ]
     },
     "META": {
       "score": 3.0,
-      "rsi_pct": 45.7,
+      "rsi_pct": 46.9,
       "above_200ma": false,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 9,
+      "days_oversold": 8,
       "headlines": [
-        "Meta Nose-Dived 12% Over a Month: This Pro Analyst Expects 60% Gains Within 12 Months",
-        "Meta's $27B Off-Balance-Sheet AI Deal Reminds Steve Eisman of Enron\u2014 Joseph Carlson Disagrees",
-        "Reddit Sinks 6% as Traffic Falls 13% on Google\u2019s AI Overviews: \u201cNot Traffic Drivers\u201d",
-        "Meta Is Handing Its AI Data Center Buildout to an Amazon Veteran"
+        "millionways Introduces Thorsten-4, the Foundation Model That Teaches AI to Read the Room and Understand Human Behavior",
+        "LMSYS Org Launches SGLang Consortium with NVIDIA, AMD, Intel, Google, Meta, Cloudflare, Modal and RadixArk to Advance Open-Source AI Inference",
+        "Musk: SpaceX Makes Compute \u201cActually Usable\u201d in 2 Months, 3x Faster than Rivals",
+        "What ERock (EROC) Said on Its Q3 Earnings Call"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 67.3,
+      "rsi_pct": 77.2,
       "above_200ma": true,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 3,
+      "days_oversold": 2,
       "headlines": [
-        "Alphabet Climbs 3% as NVIDIA\u2019s Leadership Shake-Up Puts Google\u2019s AI Chips in the Spotlight; Microsoft Gains 2%, Amazon Ticks Up",
-        "Amazon Stocks Gain as Anthropic IPO Puts $271.8 Billion Value on Stake",
-        "Voters Just Rejected AI Data Centers in 40 of 41 Elections. Is the $1 Trillion Boom in Trouble?",
-        "Future Ready 2030: Amazon Is Helping More People Build Skills for New Careers in AI, Robotics, and Beyond"
+        "Microsoft And Amazon Show AI Spending Can Pay Off",
+        "Pimco CEO Warns: AI Companies Risk Borrowing \"Too Much\" ($10 Trillion)",
+        "After Selling Poppi For $1.95B, The Ellsworths Are Back With Another Startup. But What Comes After A Billion-Dollar Exit?",
+        "Alphabet Climbs 3% as NVIDIA\u2019s Leadership Shake-Up Puts Google\u2019s AI Chips in the Spotlight; Microsoft Gains 2%, Amazon Ticks Up"
       ]
     },
     "TSLA": {
       "score": 4.0,
-      "rsi_pct": 56.8,
+      "rsi_pct": 60.5,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Tesla fund makes surprise Microsoft bet, keeps Nvidia stake",
-        "Tesla Vs. Nvidia: The Regulatory Crosshairs are Trained on These Two Mag 7 Shares, One is Worse Off",
-        "Tesla May Be Done With Cybertruck, but This Company Wants to Keep It Alive \u2014 and Ross Gerber Is on Board",
-        "Nvidia, AMD, CoreWeave, Nebius, Tesla, and More Stocks That Explain Today\u2019s Market"
+        "SpaceX, Telsa merger talks begin to take shape",
+        "Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
+        "Musk: It Takes \u201c20 to 30 Million Robots\u201d to Match America\u2019s Output. That\u2019s Optimus\u2019 Market",
+        "TSLA Stock Climbs Amid Reports Of SpaceX Tie-Up As Early As December"
       ]
     }
   },
@@ -192,6 +193,17 @@
       "source_count": 1
     },
     {
+      "title": "For the Couple Where One Wants to Spend It and the Other Wants to Leave It to the Kids: 3 ETFs That Do Both",
+      "link": "https://247wallst.com/investing/etf/2026/11/12/for-the-couple-where-one-wants-to-spend-it-and-the-other-wants-to-leave-it-to-the-kids-3-etfs-that-do-both/?.tsrc=rss",
+      "pub_date": "2026-11-12",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
       "title": "NVIDIA\u2019s Leadership Crisis Is Dragging the S&amp;P 500 Lower. Here\u2019s What Else Is Moving",
       "link": "https://247wallst.com/investing/2026/11/12/nvidias-leadership-crisis-is-dragging-the-sp-500-lower-heres-what-else-is-moving/?.tsrc=rss",
       "pub_date": "2026-11-12",
@@ -229,17 +241,6 @@
     {
       "title": "ETFs Are Net Sellers of Dominion (D) on Nov. 10",
       "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-dominion-d-110247142.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "45 ETFs Add to Amgen (AMGN) Holdings on Tuesday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/45-etfs-add-amgen-amgn-110201664.html?.tsrc=rss",
       "pub_date": "2026-11-12",
       "tickers": [
         "MARKET"
