@@ -1,9 +1,9 @@
 {
- "date": "2026-11-11",
+ "date": "2026-11-12",
  "action": "HOLD",
  "tone": "blue",
  "headline": "Trend intact. Hold.",
- "confirmations": 3,
+ "confirmations": 2,
  "confirmations_total": 5,
  "checks": [
   {
@@ -20,7 +20,7 @@
   },
   {
    "label": "SPY back above zero gamma",
-   "ok": true
+   "ok": false
   },
   {
    "label": "Credit holding: HYG flat or up over 5 days",
@@ -35,25 +35,25 @@
   },
   {
    "label": "Big money",
-   "text": "Rotating OUT of tech into the rest of the market, not leaving stocks",
-   "tone": "amber"
+   "text": "No strong rotation",
+   "tone": "gray"
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.2% in 5 days)",
+   "text": "calm (HYG -0.3% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 17.5, contango",
+   "text": "VIX 18.0, contango",
    "tone": "green"
   }
  ],
- "flow_date": "2026-11-11",
+ "flow_date": "2026-11-12",
  "flow_10d_pct": {
-  "smh_spy": -9.23,
-  "rsp_spy": 4.08,
-  "defensive_cyclical": 8.48,
-  "hyg_ief": -0.41
+  "smh_spy": -9.46,
+  "rsp_spy": 2.11,
+  "defensive_cyclical": 6.88,
+  "hyg_ief": 0.35
  }
 }
