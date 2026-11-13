@@ -1,9 +1,9 @@
 {
- "date": "2026-11-11",
- "action": "HOLD",
- "tone": "blue",
- "headline": "Trend intact. Hold.",
- "confirmations": 3,
+ "date": "2026-11-12",
+ "action": "WAIT FOR CONFIRMATION",
+ "tone": "amber",
+ "headline": "Buy setup is building, but only 2/5 confirmations. Don't be first.",
+ "confirmations": 2,
  "confirmations_total": 5,
  "checks": [
   {
@@ -20,7 +20,7 @@
   },
   {
    "label": "SPY back above zero gamma",
-   "ok": true
+   "ok": false
   },
   {
    "label": "Credit holding: HYG flat or up over 5 days",
@@ -30,30 +30,30 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Hold",
-   "tone": "blue"
+   "text": "Buy Watch",
+   "tone": "green"
   },
   {
    "label": "Big money",
-   "text": "Rotating OUT of tech into the rest of the market, not leaving stocks",
-   "tone": "amber"
+   "text": "No strong rotation",
+   "tone": "gray"
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.2% in 5 days)",
+   "text": "calm (HYG -0.4% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 17.5, contango",
+   "text": "VIX 18.7, contango",
    "tone": "green"
   }
  ],
- "flow_date": "2026-11-11",
+ "flow_date": "2026-11-12",
  "flow_10d_pct": {
   "smh_spy": -9.23,
-  "rsp_spy": 4.08,
-  "defensive_cyclical": 8.48,
-  "hyg_ief": -0.41
+  "rsp_spy": 1.93,
+  "defensive_cyclical": 6.44,
+  "hyg_ief": 0.37
  }
 }
