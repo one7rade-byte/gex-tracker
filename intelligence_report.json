@@ -1,135 +1,137 @@
 {
   "date": "2026-11-13",
-  "generated_at": "07:00 PM",
-  "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is deeply negative at $-8.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.7 (moderately elevated, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "AAPL WATCH \u2014 score 5/10, RSI at 35th pct. Not yet at peak oversold but building. NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. MSFT WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 75th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 18.7, needs +3.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-8.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 18.7 (moderately elevated, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: AAPL WATCH \u2014 score 5/10, RSI at 35th pct. Not yet at peak oversold but building. NVDA OPPORTUNITY (high confidence) \u2014 RSI at 2th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. MSFT WATCH \u2014 score 4/10, RSI at 36th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 75th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.7, needs +3.3 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "generated_at": "11:00 PM",
+  "overall_signal": "WATCH",
+  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
+  "macro_picture": "SPY GEX is deeply negative at $-12.1B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft's latest outage hit Outlook and Copilot \u2014 what it ...' Do not buy this dip until news clears. NVDA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 46th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 61th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.1B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft's latest outage hit Outlook and Copilot \u2014 what it ...' Do not buy this dip until news clears. NVDA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 46th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 61th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "negative_gex",
-    "vix_trend": "stable",
-    "vix_current": 18.7,
+    "regime": "bear_warning",
+    "vix_trend": "falling",
+    "vix_current": 19.37,
     "gex_trend": "improving",
-    "gex_current": -8.0,
-    "fear_trend": "stable",
-    "fear_current": 4.0,
-    "bear_current": 4.0,
-    "bull_current": 3.0,
+    "gex_current": -12.1,
+    "fear_trend": "easing",
+    "fear_current": 5.0,
+    "bear_current": 6.0,
+    "bull_current": 2.0,
     "neg_gex_days": 8,
     "skew_current": 150.16,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 48.77
+    "spy_rsi": 44.61
   },
   "top_opportunity": {
-    "ticker": "NVDA",
-    "score": 5.0,
-    "reason": "RSI extremely oversold (bottom 2% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Elevated put buying (P/C 79th pct) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "macro_fear"
+    "ticker": null,
+    "score": 0,
+    "reason": "",
+    "news": ""
   },
   "avoid_names": [
-    "TSLA",
-    "GOOGL"
+    "MSFT",
+    "NVDA",
+    "GOOGL",
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 5.0,
-      "rsi_pct": 35.0,
+      "score": 4.0,
+      "rsi_pct": 46.0,
       "above_200ma": true,
-      "news": "neutral",
-      "rsi_dir": "getting_more_oversold",
+      "news": "company_positive",
+      "rsi_dir": "stable",
       "days_oversold": 4,
       "headlines": [
-        "What to make of Jensen Huang's resignation: AI Investing Panel",
+        "A $1,999 Sellout. What China Renaissance Sees in Apple (AAPL)",
+        "JardogsHealth Forms Strategic Advisory Council with Leaders from Discover Card, MTV, DoorDash and Apple",
         "Apple Stocks Rise 1.04% as Siri AI-Powered HomeView and Apple TV Hit Shelves",
-        "What Could Still Send Apple Stock Higher?",
-        "Forget the \"Magnificent Seven.\" Berkshire Hathaway Could Be the Better Long-Term Bet."
+        "What Could Still Send Apple Stock Higher?"
       ]
     },
     "MSFT": {
-      "score": 4.0,
-      "rsi_pct": 36.2,
+      "score": 5.0,
+      "rsi_pct": 30.7,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "recovering",
-      "days_oversold": 3,
+      "days_oversold": 2,
       "headlines": [
+        "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
+        "Microsoft's latest outage hit Outlook and Copilot \u2014 what it means for your email",
         "Microsoft Service Outage Gives Software Giant Black Eye",
-        "Cerebras Stocks Jump 11.70% After Raising Outlook and Confirming Microsoft Cloud Deal",
-        "Microsoft outage is \u2018one of the most economically damaging in history\u2019, expert warns",
-        "CBRG 2X Cerebras ETF Surges 16% as Cerebras Jumps 8% on Microsoft Deal and Raised Guidance"
+        "Microsoft vs. Salesforce: One Software Stock Remains a Top Pick, the Other Has Something to Prove, Says RBC"
       ]
     },
     "NVDA": {
       "score": 5.0,
-      "rsi_pct": 2.5,
+      "rsi_pct": 0.6,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Nvidia Stock Braces For AI Chipmaker's First Report Without Jensen Huang",
-        "The Stock Market's Early Rally Fades as Wholesale Inflation Hits 6.5%",
-        "SoftBank Group Stocks Fall 5.11% as Nvidia Shake-Up Hits OpenAI-Linked Investor",
-        "\u201cA Legend Replaces A Legend!\u201d Trump Says \u201cThere Is Only One Man\u201d To Replace Jensen Huang At Nvidia"
+        "How the Nvidia scandal impacts US\u2013China relations: Department of Defense CTO",
+        "Dow Jones Futures: Market Rally Shaky As Nvidia Earnings, Anthropic IPO Loom; SpaceX Starship Flight 15 Soon.",
+        "Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgrades Stock to Hold on CEO Uncertainty",
+        "Could a Former Nvidia Executive Replace Jensen Huang? Arm\u2019s Rene Haas Emerges as Candidate"
       ]
     },
     "GOOGL": {
-      "score": 3.0,
-      "rsi_pct": 27.6,
+      "score": 2.0,
+      "rsi_pct": 28.2,
       "above_200ma": false,
       "news": "company_negative",
       "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
-        "HSBC Says Buy the Dip in These 11 Stocks -- Alphabet and Oracle Top the List",
-        "Should You Wait Before Buying Reddit Stock?",
-        "Alphabet Stocks Rise 1.19% as Gemini 4 Hydrogen and $395 AI Glasses Launch",
-        "Marvell Is Still Up 81% This Year. Can MRVL Stock Hit $300 by 2029?"
+        "What Does Dominion Energy Offer That NiSource Does Not?",
+        "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
+        "Alphabet (GOOGL) Faces Uber Deal Talk, Space Chip Test And \u20ac1.66 Billion Fine",
+        "Alibaba\u2019s (BABA) AI Growth Prospects Remain Masked by Short-Term Challenges"
       ]
     },
     "META": {
-      "score": 3.0,
-      "rsi_pct": 47.2,
-      "above_200ma": false,
+      "score": 4.0,
+      "rsi_pct": 61.3,
+      "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
+        "Meta tests prediction-market app for employees, WSJ reports",
         "Meta reportedly paid 2 teens a combined $7 million to settle social media addiction claims as 9,800 more cases loom",
         "United is the first airline to ban bookings from Meta\u2019s AI agent, Muse: 'I don't want to create another middleman'",
-        "Microsoft vs. Meta: enterprise AI distribution against monetization speed",
-        "Form Energy Adds Meta and Tesla Veterans Lori Goler and Jon McNeill to Board as It Ramps Production for Commercial Growth"
+        "Microsoft vs. Meta: enterprise AI distribution against monetization speed"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 74.8,
+      "rsi_pct": 68.1,
       "above_200ma": true,
       "news": "company_positive",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
+        "FRMI Stock Clocks Best Day Ever After Report Names Amazon As Project Matador Customer",
+        "Sector Update: Consumer Stocks Mixed Late Afternoon",
         "Sector Update: Consumer Stocks Mixed in Afternoon Trading",
-        "How Investors May Respond To Amazon Stock As AWS Growth And Anthropic IPO Near",
-        "Amazon's secret AI plan could change how Americans shop",
-        "Amazon Eyes Products It Doesn't Sell in AI Shopping Tussle"
+        "How Investors May Respond To Amazon Stock As AWS Growth And Anthropic IPO Near"
       ]
     },
     "TSLA": {
-      "score": 4.0,
-      "rsi_pct": 65.6,
+      "score": 2.0,
+      "rsi_pct": 41.7,
       "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "Tesla-SpaceX merger announcement as early as December: Bloomberg",
-        "General Motors vs. Tesla: Which Is the Better Automotive Stock to Buy Going Into 2027?",
-        "Tesla-SpaceX Merger Talks Progress. Gary Black Sees \u201cLittle Windfall\u201d for Tesla Holders",
-        "Automotive Properties Real Est Invt TR Q3 Earnings Call Highlights"
+        "SpaceX, Tesla Merger Puts Musk At Forefront Of 'Revolutionary' Tech, Analyst Says",
+        "SpaceX Could Announce a Deal for Tesla as Soon as December. Here's What It Would Do to SpaceX Stock.",
+        "America's Greatest Opportunities: The Earnings Gap That Put Tesla Stock At Ludicrous Speed",
+        "SpaceX\u2019s Big Day: A Historic Starship Launch, a Tesla Merger Under Scrutiny, and a $74 Billion AI Bet"
       ]
     }
   },
