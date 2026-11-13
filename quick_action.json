@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.3% in 5 days)",
+   "text": "calm (HYG -0.4% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 19.4, contango",
+   "text": "VIX 19.3, contango",
    "tone": "green"
   }
  ],
  "flow_date": "2026-11-13",
  "flow_10d_pct": {
-  "smh_spy": -6.93,
-  "rsp_spy": 1.53,
-  "defensive_cyclical": 4.18,
+  "smh_spy": -6.67,
+  "rsp_spy": 1.49,
+  "defensive_cyclical": 4.3,
   "hyg_ief": 1.27
  }
 }
