@@ -29676,3 +29676,506 @@ date,ticker,spot_price,rsi_14,ma_200,above_200ma,rsi_pct,iv_pct,pc_pct,iv_curren
 2026-11-11,YUM,160.2100067138672,63.88,153.65,True,62.1,99,,32.13,,,not_scanned,,,,,,,-2.9,HOLD / NEUTRAL,0.0
 2026-11-11,ZBH,107.31999969482422,67.51,92.24,True,82.8,79,,34.06,,,not_scanned,,,,,,,-3.36,REDUCE / AVOID NEW,0.0
 2026-11-11,ZTS,82.45999908447266,54.55,92.08,False,51.7,81,,39.78,,,not_scanned,,,,,,,-2.99,HOLD / NEUTRAL,0.0
+2026-11-12,ADBE,238.5399932861328,20.7,247.91,False,0.0,79,,48.9,0.55,,unknown,239.03,260.0,230.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 0% of own history) | Below 200MA — downtrend, scale in slowly",1.26,HOLD / NEUTRAL,0.0
+2026-11-12,CVX,216.35000610351562,30.2,195.55,True,0.0,85,,29.33,0.66,0.12,positive,199.14,220.0,200.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.9,BUY,0.5
+2026-11-12,DDOG,184.4600067138672,19.25,201.08,False,0.0,86,,69.59,0.9,,unknown,182.83,300.0,125.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 0% of own history) | Below 200MA — downtrend, scale in slowly",0.84,HOLD / NEUTRAL,0.0
+2026-11-12,FANG,182.1999969482422,26.33,191.0,False,0.0,78,,37.46,0.46,0.008,positive,160.82,220.0,155.0,4,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",3.32,BUY,0.75
+2026-11-12,FFIV,317.6400146484375,12.26,365.59,False,0.0,92,,48.7,0.42,,unknown,323.03,400.0,300.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 0% of own history) | Below 200MA — downtrend, scale in slowly",0.49,HOLD / NEUTRAL,0.0
+2026-11-12,IT,190.83999633789062,27.86,167.88,True,0.0,65,,51.83,0.72,,unknown,,210.0,160.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | Above 200MA — uptrend intact,4.1,BUY,0.75
+2026-11-12,HPQ,28.8799991607666,27.12,24.94,True,0.0,98,,60.86,0.94,,unknown,29.29,30.0,28.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | Above 200MA — uptrend intact,2.13,HOLD / NEUTRAL,0.0
+2026-11-12,IFF,80.37999725341797,22.82,79.16,True,0.0,75,,36.36,0.92,,unknown,80.63,87.5,80.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | Above 200MA — uptrend intact,3.5,BUY,0.75
+2026-11-12,NWSA,26.270000457763672,25.08,26.95,False,0.0,93,,37.5,0.09,,unknown,23.22,30.0,25.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 0% of own history) | Below 200MA — downtrend, scale in slowly",0.43,HOLD / NEUTRAL,0.0
+2026-11-12,OKTA,182.5399932861328,34.21,128.56,True,0.0,98,,82.54,1.06,0.002,positive,178.33,190.0,170.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.13,BUY,0.5
+2026-11-12,PANW,322.6600036621094,30.77,276.5,True,0.0,99,,80.24,0.92,-0.003,negative,326.33,400.0,310.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | GEX negative — unstable, watch for stabilization | Above 200MA — uptrend intact",0.07,HOLD / NEUTRAL,0.0
+2026-11-12,CRM,217.57000732421875,21.77,197.97,True,0.0,86,,48.84,0.95,,unknown,217.37,260.0,200.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | Above 200MA — uptrend intact,2.84,HOLD / NEUTRAL,0.0
+2026-11-12,NOW,100.66000366210938,10.75,113.81,False,0.0,65,,51.47,0.79,-0.014,negative,104.13,150.0,95.0,4,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 0% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",0.1,HOLD / NEUTRAL,0.0
+2026-11-12,WDAY,190.63999938964844,23.87,155.91,True,0.0,79,,55.06,0.65,0.014,positive,,210.0,185.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 0% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,5.26,BUY,0.75
+2026-11-12,AXON,307.1099853515625,20.96,467.34,False,3.4,77,,63.24,0.68,-0.001,negative,343.91,470.0,300.0,4,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 3% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",-0.89,HOLD / NEUTRAL,0.0
+2026-11-12,NWS,29.170000076293945,29.01,30.43,False,3.4,55,,35.64,0.38,,unknown,26.84,30.0,25.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 3% of own history) | Below 200MA — downtrend, scale in slowly",2.43,HOLD / NEUTRAL,0.0
+2026-11-12,VEEV,302.4200134277344,31.17,213.07,True,3.4,86,,51.08,0.43,0.005,positive,,330.0,290.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 3% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.57,BUY,0.5
+2026-11-12,ZBRA,317.8299865722656,16.63,283.86,True,3.4,67,,46.71,1.88,-0.001,negative,341.48,440.0,270.0,5,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 3% of own history) | GEX negative — unstable, watch for stabilization | Above 200MA — uptrend intact",1.71,HOLD / NEUTRAL,0.0
+2026-11-12,XOM,169.77999877929688,34.21,156.21,True,5.1,77,,29.46,0.59,0.149,positive,150.76,170.0,145.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 5% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.98,BUY,0.75
+2026-11-12,NVDA,166.19000244140625,24.49,204.34,False,5.1,92,,62.17,0.91,-0.255,negative,173.03,200.0,150.0,4,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 5% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",-1.92,HOLD / NEUTRAL,0.0
+2026-11-12,RVTY,157.02000427246094,48.52,113.8,True,5.1,94,,54.04,0.83,,unknown,152.05,170.0,145.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 5% of own history) | Above 200MA — uptrend intact,1.96,HOLD / NEUTRAL,0.0
+2026-11-12,TRMB,55.83000183105469,30.36,60.17,False,5.1,55,,36.41,0.32,,unknown,,60.0,55.0,3,"NEUTRAL — no edge, wait","RSI extremely oversold (bottom 5% of own history) | Below 200MA — downtrend, scale in slowly",2.29,HOLD / NEUTRAL,0.0
+2026-11-12,ILMN,209.5500030517578,30.04,179.23,True,5.3,91,,62.06,0.7,,unknown,185.88,230.0,200.0,4,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 5% of own history) | Above 200MA — uptrend intact,2.12,HOLD / NEUTRAL,0.0
+2026-11-12,AES,14.90999984741211,42.11,14.79,True,6.8,54,,42.54,0.84,0.015,positive,14.72,15.0,14.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 7% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,6.22,BUY,1.0
+2026-11-12,CTSH,63.75,33.41,58.08,True,6.8,79,,42.99,0.69,0.002,positive,58.11,67.5,55.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 7% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.72,BUY,0.75
+2026-11-12,COIN,130.6699981689453,28.21,174.41,False,6.8,51,,70.72,0.8,-0.01,negative,133.61,137.0,125.0,4,"WATCH — setup building, not quite ready","RSI extremely oversold (bottom 7% of own history) | GEX negative — unstable, watch for stabilization | Below 200MA — downtrend, scale in slowly",0.4,HOLD / NEUTRAL,0.0
+2026-11-12,OXY,58.400001525878906,28.83,56.7,True,6.8,87,,39.92,0.39,0.057,positive,,60.0,58.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 7% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.24,BUY,0.5
+2026-11-12,RDDT,99.55000305175781,26.34,154.12,False,16.9,11,,61.07,0.78,,unknown,100.01,100.0,90.0,4,"WATCH — setup building, not quite ready","RSI very oversold (bottom 17% of own history) | Options cheap (IV bottom 11% of own history) | Below 200MA — downtrend, scale in slowly",3.98,BUY,1.0
+2026-11-12,APA,47.65999984741211,37.4,38.63,True,8.5,69,,48.54,0.52,0.004,positive,,50.0,43.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 8% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,5.18,BUY,0.75
+2026-11-12,CRWD,229.8699951171875,33.88,172.47,True,8.5,96,,69.11,0.86,0.02,positive,220.23,300.0,210.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 8% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,3.57,BUY,0.5
+2026-11-12,PFE,28.829999923706055,39.44,26.97,True,8.5,74,,25.85,0.97,0.02,positive,27.32,30.0,25.0,5,"WATCH — setup building, not quite ready",RSI extremely oversold (bottom 8% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.88,BUY,0.75
+2026-11-12,BIIB,250.47999572753906,49.81,204.77,True,10.2,99,,51.69,0.89,0.003,positive,227.01,255.0,235.0,4,"WATCH — setup building, not quite ready",RSI very oversold (bottom 10% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,3.25,BUY,0.5
+2026-11-12,FTNT,129.5399932861328,21.41,130.48,False,10.2,75,,51.27,0.82,0.004,positive,124.49,131.0,125.0,3,"NEUTRAL — no edge, wait","RSI very oversold (bottom 10% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",2.69,HOLD / NEUTRAL,0.0
+2026-11-12,KMI,32.0099983215332,34.2,32.19,False,10.2,86,,27.08,0.64,0.005,positive,30.02,35.0,30.0,3,"NEUTRAL — no edge, wait","RSI very oversold (bottom 10% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",2.03,HOLD / NEUTRAL,0.0
+2026-11-12,TPL,281.17999267578125,20.7,399.38,False,10.2,49,,47.94,0.71,,unknown,302.43,310.0,250.0,2,"NEUTRAL — no edge, wait","RSI very oversold (bottom 10% of own history) | Below 200MA — downtrend, scale in slowly",2.24,HOLD / NEUTRAL,0.0
+2026-11-12,ADM,70.97000122070312,18.18,76.69,False,11.9,58,,29.97,0.34,0.006,positive,,82.5,67.5,3,"NEUTRAL — no edge, wait","RSI very oversold (bottom 12% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",3.57,BUY,1.0
+2026-11-12,COP,140.05999755859375,35.42,123.13,True,11.9,83,,34.52,0.56,0.037,positive,,150.0,110.0,4,"WATCH — setup building, not quite ready",RSI very oversold (bottom 12% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,4.07,BUY,0.5
+2026-11-12,DVN,46.22999954223633,33.61,46.28,False,11.9,52,,36.32,0.43,0.021,positive,,50.0,40.0,3,"NEUTRAL — no edge, wait","RSI very oversold (bottom 12% of own history) | GEX positive — dealers providing support | Below 200MA — downtrend, scale in slowly",3.93,BUY,1.0
+2026-11-12,MPC,412.8500061035156,38.08,300.6,True,11.9,94,,51.13,0.98,0.008,positive,394.97,430.0,350.0,4,"WATCH — setup building, not quite ready",RSI very oversold (bottom 12% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,3.41,BUY,0.5
+2026-11-12,PLTR,171.5800018310547,30.62,153.64,True,11.9,51,,56.09,0.99,0.132,positive,160.1,172.5,160.0,4,"WATCH — setup building, not quite ready",RSI very oversold (bottom 12% of own history) | GEX positive — dealers providing support | Above 200MA — uptrend intact,5.99,BUY,1.0
+2026-11-12,MMM,186.24000549316406,63.02,162.22,True,72.9,55,,28.14,,,not_scanned,,,,,,,-1.13,HOLD / NEUTRAL,0.0
+2026-11-12,AOS,63.97999954223633,56.97,63.14,True,69.5,98,,37.14,,,not_scanned,,,,,,,-3.43,REDUCE / AVOID NEW,0.0
+2026-11-12,ABT,107.25,56.52,101.54,True,55.9,93,,31.58,,,not_scanned,,,,,,,-2.05,HOLD / NEUTRAL,0.0
+2026-11-12,ABBV,294.45001220703125,60.41,240.41,True,37.3,77,,28.47,,,not_scanned,,,,,,,0.4,HOLD / NEUTRAL,0.0
+2026-11-12,ACN,249.9499969482422,50.36,190.39,True,16.9,83,,48.58,,,not_scanned,,,,,,,1.67,HOLD / NEUTRAL,0.0
+2026-11-12,AMD,585.2999877929688,57.44,421.71,True,62.7,90,,72.8,,,not_scanned,,,,,,,-2.41,HOLD / NEUTRAL,0.0
+2026-11-12,AFL,126.51000213623047,72.83,116.63,True,88.1,74,,23.64,,,not_scanned,,,,,,,-3.49,REDUCE / AVOID NEW,0.0
+2026-11-12,A,173.00999450683594,49.93,137.76,True,18.6,96,,40.48,,,not_scanned,,,,,,,0.76,HOLD / NEUTRAL,0.0
+2026-11-12,APD,316.20001220703125,59.65,292.37,True,64.4,55,,27.41,,,not_scanned,,,,,,,-0.45,HOLD / NEUTRAL,0.0
+2026-11-12,ABNB,181.1300048828125,57.1,148.83,True,66.1,59,,38.55,,,not_scanned,,,,,,,-0.83,HOLD / NEUTRAL,0.0
+2026-11-12,AKAM,86.55999755859375,42.24,112.03,False,49.2,80,,60.6,,,not_scanned,,,,,,,-2.73,HOLD / NEUTRAL,0.0
+2026-11-12,ALB,94.8499984741211,51.96,146.09,False,79.7,22,,52.36,,,not_scanned,,,,,,,-1.7,HOLD / NEUTRAL,0.0
+2026-11-12,ARE,44.29999923706055,54.01,48.96,False,62.7,96,,47.14,,,not_scanned,,,,,,,-4.77,REDUCE / AVOID NEW,0.0
+2026-11-12,ALGN,166.97000122070312,61.13,168.65,False,74.6,13,,39.55,,,not_scanned,,,,,,,-0.75,HOLD / NEUTRAL,0.0
+2026-11-12,ALLE,190.07000732421875,64.86,151.59,True,74.6,72,,32.25,,,not_scanned,,,,,,,-2.29,HOLD / NEUTRAL,0.0
+2026-11-12,LNT,73.05000305175781,65.95,70.82,True,64.4,90,,26.48,,,not_scanned,,,,,,,-2.55,HOLD / NEUTRAL,0.0
+2026-11-12,ALL,266.69000244140625,61.15,231.37,True,69.5,95,,31.95,,,not_scanned,,,,,,,-3.25,REDUCE / AVOID NEW,0.0
+2026-11-12,GOOGL,298.70001220703125,38.23,338.69,False,37.3,77,,35.6,,,not_scanned,,,,,,,-1.6,HOLD / NEUTRAL,0.0
+2026-11-12,GOOG,295.3500061035156,37.14,336.64,False,40.7,78,,35.54,,,not_scanned,,,,,,,-1.93,HOLD / NEUTRAL,0.0
+2026-11-12,MO,77.91999816894531,64.07,69.55,True,64.4,84,,24.51,,,not_scanned,,,,,,,-2.19,HOLD / NEUTRAL,0.0
+2026-11-12,AMZN,267.44000244140625,63.73,244.47,True,98.3,71,,35.44,,,not_scanned,,,,,,,-4.12,REDUCE / AVOID NEW,0.0
+2026-11-12,AMCR,43.79999923706055,41.05,43.11,True,33.9,41,,27.26,,,not_scanned,,,,,,,2.83,HOLD / NEUTRAL,0.0
+2026-11-12,AEE,113.5199966430664,74.73,108.82,True,81.4,59,,21.43,,,not_scanned,,,,,,,-2.05,HOLD / NEUTRAL,0.0
+2026-11-12,AEP,128.91000366210938,47.12,128.56,True,47.5,79,,21.92,,,not_scanned,,,,,,,-0.54,HOLD / NEUTRAL,0.0
+2026-11-12,AXP,318.05999755859375,54.1,324.46,False,69.5,50,,28.25,,,not_scanned,,,,,,,-2.56,HOLD / NEUTRAL,0.0
+2026-11-12,AIG,82.56999969482422,53.88,77.18,True,67.8,43,,24.98,,,not_scanned,,,,,,,-0.0,HOLD / NEUTRAL,0.0
+2026-11-12,AMT,189.7899932861328,51.54,177.91,True,32.2,92,,30.49,,,not_scanned,,,,,,,-0.09,HOLD / NEUTRAL,0.0
+2026-11-12,AWK,147.5800018310547,59.77,133.21,True,57.6,87,,24.92,,,not_scanned,,,,,,,-1.82,HOLD / NEUTRAL,0.0
+2026-11-12,AMP,513.47998046875,59.85,493.24,True,91.5,87,,31.31,,,not_scanned,,,,,,,-4.54,REDUCE / AVOID NEW,0.0
+2026-11-12,AME,241.0399932861328,50.69,235.05,True,61.0,81,,31.75,,,not_scanned,,,,,,,-1.74,HOLD / NEUTRAL,0.0
+2026-11-12,AMGN,467.05999755859375,68.34,380.39,True,64.4,75,,31.35,,,not_scanned,,,,,,,-1.65,HOLD / NEUTRAL,0.0
+2026-11-12,APH,79.62000274658203,57.09,75.5,True,78.0,82,,50.2,,,not_scanned,,,,,,,-3.16,REDUCE / AVOID NEW,0.0
+2026-11-12,ADI,409.2900085449219,55.08,376.27,True,57.6,93,,52.97,,,not_scanned,,,,,,,-2.18,HOLD / NEUTRAL,0.0
+2026-11-12,AON,333.4200134277344,72.92,325.72,True,76.3,85,,31.62,,,not_scanned,,,,,,,-3.2,REDUCE / AVOID NEW,0.0
+2026-11-12,APO,121.3499984741211,59.94,122.61,False,94.9,60,,38.04,,,not_scanned,,,,,,,-5.19,REDUCE / AVOID NEW,0.0
+2026-11-12,AAPL,354.8800048828125,54.74,300.76,True,35.6,55,,26.22,,,not_scanned,,,,,,,1.85,HOLD / NEUTRAL,0.0
+2026-11-12,AMAT,380.95001220703125,50.74,446.39,False,72.9,92,,72.53,,,not_scanned,,,,,,,-5.35,REDUCE / AVOID NEW,0.0
+2026-11-12,APP,393.67999267578125,76.35,406.6,False,93.2,36,,64.64,,,not_scanned,,,,,,,-3.62,REDUCE / AVOID NEW,0.0
+2026-11-12,APTV,38.810001373291016,34.77,58.02,False,20.3,60,,42.2,,,not_scanned,,,,,,,0.78,HOLD / NEUTRAL,0.0
+2026-11-12,ACGL,109.23999786376953,67.65,97.54,True,74.6,79,,31.66,,,not_scanned,,,,,,,-2.7,HOLD / NEUTRAL,0.0
+2026-11-12,ARES,133.2899932861328,64.55,123.67,True,83.1,70,,43.55,,,not_scanned,,,,,,,-2.85,HOLD / NEUTRAL,0.0
+2026-11-12,ANET,206.6300048828125,64.17,167.1,True,86.4,70,,56.99,,,not_scanned,,,,,,,-3.11,REDUCE / AVOID NEW,0.0
+2026-11-12,AJG,277.2799987792969,57.17,233.4,True,44.1,80,,35.37,,,not_scanned,,,,,,,-0.32,HOLD / NEUTRAL,0.0
+2026-11-12,AIZ,321.0899963378906,85.81,257.91,True,100.0,55,,31.14,,,not_scanned,,,,,,,-3.3,REDUCE / AVOID NEW,0.0
+2026-11-12,T,22.18000030517578,74.51,24.91,False,91.5,88,,28.41,,,not_scanned,,,,,,,-6.6,REDUCE / AVOID NEW,0.0
+2026-11-12,ATO,175.9199981689453,60.63,174.61,True,59.3,46,,21.08,,,not_scanned,,,,,,,0.5,HOLD / NEUTRAL,0.0
+2026-11-12,ADSK,259.4800109863281,55.65,233.78,True,45.8,95,,53.21,,,not_scanned,,,,,,,-1.36,HOLD / NEUTRAL,0.0
+2026-11-12,ADP,307.9200134277344,53.3,242.46,True,40.7,84,,31.99,,,not_scanned,,,,,,,-0.29,HOLD / NEUTRAL,0.0
+2026-11-12,AZO,3252.18994140625,54.3,3242.9,True,62.7,100,,32.88,,,not_scanned,,,,,,,-3.01,REDUCE / AVOID NEW,0.0
+2026-11-12,AVY,186.9600067138672,58.66,172.05,True,57.6,47,,27.55,,,not_scanned,,,,,,,0.57,HOLD / NEUTRAL,0.0
+2026-11-12,BKR,48.86000061035156,34.44,60.03,False,35.6,82,,37.97,,,not_scanned,,,,,,,-1.76,HOLD / NEUTRAL,0.0
+2026-11-12,BALL,64.91000366210938,50.38,61.35,True,47.5,35,,28.27,,,not_scanned,,,,,,,2.1,HOLD / NEUTRAL,0.0
+2026-11-12,BAC,50.5099983215332,49.68,54.87,False,96.6,67,,27.48,,,not_scanned,,,,,,,-5.75,REDUCE / AVOID NEW,0.0
+2026-11-12,BAX,25.739999771118164,52.4,21.61,True,61.0,54,,42.3,,,not_scanned,,,,,,,-0.12,HOLD / NEUTRAL,0.0
+2026-11-12,BDX,215.7100067138672,74.03,168.19,True,81.4,70,,30.05,,,not_scanned,,,,,,,-2.71,HOLD / NEUTRAL,0.0
+2026-11-12,BRK-B,589.8300170898438,79.6,499.85,True,84.7,,,,,,not_scanned,,,,,,,-1.78,HOLD / NEUTRAL,0.0
+2026-11-12,BBY,103.41000366210938,54.88,76.78,True,42.4,93,,51.76,,,not_scanned,,,,,,,-0.97,HOLD / NEUTRAL,0.0
+2026-11-12,TECH,72.83999633789062,68.35,63.34,True,98.3,1,,12.49,,,not_scanned,,,,,,,0.07,HOLD / NEUTRAL,0.0
+2026-11-12,BLK,1216.6099853515625,66.72,1066.68,True,83.1,58,,25.92,,,not_scanned,,,,,,,-2.13,HOLD / NEUTRAL,0.0
+2026-11-12,BX,118.54000091552734,50.78,122.67,False,64.4,79,,39.78,,,not_scanned,,,,,,,-3.89,REDUCE / AVOID NEW,0.0
+2026-11-12,XYZ,82.26000213623047,58.71,71.98,True,74.6,10,,41.4,,,not_scanned,,,,,,,1.43,HOLD / NEUTRAL,0.0
+2026-11-12,BE,201.92999267578125,52.19,223.35,False,63.2,60,,100.83,,,not_scanned,,,,,,,-2.65,HOLD / NEUTRAL,0.0
+2026-11-12,BNY,152.7899932861328,66.58,140.73,True,94.9,68,,28.22,,,not_scanned,,,,,,,-3.67,REDUCE / AVOID NEW,0.0
+2026-11-12,BA,171.5500030517578,32.86,213.64,False,52.5,42,,33.84,,,not_scanned,,,,,,,-0.72,HOLD / NEUTRAL,0.0
+2026-11-12,BKNG,161.1999969482422,54.9,174.88,False,91.5,71,,43.22,,,not_scanned,,,,,,,-5.58,REDUCE / AVOID NEW,0.0
+2026-11-12,BSX,44.20000076293945,45.37,54.38,False,62.7,87,,42.89,,,not_scanned,,,,,,,-4.23,REDUCE / AVOID NEW,0.0
+2026-11-12,BMY,62.31999969482422,53.88,60.3,True,55.9,82,,33.81,,,not_scanned,,,,,,,-1.39,HOLD / NEUTRAL,0.0
+2026-11-12,AVGO,364.3599853515625,61.66,367.34,False,94.9,91,,58.68,,,not_scanned,,,,,,,-7.05,STRONG AVOID / EXIT,0.0
+2026-11-12,BR,191.47000122070312,62.9,165.03,True,50.8,63,,34.36,,,not_scanned,,,,,,,0.16,HOLD / NEUTRAL,0.0
+2026-11-12,BRO,70.55000305175781,44.77,66.36,True,39.0,93,,40.02,,,not_scanned,,,,,,,-0.69,HOLD / NEUTRAL,0.0
+2026-11-12,BF-B,30.040000915527344,53.58,27.18,True,57.6,,,,,,not_scanned,,,,,,,0.39,HOLD / NEUTRAL,0.0
+2026-11-12,BG,99.9800033569336,41.95,116.54,False,52.5,77,,34.55,,,not_scanned,,,,,,,-2.82,HOLD / NEUTRAL,0.0
+2026-11-12,BXP,62.88999938964844,52.79,61.99,True,66.1,58,,31.46,,,not_scanned,,,,,,,-0.77,HOLD / NEUTRAL,0.0
+2026-11-12,CHRW,134.38999938964844,43.25,167.4,False,40.7,81,,40.63,,,not_scanned,,,,,,,-2.11,HOLD / NEUTRAL,0.0
+2026-11-12,CDNS,333.32000732421875,57.65,327.99,True,74.6,89,,50.9,,,not_scanned,,,,,,,-3.3,REDUCE / AVOID NEW,0.0
+2026-11-12,CPT,98.4000015258789,39.85,105.63,False,52.5,94,,39.28,,,not_scanned,,,,,,,-3.83,REDUCE / AVOID NEW,0.0
+2026-11-12,COF,193.60000610351562,39.52,200.07,False,42.4,51,,32.6,,,not_scanned,,,,,,,-0.45,HOLD / NEUTRAL,0.0
+2026-11-12,CAH,278.1400146484375,80.97,224.75,True,89.8,70,,32.3,,,not_scanned,,,,,,,-3.38,REDUCE / AVOID NEW,0.0
+2026-11-12,CCL,29.34000015258789,64.2,27.15,True,55.9,55,,46.49,,,not_scanned,,,,,,,0.23,HOLD / NEUTRAL,0.0
+2026-11-12,CARR,54.369998931884766,43.39,61.69,False,67.8,81,,38.61,,,not_scanned,,,,,,,-4.28,REDUCE / AVOID NEW,0.0
+2026-11-12,CVNA,70.83999633789062,65.98,68.37,True,83.1,32,,56.71,,,not_scanned,,,,,,,-0.57,HOLD / NEUTRAL,0.0
+2026-11-12,CASY,706.6300048828125,52.98,744.89,False,64.4,70,,34.29,,,not_scanned,,,,,,,-3.35,REDUCE / AVOID NEW,0.0
+2026-11-12,CAT,605.280029296875,35.76,807.76,False,45.8,89,,43.53,,,not_scanned,,,,,,,-3.0,REDUCE / AVOID NEW,0.0
+2026-11-12,CBOE,368.8900146484375,65.43,296.29,True,57.6,89,,39.59,,,not_scanned,,,,,,,-1.94,HOLD / NEUTRAL,0.0
+2026-11-12,CBRE,132.5399932861328,62.33,140.21,False,100.0,93,,42.35,,,not_scanned,,,,,,,-7.57,STRONG AVOID / EXIT,0.0
+2026-11-12,CDW,172.7899932861328,55.48,134.72,True,44.1,93,,50.77,,,not_scanned,,,,,,,-1.1,HOLD / NEUTRAL,0.0
+2026-11-12,COR,349.3800048828125,62.49,316.68,True,76.3,88,,33.43,,,not_scanned,,,,,,,-3.38,REDUCE / AVOID NEW,0.0
+2026-11-12,CNC,70.2699966430664,50.18,56.49,True,37.3,51,,45.23,,,not_scanned,,,,,,,1.96,HOLD / NEUTRAL,0.0
+2026-11-12,CNP,40.95000076293945,49.09,41.65,False,54.2,25,,20.45,,,not_scanned,,,,,,,0.16,HOLD / NEUTRAL,0.0
+2026-11-12,CF,124.91999816894531,56.39,117.68,True,45.8,68,,40.71,,,not_scanned,,,,,,,0.26,HOLD / NEUTRAL,0.0
+2026-11-12,CRL,340.80999755859375,48.68,227.08,True,16.9,85,,56.97,,,not_scanned,,,,,,,1.55,HOLD / NEUTRAL,0.0
+2026-11-12,SCHW,91.72000122070312,54.07,97.06,False,83.1,44,,27.79,,,not_scanned,,,,,,,-3.29,REDUCE / AVOID NEW,0.0
+2026-11-12,CHTR,132.66000366210938,69.0,161.98,False,96.6,91,,66.64,,,not_scanned,,,,,,,-7.18,STRONG AVOID / EXIT,0.0
+2026-11-12,CMG,35.16999816894531,78.57,33.83,True,89.8,45,,37.24,,,not_scanned,,,,,,,-1.88,HOLD / NEUTRAL,0.0
+2026-11-12,CB,371.760009765625,68.32,337.05,True,79.7,69,,23.38,,,not_scanned,,,,,,,-2.51,HOLD / NEUTRAL,0.0
+2026-11-12,CHD,111.7300033569336,69.99,98.59,True,79.7,53,,24.91,,,not_scanned,,,,,,,-1.56,HOLD / NEUTRAL,0.0
+2026-11-12,CIEN,293.989990234375,45.21,406.5,False,52.5,95,,94.79,,,not_scanned,,,,,,,-3.89,REDUCE / AVOID NEW,0.0
+2026-11-12,CI,296.2699890136719,40.63,282.69,True,15.3,46,,30.05,,,not_scanned,,,,,,,4.02,BUY,1.0
+2026-11-12,CINF,190.30999755859375,73.64,169.38,True,78.0,61,,26.86,,,not_scanned,,,,,,,-1.9,HOLD / NEUTRAL,0.0
+2026-11-12,CTAS,227.52000427246094,53.79,191.7,True,50.8,80,,30.44,,,not_scanned,,,,,,,-0.86,HOLD / NEUTRAL,0.0
+2026-11-12,CSCO,102.01000213623047,43.69,102.26,False,55.9,100,,63.26,,,not_scanned,,,,,,,-4.47,REDUCE / AVOID NEW,0.0
+2026-11-12,C,124.05999755859375,57.37,126.9,False,89.8,76,,33.1,,,not_scanned,,,,,,,-5.74,REDUCE / AVOID NEW,0.0
+2026-11-12,CFG,64.86000061035156,48.82,65.7,False,64.4,81,,33.49,,,not_scanned,,,,,,,-4.01,REDUCE / AVOID NEW,0.0
+2026-11-12,CLX,108.19999694824219,95.08,99.31,True,100.0,84,,34.29,,,not_scanned,,,,,,,-5.04,REDUCE / AVOID NEW,0.0
+2026-11-12,CME,315.5,59.5,281.42,True,40.7,86,,27.39,,,not_scanned,,,,,,,-0.41,HOLD / NEUTRAL,0.0
+2026-11-12,CMS,69.22000122070312,47.92,72.51,False,59.3,90,,26.43,,,not_scanned,,,,,,,-4.14,REDUCE / AVOID NEW,0.0
+2026-11-12,KO,97.44000244140625,72.81,83.22,True,86.4,87,,21.37,,,not_scanned,,,,,,,-4.13,REDUCE / AVOID NEW,0.0
+2026-11-12,COHR,232.0800018310547,55.6,296.8,False,79.7,80,,90.88,,,not_scanned,,,,,,,-5.17,REDUCE / AVOID NEW,0.0
+2026-11-12,CL,97.9000015258789,61.38,90.24,True,72.9,88,,26.66,,,not_scanned,,,,,,,-3.11,REDUCE / AVOID NEW,0.0
+2026-11-12,CMCSA,24.799999237060547,66.72,25.89,False,74.6,92,,36.71,,,not_scanned,,,,,,,-5.48,REDUCE / AVOID NEW,0.0
+2026-11-12,FIX,1128.0899658203125,48.33,1604.89,False,66.1,94,,60.8,,,not_scanned,,,,,,,-4.92,REDUCE / AVOID NEW,0.0
+2026-11-12,ED,119.3499984741211,61.0,109.69,True,59.3,54,,19.63,,,not_scanned,,,,,,,0.02,HOLD / NEUTRAL,0.0
+2026-11-12,STZ,144.60000610351562,57.67,141.06,True,55.9,71,,34.18,,,not_scanned,,,,,,,-0.73,HOLD / NEUTRAL,0.0
+2026-11-12,CEG,282.3999938964844,62.98,278.44,True,79.7,81,,56.71,,,not_scanned,,,,,,,-3.23,REDUCE / AVOID NEW,0.0
+2026-11-12,COO,62.189998626708984,53.33,68.05,False,50.8,90,,43.63,,,not_scanned,,,,,,,-3.46,REDUCE / AVOID NEW,0.0
+2026-11-12,CPRT,31.9950008392334,70.11,31.97,True,74.6,98,,45.4,,,not_scanned,,,,,,,-3.84,REDUCE / AVOID NEW,0.0
+2026-11-12,GLW,119.5,46.99,156.53,False,64.4,86,,72.07,,,not_scanned,,,,,,,-4.31,REDUCE / AVOID NEW,0.0
+2026-11-12,CPAY,456.010009765625,76.4,360.9,True,93.2,71,,33.65,,,not_scanned,,,,,,,-3.71,REDUCE / AVOID NEW,0.0
+2026-11-12,CSGP,30.100000381469727,38.27,35.14,False,30.5,83,,55.88,,,not_scanned,,,,,,,-1.42,HOLD / NEUTRAL,0.0
+2026-11-12,COST,1092.2099609375,72.17,974.92,True,74.6,62,,24.29,,,not_scanned,,,,,,,-1.69,HOLD / NEUTRAL,0.0
+2026-11-12,CRH,93.91999816894531,64.68,102.9,False,78.0,85,,41.46,,,not_scanned,,,,,,,-5.34,REDUCE / AVOID NEW,0.0
+2026-11-12,CCI,89.69000244140625,60.48,82.35,True,50.8,97,,35.75,,,not_scanned,,,,,,,-1.88,HOLD / NEUTRAL,0.0
+2026-11-12,CSX,52.400001525878906,57.26,46.26,True,55.9,94,,31.4,,,not_scanned,,,,,,,-2.11,HOLD / NEUTRAL,0.0
+2026-11-12,CMI,455.3999938964844,28.64,598.22,False,44.1,87,,40.36,,,not_scanned,,,,,,,-2.74,HOLD / NEUTRAL,0.0
+2026-11-12,CVS,89.79000091552734,43.85,89.1,True,47.5,37,,31.09,,,not_scanned,,,,,,,1.98,HOLD / NEUTRAL,0.0
+2026-11-12,DHR,232.16000366210938,51.78,200.93,True,25.4,77,,33.4,,,not_scanned,,,,,,,1.35,HOLD / NEUTRAL,0.0
+2026-11-12,DRI,227.89999389648438,71.64,206.7,True,86.4,86,,34.36,,,not_scanned,,,,,,,-4.07,REDUCE / AVOID NEW,0.0
+2026-11-12,DVA,174.07000732421875,42.89,180.57,False,18.6,73,,41.59,,,not_scanned,,,,,,,0.13,HOLD / NEUTRAL,0.0
+2026-11-12,DECK,84.52999877929688,56.92,98.67,False,78.0,38,,40.92,,,not_scanned,,,,,,,-2.52,HOLD / NEUTRAL,0.0
+2026-11-12,DE,678.7899780273438,63.09,611.97,True,64.4,94,,40.52,,,not_scanned,,,,,,,-2.79,HOLD / NEUTRAL,0.0
+2026-11-12,DELL,371.1700134277344,37.64,342.27,True,33.9,99,,93.7,,,not_scanned,,,,,,,-0.65,HOLD / NEUTRAL,0.0
+2026-11-12,DAL,86.55000305175781,64.25,77.58,True,78.0,63,,45.47,,,not_scanned,,,,,,,-2.02,HOLD / NEUTRAL,0.0
+2026-11-12,DXCM,81.38999938964844,56.28,75.03,True,84.7,55,,46.18,,,not_scanned,,,,,,,-2.08,HOLD / NEUTRAL,0.0
+2026-11-12,DLR,183.47000122070312,61.97,184.16,False,98.3,84,,35.2,,,not_scanned,,,,,,,-6.9,REDUCE / AVOID NEW,0.0
+2026-11-12,DG,134.61000061035156,52.05,125.25,True,45.8,78,,45.98,,,not_scanned,,,,,,,-0.34,HOLD / NEUTRAL,0.0
+2026-11-12,DLTR,141.27000427246094,62.6,117.11,True,71.2,78,,52.03,,,not_scanned,,,,,,,-2.37,HOLD / NEUTRAL,0.0
+2026-11-12,D,67.51000213623047,60.23,65.15,True,64.4,37,,20.27,,,not_scanned,,,,,,,0.63,HOLD / NEUTRAL,0.0
+2026-11-12,DPZ,333.2300109863281,68.17,339.33,False,91.5,81,,36.1,,,not_scanned,,,,,,,-6.18,REDUCE / AVOID NEW,0.0
+2026-11-12,DASH,172.5800018310547,46.02,181.58,False,50.8,68,,54.23,,,not_scanned,,,,,,,-2.14,HOLD / NEUTRAL,0.0
+2026-11-12,DOV,209.47000122070312,60.25,209.95,False,71.2,63,,29.32,,,not_scanned,,,,,,,-3.47,REDUCE / AVOID NEW,0.0
+2026-11-12,DOW,33.150001525878906,52.85,32.83,True,57.6,39,,37.89,,,not_scanned,,,,,,,1.05,HOLD / NEUTRAL,0.0
+2026-11-12,DHI,144.4499969482422,47.31,147.48,False,49.2,82,,41.35,,,not_scanned,,,,,,,-2.85,HOLD / NEUTRAL,0.0
+2026-11-12,DTE,139.1999969482422,69.75,141.02,False,79.7,96,,28.56,,,not_scanned,,,,,,,-6.13,REDUCE / AVOID NEW,0.0
+2026-11-12,DUK,128.58999633789062,61.15,124.79,True,62.7,19,,16.72,,,not_scanned,,,,,,,1.84,HOLD / NEUTRAL,0.0
+2026-11-12,DD,154.6999969482422,72.01,139.34,True,84.7,65,,33.72,,,not_scanned,,,,,,,-2.67,HOLD / NEUTRAL,0.0
+2026-11-12,ETN,359.0400085449219,48.15,397.8,False,72.9,94,,48.85,,,not_scanned,,,,,,,-5.47,REDUCE / AVOID NEW,0.0
+2026-11-12,EBAY,120.13999938964844,47.65,105.24,True,22.0,61,,34.83,,,not_scanned,,,,,,,2.58,HOLD / NEUTRAL,0.0
+2026-11-12,ECHO,98.12999725341797,59.71,105.6,False,72.9,28,,59.76,,,not_scanned,,,,,,,-1.51,HOLD / NEUTRAL,0.0
+2026-11-12,ECL,304.4100036621094,63.18,277.14,True,71.2,85,,28.67,,,not_scanned,,,,,,,-2.79,HOLD / NEUTRAL,0.0
+2026-11-12,EIX,59.9900016784668,65.03,67.76,False,59.3,92,,43.4,,,not_scanned,,,,,,,-4.26,REDUCE / AVOID NEW,0.0
+2026-11-12,EW,105.80000305175781,86.35,86.21,True,100.0,41,,30.86,,,not_scanned,,,,,,,-2.46,HOLD / NEUTRAL,0.0
+2026-11-12,ELV,429.8999938964844,44.42,375.09,True,16.9,64,,35.65,,,not_scanned,,,,,,,2.81,HOLD / NEUTRAL,0.0
+2026-11-12,EME,662.77001953125,52.68,779.66,False,78.0,94,,48.26,,,not_scanned,,,,,,,-5.87,REDUCE / AVOID NEW,0.0
+2026-11-12,EMR,166.9199981689453,56.96,147.85,True,55.9,68,,32.23,,,not_scanned,,,,,,,-0.55,HOLD / NEUTRAL,0.0
+2026-11-12,ETR,111.94999694824219,69.99,108.22,True,72.9,52,,23.31,,,not_scanned,,,,,,,-0.95,HOLD / NEUTRAL,0.0
+2026-11-12,EOG,155.6199951171875,40.6,139.02,True,20.3,93,,37.0,,,not_scanned,,,,,,,0.8,HOLD / NEUTRAL,0.0
+2026-11-12,EQT,52.36000061035156,38.62,55.5,False,28.8,40,,35.27,,,not_scanned,,,,,,,1.29,HOLD / NEUTRAL,0.0
+2026-11-12,EFX,186.77999877929688,55.29,175.93,True,50.8,75,,42.49,,,not_scanned,,,,,,,-0.56,HOLD / NEUTRAL,0.0
+2026-11-12,EQIX,1072.77001953125,68.05,1021.33,True,100.0,97,,41.83,,,not_scanned,,,,,,,-5.81,REDUCE / AVOID NEW,0.0
+2026-11-12,ERIE,270.0,61.16,244.17,True,61.0,76,,41.3,,,not_scanned,,,,,,,-1.44,HOLD / NEUTRAL,0.0
+2026-11-12,ESS,271.79998779296875,41.6,270.56,True,33.9,39,,25.22,,,not_scanned,,,,,,,2.95,HOLD / NEUTRAL,0.0
+2026-11-12,EL,110.51000213623047,53.37,91.28,True,40.7,15,,39.3,,,not_scanned,,,,,,,3.84,BUY,1.0
+2026-11-12,EG,422.3299865722656,64.01,357.72,True,69.5,20,,25.13,,,not_scanned,,,,,,,1.24,HOLD / NEUTRAL,0.0
+2026-11-12,EVRG,88.2699966430664,72.64,82.55,True,84.7,37,,18.61,,,not_scanned,,,,,,,-1.0,HOLD / NEUTRAL,0.0
+2026-11-12,P,110.0999984741211,42.38,87.08,True,39.5,100,,116.97,,,not_scanned,,,,,,,-1.15,HOLD / NEUTRAL,0.0
+2026-11-12,ES,71.1500015258789,66.31,70.02,True,86.4,100,,46.0,,,not_scanned,,,,,,,-4.91,REDUCE / AVOID NEW,0.0
+2026-11-12,EXC,45.630001068115234,61.63,45.66,False,62.7,59,,20.57,,,not_scanned,,,,,,,-2.55,HOLD / NEUTRAL,0.0
+2026-11-12,EXE,87.80000305175781,34.42,95.9,False,28.8,71,,32.56,,,not_scanned,,,,,,,-0.56,HOLD / NEUTRAL,0.0
+2026-11-12,EXPE,261.04998779296875,40.66,259.01,True,49.2,67,,50.7,,,not_scanned,,,,,,,0.05,HOLD / NEUTRAL,0.0
+2026-11-12,EXPD,195.6699981689453,49.4,168.39,True,25.4,88,,35.96,,,not_scanned,,,,,,,0.69,HOLD / NEUTRAL,0.0
+2026-11-12,EXR,158.1999969482422,82.14,143.03,True,81.4,38,,25.93,,,not_scanned,,,,,,,-0.79,HOLD / NEUTRAL,0.0
+2026-11-12,FDS,331.7099914550781,50.19,252.65,True,33.9,67,,48.28,,,not_scanned,,,,,,,1.27,HOLD / NEUTRAL,0.0
+2026-11-12,FICO,717.3800048828125,28.54,1085.87,False,30.5,100,,73.43,,,not_scanned,,,,,,,-2.43,HOLD / NEUTRAL,0.0
+2026-11-12,FAST,55.54999923706055,72.69,47.66,True,98.3,62,,28.37,,,not_scanned,,,,,,,-3.58,REDUCE / AVOID NEW,0.0
+2026-11-12,FRT,112.52999877929688,62.03,113.54,False,84.7,75,,26.26,,,not_scanned,,,,,,,-5.27,REDUCE / AVOID NEW,0.0
+2026-11-12,FDX,319.29998779296875,63.67,307.92,True,66.1,34,,29.82,,,not_scanned,,,,,,,0.67,HOLD / NEUTRAL,0.0
+2026-11-12,FDXF,131.0,73.67,137.05,False,93.2,19,,48.21,,,not_scanned,,,,,,,-2.6,HOLD / NEUTRAL,0.0
+2026-11-12,FERG,254.88999938964844,67.14,237.41,True,83.1,99,,49.5,,,not_scanned,,,,,,,-4.58,REDUCE / AVOID NEW,0.0
+2026-11-12,FIS,28.360000610351562,29.21,42.42,False,23.7,84,,41.19,,,not_scanned,,,,,,,-0.93,HOLD / NEUTRAL,0.0
+2026-11-12,FITB,53.900001525878906,55.07,52.2,True,71.2,83,,31.3,,,not_scanned,,,,,,,-2.67,HOLD / NEUTRAL,0.0
+2026-11-12,FSLR,172.3000030517578,50.22,213.42,False,81.4,39,,54.84,,,not_scanned,,,,,,,-2.85,HOLD / NEUTRAL,0.0
+2026-11-12,FE,46.5,55.66,47.5,False,61.0,85,,22.03,,,not_scanned,,,,,,,-3.98,REDUCE / AVOID NEW,0.0
+2026-11-12,FISV,61.5,76.75,54.48,True,86.4,52,,38.77,,,not_scanned,,,,,,,-2.03,HOLD / NEUTRAL,0.0
+2026-11-12,FLEX,78.12000274658203,51.16,103.68,False,71.2,99,,96.84,,,not_scanned,,,,,,,-5.63,REDUCE / AVOID NEW,0.0
+2026-11-12,F,11.899999618530273,55.28,13.29,False,88.1,55,,33.19,,,not_scanned,,,,,,,-4.35,REDUCE / AVOID NEW,0.0
+2026-11-12,FTV,67.8499984741211,75.5,59.27,True,81.4,56,,30.83,,,not_scanned,,,,,,,-1.87,HOLD / NEUTRAL,0.0
+2026-11-12,FOXA,65.70999908447266,47.8,61.97,True,49.2,83,,37.54,,,not_scanned,,,,,,,-0.91,HOLD / NEUTRAL,0.0
+2026-11-12,FOX,58.709999084472656,47.75,55.65,True,50.8,80,,38.35,,,not_scanned,,,,,,,-0.86,HOLD / NEUTRAL,0.0
+2026-11-12,BEN,35.86000061035156,72.77,30.63,True,100.0,98,,40.96,,,not_scanned,,,,,,,-5.87,REDUCE / AVOID NEW,0.0
+2026-11-12,FCX,60.45000076293945,39.6,65.23,False,37.3,73,,49.58,,,not_scanned,,,,,,,-1.36,HOLD / NEUTRAL,0.0
+2026-11-12,GRMN,286.17999267578125,45.5,257.37,True,49.2,65,,34.0,,,not_scanned,,,,,,,0.17,HOLD / NEUTRAL,0.0
+2026-11-12,GE,330.8599853515625,68.7,323.72,True,100.0,88,,40.12,,,not_scanned,,,,,,,-5.28,REDUCE / AVOID NEW,0.0
+2026-11-12,GEHC,81.83999633789062,72.23,69.91,True,74.6,89,,38.61,,,not_scanned,,,,,,,-3.3,REDUCE / AVOID NEW,0.0
+2026-11-12,GEV,818.489990234375,50.38,951.36,False,69.5,96,,66.61,,,not_scanned,,,,,,,-5.31,REDUCE / AVOID NEW,0.0
+2026-11-12,GEN,29.690000534057617,72.84,24.53,True,74.6,70,,36.26,,,not_scanned,,,,,,,-2.17,HOLD / NEUTRAL,0.0
+2026-11-12,GNRC,192.8800048828125,52.79,219.44,False,64.4,92,,62.9,,,not_scanned,,,,,,,-4.67,REDUCE / AVOID NEW,0.0
+2026-11-12,GD,363.07000732421875,59.98,354.9,True,69.5,87,,27.56,,,not_scanned,,,,,,,-2.78,HOLD / NEUTRAL,0.0
+2026-11-12,GIS,33.52000045776367,45.18,37.07,False,47.5,95,,34.76,,,not_scanned,,,,,,,-3.49,REDUCE / AVOID NEW,0.0
+2026-11-12,GM,86.25,65.52,80.91,True,96.6,67,,37.13,,,not_scanned,,,,,,,-3.75,REDUCE / AVOID NEW,0.0
+2026-11-12,GPC,122.83999633789062,49.55,119.38,True,59.3,71,,31.73,,,not_scanned,,,,,,,-1.0,HOLD / NEUTRAL,0.0
+2026-11-12,GILD,167.9499969482422,65.13,141.58,True,55.9,91,,36.42,,,not_scanned,,,,,,,-1.93,HOLD / NEUTRAL,0.0
+2026-11-12,GPN,88.19000244140625,56.07,77.96,True,59.3,70,,44.34,,,not_scanned,,,,,,,-0.94,HOLD / NEUTRAL,0.0
+2026-11-12,GL,160.11000061035156,59.84,160.7,False,96.6,12,,27.86,,,not_scanned,,,,,,,-2.45,HOLD / NEUTRAL,0.0
+2026-11-12,GDDY,112.33000183105469,49.44,92.38,True,27.1,86,,54.71,,,not_scanned,,,,,,,0.68,HOLD / NEUTRAL,0.0
+2026-11-12,GS,913.5999755859375,57.28,955.89,False,93.2,87,,36.05,,,not_scanned,,,,,,,-6.67,REDUCE / AVOID NEW,0.0
+2026-11-12,HAL,32.7599983215332,34.3,35.81,False,25.4,45,,36.76,,,not_scanned,,,,,,,1.27,HOLD / NEUTRAL,0.0
+2026-11-12,HIG,136.89999389648438,50.28,135.68,True,57.6,78,,25.9,,,not_scanned,,,,,,,-1.28,HOLD / NEUTRAL,0.0
+2026-11-12,HAS,121.4800033569336,61.44,93.91,True,54.2,79,,35.54,,,not_scanned,,,,,,,-1.07,HOLD / NEUTRAL,0.0
+2026-11-12,HCA,500.6600036621094,61.03,445.24,True,52.5,74,,34.73,,,not_scanned,,,,,,,-0.64,HOLD / NEUTRAL,0.0
+2026-11-12,DOC,20.1200008392334,62.12,19.24,True,91.5,65,,24.14,,,not_scanned,,,,,,,-3.22,REDUCE / AVOID NEW,0.0
+2026-11-12,HSIC,86.13999938964844,52.36,81.46,True,66.1,39,,31.94,,,not_scanned,,,,,,,0.37,HOLD / NEUTRAL,0.0
+2026-11-12,HSY,173.2899932861328,54.03,187.98,False,69.5,28,,25.71,,,not_scanned,,,,,,,-1.24,HOLD / NEUTRAL,0.0
+2026-11-12,HPE,50.15999984741211,39.41,42.01,True,35.6,94,,77.34,,,not_scanned,,,,,,,-0.48,HOLD / NEUTRAL,0.0
+2026-11-12,HLT,372.7300109863281,67.19,324.24,True,61.0,75,,32.68,,,not_scanned,,,,,,,-1.38,HOLD / NEUTRAL,0.0
+2026-11-12,HD,348.260009765625,67.16,332.81,True,67.8,96,,35.01,,,not_scanned,,,,,,,-3.18,REDUCE / AVOID NEW,0.0
+2026-11-12,HONA,166.22999572753906,51.99,181.63,False,66.1,25,,44.94,,,not_scanned,,,,,,,-0.79,HOLD / NEUTRAL,0.0
+2026-11-12,HON,223.4499969482422,52.25,230.51,False,49.2,81,,30.67,,,not_scanned,,,,,,,-2.79,HOLD / NEUTRAL,0.0
+2026-11-12,HRL,21.829999923706055,58.42,22.71,False,71.2,88,,32.06,,,not_scanned,,,,,,,-4.97,REDUCE / AVOID NEW,0.0
+2026-11-12,HST,25.520000457763672,57.41,22.25,True,50.8,49,,27.22,,,not_scanned,,,,,,,1.0,HOLD / NEUTRAL,0.0
+2026-11-12,HWM,223.11000061035156,68.31,248.55,False,100.0,89,,46.25,,,not_scanned,,,,,,,-7.34,STRONG AVOID / EXIT,0.0
+2026-11-12,HUBB,437.9800109863281,46.65,486.02,False,61.0,90,,41.23,,,not_scanned,,,,,,,-4.28,REDUCE / AVOID NEW,0.0
+2026-11-12,HUM,443.67999267578125,61.4,316.08,True,62.7,61,,51.38,,,not_scanned,,,,,,,-0.67,HOLD / NEUTRAL,0.0
+2026-11-12,HBAN,15.729999542236328,50.0,16.6,False,71.2,68,,28.69,,,not_scanned,,,,,,,-3.77,REDUCE / AVOID NEW,0.0
+2026-11-12,HII,308.3299865722656,65.24,330.47,False,84.7,58,,37.05,,,not_scanned,,,,,,,-4.26,REDUCE / AVOID NEW,0.0
+2026-11-12,IBM,244.6699981689453,39.69,247.0,False,13.6,60,,33.14,,,not_scanned,,,,,,,1.31,HOLD / NEUTRAL,0.0
+2026-11-12,IEX,238.02999877929688,58.42,217.94,True,66.1,23,,27.53,,,not_scanned,,,,,,,1.33,HOLD / NEUTRAL,0.0
+2026-11-12,IDXX,698.02001953125,73.74,572.21,True,88.1,92,,39.38,,,not_scanned,,,,,,,-4.56,REDUCE / AVOID NEW,0.0
+2026-11-12,ITW,286.75,60.37,271.91,True,78.0,91,,27.62,,,not_scanned,,,,,,,-3.7,REDUCE / AVOID NEW,0.0
+2026-11-12,INCY,121.69999694824219,59.81,108.82,True,78.0,78,,48.52,,,not_scanned,,,,,,,-2.92,HOLD / NEUTRAL,0.0
+2026-11-12,IR,85.30999755859375,78.15,81.02,True,100.0,60,,34.72,,,not_scanned,,,,,,,-3.6,REDUCE / AVOID NEW,0.0
+2026-11-12,PODD,149.2899932861328,50.28,173.22,False,45.8,67,,47.71,,,not_scanned,,,,,,,-1.68,HOLD / NEUTRAL,0.0
+2026-11-12,INTC,61.20000076293945,30.79,87.34,False,45.8,81,,74.31,,,not_scanned,,,,,,,-2.52,HOLD / NEUTRAL,0.0
+2026-11-12,IBKR,81.33000183105469,51.69,83.09,False,83.1,69,,42.47,,,not_scanned,,,,,,,-4.79,REDUCE / AVOID NEW,0.0
+2026-11-12,ICE,177.86000061035156,67.51,154.56,True,72.9,75,,27.0,,,not_scanned,,,,,,,-2.33,HOLD / NEUTRAL,0.0
+2026-11-12,IP,33.939998626708984,53.81,36.97,False,69.5,57,,36.16,,,not_scanned,,,,,,,-2.98,HOLD / NEUTRAL,0.0
+2026-11-12,INTU,340.1700134277344,48.08,351.56,False,39.0,93,,59.96,,,not_scanned,,,,,,,-2.69,HOLD / NEUTRAL,0.0
+2026-11-12,ISRG,439.8900146484375,45.48,429.7,True,20.3,68,,36.37,,,not_scanned,,,,,,,2.3,HOLD / NEUTRAL,0.0
+2026-11-12,IVZ,28.469999313354492,52.35,27.97,True,72.9,79,,38.36,,,not_scanned,,,,,,,-2.57,HOLD / NEUTRAL,0.0
+2026-11-12,INVH,26.649999618530273,37.74,27.81,False,45.8,98,,31.68,,,not_scanned,,,,,,,-3.54,REDUCE / AVOID NEW,0.0
+2026-11-12,IQV,271.1099853515625,43.56,210.88,True,15.3,56,,40.82,,,not_scanned,,,,,,,3.42,BUY,1.0
+2026-11-12,IRM,114.58000183105469,56.16,116.1,False,89.8,60,,34.36,,,not_scanned,,,,,,,-4.78,REDUCE / AVOID NEW,0.0
+2026-11-12,JBHT,227.66000366210938,51.79,246.96,False,86.4,75,,40.12,,,not_scanned,,,,,,,-5.41,REDUCE / AVOID NEW,0.0
+2026-11-12,JBL,259.9599914550781,43.71,308.14,False,64.4,88,,58.38,,,not_scanned,,,,,,,-4.43,REDUCE / AVOID NEW,0.0
+2026-11-12,JKHY,176.02999877929688,65.32,153.92,True,50.8,93,,39.99,,,not_scanned,,,,,,,-1.64,HOLD / NEUTRAL,0.0
+2026-11-12,J,158.69000244140625,67.23,134.63,True,81.4,77,,36.12,,,not_scanned,,,,,,,-3.13,REDUCE / AVOID NEW,0.0
+2026-11-12,JNJ,283.5199890136719,70.04,249.49,True,93.2,86,,25.91,,,not_scanned,,,,,,,-4.61,REDUCE / AVOID NEW,0.0
+2026-11-12,JCI,142.5500030517578,48.9,142.3,True,54.2,98,,43.31,,,not_scanned,,,,,,,-2.21,HOLD / NEUTRAL,0.0
+2026-11-12,JPM,342.82000732421875,58.53,324.66,True,93.2,73,,25.97,,,not_scanned,,,,,,,-3.83,REDUCE / AVOID NEW,0.0
+2026-11-12,KDP,35.41999816894531,53.26,30.41,True,35.6,84,,29.25,,,not_scanned,,,,,,,0.12,HOLD / NEUTRAL,0.0
+2026-11-12,KEY,21.329999923706055,53.69,21.55,False,71.2,36,,27.37,,,not_scanned,,,,,,,-1.86,HOLD / NEUTRAL,0.0
+2026-11-12,KEYS,304.2300109863281,46.61,320.09,False,55.9,99,,63.99,,,not_scanned,,,,,,,-4.41,REDUCE / AVOID NEW,0.0
+2026-11-12,KMB,107.19000244140625,44.27,103.36,True,40.7,78,,26.64,,,not_scanned,,,,,,,0.07,HOLD / NEUTRAL,0.0
+2026-11-12,KIM,25.459999084472656,73.23,23.74,True,78.0,77,,24.53,,,not_scanned,,,,,,,-2.86,HOLD / NEUTRAL,0.0
+2026-11-12,KKR,97.19999694824219,59.84,97.75,False,84.7,70,,42.45,,,not_scanned,,,,,,,-4.97,REDUCE / AVOID NEW,0.0
+2026-11-12,KLAC,157.3000030517578,55.81,181.85,False,78.0,90,,64.34,,,not_scanned,,,,,,,-5.64,REDUCE / AVOID NEW,0.0
+2026-11-12,KHC,24.479999542236328,46.65,23.93,True,49.2,85,,29.87,,,not_scanned,,,,,,,-1.03,HOLD / NEUTRAL,0.0
+2026-11-12,KR,69.80999755859375,61.6,63.9,True,54.2,84,,33.19,,,not_scanned,,,,,,,-1.37,HOLD / NEUTRAL,0.0
+2026-11-12,LHX,271.8399963378906,62.35,301.12,False,72.9,86,,32.48,,,not_scanned,,,,,,,-4.99,REDUCE / AVOID NEW,0.0
+2026-11-12,LH,372.32000732421875,76.21,291.9,True,79.7,61,,29.49,,,not_scanned,,,,,,,-2.03,HOLD / NEUTRAL,0.0
+2026-11-12,LRCX,233.77999877929688,51.21,283.98,False,67.8,91,,71.82,,,not_scanned,,,,,,,-4.88,REDUCE / AVOID NEW,0.0
+2026-11-12,LVS,39.33000183105469,69.95,48.07,False,100.0,77,,39.9,,,not_scanned,,,,,,,-6.62,REDUCE / AVOID NEW,0.0
+2026-11-12,LDOS,131.11000061035156,42.46,138.67,False,49.2,87,,39.96,,,not_scanned,,,,,,,-3.15,REDUCE / AVOID NEW,0.0
+2026-11-12,LEN,83.58000183105469,48.12,90.06,False,54.2,92,,48.54,,,not_scanned,,,,,,,-3.85,REDUCE / AVOID NEW,0.0
+2026-11-12,LII,348.0799865722656,39.76,464.73,False,52.5,97,,46.73,,,not_scanned,,,,,,,-4.01,REDUCE / AVOID NEW,0.0
+2026-11-12,LLY,1427.280029296875,74.17,1107.23,True,86.4,39,,33.65,,,not_scanned,,,,,,,-1.25,HOLD / NEUTRAL,0.0
+2026-11-12,LIN,522.489990234375,59.67,496.32,True,52.5,73,,25.15,,,not_scanned,,,,,,,-0.58,HOLD / NEUTRAL,0.0
+2026-11-12,LYV,180.13999938964844,62.4,168.22,True,86.4,70,,37.76,,,not_scanned,,,,,,,-3.11,REDUCE / AVOID NEW,0.0
+2026-11-12,LMT,604.0900268554688,49.98,569.13,True,66.1,80,,30.42,,,not_scanned,,,,,,,-2.08,HOLD / NEUTRAL,0.0
+2026-11-12,L,111.83000183105469,49.17,109.77,True,66.1,81,,32.18,,,not_scanned,,,,,,,-2.14,HOLD / NEUTRAL,0.0
+2026-11-12,LOW,227.4600067138672,74.7,223.77,True,88.1,99,,41.77,,,not_scanned,,,,,,,-4.98,REDUCE / AVOID NEW,0.0
+2026-11-12,LULU,104.45999908447266,58.78,130.06,False,72.9,75,,51.7,,,not_scanned,,,,,,,-4.33,REDUCE / AVOID NEW,0.0
+2026-11-12,LITE,624.6500244140625,41.3,812.8,False,30.5,81,,92.47,,,not_scanned,,,,,,,-1.3,HOLD / NEUTRAL,0.0
+2026-11-12,LYB,63.880001068115234,43.52,64.38,False,37.3,54,,40.76,,,not_scanned,,,,,,,-0.22,HOLD / NEUTRAL,0.0
+2026-11-12,MTB,219.77999877929688,47.1,225.36,False,67.8,76,,30.71,,,not_scanned,,,,,,,-3.98,REDUCE / AVOID NEW,0.0
+2026-11-12,MAR,424.6600036621094,74.41,360.63,True,79.7,40,,27.89,,,not_scanned,,,,,,,-0.78,HOLD / NEUTRAL,0.0
+2026-11-12,MRSH,205.69000244140625,60.01,178.31,True,61.0,91,,30.31,,,not_scanned,,,,,,,-2.34,HOLD / NEUTRAL,0.0
+2026-11-12,MLM,517.3300170898438,53.68,570.28,False,66.1,92,,34.32,,,not_scanned,,,,,,,-4.8,REDUCE / AVOID NEW,0.0
+2026-11-12,MRVL,164.4499969482422,32.44,186.62,False,20.3,85,,84.05,,,not_scanned,,,,,,,-0.72,HOLD / NEUTRAL,0.0
+2026-11-12,MAS,84.4800033569336,66.87,71.56,True,66.1,91,,39.79,,,not_scanned,,,,,,,-2.74,HOLD / NEUTRAL,0.0
+2026-11-12,MA,652.5999755859375,60.78,541.46,True,45.8,75,,25.89,,,not_scanned,,,,,,,-0.16,HOLD / NEUTRAL,0.0
+2026-11-12,MKC,46.40999984741211,43.36,52.63,False,55.9,86,,33.96,,,not_scanned,,,,,,,-3.63,REDUCE / AVOID NEW,0.0
+2026-11-12,MCD,273.6300048828125,71.86,281.66,False,71.2,73,,22.63,,,not_scanned,,,,,,,-4.07,REDUCE / AVOID NEW,0.0
+2026-11-12,MCK,1077.050048828125,69.76,872.85,True,83.1,73,,30.0,,,not_scanned,,,,,,,-3.03,REDUCE / AVOID NEW,0.0
+2026-11-12,MDT,100.98999786376953,63.66,88.25,True,62.7,96,,31.33,,,not_scanned,,,,,,,-2.77,HOLD / NEUTRAL,0.0
+2026-11-12,MRK,146.9499969482422,52.52,128.45,True,57.6,78,,31.93,,,not_scanned,,,,,,,-1.28,HOLD / NEUTRAL,0.0
+2026-11-12,META,623.6099853515625,44.14,631.25,False,44.1,81,,43.33,,,not_scanned,,,,,,,-2.38,HOLD / NEUTRAL,0.0
+2026-11-12,MET,101.87000274658203,58.77,86.8,True,79.7,85,,28.66,,,not_scanned,,,,,,,-3.47,REDUCE / AVOID NEW,0.0
+2026-11-12,MTD,1730.9300537109375,60.09,1350.46,True,37.3,37,,22.78,,,not_scanned,,,,,,,2.79,HOLD / NEUTRAL,0.0
+2026-11-12,MGM,33.2400016784668,78.34,38.97,False,100.0,48,,38.9,,,not_scanned,,,,,,,-4.88,REDUCE / AVOID NEW,0.0
+2026-11-12,MCHP,62.08000183105469,35.28,79.31,False,23.7,90,,62.96,,,not_scanned,,,,,,,-1.29,HOLD / NEUTRAL,0.0
+2026-11-12,MU,798.4400024414062,44.0,763.89,True,39.0,87,,83.67,,,not_scanned,,,,,,,-0.34,HOLD / NEUTRAL,0.0
+2026-11-12,MSFT,523.0,49.49,440.97,True,25.4,71,,29.02,,,not_scanned,,,,,,,1.71,HOLD / NEUTRAL,0.0
+2026-11-12,MAA,116.55000305175781,41.53,128.38,False,52.5,93,,30.95,,,not_scanned,,,,,,,-3.77,REDUCE / AVOID NEW,0.0
+2026-11-12,MRNA,231.35000610351562,60.65,95.53,True,39.0,92,,93.48,,,not_scanned,,,,,,,-0.63,HOLD / NEUTRAL,0.0
+2026-11-12,MDLZ,66.55999755859375,61.37,60.77,True,78.0,72,,24.68,,,not_scanned,,,,,,,-2.56,HOLD / NEUTRAL,0.0
+2026-11-12,MPWR,1447.4000244140625,68.06,1327.28,True,91.5,76,,54.76,,,not_scanned,,,,,,,-3.88,REDUCE / AVOID NEW,0.0
+2026-11-12,MNST,45.56999969482422,46.86,43.37,True,62.7,71,,31.37,,,not_scanned,,,,,,,-1.27,HOLD / NEUTRAL,0.0
+2026-11-12,MCO,506.55999755859375,60.36,466.13,True,57.6,86,,30.49,,,not_scanned,,,,,,,-1.76,HOLD / NEUTRAL,0.0
+2026-11-12,MS,189.1699981689453,59.82,194.48,False,98.3,82,,33.43,,,not_scanned,,,,,,,-6.78,REDUCE / AVOID NEW,0.0
+2026-11-12,MOS,21.760000228881836,71.83,23.6,False,84.7,78,,48.58,,,not_scanned,,,,,,,-5.45,REDUCE / AVOID NEW,0.0
+2026-11-12,MSI,530.4000244140625,80.98,444.76,True,79.7,17,,23.47,,,not_scanned,,,,,,,0.6,HOLD / NEUTRAL,0.0
+2026-11-12,MSCI,651.510009765625,61.63,576.07,True,61.0,55,,27.6,,,not_scanned,,,,,,,-0.18,HOLD / NEUTRAL,0.0
+2026-11-12,NDAQ,108.6500015258789,66.38,91.03,True,62.7,82,,30.39,,,not_scanned,,,,,,,-1.93,HOLD / NEUTRAL,0.0
+2026-11-12,NTAP,186.0800018310547,35.09,153.69,True,23.7,99,,68.25,,,not_scanned,,,,,,,0.17,HOLD / NEUTRAL,0.0
+2026-11-12,NFLX,62.689998626708984,39.87,80.6,False,54.2,65,,36.87,,,not_scanned,,,,,,,-2.23,HOLD / NEUTRAL,0.0
+2026-11-12,NEM,112.63999938964844,54.04,112.22,True,71.2,61,,43.55,,,not_scanned,,,,,,,-1.35,HOLD / NEUTRAL,0.0
+2026-11-12,NEE,85.29000091552734,61.53,87.38,False,66.1,24,,24.59,,,not_scanned,,,,,,,-0.73,HOLD / NEUTRAL,0.0
+2026-11-12,NKE,37.7599983215332,52.04,44.91,False,66.1,78,,44.04,,,not_scanned,,,,,,,-3.96,REDUCE / AVOID NEW,0.0
+2026-11-12,NI,45.810001373291016,72.39,44.94,True,71.2,90,,25.41,,,not_scanned,,,,,,,-3.09,REDUCE / AVOID NEW,0.0
+2026-11-12,NDSN,326.6000061035156,55.68,297.41,True,52.5,76,,33.66,,,not_scanned,,,,,,,-0.76,HOLD / NEUTRAL,0.0
+2026-11-12,NSC,333.239990234375,52.52,317.15,True,55.9,96,,35.56,,,not_scanned,,,,,,,-2.23,HOLD / NEUTRAL,0.0
+2026-11-12,NTRS,177.6699981689453,64.95,166.69,True,93.2,87,,34.01,,,not_scanned,,,,,,,-4.67,REDUCE / AVOID NEW,0.0
+2026-11-12,NOC,549.1300048828125,48.89,585.33,False,64.4,88,,31.95,,,not_scanned,,,,,,,-4.43,REDUCE / AVOID NEW,0.0
+2026-11-12,NCLH,18.059999465942383,67.41,18.56,False,88.1,37,,48.45,,,not_scanned,,,,,,,-3.27,REDUCE / AVOID NEW,0.0
+2026-11-12,NRG,98.05000305175781,56.59,132.62,False,94.9,98,,65.1,,,not_scanned,,,,,,,-7.47,STRONG AVOID / EXIT,0.0
+2026-11-12,NUE,260.75,51.79,227.73,True,55.9,94,,43.23,,,not_scanned,,,,,,,-2.11,HOLD / NEUTRAL,0.0
+2026-11-12,NVR,5814.33984375,46.24,6473.18,False,50.8,,,,,,not_scanned,,,,,,,-1.06,HOLD / NEUTRAL,0.0
+2026-11-12,NXPI,267.2900085449219,66.33,247.73,True,86.4,90,,55.11,,,not_scanned,,,,,,,-4.31,REDUCE / AVOID NEW,0.0
+2026-11-12,ORLY,91.55999755859375,55.07,90.2,True,72.9,61,,28.55,,,not_scanned,,,,,,,-1.49,HOLD / NEUTRAL,0.0
+2026-11-12,ODFL,171.66000366210938,39.67,201.6,False,62.7,87,,44.26,,,not_scanned,,,,,,,-4.23,REDUCE / AVOID NEW,0.0
+2026-11-12,OMC,86.83999633789062,59.46,78.57,True,54.2,59,,30.3,,,not_scanned,,,,,,,0.13,HOLD / NEUTRAL,0.0
+2026-11-12,ON,73.7300033569336,51.96,82.73,False,74.6,85,,70.98,,,not_scanned,,,,,,,-5.06,REDUCE / AVOID NEW,0.0
+2026-11-12,OKE,88.86000061035156,32.94,89.26,False,20.3,82,,30.91,,,not_scanned,,,,,,,-0.54,HOLD / NEUTRAL,0.0
+2026-11-12,ORCL,127.11000061035156,50.59,154.33,False,74.6,89,,66.8,,,not_scanned,,,,,,,-5.3,REDUCE / AVOID NEW,0.0
+2026-11-12,OTIS,77.13999938964844,56.55,75.77,True,64.4,73,,25.29,,,not_scanned,,,,,,,-1.53,HOLD / NEUTRAL,0.0
+2026-11-12,PCAR,106.33000183105469,48.64,119.34,False,94.9,78,,32.86,,,not_scanned,,,,,,,-6.27,REDUCE / AVOID NEW,0.0
+2026-11-12,PKG,250.5800018310547,53.31,230.88,True,61.0,61,,31.21,,,not_scanned,,,,,,,-0.54,HOLD / NEUTRAL,0.0
+2026-11-12,PH,957.97998046875,63.96,949.33,True,94.9,97,,38.48,,,not_scanned,,,,,,,-5.41,REDUCE / AVOID NEW,0.0
+2026-11-12,PAYX,115.18000030517578,44.95,103.84,True,42.4,85,,34.09,,,not_scanned,,,,,,,-0.49,HOLD / NEUTRAL,0.0
+2026-11-12,PYPL,58.29999923706055,54.62,50.11,True,45.8,24,,33.07,,,not_scanned,,,,,,,2.89,HOLD / NEUTRAL,0.0
+2026-11-12,PNR,68.13999938964844,74.14,74.5,False,79.7,76,,35.49,,,not_scanned,,,,,,,-4.93,REDUCE / AVOID NEW,0.0
+2026-11-12,PEP,142.25999450683594,62.89,145.77,False,69.5,67,,23.15,,,not_scanned,,,,,,,-3.58,REDUCE / AVOID NEW,0.0
+2026-11-12,PCG,12.970000267028809,59.34,16.15,False,79.7,97,,58.53,,,not_scanned,,,,,,,-6.19,REDUCE / AVOID NEW,0.0
+2026-11-12,PM,196.66000366210938,45.99,183.13,True,20.3,73,,28.74,,,not_scanned,,,,,,,2.0,HOLD / NEUTRAL,0.0
+2026-11-12,PSX,262.9100036621094,39.82,204.21,True,11.9,92,,43.56,,,not_scanned,,,,,,,1.53,HOLD / NEUTRAL,0.0
+2026-11-12,PNW,107.02999877929688,53.58,100.99,True,55.9,86,,25.83,,,not_scanned,,,,,,,-1.63,HOLD / NEUTRAL,0.0
+2026-11-12,PNC,231.02999877929688,58.86,229.37,True,78.0,85,,29.74,,,not_scanned,,,,,,,-3.34,REDUCE / AVOID NEW,0.0
+2026-11-12,PPG,122.3499984741211,65.36,113.0,True,74.6,70,,31.71,,,not_scanned,,,,,,,-2.17,HOLD / NEUTRAL,0.0
+2026-11-12,PPL,35.209999084472656,53.82,36.05,False,54.2,79,,21.77,,,not_scanned,,,,,,,-3.07,REDUCE / AVOID NEW,0.0
+2026-11-12,PFG,112.97000122070312,57.9,104.59,True,59.3,86,,32.69,,,not_scanned,,,,,,,-1.9,HOLD / NEUTRAL,0.0
+2026-11-12,PG,168.02999877929688,66.42,149.78,True,78.0,83,,22.43,,,not_scanned,,,,,,,-3.22,REDUCE / AVOID NEW,0.0
+2026-11-12,PGR,235.49000549316406,59.53,210.43,True,50.8,88,,31.89,,,not_scanned,,,,,,,-1.34,HOLD / NEUTRAL,0.0
+2026-11-12,PLD,128.5500030517578,55.56,137.86,False,81.4,45,,24.68,,,not_scanned,,,,,,,-3.21,REDUCE / AVOID NEW,0.0
+2026-11-12,PRU,122.41000366210938,64.28,109.15,True,96.6,70,,25.39,,,not_scanned,,,,,,,-3.93,REDUCE / AVOID NEW,0.0
+2026-11-12,PTC,196.25,65.85,148.5,True,71.2,0,,7.25,,,not_scanned,,,,,,,2.3,HOLD / NEUTRAL,0.0
+2026-11-12,PEG,74.80000305175781,64.91,77.81,False,79.7,76,,24.91,,,not_scanned,,,,,,,-4.93,REDUCE / AVOID NEW,0.0
+2026-11-12,PSA,333.3299865722656,71.56,305.21,True,74.6,37,,23.51,,,not_scanned,,,,,,,-0.19,HOLD / NEUTRAL,0.0
+2026-11-12,PHM,126.9000015258789,56.6,124.22,True,76.3,87,,41.89,,,not_scanned,,,,,,,-3.32,REDUCE / AVOID NEW,0.0
+2026-11-12,Q,122.69000244140625,61.47,130.3,False,88.1,51,,59.92,,,not_scanned,,,,,,,-4.11,REDUCE / AVOID NEW,0.0
+2026-11-12,QCOM,177.13999938964844,50.74,170.1,True,45.8,82,,52.58,,,not_scanned,,,,,,,-0.58,HOLD / NEUTRAL,0.0
+2026-11-12,PWR,606.1599731445312,57.38,631.62,False,72.9,92,,51.61,,,not_scanned,,,,,,,-5.35,REDUCE / AVOID NEW,0.0
+2026-11-12,DGX,259.6499938964844,75.66,215.32,True,91.5,98,,34.78,,,not_scanned,,,,,,,-5.19,REDUCE / AVOID NEW,0.0
+2026-11-12,RL,390.79998779296875,55.28,368.33,True,49.2,54,,38.64,,,not_scanned,,,,,,,0.82,HOLD / NEUTRAL,0.0
+2026-11-12,RJF,167.2899932861328,64.06,159.94,True,94.9,89,,33.93,,,not_scanned,,,,,,,-4.93,REDUCE / AVOID NEW,0.0
+2026-11-12,O,59.2599983215332,68.32,61.54,False,88.1,97,,21.98,,,not_scanned,,,,,,,-6.86,REDUCE / AVOID NEW,0.0
+2026-11-12,REG,75.73999786376953,57.48,76.9,False,72.9,94,,43.62,,,not_scanned,,,,,,,-5.47,REDUCE / AVOID NEW,0.0
+2026-11-12,REGN,951.1900024414062,73.06,745.87,True,79.7,58,,36.44,,,not_scanned,,,,,,,-1.86,HOLD / NEUTRAL,0.0
+2026-11-12,RF,28.510000228881836,50.49,28.71,False,67.8,21,,25.47,,,not_scanned,,,,,,,-0.69,HOLD / NEUTRAL,0.0
+2026-11-12,RSG,253.0,65.75,218.24,True,50.8,71,,24.65,,,not_scanned,,,,,,,-0.32,HOLD / NEUTRAL,0.0
+2026-11-12,RMD,238.88999938964844,38.96,223.96,True,16.9,66,,37.09,,,not_scanned,,,,,,,2.69,HOLD / NEUTRAL,0.0
+2026-11-12,HOOD,81.3499984741211,33.26,91.53,False,39.0,61,,69.17,,,not_scanned,,,,,,,-0.78,HOLD / NEUTRAL,0.0
+2026-11-12,ROK,404.20001220703125,42.86,426.69,False,44.1,50,,33.69,,,not_scanned,,,,,,,-0.53,HOLD / NEUTRAL,0.0
+2026-11-12,ROL,37.90999984741211,66.85,45.78,False,72.9,93,,35.65,,,not_scanned,,,,,,,-5.41,REDUCE / AVOID NEW,0.0
+2026-11-12,ROP,477.8699951171875,68.54,368.48,True,64.4,56,,30.13,,,not_scanned,,,,,,,-0.51,HOLD / NEUTRAL,0.0
+2026-11-12,ROST,237.24000549316406,56.05,224.54,True,81.4,94,,41.61,,,not_scanned,,,,,,,-4.15,REDUCE / AVOID NEW,0.0
+2026-11-12,RCL,321.989990234375,68.26,288.44,True,78.0,61,,43.41,,,not_scanned,,,,,,,-1.9,HOLD / NEUTRAL,0.0
+2026-11-12,RTX,198.36000061035156,57.73,195.31,True,72.9,76,,28.98,,,not_scanned,,,,,,,-2.39,HOLD / NEUTRAL,0.0
+2026-11-12,SPGI,468.510009765625,61.25,415.57,True,47.5,90,,33.23,,,not_scanned,,,,,,,-1.2,HOLD / NEUTRAL,0.0
+2026-11-12,SNDK,937.4600219726562,36.73,1280.71,False,40.7,83,,107.74,,,not_scanned,,,,,,,-2.23,HOLD / NEUTRAL,0.0
+2026-11-12,SBAC,186.57000732421875,52.85,190.39,False,35.6,81,,34.69,,,not_scanned,,,,,,,-1.7,HOLD / NEUTRAL,0.0
+2026-11-12,SLB,50.90999984741211,36.41,51.57,False,33.9,80,,37.82,,,not_scanned,,,,,,,-1.51,HOLD / NEUTRAL,0.0
+2026-11-12,STX,545.1400146484375,40.32,700.63,False,47.5,100,,99.21,,,not_scanned,,,,,,,-3.79,REDUCE / AVOID NEW,0.0
+2026-11-12,SRE,78.9800033569336,29.65,89.15,False,15.3,90,,28.92,,,not_scanned,,,,,,,-0.62,HOLD / NEUTRAL,0.0
+2026-11-12,SHW,351.3900146484375,55.85,332.79,True,72.9,79,,29.78,,,not_scanned,,,,,,,-2.57,HOLD / NEUTRAL,0.0
+2026-11-12,SPG,233.61000061035156,85.38,207.92,True,93.2,86,,26.24,,,not_scanned,,,,,,,-4.61,REDUCE / AVOID NEW,0.0
+2026-11-12,SKYD,7.590000152587891,47.32,9.91,False,72.0,69,,60.99,,,not_scanned,,,,,,,-3.9,REDUCE / AVOID NEW,0.0
+2026-11-12,SWKS,90.02999877929688,63.8,68.82,True,61.0,79,,55.03,,,not_scanned,,,,,,,-1.62,HOLD / NEUTRAL,0.0
+2026-11-12,SJM,131.7100067138672,53.24,112.48,True,44.1,95,,32.57,,,not_scanned,,,,,,,-1.22,HOLD / NEUTRAL,0.0
+2026-11-12,SW,43.18000030517578,56.45,43.51,False,74.6,59,,39.98,,,not_scanned,,,,,,,-3.51,REDUCE / AVOID NEW,0.0
+2026-11-12,SNA,367.8900146484375,61.65,380.3,False,100.0,42,,25.68,,,not_scanned,,,,,,,-4.52,REDUCE / AVOID NEW,0.0
+2026-11-12,SOLV,88.80999755859375,57.16,78.78,True,74.6,72,,37.25,,,not_scanned,,,,,,,-2.29,HOLD / NEUTRAL,0.0
+2026-11-12,SO,92.47000122070312,47.94,92.66,False,59.3,46,,18.91,,,not_scanned,,,,,,,-1.5,HOLD / NEUTRAL,0.0
+2026-11-12,LUV,45.22999954223633,62.93,43.59,True,67.8,78,,46.62,,,not_scanned,,,,,,,-2.1,HOLD / NEUTRAL,0.0
+2026-11-12,SWK,113.0199966430664,69.4,86.94,True,74.6,44,,35.93,,,not_scanned,,,,,,,-0.61,HOLD / NEUTRAL,0.0
+2026-11-12,SBUX,107.26000213623047,63.4,100.4,True,72.9,12,,26.47,,,not_scanned,,,,,,,1.44,HOLD / NEUTRAL,0.0
+2026-11-12,STT,173.6999969482422,59.16,160.81,True,84.7,86,,34.44,,,not_scanned,,,,,,,-3.93,REDUCE / AVOID NEW,0.0
+2026-11-12,STLD,237.11000061035156,46.96,226.57,True,44.1,93,,47.41,,,not_scanned,,,,,,,-1.1,HOLD / NEUTRAL,0.0
+2026-11-12,STE,253.44000244140625,69.84,224.12,True,72.9,43,,31.89,,,not_scanned,,,,,,,-0.41,HOLD / NEUTRAL,0.0
+2026-11-12,SYK,312.3900146484375,52.36,322.16,False,55.9,88,,33.53,,,not_scanned,,,,,,,-3.75,REDUCE / AVOID NEW,0.0
+2026-11-12,SMCI,26.989999771118164,36.91,32.56,False,27.1,49,,81.18,,,not_scanned,,,,,,,0.89,HOLD / NEUTRAL,0.0
+2026-11-12,SYF,71.66000366210938,41.9,73.48,False,39.0,56,,34.96,,,not_scanned,,,,,,,-0.48,HOLD / NEUTRAL,0.0
+2026-11-12,SNPS,462.69000244140625,61.11,441.21,True,71.2,81,,51.03,,,not_scanned,,,,,,,-2.55,HOLD / NEUTRAL,0.0
+2026-11-12,SYY,76.23999786376953,37.44,80.42,False,27.1,89,,26.07,,,not_scanned,,,,,,,-1.5,HOLD / NEUTRAL,0.0
+2026-11-12,TMUS,171.02999877929688,80.6,185.98,False,100.0,92,,37.15,,,not_scanned,,,,,,,-7.51,STRONG AVOID / EXIT,0.0
+2026-11-12,TROW,108.22000122070312,58.18,103.83,True,88.1,95,,30.61,,,not_scanned,,,,,,,-4.74,REDUCE / AVOID NEW,0.0
+2026-11-12,TTWO,226.9499969482422,65.72,218.48,True,100.0,100,,69.6,,,not_scanned,,,,,,,-5.99,REDUCE / AVOID NEW,0.0
+2026-11-12,TPR,132.6300048828125,81.55,137.23,False,100.0,71,,46.6,,,not_scanned,,,,,,,-6.26,REDUCE / AVOID NEW,0.0
+2026-11-12,TRGP,296.29998779296875,47.15,263.82,True,39.0,78,,35.65,,,not_scanned,,,,,,,0.2,HOLD / NEUTRAL,0.0
+2026-11-12,TGT,160.89999389648438,58.53,136.43,True,78.0,94,,52.39,,,not_scanned,,,,,,,-3.87,REDUCE / AVOID NEW,0.0
+2026-11-12,TEL,217.82000732421875,56.95,212.12,True,72.9,77,,39.0,,,not_scanned,,,,,,,-2.45,HOLD / NEUTRAL,0.0
+2026-11-12,TDY,647.5700073242188,55.24,635.44,True,69.5,,,,,,not_scanned,,,,,,,-0.56,HOLD / NEUTRAL,0.0
+2026-11-12,TER,263.75,38.65,350.23,False,44.1,87,,77.84,,,not_scanned,,,,,,,-2.74,HOLD / NEUTRAL,0.0
+2026-11-12,TSLA,397.45001220703125,57.85,382.86,True,57.6,49,,52.41,,,not_scanned,,,,,,,0.45,HOLD / NEUTRAL,0.0
+2026-11-12,TXN,312.4800109863281,61.37,264.35,True,62.7,90,,50.99,,,not_scanned,,,,,,,-2.41,HOLD / NEUTRAL,0.0
+2026-11-12,TXT,84.30999755859375,64.38,87.96,False,79.7,98,,39.76,,,not_scanned,,,,,,,-6.25,REDUCE / AVOID NEW,0.0
+2026-11-12,TMO,699.4400024414062,57.06,554.83,True,45.8,88,,35.2,,,not_scanned,,,,,,,-0.94,HOLD / NEUTRAL,0.0
+2026-11-12,TJX,135.97999572753906,37.52,150.53,False,40.7,99,,34.03,,,not_scanned,,,,,,,-3.19,REDUCE / AVOID NEW,0.0
+2026-11-12,TKO,194.0800018310547,73.31,192.87,True,96.6,24,,32.76,,,not_scanned,,,,,,,-1.17,HOLD / NEUTRAL,0.0
+2026-11-12,TSCO,36.630001068115234,66.88,37.33,False,91.5,82,,39.53,,,not_scanned,,,,,,,-6.24,REDUCE / AVOID NEW,0.0
+2026-11-12,TT,424.04998779296875,42.16,455.92,False,57.6,95,,37.89,,,not_scanned,,,,,,,-4.3,REDUCE / AVOID NEW,0.0
+2026-11-12,TDG,1203.0,65.99,1216.32,False,88.1,98,,43.8,,,not_scanned,,,,,,,-6.92,REDUCE / AVOID NEW,0.0
+2026-11-12,TRV,403.17999267578125,54.16,335.43,True,45.8,76,,27.06,,,not_scanned,,,,,,,-0.22,HOLD / NEUTRAL,0.0
+2026-11-12,TFC,49.88999938964844,58.17,49.5,True,72.9,23,,23.8,,,not_scanned,,,,,,,0.78,HOLD / NEUTRAL,0.0
+2026-11-12,TWLO,212.2100067138672,27.01,192.53,True,16.0,74,,62.78,,,not_scanned,,,,,,,2.28,HOLD / NEUTRAL,0.0
+2026-11-12,TYL,423.5899963378906,63.92,335.56,True,44.1,43,,40.75,,,not_scanned,,,,,,,1.89,HOLD / NEUTRAL,0.0
+2026-11-12,TSN,59.2599983215332,65.24,59.51,False,61.0,98,,34.81,,,not_scanned,,,,,,,-4.75,REDUCE / AVOID NEW,0.0
+2026-11-12,USB,60.470001220703125,55.02,58.28,True,71.2,63,,26.65,,,not_scanned,,,,,,,-1.47,HOLD / NEUTRAL,0.0
+2026-11-12,UBER,69.12000274658203,58.4,72.72,False,91.5,24,,36.38,,,not_scanned,,,,,,,-2.76,HOLD / NEUTRAL,0.0
+2026-11-12,UDR,36.130001068115234,52.91,36.78,False,64.4,52,,23.31,,,not_scanned,,,,,,,-2.27,HOLD / NEUTRAL,0.0
+2026-11-12,ULTA,650.969970703125,60.29,552.2,True,55.9,75,,41.02,,,not_scanned,,,,,,,-0.97,HOLD / NEUTRAL,0.0
+2026-11-12,UNP,304.20001220703125,59.54,273.62,True,55.9,77,,25.85,,,not_scanned,,,,,,,-1.09,HOLD / NEUTRAL,0.0
+2026-11-12,UAL,111.25,63.05,108.26,True,88.1,57,,52.25,,,not_scanned,,,,,,,-2.47,HOLD / NEUTRAL,0.0
+2026-11-12,UPS,110.37999725341797,66.08,104.74,True,66.1,18,,23.73,,,not_scanned,,,,,,,1.63,HOLD / NEUTRAL,0.0
+2026-11-12,URI,1139.1400146484375,54.68,979.7,True,57.6,30,,32.21,,,not_scanned,,,,,,,1.59,HOLD / NEUTRAL,0.0
+2026-11-12,UNH,405.1300048828125,40.0,365.86,True,33.9,52,,33.58,,,not_scanned,,,,,,,2.17,HOLD / NEUTRAL,0.0
+2026-11-12,UHS,193.83999633789062,55.78,176.49,True,52.5,20,,33.25,,,not_scanned,,,,,,,2.6,HOLD / NEUTRAL,0.0
+2026-11-12,VLO,374.95001220703125,37.2,293.78,True,18.6,94,,52.08,,,not_scanned,,,,,,,0.88,HOLD / NEUTRAL,0.0
+2026-11-12,VTR,89.6500015258789,57.92,87.08,True,79.7,90,,29.77,,,not_scanned,,,,,,,-3.77,REDUCE / AVOID NEW,0.0
+2026-11-12,VLTO,117.48999786376953,83.37,93.69,True,79.7,45,,28.09,,,not_scanned,,,,,,,-1.08,HOLD / NEUTRAL,0.0
+2026-11-12,VRSN,312.4800109863281,61.87,274.37,True,69.5,81,,34.7,,,not_scanned,,,,,,,-2.42,HOLD / NEUTRAL,0.0
+2026-11-12,VRSK,206.32000732421875,58.98,185.68,True,54.2,92,,42.18,,,not_scanned,,,,,,,-1.85,HOLD / NEUTRAL,0.0
+2026-11-12,VZ,46.54999923706055,62.48,47.12,False,74.6,89,,26.08,,,not_scanned,,,,,,,-5.3,REDUCE / AVOID NEW,0.0
+2026-11-12,VRTX,542.6199951171875,57.96,483.03,True,57.6,98,,50.39,,,not_scanned,,,,,,,-2.48,HOLD / NEUTRAL,0.0
+2026-11-12,VRT,209.63999938964844,54.04,271.54,False,91.5,80,,72.38,,,not_scanned,,,,,,,-6.12,REDUCE / AVOID NEW,0.0
+2026-11-12,VTRS,20.670000076293945,76.65,16.2,True,98.3,56,,35.21,,,not_scanned,,,,,,,-3.22,REDUCE / AVOID NEW,0.0
+2026-11-12,VICI,24.799999237060547,60.48,26.81,False,76.3,40,,18.07,,,not_scanned,,,,,,,-2.51,HOLD / NEUTRAL,0.0
+2026-11-12,V,420.30999755859375,58.08,346.6,True,40.7,75,,24.64,,,not_scanned,,,,,,,0.25,HOLD / NEUTRAL,0.0
+2026-11-12,VST,134.50999450683594,46.35,152.07,False,45.8,35,,54.37,,,not_scanned,,,,,,,0.23,HOLD / NEUTRAL,0.0
+2026-11-12,VMRK,63.93000030517578,54.53,64.13,False,71.2,27,,20.46,,,not_scanned,,,,,,,-1.32,HOLD / NEUTRAL,0.0
+2026-11-12,VMC,280.17999267578125,62.09,279.58,True,67.8,85,,34.44,,,not_scanned,,,,,,,-2.52,HOLD / NEUTRAL,0.0
+2026-11-12,VYLR,72.05999755859375,41.11,72.5,False,18.8,,,,,,not_scanned,,,,,,,1.5,HOLD / NEUTRAL,0.0
+2026-11-12,WRB,77.1500015258789,65.86,69.61,True,81.4,80,,28.57,,,not_scanned,,,,,,,-3.31,REDUCE / AVOID NEW,0.0
+2026-11-12,GWW,1502.6099853515625,74.7,1254.24,True,86.4,66,,24.47,,,not_scanned,,,,,,,-2.87,HOLD / NEUTRAL,0.0
+2026-11-12,WAB,300.510009765625,67.51,270.8,True,96.6,70,,31.91,,,not_scanned,,,,,,,-3.93,REDUCE / AVOID NEW,0.0
+2026-11-12,WMT,126.19000244140625,63.99,118.88,True,62.7,99,,38.45,,,not_scanned,,,,,,,-2.95,HOLD / NEUTRAL,0.0
+2026-11-12,DIS,118.2300033569336,64.34,103.72,True,64.4,85,,36.57,,,not_scanned,,,,,,,-2.25,HOLD / NEUTRAL,0.0
+2026-11-12,WM,244.11000061035156,54.5,225.77,True,59.3,93,,25.82,,,not_scanned,,,,,,,-2.32,HOLD / NEUTRAL,0.0
+2026-11-12,WAT,462.20001220703125,53.34,372.77,True,27.1,81,,38.32,,,not_scanned,,,,,,,0.98,HOLD / NEUTRAL,0.0
+2026-11-12,WEC,117.4800033569336,69.45,111.88,True,64.4,87,,22.58,,,not_scanned,,,,,,,-2.37,HOLD / NEUTRAL,0.0
+2026-11-12,WFC,85.76000213623047,62.06,83.49,True,88.1,45,,28.1,,,not_scanned,,,,,,,-1.75,HOLD / NEUTRAL,0.0
+2026-11-12,WELL,244.92999267578125,58.13,221.16,True,66.1,96,,30.94,,,not_scanned,,,,,,,-3.04,REDUCE / AVOID NEW,0.0
+2026-11-12,WST,411.29998779296875,62.71,320.47,True,59.3,12,,33.56,,,not_scanned,,,,,,,2.53,HOLD / NEUTRAL,0.0
+2026-11-12,WDC,311.2099914550781,43.65,421.9,False,47.5,83,,83.78,,,not_scanned,,,,,,,-2.78,HOLD / NEUTRAL,0.0
+2026-11-12,WY,20.459999084472656,57.99,23.41,False,78.0,65,,28.35,,,not_scanned,,,,,,,-4.14,REDUCE / AVOID NEW,0.0
+2026-11-12,WSM,250.3800048828125,48.77,216.71,True,37.3,64,,46.42,,,not_scanned,,,,,,,1.18,HOLD / NEUTRAL,0.0
+2026-11-12,WMB,69.44000244140625,44.84,72.62,False,32.2,93,,32.24,,,not_scanned,,,,,,,-2.15,HOLD / NEUTRAL,0.0
+2026-11-12,WTW,328.7799987792969,53.94,297.08,True,55.9,73,,32.72,,,not_scanned,,,,,,,-0.85,HOLD / NEUTRAL,0.0
+2026-11-12,WYNN,83.0199966430664,66.81,97.02,False,96.6,66,,40.46,,,not_scanned,,,,,,,-5.69,REDUCE / AVOID NEW,0.0
+2026-11-12,XEL,81.5,67.91,78.44,True,69.5,87,,25.19,,,not_scanned,,,,,,,-2.78,HOLD / NEUTRAL,0.0
+2026-11-12,XYL,94.02999877929688,33.72,115.32,False,45.8,93,,34.18,,,not_scanned,,,,,,,-3.24,REDUCE / AVOID NEW,0.0
+2026-11-12,YUM,159.33999633789062,69.11,153.71,True,72.9,99,,32.13,,,not_scanned,,,,,,,-3.77,REDUCE / AVOID NEW,0.0
+2026-11-12,ZBH,104.55999755859375,58.71,92.44,True,62.7,79,,34.06,,,not_scanned,,,,,,,-1.75,HOLD / NEUTRAL,0.0
+2026-11-12,ZTS,82.95999908447266,53.4,91.67,False,47.5,81,,39.78,,,not_scanned,,,,,,,-2.66,HOLD / NEUTRAL,0.0

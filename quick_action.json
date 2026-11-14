@@ -1,5 +1,5 @@
 {
- "date": "2026-11-12",
+ "date": "2026-11-13",
  "action": "WAIT FOR CONFIRMATION",
  "tone": "amber",
  "headline": "Buy setup is building, but only 2/5 confirmations. Don't be first.",
@@ -30,7 +30,7 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Buy Watch",
+   "text": "Strong Buy",
    "tone": "green"
   },
   {
@@ -45,15 +45,15 @@
   },
   {
    "label": "Fear",
-   "text": "VIX 18.7, contango",
+   "text": "VIX 19.3, contango",
    "tone": "green"
   }
  ],
- "flow_date": "2026-11-12",
+ "flow_date": "2026-11-13",
  "flow_10d_pct": {
-  "smh_spy": -9.23,
-  "rsp_spy": 1.93,
-  "defensive_cyclical": 6.44,
-  "hyg_ief": 0.37
+  "smh_spy": -6.67,
+  "rsp_spy": 1.49,
+  "defensive_cyclical": 4.3,
+  "hyg_ief": 1.27
  }
 }

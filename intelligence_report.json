@@ -1,27 +1,27 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "generated_at": "11:00 PM",
-  "overall_signal": "HOLD",
-  "voo_vgt_action": "HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.",
-  "macro_picture": "SPY GEX is negative at $-1.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 18.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "NVDA AVOID \u2014 company-specific negative news detected: 'Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, ...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 77th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Telsa merger talks begin to take shape...' Do not buy this dip until news clears.",
-  "watch_section": "VIX pushing above 22-25 (currently 18.0, needs +4.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-1.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 18.0 (calm, stable trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 149 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: HOLD \u2014 No strong signal today. Market is in a mixed regime. Hold existing VOO/VGT positions. Wait for fear score to reach 6+ or bull score to confirm.\n\nMAG 7 OPPORTUNITIES: NVDA AVOID \u2014 company-specific negative news detected: 'Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, ...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 38th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 77th pct. Not yet at peak oversold but building. TSLA AVOID \u2014 company-specific negative news detected: 'SpaceX, Telsa merger talks begin to take shape...' Do not buy this dip until news clears.\n\nWATCH FOR: VIX pushing above 22-25 (currently 18.0, needs +4.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: HOLD",
+  "overall_signal": "WATCH",
+  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
+  "macro_picture": "SPY GEX is deeply negative at $-12.1B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft's latest outage hit Outlook and Copilot \u2014 what it ...' Do not buy this dip until news clears. NVDA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 46th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 61th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.1B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.4 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 150 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.4. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: MSFT AVOID \u2014 company-specific negative news detected: 'Microsoft's latest outage hit Outlook and Copilot \u2014 what it ...' Do not buy this dip until news clears. NVDA AVOID \u2014 company-specific negative news detected: 'Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgr...' Do not buy this dip until news clears. AAPL WATCH \u2014 score 4/10, RSI at 46th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 61th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.4, needs +2.6 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "mixed",
-    "vix_trend": "stable",
-    "vix_current": 17.96,
+    "regime": "bear_warning",
+    "vix_trend": "falling",
+    "vix_current": 19.37,
     "gex_trend": "improving",
-    "gex_current": -1.6,
+    "gex_current": -12.1,
     "fear_trend": "easing",
-    "fear_current": 3.0,
-    "bear_current": 2.0,
-    "bull_current": 4.0,
+    "fear_current": 5.0,
+    "bear_current": 6.0,
+    "bull_current": 2.0,
     "neg_gex_days": 8,
-    "skew_current": 149.09,
+    "skew_current": 150.16,
     "term_struct": "contango",
     "above_200ma": "True",
-    "spy_rsi": 49.54
+    "spy_rsi": 44.61
   },
   "top_opportunity": {
     "ticker": null,
@@ -30,115 +30,116 @@
     "news": ""
   },
   "avoid_names": [
+    "MSFT",
     "NVDA",
-    "TSLA",
-    "MSFT"
+    "GOOGL",
+    "TSLA"
   ],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 37.7,
+      "rsi_pct": 46.0,
       "above_200ma": true,
       "news": "company_positive",
-      "rsi_dir": "getting_more_oversold",
+      "rsi_dir": "stable",
       "days_oversold": 4,
       "headlines": [
-        "China Renaissance Upgraded Apple (AAPL) to Buy. DZ Bank Cut It to Sell. Here\u2019s the Split",
-        "Apple Stock Called 'Safe Haven,' Hits Record High",
-        "Apple (AAPL): A CIBC Pick Riding Record Results and a New iPhone Lineup",
-        "Warren Buffett's Successor, Greg Abel, Has Nearly $110 Billion Invested in These 2 Tech Stocks"
+        "A $1,999 Sellout. What China Renaissance Sees in Apple (AAPL)",
+        "JardogsHealth Forms Strategic Advisory Council with Leaders from Discover Card, MTV, DoorDash and Apple",
+        "Apple Stocks Rise 1.04% as Siri AI-Powered HomeView and Apple TV Hit Shelves",
+        "What Could Still Send Apple Stock Higher?"
       ]
     },
     "MSFT": {
-      "score": 3.0,
-      "rsi_pct": 37.0,
+      "score": 5.0,
+      "rsi_pct": 30.7,
       "above_200ma": true,
       "news": "company_negative",
       "rsi_dir": "recovering",
-      "days_oversold": 3,
+      "days_oversold": 2,
       "headlines": [
-        "Bill Ackman says Microsoft's position is 'really, really strong' as Anthropic pushes into enterprise software",
-        "Why Bill Ackman sees value in Microsoft",
-        "Microsoft outage disrupts Outlook, Teams, and Copilot for users 'in any region'",
-        "Azure Grew 48%, Yet Griffin Securities Downgraded Microsoft (MSFT). Here\u2019s the Catch"
+        "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
+        "Microsoft's latest outage hit Outlook and Copilot \u2014 what it means for your email",
+        "Microsoft Service Outage Gives Software Giant Black Eye",
+        "Microsoft vs. Salesforce: One Software Stock Remains a Top Pick, the Other Has Something to Prove, Says RBC"
       ]
     },
     "NVDA": {
-      "score": 6.0,
-      "rsi_pct": 1.9,
+      "score": 5.0,
+      "rsi_pct": 0.6,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "company_negative",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Nvidia market cap plunges $490 billion following former CEO Huang's affair scandals",
-        "Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
-        "Nvidia needs new front man to stay on top after Huang's ousting, experts say",
-        "Stock Market Today, Nov. 12: Nvidia CEO's Stunning Exit Sends Wall Street Lower as Rivals Surge"
+        "How the Nvidia scandal impacts US\u2013China relations: Department of Defense CTO",
+        "Dow Jones Futures: Market Rally Shaky As Nvidia Earnings, Anthropic IPO Loom; SpaceX Starship Flight 15 Soon.",
+        "Stock Market Today, Nov. 13: Nvidia Slides After HSBC Downgrades Stock to Hold on CEO Uncertainty",
+        "Could a Former Nvidia Executive Replace Jensen Huang? Arm\u2019s Rene Haas Emerges as Candidate"
       ]
     },
     "GOOGL": {
       "score": 2.0,
-      "rsi_pct": 29.6,
+      "rsi_pct": 28.2,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "company_negative",
       "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
-        "5 Unrivaled Stocks to Buy for the Next Decade",
-        "Nvidia Needs a Colossus to Replace Jensen Huang, and Eric Schmidt May Be the Only One Who Fits",
-        "Why Alphabet Stock Was Moving Higher Today",
-        "Vanguard CEO Salim Ramji warns bond market volatility could be a key 2027 risk"
+        "What Does Dominion Energy Offer That NiSource Does Not?",
+        "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
+        "Alphabet (GOOGL) Faces Uber Deal Talk, Space Chip Test And \u20ac1.66 Billion Fine",
+        "Alibaba\u2019s (BABA) AI Growth Prospects Remain Masked by Short-Term Challenges"
       ]
     },
     "META": {
-      "score": 3.0,
-      "rsi_pct": 46.9,
-      "above_200ma": false,
+      "score": 4.0,
+      "rsi_pct": 61.3,
+      "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 8,
+      "days_oversold": 7,
       "headlines": [
-        "millionways Introduces Thorsten-4, the Foundation Model That Teaches AI to Read the Room and Understand Human Behavior",
-        "LMSYS Org Launches SGLang Consortium with NVIDIA, AMD, Intel, Google, Meta, Cloudflare, Modal and RadixArk to Advance Open-Source AI Inference",
-        "Musk: SpaceX Makes Compute \u201cActually Usable\u201d in 2 Months, 3x Faster than Rivals",
-        "What ERock (EROC) Said on Its Q3 Earnings Call"
+        "Meta tests prediction-market app for employees, WSJ reports",
+        "Meta reportedly paid 2 teens a combined $7 million to settle social media addiction claims as 9,800 more cases loom",
+        "United is the first airline to ban bookings from Meta\u2019s AI agent, Muse: 'I don't want to create another middleman'",
+        "Microsoft vs. Meta: enterprise AI distribution against monetization speed"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 77.2,
+      "rsi_pct": 68.1,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "company_positive",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Microsoft And Amazon Show AI Spending Can Pay Off",
-        "Pimco CEO Warns: AI Companies Risk Borrowing \"Too Much\" ($10 Trillion)",
-        "After Selling Poppi For $1.95B, The Ellsworths Are Back With Another Startup. But What Comes After A Billion-Dollar Exit?",
-        "Alphabet Climbs 3% as NVIDIA\u2019s Leadership Shake-Up Puts Google\u2019s AI Chips in the Spotlight; Microsoft Gains 2%, Amazon Ticks Up"
+        "FRMI Stock Clocks Best Day Ever After Report Names Amazon As Project Matador Customer",
+        "Sector Update: Consumer Stocks Mixed Late Afternoon",
+        "Sector Update: Consumer Stocks Mixed in Afternoon Trading",
+        "How Investors May Respond To Amazon Stock As AWS Growth And Anthropic IPO Near"
       ]
     },
     "TSLA": {
-      "score": 4.0,
-      "rsi_pct": 60.5,
+      "score": 2.0,
+      "rsi_pct": 41.7,
       "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 0,
       "headlines": [
-        "SpaceX, Telsa merger talks begin to take shape",
-        "Dow Jones Futures: Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
-        "Musk: It Takes \u201c20 to 30 Million Robots\u201d to Match America\u2019s Output. That\u2019s Optimus\u2019 Market",
-        "TSLA Stock Climbs Amid Reports Of SpaceX Tie-Up As Early As December"
+        "SpaceX, Tesla Merger Puts Musk At Forefront Of 'Revolutionary' Tech, Analyst Says",
+        "SpaceX Could Announce a Deal for Tesla as Soon as December. Here's What It Would Do to SpaceX Stock.",
+        "America's Greatest Opportunities: The Earnings Gap That Put Tesla Stock At Ludicrous Speed",
+        "SpaceX\u2019s Big Day: A Historic Starship Launch, a Tesla Merger Under Scrutiny, and a $74 Billion AI Bet"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "What SPDR S&amp;P 500 ETF (SPY) Bought: Apple Leads on Nov. 10",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110413896.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "SPDR S&amp;P 500 ETF (SPY) Buys $335.9 Million More Apple on Nov. 11",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110304063.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
         "AAPL",
         "SPY"
@@ -148,11 +149,32 @@
       "source_count": 1
     },
     {
-      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Thursday Amid Nvidia Leadership Uncertainty",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-140846632.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "ETFs Bought $107.9 Million of Visa (V) on Nov. 11",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-107-9-million-110141909.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
-        "NVDA",
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "$1 Million In SCHD Five Years Ago: What Is It Worth Now?",
+      "link": "https://www.trefis.com/stock/schd/articles/624814/1-million-in-schd-five-years-ago-what-is-it-worth-now/2026-11-13?.tsrc=rss",
+      "pub_date": "2026-11-13",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday as Producer Inflation Trails Forecasts",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-141316665.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
+      "tickers": [
         "SPY"
       ],
       "high_impact": false,
@@ -160,31 +182,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Bought $83.8 Million of Alphabet (GOOG) on Nov. 10",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-83-8-million-110149451.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
-      "tickers": [
-        "GOOGL"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Bought $88.9 Million of Costco (COST) on Nov. 10",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-88-9-million-110145691.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
-      "tickers": [
-        "QQQ"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETFs Are Buying Tesla (TSLA) on Nov. 10",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-tesla-tsla-nov-110053409.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "Tesla (TSLA) Sees $76.2 Million in Net ETF Buying on Wednesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-tsla-sees-76-2-110209047.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
         "TSLA"
       ],
@@ -193,9 +193,31 @@
       "source_count": 1
     },
     {
-      "title": "For the Couple Where One Wants to Spend It and the Other Wants to Leave It to the Kids: 3 ETFs That Do Both",
-      "link": "https://247wallst.com/investing/etf/2026/11/12/for-the-couple-where-one-wants-to-spend-it-and-the-other-wants-to-leave-it-to-the-kids-3-etfs-that-do-both/?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "42 ETFs Add to Alphabet (GOOG) on Wednesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/42-etfs-add-alphabet-goog-110203456.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
+      "tickers": [
+        "GOOGL"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "55 ETFs Add to Meta Platforms (META) on Nov. 11",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/55-etfs-add-meta-platforms-110147447.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
+      "tickers": [
+        "META"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Bought $123.0 Million of Berkshire Hathaway (BRK.B) on Wednesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-123-0-million-110130186.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
         "MARKET"
       ],
@@ -204,33 +226,9 @@
       "source_count": 1
     },
     {
-      "title": "NVIDIA\u2019s Leadership Crisis Is Dragging the S&amp;P 500 Lower. Here\u2019s What Else Is Moving",
-      "link": "https://247wallst.com/investing/2026/11/12/nvidias-leadership-crisis-is-dragging-the-sp-500-lower-heres-what-else-is-moving/?.tsrc=rss",
-      "pub_date": "2026-11-12",
-      "tickers": [
-        "NVDA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Jensen Huang Resigns from NVIDIA, Shares -10%",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-resigns-nvidia-shares-141200158.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
-      "tickers": [
-        "AAPL",
-        "NVDA",
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Seagate\u2019s Legitimacy as a Play on AI Hardware Demand is About To Be Tested",
-      "link": "https://247wallst.com/investing/2026/11/12/seagates-legitimacy-as-a-play-on-ai-hardware-demand-is-about-to-be-tested/?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "ETFs Bought $137.7 Million of Micron (MU) on Wednesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-bought-137-7-million-110118765.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
         "MARKET"
       ],
@@ -239,9 +237,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Net Sellers of Dominion (D) on Nov. 10",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-dominion-d-110247142.html?.tsrc=rss",
-      "pub_date": "2026-11-12",
+      "title": "ETFs Are Buying Eli Lilly (LLY) on Nov. 11",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-eli-lilly-lly-110112211.html?.tsrc=rss",
+      "pub_date": "2026-11-13",
       "tickers": [
         "MARKET"
       ],
