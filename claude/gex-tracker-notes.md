@@ -4,7 +4,7 @@ NOTE 2026-11-07: the original long-form notes live in the claude.ai Project "GEX
 
 ## Known open items
 (updated 2026-11-14)
-- P0b (quick_action) PASS (modest) 2026-11-14: DEFEND only after 2 consecutive trigger days; PR claude/pr-quick-action-defend-2day open, not merged. DEFEND days 2007+ = higher fwd20 (+1.29 vs +0.78) but 2x drawdown risk; cash-on-DEFEND cost 3.8pp CAGR -> treat as no-adds, not sell. Waiting for DEFEND to clear: -0.4 to -0.6% upside, +0.3-0.9pp less MAE.
+- P0b (quick_action) PASS (modest) 2026-11-14: DEFEND only after 2 consecutive trigger days; PR #7 (claude/pr-quick-action-defend-2day) open, not merged. DEFEND days 2007+ = higher fwd20 (+1.29 vs +0.78) but 2x drawdown risk; cash-on-DEFEND cost 3.8pp CAGR -> treat as no-adds, not sell. Waiting for DEFEND to clear: -0.4 to -0.6% upside, +0.3-0.9pp less MAE.
 - Live 11-13: first 20d STRONG_BUY loss (10-16, -1.01%); event confirmation entries +0.13%/-0.74% vs early +2.67%.
 - P0 (SMH/RSP rotation shakeout) INCONCLUSIVE 2026-11-11: dip-within-10d 42% vs 19% base, but 20d upside is threshold-fragile (6 episodes, 0 fires 2010-17); confirmation entries didn't help; credit-selling subgroup (HYG/IEF 10d <= -1) 2 bad of 4. Not wired in.
 - P1 (vol-free STRONG_BUY gate) REJECTED 2026-11-07: keep composite>=1.
