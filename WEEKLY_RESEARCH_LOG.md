@@ -1,5 +1,71 @@
 # Weekly Research Log
 
+## 2026-11-14 — P0b: QUICK ACTION tuning (DEFEND persistence, cost of waiting vs drawdown avoided, "Leaving stocks" since 2007)
+
+**VERDICT: PASS — ready for review (modest).** Require the DEFEND trigger to hold for **2 consecutive days** before quick_action says DEFEND. Across 2007–2026 this cuts switches from 19.5/yr to 12.0/yr. It is better than the 1-day rule on both sides in 2 of 3 eras. In 2010–17 it is worse on drawdown. A second finding matters more for how the card is read: **DEFEND is not a sell signal.** Going to cash on every DEFEND day cost 3.8 pp of CAGR over 2007–2026 (8.83% → 5.05%). It is a "no new adds / don't be first" flag, and the headline should say so. PR: `claude/pr-quick-action-defend-2day`.
+
+**Data and method** (`research/p0b_quick_action.py`; output in `research/p0b_quick_action_output.txt`, `p0b_quick_action_results.json`, `p0b_live_replay.csv`):
+- **Live replay:** quick_action's decision re-run for each SPY day in gex_log.csv (2026-04-08 to 11-13, 154 days), using only data up to that day. flow_history.csv is the current file, which may include revisions, so dates can differ slightly from the 11-05 replay. That replay had DEFEND on Oct 21–27 + Nov 2; this one has Sep 29, Oct 16–27 and Nov 2.
+- **Deep test:** the DEFEND triggers that don't need GEX, rebuilt from flow_history.csv (2007-04-11 to 2026-11-13, 4,932 days). T1 credit breaking = HYG 5d ≤ −1.5%. T2 = VIX/VIX3M > 1 for ≥3 days (the live "backwardation" is VIX3M − VIX < 0, the same thing). T3 "Leaving stocks" = HYG/IEF 10d ≤ −1% AND defensive/cyclical 10d ≥ +3%. T4 = deep-log regime DEFENSIVE/CRISIS (to 2026-08-21). T4 is reported separately because the live regime_signal has never been DEFENSIVE/CRISIS.
+- Persistence state machine: ON after k_on consecutive raw days, OFF after k_off consecutive clear days. Overlay = hold SPY, cash the day after a DEFEND close. No costs, no cash yield, price-only SPY. This is an upper bound on what "protect" could mean.
+
+**1. Live replay (hypothesis-grade, one bull run).** HOLD 98, WAIT 43, DEFEND 10, ADD 3; 44 action changes in 154 days. DEFEND triggers: flow-red 9 days, credit5d 1 day. 10d after DEFEND days: n=9, hit 11.1%, avg −1.82%, MAE −2.79%, P(dd ≤ −3%) 44.4%. Base: 54.9% / +0.56% / −1.17% / 11.1%. WAIT 10d: n=37, hit 81.1%, +1.43%, MAE −0.66%; waiting cost upside in this sample. ADD n=3, −0.42%: too few to judge. Four live STRONG_BUY days (10-16, 10-22, 10-26, 11-02) were already overridden to DEFEND by the flow-red rule. quick_action effectively already applies the P8(b) veto on those days.
+- 2-day persistence (k_on=2, k_off=1) on live: 10 → 7 DEFEND days, 6 → 2 switches, one episode (10-19..10-27). 10d after: 0/7 hit, −2.43%, MAE −3.39%. It drops two single-day fires. **9-29 (credit5d) was a false alarm** (fwd10 +1.47%, MAE10 −0.45%). **11-02 was a real warning** (MAE10 −2.34% into the 11-05 drop). On this tiny sample that is one gain and one miss.
+
+**2. Deep history: what DEFEND days are followed by** (20d, day level):
+
+| Era | Trigger | Days (%) | Episodes | Hit20 | Fwd20 | MAE20 | P(MAE20 ≤ −5) |
+|---|---|---|---|---|---|---|---|
+| 2007+ | base | 4912 | – | 65.2% | +0.78 | −2.72 | 17.9% |
+| 2007+ | T1 credit5d | 412 (8.4%) | 79 | 61.7% | +1.36 | −4.43 | 33.5% |
+| 2007+ | T2 backw 3d | 321 (6.5%) | 30 | 66.4% | +1.74 | −5.93 | 37.4% |
+| 2007+ | T3 flow red | 363 (7.4%) | 66 | 63.1% | +0.97 | −4.47 | 33.2% |
+| 2007+ | T1∪T2∪T3 | 808 (16.4%) | 96 | 63.0% | +1.29 | −4.26 | 30.8% |
+| 2007-09 | T1∪T2∪T3 (base −0.57 / −4.88 / 34.8%) | 248 (36.0%) | 18 | 57.3% | −0.03 | −6.31 | 40.7% |
+| 2010-17 | T1∪T2∪T3 (base +0.97 / −2.05 / 12.1%) | 256 (12.7%) | 38 | 66.4% | +2.02 | −2.51 | 19.5% |
+| 2018+ | T1∪T2∪T3 (base +1.03 / −2.66 / 17.8%) | 304 (13.6%) | 40 | 64.9% | +1.77 | −4.05 | 32.1% |
+| 2018+ | T4 regime | 173 (7.8%) | 10 | 75.7% | +4.08 | −2.50 | 19.7% |
+
+DEFEND days are **volatility flags, not direction flags.** Drawdown risk roughly doubles (P(MAE20 ≤ −5) 30.8% vs 17.9%). But average forward return is *higher* than base in every era except 2007–09, because these are dips that mostly bounce. 39% of raw trigger runs last one day (T1 40%, T3 47%, T2 27%). That is the whipsaw P0b asked about.
+
+**3. Cash-on-DEFEND overlay vs buy & hold** (T1∪T2∪T3):
+
+| Era | Rule | Time out | Switches/yr | CAGR B&H → rule | Max DD B&H → rule |
+|---|---|---|---|---|---|
+| 2007+ | 1-day (current) | 16.4% | 19.5 | 8.83 → 5.05 | −56.5 → −42.7 |
+| 2007+ | **2-day on, 1-day off** | 12.5% | 12.0 | 8.83 → **6.50** | −56.5 → **−34.8** |
+| 2007+ | 2-day on, 2-day off | 15.4% | 11.2 | 8.83 → 5.45 | −56.5 → −29.7 |
+| 2018+ | 1-day | 13.6% | 19.4 | 12.38 → 7.47 | −34.1 → −22.5 |
+| 2018+ | **2-day on, 1-day off** | 9.8% | 10.9 | 12.38 → **9.42** | −34.1 → **−20.9** |
+| 2010-17 | 1-day | 12.7% | 18.3 | 11.32 → 7.61 | −19.4 → −14.7 |
+| 2010-17 | **2-day on, 1-day off** | 9.1% | 12.0 | 11.32 → 7.44 | −19.4 → **−18.1 (worse)** |
+
+- Every variant of the union costs 2–5 pp of CAGR vs holding. Days spent out of the market had positive net returns (2007+ 1-day: +664.7 pp of up days missed vs 575.2 pp of down days avoided). **So DEFEND should not mean "sell".**
+- T2 alone (backwardation ≥3d) is the most efficient single trigger: CAGR 8.83 → 8.66, max DD −56.5 → −47.3, 4.2 switches/yr. T1 alone 1-day: 8.83 → 6.20, max DD barely changes (−54.8). T3 alone: 8.83 → 7.35, max DD −57.2 (no help). T3 with 2-day on/off was the only variant to beat B&H CAGR (9.59; 2018+ 14.85 vs 12.38), but in 2010–17 it lost (9.00 vs 11.32, DD worse). I'm treating that as noise, not a finding.
+- Adding T4 (regime) on top changes little: 2-day on, 1-day off 2007–Aug 2026 gives 9.03 → 6.27, max DD −26.0.
+
+**4. "No new adds while DEFEND": buy at the DEFEND start vs wait until it clears** (common endpoint = clear day + 20):
+
+| Rule | Era | Episodes | Median wait | End ret early → late | Late entry price vs early | MAE early → late | P(MAE ≤ −5) early → late | Late better |
+|---|---|---|---|---|---|---|---|---|
+| 1-day | 2007+ | 189 | 2d | +1.39 → +0.97 | +0.40% | −3.57 → −3.05 | 27.0 → 22.8% | 34.4% |
+| 2-day on | 2007+ | 116 | 3d | +1.35 → +0.91 | +0.43% | −4.16 → −3.28 | 28.4 → 25.0% | 30.2% |
+| 2-day on | 2018+ | 47 | 2d | +1.38 → +0.84 | +0.53% | −4.64 → −3.76 | 31.9 → **34.0%** | 27.7% |
+| 2-day on | 2010-17 | 48 | 3d | +2.11 → +1.48 | +0.61% | −2.60 → −2.29 | 16.7 → 14.6% | 35.4% |
+
+Waiting for DEFEND to clear costs about 0.4–0.6% of upside and cuts average drawdown by 0.3–0.9 pp. That fits the "a bit late is fine" philosophy; this is the trade being made. The 2-day rule gives slightly more drawdown relief at the same cost (2007+), but in 2018+ the tail measure, P(MAE ≤ −5), got slightly worse. Small edge, not a big one.
+
+**Failure cases (T3 "Leaving stocks" episodes since 2007, fwd20 / MAE20):** the rule caught 2008-09-15 (−15.60 / −26.31), 2020-02-25 (−22.23 / −28.69), 2018-12-13 (−3.00 / −11.69) and 2022-08-26 (−10.12 / −10.12). It also fired before many quick rebounds: 2011-09-30 (+13.65), 2009-02-23 (+10.14 after −8.76 first), 2015-09-28 (+10.10), 2022-11-09 (+5.91), 2025-04-03 (+5.60 after MAE −7.49). 2026-10-16 just resolved at −1.16 / −3.96. Of 66 episodes, 44 had a positive fwd20.
+
+**What I'm proposing (PR):** (a) DEFEND only when a DEFEND trigger fired today AND yesterday. A first-day trigger appends a heads-up line to the headline (e.g. "DEFEND trigger today: credit5d; DEFEND if it holds tomorrow") but leaves the action as computed otherwise. (b) Headline changes from "protect what you have" to "No new adds until this clears. Not a sell signal on its own." Not proposed: any change to ADD/WAIT (live n=3 ADD), or to the trigger thresholds.
+
+**Caveats:** the overlay is a cash-switch proxy, but the card's real meaning is "no adds", so CAGR numbers overstate the stakes. GEX-based ADD/WAIT can't be tested before 2026. SPY is price-only (no dividends) and cash earns nothing in the overlay; these two simplifications roughly offset. T2 already has its own 3-day persistence, so the 2-day rule mostly affects T1/T3. 2010–17 is the counter-era on max drawdown. Live evidence is 2 dropped single-day fires (one right, one wrong).
+
+**Live check (signal_performance_log.csv through 11-13; event tracking through 11-13):**
+- STRONG_BUY resolved: 5d n=20, 80.0% hit, +1.53%, worst −2.60%. 10d n=17, 76.5%, +1.96%, worst −3.86%. **20d n=14, 92.9%, +2.60%. First 20d loss: 10-16 STRONG_BUY at 761.68 → −1.01% (11-13).** 10-30 STRONG_BUY 10d −0.13%; 11-06 STRONG_BUY (735.40, comp 2.1) 5d +2.53%. BUY_WATCH 20d n=27, 74.1%, +0.92%; 10-14/10-15 BUY_WATCH 20d −1.83%/−1.49%.
+- Event 2026-11-05 (day 6): early entries A/G 734.40 at +2.67%, max DD 0.0%. Confirmation B/C/F 753.01 at +0.13% (worst −0.42%). D/E (GEX > 0 / above zero gamma) 759.62 at −0.74%. Waiting for confirmation has cost 2.5–3.4% so far with no drawdown avoided. One event; consistent with P0/P1 and section 4 above (waiting is cheap on average but not free).
+- Contradiction worth flagging: today's quick_action is WAIT on STRONG_BUY with defensive/cyclical 10d at +4.30% and SMH/SPY 10d −6.67%, but HYG/IEF 10d is +1.27, so not red. The flow-red rule requires credit, which is what protected against a false DEFEND here. The 11-11 GEX flip positive reversed on 11-12 (P7 trap repeated live).
+
 ## 2026-11-11 — P0: "rotation shakeout" flag (SMH/SPY 10d ≤ −6% AND RSP/SPY 10d ≥ +2.5%), properly validated
 
 **VERDICT: inconclusive. Do not wire this in as a buy rule or a veto yet.** As a heads-up it does raise the odds of a near-term dip (a ≥3% drawdown within 10 days on 42.1% of fire days vs a 19.0% base). But the "shakeout, then bought" upside from the 11-05 first read only holds at the exact thresholds first picked, and it falls apart at neighboring ones. None of the three confirmation entries I tested improved the trade-off between waiting and drawdown. Credit (HYG/IEF) looks like the right thing to split on, but it rests on 4 episodes, 2 bad and 2 fine.

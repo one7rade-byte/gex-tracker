@@ -12,13 +12,9 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
     (42% vs 19% day-level), but the 20d upside only holds at the original thresholds (neighbors negative); confirmations
     C1/C2/C3 don't help. Credit split (HYG/IEF 10d <= -1) 2-for-4 episodes. flow_history.csv remains the data source
     for the items below.
-P0b. QUICK ACTION tuning (quick_action.py, live on main 2026-11-05; the dashboard card + top line of Telegram).
-    Replay over live history (147 days): HOLD 95, WAIT 39, DEFEND 10, ADD 3. DEFEND fired Oct 21-27 and Nov 2,
-    ahead of the Nov 5 drop (avg 10d fwd -1.37%), but flip-flopped with HOLD day to day. WAIT days averaged +1.48%
-    over 10d, so in this bull sample waiting cost upside. ADD n=3, too few to judge. To do: test a 2-day persistence
-    rule to stop DEFEND/HOLD whipsaw; measure cost of waiting vs drawdown avoided over deep history using
-    flow_history.csv; check whether the "Leaving stocks" flow rule (HYG/IEF 10d <= -1% AND defensive/cyclical
-    >= +3%) is what drove DEFEND and how it did since 1999. Propose changes as a PR; don't edit main directly.
+P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
+    2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
+    DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
 P1. [TESTED 2026-11-07 — rejected, see WEEKLY_RESEARCH_LOG.md] composite-ex-vol gate. Keep composite>=1.
 P2. Max adverse excursion: track_signal_performance.py reports hit rate/avg return only. Add worst drawdown after
     signal (5/10/20d). A 100% hit rate can hide a -3% dip first. Resolve Oct 30–Nov 5 STRONG_BUY/BUY_WATCH outcomes
@@ -42,6 +38,9 @@ P8. (new 2026-11-07) STRONG_BUY re-fire / "early not confirmed" problem. Live: 7
     flow_history.csv) on STRONG_BUY — P0 run 2026-11-11 suggests testing "rotation R ON AND HYG/IEF 10d <= -1" as the
     veto (Oct-2026 cluster had it; Aug-2024 rebound also had it, so measure the upside cost); (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
     17 episodes) vs 69.2%/+1.42% at RSI<50. Report fire-rate cost (fewer signals) alongside accuracy. Overlaps P3/P0.
+P9. (new 2026-11-14) Backwardation >=3d (T2) was the most cost-efficient DEFEND trigger 2007+ (CAGR 8.83->8.66,
+    max DD -56.5->-47.3, 4 switches/yr) while credit5d (T1) cost 2.6pp CAGR for ~no DD help. Test tiering DEFEND by
+    trigger (T2/T4 = de-risk; T1/T3 alone = no-adds only) and whether T1 needs a level filter (HYG below 50d MA).
 
 ## General backlog (from earlier runs)
 1. COT (CFTC) positioning as a leading indicator for NQ/ES/gold futures [needs cftc.gov allowlisted]

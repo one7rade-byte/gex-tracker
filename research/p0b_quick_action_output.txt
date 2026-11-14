@@ -1,0 +1,315 @@
+====================================================================================================
+PART A — live replay of quick_action.py
+====================================================================================================
+days 154  2026-04-08 .. 2026-11-13
+action
+HOLD      98
+WAIT      43
+DEFEND    10
+ADD        3
+DEFEND triggers: {'flowred': 9, 'credit5d': 1}
+action changes: 44 over 154 days
+
+DEFEND days:
+      date    spy     signal      why  hyg5  hyg_ief10  dc10  backw
+2026-09-29 764.74  BUY_WATCH credit5d -1.67       0.21 -5.68      0
+2026-10-16 761.68 STRONG_BUY  flowred -0.48      -1.58 12.94      0
+2026-10-19 766.05  BUY_WATCH  flowred -0.60      -1.48 10.11      0
+2026-10-20 771.36       HOLD  flowred -0.34      -1.80  9.90      0
+2026-10-21 773.25       HOLD  flowred  0.22      -1.50  8.10      0
+2026-10-22 763.86 STRONG_BUY  flowred -0.04      -1.97 11.08      0
+2026-10-23 767.54  BUY_WATCH  flowred  0.25      -2.04 10.20      0
+2026-10-26 762.64 STRONG_BUY  flowred  0.48      -1.97  6.32      0
+2026-10-27 771.10       HOLD  flowred  1.00      -1.06  4.38      0
+2026-11-02 751.96 STRONG_BUY  flowred -0.40      -1.47  7.49      0
+
+Forward stats by action (live, close-to-close on gex_log spot):
+  HOLD     5d  n=   96 hit= 49.0% fwd= +0.08 (med  -0.08) MAE= -0.73 P(dd<=-3)=  5.2% P(dd<=-5)=  0.0%
+  HOLD    10d  n=   95 hit= 49.5% fwd= +0.48 (med  -0.16) MAE= -1.21 P(dd<=-3)= 12.6% P(dd<=-5)=  0.0%
+  WAIT     5d  n=   40 hit= 70.0% fwd= +1.15 (med  +1.08) MAE= -0.47 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  WAIT    10d  n=   37 hit= 81.1% fwd= +1.43 (med  +0.98) MAE= -0.66 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  ADD      5d  n=    3 hit= 33.3% fwd= -0.12 (med  -0.06) MAE= -0.95 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  ADD     10d  n=    3 hit= 33.3% fwd= -0.42 (med  -0.50) MAE= -1.34 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  DEFEND   5d  n=   10 hit= 40.0% fwd= -0.25 (med  -0.23) MAE= -1.11 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  DEFEND  10d  n=    9 hit= 11.1% fwd= -1.82 (med  -1.84) MAE= -2.79 P(dd<=-3)= 44.4% P(dd<=-5)=  0.0%
+  base     5d  n=  149 hit= 53.7% fwd= +0.34 (med  +0.32) MAE= -0.69 P(dd<=-3)=  3.4% P(dd<=-5)=  0.0%
+  base    10d  n=  144 hit= 54.9% fwd= +0.56 (med  +0.36) MAE= -1.17 P(dd<=-3)= 11.1% P(dd<=-5)=  0.0%
+
+Persistence variants on live DEFEND (state ON after k_on consecutive raw days, OFF after k_off):
+  k_on=1 k_off=1: days= 10 switches= 6 starts=['2026-09-29', '2026-10-16', '2026-11-02']
+     10d n=    9 hit= 11.1% fwd= -1.82 (med  -1.84) MAE= -2.79 P(dd<=-3)= 44.4% P(dd<=-5)=  0.0%
+     overlay: out 6.5% | tot B&H 12.2% vs 10.8% | MDD -6.0 vs -7.4
+  k_on=2 k_off=1: days=  7 switches= 2 starts=['2026-10-19']
+     10d n=    7 hit=  0.0% fwd= -2.43 (med  -2.17) MAE= -3.39 P(dd<=-3)= 57.1% P(dd<=-5)=  0.0%
+     overlay: out 4.6% | tot B&H 12.2% vs 11.6% | MDD -6.0 vs -6.5
+  k_on=1 k_off=2: days= 13 switches= 6 starts=['2026-09-29', '2026-10-16', '2026-11-02']
+     10d n=   11 hit= 18.2% fwd= -1.49 (med  -1.34) MAE= -2.72 P(dd<=-3)= 45.5% P(dd<=-5)=  0.0%
+     overlay: out 8.5% | tot B&H 12.2% vs 9.6% | MDD -6.0 vs -8.6
+  k_on=2 k_off=2: days=  8 switches= 2 starts=['2026-10-19']
+     10d n=    8 hit=  0.0% fwd= -2.29 (med  -2.00) MAE= -3.54 P(dd<=-3)= 62.5% P(dd<=-5)=  0.0%
+     overlay: out 5.2% | tot B&H 12.2% vs 11.8% | MDD -6.0 vs -6.4
+  k_on=1 k_off=3: days= 16 switches= 6 starts=['2026-09-29', '2026-10-16', '2026-11-02']
+     10d n=   13 hit= 23.1% fwd= -1.30 (med  -1.34) MAE= -2.58 P(dd<=-3)= 46.2% P(dd<=-5)=  0.0%
+     overlay: out 10.5% | tot B&H 12.2% vs 15.1% | MDD -6.0 vs -4.7
+
+====================================================================================================
+PART B — deep history DEFEND triggers (flow_history 2007-04-11+; regime from deep log to 2026-08-21)
+====================================================================================================
+rows 4932  2007-04-11 .. 2026-11-13; regime known through 2026-08-21
+
+--- era full ---
+  base     10d n= 4922 hit= 61.8% fwd= +0.39 (med  +0.69) MAE= -1.73 P(dd<=-3)= 21.3% P(dd<=-5)=  9.0%
+  base     20d n= 4912 hit= 65.2% fwd= +0.78 (med  +1.44) MAE= -2.72 P(dd<=-3)= 32.9% P(dd<=-5)= 17.9%
+  T1       days= 412 ( 8.4%) eps= 79
+           10d n=  412 hit= 57.0% fwd= +0.67 (med  +1.02) MAE= -2.92 P(dd<=-3)= 34.0% P(dd<=-5)= 21.6%
+           20d n=  412 hit= 61.7% fwd= +1.36 (med  +1.99) MAE= -4.43 P(dd<=-3)= 48.1% P(dd<=-5)= 33.5%
+  T2       days= 321 ( 6.5%) eps= 30
+           10d n=  321 hit= 62.9% fwd= +0.49 (med  +1.74) MAE= -4.28 P(dd<=-3)= 44.5% P(dd<=-5)= 29.6%
+           20d n=  321 hit= 66.4% fwd= +1.74 (med  +2.49) MAE= -5.93 P(dd<=-3)= 51.4% P(dd<=-5)= 37.4%
+  T3       days= 363 ( 7.4%) eps= 66
+           10d n=  362 hit= 54.7% fwd= +0.43 (med  +0.58) MAE= -2.94 P(dd<=-3)= 37.8% P(dd<=-5)= 18.5%
+           20d n=  355 hit= 63.1% fwd= +0.97 (med  +2.10) MAE= -4.47 P(dd<=-3)= 52.4% P(dd<=-5)= 33.2%
+  T4       days= 317 ( 6.4%) eps= 13
+           10d n=  317 hit= 64.4% fwd= +1.33 (med  +1.84) MAE= -3.20 P(dd<=-3)= 39.1% P(dd<=-5)= 24.9%
+           20d n=  317 hit= 66.6% fwd= +2.56 (med  +4.02) MAE= -4.69 P(dd<=-3)= 50.5% P(dd<=-5)= 35.0%
+  ANY_noT4 days= 808 (16.4%) eps= 96
+           10d n=  807 hit= 58.6% fwd= +0.60 (med  +1.02) MAE= -2.88 P(dd<=-3)= 35.2% P(dd<=-5)= 18.8%
+           20d n=  800 hit= 63.0% fwd= +1.29 (med  +2.11) MAE= -4.26 P(dd<=-3)= 47.8% P(dd<=-5)= 30.8%
+  ANY      days= 969 (19.6%) eps= 91
+           10d n=  968 hit= 59.7% fwd= +0.66 (med  +1.12) MAE= -2.79 P(dd<=-3)= 34.9% P(dd<=-5)= 18.1%
+           20d n=  961 hit= 64.2% fwd= +1.46 (med  +2.33) MAE= -4.11 P(dd<=-3)= 47.0% P(dd<=-5)= 29.2%
+
+--- era 2007-09 ---
+  base     10d n=  689 hit= 53.1% fwd= -0.24 (med  +0.26) MAE= -3.08 P(dd<=-3)= 38.5% P(dd<=-5)= 20.3%
+  base     20d n=  689 hit= 54.7% fwd= -0.57 (med  +0.50) MAE= -4.88 P(dd<=-3)= 52.2% P(dd<=-5)= 34.8%
+  T1       days= 132 (19.2%) eps= 21
+           10d n=  132 hit= 50.8% fwd= -0.11 (med  +0.21) MAE= -4.37 P(dd<=-3)= 47.7% P(dd<=-5)= 35.6%
+           20d n=  132 hit= 49.2% fwd= -0.59 (med  -0.38) MAE= -7.06 P(dd<=-3)= 65.9% P(dd<=-5)= 50.8%
+  T2       days= 155 (22.5%) eps=  8
+           10d n=  155 hit= 54.8% fwd= -0.78 (med  +0.37) MAE= -5.37 P(dd<=-3)= 49.7% P(dd<=-5)= 36.8%
+           20d n=  155 hit= 61.9% fwd= -0.28 (med  +1.45) MAE= -7.72 P(dd<=-3)= 57.4% P(dd<=-5)= 43.2%
+  T3       days=  79 (11.5%) eps= 12
+           10d n=   79 hit= 46.8% fwd= -0.15 (med  -0.33) MAE= -4.71 P(dd<=-3)= 58.2% P(dd<=-5)= 34.2%
+           20d n=   79 hit= 57.0% fwd= -0.48 (med  +0.52) MAE= -6.87 P(dd<=-3)= 68.4% P(dd<=-5)= 49.4%
+  T4       days= 143 (20.8%) eps=  2
+           10d n=  143 hit= 58.0% fwd= +0.42 (med  +1.30) MAE= -4.92 P(dd<=-3)= 53.8% P(dd<=-5)= 39.9%
+           20d n=  143 hit= 55.2% fwd= +0.67 (med  +1.17) MAE= -7.37 P(dd<=-3)= 65.0% P(dd<=-5)= 53.8%
+  ANY_noT4 days= 248 (36.0%) eps= 18
+           10d n=  248 hit= 54.4% fwd= -0.25 (med  +0.33) MAE= -4.29 P(dd<=-3)= 45.6% P(dd<=-5)= 30.2%
+           20d n=  248 hit= 57.3% fwd= -0.03 (med  +0.96) MAE= -6.31 P(dd<=-3)= 56.5% P(dd<=-5)= 40.7%
+  ANY      days= 301 (43.7%) eps= 16
+           10d n=  301 hit= 56.1% fwd= -0.13 (med  +0.45) MAE= -4.12 P(dd<=-3)= 44.9% P(dd<=-5)= 28.9%
+           20d n=  301 hit= 57.5% fwd= +0.01 (med  +1.12) MAE= -6.16 P(dd<=-3)= 56.1% P(dd<=-5)= 40.2%
+
+--- era 2010-17 ---
+  base     10d n= 2013 hit= 62.7% fwd= +0.47 (med  +0.62) MAE= -1.32 P(dd<=-3)= 15.6% P(dd<=-5)=  5.5%
+  base     20d n= 2013 hit= 67.3% fwd= +0.97 (med  +1.39) MAE= -2.05 P(dd<=-3)= 26.5% P(dd<=-5)= 12.1%
+  T1       days= 161 ( 8.0%) eps= 34
+           10d n=  161 hit= 62.1% fwd= +1.29 (med  +1.64) MAE= -1.51 P(dd<=-3)= 21.7% P(dd<=-5)=  5.6%
+           20d n=  161 hit= 69.6% fwd= +2.30 (med  +2.45) MAE= -2.24 P(dd<=-3)= 34.8% P(dd<=-5)= 15.5%
+  T2       days=  64 ( 3.2%) eps= 10
+           10d n=   64 hit= 60.9% fwd= +1.45 (med  +1.87) MAE= -2.54 P(dd<=-3)= 43.8% P(dd<=-5)= 20.3%
+           20d n=   64 hit= 62.5% fwd= +2.49 (med  +2.22) MAE= -3.23 P(dd<=-3)= 51.6% P(dd<=-5)= 34.4%
+  T3       days= 110 ( 5.5%) eps= 22
+           10d n=  110 hit= 60.0% fwd= +1.19 (med  +0.64) MAE= -1.68 P(dd<=-3)= 29.1% P(dd<=-5)=  9.1%
+           20d n=  110 hit= 70.9% fwd= +2.54 (med  +2.86) MAE= -2.37 P(dd<=-3)= 38.2% P(dd<=-5)= 18.2%
+  T4       days=   1 ( 0.0%) eps=  1
+           10d n=    1 hit=100.0% fwd= +6.69 (med  +6.69) MAE= +2.06 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+           20d n=    1 hit=100.0% fwd=+10.88 (med +10.88) MAE= +2.06 P(dd<=-3)=  0.0% P(dd<=-5)=  0.0%
+  ANY_noT4 days= 256 (12.7%) eps= 38
+           10d n=  256 hit= 60.9% fwd= +1.10 (med  +1.16) MAE= -1.73 P(dd<=-3)= 27.7% P(dd<=-5)=  8.6%
+           20d n=  256 hit= 66.4% fwd= +2.02 (med  +2.50) MAE= -2.51 P(dd<=-3)= 39.5% P(dd<=-5)= 19.5%
+  ANY      days= 256 (12.7%) eps= 38
+           10d n=  256 hit= 60.9% fwd= +1.10 (med  +1.16) MAE= -1.73 P(dd<=-3)= 27.7% P(dd<=-5)=  8.6%
+           20d n=  256 hit= 66.4% fwd= +2.02 (med  +2.50) MAE= -2.51 P(dd<=-3)= 39.5% P(dd<=-5)= 19.5%
+
+--- era 2018+ ---
+  base     10d n= 2220 hit= 63.6% fwd= +0.51 (med  +0.87) MAE= -1.69 P(dd<=-3)= 21.1% P(dd<=-5)=  8.7%
+  base     20d n= 2210 hit= 66.7% fwd= +1.03 (med  +1.71) MAE= -2.66 P(dd<=-3)= 32.7% P(dd<=-5)= 17.8%
+  T1       days= 119 ( 5.3%) eps= 24
+           10d n=  119 hit= 57.1% fwd= +0.69 (med  +1.40) MAE= -3.21 P(dd<=-3)= 35.3% P(dd<=-5)= 27.7%
+           20d n=  119 hit= 64.7% fwd= +2.25 (med  +3.87) MAE= -4.47 P(dd<=-3)= 46.2% P(dd<=-5)= 38.7%
+  T2       days= 102 ( 4.6%) eps= 12
+           10d n=  102 hit= 76.5% fwd= +1.83 (med  +3.33) MAE= -3.72 P(dd<=-3)= 37.3% P(dd<=-5)= 24.5%
+           20d n=  102 hit= 75.5% fwd= +4.35 (med  +6.21) MAE= -4.89 P(dd<=-3)= 42.2% P(dd<=-5)= 30.4%
+  T3       days= 174 ( 7.8%) eps= 32
+           10d n=  173 hit= 54.9% fwd= +0.22 (med  +0.80) MAE= -2.94 P(dd<=-3)= 34.1% P(dd<=-5)= 17.3%
+           20d n=  166 hit= 60.8% fwd= +0.61 (med  +2.12) MAE= -4.72 P(dd<=-3)= 54.2% P(dd<=-5)= 35.5%
+  T4       days= 173 ( 7.8%) eps= 10
+           10d n=  173 hit= 69.4% fwd= +2.05 (med  +2.31) MAE= -1.81 P(dd<=-3)= 27.2% P(dd<=-5)= 12.7%
+           20d n=  173 hit= 75.7% fwd= +4.08 (med  +4.74) MAE= -2.50 P(dd<=-3)= 38.7% P(dd<=-5)= 19.7%
+  ANY_noT4 days= 304 (13.6%) eps= 40
+           10d n=  303 hit= 60.1% fwd= +0.87 (med  +1.55) MAE= -2.69 P(dd<=-3)= 33.0% P(dd<=-5)= 18.2%
+           20d n=  296 hit= 64.9% fwd= +1.77 (med  +2.74) MAE= -4.05 P(dd<=-3)= 47.6% P(dd<=-5)= 32.1%
+  ANY      days= 412 (18.5%) eps= 37
+           10d n=  411 hit= 61.6% fwd= +0.96 (med  +1.60) MAE= -2.49 P(dd<=-3)= 32.1% P(dd<=-5)= 16.1%
+           20d n=  404 hit= 67.8% fwd= +2.19 (med  +2.97) MAE= -3.60 P(dd<=-3)= 45.0% P(dd<=-5)= 27.2%
+
+T3 'Leaving stocks' (flow red) episodes, gap>10d: first day, SPY, fwd10/fwd20, MAE20
+  2007-08-06    146.21   -1.07  +1.96   -3.54
+  2007-11-08    147.16   -2.06  +2.55   -4.22
+  2008-01-04    141.31   -6.55  -2.47   -7.49
+  2008-03-10    128.00   +5.35  +6.89   +0.23
+  2008-06-23    131.45   -3.20  -3.02   -7.96
+  2008-09-15    120.09   -7.25 -15.60  -26.31
+  2008-11-13     91.17   -1.18  -2.39  -17.24
+  2009-01-20     80.57   +3.93  -1.91   -1.91
+  2009-02-23     74.65   -8.76 +10.14   -8.76
+  2009-05-14     89.44   +3.45  +6.31   -0.82
+  2009-06-22     89.28   -1.37  +7.05   -1.48
+  2009-10-28    104.41   +5.50  +6.68   -0.81
+  2010-01-22    109.21   -2.33  +1.79   -3.04
+  2010-05-06    112.94   -4.78  -5.42   -5.42
+  2010-06-29    104.21   +5.22  +6.35   -1.93
+  2010-08-16    108.26   -2.72  +4.06   -2.80
+  2011-05-16    133.19   +1.28  -2.91   -4.20
+  2011-06-13    127.70   +0.19  +2.90   -0.70
+  2011-08-05    120.08   -6.20  -1.86   -6.51
+  2011-09-30    113.15   +8.33 +13.65   -2.85
+  2011-11-25    116.34   +8.35  +8.64   +2.90
+  2011-12-19    120.29   +6.16  +9.29   +3.03
+  2012-05-10    136.02   -2.57  -2.15   -5.82
+  2013-04-01    156.05   -0.60  +2.08   -1.22
+  2014-04-11    181.51   +2.96  +4.56   +0.79
+  2014-10-08    196.64   -2.01  +2.90   -5.27
+  2015-01-14    200.86   +0.56  +4.01   -0.92
+  2015-07-08    204.53   +3.34  +2.71   +0.18
+  2015-08-24    189.50   +4.18  +2.33   -1.18
+  2015-09-28    188.01   +7.19 +10.10   +0.06
+  2015-12-15    205.03   +0.44  -6.39   -7.90
+  2016-05-04    205.01   -0.05  +2.88   -0.40
+  2016-06-10    210.07   -3.25  +1.59   -4.98
+  2017-08-21    242.90   +1.30  +2.91   +0.45
+  2018-04-02    257.47   +3.83  +2.73   +0.87
+  2018-06-27    269.35   +3.72  +5.19   +0.57
+  2018-10-11    272.17   -0.77  +3.06   -3.05
+  2018-11-16    273.73   +2.03  -6.81   -6.81
+  2018-12-13    265.37   -6.64  -3.00  -11.69
+  2019-05-10    288.10   -1.85  +0.30   -4.70
+  2019-08-05    283.82   +3.00  +2.44   +0.03
+  2019-09-27    295.40   +0.30  +2.10   -2.48
+  2020-01-27    323.50   +3.46  -3.35   -3.35
+  2020-02-25    312.65   -7.75 -22.23  -28.69
+  2020-09-10    333.89   -3.11  +2.96   -3.37
+  2020-10-26    339.39   +4.47  +5.32   -3.79
+  2021-07-19    424.97   +2.97  +5.18   +1.43
+  2021-12-03    453.42   +1.42  +5.36   +0.34
+  2022-01-27    431.24   +4.19  +1.51   -2.15
+  2022-02-22    429.57   -3.10  +4.66   -3.10
+  2022-04-29    412.00   -2.50  +0.79   -5.47
+  2022-06-13    375.00   +1.51  +1.02   -2.44
+  2022-08-26    405.31   +1.40 -10.12  -10.12
+  2022-09-23    367.95   -1.40  +1.72   -3.10
+  2022-11-09    374.13   +7.56  +5.91   +5.09
+  2022-11-28    395.91   +0.77  -3.66   -4.01
+  2022-12-14    399.40   -4.00  -0.23   -5.69
+  2024-08-01    543.01   +1.85  +2.82   -4.72
+  2024-09-10    548.79   +4.10  +4.44   +1.03
+  2024-11-27    598.83   +0.92  -0.64   -2.13
+  2025-02-06    606.32   -1.05  -5.01   -5.54
+  2025-02-25    594.24   -6.45  -3.16   -7.21
+  2025-04-03    536.70   -1.92  +5.60   -7.49
+  2025-10-10    653.02   +3.71  +2.75   +1.17
+  2026-02-05    677.62   +1.74  -0.77   -0.77
+  2026-10-16    763.25   -0.99  -1.16   -3.96
+
+Cash-while-DEFEND overlay vs buy & hold (no costs, no cash yield). Period A: 2007-04-11..2026-11-13 using T1|T2|T3;
+Period B: same + T4 regime, 2007-04-11..2026-08-21 (regime known).
+  T1|T2|T3 k_on=1 k_off=1 all        out= 16.4% sw/yr= 19.5 CAGR +8.83->+5.05  MDD  -56.5-> -42.7  up-missed  664.7 dn-avoided  575.2 net  +89.5
+  T1|T2|T3 k_on=1 k_off=1 2018+      out= 13.6% sw/yr= 19.4 CAGR +12.38->+7.47  MDD  -34.1-> -22.5  up-missed  262.7 dn-avoided  215.3 net  +47.4
+  T1|T2|T3 k_on=1 k_off=1 2010-17    out= 12.7% sw/yr= 18.3 CAGR +11.32->+7.61  MDD  -19.4-> -14.7  up-missed  160.8 dn-avoided  130.7 net  +30.1
+  T1|T2|T3 k_on=2 k_off=1 all        out= 12.5% sw/yr= 12.0 CAGR +8.83->+6.50  MDD  -56.5-> -34.8  up-missed  551.0 dn-avoided  490.3 net  +60.7
+  T1|T2|T3 k_on=2 k_off=1 2018+      out=  9.8% sw/yr= 10.9 CAGR +12.38->+9.42  MDD  -34.1-> -20.9  up-missed  205.2 dn-avoided  174.7 net  +30.4
+  T1|T2|T3 k_on=2 k_off=1 2010-17    out=  9.1% sw/yr= 12.0 CAGR +11.32->+7.44  MDD  -19.4-> -18.1  up-missed  128.2 dn-avoided   97.3 net  +30.9
+  T1|T2|T3 k_on=1 k_off=2 all        out= 20.3% sw/yr= 16.4 CAGR +8.83->+4.28  MDD  -56.5-> -37.0  up-missed  769.4 dn-avoided  663.6 net +105.8
+  T1|T2|T3 k_on=1 k_off=2 2018+      out= 17.5% sw/yr= 14.9 CAGR +12.38->+6.67  MDD  -34.1-> -25.0  up-missed  309.5 dn-avoided  254.7 net  +54.8
+  T1|T2|T3 k_on=1 k_off=2 2010-17    out= 16.4% sw/yr= 16.5 CAGR +11.32->+5.37  MDD  -19.4-> -21.4  up-missed  200.1 dn-avoided  152.7 net  +47.3
+  T1|T2|T3 k_on=2 k_off=2 all        out= 15.4% sw/yr= 11.2 CAGR +8.83->+5.45  MDD  -56.5-> -29.7  up-missed  635.8 dn-avoided  554.1 net  +81.7
+  T1|T2|T3 k_on=2 k_off=2 2018+      out= 12.8% sw/yr=  9.7 CAGR +12.38->+8.19  MDD  -34.1-> -25.5  up-missed  245.0 dn-avoided  204.0 net  +41.0
+  T1|T2|T3 k_on=2 k_off=2 2010-17    out= 11.8% sw/yr= 11.8 CAGR +11.32->+5.67  MDD  -19.4-> -20.7  up-missed  158.6 dn-avoided  114.1 net  +44.5
+  T1|T2|T3 k_on=1 k_off=3 all        out= 23.5% sw/yr= 15.3 CAGR +8.83->+3.95  MDD  -56.5-> -34.8  up-missed  840.9 dn-avoided  727.9 net +113.0
+  T1|T2|T3 k_on=1 k_off=3 2018+      out= 20.5% sw/yr= 13.8 CAGR +12.38->+7.44  MDD  -34.1-> -23.2  up-missed  338.2 dn-avoided  289.2 net  +49.0
+  T1|T2|T3 k_on=1 k_off=3 2010-17    out= 19.6% sw/yr= 15.5 CAGR +11.32->+4.14  MDD  -19.4-> -22.9  up-missed  226.4 dn-avoided  169.4 net  +57.0
+  T1|T2|T3|T4 k_on=1 k_off=1 all     out= 19.7% sw/yr= 19.4 CAGR +9.03->+4.81  MDD  -56.5-> -36.6  up-missed  767.4 dn-avoided  668.8 net  +98.7
+  T1|T2|T3|T4 k_on=1 k_off=1 2018+   out= 18.5% sw/yr= 19.3 CAGR +12.93->+6.55  MDD  -34.1-> -24.9  up-missed  321.5 dn-avoided  262.8 net  +58.8
+  T1|T2|T3|T4 k_on=1 k_off=1 2010-17 out= 12.7% sw/yr= 18.3 CAGR +11.32->+7.61  MDD  -19.4-> -14.7  up-missed  160.8 dn-avoided  130.7 net  +30.1
+  T1|T2|T3|T4 k_on=2 k_off=1 all     out= 15.8% sw/yr= 12.3 CAGR +9.03->+6.27  MDD  -56.5-> -26.0  up-missed  654.5 dn-avoided  584.3 net  +70.2
+  T1|T2|T3|T4 k_on=2 k_off=1 2018+   out= 14.7% sw/yr= 12.1 CAGR +12.93->+7.95  MDD  -34.1-> -23.3  up-missed  270.0 dn-avoided  223.4 net  +46.6
+  T1|T2|T3|T4 k_on=2 k_off=1 2010-17 out=  9.1% sw/yr= 12.0 CAGR +11.32->+7.44  MDD  -19.4-> -18.1  up-missed  128.2 dn-avoided   97.3 net  +30.9
+  T1|T2|T3|T4 k_on=1 k_off=2 all     out= 23.5% sw/yr= 15.7 CAGR +9.03->+4.01  MDD  -56.5-> -34.2  up-missed  867.3 dn-avoided  752.2 net +115.1
+  T1|T2|T3|T4 k_on=1 k_off=2 2018+   out= 22.4% sw/yr= 13.9 CAGR +12.93->+6.50  MDD  -34.1-> -23.4  up-missed  362.8 dn-avoided  302.8 net  +60.0
+  T1|T2|T3|T4 k_on=1 k_off=2 2010-17 out= 16.4% sw/yr= 16.5 CAGR +11.32->+5.37  MDD  -19.4-> -21.4  up-missed  200.1 dn-avoided  152.7 net  +47.3
+  T1|T2|T3|T4 k_on=2 k_off=2 all     out= 18.9% sw/yr= 11.1 CAGR +9.03->+5.08  MDD  -56.5-> -27.2  up-missed  738.9 dn-avoided  645.8 net  +93.1
+  T1|T2|T3|T4 k_on=2 k_off=2 2018+   out= 18.0% sw/yr= 10.2 CAGR +12.93->+7.33  MDD  -34.1-> -25.5  up-missed  308.0 dn-avoided  255.7 net  +52.2
+  T1|T2|T3|T4 k_on=2 k_off=2 2010-17 out= 11.8% sw/yr= 11.8 CAGR +11.32->+5.67  MDD  -19.4-> -20.7  up-missed  158.6 dn-avoided  114.1 net  +44.5
+  T1|T2|T3|T4 k_on=1 k_off=3 all     out= 26.7% sw/yr= 14.5 CAGR +9.03->+3.71  MDD  -56.5-> -30.8  up-missed  927.9 dn-avoided  806.5 net +121.4
+  T1|T2|T3|T4 k_on=1 k_off=3 2018+   out= 25.1% sw/yr= 12.8 CAGR +12.93->+7.11  MDD  -34.1-> -19.2  up-missed  384.8 dn-avoided  329.4 net  +55.4
+  T1|T2|T3|T4 k_on=1 k_off=3 2010-17 out= 19.6% sw/yr= 15.5 CAGR +11.32->+4.14  MDD  -19.4-> -22.9  up-missed  226.4 dn-avoided  169.4 net  +57.0
+  T1 only k_on=1 k_off=1 all         out=  8.4% sw/yr= 15.0 CAGR +8.83->+6.20  MDD  -56.5-> -54.8  up-missed  369.3 dn-avoided  308.7 net  +60.6
+  T1 only k_on=1 k_off=1 2018+       out=  5.3% sw/yr= 10.2 CAGR +12.38->+10.66  MDD  -34.1-> -24.1  up-missed  124.0 dn-avoided  105.5 net  +18.5
+  T1 only k_on=1 k_off=1 2010-17     out=  8.0% sw/yr= 15.8 CAGR +11.32->+8.87  MDD  -19.4-> -21.7  up-missed  101.0 dn-avoided   81.3 net  +19.8
+  T1 only k_on=2 k_off=1 all         out=  5.4% sw/yr=  9.0 CAGR +8.83->+6.05  MDD  -56.5-> -50.7  up-missed  276.0 dn-avoided  215.3 net  +60.7
+  T1 only k_on=2 k_off=1 2018+       out=  3.3% sw/yr=  6.1 CAGR +12.38->+10.19  MDD  -34.1-> -22.9  up-missed   98.9 dn-avoided   77.2 net  +21.7
+  T1 only k_on=2 k_off=1 2010-17     out=  4.9% sw/yr=  9.3 CAGR +11.32->+7.22  MDD  -19.4-> -21.7  up-missed   73.7 dn-avoided   42.4 net  +31.4
+  T1 only k_on=1 k_off=2 all         out= 11.3% sw/yr= 12.8 CAGR +8.83->+6.54  MDD  -56.5-> -45.1  up-missed  468.7 dn-avoided  411.4 net  +57.3
+  T1 only k_on=1 k_off=2 2018+       out=  7.4% sw/yr=  8.6 CAGR +12.38->+10.66  MDD  -34.1-> -21.9  up-missed  155.6 dn-avoided  136.3 net  +19.3
+  T1 only k_on=1 k_off=2 2010-17     out= 11.1% sw/yr= 14.0 CAGR +11.32->+7.12  MDD  -19.4-> -19.6  up-missed  142.2 dn-avoided  108.9 net  +33.3
+  T1 only k_on=2 k_off=2 all         out=  7.4% sw/yr=  8.6 CAGR +8.83->+6.30  MDD  -56.5-> -37.5  up-missed  347.5 dn-avoided  289.3 net  +58.2
+  T1 only k_on=2 k_off=2 2018+       out=  4.9% sw/yr=  5.7 CAGR +12.38->+10.42  MDD  -34.1-> -22.0  up-missed  125.2 dn-avoided  104.5 net  +20.6
+  T1 only k_on=2 k_off=2 2010-17     out=  6.8% sw/yr=  9.3 CAGR +11.32->+4.65  MDD  -19.4-> -24.7  up-missed  103.6 dn-avoided   52.6 net  +51.1
+  T1 only k_on=1 k_off=3 all         out= 13.9% sw/yr= 11.9 CAGR +8.83->+5.12  MDD  -56.5-> -41.4  up-missed  555.0 dn-avoided  469.7 net  +85.2
+  T1 only k_on=1 k_off=3 2018+       out=  9.1% sw/yr=  8.1 CAGR +12.38->+10.23  MDD  -34.1-> -22.5  up-missed  180.4 dn-avoided  157.2 net  +23.2
+  T1 only k_on=1 k_off=3 2010-17     out= 13.9% sw/yr= 12.8 CAGR +11.32->+4.80  MDD  -19.4-> -24.8  up-missed  175.6 dn-avoided  124.4 net  +51.2
+  T2 only k_on=1 k_off=1 all         out=  6.5% sw/yr=  4.2 CAGR +8.83->+8.66  MDD  -56.5-> -47.3  up-missed  366.7 dn-avoided  348.1 net  +18.6
+  T2 only k_on=1 k_off=1 2018+       out=  4.6% sw/yr=  3.6 CAGR +12.38->+11.69  MDD  -34.1-> -25.4  up-missed  129.0 dn-avoided  117.9 net  +11.1
+  T2 only k_on=1 k_off=1 2010-17     out=  3.2% sw/yr=  3.3 CAGR +11.32->+10.75  MDD  -19.4-> -17.1  up-missed   55.8 dn-avoided   50.2 net   +5.6
+  T2 only k_on=2 k_off=1 all         out=  5.7% sw/yr=  3.1 CAGR +8.83->+8.57  MDD  -56.5-> -43.7  up-missed  341.5 dn-avoided  321.9 net  +19.6
+  T2 only k_on=2 k_off=1 2018+       out=  3.9% sw/yr=  2.5 CAGR +12.38->+10.14  MDD  -34.1-> -25.4  up-missed  124.5 dn-avoided  101.3 net  +23.3
+  T2 only k_on=2 k_off=1 2010-17     out=  2.5% sw/yr=  2.3 CAGR +11.32->+11.34  MDD  -19.4-> -17.9  up-missed   47.6 dn-avoided   46.3 net   +1.3
+  T2 only k_on=1 k_off=2 all         out=  7.3% sw/yr=  4.2 CAGR +8.83->+7.93  MDD  -56.5-> -46.6  up-missed  397.6 dn-avoided  365.3 net  +32.3
+  T2 only k_on=1 k_off=2 2018+       out=  5.3% sw/yr=  3.6 CAGR +12.38->+10.99  MDD  -34.1-> -25.4  up-missed  140.0 dn-avoided  123.2 net  +16.8
+  T2 only k_on=1 k_off=2 2010-17     out=  3.8% sw/yr=  3.3 CAGR +11.32->+9.78  MDD  -19.4-> -16.0  up-missed   66.5 dn-avoided   53.7 net  +12.8
+  T2 only k_on=2 k_off=2 all         out=  6.3% sw/yr=  3.1 CAGR +8.83->+7.87  MDD  -56.5-> -44.3  up-missed  364.6 dn-avoided  331.8 net  +32.8
+  T2 only k_on=2 k_off=2 2018+       out=  4.4% sw/yr=  2.5 CAGR +12.38->+9.65  MDD  -34.1-> -25.4  up-missed  131.3 dn-avoided  104.1 net  +27.2
+  T2 only k_on=2 k_off=2 2010-17     out=  3.0% sw/yr=  2.3 CAGR +11.32->+10.64  MDD  -19.4-> -18.0  up-missed   54.6 dn-avoided   48.3 net   +6.4
+  T2 only k_on=1 k_off=3 all         out=  8.2% sw/yr=  4.2 CAGR +8.83->+8.20  MDD  -56.5-> -42.3  up-missed  416.9 dn-avoided  389.0 net  +27.9
+  T2 only k_on=1 k_off=3 2018+       out=  6.0% sw/yr=  3.6 CAGR +12.38->+10.74  MDD  -34.1-> -25.4  up-missed  147.2 dn-avoided  128.3 net  +18.9
+  T2 only k_on=1 k_off=3 2010-17     out=  4.5% sw/yr=  3.3 CAGR +11.32->+9.70  MDD  -19.4-> -17.2  up-missed   72.9 dn-avoided   59.4 net  +13.5
+  T3 only k_on=1 k_off=1 all         out=  7.4% sw/yr= 12.8 CAGR +8.83->+7.35  MDD  -56.5-> -57.2  up-missed  312.6 dn-avoided  274.4 net  +38.1
+  T3 only k_on=1 k_off=1 2018+       out=  7.8% sw/yr= 14.9 CAGR +12.38->+11.74  MDD  -34.1-> -28.9  up-missed  135.8 dn-avoided  126.0 net   +9.8
+  T3 only k_on=1 k_off=1 2010-17     out=  5.5% sw/yr=  9.3 CAGR +11.32->+9.38  MDD  -19.4-> -15.4  up-missed   75.8 dn-avoided   60.1 net  +15.7
+  T3 only k_on=2 k_off=1 all         out=  4.8% sw/yr=  6.7 CAGR +8.83->+8.41  MDD  -56.5-> -51.8  up-missed  203.5 dn-avoided  188.3 net  +15.2
+  T3 only k_on=2 k_off=1 2018+       out=  4.8% sw/yr=  7.2 CAGR +12.38->+12.60  MDD  -34.1-> -26.5  up-missed   86.0 dn-avoided   84.3 net   +1.6
+  T3 only k_on=2 k_off=1 2010-17     out=  3.6% sw/yr=  5.3 CAGR +11.32->+9.54  MDD  -19.4-> -20.5  up-missed   50.2 dn-avoided   36.3 net  +13.8
+  T3 only k_on=1 k_off=2 all         out=  9.9% sw/yr=  9.6 CAGR +8.83->+7.88  MDD  -56.5-> -50.4  up-missed  389.7 dn-avoided  359.3 net  +30.4
+  T3 only k_on=1 k_off=2 2018+       out= 10.8% sw/yr= 10.4 CAGR +12.38->+12.71  MDD  -34.1-> -35.7  up-missed  172.9 dn-avoided  169.9 net   +3.1
+  T3 only k_on=1 k_off=2 2010-17     out=  7.3% sw/yr=  8.0 CAGR +11.32->+7.00  MDD  -19.4-> -21.1  up-missed  105.3 dn-avoided   71.6 net  +33.6
+  T3 only k_on=2 k_off=2 all         out=  6.7% sw/yr=  5.8 CAGR +8.83->+9.59  MDD  -56.5-> -49.5  up-missed  267.1 dn-avoided  270.1 net   -3.0
+  T3 only k_on=2 k_off=2 2018+       out=  7.1% sw/yr=  6.1 CAGR +12.38->+14.85  MDD  -34.1-> -33.2  up-missed  114.4 dn-avoided  129.1 net  -14.6
+  T3 only k_on=2 k_off=2 2010-17     out=  4.9% sw/yr=  5.0 CAGR +11.32->+9.00  MDD  -19.4-> -23.2  up-missed   66.5 dn-avoided   48.4 net  +18.1
+  T3 only k_on=1 k_off=3 all         out= 11.8% sw/yr=  9.1 CAGR +8.83->+7.40  MDD  -56.5-> -45.0  up-missed  456.0 dn-avoided  414.9 net  +41.1
+  T3 only k_on=1 k_off=3 2018+       out= 12.8% sw/yr=  9.5 CAGR +12.38->+12.28  MDD  -34.1-> -34.1  up-missed  206.9 dn-avoided  199.4 net   +7.5
+  T3 only k_on=1 k_off=3 2010-17     out=  8.9% sw/yr=  7.8 CAGR +11.32->+5.02  MDD  -19.4-> -24.9  up-missed  126.2 dn-avoided   77.5 net  +48.8
+run lengths T1: runs=147 1-day=59 (40%) median=2
+run lengths T2: runs=41 1-day=11 (27%) median=3
+run lengths T3: runs=125 1-day=59 (47%) median=2
+run lengths ANY_noT4: runs=191 1-day=74 (39%) median=2
+
+====================================================================================================
+PART C — 'no new adds while DEFEND': buy at DEFEND start vs wait until DEFEND clears
+====================================================================================================
+Episodes = starts of the persisted DEFEND state (T1|T2|T3). Early = close on the start day.
+Late = close on the day the state turns OFF. Common endpoint = OFF day + 20. MAE = worst close from entry to endpoint.
+  k_on=1 k_off=1 all     eps=189 wait-days med 2 | end ret early +1.39 (med +2.46) vs late +0.97 (med +1.85) | late entry vs early price +0.40 (med +0.59) | MAE early -3.57 vs late -3.05 | P(MAE<=-5) 27.0% vs 22.8% | late better 34.4%
+  k_on=1 k_off=1 2018+   eps= 84 wait-days med 2 | end ret early +1.67 (med +2.58) vs late +1.17 (med +2.19) | late entry vs early price +0.48 (med +0.66) | MAE early -3.61 vs late -3.20 | P(MAE<=-5) 27.4% vs 25.0% | late better 41.7%
+  k_on=1 k_off=1 2010-17 eps= 73 wait-days med 2 | end ret early +1.84 (med +2.60) vs late +1.43 (med +1.96) | late entry vs early price +0.38 (med +0.54) | MAE early -2.77 vs late -2.42 | P(MAE<=-5) 20.5% vs 17.8% | late better 31.5%
+  k_on=2 k_off=1 all     eps=116 wait-days med 3 | end ret early +1.35 (med +2.19) vs late +0.91 (med +1.91) | late entry vs early price +0.43 (med +0.77) | MAE early -4.16 vs late -3.28 | P(MAE<=-5) 28.4% vs 25.0% | late better 30.2%
+  k_on=2 k_off=1 2018+   eps= 47 wait-days med 2 | end ret early +1.38 (med +2.82) vs late +0.84 (med +2.29) | late entry vs early price +0.53 (med +1.04) | MAE early -4.64 vs late -3.76 | P(MAE<=-5) 31.9% vs 34.0% | late better 27.7%
+  k_on=2 k_off=1 2010-17 eps= 48 wait-days med 3 | end ret early +2.11 (med +2.54) vs late +1.48 (med +1.98) | late entry vs early price +0.61 (med +0.66) | MAE early -2.60 vs late -2.29 | P(MAE<=-5) 16.7% vs 14.6% | late better 35.4%
+  k_on=2 k_off=2 all     eps=109 wait-days med 4 | end ret early +1.70 (med +2.72) vs late +1.02 (med +1.77) | late entry vs early price +0.65 (med +1.07) | MAE early -4.12 vs late -3.22 | P(MAE<=-5) 26.6% vs 22.0% | late better 26.6%
+  k_on=2 k_off=2 2018+   eps= 42 wait-days med 4 | end ret early +1.95 (med +3.06) vs late +1.08 (med +2.54) | late entry vs early price +0.84 (med +1.08) | MAE early -4.66 vs late -3.80 | P(MAE<=-5) 31.0% vs 28.6% | late better 23.8%
+  k_on=2 k_off=2 2010-17 eps= 47 wait-days med 4 | end ret early +2.47 (med +2.83) vs late +1.52 (med +1.80) | late entry vs early price +0.91 (med +1.07) | MAE early -2.49 vs late -2.29 | P(MAE<=-5) 14.9% vs 12.8% | late better 27.7%
+
+Live single-day DEFENDs that k_on=2 would drop (fwd from gex_log spot):
+  2026-09-29 SPY 764.74: fwd5 +2.01 fwd10 +1.47 MAE10 -0.45
+  2026-11-02 SPY 751.96: fwd5 +0.14 fwd10 n/a MAE10 -2.34
