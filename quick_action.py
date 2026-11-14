@@ -11,7 +11,12 @@ confirmation" until enough of the 5 confirmation checks are in.
 
 Actions:
   DEFEND    big money leaving: credit breaking, backwardation 3+ days,
-            regime DEFENSIVE/CRISIS, or flows show broad de-risking
+            regime DEFENSIVE/CRISIS, or flows show broad de-risking, on
+            2 consecutive days (a first-day trigger is a heads-up only).
+            Means "no new adds", not "sell": research 2026-11-14
+            (claude/research, research/p0b_quick_action.py) found 39% of raw
+            trigger runs last one day, and going to cash on every DEFEND
+            day 2007-2026 cost ~3.8pp CAGR vs holding.
   ADD       buy setup + 3 or more of the 5 confirmations, at least one of
             them from dealers/price (GEX positive 2 days or SPY above zero gamma)
   WAIT      buy setup, but fewer than 3 confirmations (don't be first)
@@ -62,6 +67,35 @@ def flow_read(date):
     return lab, cur["date"], ch
 
 
+def backwardation_days(gex):
+    n = 0
+    for r in reversed(gex):
+        if (r.get("vix_term_structure") or "").strip() != "backwardation":
+            break
+        n += 1
+    return n
+
+
+def defend_triggers(gex, reg):
+    """DEFEND trigger names firing on the last row of `gex` (SPY rows, oldest first)."""
+    if len(gex) < 6:
+        return []
+    date = gex[-1]["date"]
+    signal = (reg.get(date, {}).get("regime_signal") or "").upper()
+    hyg5 = pct(f(gex[-1]["hyg"]), f(gex[-6]["hyg"]))
+    flow = flow_read(date)[0]
+    why = []
+    if signal in ("DEFENSIVE", "CRISIS"):
+        why.append(f"regime {signal}")
+    if hyg5 is not None and hyg5 <= -1.5:
+        why.append(f"credit breaking (HYG {hyg5:+.1f}% in 5 days)")
+    if backwardation_days(gex) >= 3:
+        why.append("VIX backwardation 3+ days")
+    if flow and flow[1] == "red":
+        why.append("flows: leaving stocks")
+    return why
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -73,11 +107,7 @@ def main():
     spy, vix, gexb, zg = f(g["spot_price"]), f(g["vix"]), f(g["net_gex_b"]), f(g["zero_gamma"])
     hyg5 = pct(f(g["hyg"]), f(gex[-6]["hyg"]))
     term = (g.get("vix_term_structure") or "").strip()
-    backw = 0
-    for r in reversed(gex):
-        if (r.get("vix_term_structure") or "").strip() != "backwardation":
-            break
-        backw += 1
+    backw = backwardation_days(gex)
     gex2 = all((f(r["net_gex_b"]) or -1) > 0 for r in gex[-2:])
 
     checks = [
@@ -97,9 +127,18 @@ def main():
     # Without this, calm-before-the-storm days (e.g. 2026-10-30: contango, VIX
     # <22, credit flat) counted as "confirmed" right before the Nov 5 drop.
     whale_conf = checks[2][1] or checks[3][1]
-    if signal in ("DEFENSIVE", "CRISIS") or credit_breaking or backw >= 3 or (flow and flow[1] == "red"):
+    # 2-day persistence (research 2026-11-14, P0b): one-day triggers were
+    # whipsaw (switches 19.5/yr -> 12.0/yr 2007-2026) and, on balance, worse
+    # on both upside and drawdown in 2007+ and 2018+.
+    defend_today = defend_triggers(gex, reg)
+    defend_yday = defend_triggers(gex[:-1], reg)
+    heads_up = ""
+    if defend_today and not defend_yday:
+        heads_up = f" Heads-up: DEFEND trigger today ({'; '.join(defend_today)}); DEFEND if it holds tomorrow."
+    if defend_today and defend_yday:
         action, tone = "DEFEND", "red"
-        head = "Big money is leaving. No new adds; protect what you have."
+        head = ("Big money is leaving. No new adds until this clears. "
+                "Not a sell signal on its own.")
     elif buy and n_conf >= 3 and whale_conf:
         action, tone = "ADD", "green"
         head = f"Buy setup with {n_conf}/5 confirmations in. Scale in."
@@ -112,6 +151,7 @@ def main():
     else:
         action, tone = "HOLD", "blue"
         head = "Trend intact. Hold."
+    head += heads_up
 
     credit_txt = ("unknown" if hyg5 is None else
                   f"breaking (HYG {hyg5:+.1f}% in 5 days)" if credit_breaking else
@@ -131,6 +171,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
+        "defend_triggers_today": defend_today, "defend_triggers_yesterday": defend_yday,
         "reasons": reasons, "flow_date": flow_date,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
