@@ -1,132 +1,132 @@
 {
   "date": "2026-11-16",
-  "generated_at": "07:00 PM",
+  "generated_at": "11:00 PM",
   "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 19.3. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
-  "macro_picture": "SPY GEX is deeply negative at $-12.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.3 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "MSFT WATCH \u2014 score 5/10, RSI at 30th pct. Not yet at peak oversold but building. NVDA NEWS-DRIVEN SLIDE: down -12.6% over 5 days across several sessions (no single shock day, so the shock score doesn't apply). Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. AAPL WATCH \u2014 score 4/10, RSI at 44th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 62th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 19.3, needs +2.7 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-12.3B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 19.3 (moderately elevated, falling trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 19.3. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: MSFT WATCH \u2014 score 5/10, RSI at 30th pct. Not yet at peak oversold but building. NVDA NEWS-DRIVEN SLIDE: down -12.6% over 5 days across several sessions (no single shock day, so the shock score doesn't apply). Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. AAPL WATCH \u2014 score 4/10, RSI at 44th pct. Not yet at peak oversold but building. META WATCH \u2014 score 4/10, RSI at 62th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 19.3, needs +2.7 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "voo_vgt_action": "WATCH \u2014 Fear building (7/10, VIX 23.6). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
+  "macro_picture": "SPY GEX is deeply negative at $-15.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 23.6 (elevated, stable trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "AAPL WATCH \u2014 score 7/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT NEWS-DRIVEN SLIDE: down -5.0% over 5 days across several sessions (no single shock day, so the shock score doesn't apply). Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly.",
+  "watch_section": "VIX pushing above 22-25 (currently 23.6, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-15.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 23.6 (elevated, stable trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 147 is extreme \u2014 large institutions are paying a significant premium for deep OTM puts. This level historically precedes a sharp move within 2-4 weeks. GEX has been negative 8 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (7/10, VIX 23.6). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: AAPL WATCH \u2014 score 7/10, RSI at 34th pct. Not yet at peak oversold but building. MSFT NEWS-DRIVEN SLIDE: down -5.0% over 5 days across several sessions (no single shock day, so the shock score doesn't apply). Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. NVDA OPPORTUNITY (high confidence) \u2014 RSI at 1th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly. GOOGL OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 10 of last 10 days oversold, macro-driven selloff. Score 5/10. Below 200MA \u2014 scale in slowly.\n\nWATCH FOR: VIX pushing above 22-25 (currently 23.6, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "bear_warning",
-    "vix_trend": "falling",
-    "vix_current": 19.3,
+    "regime": "high_fear",
+    "vix_trend": "stable",
+    "vix_current": 23.59,
     "gex_trend": "improving",
-    "gex_current": -12.3,
-    "fear_trend": "easing",
-    "fear_current": 5.0,
-    "bear_current": 5.0,
-    "bull_current": 3.0,
+    "gex_current": -15.0,
+    "fear_trend": "building",
+    "fear_current": 7.0,
+    "bear_current": 8.0,
+    "bull_current": 1.0,
     "neg_gex_days": 8,
     "skew_current": 147.14,
-    "term_struct": "contango",
+    "term_struct": "backwardation",
     "above_200ma": "True",
-    "spy_rsi": 45.15
+    "spy_rsi": 38.33
   },
   "top_opportunity": {
-    "ticker": null,
-    "score": 0,
-    "reason": "",
-    "news": ""
+    "ticker": "NVDA",
+    "score": 5.0,
+    "reason": "RSI extremely oversold (bottom 1% of own history) | Options expensive (IV top 8% of history) \u2014 fear priced in, wait | Elevated put buying (P/C 73th pct) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "macro_fear"
   },
   "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 4.0,
-      "rsi_pct": 44.5,
+      "score": 7.0,
+      "rsi_pct": 33.5,
       "above_200ma": true,
-      "news": "fundamental_change",
+      "news": "macro_fear",
       "rsi_dir": "stable",
-      "days_oversold": 4,
+      "days_oversold": 3,
       "headlines": [
+        "What's dragging down the S&amp;P 500? Apple in focus",
         "Eli Lilly is trouncing Nvidia \u2014 and the weight-loss drug trade is beating AI again",
-        "Apple Is \u201cLiterally the Trade of the Year\u201d Says Josh Brown, for a Very Simple Reason",
-        "Trump Says Jensen Huang Did Not Put National Security at Risk",
-        "Is Apple Losing Its Memory?"
+        "The Tech Resale Market Is Booming. That\u2019s Good News for Apple.",
+        "Elon Musk Warns Against Pushing Founders Out \u2014 Steve Jobs and Travis Kalanick Lessons Resurface as Jensen Huang Exits Nvidia"
       ]
     },
     "MSFT": {
       "score": 5.0,
-      "rsi_pct": 29.9,
+      "rsi_pct": 25.6,
       "above_200ma": true,
-      "news": "macro_fear",
-      "rsi_dir": "recovering",
+      "news": "company_negative",
+      "rsi_dir": "stable",
       "days_oversold": 3,
       "headlines": [
-        "Bill Gates Issues Grim Warning That \u2018Many Jobs Will Disappear Forever\u2019 Due to \u2018Turbulent AI Era\u2019",
-        "How to make the most of Microsoft\u2019s tried-and-true workflows",
-        "Microsoft Reveals Hidden Bug Behind Massive Global Outage",
-        "Microsoft Pinpoints What Knocked Outlook Offline Worldwide"
+        "Chase Bank outage sparks issues for customers at several major US banks",
+        "Microsoft (MSFT) Is One of NVIDIA\u2019s Biggest Customers, and a Growing Rival",
+        "A Third Outage Strikes, This Time at Chase, Big Banks. The Stocks Are Falling.",
+        "Anthropic Launches Claude Sheets. Is Microsoft's Stock in Trouble?"
       ]
     },
     "NVDA": {
       "score": 5.0,
-      "rsi_pct": 1.2,
+      "rsi_pct": 0.6,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Sam Altman weighs in on Jensen Huang's potential Nvidia comeback",
-        "Samsung Stocks Fall 4.47% as Nvidia Turmoil and DRAM Lawsuit Hit Seoul",
-        "Jensen Huang\u2019s Return To Nvidia Under Jeopardy As Nvidia\u2019s Board Reportedly Refutes Reinstatement Plans",
-        "Stock Market Today: Dow Dives As Trump Says This On Huang; Victoria's Secret Flashes Sell Signal (Live Coverage)"
+        "Stock Market Today, Nov. 16: Nvidia Sinks as U.S. Tightens AI Chip Restrictions and Analysts Slash Price Targets",
+        "Market positioning risks ahead of Nvidia earnings",
+        "Why Nvidia Stock Fell Again",
+        "Nvidia Stock: What Would Warren Buffett Do?"
       ]
     },
     "GOOGL": {
-      "score": 2.0,
-      "rsi_pct": 28.7,
+      "score": 5.0,
+      "rsi_pct": 17.1,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
-        "Will Oracle's Debt-Funded Data Center Buildout Weigh on the Stock Now?",
-        "Netflix Lowers 2026 Ad Revenue Forecast: Time to Hold the Stock?",
-        "Buy 3 AI-Led Giants on Robust Fundamentals and Short-Term Price Upside",
-        "Altimeter Capital to invest $5 billion in Anthropic IPO - report"
+        "AI Spending Accelerates: 3 Hyperscaler Stocks for Strong 2027 Returns",
+        "Michael Burry Buys More Of Adobe And MercadoLibre, Exits ORCL, CAT Puts",
+        "Berkshire Hathaway Slashes This Top 5 Stock; Nvidia Boosts SpaceX",
+        "What's dragging down the S&amp;P 500? Apple in focus"
       ]
     },
     "META": {
-      "score": 4.0,
-      "rsi_pct": 62.2,
-      "above_200ma": true,
+      "score": 3.0,
+      "rsi_pct": 59.8,
+      "above_200ma": false,
       "news": "fundamental_change",
       "rsi_dir": "recovering",
-      "days_oversold": 7,
+      "days_oversold": 6,
       "headlines": [
+        "Meta pays Nevoya to put 25 electric trucks on I-10",
         "Meta\u2019s Prepayment Is Buying Oklo\u2019s Nuclear Fuel for Up to Five Reactors",
         "Trump Media Sinks 12% Ahead of Convertible-Note Deadline and TAE Merger Vote; Rumble Tumbles 11%, Meta Declines 2%",
-        "Mapbox Powers Hands-free Cycling Navigation on Meta Ray-Bans",
-        "Google and Meta Tell Two Different Stories as Search Rebounds"
+        "Mapbox Powers Hands-free Cycling Navigation on Meta Ray-Bans"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 70.7,
+      "rsi_pct": 56.7,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "recovering",
-      "days_oversold": 1,
+      "days_oversold": 0,
       "headlines": [
-        "Amazon\u2019s Big Week: First a New James Bond, Then Anthropic\u2019s IPO",
-        "Something Is Changing at Amazon, and Investors Should Pay Attention",
-        "Amazon puts Arnold Schwarzenegger in Santa suit to extend holiday push",
-        "Blackstone's Data Center REIT Makes First Investment With $5B AWS Deal"
+        "Stock Market Today, Nov. 16: Amazon Falls on New AI Chip Export Rule and Leo Satellite Launch Failure",
+        "TEAMSTERS RALLY TO SUPPORT AMAZON E-BIKE DELIVERY DRIVERS ILLEGALLY FIRED BY COMPANY",
+        "Amazon workers\u2019 union gets a contract, but it\u2019s in Canada",
+        "AI Changed the Agency Game. Avenue7Media\u00ae Rebrands as Ave7\u00ae and Introduces ave7LIFT\u00ae to Lead What's Next."
       ]
     },
     "TSLA": {
       "score": 4.0,
-      "rsi_pct": 40.9,
-      "above_200ma": true,
-      "news": "fundamental_change",
+      "rsi_pct": 23.2,
+      "above_200ma": false,
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 0,
+      "days_oversold": 1,
       "headlines": [
-        "Tesla to sell Cybercabs to 'select' customers: What to know",
-        "Sector Update: Consumer Stocks Mixed Monday Afternoon",
-        "Tesla goes all-in on the Cybercab with upcoming \u20ac3B Berlin Gigafactory expansion",
-        "Tesla Wants to Build 1 Million Cybercabs Near Berlin"
+        "Tesla's Cybercab sales to the public are 'early validation' of robotaxi push, JPMorgan says",
+        "Tesla's Cybertruck exit reveals an expensive gamble",
+        "Tesla Sells Cybercabs To The Public. It Might Be Because Of A Bet With A YouTuber.",
+        "Sector Update: Consumer Stocks Mixed Late Afternoon"
       ]
     }
   },
@@ -139,6 +139,17 @@
         "AAPL",
         "NVDA",
         "SPY"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "NVIDIA After Jensen: What's Next for the AI Trade?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-jensen-whats-next-ai-213900593.html?.tsrc=rss",
+      "pub_date": "2026-11-16",
+      "tickers": [
+        "NVDA"
       ],
       "high_impact": false,
       "sources": [],
@@ -224,17 +235,6 @@
     {
       "title": "ETFs Are Net Sellers of Oracle (ORCL) on Nov. 12",
       "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-oracle-orcl-110211013.html?.tsrc=rss",
-      "pub_date": "2026-11-16",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Three FDA Decisions Loom After Summit\u2019s Rejection \u2014 Capricor, Savara, Alzheimer\u2019s Data Top Biotech\u2019s Watchlist",
-      "link": "https://stocktwits.com/news-articles/markets/equity/three-fda-decisions-summit-rejection-capricor-savara-alzheimer-data-biotech-watchlist/cNb7eF1R9XR?.tsrc=rss",
       "pub_date": "2026-11-16",
       "tickers": [
         "MARKET"
