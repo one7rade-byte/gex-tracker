@@ -62,8 +62,9 @@ OUT = os.path.join(HERE, "shock_events.csv")
 SUMMARY = os.path.join(HERE, "build_summary.json")
 
 YH = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36"}
-# SEC asks automated clients to identify themselves. No personal email is sent.
-SEC = {"User-Agent": "one7rade-gex-tracker research github.com/one7rade-byte/gex-tracker",
+# SEC requires automated clients to identify with a name + contact email. This uses
+# the public GitHub no-reply address for the repo owner, not a personal inbox.
+SEC = {"User-Agent": "one7rade-gex-tracker one7rade-byte@users.noreply.github.com",
        "Accept-Encoding": "gzip, deflate"}
 
 START = datetime(2009, 1, 1, tzinfo=timezone.utc)
@@ -116,8 +117,11 @@ def sec_get(url):
                 return r.json()
             if r.status_code == 404:
                 return None
-        except Exception:
-            pass
+            if stats["sec_errors"] < 3:
+                print(f"  SEC {r.status_code} for {url[:80]}")
+        except Exception as e:
+            if stats["sec_errors"] < 3:
+                print(f"  SEC error {e} for {url[:80]}")
         time.sleep(1 + i)
     stats["sec_errors"] += 1
     return None
