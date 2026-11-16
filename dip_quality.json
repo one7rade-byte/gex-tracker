@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "generated_at": "2026-11-16T19:02:36+00:00",
+ "generated_at": "2026-11-16T23:02:13+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -16,43 +16,43 @@
    "ticker": "MSFT",
    "status": "no_shock",
    "date": "2026-11-16",
-   "day_pct": -0.7,
-   "five_day_pct": -4.6
+   "day_pct": -1.1,
+   "five_day_pct": -5.0
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
    "date": "2026-11-16",
-   "day_pct": -4.2,
-   "five_day_pct": -12.7
+   "day_pct": -4.1,
+   "five_day_pct": -12.6
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
    "date": "2026-11-16",
    "day_pct": -3.3,
-   "five_day_pct": -3.3
+   "five_day_pct": -3.4
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
    "date": "2026-11-16",
-   "day_pct": -3.4,
-   "five_day_pct": -0.9
+   "day_pct": -4.1,
+   "five_day_pct": -1.5
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
    "date": "2026-11-16",
-   "day_pct": -2.5,
-   "five_day_pct": -2.4
+   "day_pct": -2.4,
+   "five_day_pct": -2.3
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
    "date": "2026-11-16",
-   "day_pct": -3.1,
-   "five_day_pct": 0.0
+   "day_pct": -2.7,
+   "five_day_pct": 0.4
   }
  },
  "sp500_shocks": [
@@ -63,7 +63,7 @@
    "date": "2026-11-16",
    "drop_pct": -12.0,
    "excess_pct": -11.7,
-   "since_shock_pct": 2.8,
+   "since_shock_pct": 1.8,
    "score": 58,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -98,7 +98,7 @@
    "date": "2026-11-16",
    "drop_pct": -8.8,
    "excess_pct": -8.4,
-   "since_shock_pct": -4.9,
+   "since_shock_pct": -5.6,
    "score": 56,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -133,7 +133,7 @@
    "date": "2026-11-16",
    "drop_pct": -6.2,
    "excess_pct": -5.9,
-   "since_shock_pct": -0.9,
+   "since_shock_pct": -1.2,
    "score": 55,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -168,7 +168,7 @@
    "date": "2026-11-16",
    "drop_pct": -11.3,
    "excess_pct": -11.0,
-   "since_shock_pct": -6.3,
+   "since_shock_pct": -7.3,
    "score": 53,
    "band": 3,
    "verdict": "NEUTRAL",
@@ -203,7 +203,7 @@
    "date": "2026-11-16",
    "drop_pct": -7.4,
    "excess_pct": -7.0,
-   "since_shock_pct": 3.2,
+   "since_shock_pct": 0.5,
    "score": 51,
    "band": 2,
    "verdict": "LEANS WEAK",
