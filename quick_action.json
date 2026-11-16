@@ -1,18 +1,18 @@
 {
- "date": "2026-11-13",
+ "date": "2026-11-16",
  "action": "WAIT FOR CONFIRMATION",
  "tone": "amber",
- "headline": "Buy setup is building, but only 2/5 confirmations. Don't be first.",
- "confirmations": 2,
+ "headline": "Buy setup is building, but only 0/5 confirmations. Don't be first.",
+ "confirmations": 0,
  "confirmations_total": 5,
  "checks": [
   {
    "label": "Fear easing: VIX curve back in contango",
-   "ok": true
+   "ok": false
   },
   {
    "label": "VIX below 22",
-   "ok": true
+   "ok": false
   },
   {
    "label": "Dealers supportive: GEX positive 2 days",
@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.4% in 5 days)",
-   "tone": "green"
+   "text": "softening (HYG -0.9% in 5 days)",
+   "tone": "amber"
   },
   {
    "label": "Fear",
-   "text": "VIX 19.3, contango",
-   "tone": "green"
+   "text": "VIX 23.6, backwardation day 1",
+   "tone": "red"
   }
  ],
- "flow_date": "2026-11-13",
+ "flow_date": "2026-11-16",
  "flow_10d_pct": {
-  "smh_spy": -6.67,
-  "rsp_spy": 1.49,
-  "defensive_cyclical": 4.3,
-  "hyg_ief": 1.27
+  "smh_spy": -7.19,
+  "rsp_spy": 1.14,
+  "defensive_cyclical": 4.99,
+  "hyg_ief": 1.25
  }
 }
