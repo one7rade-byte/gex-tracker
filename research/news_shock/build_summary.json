@@ -1,9 +1,9 @@
 {
- "tickers": 2,
- "price_ok": 2,
+ "tickers": 503,
+ "price_ok": 500,
  "sec_ok": 0,
  "rev_ok": 0,
- "events": 13,
+ "events": 6163,
  "sec_errors": 1,
- "built_at": "2026-11-16T03:47:25+00:00"
+ "built_at": "2026-11-16T03:58:21+00:00"
 }
