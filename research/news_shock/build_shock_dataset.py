@@ -129,7 +129,15 @@ def sec_get(url):
 
 def cik_map():
     j = sec_get("https://www.sec.gov/files/company_tickers.json") or {}
-    return {v["ticker"].upper().replace(".", "-"): int(v["cik_str"]) for v in j.values()}
+    m = {v["ticker"].upper().replace(".", "-"): int(v["cik_str"]) for v in j.values()}
+    if not m:
+        # Diagnostic: is data.sec.gov (a different host) reachable? (AAPL = 320193)
+        try:
+            r = requests.get("https://data.sec.gov/submissions/CIK0000320193.json", headers=SEC, timeout=30)
+            print(f"  data.sec.gov probe: {r.status_code} {r.text[:120]!r}")
+        except Exception as e:
+            print(f"  data.sec.gov probe error: {e}")
+    return m
 
 
 def eightk_filings(cik):
