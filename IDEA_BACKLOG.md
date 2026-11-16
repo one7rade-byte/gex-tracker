@@ -15,6 +15,19 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
 P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
     2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
     DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
+P0c. (new 2026-11-15) NEWS SHOCKS / DIP QUALITY (live on main; dip_quality.py, research/news_shock/FINDINGS.md).
+    6,163 S&P 500 shock drops since 2010. Bad news alone is ~50/50 vs SPY over 60d. The score (logistic, trained
+    2010-18) is a modest edge on 2019+: top band beat SPY 54.8% vs 39.4% for the bottom band, test AUC 0.553.
+    Clearest pattern: market also weak AND stock already beaten down = 60.5% / +4.0% median; stock-specific overnight
+    gap <= -5% in a calm market near highs = 44.7% / -1.3% (post-news drift). Mag 7: the score does NOT rank them
+    (AUC ~0.53), but 56.5% beat SPY at 60d and 64.5% at 120d, so they're judged on that record. To do:
+    (a) SEC 8-K event type + XBRL revenue trend: SEC returns 403 to GitHub Actions IPs (both www.sec.gov and
+        data.sec.gov). Simon can add sec.gov + data.sec.gov to the session's allowed domains; then fetch from the
+        sandbox and merge on (ticker, date). Expected to be the biggest improvement (earnings vs no-filing news).
+    (b) Survivorship bias: current S&P members only. Find a free historical-constituents source and quantify the bias.
+    (c) Multi-day news slides (e.g. NVDA -12.7% over 5 days, Nov 2026, no single 6% day) aren't covered. Study them.
+    (d) Re-run news_shock_study.yml + fit_dip_quality.py quarterly to resolve outcomes; track live accuracy of the
+        verdicts in dip_quality.json. Propose changes as a PR.
 P1. [TESTED 2026-11-07 — rejected, see WEEKLY_RESEARCH_LOG.md] composite-ex-vol gate. Keep composite>=1.
 P2. Max adverse excursion: track_signal_performance.py reports hit rate/avg return only. Add worst drawdown after
     signal (5/10/20d). A 100% hit rate can hide a -3% dip first. Resolve Oct 30–Nov 5 STRONG_BUY/BUY_WATCH outcomes
