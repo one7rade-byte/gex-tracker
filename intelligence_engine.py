@@ -16,6 +16,7 @@ import time
 from datetime import datetime, date
 
 import requests
+import dip_quality
 
 GEX_CSV    = "gex_log.csv"
 MAG7_CSV   = "mag7_log.csv"
@@ -526,8 +527,8 @@ MACRO_KW = ["recession","inflation","rate hike","fed ","federal reserve","tariff
 
 NEG_KW = ["earnings miss","misses estimates","below expectations","guidance cut",
           "lowers guidance","disappoints","revenue miss","profit warning",
-          "layoffs","job cuts","restructuring","fraud","sec investigation",
-          "antitrust","lawsuit","regulatory","recall","product failure",
+          "layoffs","job cuts","restructuring",
+          "antitrust","lawsuit","regulatory","recall","product failure","outage",
           "ceo resigns","executive departs","probe","downgrade","price target cut"]
 
 POS_KW = ["earnings beat","beats estimates","above expectations","raises guidance",
@@ -535,20 +536,30 @@ POS_KW = ["earnings beat","beats estimates","above expectations","raises guidanc
           "buyback","dividend increase","upgrade","price target raised",
           "breakthrough","contract win","market share gain","outperform"]
 
-FUND_KW = ["merger","acquisition completed","spin-off","bankruptcy","strategic pivot",
-           "new ceo","business model change","delisting","chapter 11"]
+FUND_KW = ["merger","acquisition completed","spin-off","strategic pivot",
+           "new ceo","business model change"]
+
+# Structural news: the kind that can permanently change the story (in SEC terms:
+# bankruptcy, delisting, auditor change, restatement/non-reliance, impairment).
+# Only these still force AVOID on their own. Everything else is weighed against
+# how the stock actually reacted (dip_quality.py, research/news_shock/).
+STRUCT_KW = ["fraud","sec investigation","accounting irregularit","restatement","restate earnings",
+             "going concern","bankruptcy","chapter 11","delisting","delisted","auditor resign",
+             "auditor quits","short seller report","material weakness"]
 
 def classify_headlines(headlines):
-    counts = {"macro_fear":0,"company_negative":0,"company_positive":0,"fundamental_change":0}
+    counts = {"macro_fear":0,"company_negative":0,"company_positive":0,"fundamental_change":0,"structural":0}
     key = []
     for h in headlines:
         text = (h.get("title","")+" "+h.get("summary","")).lower()
+        if any(kw in text for kw in STRUCT_KW): counts["structural"] += 1; key.insert(0, h["title"])
         if any(kw in text for kw in FUND_KW):   counts["fundamental_change"] += 1; key.append(h["title"])
         if any(kw in text for kw in NEG_KW):    counts["company_negative"] += 1;   key.append(h["title"])
         if any(kw in text for kw in POS_KW):    counts["company_positive"] += 1;   key.append(h["title"])
         if any(kw in text for kw in MACRO_KW):  counts["macro_fear"] += 1
 
-    if counts["fundamental_change"] > 0:   dominant = "fundamental_change"
+    if counts["structural"] > 0:           dominant = "structural"
+    elif counts["fundamental_change"] > 0: dominant = "fundamental_change"
     elif counts["company_negative"] > counts["company_positive"]: dominant = "company_negative"
     elif counts["company_positive"] > counts["company_negative"]: dominant = "company_positive"
     elif counts["macro_fear"] > 0:         dominant = "macro_fear"
@@ -705,10 +716,19 @@ def generate_brief(macro, mag7_data, macro_news_class, today, fear_greed=None, r
         days_os   = trend.get("days_oversold",0)
         rsi_dir   = trend.get("rsi_direction","stable")
 
-        if news_dom in ("company_negative","fundamental_change"):
+        dq = data.get("dip_quality") or {}
+        dq_text = dip_quality.headline_read(ticker, news_dom, dq) if dq else None
+        if news_dom == "structural":
             avoid_names.append(ticker)
-            key_h = news_cls.get("key_headlines",["company-specific issues"])
-            opp_lines.append(f"{ticker} AVOID — company-specific negative news detected: '{key_h[0][:60]}...' Do not buy this dip until news clears.")
+            key_h = news_cls.get("key_headlines",["structural news"])
+            opp_lines.append(f"{ticker} AVOID — structural news (fraud / restatement / bankruptcy-type): '{key_h[0][:60]}...' This is the kind of news that can change the story; don't buy until it's resolved.")
+        elif dq_text and dq.get("status") == "shock" and dq.get("tone") == "red":
+            avoid_names.append(ticker)
+            opp_lines.append(dq_text)
+        elif dq_text:
+            opp_lines.append(dq_text)
+            if dq.get("status") == "shock" and dq.get("tone") == "green":
+                opportunities.append((ticker, max(score, 5), rsi_pct if rsi_pct is not None else 50))
         elif rsi_pct is not None and rsi_pct <= 20 and score >= 3:
             conf = "high" if rsi_pct <= 10 else "moderate"
             macro_driven = "macro-driven selloff" if news_dom in ("macro_fear","neutral") else "mixed drivers"
@@ -837,6 +857,17 @@ def main():
             mag7_data[tk]["headlines"] = [h["title"] for h in headlines[:4]]
         print(f"  {tk}: {len(headlines)} headlines, dominant={cls['dominant']}")
         time.sleep(0.5)
+
+    # Weigh the news against the actual price reaction and history
+    # (replaces the old "any negative headline = AVOID" rule).
+    try:
+        dq_model, dq_mkt = dip_quality.load_model(), dip_quality.Market()
+        for tk in mag7_data:
+            mag7_data[tk]["dip_quality"] = dip_quality.scan(tk, dq_mkt, dq_model)
+            d = mag7_data[tk]["dip_quality"]
+            print(f"  {tk} dip quality: {d.get('status')} {d.get('verdict','')} {d.get('score','')}")
+    except Exception as e:
+        print(f"  dip quality unavailable: {e}")
 
     print("\n[5] Generating intelligence brief...")
     result = generate_brief(macro, mag7_data, macro_news_cls, today, fear_greed=fear_greed, reddit=reddit, news_lead_score=news_lead_score, news_alerts=news_alerts, catalysts=catalysts)

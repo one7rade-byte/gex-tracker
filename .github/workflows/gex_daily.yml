@@ -64,6 +64,12 @@ jobs:
         continue-on-error: true
         run: python quick_action.py
 
+      # News-shock read: Mag 7 + any S&P 500 stock with a shock drop in the
+      # last 5 sessions, scored by dip_quality_model.json (dip_quality.json).
+      - name: Dip quality
+        continue-on-error: true
+        run: python dip_quality.py
+
       - name: Save CSVs to repository
         run: |
           git config user.name "GEX Bot"
@@ -71,6 +77,7 @@ jobs:
           git add gex_log.csv regime_log.csv
           [ -f flow_history.csv ] && git add flow_history.csv
           [ -f quick_action.json ] && git add quick_action.json
+          [ -f dip_quality.json ] && git add dip_quality.json
           git diff --staged --quiet || git commit -m "Daily update $(date +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
             git fetch origin main

@@ -379,6 +379,34 @@ async function buildQuickAction(lastDate){
   }catch(e){console.error('quick action:',e);}
 }
 
+// ── News Dips card (dip_quality.json): is a news-driven drop buyable? ──
+const DQ_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/dip_quality.json';
+async function buildNewsDips(){
+  const el=document.getElementById('newsDips');if(!el)return;
+  try{
+    const r=await fetch(DQ_URL+'?t='+Date.now());if(!r.ok)return;
+    const d=await r.json();
+    const chip=function(x){
+      if(x.status==='shock'){const c=QA_TONE[x.tone]||QA_TONE.gray;
+        return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border-radius:10px;font-size:11px;background:'+c[0]+';color:'+c[1]+'"><b>'+qaEsc(x.ticker)+'</b> '+qaEsc(x.drop_pct)+'% · '+(x.ticker&&d.mag7&&d.mag7[x.ticker]?'buyable history':qaEsc(x.score)+'/100')+'</span>';}
+      if(x.status==='no_shock')return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border-radius:10px;font-size:11px;background:#f0ede8;color:#666"><b>'+qaEsc(x.ticker)+'</b> no shock ('+(x.five_day_pct>0?'+':'')+qaEsc(x.five_day_pct)+'% 5d)</span>';
+      return '';};
+    const m7=Object.values(d.mag7||{}).map(chip).join('');
+    const top=(d.sp500_shocks||[]).slice(0,5).map(function(x){const c=QA_TONE[x.tone]||QA_TONE.gray;
+      return '<div style="display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;padding:5px 0;border-top:1px solid #eee">'+
+        '<span style="min-width:44px;font-weight:600;font-size:12px">'+qaEsc(x.ticker)+'</span>'+
+        '<span style="min-width:52px;font-size:12px;color:#A32D2D">'+qaEsc(x.drop_pct)+'%</span>'+
+        '<span style="font-size:11px;padding:1px 7px;border-radius:10px;background:'+c[0]+';color:'+c[1]+';white-space:nowrap">'+qaEsc(x.score)+'/100 '+qaEsc(x.verdict)+'</span>'+
+        '<span style="font-size:11px;color:#777;flex-basis:100%">'+qaEsc((x.reasons&&x.reasons[0]&&x.reasons[0].text)||'')+'</span></div>';}).join('');
+    el.innerHTML='<div class="card" style="margin-bottom:12px">'+
+      '<div class="cl">News dips · '+qaEsc(d.date)+'</div>'+
+      '<div style="font-size:11px;color:#888;margin:2px 0 6px">Is a news-driven drop buyable? Weighed against 6,000+ past drops, not just the headline.</div>'+
+      '<div style="font-size:10px;color:#888;margin-bottom:2px">MAG 7</div><div>'+m7+'</div>'+
+      (top?'<div style="font-size:10px;color:#888;margin:8px 0 2px">S&amp;P 500 SHOCK DROPS (LAST 5 SESSIONS)</div>'+top:'<div style="font-size:11px;color:#999;margin-top:8px">No S&amp;P 500 shock drops in the last 5 sessions.</div>')+
+      '<div style="margin-top:6px;font-size:9px;color:#aaa">Modest edge: top band beat SPY ~55% vs ~39% for the bottom (2019+ out of sample). Mag 7 judged on their own record. Not financial advice.</div></div>';
+  }catch(e){console.error('news dips:',e);}
+}
+
 async function fetchCSV(){
   const r=await fetch(CSV_URL+'?t='+Date.now());
   if(!r.ok)throw new Error('HTTP '+r.status);
@@ -1496,6 +1524,7 @@ function buildUI(data){
 
   document.getElementById('app').innerHTML=
     '<div id="quickAction"></div>'+
+    '<div id="newsDips"></div>'+
     '<div id="regimePanel"class="card" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
     buildScorePanel(last,data)+
@@ -1608,6 +1637,7 @@ async function init(){
     ALL_DATA=data;
     buildUI(data);
     buildQuickAction(data[data.length-1].d);
+    buildNewsDips();
     fetchRegime().then(function(regime){
       ALL_REGIME=regime;
       buildRegimePanel(regime);
