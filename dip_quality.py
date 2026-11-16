@@ -193,6 +193,18 @@ def headline_read(tk, news_dominant, dq):
         return (f"{tk} {dq['verdict']}: down {dq['drop_pct']}% on {dq['shock_date']} "
                 f"(Dip Quality {dq['score']}/100; this band beat SPY over 60 days "
                 f"{dq['hist_beat_spy_pct']}% of the time historically). {dq['reasons'][0]['text']}.")
+    if dq.get("status") == "no_shock" and news_dominant == "company_negative" and (dq.get("five_day_pct") or 0) <= -5:
+        tail = ""
+        if tk in MAG7:
+            try:
+                mg = load_model()["mag7"]
+                tail = (f" Past Mag 7 news drops beat SPY over 60 days {mg['beat_spy_60d_pct']}% of the time "
+                        f"(median {mg['median_excess_60d_pct']:+}%).")
+            except Exception:
+                pass
+        return (f"{tk} NEWS-DRIVEN SLIDE: down {dq['five_day_pct']:.1f}% over 5 days across several sessions "
+                f"(no single shock day, so the shock score doesn't apply).{tail} Not a reason to avoid on its own; "
+                f"wait for Quick Action confirmations to add.")
     if dq.get("status") == "no_shock" and news_dominant == "company_negative":
         return (f"{tk} HEADLINE NOISE: negative headlines, but the stock moved only {dq['five_day_pct']:+.1f}% "
                 f"over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own.")

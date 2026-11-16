@@ -389,7 +389,8 @@ async function buildNewsDips(){
     const chip=function(x){
       if(x.status==='shock'){const c=QA_TONE[x.tone]||QA_TONE.gray;
         return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border-radius:10px;font-size:11px;background:'+c[0]+';color:'+c[1]+'"><b>'+qaEsc(x.ticker)+'</b> '+qaEsc(x.drop_pct)+'% · '+(x.ticker&&d.mag7&&d.mag7[x.ticker]?'buyable history':qaEsc(x.score)+'/100')+'</span>';}
-      if(x.status==='no_shock')return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border-radius:10px;font-size:11px;background:#f0ede8;color:#666"><b>'+qaEsc(x.ticker)+'</b> no shock ('+(x.five_day_pct>0?'+':'')+qaEsc(x.five_day_pct)+'% 5d)</span>';
+      if(x.status==='no_shock'){const sl=x.five_day_pct<=-5;
+        return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border-radius:10px;font-size:11px;'+(sl?'background:#FAEEDA;color:#633806':'background:#f0ede8;color:#666')+'"><b>'+qaEsc(x.ticker)+'</b> '+(sl?'sliding':'no shock')+' ('+(x.five_day_pct>0?'+':'')+qaEsc(x.five_day_pct)+'% 5d)</span>';}
       return '';};
     const m7=Object.values(d.mag7||{}).map(chip).join('');
     const top=(d.sp500_shocks||[]).slice(0,5).map(function(x){const c=QA_TONE[x.tone]||QA_TONE.gray;
