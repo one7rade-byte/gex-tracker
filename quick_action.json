@@ -45,15 +45,15 @@
   },
   {
    "label": "Fear",
-   "text": "VIX 25.7, backwardation day 1",
+   "text": "VIX 25.5, backwardation day 1",
    "tone": "red"
   }
  ],
  "flow_date": "2026-11-17",
  "flow_10d_pct": {
-  "smh_spy": -9.44,
-  "rsp_spy": 1.92,
-  "defensive_cyclical": 7.84,
-  "hyg_ief": 0.39
+  "smh_spy": -8.61,
+  "rsp_spy": 1.35,
+  "defensive_cyclical": 6.8,
+  "hyg_ief": 0.37
  }
 }
