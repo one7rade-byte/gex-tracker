@@ -1,6 +1,6 @@
 {
- "date": "2026-11-16",
- "generated_at": "2026-11-16T23:02:13+00:00",
+ "date": "2026-11-17",
+ "generated_at": "2026-11-17T19:02:38+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -8,51 +8,51 @@
   "AAPL": {
    "ticker": "AAPL",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -1.0,
-   "five_day_pct": 0.6
+   "date": "2026-11-17",
+   "day_pct": -0.8,
+   "five_day_pct": 0.4
   },
   "MSFT": {
    "ticker": "MSFT",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -1.1,
-   "five_day_pct": -5.0
+   "date": "2026-11-17",
+   "day_pct": -2.6,
+   "five_day_pct": -5.4
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -4.1,
-   "five_day_pct": -12.6
+   "date": "2026-11-17",
+   "day_pct": -1.7,
+   "five_day_pct": -9.1
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -3.3,
-   "five_day_pct": -3.4
+   "date": "2026-11-17",
+   "day_pct": -0.5,
+   "five_day_pct": -5.4
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -4.1,
-   "five_day_pct": -1.5
+   "date": "2026-11-17",
+   "day_pct": -0.8,
+   "five_day_pct": -2.1
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -2.4,
-   "five_day_pct": -2.3
+   "date": "2026-11-17",
+   "day_pct": -0.9,
+   "five_day_pct": -3.2
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -2.7,
-   "five_day_pct": 0.4
+   "date": "2026-11-17",
+   "day_pct": -0.4,
+   "five_day_pct": -0.4
   }
  },
  "sp500_shocks": [
@@ -60,10 +60,10 @@
    "ticker": "GPN",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -12.0,
    "excess_pct": -11.7,
-   "since_shock_pct": 1.8,
+   "since_shock_pct": -0.8,
    "score": 58,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -95,10 +95,10 @@
    "ticker": "AMD",
    "status": "shock",
    "shock_date": "2026-11-13",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -8.8,
    "excess_pct": -8.4,
-   "since_shock_pct": -5.6,
+   "since_shock_pct": -8.2,
    "score": 56,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -115,7 +115,7 @@
     "drop_pct": -8.754,
     "excess_pct": -8.391,
     "spy_day_pct": -0.363,
-    "vol_ratio": 1.87,
+    "vol_ratio": 1.879,
     "gap_pct": -3.162,
     "close_loc": 0.275,
     "pre60_pct": 25.488,
@@ -130,10 +130,10 @@
    "ticker": "CSCO",
    "status": "shock",
    "shock_date": "2026-11-13",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -6.2,
    "excess_pct": -5.9,
-   "since_shock_pct": -1.2,
+   "since_shock_pct": -1.0,
    "score": 55,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -150,7 +150,7 @@
     "drop_pct": -6.244,
     "excess_pct": -5.881,
     "spy_day_pct": -0.363,
-    "vol_ratio": 1.559,
+    "vol_ratio": 1.563,
     "gap_pct": -1.51,
     "close_loc": 0.069,
     "pre60_pct": -7.725,
@@ -165,10 +165,10 @@
    "ticker": "SMCI",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -11.3,
    "excess_pct": -11.0,
-   "since_shock_pct": -7.3,
+   "since_shock_pct": -11.3,
    "score": 53,
    "band": 3,
    "verdict": "NEUTRAL",
@@ -200,10 +200,10 @@
    "ticker": "KDP",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -7.4,
    "excess_pct": -7.0,
-   "since_shock_pct": 0.5,
+   "since_shock_pct": -1.1,
    "score": 51,
    "band": 2,
    "verdict": "LEANS WEAK",
