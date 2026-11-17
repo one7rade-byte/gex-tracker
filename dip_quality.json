@@ -1,0 +1,236 @@
+{
+ "date": "2026-11-16",
+ "generated_at": "2026-11-16T23:02:13+00:00",
+ "model_built_at": "2026-11-16T04:01:15+00:00",
+ "model_test_auc": 0.553,
+ "lookback_sessions": 5,
+ "mag7": {
+  "AAPL": {
+   "ticker": "AAPL",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -1.0,
+   "five_day_pct": 0.6
+  },
+  "MSFT": {
+   "ticker": "MSFT",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -1.1,
+   "five_day_pct": -5.0
+  },
+  "NVDA": {
+   "ticker": "NVDA",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -4.1,
+   "five_day_pct": -12.6
+  },
+  "AMZN": {
+   "ticker": "AMZN",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -3.3,
+   "five_day_pct": -3.4
+  },
+  "GOOGL": {
+   "ticker": "GOOGL",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -4.1,
+   "five_day_pct": -1.5
+  },
+  "META": {
+   "ticker": "META",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -2.4,
+   "five_day_pct": -2.3
+  },
+  "TSLA": {
+   "ticker": "TSLA",
+   "status": "no_shock",
+   "date": "2026-11-16",
+   "day_pct": -2.7,
+   "five_day_pct": 0.4
+  }
+ },
+ "sp500_shocks": [
+  {
+   "ticker": "GPN",
+   "status": "shock",
+   "shock_date": "2026-11-12",
+   "date": "2026-11-16",
+   "drop_pct": -12.0,
+   "excess_pct": -11.7,
+   "since_shock_pct": 1.8,
+   "score": 58,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -12.012,
+    "excess_pct": -11.658,
+    "spy_day_pct": -0.354,
+    "vol_ratio": 3.561,
+    "gap_pct": -0.229,
+    "close_loc": 0.077,
+    "pre60_pct": 10.911,
+    "above_200ma": 1,
+    "off_52w_high_pct": -1.339,
+    "spy_20d_pct": -1.901,
+    "spy_above_200ma": 1,
+    "vix": 18.7
+   }
+  },
+  {
+   "ticker": "AMD",
+   "status": "shock",
+   "shock_date": "2026-11-13",
+   "date": "2026-11-16",
+   "drop_pct": -8.8,
+   "excess_pct": -8.4,
+   "since_shock_pct": -5.6,
+   "score": 56,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "\u00b7",
+     "text": "No strong pattern either way"
+    }
+   ],
+   "features": {
+    "drop_pct": -8.754,
+    "excess_pct": -8.391,
+    "spy_day_pct": -0.363,
+    "vol_ratio": 1.87,
+    "gap_pct": -3.162,
+    "close_loc": 0.275,
+    "pre60_pct": 25.488,
+    "above_200ma": 1,
+    "off_52w_high_pct": -9.873,
+    "spy_20d_pct": -1.163,
+    "spy_above_200ma": 1,
+    "vix": 19.3
+   }
+  },
+  {
+   "ticker": "CSCO",
+   "status": "shock",
+   "shock_date": "2026-11-13",
+   "date": "2026-11-16",
+   "drop_pct": -6.2,
+   "excess_pct": -5.9,
+   "since_shock_pct": -1.2,
+   "score": 55,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -6.244,
+    "excess_pct": -5.881,
+    "spy_day_pct": -0.363,
+    "vol_ratio": 1.559,
+    "gap_pct": -1.51,
+    "close_loc": 0.069,
+    "pre60_pct": -7.725,
+    "above_200ma": 0,
+    "off_52w_high_pct": -21.531,
+    "spy_20d_pct": -1.163,
+    "spy_above_200ma": 1,
+    "vix": 19.3
+   }
+  },
+  {
+   "ticker": "SMCI",
+   "status": "shock",
+   "shock_date": "2026-11-12",
+   "date": "2026-11-16",
+   "drop_pct": -11.3,
+   "excess_pct": -11.0,
+   "since_shock_pct": -7.3,
+   "score": 53,
+   "band": 3,
+   "verdict": "NEUTRAL",
+   "tone": "gray",
+   "hist_beat_spy_pct": 46.1,
+   "hist_median_excess_pct": -1.81,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-19% over 60 days, -39% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -11.305,
+    "excess_pct": -10.951,
+    "spy_day_pct": -0.354,
+    "vol_ratio": 2.937,
+    "gap_pct": -10.352,
+    "close_loc": 0.391,
+    "pre60_pct": -18.658,
+    "above_200ma": 0,
+    "off_52w_high_pct": -39.346,
+    "spy_20d_pct": -1.901,
+    "spy_above_200ma": 1,
+    "vix": 18.7
+   }
+  },
+  {
+   "ticker": "KDP",
+   "status": "shock",
+   "shock_date": "2026-11-12",
+   "date": "2026-11-16",
+   "drop_pct": -7.4,
+   "excess_pct": -7.0,
+   "since_shock_pct": 0.5,
+   "score": 51,
+   "band": 2,
+   "verdict": "LEANS WEAK",
+   "tone": "amber",
+   "hist_beat_spy_pct": 47.1,
+   "hist_median_excess_pct": -0.7,
+   "reasons": [
+    {
+     "sign": "\u00b7",
+     "text": "No strong pattern either way"
+    }
+   ],
+   "features": {
+    "drop_pct": -7.399,
+    "excess_pct": -7.045,
+    "spy_day_pct": -0.354,
+    "vol_ratio": 2.677,
+    "gap_pct": -4.601,
+    "close_loc": 0.075,
+    "pre60_pct": 24.229,
+    "above_200ma": 1,
+    "off_52w_high_pct": 0.0,
+    "spy_20d_pct": -1.901,
+    "spy_above_200ma": 1,
+    "vix": 18.7
+   }
+  }
+ ],
+ "note": "Dip Quality ranks news-driven drops by how similar past drops behaved. It is a modest edge (top band beat SPY ~55% vs ~39% for the bottom band, 2019+ out of sample), not a guarantee."
+}
