@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "generated_at": "2026-11-18T19:03:06+00:00",
+ "generated_at": "2026-11-18T23:02:45+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -9,53 +9,92 @@
    "ticker": "AAPL",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": 0.5,
-   "five_day_pct": -0.6
+   "day_pct": 0.2,
+   "five_day_pct": -0.9
   },
   "MSFT": {
    "ticker": "MSFT",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": 0.7,
-   "five_day_pct": -2.2
+   "day_pct": 0.4,
+   "five_day_pct": -2.5
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": -2.1,
-   "five_day_pct": -12.4
+   "day_pct": -2.9,
+   "five_day_pct": -13.1
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": 3.6,
-   "five_day_pct": 0.3
+   "day_pct": 3.8,
+   "five_day_pct": 0.6
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": 1.2,
-   "five_day_pct": -3.4
+   "day_pct": 0.8,
+   "five_day_pct": -3.8
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": -0.3,
-   "five_day_pct": -1.9
+   "day_pct": -0.4,
+   "five_day_pct": -2.0
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
    "date": "2026-11-18",
-   "day_pct": 1.4,
-   "five_day_pct": -1.4
+   "day_pct": 0.9,
+   "five_day_pct": -1.8
   }
  },
  "sp500_shocks": [
+  {
+   "ticker": "HUM",
+   "status": "shock",
+   "shock_date": "2026-11-18",
+   "date": "2026-11-18",
+   "drop_pct": -13.0,
+   "excess_pct": -12.7,
+   "since_shock_pct": 0.0,
+   "score": 68,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -12.983,
+    "excess_pct": -12.677,
+    "spy_day_pct": -0.306,
+    "vol_ratio": 2.797,
+    "gap_pct": -0.429,
+    "close_loc": 0.014,
+    "pre60_pct": 14.674,
+    "above_200ma": 1,
+    "off_52w_high_pct": -3.883,
+    "spy_20d_pct": -5.548,
+    "spy_above_200ma": 0,
+    "vix": 24.56
+   }
+  },
   {
    "ticker": "NKE",
    "status": "shock",
@@ -63,7 +102,7 @@
    "date": "2026-11-18",
    "drop_pct": -6.3,
    "excess_pct": -5.3,
-   "since_shock_pct": 2.1,
+   "since_shock_pct": 1.3,
    "score": 67,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -88,7 +127,7 @@
     "drop_pct": -6.299,
     "excess_pct": -5.284,
     "spy_day_pct": -1.015,
-    "vol_ratio": 1.966,
+    "vol_ratio": 1.976,
     "gap_pct": 5.071,
     "close_loc": 0.092,
     "pre60_pct": -6.133,
@@ -104,10 +143,10 @@
    "status": "shock",
    "shock_date": "2026-11-18",
    "date": "2026-11-18",
-   "drop_pct": -9.6,
-   "excess_pct": -9.5,
+   "drop_pct": -10.2,
+   "excess_pct": -9.9,
    "since_shock_pct": 0.0,
-   "score": 63,
+   "score": 65,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
    "tone": "green",
@@ -124,18 +163,57 @@
     }
    ],
    "features": {
-    "drop_pct": -9.554,
-    "excess_pct": -9.529,
-    "spy_day_pct": -0.025,
-    "vol_ratio": 1.598,
+    "drop_pct": -10.206,
+    "excess_pct": -9.9,
+    "spy_day_pct": -0.306,
+    "vol_ratio": 3.142,
     "gap_pct": -0.652,
-    "close_loc": 0.021,
+    "close_loc": 0.165,
     "pre60_pct": -2.277,
     "above_200ma": 1,
     "off_52w_high_pct": -10.696,
-    "spy_20d_pct": -5.282,
+    "spy_20d_pct": -5.548,
     "spy_above_200ma": 0,
-    "vix": 23.51
+    "vix": 24.56
+   }
+  },
+  {
+   "ticker": "FCX",
+   "status": "shock",
+   "shock_date": "2026-11-18",
+   "date": "2026-11-18",
+   "drop_pct": -7.0,
+   "excess_pct": -6.7,
+   "since_shock_pct": 0.0,
+   "score": 61,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-29% over 60 days, -31% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -6.962,
+    "excess_pct": -6.656,
+    "spy_day_pct": -0.306,
+    "vol_ratio": 2.409,
+    "gap_pct": -5.642,
+    "close_loc": 0.456,
+    "pre60_pct": -28.92,
+    "above_200ma": 0,
+    "off_52w_high_pct": -30.797,
+    "spy_20d_pct": -5.548,
+    "spy_above_200ma": 0,
+    "vix": 24.56
    }
   },
   {
@@ -145,7 +223,7 @@
    "date": "2026-11-18",
    "drop_pct": -6.5,
    "excess_pct": -5.5,
-   "since_shock_pct": -2.8,
+   "since_shock_pct": -2.5,
    "score": 59,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -170,7 +248,7 @@
     "drop_pct": -6.511,
     "excess_pct": -5.496,
     "spy_day_pct": -1.015,
-    "vol_ratio": 1.603,
+    "vol_ratio": 1.608,
     "gap_pct": -1.379,
     "close_loc": 0.125,
     "pre60_pct": -22.657,
@@ -188,7 +266,7 @@
    "date": "2026-11-18",
    "drop_pct": -12.0,
    "excess_pct": -11.7,
-   "since_shock_pct": -2.3,
+   "since_shock_pct": -2.9,
    "score": 58,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -223,7 +301,7 @@
    "date": "2026-11-18",
    "drop_pct": -9.5,
    "excess_pct": -8.4,
-   "since_shock_pct": -2.8,
+   "since_shock_pct": -2.1,
    "score": 57,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -240,7 +318,7 @@
     "drop_pct": -9.454,
     "excess_pct": -8.439,
     "spy_day_pct": -1.015,
-    "vol_ratio": 1.506,
+    "vol_ratio": 1.51,
     "gap_pct": -2.709,
     "close_loc": 0.063,
     "pre60_pct": 2.706,
@@ -258,7 +336,7 @@
    "date": "2026-11-18",
    "drop_pct": -8.8,
    "excess_pct": -8.4,
-   "since_shock_pct": -2.3,
+   "since_shock_pct": -0.7,
    "score": 56,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -293,7 +371,7 @@
    "date": "2026-11-18",
    "drop_pct": -6.2,
    "excess_pct": -5.9,
-   "since_shock_pct": 2.0,
+   "since_shock_pct": 1.6,
    "score": 55,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -328,7 +406,7 @@
    "date": "2026-11-18",
    "drop_pct": -11.3,
    "excess_pct": -11.0,
-   "since_shock_pct": -8.3,
+   "since_shock_pct": -9.7,
    "score": 53,
    "band": 3,
    "verdict": "NEUTRAL",
