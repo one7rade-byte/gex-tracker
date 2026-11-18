@@ -1,14 +1,14 @@
 {
- "date": "2026-11-17",
+ "date": "2026-11-18",
  "action": "WAIT FOR CONFIRMATION",
  "tone": "amber",
- "headline": "Buy setup is building, but only 0/5 confirmations. Don't be first.",
- "confirmations": 0,
+ "headline": "Buy setup is building, but only 1/5 confirmations. Don't be first.",
+ "confirmations": 1,
  "confirmations_total": 5,
  "checks": [
   {
    "label": "Fear easing: VIX curve back in contango",
-   "ok": false
+   "ok": true
   },
   {
    "label": "VIX below 22",
@@ -30,7 +30,7 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Buy Watch",
+   "text": "Strong Buy",
    "tone": "green"
   },
   {
@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.7% in 5 days)",
-   "tone": "green"
+   "text": "softening (HYG -0.9% in 5 days)",
+   "tone": "amber"
   },
   {
    "label": "Fear",
-   "text": "VIX 25.5, backwardation day 1",
-   "tone": "red"
+   "text": "VIX 23.5, contango",
+   "tone": "amber"
   }
  ],
- "flow_date": "2026-11-17",
+ "flow_date": "2026-11-18",
  "flow_10d_pct": {
-  "smh_spy": -8.61,
+  "smh_spy": -4.86,
   "rsp_spy": 1.35,
-  "defensive_cyclical": 6.8,
-  "hyg_ief": 0.37
+  "defensive_cyclical": 5.11,
+  "hyg_ief": -0.02
  }
 }
