@@ -1,6 +1,6 @@
 {
- "date": "2026-11-16",
- "generated_at": "2026-11-16T23:02:13+00:00",
+ "date": "2026-11-17",
+ "generated_at": "2026-11-17T23:03:44+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -8,62 +8,148 @@
   "AAPL": {
    "ticker": "AAPL",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -1.0,
-   "five_day_pct": 0.6
+   "date": "2026-11-17",
+   "day_pct": -0.2,
+   "five_day_pct": 1.0
   },
   "MSFT": {
    "ticker": "MSFT",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -1.1,
+   "date": "2026-11-17",
+   "day_pct": -2.3,
    "five_day_pct": -5.0
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -4.1,
-   "five_day_pct": -12.6
+   "date": "2026-11-17",
+   "day_pct": -0.4,
+   "five_day_pct": -8.0
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -3.3,
-   "five_day_pct": -3.4
+   "date": "2026-11-17",
+   "day_pct": 0.1,
+   "five_day_pct": -4.8
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -4.1,
-   "five_day_pct": -1.5
+   "date": "2026-11-17",
+   "day_pct": -1.2,
+   "five_day_pct": -2.5
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -2.4,
-   "five_day_pct": -2.3
+   "date": "2026-11-17",
+   "day_pct": -1.2,
+   "five_day_pct": -3.5
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
-   "date": "2026-11-16",
-   "day_pct": -2.7,
-   "five_day_pct": 0.4
+   "date": "2026-11-17",
+   "day_pct": 0.1,
+   "five_day_pct": 0.1
   }
  },
  "sp500_shocks": [
   {
+   "ticker": "NKE",
+   "status": "shock",
+   "shock_date": "2026-11-17",
+   "date": "2026-11-17",
+   "drop_pct": -6.3,
+   "excess_pct": -5.3,
+   "since_shock_pct": 0.0,
+   "score": 67,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-6% over 60 days, -44% off its high)"
+    },
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -6.299,
+    "excess_pct": -5.284,
+    "spy_day_pct": -1.015,
+    "vol_ratio": 1.962,
+    "gap_pct": 5.071,
+    "close_loc": 0.092,
+    "pre60_pct": -6.133,
+    "above_200ma": 0,
+    "off_52w_high_pct": -43.553,
+    "spy_20d_pct": -4.76,
+    "spy_above_200ma": 1,
+    "vix": 25.46
+   }
+  },
+  {
+   "ticker": "NOW",
+   "status": "shock",
+   "shock_date": "2026-11-17",
+   "date": "2026-11-17",
+   "drop_pct": -6.5,
+   "excess_pct": -5.5,
+   "since_shock_pct": 0.0,
+   "score": 59,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-23% over 60 days, -43% off its high)"
+    },
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -6.511,
+    "excess_pct": -5.496,
+    "spy_day_pct": -1.015,
+    "vol_ratio": 1.594,
+    "gap_pct": -1.379,
+    "close_loc": 0.125,
+    "pre60_pct": -22.657,
+    "above_200ma": 0,
+    "off_52w_high_pct": -42.726,
+    "spy_20d_pct": -4.76,
+    "spy_above_200ma": 1,
+    "vix": 25.46
+   }
+  },
+  {
    "ticker": "GPN",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -12.0,
    "excess_pct": -11.7,
-   "since_shock_pct": 1.8,
+   "since_shock_pct": -3.3,
    "score": 58,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -92,13 +178,48 @@
    }
   },
   {
+   "ticker": "CRM",
+   "status": "shock",
+   "shock_date": "2026-11-17",
+   "date": "2026-11-17",
+   "drop_pct": -9.5,
+   "excess_pct": -8.4,
+   "since_shock_pct": 0.0,
+   "score": 57,
+   "band": 4,
+   "verdict": "LEANS BUYABLE",
+   "tone": "green",
+   "hist_beat_spy_pct": 48.3,
+   "hist_median_excess_pct": -0.64,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    }
+   ],
+   "features": {
+    "drop_pct": -9.454,
+    "excess_pct": -8.439,
+    "spy_day_pct": -1.015,
+    "vol_ratio": 1.503,
+    "gap_pct": -2.709,
+    "close_loc": 0.063,
+    "pre60_pct": 2.706,
+    "above_200ma": 1,
+    "off_52w_high_pct": -19.307,
+    "spy_20d_pct": -4.76,
+    "spy_above_200ma": 1,
+    "vix": 25.46
+   }
+  },
+  {
    "ticker": "AMD",
    "status": "shock",
    "shock_date": "2026-11-13",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -8.8,
    "excess_pct": -8.4,
-   "since_shock_pct": -5.6,
+   "since_shock_pct": -5.7,
    "score": 56,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -115,7 +236,7 @@
     "drop_pct": -8.754,
     "excess_pct": -8.391,
     "spy_day_pct": -0.363,
-    "vol_ratio": 1.87,
+    "vol_ratio": 1.879,
     "gap_pct": -3.162,
     "close_loc": 0.275,
     "pre60_pct": 25.488,
@@ -130,10 +251,10 @@
    "ticker": "CSCO",
    "status": "shock",
    "shock_date": "2026-11-13",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -6.2,
    "excess_pct": -5.9,
-   "since_shock_pct": -1.2,
+   "since_shock_pct": -0.6,
    "score": 55,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -150,7 +271,7 @@
     "drop_pct": -6.244,
     "excess_pct": -5.881,
     "spy_day_pct": -0.363,
-    "vol_ratio": 1.559,
+    "vol_ratio": 1.563,
     "gap_pct": -1.51,
     "close_loc": 0.069,
     "pre60_pct": -7.725,
@@ -165,10 +286,10 @@
    "ticker": "SMCI",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -11.3,
    "excess_pct": -11.0,
-   "since_shock_pct": -7.3,
+   "since_shock_pct": -10.6,
    "score": 53,
    "band": 3,
    "verdict": "NEUTRAL",
@@ -200,10 +321,10 @@
    "ticker": "KDP",
    "status": "shock",
    "shock_date": "2026-11-12",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "drop_pct": -7.4,
    "excess_pct": -7.0,
-   "since_shock_pct": 0.5,
+   "since_shock_pct": -1.8,
    "score": 51,
    "band": 2,
    "verdict": "LEANS WEAK",
