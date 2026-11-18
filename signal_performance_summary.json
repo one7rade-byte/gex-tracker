@@ -1,6 +1,6 @@
 {
-  "generated_from_rows": 442,
-  "unique_signal_days": 154,
+  "generated_from_rows": 448,
+  "unique_signal_days": 156,
   "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof. Each bucket below carries its own 'confidence' tag for the same reason \u2014 read it before acting on a bucket's numbers.",
   "never_fired_live": [
     "CRISIS",
@@ -26,11 +26,11 @@
         "confidence": "developing \u2014 directional, treat cautiously"
       },
       "20": {
-        "n": 27,
-        "avg_return_pct": 0.92,
-        "hit_rate_pct": 74.1,
+        "n": 28,
+        "avg_return_pct": 0.76,
+        "hit_rate_pct": 71.4,
         "best_pct": 4.08,
-        "worst_pct": -1.83,
+        "worst_pct": -3.5,
         "confidence": "developing \u2014 directional, treat cautiously"
       }
     },
@@ -62,9 +62,9 @@
     },
     "HOLD": {
       "5": {
-        "n": 12,
-        "avg_return_pct": 0.38,
-        "hit_rate_pct": 25.0,
+        "n": 13,
+        "avg_return_pct": 0.21,
+        "hit_rate_pct": 23.1,
         "best_pct": 10.1,
         "worst_pct": -4.5,
         "confidence": "developing \u2014 directional, treat cautiously"
@@ -78,27 +78,27 @@
         "confidence": "developing \u2014 directional, treat cautiously"
       },
       "20": {
-        "n": 6,
-        "avg_return_pct": 4.13,
-        "hit_rate_pct": 50.0,
+        "n": 7,
+        "avg_return_pct": 2.8,
+        "hit_rate_pct": 42.9,
         "best_pct": 15.44,
-        "worst_pct": -0.73,
+        "worst_pct": -5.17,
         "confidence": "small_sample \u2014 exploratory only, do not rely on this bucket"
       }
     },
     "STRONG_BUY": {
       "5": {
-        "n": 20,
-        "avg_return_pct": 1.53,
-        "hit_rate_pct": 80.0,
+        "n": 21,
+        "avg_return_pct": 1.34,
+        "hit_rate_pct": 76.2,
         "best_pct": 5.98,
         "worst_pct": -2.6,
         "confidence": "developing \u2014 directional, treat cautiously"
       },
       "10": {
-        "n": 17,
-        "avg_return_pct": 1.96,
-        "hit_rate_pct": 76.5,
+        "n": 19,
+        "avg_return_pct": 1.5,
+        "hit_rate_pct": 68.4,
         "best_pct": 5.7,
         "worst_pct": -3.86,
         "confidence": "developing \u2014 directional, treat cautiously"

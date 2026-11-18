@@ -388,6 +388,17 @@ def main():
                 main_msg = qa + "\n\n" + main_msg
     except Exception as e:
         print(f"  (quick action skipped: {e})")
+    # News dips (Dip Quality), only when today's scan has something to report.
+    try:
+        import dip_quality
+        with open(dip_quality.OUT, encoding="utf-8") as fh:
+            dq_date = json.load(fh).get("date")
+        if dq_date == gex.get("date"):
+            dq = dip_quality.telegram_lines()
+            if dq:
+                main_msg = main_msg + "\n\n" + dq
+    except Exception as e:
+        print(f"  (dip quality skipped: {e})")
     send_telegram(main_msg)
 
     # Send deep analysis as second message

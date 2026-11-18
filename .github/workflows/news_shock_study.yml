@@ -1,0 +1,40 @@
+name: News Shock Study
+# Builds research/news_shock/shock_events.csv: every stock-specific shock drop
+# in S&P 500 members since 2010, tagged with SEC 8-K event type, revenue trend
+# and market context, with 20/60/120-day outcomes. Re-run occasionally to add
+# new events and resolve outcomes. Set limit (e.g. 20) for a quick test run.
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Only the first N tickers (0 = all)"
+        required: false
+        default: "0"
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - name: Build dataset
+        env:
+          SHOCK_LIMIT: ${{ github.event.inputs.limit }}
+        run: python research/news_shock/build_shock_dataset.py
+      - name: Commit
+        run: |
+          git config user.name "GEX Bot"
+          git config user.email "one7rade@gmail.com"
+          git add research/news_shock/shock_events.csv research/news_shock/build_summary.json
+          git diff --staged --quiet && exit 0
+          git commit -m "News shock dataset $(date +'%Y-%m-%d') (limit=${{ github.event.inputs.limit }})"
+          for i in 1 2 3 4 5; do
+            git fetch origin main && git rebase origin/main || git rebase --abort
+            git push && break
+            sleep $((i*10))
+          done

@@ -1,0 +1,421 @@
+{
+ "built_at": "2026-11-16T04:01:15+00:00",
+ "split": "2019-01-01",
+ "mag7": {
+  "n": 147,
+  "beat_spy_60d_pct": 56.5,
+  "median_excess_60d_pct": 0.99,
+  "beat_spy_120d_pct": 64.5,
+  "median_excess_120d_pct": 6.72,
+  "median_worst_20d_pct": -5.25,
+  "score_auc_within_mag7": 0.529
+ },
+ "labels": {
+  "drop_pct": "Size of the drop",
+  "excess_pct": "Drop vs the market that day",
+  "spy_day_pct": "Market's own move that day",
+  "vol_ratio": "Volume vs normal",
+  "gap_pct": "Opening gap",
+  "close_loc": "Closed off the lows (buyers stepped in)",
+  "pre60_pct": "Run-up in the 60 days before",
+  "above_200ma": "Was in an uptrend (above 200-day)",
+  "off_52w_high_pct": "Distance from 52-week high before",
+  "spy_20d_pct": "Market's 20-day trend",
+  "spy_above_200ma": "Market in an uptrend",
+  "vix": "VIX (market fear)",
+  "t3_pct": "Bounce in the 3 days after",
+  "new_low_3d": "Undercut the shock-day low within 3 days"
+ },
+ "clip": {
+  "vol_ratio": [
+   0,
+   15
+  ],
+  "gap_pct": [
+   -40,
+   10
+  ],
+  "pre60_pct": [
+   -60,
+   120
+  ],
+  "off_52w_high_pct": [
+   -90,
+   0
+  ],
+  "drop_pct": [
+   -60,
+   0
+  ],
+  "excess_pct": [
+   -60,
+   0
+  ],
+  "t3_pct": [
+   -40,
+   40
+  ],
+  "vix": [
+   8,
+   80
+  ]
+ },
+ "t0": {
+  "features": [
+   "drop_pct",
+   "excess_pct",
+   "spy_day_pct",
+   "vol_ratio",
+   "gap_pct",
+   "close_loc",
+   "pre60_pct",
+   "above_200ma",
+   "off_52w_high_pct",
+   "spy_20d_pct",
+   "spy_above_200ma",
+   "vix"
+  ],
+  "target": "ex60",
+  "median_fill": {
+   "drop_pct": -8.15,
+   "excess_pct": -7.65,
+   "spy_day_pct": -0.19,
+   "vol_ratio": 3.73,
+   "gap_pct": -4.05,
+   "close_loc": 0.165,
+   "pre60_pct": 1.77,
+   "above_200ma": 1.0,
+   "off_52w_high_pct": -11.31,
+   "spy_20d_pct": 0.78,
+   "spy_above_200ma": 1.0,
+   "vix": 16.56
+  },
+  "mean": [
+   -9.357274706138439,
+   -8.906869830213301,
+   -0.44996517196343044,
+   4.540848933391384,
+   -4.958114932520686,
+   0.23557074444928108,
+   3.0340531127557617,
+   0.6186329995646496,
+   -14.993609055289506,
+   -0.0008619939050937544,
+   0.7766652154984762,
+   18.445128428384887
+  ],
+  "std": [
+   4.215300713360777,
+   4.325854057616612,
+   1.2244599002756626,
+   2.831972247009481,
+   5.218993941652926,
+   0.2210532548406384,
+   18.965652151664614,
+   0.4857223614223852,
+   14.215707020673378,
+   4.184066117832644,
+   0.41648092317193247,
+   6.984603654493334
+  ],
+  "coef": [
+   -0.0681269284455219,
+   -0.07523158440646507,
+   0.0092308326542371,
+   0.030442305843117086,
+   0.21504275748605325,
+   0.029035050941542333,
+   0.09349931273723242,
+   -0.06641291117768058,
+   -0.07255708667242836,
+   -0.03040243086431437,
+   -0.10660878561161753,
+   0.10488903582007843
+  ],
+  "intercept": 0.1947274112177405,
+  "band_cuts": [
+   0.48814852897666927,
+   0.5174687760627362,
+   0.5498359555235419,
+   0.6104264370974497
+  ],
+  "n_train": 2297,
+  "n_test": 3689,
+  "base_rate_train_pct": 54.7,
+  "base_rate_test_pct": 48.6,
+  "auc_train": 0.581,
+  "auc_test": 0.553,
+  "test_by_band": [
+   {
+    "band": 1,
+    "n": 439,
+    "beat_spy_pct": 39.4,
+    "median_excess_pct": -2.74,
+    "median_worst_20d_pct": -4.65
+   },
+   {
+    "band": 2,
+    "n": 567,
+    "beat_spy_pct": 47.1,
+    "median_excess_pct": -0.7,
+    "median_worst_20d_pct": -4.36
+   },
+   {
+    "band": 3,
+    "n": 709,
+    "beat_spy_pct": 46.1,
+    "median_excess_pct": -1.81,
+    "median_worst_20d_pct": -5.16
+   },
+   {
+    "band": 4,
+    "n": 878,
+    "beat_spy_pct": 48.3,
+    "median_excess_pct": -0.64,
+    "median_worst_20d_pct": -4.96
+   },
+   {
+    "band": 5,
+    "n": 1096,
+    "beat_spy_pct": 54.8,
+    "median_excess_pct": 2.07,
+    "median_worst_20d_pct": -6.77
+   }
+  ],
+  "test_by_year": {
+   "2019": {
+    "top_beat_pct": 50.0,
+    "bottom_beat_pct": 36.9,
+    "n_top": 24,
+    "n_bottom": 65
+   },
+   "2020": {
+    "top_beat_pct": 58.5,
+    "bottom_beat_pct": 48.1,
+    "n_top": 381,
+    "n_bottom": 27
+   },
+   "2021": {
+    "top_beat_pct": 43.5,
+    "bottom_beat_pct": 38.7,
+    "n_top": 23,
+    "n_bottom": 31
+   },
+   "2022": {
+    "top_beat_pct": 54.5,
+    "bottom_beat_pct": 25.0,
+    "n_top": 382,
+    "n_bottom": 4
+   },
+   "2023": {
+    "top_beat_pct": 41.0,
+    "bottom_beat_pct": 39.7,
+    "n_top": 78,
+    "n_bottom": 63
+   },
+   "2024": {
+    "top_beat_pct": 52.9,
+    "bottom_beat_pct": 40.3,
+    "n_top": 17,
+    "n_bottom": 119
+   },
+   "2025": {
+    "top_beat_pct": 53.7,
+    "bottom_beat_pct": 35.1,
+    "n_top": 134,
+    "n_bottom": 74
+   },
+   "2026": {
+    "top_beat_pct": 61.4,
+    "bottom_beat_pct": 42.9,
+    "n_top": 57,
+    "n_bottom": 56
+   }
+  }
+ },
+ "t3": {
+  "features": [
+   "drop_pct",
+   "excess_pct",
+   "spy_day_pct",
+   "vol_ratio",
+   "gap_pct",
+   "close_loc",
+   "pre60_pct",
+   "above_200ma",
+   "off_52w_high_pct",
+   "spy_20d_pct",
+   "spy_above_200ma",
+   "vix",
+   "t3_pct",
+   "new_low_3d"
+  ],
+  "target": "ex60_from_t3",
+  "median_fill": {
+   "drop_pct": -8.15,
+   "excess_pct": -7.65,
+   "spy_day_pct": -0.19,
+   "vol_ratio": 3.73,
+   "gap_pct": -4.05,
+   "close_loc": 0.165,
+   "pre60_pct": 1.77,
+   "above_200ma": 1.0,
+   "off_52w_high_pct": -11.31,
+   "spy_20d_pct": 0.78,
+   "spy_above_200ma": 1.0,
+   "vix": 16.56,
+   "t3_pct": 0.17,
+   "new_low_3d": 1.0
+  },
+  "mean": [
+   -9.357274706138439,
+   -8.906869830213301,
+   -0.44996517196343044,
+   4.540848933391384,
+   -4.958114932520686,
+   0.23557074444928108,
+   3.0340531127557617,
+   0.6186329995646496,
+   -14.993609055289506,
+   -0.0008619939050937544,
+   0.7766652154984762,
+   18.445128428384887,
+   0.28376142794949916,
+   0.6586852416195037
+  ],
+  "std": [
+   4.215300713360777,
+   4.325854057616612,
+   1.2244599002756626,
+   2.831972247009481,
+   5.218993941652926,
+   0.2210532548406384,
+   18.965652151664614,
+   0.4857223614223852,
+   14.215707020673378,
+   4.184066117832644,
+   0.41648092317193247,
+   6.984603654493334,
+   4.932266013666501,
+   0.4741508146576012
+  ],
+  "coef": [
+   -0.03935449280707663,
+   -0.03776170474668977,
+   -0.03039604049216593,
+   0.11793275406323014,
+   0.1260063082873149,
+   0.028401990919830835,
+   0.14372180980100155,
+   0.0014202119821639454,
+   -0.11365524506157847,
+   -0.035515435204088876,
+   -0.12644231499329742,
+   0.054689803226568974,
+   0.03696444580955491,
+   -0.01179071233949629
+  ],
+  "intercept": 0.29919849852413477,
+  "band_cuts": [
+   0.5197951136314359,
+   0.5462213314346755,
+   0.5792177608347607,
+   0.6259882315953925
+  ],
+  "n_train": 2297,
+  "n_test": 3685,
+  "base_rate_train_pct": 57.3,
+  "base_rate_test_pct": 50.5,
+  "auc_train": 0.576,
+  "auc_test": 0.535,
+  "test_by_band": [
+   {
+    "band": 1,
+    "n": 593,
+    "beat_spy_pct": 49.2,
+    "median_excess_pct": -0.35,
+    "median_worst_20d_pct": -5.5
+   },
+   {
+    "band": 2,
+    "n": 702,
+    "beat_spy_pct": 46.3,
+    "median_excess_pct": -1.43,
+    "median_worst_20d_pct": -5.12
+   },
+   {
+    "band": 3,
+    "n": 711,
+    "beat_spy_pct": 48.4,
+    "median_excess_pct": -0.7,
+    "median_worst_20d_pct": -4.55
+   },
+   {
+    "band": 4,
+    "n": 625,
+    "beat_spy_pct": 49.4,
+    "median_excess_pct": -0.21,
+    "median_worst_20d_pct": -4.22
+   },
+   {
+    "band": 5,
+    "n": 1054,
+    "beat_spy_pct": 56.0,
+    "median_excess_pct": 2.66,
+    "median_worst_20d_pct": -6.54
+   }
+  ],
+  "test_by_year": {
+   "2019": {
+    "top_beat_pct": 62.9,
+    "bottom_beat_pct": 48.6,
+    "n_top": 35,
+    "n_bottom": 70
+   },
+   "2020": {
+    "top_beat_pct": 63.1,
+    "bottom_beat_pct": 50.0,
+    "n_top": 339,
+    "n_bottom": 34
+   },
+   "2021": {
+    "top_beat_pct": 40.7,
+    "bottom_beat_pct": 58.5,
+    "n_top": 27,
+    "n_bottom": 65
+   },
+   "2022": {
+    "top_beat_pct": 55.9,
+    "bottom_beat_pct": 46.7,
+    "n_top": 354,
+    "n_bottom": 15
+   },
+   "2023": {
+    "top_beat_pct": 39.2,
+    "bottom_beat_pct": 45.1,
+    "n_top": 79,
+    "n_bottom": 71
+   },
+   "2024": {
+    "top_beat_pct": 29.6,
+    "bottom_beat_pct": 45.4,
+    "n_top": 27,
+    "n_bottom": 130
+   },
+   "2025": {
+    "top_beat_pct": 57.1,
+    "bottom_beat_pct": 49.5,
+    "n_top": 140,
+    "n_bottom": 103
+   },
+   "2026": {
+    "top_beat_pct": 49.1,
+    "bottom_beat_pct": 51.4,
+    "n_top": 53,
+    "n_bottom": 105
+   }
+  }
+ },
+ "events_total": 6163,
+ "event_type_available": false
+}
