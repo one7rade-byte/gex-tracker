@@ -1,5 +1,53 @@
 # Weekly Research Log
 
+## 2026-11-18 — P2: maximum adverse excursion (MAE) after STRONG_BUY / BUY_WATCH
+
+**VERDICT: PASS — ready for review (tracking change only; no signal logic touched).** `track_signal_performance.py` now records the worst and best close inside each 5/10/20d window (`mae_pct`, `mfe_pct`), backfills the 448 older rows from gex_log.csv without changing their logged values, adds MAE stats per bucket to the summary, and lists STRONG_BUY/BUY_WATCH calls whose 20d window is still open. PR: `claude/pr-signal-mae` (4 unit tests). The research findings below are **not** proposed as rule changes; they feed P3 and P8.
+
+**Data and method** (`research/p2_mae.py`; output `research/p2_mae_output.txt`, `p2_mae_results.json`):
+- Live: regime_log.csv signals 2026-03-30..11-18 (162 days), SPY closes from gex_log.csv (the series the tracker uses). MAE_h = worst close in t+1..t+h vs entry close. Closes only, so intraday lows are missed and MAE is understated.
+- Deep: deep_history_backtest_log.csv (1995-10-17..2026-08-21). STRONG_BUY proxy = composite ≥ 1 & RSI < 50 & SKEW > 138 & VIX > 17 (no GEX; same as P1). It fires only from 2010 (SKEW), so "full" = 2010+. BUY_WATCH proxy (composite ≥ 0 & RSI < 57) fires on 39% of days without the GEX leg and is not informative; reported in the output file only. Episode = first fire of a cluster separated by > 10 trading days.
+
+**1. Live (hypothesis-grade; one bull run plus the current drawdown):**
+
+| Signal | h | n | Hit | Avg | MAE avg | MAE worst | P(MAE ≤ −2) | P(MAE ≤ −3) |
+|---|---|---|---|---|---|---|---|---|
+| all days | 20 | 142 | 63.4% | +1.46 | −1.54 | −6.03 | 33.1% | 19.0% |
+| STRONG_BUY | 5 | 21 | 76.2% | +1.34 | −0.60 | −2.73 | 19.0% | 0.0% |
+| STRONG_BUY | 10 | 19 | 68.4% | +1.50 | −1.06 | −3.86 | 26.3% | 15.8% |
+| STRONG_BUY | 20 | 14 | 92.9% | +2.61 | −0.57 | −3.58 | 7.1% | 7.1% |
+| BUY_WATCH | 20 | 28 | 71.4% | +0.76 | −1.61 | −5.09 | 25.0% | 10.7% |
+
+The resolved 20d STRONG_BUY bucket looks low-risk only because it is mostly Jun–Sep bull-run fires (13 of 14). **Every STRONG_BUY since 10-16 with at least 2 days elapsed is underwater to date** (10 fires; 10-22 −4.03% / MAE −4.24, 10-26 −3.88 / −4.09, 10-30 −2.90 / −3.12, 11-03 −2.86 / −3.07, 11-13 −2.77 / −2.99, 11-10 −2.24 / −2.46). When these resolve, the 20d MAE stats will move toward the all-days base. The new `open_20d_windows` list in the summary makes this visible before resolution, which was the point of P2.
+
+**2. Deep proxy: is STRONG_BUY a low-drawdown entry? No; the edge is return, not risk.**
+
+| Era | Set | n | Hit20 | Fwd20 | MAE20 avg | P(MAE20 ≤ −3) | Winners that first dipped ≤ −2 |
+|---|---|---|---|---|---|---|---|
+| 2018+ | base | 2151 | 67.2% | +1.06 | −2.69 | 33.2% | 24.4% |
+| 2018+ | SB proxy, days | 133 | 69.2% | +1.42 | −2.61 | 33.1% | 28.3% |
+| 2018+ | SB proxy, first fire (episodes) | 29 | 79.3% | +1.59 | −2.01 | 20.7% | 17.4% |
+| 2018+ | SB proxy, re-fires | 104 | 66.3% | +1.37 | −2.78 | 36.5% | – |
+| 2010–17 | base | 2013 | 67.3% | +0.97 | −2.05 | 26.5% | 18.6% |
+| 2010–17 | SB proxy, days | 10 | 60.0% | +0.30 | −3.26 | 60.0% | 50.0% |
+| 2010–17 | SB proxy, episodes | 6 | 66.7% | +0.11 | −3.71 | 50.0% | 50.0% |
+
+- Day-level STRONG_BUY-proxy drawdown risk equals the base rate (2018+: 33.1% vs 33.2%). First fires are cleaner (20.7%); re-fires carry the risk (36.5%). This is the drawdown side of P8(a), with 29 first-fire episodes. 2010–17 counter-era: 10 days / 6 episodes, worse than base on both sides.
+- Fixed −3% close stop (exit at the first close ≤ −3%): 2018+ day-level avg +0.87 vs +1.42 holding, 12 eventual winners stopped out; base +0.72 vs +1.06. At episode level the stop changed little (+1.82 vs +1.59, 0 winners stopped). **A tight stop costs return on these dip entries; not recommended.**
+- Failure cases (SB-proxy episodes, fwd20 / MAE20): 2025-03-20 −6.91 / −12.20, 2022-04-13 −11.50 / −11.50, 2025-02-21 −5.99 / −8.09, 2022-01-05 −4.65 / −7.93, 2015-12-15 −6.39 / −7.90, 2016-01-04 −5.40 / −7.65. All are slow-grind selloffs (2015-16, 2022, 2025), not single shocks.
+
+**3. A −2% close within 5 days of a STRONG_BUY: warning, or second-tranche entry?**
+- SB proxy 2010+: if the first 5 days stay above −2%, 20d hit 78.0% / +1.97% (n=100 days). If they breach −2%, 46.5% / −0.13% from the **original** entry (n=43 days, 14 episodes).
+- But from the **breach close** (what you actually know then), holding to entry+20 returned +2.50% avg / +2.47% median, hit 60.5% (2018+: +2.99%, 66.7%, 12 episodes), with a further MAE of −2.60% avg and P(further ≤ −3%) 37.2%. Compare any-day −2% breaches 2010+: +1.75%, hit 68.9%, further MAE −2.87%.
+- So the breach is not a sell signal. As a second-tranche point it has higher average payoff than a random −2% breach, but lower hit rate and a 1-in-3 chance of another −3%. That is the P3 question; 14 episodes is not enough to wire it in. Live: 10-30/11-02/11-03 breached on 11-05 (734.40) and are −0.18% from the breach as of 11-18; 11-10/11-13 breached on 11-17 (731.46), +0.22% from the breach. Still open.
+
+**Caveats:** closes only (MAE understated); live n is small and regime-specific; deep proxy has no GEX leg and is effectively 2018+ (133 of 143 fire days); day-level rows overlap; no costs.
+
+**Live check (signal_performance_log.csv recomputed through 11-18; event tracking_log through 11-17):**
+- Resolved since 11-14: 3 new outcomes (now 451 rows). STRONG_BUY 20d still n=14 / 92.9% / +2.60% (10-16 −1.01% is the only loss). 10-22 and 10-26 STRONG_BUY 20d resolve 11-19 and 11-20 at about −4%. BUY_WATCH 20d n=28, 71.4%, +0.76% (10-19 −3.50%).
+- Event 2026-11-05 (day 8, 11-17): SPY 731.46, first close below the 734.40 trigger; escalation 2/6. Ledger flipped from the 11-14 picture: early A/G −0.40% (max DD −0.40%), confirmation B/C/F (753.01) −2.86%, D/E (759.62) −3.71%. **Confirmation entries are now worse on both sides**, not just more expensive. One event, but it is the first live case where waiting for "stabilization" bought a lower-quality entry, consistent with P0's C1/C2 result.
+- Contradiction worth flagging: regime_signal fired STRONG_BUY on 11-13, 11-16 and 11-18 (composite 3.7 → 2.5 → 1.5) while SPY made lower closes, VVIX rose 101 → 121 and HYG/IEF fell. These are re-fires in a cluster that started 10-16, the subgroup with 36.5% P(MAE20 ≤ −3) above. P8(a) is the next item.
+
 ## 2026-11-14 — P0b: QUICK ACTION tuning (DEFEND persistence, cost of waiting vs drawdown avoided, "Leaving stocks" since 2007)
 
 **VERDICT: PASS — ready for review (modest).** Require the DEFEND trigger to hold for **2 consecutive days** before quick_action says DEFEND. Across 2007–2026 this cuts switches from 19.5/yr to 12.0/yr. It is better than the 1-day rule on both sides in 2 of 3 eras. In 2010–17 it is worse on drawdown. A second finding matters more for how the card is read: **DEFEND is not a sell signal.** Going to cash on every DEFEND day cost 3.8 pp of CAGR over 2007–2026 (8.83% → 5.05%). It is a "no new adds / don't be first" flag, and the headline should say so. PR #7: `claude/pr-quick-action-defend-2day` (open, not merged).

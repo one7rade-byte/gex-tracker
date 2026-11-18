@@ -29,11 +29,14 @@ P0c. (new 2026-11-15) NEWS SHOCKS / DIP QUALITY (live on main; dip_quality.py, r
     (d) Re-run news_shock_study.yml + fit_dip_quality.py quarterly to resolve outcomes; track live accuracy of the
         verdicts in dip_quality.json. Propose changes as a PR.
 P1. [TESTED 2026-11-07 — rejected, see WEEKLY_RESEARCH_LOG.md] composite-ex-vol gate. Keep composite>=1.
-P2. Max adverse excursion: track_signal_performance.py reports hit rate/avg return only. Add worst drawdown after
-    signal (5/10/20d). A 100% hit rate can hide a -3% dip first. Resolve Oct 30–Nov 5 STRONG_BUY/BUY_WATCH outcomes
-    as they mature.
+P2. [TESTED 2026-11-18 — PASS (tracking), PR claude/pr-signal-mae; see WEEKLY_RESEARCH_LOG.md] MAE/MFE now in
+    track_signal_performance.py + open_20d_windows list. STRONG_BUY proxy MAE = base (2018+ P(MAE20<=-3) 33.1% vs 33.2%);
+    first fires 20.7%, re-fires 36.5%. -3% close stop costs return. Do not add a stop rule.
 P3. Deeper-but-downgraded entries: historically, when the signal downgrades while price falls further below a
     recent STRONG_BUY-type entry, is the lower entry better or worse? Should a second tranche be a rule?
+    First read (P2, 2026-11-18): after a SB-proxy close breaches -2% within 5d, holding from the breach to entry+20
+    = +2.50% avg, hit 60.5%, further MAE -2.60, P(further <=-3) 37% (2010+, 14 episodes) vs any-day breach +1.75%.
+    Test as a tranche rule with fixed sizing, episode-level, and against "add only on first fire".
 P4. [DONE 2026-11-05 on main, a8606d1] Fix the stale HYG 5d bug: regime_analyzer.hyg_5d_change reads macro_history.csv, frozen since 2026-08-17, so
     every "HYG dropped $X in 5 days" warning since then is false (true 5d on 11-05 was -0.39%). Compute it from
     gex_log.csv's hyg column. Small PR with a test.
@@ -49,7 +52,8 @@ P8. (new 2026-11-07) STRONG_BUY re-fire / "early not confirmed" problem. Live: 7
     (RSI<50/SKEW>138/VIX>17 legs, no GEX): (a) first fire of a cluster vs re-fires when legs already fired >=3 of prior
     10 days and price is below the first fire; (b) a whale-flow veto (SMH/SPY 10d <= -6% or defensive/cyclical 10d >= +3%,
     flow_history.csv) on STRONG_BUY — P0 run 2026-11-11 suggests testing "rotation R ON AND HYG/IEF 10d <= -1" as the
-    veto (Oct-2026 cluster had it; Aug-2024 rebound also had it, so measure the upside cost); (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
+    veto (Oct-2026 cluster had it; Aug-2024 rebound also had it, so measure the upside cost); P2 (2026-11-18) drawdown side of (a): 2018+ first fires P(MAE20<=-3) 20.7%, hit 79.3%, +1.59 (n=29) vs
+    re-fires 36.5%, 66.3%, +1.37 (n=104). Live re-fires 11-13/11-16/11-18 are in this subgroup. (c) RSI<40 instead of <50 — first read 2018+: A-group 20d hit 88.2%/+3.18% (52 days,
     17 episodes) vs 69.2%/+1.42% at RSI<50. Report fire-rate cost (fewer signals) alongside accuracy. Overlaps P3/P0.
 P9. (new 2026-11-14) Backwardation >=3d (T2) was the most cost-efficient DEFEND trigger 2007+ (CAGR 8.83->8.66,
     max DD -56.5->-47.3, 4 switches/yr) while credit5d (T1) cost 2.6pp CAGR for ~no DD help. Test tiering DEFEND by

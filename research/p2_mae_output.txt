@@ -1,0 +1,122 @@
+LIVE: SPY closes 2026-03-30..2026-11-18 (162 days); signals on 162
+  ALL_DAYS    h= 5 n=157 hit  54.1% avg +0.54 med +0.35 | MAE avg -0.66 med -0.62 worst -4.50 | P(MAE<=-1/-2/-3) 36.3/12.7/3.8% | winners dipped<=-2: 1.2% | MFE +1.29 | -3% stop: avg +0.50 hit 54.1% winners killed 0
+  ALL_DAYS    h=10 n=152 hit  55.3% avg +0.85 med +0.43 | MAE avg -1.13 med -1.04 worst -4.76 | P(MAE<=-1/-2/-3) 51.3/23.7/11.8% | winners dipped<=-2: 4.8% | MFE +1.95 | -3% stop: avg +0.66 hit 55.3% winners killed 0
+  ALL_DAYS    h=20 n=142 hit  63.4% avg +1.46 med +0.79 | MAE avg -1.54 med -1.47 worst -6.03 | P(MAE<=-1/-2/-3) 63.4/33.1/19.0% | winners dipped<=-2: 20.0% | MFE +2.94 | -3% stop: avg +1.06 hit 58.5% winners killed 7
+  STRONG_BUY  h= 5 n= 21 hit  76.2% avg +1.34 med +1.45 | MAE avg -0.60 med -0.98 worst -2.73 | P(MAE<=-1/-2/-3) 47.6/19.0/0.0% | winners dipped<=-2: 6.2% | MFE +2.26 | -3% stop: avg +1.34 hit 76.2% winners killed 0
+  STRONG_BUY  h=10 n= 19 hit  68.4% avg +1.50 med +1.57 | MAE avg -1.06 med -1.35 worst -3.86 | P(MAE<=-1/-2/-3) 52.6/26.3/15.8% | winners dipped<=-2: 0.0% | MFE +3.07 | -3% stop: avg +1.37 hit 68.4% winners killed 0
+  STRONG_BUY  h=20 n= 14 hit  92.9% avg +2.61 med +2.67 | MAE avg -0.57 med -0.76 worst -3.58 | P(MAE<=-1/-2/-3) 42.9/7.1/7.1% | winners dipped<=-2: 0.0% | MFE +4.15 | -3% stop: avg +2.42 hit 92.9% winners killed 0
+  BUY_WATCH   h= 5 n= 30 hit  56.7% avg +0.51 med +0.41 | MAE avg -0.59 med -0.61 worst -1.83 | P(MAE<=-1/-2/-3) 33.3/0.0/0.0% | winners dipped<=-2: 0.0% | MFE +1.11 | -3% stop: avg +0.51 hit 56.7% winners killed 0
+  BUY_WATCH   h=10 n= 29 hit  65.5% avg +0.28 med +0.65 | MAE avg -1.00 med -0.91 worst -4.32 | P(MAE<=-1/-2/-3) 44.8/6.9/3.4% | winners dipped<=-2: 0.0% | MFE +1.38 | -3% stop: avg +0.27 hit 65.5% winners killed 0
+  BUY_WATCH   h=20 n= 28 hit  71.4% avg +0.76 med +0.89 | MAE avg -1.61 med -1.46 worst -5.09 | P(MAE<=-1/-2/-3) 71.4/25.0/10.7% | winners dipped<=-2: 10.0% | MFE +2.03 | -3% stop: avg +0.52 hit 71.4% winners killed 0
+  HOLD        h= 5 n= 14 hit  21.4% avg -0.05 med -0.67 | MAE avg -1.63 med -1.60 worst -4.50 | P(MAE<=-1/-2/-3) 71.4/42.9/21.4% | winners dipped<=-2: 0.0% | MFE +1.21 | -3% stop: avg -0.30 hit 21.4% winners killed 0
+  HOLD        h=10 n= 12 hit  33.3% avg +0.81 med -0.64 | MAE avg -2.12 med -2.33 worst -4.76 | P(MAE<=-1/-2/-3) 66.7/58.3/33.3% | winners dipped<=-2: 0.0% | MFE +2.03 | -3% stop: avg +0.14 hit 33.3% winners killed 0
+  HOLD        h=20 n=  8 hit  37.5% avg +1.80 med -0.33 | MAE avg -1.81 med -1.61 worst -5.40 | P(MAE<=-1/-2/-3) 62.5/50.0/25.0% | winners dipped<=-2: 0.0% | MFE +3.89 | -3% stop: avg +1.87 hit 37.5% winners killed 0
+  STRONG_HOLD h= 5 n= 91 hit  52.7% avg +0.38 med +0.16 | MAE avg -0.55 med -0.47 worst -4.17 | P(MAE<=-1/-2/-3) 29.7/11.0/3.3% | winners dipped<=-2: 0.0% | MFE +1.08 | -3% stop: avg +0.36 hit 52.7% winners killed 0
+  STRONG_HOLD h=10 n= 91 hit  51.6% avg +0.79 med +0.22 | MAE avg -1.07 med -1.05 worst -4.66 | P(MAE<=-1/-2/-3) 51.6/24.2/11.0% | winners dipped<=-2: 8.5% | MFE +1.79 | -3% stop: avg +0.59 hit 51.6% winners killed 0
+  STRONG_HOLD h=20 n= 91 hit  58.2% avg +1.33 med +0.30 | MAE avg -1.65 med -1.66 worst -6.03 | P(MAE<=-1/-2/-3) 64.8/38.5/23.1% | winners dipped<=-2: 30.2% | MFE +2.83 | -3% stop: avg +0.81 hit 50.5% winners killed 7
+  STRONG_BUY days-to-trough h=5: median 2, mean 2.5 (n=21)
+  STRONG_BUY days-to-trough h=10: median 3, mean 4.1 (n=19)
+  STRONG_BUY days-to-trough h=20: median 2.5, mean 4.9 (n=14)
+
+STRONG_BUY / BUY_WATCH since 2026-10-01 (open windows shown to date):
+  2026-10-01 BUY_WATCH  comp  5.9 @ 761.28 | fwd5/10/20 +2.28/+0.97/+1.02 | MAE5/10/20 +1.11/+0.97/+0.05 | to-date (20d) ret 1.02 MAE 0.05
+  2026-10-14 BUY_WATCH  comp  5.9 @ 773.75 | fwd5/10/20 -0.06/-0.50/-1.83 | MAE5/10/20 -1.56/-1.56/-5.09 | to-date (20d) ret -1.83 MAE -5.09
+  2026-10-15 BUY_WATCH  comp  7.1 @ 768.66 | fwd5/10/20 -0.62/+0.05/-1.49 | MAE5/10/20 -0.91/-0.91/-4.46 | to-date (20d) ret -1.49 MAE -4.46
+  2026-10-16 STRONG_BUY comp  4.7 @ 761.68 | fwd5/10/20 +0.77/-0.88/-1.01 | MAE5/10/20 +0.29/-0.88/-3.58 | to-date (20d) ret -1.01 MAE -3.58
+  2026-10-19 BUY_WATCH  comp  4.7 @ 766.05 | fwd5/10/20 -0.45/-1.84/-3.50 | MAE5/10/20 -0.45/-1.84/-4.13 | to-date (20d) ret -3.5 MAE -4.13
+  2026-10-22 STRONG_BUY comp  4.7 @ 763.86 | fwd5/10/20 +0.67/-3.86/  open | MAE5/10/20 -0.16/-3.86/  open | to-date (19d) ret -4.03 MAE -4.24
+  2026-10-23 BUY_WATCH  comp  4.7 @ 767.54 | fwd5/10/20 -1.63/-4.19/  open | MAE5/10/20 -1.63/-4.32/  open | to-date (18d) ret -4.49 MAE -4.7
+  2026-10-26 STRONG_BUY comp  4.7 @ 762.64 | fwd5/10/20 -1.40/-1.26/  open | MAE5/10/20 -1.40/-3.70/  open | to-date (17d) ret -3.88 MAE -4.09
+  2026-10-30 STRONG_BUY comp  4.7 @ 755.00 | fwd5/10/20 -2.60/-0.13/  open | MAE5/10/20 -2.73/-2.73/  open | to-date (13d) ret -2.9 MAE -3.12
+  2026-11-02 STRONG_BUY comp  4.5 @ 751.96 | fwd5/10/20 +0.14/-1.69/  open | MAE5/10/20 -2.34/-2.34/  open | to-date (12d) ret -2.51 MAE -2.73
+  2026-11-03 STRONG_BUY comp  4.5 @ 754.65 | fwd5/10/20 -0.63/-3.07/  open | MAE5/10/20 -2.68/-3.07/  open | to-date (11d) ret -2.86 MAE -3.07
+  2026-11-05 BUY_WATCH  comp  0.9 @ 734.40 | fwd5/10/20 +3.10/  open/  open | MAE5/10/20 +0.14/  open/  open | to-date (9d) ret -0.18 MAE -0.4
+  2026-11-06 STRONG_BUY comp  2.1 @ 735.40 | fwd5/10/20 +2.53/  open/  open | MAE5/10/20 +1.97/  open/  open | to-date (8d) ret -0.32 MAE -0.54
+  2026-11-10 STRONG_BUY comp  4.7 @ 749.88 | fwd5/10/20 -2.46/  open/  open | MAE5/10/20 -2.46/  open/  open | to-date (6d) ret -2.24 MAE -2.46
+  2026-11-12 BUY_WATCH  comp  3.7 @ 757.18 | fwd5/10/20   open/  open/  open | MAE5/10/20   open/  open/  open | to-date (4d) ret -3.18 MAE -3.4
+  2026-11-13 STRONG_BUY comp  3.7 @ 753.99 | fwd5/10/20   open/  open/  open | MAE5/10/20   open/  open/  open | to-date (3d) ret -2.77 MAE -2.99
+  2026-11-16 STRONG_BUY comp  2.5 @ 739.27 | fwd5/10/20   open/  open/  open | MAE5/10/20   open/  open/  open | to-date (2d) ret -0.84 MAE -1.06
+  2026-11-17 BUY_WATCH  comp  0.1 @ 731.46 | fwd5/10/20   open/  open/  open | MAE5/10/20   open/  open/  open | to-date (1d) ret 0.22 MAE 0.22
+  2026-11-18 STRONG_BUY comp  1.5 @ 733.08 | fwd5/10/20   open/  open/  open | MAE5/10/20   open/  open/  open | to-date (0d) ret None MAE None
+
+DEEP: 1995-10-17..2026-08-21 (7762 days). Proxy STRONG_BUY = comp>=1 & RSI<50 & SKEW>138 & VIX>17 (no GEX).
+  full      base               h=10 n=7752 (100.0% of days) hit  60.5% avg +0.39 | MAE avg -1.76 worst -26.77 | P(MAE<=-2/-3) 34.7/22.2% | winners dipped<=-2 12.9% | -3% stop avg +0.24 (hit 57.3%, winners killed 250)
+  full      base               h=20 n=7742 (100.0% of days) hit  63.8% avg +0.77 | MAE avg -2.75 worst -31.39 | P(MAE<=-2/-3) 47.0/34.5% | winners dipped<=-2 24.9% | -3% stop avg +0.44 (hit 55.5%, winners killed 641)
+  full      SB_proxy_days      h=10 n= 147 (1.9% of days) hit  59.2% avg +0.56 | MAE avg -1.87 worst -13.72 | P(MAE<=-2/-3) 42.2/27.2% | winners dipped<=-2 17.2% | -3% stop avg +0.52 (hit 55.8%, winners killed 5)
+  full      SB_proxy_days      h=20 n= 143 (1.8% of days) hit  68.5% avg +1.34 | MAE avg -2.66 worst -13.72 | P(MAE<=-2/-3) 49.0/35.0% | winners dipped<=-2 29.6% | -3% stop avg +0.77 (hit 58.7%, winners killed 14)
+  full      SB_proxy_episodes  h=10 n=  35 (0.5% of days) hit  68.6% avg +1.11 | MAE avg -1.34 worst -6.57 | P(MAE<=-2/-3) 37.1/20.0% | winners dipped<=-2 8.3% | -3% stop avg +1.10 (hit 68.6%, winners killed 0)
+  full      SB_proxy_episodes  h=20 n=  35 (0.5% of days) hit  77.1% avg +1.33 | MAE avg -2.30 worst -12.20 | P(MAE<=-2/-3) 40.0/25.7% | winners dipped<=-2 22.2% | -3% stop avg +1.46 (hit 74.3%, winners killed 1)
+  full      BW_proxy_days      h=10 n=3035 (39.2% of days) hit  60.2% avg +0.47 | MAE avg -1.72 worst -24.91 | P(MAE<=-2/-3) 35.9/23.0% | winners dipped<=-2 13.2% | -3% stop avg +0.32 (hit 57.0%, winners killed 97)
+  full      BW_proxy_days      h=20 n=3033 (39.2% of days) hit  65.6% avg +0.96 | MAE avg -2.62 worst -30.85 | P(MAE<=-2/-3) 47.5/35.1% | winners dipped<=-2 26.4% | -3% stop avg +0.56 (hit 56.6%, winners killed 275)
+  pre_2010  base               h=10 n=3578 (100.0% of days) hit  57.0% avg +0.25 | MAE avg -2.05 worst -26.77 | P(MAE<=-2/-3) 41.2/26.4% | winners dipped<=-2 16.7% | -3% stop avg +0.06 (hit 53.0%, winners killed 141)
+  pre_2010  base               h=20 n=3578 (100.0% of days) hit  59.7% avg +0.49 | MAE avg -3.17 worst -29.81 | P(MAE<=-2/-3) 53.2/39.9% | winners dipped<=-2 29.1% | -3% stop avg +0.17 (hit 50.8%, winners killed 319)
+  pre_2010  BW_proxy_days      h=10 n=1404 (39.2% of days) hit  59.3% avg +0.48 | MAE avg -1.67 worst -24.91 | P(MAE<=-2/-3) 37.5/23.1% | winners dipped<=-2 13.9% | -3% stop avg +0.27 (hit 56.2%, winners killed 43)
+  pre_2010  BW_proxy_days      h=20 n=1404 (39.2% of days) hit  63.4% avg +0.90 | MAE avg -2.61 worst -29.81 | P(MAE<=-2/-3) 49.4/36.5% | winners dipped<=-2 26.5% | -3% stop avg +0.54 (hit 56.1%, winners killed 103)
+  2010_2017 base               h=10 n=2013 (100.0% of days) hit  62.7% avg +0.47 | MAE avg -1.32 worst -16.12 | P(MAE<=-2/-3) 25.6/15.6% | winners dipped<=-2 8.2% | -3% stop avg +0.36 (hit 60.5%, winners killed 45)
+  2010_2017 base               h=20 n=2013 (100.0% of days) hit  67.3% avg +0.97 | MAE avg -2.05 worst -16.58 | P(MAE<=-2/-3) 38.3/26.5% | winners dipped<=-2 18.6% | -3% stop avg +0.61 (hit 60.3%, winners killed 141)
+  2010_2017 SB_proxy_days      h=10 n=  10 (0.5% of days) hit  60.0% avg +0.59 | MAE avg -2.05 worst -6.57 | P(MAE<=-2/-3) 60.0/50.0% | winners dipped<=-2 33.3% | -3% stop avg -0.18 (hit 50.0%, winners killed 1)
+  2010_2017 SB_proxy_days      h=20 n=  10 (0.5% of days) hit  60.0% avg +0.30 | MAE avg -3.26 worst -7.90 | P(MAE<=-2/-3) 70.0/60.0% | winners dipped<=-2 50.0% | -3% stop avg -0.60 (hit 40.0%, winners killed 2)
+  2010_2017 SB_proxy_episodes  h=10 n=   6 (0.3% of days) hit  66.7% avg +0.57 | MAE avg -1.74 worst -6.57 | P(MAE<=-2/-3) 50.0/33.3% | winners dipped<=-2 25.0% | -3% stop avg +0.50 (hit 66.7%, winners killed 0)
+  2010_2017 SB_proxy_episodes  h=20 n=   6 (0.3% of days) hit  66.7% avg +0.11 | MAE avg -3.71 worst -7.90 | P(MAE<=-2/-3) 66.7/50.0% | winners dipped<=-2 50.0% | -3% stop avg -0.33 (hit 50.0%, winners killed 1)
+  2010_2017 BW_proxy_days      h=10 n= 985 (48.9% of days) hit  60.3% avg +0.52 | MAE avg -1.62 worst -16.12 | P(MAE<=-2/-3) 32.8/21.1% | winners dipped<=-2 12.3% | -3% stop avg +0.36 (hit 56.9%, winners killed 34)
+  2010_2017 BW_proxy_days      h=20 n= 985 (48.9% of days) hit  69.1% avg +1.23 | MAE avg -2.28 worst -16.58 | P(MAE<=-2/-3) 43.7/32.1% | winners dipped<=-2 25.4% | -3% stop avg +0.66 (hit 58.8%, winners killed 102)
+  2018+     base               h=10 n=2161 (100.0% of days) hit  64.3% avg +0.54 | MAE avg -1.70 worst -23.34 | P(MAE<=-2/-3) 32.5/21.4% | winners dipped<=-2 11.6% | -3% stop avg +0.44 (hit 61.4%, winners killed 64)
+  2018+     base               h=20 n=2151 (100.0% of days) hit  67.2% avg +1.06 | MAE avg -2.69 worst -31.39 | P(MAE<=-2/-3) 44.9/33.2% | winners dipped<=-2 24.4% | -3% stop avg +0.72 (hit 58.8%, winners killed 181)
+  2018+     SB_proxy_days      h=10 n= 137 (6.3% of days) hit  59.1% avg +0.56 | MAE avg -1.86 worst -13.72 | P(MAE<=-2/-3) 40.9/25.5% | winners dipped<=-2 16.0% | -3% stop avg +0.57 (hit 56.2%, winners killed 4)
+  2018+     SB_proxy_days      h=20 n= 133 (6.2% of days) hit  69.2% avg +1.42 | MAE avg -2.61 worst -13.72 | P(MAE<=-2/-3) 47.4/33.1% | winners dipped<=-2 28.3% | -3% stop avg +0.87 (hit 60.2%, winners killed 12)
+  2018+     SB_proxy_episodes  h=10 n=  29 (1.3% of days) hit  69.0% avg +1.23 | MAE avg -1.26 worst -6.14 | P(MAE<=-2/-3) 34.5/17.2% | winners dipped<=-2 5.0% | -3% stop avg +1.22 (hit 69.0%, winners killed 0)
+  2018+     SB_proxy_episodes  h=20 n=  29 (1.3% of days) hit  79.3% avg +1.59 | MAE avg -2.01 worst -12.20 | P(MAE<=-2/-3) 34.5/20.7% | winners dipped<=-2 17.4% | -3% stop avg +1.82 (hit 79.3%, winners killed 0)
+  2018+     BW_proxy_days      h=10 n= 646 (29.9% of days) hit  62.2% avg +0.36 | MAE avg -1.97 worst -23.34 | P(MAE<=-2/-3) 37.3/25.5% | winners dipped<=-2 12.9% | -3% stop avg +0.38 (hit 59.1%, winners killed 20)
+  2018+     BW_proxy_days      h=20 n= 644 (29.9% of days) hit  65.2% avg +0.70 | MAE avg -3.17 worst -30.85 | P(MAE<=-2/-3) 49.1/37.0% | winners dipped<=-2 27.6% | -3% stop avg +0.45 (hit 54.3%, winners killed 70)
+
+  SB proxy 2010+: fwd20 split by first-5d MAE
+    MAE5>-2   n=100 hit20 78.0% avg20 +1.97
+    MAE5<=-2  n=43 hit20 46.5% avg20 -0.13
+  Worst SB-proxy episodes by MAE20 (date, fwd20, MAE20, MFE20):
+    2025-03-20 -6.91 -12.20 +1.76
+    2022-04-13 -11.50 -11.50 +0.39
+    2025-02-21 -5.99 -8.09 -0.46
+    2022-01-05 -4.65 -7.93 +0.56
+    2015-12-15 -6.39 -7.90 +1.46
+    2016-01-04 -5.40 -7.65 +0.17
+    2018-03-19 -0.11 -4.81 +0.17
+    2021-09-13 -2.66 -4.02 +0.29
+
+Part C: SB proxy days whose close breached -2% within 5d; return from breach close to entry+20
+  SB_proxy 2010+: {'n_days': 43, 'n_episodes': 14, 'hit_from_breach': 60.5, 'avg_from_breach': 2.5, 'med_from_breach': 2.47, 'avg_further_mae': -2.6, 'p_further_le_m3': 37.2, 'avg_entry_to_end': -0.13}
+  SB_proxy 2018+: {'n_days': 39, 'n_episodes': 12, 'hit_from_breach': 66.7, 'avg_from_breach': 2.99, 'med_from_breach': 2.65, 'avg_further_mae': -2.53, 'p_further_le_m3': 35.9, 'avg_entry_to_end': 0.36}
+  SB_proxy full: {'n_days': 43, 'n_episodes': 14, 'hit_from_breach': 60.5, 'avg_from_breach': 2.5, 'med_from_breach': 2.47, 'avg_further_mae': -2.6, 'p_further_le_m3': 37.2, 'avg_entry_to_end': -0.13}
+  ALL days 2010+: {'n_days': 779, 'n_episodes': 87, 'hit_from_breach': 68.9, 'avg_from_breach': 1.75, 'med_from_breach': 2.25, 'avg_further_mae': -2.87, 'p_further_le_m3': 36.2, 'avg_entry_to_end': -1.15}
+  ALL days 2018+: {'n_days': 457, 'n_episodes': 49, 'hit_from_breach': 67.8, 'avg_from_breach': 1.87, 'med_from_breach': 2.64, 'avg_further_mae': -3.06, 'p_further_le_m3': 38.3, 'avg_entry_to_end': -1.1}
+
+First fire vs re-fire (SB proxy, cluster gap >10 trading days)
+  2010+ first  n=35 hit20 77.1% avg +1.33 MAE20 -2.30 P(MAE<=-3) 25.7%
+  2010+ refire n=108 hit20 65.7% avg +1.34 MAE20 -2.77 P(MAE<=-3) 38.0%
+  2018+ first  n=29 hit20 79.3% avg +1.59 MAE20 -2.01 P(MAE<=-3) 20.7%
+  2018+ refire n=104 hit20 66.3% avg +1.37 MAE20 -2.78 P(MAE<=-3) 36.5%
+
+Live STRONG_BUY breach check (close <= entry-2% within 5d):
+  2026-06-05 @ 735.34: breach none; entry->2026-07-03 +1.42
+  2026-06-10 @ 724.49: breach none; entry->2026-07-08 +2.73
+  2026-06-23 @ 734.85: breach none; entry->2026-07-21 +1.81
+  2026-06-26 @ 730.85: breach none; entry->2026-07-24 +1.00
+  2026-07-23 @ 738.88: breach none; entry->2026-08-20 +3.01
+  2026-07-24 @ 738.18: breach none; entry->2026-08-21 +3.67
+  2026-07-27 @ 737.16: breach none; entry->2026-08-24 +3.75
+  2026-07-28 @ 738.55: breach none; entry->2026-08-25 +3.30
+  2026-07-29 @ 727.18: breach none; entry->2026-08-26 +5.04
+  2026-07-30 @ 736.73: breach none; entry->2026-08-27 +4.53
+  2026-09-14 @ 761.48: breach none; entry->2026-10-12 +2.10
+  2026-09-15 @ 757.05: breach none; entry->2026-10-13 +2.50
+  2026-09-16 @ 754.05: breach none; entry->2026-10-14 +2.61
+  2026-10-16 @ 761.68: breach none; entry->2026-11-13 -1.01
+  2026-10-22 @ 763.86: breach none; entry->2026-11-18 -4.03 [open]
+  2026-10-26 @ 762.64: breach none; entry->2026-11-18 -3.88 [open]
+  2026-10-30 @ 755.00: breach 2026-11-05 (734.40); entry->2026-11-18 -2.90; breach->2026-11-18 -0.18 [open]
+  2026-11-02 @ 751.96: breach 2026-11-05 (734.40); entry->2026-11-18 -2.51; breach->2026-11-18 -0.18 [open]
+  2026-11-03 @ 754.65: breach 2026-11-05 (734.40); entry->2026-11-18 -2.86; breach->2026-11-18 -0.18 [open]
+  2026-11-06 @ 735.40: breach none; entry->2026-11-18 -0.32 [open]
+  2026-11-10 @ 749.88: breach 2026-11-17 (731.46); entry->2026-11-18 -2.24; breach->2026-11-18 +0.22 [open]
+  2026-11-13 @ 753.99: breach 2026-11-17 (731.46); entry->2026-11-18 -2.77; breach->2026-11-18 +0.22 [open]
+  2026-11-16 @ 739.27: breach none; entry->2026-11-18 -0.84 [open]
+  2026-11-18 @ 733.08: breach none; entry->2026-11-18 +0.00 [open]
