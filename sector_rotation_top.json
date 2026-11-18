@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -145,9 +145,9 @@
       "ticker": "BTC-USD",
       "label": "Bitcoin",
       "quadrant": "LAGGING",
-      "rs_now": 85.01,
-      "rs_momentum": -12.61,
-      "return_21d": -16.91
+      "rs_now": 82.08,
+      "rs_momentum": -12.18,
+      "return_21d": -20.42
     }
   ],
   "by_quadrant": {
