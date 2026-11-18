@@ -21,6 +21,16 @@ Each time this runs, it:
      size, average forward return, hit rate, best/worst) grouped by
      regime_signal label and horizon, computed from every row accumulated
      so far.
+  5. Records the path, not just the endpoint: mae_pct (maximum adverse
+     excursion = worst SPY close in days t+1..t+h vs the entry close) and
+     mfe_pct (best close). A 100% hit rate can hide a -3% dip first; the
+     summary reports avg/median/worst MAE, P(MAE <= -2% / -3%) and how many
+     eventual winners first dipped <= -2%. Older rows logged before these
+     columns existed are backfilled from gex_log.csv on the next run
+     (closes only, so intraday lows are not captured: MAE is understated).
+  6. Lists STRONG_BUY / BUY_WATCH calls whose 20d window is still open,
+     with return and MAE to date, so a losing cluster is visible before it
+     resolves (e.g. the Oct 16 - Nov 3 2026 STRONG_BUY cluster).
 
 This does NOT require the day's data to have just been updated — it only
 ever processes historical signals whose forward-return window has already
@@ -42,6 +52,10 @@ REGIME_LOG = "regime_log.csv"
 PERF_LOG = "signal_performance_log.csv"
 SUMMARY_JSON = "signal_performance_summary.json"
 HORIZONS = [5, 10, 20]
+FIELDNAMES = ["date", "regime_signal", "composite_score", "entry_price",
+              "horizon_days", "exit_date", "exit_price", "return_pct",
+              "mae_pct", "mfe_pct"]
+OPEN_WINDOW_SIGNALS = ("STRONG_BUY", "BUY_WATCH")
 
 # All labels get_regime_signal() in regime_analyzer.py can emit. Used so the
 # summary can call out signals that have NEVER fired live yet (e.g. DEFENSIVE/
@@ -103,6 +117,63 @@ def load_existing_log():
     return seen, rows
 
 
+def path_excursions(prices, dates_sorted, idx, horizon, entry_price):
+    """(mae_pct, mfe_pct) over closes idx+1..idx+horizon vs entry_price, or (None, None)."""
+    if entry_price == 0 or idx + horizon >= len(dates_sorted):
+        return None, None
+    path = [prices[dates_sorted[j]] for j in range(idx + 1, idx + horizon + 1)]
+    mae = round((min(path) - entry_price) / entry_price * 100, 2)
+    mfe = round((max(path) - entry_price) / entry_price * 100, 2)
+    return mae, mfe
+
+
+def backfill_excursions(rows, prices, dates_sorted, date_index):
+    """Fill mae_pct/mfe_pct on rows logged before those columns existed. Returns count filled."""
+    filled = 0
+    for r in rows:
+        if r.get("mae_pct") not in (None, "") and r.get("mfe_pct") not in (None, ""):
+            continue
+        d = r["date"]
+        if d not in date_index:
+            continue
+        try:
+            entry = float(r["entry_price"])
+        except (TypeError, ValueError):
+            continue
+        mae, mfe = path_excursions(prices, dates_sorted, date_index[d], int(r["horizon_days"]), entry)
+        if mae is None:
+            continue
+        r["mae_pct"], r["mfe_pct"] = mae, mfe
+        filled += 1
+    return filled
+
+
+def open_windows(signals, prices, dates_sorted, date_index, horizon=20):
+    """STRONG_BUY/BUY_WATCH calls whose `horizon` window hasn't closed: return and MAE to date."""
+    out = []
+    last = len(dates_sorted) - 1
+    for sig in signals:
+        if sig["regime_signal"] not in OPEN_WINDOW_SIGNALS or sig["date"] not in date_index:
+            continue
+        idx = date_index[sig["date"]]
+        if idx + horizon <= last:
+            continue
+        entry = prices[sig["date"]]
+        if entry == 0:
+            continue
+        path = [prices[dates_sorted[j]] for j in range(idx + 1, last + 1)]
+        out.append({
+            "date": sig["date"],
+            "regime_signal": sig["regime_signal"],
+            "composite_score": sig["composite_score"],
+            "entry_price": entry,
+            "days_elapsed": len(path),
+            "return_to_date_pct": round((path[-1] - entry) / entry * 100, 2) if path else None,
+            "mae_to_date_pct": round((min(path) - entry) / entry * 100, 2) if path else None,
+        })
+    return out
+
+
 def main():
     prices = load_spy_prices()
     dates_sorted = sorted(prices.keys())
@@ -110,6 +181,7 @@ def main():
 
     signals = load_regime_signals()
     seen, existing_rows = load_existing_log()
+    backfilled = backfill_excursions(existing_rows, prices, dates_sorted, date_index)
 
     new_rows = []
     for sig in signals:
@@ -130,6 +202,7 @@ def main():
             if entry_price == 0:
                 continue
             return_pct = round((exit_price - entry_price) / entry_price * 100, 2)
+            mae, mfe = path_excursions(prices, dates_sorted, idx, horizon, entry_price)
             new_rows.append({
                 "date": d,
                 "regime_signal": sig["regime_signal"],
@@ -139,27 +212,36 @@ def main():
                 "exit_date": exit_date,
                 "exit_price": exit_price,
                 "return_pct": return_pct,
+                "mae_pct": mae,
+                "mfe_pct": mfe,
             })
 
-    if new_rows:
-        fieldnames = ["date", "regime_signal", "composite_score", "entry_price",
-                      "horizon_days", "exit_date", "exit_price", "return_pct"]
-        write_header = not existing_rows
-        with open(PERF_LOG, "a", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            if write_header:
-                writer.writeheader()
-            for row in new_rows:
-                writer.writerow(row)
-        print(f"Logged {len(new_rows)} newly-resolved signal outcome(s).")
+    if new_rows or backfilled or (existing_rows and "mae_pct" not in existing_rows[0]):
+        # Rewrite the whole file (not append) so the header carries the new
+        # columns and backfilled rows are saved. Existing rows' own values
+        # (entry/exit/return) are kept exactly as logged.
+        with open(PERF_LOG, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=FIELDNAMES, extrasaction="ignore")
+            writer.writeheader()
+            for row in existing_rows + new_rows:
+                writer.writerow({k: row.get(k, "") for k in FIELDNAMES})
+        print(f"Logged {len(new_rows)} newly-resolved signal outcome(s)"
+              f"{f'; backfilled MAE/MFE on {backfilled} older row(s)' if backfilled else ''}.")
     else:
         print("No newly-resolved signal outcomes today "
               "(either nothing fired far enough back yet, or it's all already logged).")
 
-    build_summary()
+    build_summary(open_windows(signals, prices, dates_sorted, date_index))
 
 
-def build_summary():
+def _f(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def build_summary(open_list=None):
     if not os.path.exists(PERF_LOG):
         print("No performance log yet — nothing to summarize.")
         return
@@ -167,10 +249,13 @@ def build_summary():
     with open(PERF_LOG, newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    groups = {}
+    groups, mae_groups = {}, {}
     for r in rows:
         key = (r["regime_signal"], int(r["horizon_days"]))
         groups.setdefault(key, []).append(float(r["return_pct"]))
+        mae, mfe = _f(r.get("mae_pct")), _f(r.get("mfe_pct"))
+        if mae is not None and mfe is not None:
+            mae_groups.setdefault(key, []).append((float(r["return_pct"]), mae, mfe))
 
     summary = {}
     for (sig, horizon), returns in sorted(groups.items()):
@@ -186,6 +271,23 @@ def build_summary():
             "worst_pct": min(returns),
             "confidence": confidence_tier(n),
         }
+        triples = mae_groups.get((sig, horizon), [])
+        if triples:
+            maes = sorted(t[1] for t in triples)
+            m = len(maes)
+            med = maes[m // 2] if m % 2 else (maes[m // 2 - 1] + maes[m // 2]) / 2
+            winners = [t for t in triples if t[0] > 0]
+            summary[sig][str(horizon)].update({
+                "n_with_mae": m,
+                "avg_mae_pct": round(sum(maes) / m, 2),
+                "median_mae_pct": round(med, 2),
+                "worst_mae_pct": maes[0],
+                "pct_mae_le_minus2": round(sum(1 for x in maes if x <= -2) / m * 100, 1),
+                "pct_mae_le_minus3": round(sum(1 for x in maes if x <= -3) / m * 100, 1),
+                "avg_mfe_pct": round(sum(t[2] for t in triples) / m, 2),
+                "winners_that_first_dipped_le_minus2": sum(1 for t in winners if t[1] <= -2),
+                "winners": len(winners),
+            })
 
     signals_seen = {r["regime_signal"] for r in rows}
     never_fired_live = sorted(s for s in ALL_REGIME_SIGNALS if s not in signals_seen)
@@ -213,7 +315,18 @@ def build_summary():
             "deep_history_backtest_summary.json for the only available (historical, "
             "pre-live) evidence on how these regimes have behaved."
         ),
+        "mae_note": (
+            "mae_pct = worst SPY close within the horizon vs the entry close "
+            "(closes only, so intraday lows are not captured and MAE is understated); "
+            "mfe_pct = best close. Read hit_rate alongside pct_mae_le_minus3: a "
+            "signal that wins in 20d but first draws down 3%+ is a known-risk entry."
+        ),
         "by_regime_signal": summary,
+        "open_20d_windows": open_list or [],
+        "open_20d_windows_note": (
+            "STRONG_BUY/BUY_WATCH calls whose 20-trading-day window has not closed yet, "
+            "with return and MAE to date (not counted in by_regime_signal until resolved)."
+        ),
     }
 
     with open(SUMMARY_JSON, "w", encoding="utf-8") as f:
