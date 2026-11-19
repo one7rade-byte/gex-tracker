@@ -40,20 +40,20 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.5% in 5 days)",
+   "text": "calm (HYG -0.6% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 27.0, backwardation day 3",
+   "text": "VIX 28.4, backwardation day 3",
    "tone": "red"
   }
  ],
  "flow_date": "2026-11-19",
  "flow_10d_pct": {
-  "smh_spy": 2.77,
-  "rsp_spy": -0.17,
-  "defensive_cyclical": -0.37,
-  "hyg_ief": 0.49
+  "smh_spy": 2.34,
+  "rsp_spy": -0.08,
+  "defensive_cyclical": -0.02,
+  "hyg_ief": 0.28
  }
 }

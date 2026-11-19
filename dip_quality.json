@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "generated_at": "2026-11-19T19:03:06+00:00",
+ "generated_at": "2026-11-19T23:03:09+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -16,43 +16,43 @@
    "ticker": "MSFT",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -1.0,
-   "five_day_pct": -3.8
+   "day_pct": -2.0,
+   "five_day_pct": -4.7
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -1.7,
-   "five_day_pct": -10.7
+   "day_pct": -3.3,
+   "five_day_pct": -12.2
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -3.3,
-   "five_day_pct": -3.2
+   "day_pct": -3.9,
+   "five_day_pct": -3.8
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -1.2,
-   "five_day_pct": -6.6
+   "day_pct": -3.5,
+   "five_day_pct": -8.7
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -2.6,
-   "five_day_pct": -3.8
+   "day_pct": -3.3,
+   "five_day_pct": -4.4
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
    "date": "2026-11-19",
-   "day_pct": -1.8,
-   "five_day_pct": -5.1
+   "day_pct": -2.4,
+   "five_day_pct": -5.8
   }
  },
  "sp500_shocks": [
@@ -61,8 +61,8 @@
    "status": "shock",
    "shock_date": "2026-11-19",
    "date": "2026-11-19",
-   "drop_pct": -9.5,
-   "excess_pct": -8.1,
+   "drop_pct": -7.7,
+   "excess_pct": -5.8,
    "since_shock_pct": 0.0,
    "score": 69,
    "band": 5,
@@ -81,18 +81,18 @@
     }
    ],
    "features": {
-    "drop_pct": -9.476,
-    "excess_pct": -8.095,
-    "spy_day_pct": -1.38,
-    "vol_ratio": 1.931,
+    "drop_pct": -7.724,
+    "excess_pct": -5.762,
+    "spy_day_pct": -1.962,
+    "vol_ratio": 2.555,
     "gap_pct": 2.516,
-    "close_loc": 0.111,
+    "close_loc": 0.221,
     "pre60_pct": 10.635,
     "above_200ma": 1,
     "off_52w_high_pct": -18.367,
-    "spy_20d_pct": -5.739,
+    "spy_20d_pct": -6.295,
     "spy_above_200ma": 0,
-    "vix": 27.02
+    "vix": 28.44
    }
   },
   {
@@ -102,7 +102,7 @@
    "date": "2026-11-19",
    "drop_pct": -13.0,
    "excess_pct": -12.7,
-   "since_shock_pct": -1.2,
+   "since_shock_pct": -1.5,
    "score": 68,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -141,7 +141,7 @@
    "date": "2026-11-19",
    "drop_pct": -6.3,
    "excess_pct": -5.3,
-   "since_shock_pct": -4.0,
+   "since_shock_pct": -4.2,
    "score": 67,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -184,7 +184,7 @@
    "date": "2026-11-19",
    "drop_pct": -10.2,
    "excess_pct": -9.9,
-   "since_shock_pct": -4.2,
+   "since_shock_pct": -5.6,
    "score": 65,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -205,7 +205,7 @@
     "drop_pct": -10.206,
     "excess_pct": -9.9,
     "spy_day_pct": -0.306,
-    "vol_ratio": 3.146,
+    "vol_ratio": 3.152,
     "gap_pct": -0.652,
     "close_loc": 0.165,
     "pre60_pct": -2.277,
@@ -221,8 +221,8 @@
    "status": "shock",
    "shock_date": "2026-11-19",
    "date": "2026-11-19",
-   "drop_pct": -15.9,
-   "excess_pct": -14.5,
+   "drop_pct": -15.2,
+   "excess_pct": -13.2,
    "since_shock_pct": 0.0,
    "score": 64,
    "band": 5,
@@ -237,18 +237,18 @@
     }
    ],
    "features": {
-    "drop_pct": -15.925,
-    "excess_pct": -14.545,
-    "spy_day_pct": -1.38,
-    "vol_ratio": 2.26,
+    "drop_pct": -15.16,
+    "excess_pct": -13.198,
+    "spy_day_pct": -1.962,
+    "vol_ratio": 4.062,
     "gap_pct": -6.498,
-    "close_loc": 0.016,
+    "close_loc": 0.118,
     "pre60_pct": 10.799,
     "above_200ma": 1,
     "off_52w_high_pct": -3.699,
-    "spy_20d_pct": -5.739,
+    "spy_20d_pct": -6.295,
     "spy_above_200ma": 0,
-    "vix": 27.02
+    "vix": 28.44
    }
   },
   {
@@ -258,7 +258,7 @@
    "date": "2026-11-19",
    "drop_pct": -7.0,
    "excess_pct": -6.7,
-   "since_shock_pct": -3.5,
+   "since_shock_pct": -4.5,
    "score": 61,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -279,7 +279,7 @@
     "drop_pct": -6.962,
     "excess_pct": -6.656,
     "spy_day_pct": -0.306,
-    "vol_ratio": 2.41,
+    "vol_ratio": 2.411,
     "gap_pct": -5.642,
     "close_loc": 0.456,
     "pre60_pct": -28.92,
@@ -297,7 +297,7 @@
    "date": "2026-11-19",
    "drop_pct": -6.5,
    "excess_pct": -5.5,
-   "since_shock_pct": -4.1,
+   "since_shock_pct": -4.3,
    "score": 59,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -340,7 +340,7 @@
    "date": "2026-11-19",
    "drop_pct": -9.5,
    "excess_pct": -8.4,
-   "since_shock_pct": -4.5,
+   "since_shock_pct": -5.8,
    "score": 57,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -375,7 +375,7 @@
    "date": "2026-11-19",
    "drop_pct": -6.2,
    "excess_pct": -5.9,
-   "since_shock_pct": -0.3,
+   "since_shock_pct": -1.0,
    "score": 55,
    "band": 4,
    "verdict": "LEANS BUYABLE",
