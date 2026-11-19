@@ -1,0 +1,1156 @@
+{
+ "spy": [
+  {
+   "tier": -5,
+   "n": 33,
+   "to_m10": "38%",
+   "to_m15": "22%",
+   "to_m20": "16%",
+   "to_m30": "9%",
+   "median_bottom": -8.7,
+   "median_6m": 11.5,
+   "median_12m": 13.4,
+   "pos_12m": "24/30",
+   "median_worst_12m": -7.1
+  },
+  {
+   "tier": -8,
+   "n": 19,
+   "to_m10": "67%",
+   "to_m15": "39%",
+   "to_m20": "28%",
+   "to_m30": "17%",
+   "median_bottom": -11.6,
+   "median_6m": 13.8,
+   "median_12m": 15.6,
+   "pos_12m": "12/17",
+   "median_worst_12m": -9.0
+  },
+  {
+   "tier": -10,
+   "n": 12,
+   "to_m10": "\u2014",
+   "to_m15": "58%",
+   "to_m20": "42%",
+   "to_m30": "25%",
+   "median_bottom": -19.0,
+   "median_6m": 13.2,
+   "median_12m": 15.4,
+   "pos_12m": "9/12",
+   "median_worst_12m": -9.8
+  },
+  {
+   "tier": -15,
+   "n": 7,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "71%",
+   "to_m30": "43%",
+   "median_bottom": -25.4,
+   "median_6m": 18.8,
+   "median_12m": 29.8,
+   "pos_12m": "5/7",
+   "median_worst_12m": -10.4
+  },
+  {
+   "tier": -20,
+   "n": 5,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "60%",
+   "median_bottom": -34.1,
+   "median_6m": 6.4,
+   "median_12m": 16.6,
+   "pos_12m": "3/5",
+   "median_worst_12m": -10.1
+  },
+  {
+   "tier": -25,
+   "n": 4,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "75%",
+   "median_bottom": -41.6,
+   "median_6m": 0.4,
+   "median_12m": 9.0,
+   "pos_12m": "3/4",
+   "median_worst_12m": -12.8
+  },
+  {
+   "tier": -30,
+   "n": 3,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "\u2014",
+   "median_bottom": -49.1,
+   "median_6m": 12.6,
+   "median_12m": 0.8,
+   "pos_12m": "2/3",
+   "median_worst_12m": -23.4
+  },
+  {
+   "tier": -40,
+   "n": 2,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "\u2014",
+   "median_bottom": -52.8,
+   "median_6m": -3.1,
+   "median_12m": 13.0,
+   "pos_12m": "2/2",
+   "median_worst_12m": -20.1
+  }
+ ],
+ "qqq": [
+  {
+   "tier": -5,
+   "n": 30,
+   "to_m10": "66%",
+   "to_m15": "21%",
+   "to_m20": "17%",
+   "to_m30": "7%",
+   "median_bottom": -10.9,
+   "median_6m": 14.8,
+   "median_12m": 15.0,
+   "pos_12m": "20/28",
+   "median_worst_12m": -8.7
+  },
+  {
+   "tier": -8,
+   "n": 21,
+   "to_m10": "95%",
+   "to_m15": "30%",
+   "to_m20": "25%",
+   "to_m30": "10%",
+   "median_bottom": -11.9,
+   "median_6m": 15.9,
+   "median_12m": 17.9,
+   "pos_12m": "13/18",
+   "median_worst_12m": -9.3
+  },
+  {
+   "tier": -10,
+   "n": 20,
+   "to_m10": "\u2014",
+   "to_m15": "32%",
+   "to_m20": "26%",
+   "to_m30": "11%",
+   "median_bottom": -11.9,
+   "median_6m": 19.6,
+   "median_12m": 18.3,
+   "pos_12m": "12/17",
+   "median_worst_12m": -7.7
+  },
+  {
+   "tier": -15,
+   "n": 7,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "83%",
+   "to_m30": "33%",
+   "median_bottom": -25.9,
+   "median_6m": 19.3,
+   "median_12m": 7.9,
+   "pos_12m": "3/6",
+   "median_worst_12m": -18.1
+  },
+  {
+   "tier": -20,
+   "n": 5,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "40%",
+   "median_bottom": -28.6,
+   "median_6m": 25.3,
+   "median_12m": 43.4,
+   "pos_12m": "3/5",
+   "median_worst_12m": -4.5
+  },
+  {
+   "tier": -25,
+   "n": 3,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "67%",
+   "median_bottom": -35.6,
+   "median_6m": -9.9,
+   "median_12m": 9.4,
+   "pos_12m": "2/3",
+   "median_worst_12m": -12.5
+  },
+  {
+   "tier": -30,
+   "n": 2,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "\u2014",
+   "median_bottom": -59.3,
+   "median_6m": 2.4,
+   "median_12m": -7.9,
+   "pos_12m": "1/2",
+   "median_worst_12m": -31.6
+  },
+  {
+   "tier": -40,
+   "n": 1,
+   "to_m10": "\u2014",
+   "to_m15": "\u2014",
+   "to_m20": "\u2014",
+   "to_m30": "\u2014",
+   "median_bottom": -83.0,
+   "median_6m": -30.4,
+   "median_12m": -42.5,
+   "pos_12m": "0/1",
+   "median_worst_12m": -59.6
+  }
+ ],
+ "spy_credit_split": {
+  "-8_calm": {
+   "n": 5,
+   "median_bottom": -10.0,
+   "deeper_than_m20": "1/4",
+   "median_12m": 5.0,
+   "dates": [
+    "2018-02-08",
+    "2020-09-21",
+    "2022-01-21",
+    "2026-03-27",
+    "2026-11-19"
+   ]
+  },
+  "-8_stressed": {
+   "n": 7,
+   "median_bottom": -19.0,
+   "deeper_than_m20": "3/7",
+   "median_12m": 15.6,
+   "dates": [
+    "2007-08-15",
+    "2007-11-12",
+    "2015-08-24",
+    "2018-10-24",
+    "2020-02-27",
+    "2024-08-05",
+    "2025-03-10"
+   ]
+  },
+  "-10_calm": {
+   "n": 1,
+   "median_bottom": -10.2,
+   "deeper_than_m20": "0/1",
+   "median_12m": 5.0,
+   "dates": [
+    "2018-02-08"
+   ]
+  },
+  "-10_stressed": {
+   "n": 6,
+   "median_bottom": -22.8,
+   "deeper_than_m20": "4/6",
+   "median_12m": 15.4,
+   "dates": [
+    "2008-01-08",
+    "2015-08-24",
+    "2018-10-29",
+    "2020-02-27",
+    "2022-02-22",
+    "2025-03-13"
+   ]
+  },
+  "-15_calm": {
+   "n": 0,
+   "median_bottom": null,
+   "deeper_than_m20": "0/0",
+   "median_12m": null,
+   "dates": []
+  },
+  "-15_stressed": {
+   "n": 5,
+   "median_bottom": -25.4,
+   "deeper_than_m20": "4/5",
+   "median_12m": 29.8,
+   "dates": [
+    "2008-01-18",
+    "2018-12-20",
+    "2020-03-09",
+    "2022-05-09",
+    "2025-04-04"
+   ]
+  }
+ },
+ "spy_episodes": [
+  {
+   "ath_date": "1996-02-12",
+   "ath": 66.328125,
+   "ath_i": 81,
+   "bottom": -5.135453474676089,
+   "bottom_date": "1996-04-11",
+   "recovered": "1996-05-13",
+   "days_to_recover": 63,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1996-05-22",
+   "ath": 68.1875,
+   "ath_i": 151,
+   "bottom": -8.111824014665448,
+   "bottom_date": "1996-07-15",
+   "recovered": "1996-09-13",
+   "days_to_recover": 79,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "1997-02-18",
+   "ath": 81.875,
+   "ath_i": 338,
+   "bottom": -10.381679389312982,
+   "bottom_date": "1997-04-11",
+   "recovered": "1997-05-05",
+   "days_to_recover": 53,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1997-08-06",
+   "ath": 96.03125,
+   "ath_i": 456,
+   "bottom": -6.508298080052066,
+   "bottom_date": "1997-08-15",
+   "recovered": "1997-10-02",
+   "days_to_recover": 40,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1997-10-07",
+   "ath": 98.1875,
+   "ath_i": 499,
+   "bottom": -11.203055378739657,
+   "bottom_date": "1997-10-27",
+   "recovered": "1997-12-05",
+   "days_to_recover": 42,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1997-12-05",
+   "ath": 98.9375,
+   "ath_i": 541,
+   "bottom": -6.696146557169936,
+   "bottom_date": "1998-01-09",
+   "recovered": "1998-02-02",
+   "days_to_recover": 38,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1998-07-20",
+   "ath": 118.5625,
+   "ath_i": 695,
+   "bottom": -19.030047443331576,
+   "bottom_date": "1998-08-31",
+   "recovered": "1998-11-23",
+   "days_to_recover": 89,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15"
+   ]
+  },
+  {
+   "ath_date": "1999-01-08",
+   "ath": 127.75,
+   "ath_i": 815,
+   "bottom": -5.112485322896276,
+   "bottom_date": "1999-01-14",
+   "recovered": "1999-03-08",
+   "days_to_recover": 39,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1999-05-13",
+   "ath": 137.3438,
+   "ath_i": 901,
+   "bottom": -6.393663201396782,
+   "bottom_date": "1999-05-27",
+   "recovered": "1999-07-01",
+   "days_to_recover": 34,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1999-07-16",
+   "ath": 141.8125,
+   "ath_i": 945,
+   "bottom": -11.943587483472895,
+   "bottom_date": "1999-10-15",
+   "recovered": "1999-11-18",
+   "days_to_recover": 88,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1999-12-31",
+   "ath": 146.875,
+   "ath_i": 1062,
+   "bottom": -6.212765957446809,
+   "bottom_date": "2000-01-06",
+   "recovered": "2000-01-14",
+   "days_to_recover": 10,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2000-01-19",
+   "ath": 147.0,
+   "ath_i": 1074,
+   "bottom": -9.300612244897955,
+   "bottom_date": "2000-02-25",
+   "recovered": "2000-03-21",
+   "days_to_recover": 43,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "2000-03-24",
+   "ath": 153.5625,
+   "ath_i": 1120,
+   "bottom": -49.14122914122915,
+   "bottom_date": "2002-10-09",
+   "recovered": "2007-06-01",
+   "days_to_recover": 1805,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25",
+    "-30",
+    "-40"
+   ]
+  },
+  {
+   "ath_date": "2007-07-19",
+   "ath": 155.07,
+   "ath_i": 2958,
+   "bottom": -9.047526923324956,
+   "bottom_date": "2007-08-15",
+   "recovered": "2007-10-05",
+   "days_to_recover": 55,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "2007-10-09",
+   "ath": 156.48,
+   "ath_i": 3015,
+   "bottom": -56.47367075664622,
+   "bottom_date": "2009-03-09",
+   "recovered": "2013-03-14",
+   "days_to_recover": 1366,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25",
+    "-30",
+    "-40"
+   ]
+  },
+  {
+   "ath_date": "2013-05-21",
+   "ath": 167.17,
+   "ath_i": 4428,
+   "bottom": -6.047735837769929,
+   "bottom_date": "2013-06-24",
+   "recovered": "2013-07-11",
+   "days_to_recover": 35,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2013-12-31",
+   "ath": 184.69,
+   "ath_i": 4583,
+   "bottom": -5.696031187395101,
+   "bottom_date": "2014-02-03",
+   "recovered": "2014-02-24",
+   "days_to_recover": 36,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2014-09-18",
+   "ath": 201.82,
+   "ath_i": 4763,
+   "bottom": -7.704885541571693,
+   "bottom_date": "2014-10-16",
+   "recovered": "2014-11-05",
+   "days_to_recover": 34,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2015-05-21",
+   "ath": 213.5,
+   "ath_i": 4932,
+   "bottom": -14.35128805620608,
+   "bottom_date": "2016-02-11",
+   "recovered": "2016-07-12",
+   "days_to_recover": 287,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2018-01-26",
+   "ath": 286.58,
+   "ath_i": 5608,
+   "bottom": -10.157722102030831,
+   "bottom_date": "2018-04-02",
+   "recovered": "2018-08-24",
+   "days_to_recover": 146,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2018-09-20",
+   "ath": 293.58,
+   "ath_i": 5772,
+   "bottom": -20.17848627290687,
+   "bottom_date": "2018-12-24",
+   "recovered": "2019-04-29",
+   "days_to_recover": 150,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20"
+   ]
+  },
+  {
+   "ath_date": "2019-05-03",
+   "ath": 294.03,
+   "ath_i": 5926,
+   "bottom": -6.618372274937922,
+   "bottom_date": "2019-06-03",
+   "recovered": "2019-06-20",
+   "days_to_recover": 33,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2019-07-26",
+   "ath": 302.01,
+   "ath_i": 5984,
+   "bottom": -6.0229793715439905,
+   "bottom_date": "2019-08-05",
+   "recovered": "2019-10-28",
+   "days_to_recover": 65,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2020-02-19",
+   "ath": 338.34,
+   "ath_i": 6126,
+   "bottom": -34.10474670449843,
+   "bottom_date": "2020-03-23",
+   "recovered": "2020-08-18",
+   "days_to_recover": 126,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25",
+    "-30"
+   ]
+  },
+  {
+   "ath_date": "2020-09-02",
+   "ath": 357.7,
+   "ath_i": 6263,
+   "bottom": -9.801509644953876,
+   "bottom_date": "2020-09-23",
+   "recovered": "2020-11-13",
+   "days_to_recover": 51,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "2021-09-02",
+   "ath": 453.19,
+   "ath_i": 6515,
+   "bottom": -5.417153953088116,
+   "bottom_date": "2021-10-04",
+   "recovered": "2021-10-21",
+   "days_to_recover": 34,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2022-01-03",
+   "ath": 477.71,
+   "ath_i": 6599,
+   "bottom": -25.36057440706705,
+   "bottom_date": "2022-10-12",
+   "recovered": "2024-01-19",
+   "days_to_recover": 513,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25"
+   ]
+  },
+  {
+   "ath_date": "2024-03-27",
+   "ath": 523.17,
+   "ath_i": 7159,
+   "bottom": -5.353900261865152,
+   "bottom_date": "2024-04-19",
+   "recovered": "2024-05-14",
+   "days_to_recover": 33,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2024-07-16",
+   "ath": 564.86,
+   "ath_i": 7234,
+   "bottom": -8.40562263215664,
+   "bottom_date": "2024-08-05",
+   "recovered": "2024-09-19",
+   "days_to_recover": 46,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "2025-02-19",
+   "ath": 612.93,
+   "ath_i": 7383,
+   "bottom": -18.998906889856904,
+   "bottom_date": "2025-04-08",
+   "recovered": "2025-06-27",
+   "days_to_recover": 89,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15"
+   ]
+  },
+  {
+   "ath_date": "2025-10-29",
+   "ath": 687.39,
+   "ath_i": 7558,
+   "bottom": -5.071356871644916,
+   "bottom_date": "2025-11-20",
+   "recovered": "2025-12-10",
+   "days_to_recover": 29,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2026-01-27",
+   "ath": 695.49,
+   "ath_i": 7618,
+   "bottom": -9.133129160735598,
+   "bottom_date": "2026-03-30",
+   "recovered": "2026-04-15",
+   "days_to_recover": 54,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "2026-10-06",
+   "ath": 779.09,
+   "ath_i": 7792,
+   "bottom": -8.114595232899923,
+   "bottom_date": "2026-11-19",
+   "recovered": null,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  }
+ ],
+ "qqq_episodes": [
+  {
+   "ath_date": "1999-03-18",
+   "ath": 52.5625,
+   "ath_i": 6,
+   "bottom": -7.13436385255648,
+   "bottom_date": "1999-03-23",
+   "recovered": "1999-03-29",
+   "days_to_recover": 7,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1999-04-09",
+   "ath": 55.8125,
+   "ath_i": 21,
+   "bottom": -11.254288913773802,
+   "bottom_date": "1999-04-19",
+   "recovered": "1999-04-26",
+   "days_to_recover": 11,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1999-04-26",
+   "ath": 56.5859,
+   "ath_i": 32,
+   "bottom": -11.914805631791669,
+   "bottom_date": "1999-05-25",
+   "recovered": "1999-06-21",
+   "days_to_recover": 39,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1999-07-16",
+   "ath": 61.375,
+   "ath_i": 89,
+   "bottom": -11.81262729124236,
+   "bottom_date": "1999-08-10",
+   "recovered": "1999-08-25",
+   "days_to_recover": 28,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "1999-09-20",
+   "ath": 63.4609,
+   "ath_i": 134,
+   "bottom": -6.142995135587426,
+   "bottom_date": "1999-09-29",
+   "recovered": "1999-10-08",
+   "days_to_recover": 14,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "1999-10-11",
+   "ath": 64.6562,
+   "ath_i": 149,
+   "bottom": -8.566850510855883,
+   "bottom_date": "1999-10-18",
+   "recovered": "1999-10-29",
+   "days_to_recover": 14,
+   "tiers_hit": [
+    "-5",
+    "-8"
+   ]
+  },
+  {
+   "ath_date": "1999-11-26",
+   "ath": 77.6875,
+   "ath_i": 182,
+   "bottom": -5.390185036202732,
+   "bottom_date": "1999-11-30",
+   "recovered": "1999-12-03",
+   "days_to_recover": 5,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2000-01-03",
+   "ath": 94.75,
+   "ath_i": 207,
+   "bottom": -15.468284960422164,
+   "bottom_date": "2000-01-06",
+   "recovered": "2000-01-19",
+   "days_to_recover": 11,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15"
+   ]
+  },
+  {
+   "ath_date": "2000-01-21",
+   "ath": 96.25,
+   "ath_i": 220,
+   "bottom": -10.649350649350653,
+   "bottom_date": "2000-01-28",
+   "recovered": "2000-02-03",
+   "days_to_recover": 9,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2000-03-09",
+   "ath": 115.0,
+   "ath_i": 253,
+   "bottom": -10.543478260869566,
+   "bottom_date": "2000-03-15",
+   "recovered": "2000-03-23",
+   "days_to_recover": 10,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2000-03-27",
+   "ath": 117.75,
+   "ath_i": 265,
+   "bottom": -82.96390658174097,
+   "bottom_date": "2002-10-09",
+   "recovered": "2016-09-06",
+   "days_to_recover": 4137,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25",
+    "-30",
+    "-40"
+   ]
+  },
+  {
+   "ath_date": "2017-06-08",
+   "ath": 143.57,
+   "ath_i": 4592,
+   "bottom": -5.140349655220444,
+   "bottom_date": "2017-07-03",
+   "recovered": "2017-07-19",
+   "days_to_recover": 28,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2018-01-26",
+   "ath": 170.93,
+   "ath_i": 4752,
+   "bottom": -10.22640847130405,
+   "bottom_date": "2018-02-08",
+   "recovered": "2018-03-09",
+   "days_to_recover": 29,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2018-03-12",
+   "ath": 174.08,
+   "ath_i": 4782,
+   "bottom": -10.667509191176483,
+   "bottom_date": "2018-04-02",
+   "recovered": "2018-06-04",
+   "days_to_recover": 58,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2018-08-29",
+   "ath": 186.74,
+   "ath_i": 4901,
+   "bottom": -23.155189032879942,
+   "bottom_date": "2018-12-24",
+   "recovered": "2019-04-17",
+   "days_to_recover": 158,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20"
+   ]
+  },
+  {
+   "ath_date": "2019-05-03",
+   "ath": 191.11,
+   "ath_i": 5070,
+   "bottom": -10.983203390717389,
+   "bottom_date": "2019-06-03",
+   "recovered": "2019-07-03",
+   "days_to_recover": 42,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2019-07-26",
+   "ath": 195.29,
+   "ath_i": 5128,
+   "bottom": -7.455578882687286,
+   "bottom_date": "2019-08-05",
+   "recovered": "2019-10-25",
+   "days_to_recover": 64,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2020-02-19",
+   "ath": 236.98,
+   "ath_i": 5270,
+   "bottom": -28.559372098911297,
+   "bottom_date": "2020-03-16",
+   "recovered": "2020-06-05",
+   "days_to_recover": 75,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25"
+   ]
+  },
+  {
+   "ath_date": "2020-09-02",
+   "ath": 302.76,
+   "ath_i": 5407,
+   "bottom": -12.749372440216666,
+   "bottom_date": "2020-09-23",
+   "recovered": "2020-12-01",
+   "days_to_recover": 62,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2021-02-12",
+   "ath": 336.45,
+   "ath_i": 5519,
+   "bottom": -10.851538118591176,
+   "bottom_date": "2021-03-08",
+   "recovered": "2021-04-09",
+   "days_to_recover": 38,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2021-04-16",
+   "ath": 342.01,
+   "ath_i": 5562,
+   "bottom": -7.344814479108797,
+   "bottom_date": "2021-05-12",
+   "recovered": "2021-06-14",
+   "days_to_recover": 40,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2021-09-07",
+   "ath": 382.11,
+   "ath_i": 5661,
+   "bottom": -7.7176729214100686,
+   "bottom_date": "2021-10-04",
+   "recovered": "2021-10-28",
+   "days_to_recover": 37,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2021-11-19",
+   "ath": 403.99,
+   "ath_i": 5714,
+   "bottom": -35.61721824797643,
+   "bottom_date": "2022-12-28",
+   "recovered": "2023-12-15",
+   "days_to_recover": 520,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20",
+    "-25",
+    "-30"
+   ]
+  },
+  {
+   "ath_date": "2024-03-22",
+   "ath": 446.38,
+   "ath_i": 6300,
+   "bottom": -7.108293382319997,
+   "bottom_date": "2024-04-19",
+   "recovered": "2024-05-15",
+   "days_to_recover": 37,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2024-07-10",
+   "ath": 502.96,
+   "ath_i": 6374,
+   "bottom": -13.557738189915703,
+   "bottom_date": "2024-08-07",
+   "recovered": "2024-11-06",
+   "days_to_recover": 84,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2024-12-16",
+   "ath": 538.17,
+   "ath_i": 6485,
+   "bottom": -6.148614749986059,
+   "bottom_date": "2025-01-14",
+   "recovered": "2025-02-18",
+   "days_to_recover": 41,
+   "tiers_hit": [
+    "-5"
+   ]
+  },
+  {
+   "ath_date": "2025-02-19",
+   "ath": 539.52,
+   "ath_i": 6527,
+   "bottom": -22.883303677342827,
+   "bottom_date": "2025-04-08",
+   "recovered": "2025-06-24",
+   "days_to_recover": 86,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15",
+    "-20"
+   ]
+  },
+  {
+   "ath_date": "2025-10-29",
+   "ath": 635.77,
+   "ath_i": 6702,
+   "bottom": -12.188370008021776,
+   "bottom_date": "2026-03-30",
+   "recovered": "2026-04-15",
+   "days_to_recover": 114,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2026-06-02",
+   "ath": 746.16,
+   "ath_i": 6849,
+   "bottom": -11.315267502948423,
+   "bottom_date": "2026-07-29",
+   "recovered": "2026-09-22",
+   "days_to_recover": 77,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10"
+   ]
+  },
+  {
+   "ath_date": "2026-10-06",
+   "ath": 759.66,
+   "ath_i": 6936,
+   "bottom": -15.088328989284683,
+   "bottom_date": "2026-11-19",
+   "recovered": null,
+   "tiers_hit": [
+    "-5",
+    "-8",
+    "-10",
+    "-15"
+   ]
+  }
+ ]
+}

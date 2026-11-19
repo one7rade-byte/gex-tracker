@@ -373,6 +373,10 @@ async function buildQuickAction(lastDate){
       '<div style="font-size:22px;font-weight:700;color:'+t[1]+';margin:2px 0 4px">'+qaEsc(q.action)+'</div>'+
       '<div style="font-size:13px;color:'+t[1]+';margin-bottom:8px">'+qaEsc(q.headline)+'</div>'+
       reasons+
+      (q.ladder&&q.ladder.tranches_hit?'<div style="margin-top:8px;font-size:10px;color:#888">Buy-low ladder (SPY vs '+qaEsc(q.ladder.ath)+' high on '+qaEsc(q.ladder.ath_date)+')</div><div>'+
+        q.ladder.tiers.map(function(t){return '<span style="font-size:11px;padding:2px 8px;border-radius:10px;margin:2px 4px 2px 0;display:inline-block;'+
+          (t.hit_date?'background:#3B6D11;color:#fff':'background:#fff;color:#555;border:1px solid #ddd')+'">'+(t.hit_date?'✓ ':'')+t.tier+'% · '+Number(t.price).toFixed(0)+' · '+t.weight_pct+'%</span>';}).join('')+
+        '</div><div style="font-size:9px;color:#999;margin-top:2px">Tier · SPY price · share of dip-buying cash</div>':'')+
       '<div style="margin-top:8px;font-size:10px;color:#888">Confirmations to add ('+q.confirmations+'/'+q.confirmations_total+')</div>'+
       '<div>'+checks+'</div>'+
       '<div style="margin-top:6px;font-size:9px;color:#aaa">Rules-based read from this system, not financial advice.</div></div>';
