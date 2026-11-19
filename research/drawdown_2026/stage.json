@@ -1,0 +1,20 @@
+{
+ "as_of": "2026-11-19",
+ "stage": "FALLING",
+ "day": 32,
+ "peak": {
+  "date": "2026-10-06",
+  "spy": 779.09
+ },
+ "spy_dd_pct": -8.11,
+ "qqq_dd_pct": -15.09,
+ "smh_dd_from_own_high_pct": -33.1,
+ "low": {
+  "date": "2026-11-19",
+  "spy": 715.87,
+  "dd_pct": -8.11
+ },
+ "tranches_hit": 1,
+ "ladder_blended_return_pct": -0.12,
+ "recovered": false
+}
