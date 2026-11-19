@@ -359,7 +359,7 @@ def update_gex_signal(date, regime_signal, composite_score, flow_regime):
             'STRONG_BUY':  'STRONG BUY — deep neg GEX + oversold + macro healthy',
             'BUY_WATCH':   'BUY WATCH — setup building, scale in',
             'STRONG_HOLD': 'GREEN Strong hold — max positive regime',
-            'HOLD':        'GREEN Hold - pos GEX, vol controlled',
+            'HOLD':        'HOLD — no setup (composite below the entry gate)',
             'CAUTION':     'AMBER Caution — overbought pullback, tighten stops',
             'DEFENSIVE':   'RED Defensive — credit stress, reduce exposure',
             'CRISIS':      'RED CRISIS — credit crisis, exit longs',
