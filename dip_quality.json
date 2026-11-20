@@ -1,6 +1,6 @@
 {
- "date": "2026-11-19",
- "generated_at": "2026-11-19T23:03:09+00:00",
+ "date": "2026-11-20",
+ "generated_at": "2026-11-20T19:02:35+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -8,51 +8,51 @@
   "AAPL": {
    "ticker": "AAPL",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -0.9,
-   "five_day_pct": -1.6
+   "date": "2026-11-20",
+   "day_pct": -1.0,
+   "five_day_pct": -3.0
   },
   "MSFT": {
    "ticker": "MSFT",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -2.0,
-   "five_day_pct": -4.7
+   "date": "2026-11-20",
+   "day_pct": -1.4,
+   "five_day_pct": -6.2
   },
   "NVDA": {
    "ticker": "NVDA",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -3.3,
-   "five_day_pct": -12.2
+   "date": "2026-11-20",
+   "day_pct": -6.8,
+   "five_day_pct": -16.5
   },
   "AMZN": {
    "ticker": "AMZN",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -3.9,
-   "five_day_pct": -3.8
+   "date": "2026-11-20",
+   "day_pct": -2.8,
+   "five_day_pct": -6.2
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -3.5,
-   "five_day_pct": -8.7
+   "date": "2026-11-20",
+   "day_pct": 0.1,
+   "five_day_pct": -7.7
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -3.3,
-   "five_day_pct": -4.4
+   "date": "2026-11-20",
+   "day_pct": -4.4,
+   "five_day_pct": -11.1
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
-   "date": "2026-11-19",
-   "day_pct": -2.4,
-   "five_day_pct": -5.8
+   "date": "2026-11-20",
+   "day_pct": -6.2,
+   "five_day_pct": -10.0
   }
  },
  "sp500_shocks": [
@@ -60,11 +60,11 @@
    "ticker": "AMD",
    "status": "shock",
    "shock_date": "2026-11-19",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -7.7,
    "excess_pct": -5.8,
-   "since_shock_pct": 0.0,
-   "score": 69,
+   "since_shock_pct": -10.6,
+   "score": 68,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
    "tone": "green",
@@ -84,8 +84,8 @@
     "drop_pct": -7.724,
     "excess_pct": -5.762,
     "spy_day_pct": -1.962,
-    "vol_ratio": 2.555,
-    "gap_pct": 2.516,
+    "vol_ratio": 2.565,
+    "gap_pct": 2.269,
     "close_loc": 0.221,
     "pre60_pct": 10.635,
     "above_200ma": 1,
@@ -99,10 +99,10 @@
    "ticker": "HUM",
    "status": "shock",
    "shock_date": "2026-11-18",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -13.0,
    "excess_pct": -12.7,
-   "since_shock_pct": -1.5,
+   "since_shock_pct": 3.1,
    "score": 68,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -138,10 +138,10 @@
    "ticker": "NKE",
    "status": "shock",
    "shock_date": "2026-11-17",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -6.3,
    "excess_pct": -5.3,
-   "since_shock_pct": -4.2,
+   "since_shock_pct": -6.5,
    "score": 67,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -178,13 +178,52 @@
    }
   },
   {
+   "ticker": "INTU",
+   "status": "shock",
+   "shock_date": "2026-11-20",
+   "date": "2026-11-20",
+   "drop_pct": -10.3,
+   "excess_pct": -8.4,
+   "since_shock_pct": 0.0,
+   "score": 66,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-10% over 60 days, -54% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -10.338,
+    "excess_pct": -8.374,
+    "spy_day_pct": -1.964,
+    "vol_ratio": 1.684,
+    "gap_pct": -8.374,
+    "close_loc": 0.052,
+    "pre60_pct": -10.368,
+    "above_200ma": 0,
+    "off_52w_high_pct": -54.176,
+    "spy_20d_pct": -7.653,
+    "spy_above_200ma": 0,
+    "vix": 32.01
+   }
+  },
+  {
    "ticker": "UNH",
    "status": "shock",
    "shock_date": "2026-11-18",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -10.2,
    "excess_pct": -9.9,
-   "since_shock_pct": -5.6,
+   "since_shock_pct": -1.1,
    "score": 65,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -220,10 +259,10 @@
    "ticker": "WSM",
    "status": "shock",
    "shock_date": "2026-11-19",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -15.2,
    "excess_pct": -13.2,
-   "since_shock_pct": 0.0,
+   "since_shock_pct": -2.4,
    "score": 64,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -240,7 +279,7 @@
     "drop_pct": -15.16,
     "excess_pct": -13.198,
     "spy_day_pct": -1.962,
-    "vol_ratio": 4.062,
+    "vol_ratio": 4.076,
     "gap_pct": -6.498,
     "close_loc": 0.118,
     "pre60_pct": 10.799,
@@ -255,10 +294,10 @@
    "ticker": "FCX",
    "status": "shock",
    "shock_date": "2026-11-18",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -7.0,
    "excess_pct": -6.7,
-   "since_shock_pct": -4.5,
+   "since_shock_pct": -9.9,
    "score": 61,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -294,10 +333,10 @@
    "ticker": "NOW",
    "status": "shock",
    "shock_date": "2026-11-17",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -6.5,
    "excess_pct": -5.5,
-   "since_shock_pct": -4.3,
+   "since_shock_pct": -2.6,
    "score": 59,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -337,10 +376,10 @@
    "ticker": "CRM",
    "status": "shock",
    "shock_date": "2026-11-17",
-   "date": "2026-11-19",
+   "date": "2026-11-20",
    "drop_pct": -9.5,
    "excess_pct": -8.4,
-   "since_shock_pct": -5.8,
+   "since_shock_pct": -5.0,
    "score": 57,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -366,41 +405,6 @@
     "spy_20d_pct": -4.76,
     "spy_above_200ma": 1,
     "vix": 25.46
-   }
-  },
-  {
-   "ticker": "CSCO",
-   "status": "shock",
-   "shock_date": "2026-11-13",
-   "date": "2026-11-19",
-   "drop_pct": -6.2,
-   "excess_pct": -5.9,
-   "since_shock_pct": -1.0,
-   "score": 55,
-   "band": 4,
-   "verdict": "LEANS BUYABLE",
-   "tone": "green",
-   "hist_beat_spy_pct": 48.3,
-   "hist_median_excess_pct": -0.64,
-   "reasons": [
-    {
-     "sign": "+",
-     "text": "Most of the drop happened during the day, not as an overnight gap"
-    }
-   ],
-   "features": {
-    "drop_pct": -6.244,
-    "excess_pct": -5.881,
-    "spy_day_pct": -0.363,
-    "vol_ratio": 1.563,
-    "gap_pct": -1.51,
-    "close_loc": 0.069,
-    "pre60_pct": -7.725,
-    "above_200ma": 0,
-    "off_52w_high_pct": -21.531,
-    "spy_20d_pct": -1.163,
-    "spy_above_200ma": 1,
-    "vix": 19.3
    }
   }
  ],
