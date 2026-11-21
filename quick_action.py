@@ -9,9 +9,18 @@ Philosophy (Simon's): don't be first, don't be last, follow where the big
 money is moving. So a BUY setup alone isn't "add": it's "wait for
 confirmation" until enough of the 5 confirmation checks are in.
 
+Buy-low rule (Simon, 2026-11-19): never "exit" into a drop. Once SPY is 8%+
+below its all-time high, buy in staged tranches down a ladder (LADDER below).
+Evidence: research/drawdown_2026/ladder_history.json (SPY 1995+, QQQ 1999+)
+and the research agent's P0b test (stress flags are volatility flags, not
+sell signals: cashing out on them cost ~3.8 pts/yr of CAGR since 2007).
+
 Actions:
-  DEFEND    big money leaving: credit breaking, backwardation 3+ days,
-            regime DEFENSIVE/CRISIS, or flows show broad de-risking
+  LADDER    SPY 8%+ below its high: buy the tranche(s) reached; wider spacing
+            if credit is breaking or fear is extreme. Never "exit".
+  NO RUSH   stress flag (backwardation 3+ days, or credit breaking / big
+            money leaving for 2 days in a row) while SPY is less than 8% off
+            its high. Not a sell signal: don't add size yet.
   ADD       buy setup + 3 or more of the 5 confirmations, at least one of
             them from dealers/price (GEX positive 2 days or SPY above zero gamma)
   WAIT      buy setup, but fewer than 3 confirmations (don't be first)
@@ -62,6 +71,46 @@ def flow_read(date):
     return lab, cur["date"], ch
 
 
+# Tranche plan: (tier % below the all-time high, share of dip-buying cash).
+# Spacing follows the history: after -8%, the median final bottom was ~-12%,
+# 28% of drops reached -20% and 17% reached -30% (SPY 1995+).
+LADDER = [(-8, 15), (-12, 15), (-16, 20), (-20, 20), (-25, 15), (-30, 15)]
+LADDER_HISTORY = os.path.join("research", "drawdown_2026", "ladder_history.json")
+
+
+def ladder_read(date, spot):
+    """SPY all-time high, current drawdown, and which ladder tranches are hit."""
+    rows = [r for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("spy"))]
+    if not rows:
+        return None
+    closes = [(r["date"], f(r["spy"])) for r in rows]
+    if spot and closes[-1][0] != date:
+        closes.append((date, spot))
+    ath_date, ath = max(closes, key=lambda x: x[1])
+    last = spot or closes[-1][1]
+    dd = (last / ath - 1) * 100
+    since = [c for c in closes if c[0] >= ath_date]
+    hist = {}
+    try:
+        with open(LADDER_HISTORY, encoding="utf-8") as fh:
+            hist = {r["tier"]: r for r in json.load(fh)["spy"]}
+    except (OSError, ValueError, KeyError):
+        pass
+    tiers = []
+    for t, w in LADDER:
+        price = round(ath * (1 + t / 100), 2)
+        hit = next((d for d, c in since if c <= price), None)
+        tiers.append({"tier": t, "price": price, "weight_pct": w, "hit_date": hit,
+                      "from_here_pct": round((price / last - 1) * 100, 1)})
+    n_hit = sum(1 for x in tiers if x["hit_date"])
+    nxt = next((x for x in tiers if not x["hit_date"]), None)
+    # History for the deepest tier reached (nearest tier in the study table).
+    deepest = max((x["tier"] for x in tiers if x["hit_date"]), default=None, key=lambda v: -v)
+    ref = hist[min(hist, key=lambda t: abs(t - deepest))] if (deepest is not None and hist) else None
+    return {"ath": round(ath, 2), "ath_date": ath_date, "last": round(last, 2), "drawdown_pct": round(dd, 1),
+            "tiers": tiers, "tranches_hit": n_hit, "next": nxt, "history_at_deepest": ref}
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -91,16 +140,48 @@ def main():
     flow, flow_date, flow_ch = flow_read(date)
 
     credit_breaking = hyg5 is not None and hyg5 <= -1.5
+    # 2-day persistence for the credit and flow flags (research P0b: cuts
+    # whipsaw ~40%); backwardation already needs 3 days.
+    hyg5_prev = pct(f(gex[-2]["hyg"]), f(gex[-7]["hyg"])) if len(gex) >= 7 else None
+    credit_2d = credit_breaking and hyg5_prev is not None and hyg5_prev <= -1.5
+    flow_prev = flow_read(gex[-2]["date"])[0] if len(gex) >= 2 else None
+    flow_red_2d = bool(flow and flow[1] == "red" and flow_prev and flow_prev[1] == "red")
+    stress = credit_2d or backw >= 3 or flow_red_2d or signal in ("DEFENSIVE", "CRISIS")
+    stress_why = ", ".join(w for w, on in (("credit breaking 2 days", credit_2d),
+                                          (f"VIX backwardation {backw} days", backw >= 3),
+                                          ("big money leaving 2 days", flow_red_2d),
+                                          (f"regime {signal.lower()}", signal in ("DEFENSIVE", "CRISIS"))) if on)
+    lad = ladder_read(date, spy)
     buy = signal in ("STRONG_BUY", "BUY_WATCH")
     # "Follow the whales": at least one confirmation must come from dealer
     # positioning / price (GEX positive 2 days, or SPY back above zero gamma).
     # Without this, calm-before-the-storm days (e.g. 2026-10-30: contango, VIX
     # <22, credit flat) counted as "confirmed" right before the Nov 5 drop.
     whale_conf = checks[2][1] or checks[3][1]
-    if signal in ("DEFENSIVE", "CRISIS") or credit_breaking or backw >= 3 or (flow and flow[1] == "red"):
-        action, tone = "DEFEND", "red"
-        head = "Big money is leaving. No new adds; protect what you have."
-    elif buy and n_conf >= 3 and whale_conf:
+    confirmed = n_conf >= 3 and whale_conf
+
+    if lad and lad["tranches_hit"] > 0:
+        k, nxt, h = lad["tranches_hit"], lad["next"], lad.get("history_at_deepest") or {}
+        crisis = signal == "CRISIS" or (credit_2d and signal == "DEFENSIVE")
+        action = f"BUY-LOW LADDER: TRANCHE {k} OF {len(LADDER)}"
+        tone = "amber" if crisis else "green"
+        head = f"SPY is {abs(lad['drawdown_pct']):.1f}% below its {lad['ath_date']} high. Buy in tranches, not all at once."
+        if nxt:
+            head += f" Next tranche at {nxt['price']:.2f} ({nxt['tier']}%)."
+        if h.get("to_m20") and h.get("median_12m") is not None:
+            head += (f" History: past drops that got this far reached -20% {h['to_m20']} of the time; "
+                     f"buying here returned a median {h['median_12m']:+.1f}% over 12 months.")
+        if crisis:
+            head += " Credit is breaking, so only buy the deeper tranches (-20% and below) until it stabilizes."
+        elif stress:
+            head += f" Fear is high ({stress_why}), so expect lower prices before the bottom; stick to the ladder."
+        elif confirmed:
+            head += f" {n_conf}/5 confirmations are in, so the bounce has support."
+    elif stress:
+        action, tone = "NO RUSH", "amber"
+        head = (f"Fear is high ({stress_why}). Not a sell signal: hold, but don't add in size yet."
+                + (f" The buy-low ladder starts at {lad['tiers'][0]['price']:.2f} (-8% from the high)." if lad else ""))
+    elif buy and confirmed:
         action, tone = "ADD", "green"
         head = f"Buy setup with {n_conf}/5 confirmations in. Scale in."
     elif buy:
@@ -108,10 +189,10 @@ def main():
         head = f"Buy setup is building, but only {n_conf}/5 confirmations. Don't be first."
     elif signal == "CAUTION":
         action, tone = "TIGHTEN", "amber"
-        head = "Regime weakening. Tighten stops; no new size."
+        head = "Regime weakening. No new size; not a sell signal on its own."
     else:
         action, tone = "HOLD", "blue"
-        head = "Trend intact. Hold."
+        head = "No buy setup and no stress. Hold."
 
     credit_txt = ("unknown" if hyg5 is None else
                   f"breaking (HYG {hyg5:+.1f}% in 5 days)" if credit_breaking else
@@ -127,11 +208,14 @@ def main():
          "tone": "red" if credit_breaking else "green" if (hyg5 or 0) > -0.75 else "amber"},
         {"label": "Fear", "text": fear_txt, "tone": "red" if backw else "amber" if (vix or 0) >= 22 else "green"},
     ]
+    if lad:
+        reasons.insert(1, {"label": "From high", "text": f"SPY {lad['drawdown_pct']:+.1f}% vs {lad['ath']:.2f} ({lad['ath_date']})",
+                           "tone": "green" if lad["tranches_hit"] else "gray"})
     out = {
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:
@@ -152,6 +236,10 @@ def telegram_line():
     lines = [f"{icon} QUICK ACTION: {q['action']}", q["headline"]]
     for r in q.get("reasons", [])[1:]:
         lines.append(f"• {r['label']}: {r['text']}")
+    lad = q.get("ladder") or {}
+    if lad.get("tranches_hit"):
+        hit = [f"{t['tier']}% {t['price']:.0f}" + (" ✓" if t["hit_date"] else "") for t in lad["tiers"]]
+        lines.append("• Ladder: " + " | ".join(hit))
     return "\n".join(lines).replace("*", "").replace("_", " ").replace("`", "")
 
 
