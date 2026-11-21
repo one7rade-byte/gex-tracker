@@ -1,5 +1,56 @@
 # Weekly Research Log
 
+## 2026-11-21 — P3: second tranche after a STRONG_BUY-type entry falls further (and/or downgrades)
+
+**VERDICT: inconclusive. No second-tranche rule.** A small add on a shallow dip (−2% within 5 days of a first fire) is fine but no better than adding on any −2% dip after 2010. Deeper adds are worse. A −5% break within 20 days of a first fire is a **below-base** place to add in all three eras (n=19 episodes). A downgraded breach (composite < 1) is worse than an ordinary breach in 2018+. That points toward a "don't average down a failed STRONG_BUY" caution, not a buy rule. It goes to P8 for testing as a veto. Not wired in; no PR.
+
+**Data and method** (`research/p3_second_tranche.py`; output `research/p3_second_tranche_output.txt`, `p3_second_tranche_results.json`):
+- deep_history_backtest_log.csv 1995-10-17..2026-08-21, closes only. **SB** = STRONG_BUY proxy (composite ≥ 1 & RSI14 < 50 & SKEW > 138 & VIX > 17, as P1/P2), 35 first-fire episodes, 2015-09..2026-07 (34 with a full 30d window). **SBX** = same without SKEW, 114 episodes 1996..2026, used for the by-era check. Episode = first fire with > 10 trading days since the previous fire. **First fires only**; P2's breach numbers mixed in re-fire days.
+- Tranche trigger: first close ≤ P0·(1−x%) within W days (x/W = 2/5, 3/10, 5/20), in three forms: any; `dg` = composite < 1 that day (signal downgraded); `on` = proxy still firing (re-fire below entry). The tranche must have ≥ 5 days left. Common exit T = first fire + 30 (also 20).
+- 2-unit budget: **ALL** = 2 units at the first fire. **ONE** = 1 unit, the other idle. **TR** = 1 unit + 1 unit at the trigger if it fires. **STAG** = 1 unit + 1 unit on day 5 regardless (time-split control). Portfolio MAE = worst mark-to-market, % of budget. **Base** = the same TR mechanics starting from every day (day level).
+
+**1. Return of the second tranche itself (tranche close → T30), SBX first fires vs base (any day):**
+
+| Trigger | Era | SBX fired / eps | Hit | Avg (med) | Further MAE | P(further ≤ −3) | Base hit / avg / further MAE |
+|---|---|---|---|---|---|---|---|
+| −2% in 5d | full | 25 / 113 (22.1%) | 80.0% | +3.25 (+4.88) | −2.21 | 24.0% | 67.0% / +1.96 / −4.19 |
+| −2% in 5d | pre-2010 | 6 / 41 | 100% | +5.86 | −0.06 | 0% | 63.0% / +1.49 / −4.61 |
+| −2% in 5d | 2010–17 | 8 / 35 | 62.5% | +2.13 | −3.95 | 50.0% | 73.9% / +2.43 / −3.14 |
+| −2% in 5d | 2018+ | 11 / 37 | 81.8% | +2.65 | −2.11 | 18.2% | 70.8% / +2.63 / −4.02 |
+| −3% in 10d | full | 24 / 113 | 62.5% | +2.25 (+2.93) | −2.88 | 33.3% | 66.7% / +1.94 / −4.25 |
+| −3% in 10d | 2018+ | 9 / 37 | 44.4% | −0.41 | −3.70 | 44.4% | 70.9% / +2.51 / −4.25 |
+| −5% in 20d | full | 19 / 113 (16.8%) | 52.6% | +0.55 (+0.44) | −3.25 | 42.1% | 63.4% / +1.66 / −4.20 |
+| −5% in 20d | pre-2010 | 5 / 41 | 40.0% | +0.42 | −3.02 | 40.0% | 60.0% / +1.03 / −4.69 |
+| −5% in 20d | 2010–17 | 7 / 35 | 57.1% | +1.94 | −2.93 | 42.9% | 69.3% / +3.19 / −2.29 |
+| −5% in 20d | 2018+ | 7 / 37 | 57.1% | −0.73 | −3.73 | 42.9% | 66.6% / +1.93 / −4.44 |
+| −3% in 10d, downgraded | 2018+ | 6 / 37 | 33.3% | −1.17 | −4.40 | 50.0% | 71.6% / +2.98 / −5.01 |
+
+- The shallow add beats base on the full sample, but after 2010 it is roughly base on return (2010–17 +2.13 vs +2.43; 2018+ +2.65 vs +2.63). The full-sample edge comes from 6 pre-2010 episodes. The 2018+ further-MAE is better than base (−2.11 vs −4.02); 2010–17 is worse (−3.95 vs −3.14).
+- Tranche returns fall as the trigger deepens: +3.25 → +2.25 → +0.55 (full). Base barely moves: +1.96 → +1.94 → +1.66. **At −5% within 20d the tranche is below base in every era** (pre-2010 +0.42 vs +1.03, 2010–17 +1.94 vs +3.19, 2018+ −0.73 vs +1.93). A STRONG_BUY-type entry that is −5% down within a month is usually a failed call in a grind (2022, 2025-02, 2018-10, 2011-07, 2008-08), not a deeper bargain.
+- The downgrade split (`dg`) is era-dependent: worse than the plain breach in 2018+ (−1.17 vs −0.41 at −3%/10d), better in 2010–17 (+4.93, n=4) and pre-2010 (+3.45, n=4). n = 4–6 per cell.
+
+**2. The live-like proxy (SB, with SKEW, 2010+) is worse on every trigger:** −2%/5d n=7, hit 57.1%, avg −0.95 (med +0.50), further MAE −4.10. −3%/10d n=7, 42.9%, −0.61, −5.32. −5%/20d n=6, 33.3%, −0.85, −5.47. −3%/10d downgraded n=4, 25.0%, −2.50, −8.02. With H=20: −2%/5d n=7, +0.56 avg. Compare P2's "+2.50% from the breach (14 episodes)". That number included re-fire days. **On first fires only, the SB second tranche does not pay.** n=7 is too small to call, but it does not support a tranche rule. Fired episodes (−2%/5d, tranche date, tranche→T30, further MAE): 2015-12-15 (12-18, −3.15, −7.18), 2016-01-04 (01-07, −0.60, −5.77), 2018-03-19 (03-22, +0.50, −2.35), 2020-09-18 (09-23, +1.21, +0.27), 2021-05-05 (05-12, +4.08, +1.20), 2021-09-13 (09-20, +4.96, −1.24), 2025-02-21 (02-27, −13.63, −13.63).
+
+**3. Whole position on a 2-unit budget (H30, −2%/5d trigger):**
+
+| Set | ALL avg / MAE / P(MAE ≤ −3) | TR | STAG (day-5 split) | ONE | Per unit deployed: TR vs ALL |
+|---|---|---|---|---|---|
+| SBX full (113) | +1.60 / −3.14 / 38.1% | +1.16 / −1.84 / 21.2% | +1.29 / −3.11 | +0.80 / −1.57 | +1.90 vs +1.60 |
+| SBX 2018+ (37) | +1.29 / −3.24 / 37.8% | +1.04 / −1.98 / 27.0% | +0.96 / −3.22 | +0.64 / −1.62 | +1.60 vs +1.29 |
+| SB 2018+ (28) | +1.64 / −2.57 / 21.4% | +0.77 / −1.59 / 17.9% | +1.22 / −2.66 | +0.82 / −1.29 | +1.31 vs +1.64 |
+
+- All-in at the first fire has the highest total return in every set. TR's lower drawdown comes mostly from leaving half the money in cash: vs ONE, the add earns +0.36 for 0.27 pp more MAE (SBX full). A plain time split (STAG) does worse than ALL on return with the same drawdown, so splitting by time does not help. If you split at all, make the second half conditional on a shallow dip. But on the SB proxy even that loses to all-in (+0.77 vs +1.64 in 2018+).
+
+**Failure cases (where averaging down hurt most):** 2025-02-21 (first fire −15.78 to T; −2% tranche 02-27 −13.63; −5% tranche 03-10 −9.86), 2022-04-11 (−10.46; −3% tranche −7.55), 1998-07-23 (−13.68; tranche −7.89), 2011-07-26 (−9.78; tranche −6.99, further MAE −13.20), 2008-08-19 (−5% tranche on 2008-09-15, −3.36, further −7.25), 2022-01-05, 2015-12-09. Each is a slow grind or a regime break, not a one-day shock.
+
+**Caveats:** episode n is small (SB 34, SBX 113, with 4–25 tranche fires per cell). Closes only. No GEX leg, and the deep proxy is not the live signal (it has no flow-red override). The deep log ends 2026-08-21, so the current event is not in the backtest. Ten trigger variants were tested; I'm treating the one cross-era-consistent result (−5%/20d below base) as a hypothesis, not a rule.
+
+**Live check (signal_performance_log.csv through 11-20; event tracking_log through 11-20):**
+- SPY 690.43 on 11-20 (−11.65% from the 781.50 high; −5.99% vs the 11-05 trigger). regime_signal went BUY_WATCH (11-17/18) → HOLD (11-19) → **DEFENSIVE** (11-20, composite −3.1), the first DEFENSIVE in live history. Event status ESCALATING 4/6. Ledger: early A/G −5.99%, confirmation B/C/F −8.31%, D/E −9.11%. H (−10% from high) and I (RSI < 30) fired at 690.43.
+- Resolved STRONG_BUY: 5d n=22, 72.7% hit, +0.89%, worst −8.43% (11-13). 10d n=20, 65.0%, +1.12%, worst −6.12% (11-06). 20d n=15, 86.7%, +2.02%, worst −6.22% (10-22). BUY_WATCH 20d n=29, 69.0%, +0.39%, worst −10.05% (10-23). All ten STRONG_BUYs since 10-16 are −6.1% to −9.6% to date. 10-26 and 10-30 20d resolve next week at about −9%.
+- P3 on the live cluster: first fire 10-16 at 761.68. No −2% close within 5d. The first −3% close was 11-05 (734.40, lag 14, signal already downgraded to BUY_WATCH at composite 0.9). A tranche there is now −5.99% and the first tranche −9.35%. A −5% close first came on 11-19 (lag 24, outside the 20d window). This is the 2018+ pattern from section 1: a deeper, downgraded breach after a first fire kept falling.
+- Contradiction with a current rule: STRONG_BUY re-fired on 11-06, 11-10, 11-13 and 11-16 *below* the 10-16 first fire. In effect, the live system averaged down four times on re-fires. That is the P8(a) subgroup (P2: re-fires 2018+ P(MAE20 ≤ −3) 36.5%). Every one is now −6.1% to −8.4%. This supports doing P8 next: re-fire / "price below first fire" veto plus a "STRONG_BUY invalidated after −5% within 20d" test.
+
 ## 2026-11-18 — P2: maximum adverse excursion (MAE) after STRONG_BUY / BUY_WATCH
 
 **VERDICT: PASS — ready for review (tracking change only; no signal logic touched).** `track_signal_performance.py` now records the worst and best close inside each 5/10/20d window (`mae_pct`, `mfe_pct`), backfills the 448 older rows from gex_log.csv without changing their logged values, adds MAE stats per bucket to the summary, and lists STRONG_BUY/BUY_WATCH calls whose 20d window is still open. PR: `claude/pr-signal-mae` (4 unit tests). The research findings below are **not** proposed as rule changes; they feed P3 and P8.
