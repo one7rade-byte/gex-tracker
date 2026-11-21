@@ -1,6 +1,6 @@
 {
-  "generated_from_rows": 451,
-  "unique_signal_days": 157,
+  "generated_from_rows": 454,
+  "unique_signal_days": 158,
   "note": "Directional only while sample sizes are small (this regime_signal system's history starts 2026-03-30) \u2014 treat hit_rate/avg_return_pct as exploratory until each bucket has a meaningful n, not statistical proof. Each bucket below carries its own 'confidence' tag for the same reason \u2014 read it before acting on a bucket's numbers.",
   "never_fired_live": [
     "CRISIS",
@@ -10,20 +10,20 @@
   "by_regime_signal": {
     "BUY_WATCH": {
       "5": {
-        "n": 30,
-        "avg_return_pct": 0.51,
-        "hit_rate_pct": 56.7,
+        "n": 31,
+        "avg_return_pct": 0.32,
+        "hit_rate_pct": 54.8,
         "best_pct": 3.1,
-        "worst_pct": -1.63,
+        "worst_pct": -5.4,
         "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "10": {
-        "n": 29,
-        "avg_return_pct": 0.27,
-        "hit_rate_pct": 65.5,
+        "n": 30,
+        "avg_return_pct": 0.18,
+        "hit_rate_pct": 63.3,
         "best_pct": 2.41,
         "worst_pct": -4.19,
-        "confidence": "developing \u2014 directional, treat cautiously"
+        "confidence": "reasonably sampled \u2014 still not a guarantee, but n supports the read"
       },
       "20": {
         "n": 28,
@@ -104,11 +104,11 @@
         "confidence": "developing \u2014 directional, treat cautiously"
       },
       "20": {
-        "n": 14,
-        "avg_return_pct": 2.6,
-        "hit_rate_pct": 92.9,
+        "n": 15,
+        "avg_return_pct": 2.02,
+        "hit_rate_pct": 86.7,
         "best_pct": 5.04,
-        "worst_pct": -1.01,
+        "worst_pct": -6.22,
         "confidence": "developing \u2014 directional, treat cautiously"
       }
     },
