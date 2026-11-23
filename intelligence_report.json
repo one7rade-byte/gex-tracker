@@ -1,138 +1,138 @@
 {
   "date": "2026-11-23",
-  "generated_at": "07:00 PM",
-  "overall_signal": "LOAD",
-  "voo_vgt_action": "LOAD \u2014 Fear score 9/10 with deeply negative GEX. This is a high-conviction loading zone for VOO/VGT. Add in tranches, not all at once.",
-  "macro_picture": "SPY GEX is deeply negative at $-13.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 35.9 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "AAPL WATCH \u2014 score 7/10, RSI at 33th pct. Not yet at peak oversold but building. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 20th percentile of own history, 6 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 5 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.",
+  "generated_at": "11:00 PM",
+  "overall_signal": "REDUCE",
+  "voo_vgt_action": "REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.",
+  "macro_picture": "SPY GEX is negative at $-4.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 27.1 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 7 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 56th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. TSLA WATCH \u2014 score 4/10, RSI at 37th pct. Not yet at peak oversold but building.",
   "watch_section": "GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-13.2B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 35.9 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: LOAD \u2014 Fear score 9/10 with deeply negative GEX. This is a high-conviction loading zone for VOO/VGT. Add in tranches, not all at once.\n\nMAG 7 OPPORTUNITIES: AAPL WATCH \u2014 score 7/10, RSI at 33th pct. Not yet at peak oversold but building. MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 20th percentile of own history, 6 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. TSLA OPPORTUNITY (moderate confidence) \u2014 RSI at 10th percentile of own history, 5 of last 10 days oversold, mixed drivers. Score 6/10. Below 200MA \u2014 scale in slowly. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.\n\nWATCH FOR: GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: LOAD",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-4.6B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 27.1 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 9 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: REDUCE \u2014 Bear score 7/10. Multiple bearish signals aligned. Hold existing long-term positions but do not add. Wait for GEX to turn positive and VIX to stabilize.\n\nMAG 7 OPPORTUNITIES: MSFT OPPORTUNITY (moderate confidence) \u2014 RSI at 17th percentile of own history, 7 of last 10 days oversold, macro-driven selloff. Score 6/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 56th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 57th pct. Not yet at peak oversold but building. TSLA WATCH \u2014 score 4/10, RSI at 37th pct. Not yet at peak oversold but building.\n\nWATCH FOR: GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading. SKEW dropping back below 130 would signal institutional tail hedging is unwinding \u2014 a sign the fear peak is passing.\n\nOVERALL SIGNAL: REDUCE",
   "macro_trend": {
-    "regime": "high_fear",
+    "regime": "bear_warning",
     "vix_trend": "rising",
-    "vix_current": 35.89,
+    "vix_current": 27.13,
     "gex_trend": "deteriorating",
-    "gex_current": -13.2,
+    "gex_current": -4.6,
     "fear_trend": "building",
-    "fear_current": 9.0,
-    "bear_current": 8.0,
+    "fear_current": 5.0,
+    "bear_current": 7.0,
     "bull_current": 0.0,
     "neg_gex_days": 9,
     "skew_current": 138.84,
     "term_struct": "backwardation",
     "above_200ma": "False",
-    "spy_rsi": 29.36
+    "spy_rsi": 40.8
   },
   "top_opportunity": {
     "ticker": "MSFT",
     "score": 6.0,
-    "reason": "RSI very oversold (bottom 20% of own history) | Heavy put buying (P/C top 1% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
-    "news": "macro_fear"
+    "reason": "RSI very oversold (bottom 17% of own history) | Options expensive (IV top 6% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 8% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "neutral"
   },
   "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
-      "score": 7.0,
-      "rsi_pct": 33.1,
+      "score": 4.0,
+      "rsi_pct": 55.6,
       "above_200ma": true,
       "news": "neutral",
-      "rsi_dir": "stable",
+      "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
         "Jensen Huang back at Nvidia, stock soars; Anthropic slides",
         "Jensen Huang back as Nvidia CEO after 12 days: Shares surge 30%",
-        "Nvidia Is Now Second To Apple In The World\u2019s Most Valued Companies On Jensen Huang Optimism",
-        "Apple Hit an All-Time High While AI Stocks Sold Off. Here\u2019s the Big Tech Stock I\u2019d Buy."
+        "Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom",
+        "Nvidia Is Now Second To Apple In The World\u2019s Most Valued Companies On Jensen Huang Optimism"
       ]
     },
     "MSFT": {
       "score": 6.0,
-      "rsi_pct": 19.5,
+      "rsi_pct": 16.6,
       "above_200ma": true,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 6,
+      "days_oversold": 7,
       "headlines": [
-        "Microsoft Stocks Rise 3.9% With a Perfect GF Score as OpenAI Contingency Plans Surface",
-        "Intel landed Microsoft, but now it needs something it can't make",
-        "GBK Collective Expands Strategic Advisory Bench with Appointments of Adam Cohen and Patrick Moriarty",
-        "Is Meta Stock Worth More Than Its Tech Rivals?"
+        "Nvidia gains nearly $1T as Trump says nobody could 'revive the stock like it's being revived'",
+        "Jensen Huang's return to Nvidia: Long or short accountability?",
+        "China Is \u201cOnly 12 Hours\u201d Behind US AI Labs. ByteDance\u2019s Reported Azure Deal Puts Microsoft in the Middle",
+        "Leading CHROs and Business Executives to Convene at i4cp's 2027 Next Practices Now Conference"
       ]
     },
     "NVDA": {
-      "score": 4.0,
-      "rsi_pct": 0.6,
+      "score": 3.0,
+      "rsi_pct": 15.4,
       "above_200ma": false,
-      "news": "macro_fear",
+      "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 10,
       "headlines": [
-        "Stock Market Today: Nasdaq, Dow Leap On Huang-Driven Nvidia Rally; Gold Plays Pop (Live Coverage)",
-        "Diversified ETF options for rotating out of NVDA profits",
-        "AI Energy Stocks, From Fuel Cells To Uranium, Leap As Nvidia Soars",
-        "Why Bloom Energy Is Up Today"
+        "President Trump Says He Convinced Nvidia\u2019s Board to Bring Back Jensen Huang",
+        "Jensen Huang\u2019s Return Gives NVDA Stock Biggest Single-Day Gain Since 2003: Nvidia Senior Leaders Were Reportedly Not Consulted On Reinstatement",
+        "Why ASML Stock Popped Today",
+        "Jensen Huang back at Nvidia after staff reported humiliating threats, insults \u2014 'thinks he can get away with anything'"
       ]
     },
     "GOOGL": {
-      "score": 2.0,
-      "rsi_pct": 33.1,
+      "score": 3.0,
+      "rsi_pct": 62.7,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "neutral",
       "rsi_dir": "recovering",
-      "days_oversold": 7,
+      "days_oversold": 6,
       "headlines": [
-        "Jensen Huang's return to Nvidia: Long or short accountability?",
-        "Stock Market Today: Nasdaq, Dow Leap On Huang-Driven Nvidia Rally; Gold Plays Pop (Live Coverage)",
-        "Jim Cramer sees a Google bargain after $120 million exit",
-        "Billionaire Ray Dalio Is Going All-In on These 10 AI and Chip Stocks: Should You Buy?"
+        "Google's Gemini 4 Neon gains momentum ahead of OpenAI, data shows",
+        "Crypto traders saw Anthropic's 34% debut pop coming",
+        "Steve Eisman Says \u201cStock Picking Is Back\u201d Now That AI Is \u201cNo Longer One Trade\u201d",
+        "Nvidia gains nearly $1T as Trump says nobody could 'revive the stock like it's being revived'"
       ]
     },
     "META": {
-      "score": 4.0,
-      "rsi_pct": 30.2,
+      "score": 3.0,
+      "rsi_pct": 46.2,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 2,
+      "days_oversold": 1,
       "headlines": [
-        "Jensen Huang back at Nvidia, stock soars; Anthropic slides",
-        "Meta Soars 6%, Cipher Up 17% as AI Stocks Rebound With Jensen Huang Back at Nvidia",
-        "What Explains The Fall In Meta Stock?",
-        "Meta throws out its net-zero goal. Its competitors should be furious"
+        "Jensen Huang's return to Nvidia: Long or short accountability?",
+        "Meta\u2019s AI Chief Warns \u201cSuperintelligence Is Arriving.\u201d Lawmakers Are Now Quoting Him to Push a Ban",
+        "A $109 Billion Fund Just Bought These 3 Stocks",
+        "Meta Soars 6%, Cipher Up 17% as AI Stocks Rebound With Jensen Huang Back at Nvidia"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 49.7,
+      "rsi_pct": 56.8,
       "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
+        "Jensen Huang's return to Nvidia: Long or short accountability?",
         "Amazon Makes AI Chip Move; Stock Climbs Alongside Nvidia Relief Rally",
         "NiobiumX Mining Inc. (OTCQB: NIOXF): Niobium Is Behind US Missiles and Next-Generation AI Chips. The US Imports All of It.",
-        "Stanley Druckenmiller and 45 Other Big Funds Bought Amazon Last Quarter. Dan Loeb and 25 Others Sold. Who\u2019s Right?",
-        "Amazon snaps up Decart\u2019s AI optimization tech for $7.5B as it prepares to sell Trainium chips"
+        "Stanley Druckenmiller and 45 Other Big Funds Bought Amazon Last Quarter. Dan Loeb and 25 Others Sold. Who\u2019s Right?"
       ]
     },
     "TSLA": {
-      "score": 6.0,
-      "rsi_pct": 10.1,
-      "above_200ma": false,
+      "score": 4.0,
+      "rsi_pct": 36.7,
+      "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 5,
       "headlines": [
-        "China\u2019s Electric Cars Are Taking Over The World. Where Does That Leave Tesla?",
-        "Tesla Stocks Surge 13.67% as SpaceX Merger Committees and Cybercab Sales Draw Buyers",
-        "Tesla\u2019s FSD v15 An \u2018Illustration\u2019 Of Head Start In Consumer Autonomy, Says JPMorgan \u2013 TSLA Stock Eyes Best Day In Over 19 Months",
-        "Tesla Jumps 13% as Jensen Huang\u2019s Return to NVIDIA Sparks Broad Market Rally; Rivian Rallies 9%, Lucid Surges 8%"
+        "Dow Jones Futures: Tech Stocks, Nvidia Snap Back On Jensen Huang's Return; Elon Musk-Led SpaceX, Tesla Rally",
+        "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+        "Tesla (TSLA) Is Advancing Toward A $3.5 Trillion Merger",
+        "Elon Musk and others rejoice as Jensen Huang is reinstated at Nvidia amid scandal"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Why stocks are having their wildest Monday since 2008",
+      "title": "Why stocks had their best Monday since 2020",
       "link": "https://finance.yahoo.com/markets/article/why-stocks-are-having-their-wildest-morning-since-2008-184837610.html?.tsrc=rss",
       "pub_date": "2026-11-23",
       "tickers": [
@@ -148,17 +148,6 @@
       "pub_date": "2026-11-23",
       "tickers": [
         "AAPL",
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "ETF Activity: SPY Leads $1.53 Billion Outflow on Nov. 19",
-      "link": "https://finance.yahoo.com/markets/options/articles/etf-activity-spy-leads-1-110011746.html?.tsrc=rss",
-      "pub_date": "2026-11-23",
-      "tickers": [
         "SPY"
       ],
       "high_impact": false,
@@ -237,6 +226,18 @@
       "pub_date": "2026-11-23",
       "tickers": [
         "MSFT"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "Stocks Roar as the S&amp;P 500 Jumps About 4.5% on News Jensen Huang Is Returning as NVIDIA CEO",
+      "link": "https://247wallst.com/videos/stocks-roar-as-the-sp-500-jumps-about-4-5-on-news-jensen-huang-is-returning-as-nvidia-ceo/?.tsrc=rss",
+      "pub_date": "2026-11-23",
+      "tickers": [
+        "NVDA",
+        "QQQ"
       ],
       "high_impact": false,
       "sources": [],
