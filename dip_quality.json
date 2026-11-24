@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "generated_at": "2026-11-24T19:01:47+00:00",
+ "generated_at": "2026-11-24T23:02:22+00:00",
  "model_built_at": "2026-11-16T04:01:15+00:00",
  "model_test_auc": 0.553,
  "lookback_sessions": 5,
@@ -9,15 +9,15 @@
    "ticker": "AAPL",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": 0.9,
-   "five_day_pct": 0.1
+   "day_pct": 1.4,
+   "five_day_pct": 0.6
   },
   "MSFT": {
    "ticker": "MSFT",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": 0.4,
-   "five_day_pct": -2.3
+   "day_pct": 0.7,
+   "five_day_pct": -2.0
   },
   "NVDA": {
    "ticker": "NVDA",
@@ -26,7 +26,7 @@
    "date": "2026-11-24",
    "drop_pct": -14.0,
    "excess_pct": -10.4,
-   "since_shock_pct": 22.2,
+   "since_shock_pct": 23.8,
    "score": 72,
    "band": 5,
    "verdict": "MAG 7 NEWS DIP: HISTORICALLY BUYABLE",
@@ -66,29 +66,29 @@
    "ticker": "AMZN",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": -1.5,
-   "five_day_pct": -2.5
+   "day_pct": -1.2,
+   "five_day_pct": -2.2
   },
   "GOOGL": {
    "ticker": "GOOGL",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": -1.5,
-   "five_day_pct": -0.8
+   "day_pct": -1.1,
+   "five_day_pct": -0.4
   },
   "META": {
    "ticker": "META",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": -1.0,
-   "five_day_pct": -4.4
+   "day_pct": -1.3,
+   "five_day_pct": -4.7
   },
   "TSLA": {
    "ticker": "TSLA",
    "status": "no_shock",
    "date": "2026-11-24",
-   "day_pct": -0.6,
-   "five_day_pct": 0.8
+   "day_pct": -0.2,
+   "five_day_pct": 1.2
   }
  },
  "sp500_shocks": [
@@ -99,7 +99,7 @@
    "date": "2026-11-24",
    "drop_pct": -15.3,
    "excess_pct": -11.7,
-   "since_shock_pct": 8.9,
+   "since_shock_pct": 9.8,
    "score": 73,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -138,7 +138,7 @@
    "date": "2026-11-24",
    "drop_pct": -12.2,
    "excess_pct": -8.5,
-   "since_shock_pct": -0.1,
+   "since_shock_pct": -1.1,
    "score": 73,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -181,7 +181,7 @@
    "date": "2026-11-24",
    "drop_pct": -12.9,
    "excess_pct": -9.3,
-   "since_shock_pct": 5.0,
+   "since_shock_pct": 4.8,
    "score": 71,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -220,7 +220,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.9,
    "excess_pct": -7.3,
-   "since_shock_pct": 7.4,
+   "since_shock_pct": 7.9,
    "score": 71,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -259,7 +259,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.3,
    "excess_pct": -6.7,
-   "since_shock_pct": 5.8,
+   "since_shock_pct": 5.3,
    "score": 71,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -341,7 +341,7 @@
    "date": "2026-11-24",
    "drop_pct": -11.9,
    "excess_pct": -8.2,
-   "since_shock_pct": 6.3,
+   "since_shock_pct": 4.2,
    "score": 71,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -376,7 +376,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.7,
    "excess_pct": -7.1,
-   "since_shock_pct": 7.2,
+   "since_shock_pct": 7.0,
    "score": 70,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -415,7 +415,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.1,
    "excess_pct": -6.5,
-   "since_shock_pct": 4.0,
+   "since_shock_pct": 4.6,
    "score": 70,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -448,87 +448,13 @@
    }
   },
   {
-   "ticker": "AMD",
-   "status": "shock",
-   "shock_date": "2026-11-20",
-   "date": "2026-11-24",
-   "drop_pct": -13.2,
-   "excess_pct": -9.6,
-   "since_shock_pct": -2.5,
-   "score": 69,
-   "band": 5,
-   "verdict": "BUYABLE NEWS DIP",
-   "tone": "green",
-   "hist_beat_spy_pct": 54.8,
-   "hist_median_excess_pct": 2.07,
-   "reasons": [
-    {
-     "sign": "+",
-     "text": "Market was also weak, so part of the drop isn't about the company"
-    }
-   ],
-   "features": {
-    "drop_pct": -13.246,
-    "excess_pct": -9.606,
-    "spy_day_pct": -3.64,
-    "vol_ratio": 2.437,
-    "gap_pct": -3.569,
-    "close_loc": 0.1,
-    "pre60_pct": 1.718,
-    "above_200ma": 1,
-    "off_52w_high_pct": -24.673,
-    "spy_20d_pct": -9.232,
-    "spy_above_200ma": 0,
-    "vix": 35.89
-   }
-  },
-  {
-   "ticker": "DELL",
-   "status": "shock",
-   "shock_date": "2026-11-20",
-   "date": "2026-11-24",
-   "drop_pct": -11.0,
-   "excess_pct": -7.4,
-   "since_shock_pct": 6.7,
-   "score": 69,
-   "band": 5,
-   "verdict": "BUYABLE NEWS DIP",
-   "tone": "green",
-   "hist_beat_spy_pct": 54.8,
-   "hist_median_excess_pct": 2.07,
-   "reasons": [
-    {
-     "sign": "+",
-     "text": "Market was also weak, so part of the drop isn't about the company"
-    },
-    {
-     "sign": "+",
-     "text": "Stock was already beaten down before the news (-33% over 60 days, -47% off its high)"
-    }
-   ],
-   "features": {
-    "drop_pct": -11.045,
-    "excess_pct": -7.405,
-    "spy_day_pct": -3.64,
-    "vol_ratio": 1.633,
-    "gap_pct": -2.86,
-    "close_loc": 0.125,
-    "pre60_pct": -32.616,
-    "above_200ma": 0,
-    "off_52w_high_pct": -46.883,
-    "spy_20d_pct": -9.232,
-    "spy_above_200ma": 0,
-    "vix": 35.89
-   }
-  },
-  {
    "ticker": "INTU",
    "status": "shock",
    "shock_date": "2026-11-20",
    "date": "2026-11-24",
    "drop_pct": -12.8,
    "excess_pct": -9.1,
-   "since_shock_pct": 3.4,
+   "since_shock_pct": 3.3,
    "score": 69,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -567,7 +493,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.0,
    "excess_pct": -6.4,
-   "since_shock_pct": 7.1,
+   "since_shock_pct": 7.0,
    "score": 69,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -606,7 +532,7 @@
    "date": "2026-11-24",
    "drop_pct": -11.7,
    "excess_pct": -8.1,
-   "since_shock_pct": 8.3,
+   "since_shock_pct": 7.6,
    "score": 69,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -645,7 +571,7 @@
    "date": "2026-11-24",
    "drop_pct": -13.0,
    "excess_pct": -12.7,
-   "since_shock_pct": 5.4,
+   "since_shock_pct": 4.4,
    "score": 68,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -684,7 +610,7 @@
    "date": "2026-11-24",
    "drop_pct": -10.0,
    "excess_pct": -6.3,
-   "since_shock_pct": 5.0,
+   "since_shock_pct": 4.1,
    "score": 68,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -717,13 +643,56 @@
    }
   },
   {
+   "ticker": "BG",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -8.6,
+   "excess_pct": -8.1,
+   "since_shock_pct": 0.0,
+   "score": 67,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-20% over 60 days, -30% off its high)"
+    },
+    {
+     "sign": "+",
+     "text": "Most of the drop happened during the day, not as an overnight gap"
+    }
+   ],
+   "features": {
+    "drop_pct": -8.601,
+    "excess_pct": -8.115,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 2.122,
+    "gap_pct": -0.185,
+    "close_loc": 0.046,
+    "pre60_pct": -20.359,
+    "above_200ma": 0,
+    "off_52w_high_pct": -30.013,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
    "ticker": "ANET",
    "status": "shock",
    "shock_date": "2026-11-20",
    "date": "2026-11-24",
    "drop_pct": -11.6,
    "excess_pct": -7.9,
-   "since_shock_pct": -0.1,
+   "since_shock_pct": 0.6,
    "score": 66,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -758,7 +727,7 @@
    "date": "2026-11-24",
    "drop_pct": -8.9,
    "excess_pct": -13.6,
-   "since_shock_pct": 1.3,
+   "since_shock_pct": 0.9,
    "score": 65,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -775,7 +744,7 @@
     "drop_pct": -8.922,
     "excess_pct": -13.63,
     "spy_day_pct": 4.709,
-    "vol_ratio": 4.28,
+    "vol_ratio": 4.293,
     "gap_pct": -5.147,
     "close_loc": 0.338,
     "pre60_pct": 0.649,
@@ -787,13 +756,91 @@
    }
   },
   {
+   "ticker": "DELL",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -11.8,
+   "excess_pct": -11.3,
+   "since_shock_pct": 0.0,
+   "score": 65,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-27% over 60 days, -43% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -11.833,
+    "excess_pct": -11.347,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 2.524,
+    "gap_pct": -7.139,
+    "close_loc": 0.173,
+    "pre60_pct": -26.593,
+    "above_200ma": 0,
+    "off_52w_high_pct": -43.081,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
+   "ticker": "MCHP",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -7.9,
+   "excess_pct": -7.5,
+   "since_shock_pct": 0.0,
+   "score": 65,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-16% over 60 days, -41% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -7.939,
+    "excess_pct": -7.453,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 1.512,
+    "gap_pct": -4.925,
+    "close_loc": 0.343,
+    "pre60_pct": -16.056,
+    "above_200ma": 0,
+    "off_52w_high_pct": -40.517,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
    "ticker": "UNH",
    "status": "shock",
    "shock_date": "2026-11-18",
    "date": "2026-11-24",
    "drop_pct": -10.2,
    "excess_pct": -9.9,
-   "since_shock_pct": -1.7,
+   "since_shock_pct": -2.3,
    "score": 65,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -826,13 +873,48 @@
    }
   },
   {
+   "ticker": "TXN",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -11.2,
+   "excess_pct": -10.8,
+   "since_shock_pct": 0.0,
+   "score": 64,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    }
+   ],
+   "features": {
+    "drop_pct": -11.247,
+    "excess_pct": -10.761,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 1.808,
+    "gap_pct": -4.756,
+    "close_loc": 0.026,
+    "pre60_pct": 12.585,
+    "above_200ma": 1,
+    "off_52w_high_pct": -12.366,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
    "ticker": "WSM",
    "status": "shock",
    "shock_date": "2026-11-19",
    "date": "2026-11-24",
    "drop_pct": -15.2,
    "excess_pct": -13.2,
-   "since_shock_pct": -2.5,
+   "since_shock_pct": -3.1,
    "score": 64,
    "band": 5,
    "verdict": "BUYABLE NEWS DIP",
@@ -861,13 +943,91 @@
    }
   },
   {
+   "ticker": "AMD",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -8.9,
+   "excess_pct": -8.4,
+   "since_shock_pct": 0.0,
+   "score": 62,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-3% over 60 days, -30% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -8.863,
+    "excess_pct": -8.377,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 1.509,
+    "gap_pct": -6.249,
+    "close_loc": 0.525,
+    "pre60_pct": -2.603,
+    "above_200ma": 1,
+    "off_52w_high_pct": -30.175,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
+   "ticker": "HPE",
+   "status": "shock",
+   "shock_date": "2026-11-24",
+   "date": "2026-11-24",
+   "drop_pct": -16.3,
+   "excess_pct": -15.8,
+   "since_shock_pct": 0.0,
+   "score": 62,
+   "band": 5,
+   "verdict": "BUYABLE NEWS DIP",
+   "tone": "green",
+   "hist_beat_spy_pct": 54.8,
+   "hist_median_excess_pct": 2.07,
+   "reasons": [
+    {
+     "sign": "+",
+     "text": "Market was also weak, so part of the drop isn't about the company"
+    },
+    {
+     "sign": "+",
+     "text": "Stock was already beaten down before the news (-8% over 60 days, -35% off its high)"
+    }
+   ],
+   "features": {
+    "drop_pct": -16.306,
+    "excess_pct": -15.82,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 2.493,
+    "gap_pct": -11.787,
+    "close_loc": 0.269,
+    "pre60_pct": -8.201,
+    "above_200ma": 1,
+    "off_52w_high_pct": -34.631,
+    "spy_20d_pct": -6.611,
+    "spy_above_200ma": 0,
+    "vix": 26.36
+   }
+  },
+  {
    "ticker": "FCX",
    "status": "shock",
    "shock_date": "2026-11-18",
    "date": "2026-11-24",
    "drop_pct": -7.0,
    "excess_pct": -6.7,
-   "since_shock_pct": -7.9,
+   "since_shock_pct": -7.2,
    "score": 61,
    "band": 4,
    "verdict": "LEANS BUYABLE",
@@ -900,51 +1060,12 @@
    }
   },
   {
-   "ticker": "HPE",
-   "status": "shock",
-   "shock_date": "2026-11-24",
-   "date": "2026-11-24",
-   "drop_pct": -16.4,
-   "excess_pct": -15.7,
-   "since_shock_pct": 0.0,
-   "score": 61,
-   "band": 5,
-   "verdict": "BUYABLE NEWS DIP",
-   "tone": "green",
-   "hist_beat_spy_pct": 54.8,
-   "hist_median_excess_pct": 2.07,
-   "reasons": [
-    {
-     "sign": "+",
-     "text": "Market was also weak, so part of the drop isn't about the company"
-    },
-    {
-     "sign": "+",
-     "text": "Stock was already beaten down before the news (-8% over 60 days, -35% off its high)"
-    }
-   ],
-   "features": {
-    "drop_pct": -16.368,
-    "excess_pct": -15.695,
-    "spy_day_pct": -0.673,
-    "vol_ratio": 1.522,
-    "gap_pct": -11.787,
-    "close_loc": 0.183,
-    "pre60_pct": -8.201,
-    "above_200ma": 1,
-    "off_52w_high_pct": -34.631,
-    "spy_20d_pct": -6.786,
-    "spy_above_200ma": 0,
-    "vix": 26.45
-   }
-  },
-  {
    "ticker": "ADI",
    "status": "shock",
    "shock_date": "2026-11-24",
    "date": "2026-11-24",
-   "drop_pct": -17.2,
-   "excess_pct": -16.5,
+   "drop_pct": -17.4,
+   "excess_pct": -16.9,
    "since_shock_pct": 0.0,
    "score": 60,
    "band": 4,
@@ -959,18 +1080,18 @@
     }
    ],
    "features": {
-    "drop_pct": -17.161,
-    "excess_pct": -16.489,
-    "spy_day_pct": -0.673,
-    "vol_ratio": 1.728,
+    "drop_pct": -17.373,
+    "excess_pct": -16.887,
+    "spy_day_pct": -0.486,
+    "vol_ratio": 3.079,
     "gap_pct": -13.399,
-    "close_loc": 0.286,
+    "close_loc": 0.261,
     "pre60_pct": 4.691,
     "above_200ma": 1,
     "off_52w_high_pct": -14.979,
-    "spy_20d_pct": -6.786,
+    "spy_20d_pct": -6.611,
     "spy_above_200ma": 0,
-    "vix": 26.45
+    "vix": 26.36
    }
   }
  ],
