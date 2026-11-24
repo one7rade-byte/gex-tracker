@@ -1,8 +1,8 @@
 {
- "date": "2026-11-23",
+ "date": "2026-11-24",
  "action": "BUY-LOW LADDER: TRANCHE 1 OF 6",
  "tone": "green",
- "headline": "SPY is 7.4% below its 2026-10-06 high. Buy in tranches, not all at once. Next tranche at 685.60 (-12%). History: past drops that got this far reached -20% 28% of the time; buying here returned a median +15.6% over 12 months. Fear is high (VIX backwardation 5 days), so expect lower prices before the bottom; stick to the ladder.",
+ "headline": "SPY is 8.0% below its 2026-10-06 high. Buy in tranches, not all at once. Next tranche at 685.60 (-12%). History: past drops that got this far reached -20% 28% of the time; buying here returned a median +15.6% over 12 months. Fear is high (VIX backwardation 6 days, big money leaving 2 days), so expect lower prices before the bottom; stick to the ladder.",
  "confirmations": 0,
  "confirmations_total": 5,
  "checks": [
@@ -35,7 +35,7 @@
   },
   {
    "label": "From high",
-   "text": "SPY -7.4% vs 779.09 (2026-10-06)",
+   "text": "SPY -8.0% vs 779.09 (2026-10-06)",
    "tone": "green"
   },
   {
@@ -50,58 +50,58 @@
   },
   {
    "label": "Fear",
-   "text": "VIX 26.6, backwardation day 5",
+   "text": "VIX 26.5, backwardation day 6",
    "tone": "red"
   }
  ],
- "flow_date": "2026-11-23",
+ "flow_date": "2026-11-24",
  "ladder": {
   "ath": 779.09,
   "ath_date": "2026-10-06",
-  "last": 721.81,
-  "drawdown_pct": -7.4,
+  "last": 717.08,
+  "drawdown_pct": -8.0,
   "tiers": [
    {
     "tier": -8,
     "price": 716.76,
     "weight_pct": 15,
     "hit_date": "2026-11-19",
-    "from_here_pct": -0.7
+    "from_here_pct": -0.0
    },
    {
     "tier": -12,
     "price": 685.6,
     "weight_pct": 15,
     "hit_date": null,
-    "from_here_pct": -5.0
+    "from_here_pct": -4.4
    },
    {
     "tier": -16,
     "price": 654.44,
     "weight_pct": 20,
     "hit_date": null,
-    "from_here_pct": -9.3
+    "from_here_pct": -8.7
    },
    {
     "tier": -20,
     "price": 623.27,
     "weight_pct": 20,
     "hit_date": null,
-    "from_here_pct": -13.7
+    "from_here_pct": -13.1
    },
    {
     "tier": -25,
     "price": 584.32,
     "weight_pct": 15,
     "hit_date": null,
-    "from_here_pct": -19.0
+    "from_here_pct": -18.5
    },
    {
     "tier": -30,
     "price": 545.36,
     "weight_pct": 15,
     "hit_date": null,
-    "from_here_pct": -24.4
+    "from_here_pct": -23.9
    }
   ],
   "tranches_hit": 1,
@@ -110,7 +110,7 @@
    "price": 685.6,
    "weight_pct": 15,
    "hit_date": null,
-   "from_here_pct": -5.0
+   "from_here_pct": -4.4
   },
   "history_at_deepest": {
    "tier": -8,
@@ -127,9 +127,9 @@
   }
  },
  "flow_10d_pct": {
-  "smh_spy": -1.61,
-  "rsp_spy": 0.37,
-  "defensive_cyclical": 3.74,
-  "hyg_ief": -1.11
+  "smh_spy": -7.5,
+  "rsp_spy": 1.24,
+  "defensive_cyclical": 6.16,
+  "hyg_ief": -1.79
  }
 }
