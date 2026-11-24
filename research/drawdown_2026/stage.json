@@ -1,20 +1,20 @@
 {
- "as_of": "2026-11-20",
+ "as_of": "2026-11-23",
  "stage": "FALLING",
- "day": 33,
+ "day": 34,
  "peak": {
   "date": "2026-10-06",
   "spy": 779.09
  },
- "spy_dd_pct": -11.46,
- "qqq_dd_pct": -19.9,
- "smh_dd_from_own_high_pct": -40.19,
+ "spy_dd_pct": -7.29,
+ "qqq_dd_pct": -14.3,
+ "smh_dd_from_own_high_pct": -31.2,
  "low": {
   "date": "2026-11-20",
   "spy": 689.81,
   "dd_pct": -11.46
  },
  "tranches_hit": 1,
- "ladder_blended_return_pct": -3.76,
+ "ladder_blended_return_pct": 0.77,
  "recovered": false
 }
