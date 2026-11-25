@@ -57,6 +57,11 @@
    "label": "RSI",
    "text": "RSI(14) 40.5; first oversold 2026-11-20 at 689.81 (low since 689.81; typical retest zone ~659)",
    "tone": "gray"
+  },
+  {
+   "label": "TQQQ",
+   "text": "entry zone open since 2026-11-20 (QQQ 608.45, -19.9%); past entries returned a median +150% in 12 months (3/5 positive). Stop adding if QQQ closes below 547.61 (10% under the entry)",
+   "tone": "green"
   }
  ],
  "flow_date": "2026-11-24",
@@ -300,6 +305,26 @@
   "positive_12m_pct": 85.7,
   "n": 8,
   "low_since": 689.81
+ },
+ "tqqq": {
+  "qqq_ath": 759.66,
+  "qqq_ath_date": "2026-10-06",
+  "qqq_last": 638.1,
+  "qqq_dd_pct": -16.0,
+  "trigger_level": 607.73,
+  "entry_date": "2026-11-20",
+  "status": "ZONE OPEN",
+  "study": {
+   "fired": 5,
+   "of": 17,
+   "median_tqqq_12m": 149.7,
+   "positive_12m": 3,
+   "median_worst_after": -19.9
+  },
+  "entry_qqq": 608.45,
+  "entry_dd_pct": -19.9,
+  "guard_level": 547.61,
+  "guard_hit": null
  },
  "flow_10d_pct": {
   "smh_spy": -7.94,

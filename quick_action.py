@@ -187,6 +187,42 @@ def rsi_read(date, spot):
     return out
 
 
+TQQQ_STUDY = os.path.join("research", "drawdown_2026", "tqqq_entry_study.json")
+
+
+def tqqq_read(date):
+    """TQQQ (3x QQQ) entry zone: only in a deep drop, never at the start.
+    Trigger: QQQ closes 20%+ below its high, or 15%+ below with RSI<30 and
+    VIX>30 the same day. Guard: QQQ closes 10% below the entry close, which
+    means stop adding TQQQ (it happened in the 2000 and 2022 bear markets
+    and in none of the drops that recovered). research/drawdown_2026/tqqq_entry_study.py"""
+    rows = [r for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("qqq"))]
+    if len(rows) < 300:
+        return None
+    D, C = [r["date"] for r in rows], [f(r["qqq"]) for r in rows]
+    V = {r["date"]: f(r.get("vix")) for r in rows}
+    R = _rsi(C)
+    ai = max(range(len(C)), key=lambda i: C[i])
+    ath = C[ai]
+    i0 = next((i for i in range(ai, len(C)) if C[i] / ath - 1 <= -0.20 or
+               (C[i] / ath - 1 <= -0.15 and R[i] is not None and R[i] < 30 and (V.get(D[i]) or 0) > 30)), None)
+    try:
+        with open(TQQQ_STUDY, encoding="utf-8") as fh:
+            st_ = json.load(fh)
+    except (OSError, ValueError):
+        st_ = {}
+    out = {"qqq_ath": round(ath, 2), "qqq_ath_date": D[ai], "qqq_last": round(C[-1], 2),
+           "qqq_dd_pct": round((C[-1] / ath - 1) * 100, 1), "trigger_level": round(ath * 0.8, 2),
+           "entry_date": None, "status": "NOT YET", "study": {k: st_.get(k) for k in ("fired", "of", "median_tqqq_12m", "positive_12m", "median_worst_after")}}
+    if i0 is not None:
+        guard = round(C[i0] * 0.90, 2)
+        g = next((i for i in range(i0 + 1, len(C)) if C[i] <= guard), None)
+        out.update({"entry_date": D[i0], "entry_qqq": round(C[i0], 2), "entry_dd_pct": round((C[i0] / ath - 1) * 100, 1),
+                    "guard_level": guard, "guard_hit": D[g] if g is not None else None,
+                    "status": "GUARD HIT: STOP ADDING" if g is not None else "ZONE OPEN"})
+    return out
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -307,6 +343,24 @@ def main():
             txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
                     f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
         reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
+    tq = tqqq_read(date)
+    if tq:
+        sd = tq["study"] or {}
+        if tq["status"] == "NOT YET":
+            txt = (f"not yet: QQQ {tq['qqq_dd_pct']:+.1f}% from its high; the entry zone opens at QQQ {tq['trigger_level']:.2f} (-20%), "
+                   f"or at -15% with RSI<30 and VIX>30")
+            tone_ = "gray"
+        elif tq["status"] == "ZONE OPEN":
+            txt = (f"entry zone open since {tq['entry_date']} (QQQ {tq['entry_qqq']:.2f}, {tq['entry_dd_pct']:+.1f}%)"
+                   + (f"; past entries returned a median {sd['median_tqqq_12m']:+.0f}% in 12 months ({sd['positive_12m']}/{sd['fired']} positive)"
+                      if sd.get("median_tqqq_12m") is not None else "")
+                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)")
+            tone_ = "green"
+        else:
+            txt = (f"STOP ADDING: QQQ closed 10% below the {tq['entry_date']} entry on {tq['guard_hit']}, the pattern of the 2000 and 2022 bear markets. "
+                   f"No more leveraged buys; any further buys go to the SPY plan")
+            tone_ = "red"
+        reasons.append({"label": "TQQQ", "text": txt, "tone": tone_})
     if lad:
         reasons.insert(1, {"label": "From high", "text": f"SPY {lad['drawdown_pct']:+.1f}% vs {lad['ath']:.2f} ({lad['ath_date']})",
                            "tone": "green" if lad["tranches_hit"] else "gray"})
@@ -314,7 +368,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:
