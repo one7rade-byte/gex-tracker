@@ -15,6 +15,11 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
 P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
     2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
     DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
+P0e. (new 2026-11-25) DE-RISK FORWARD TEST REVIEW, monthly (first full review once 120 sessions have resolved, ~mid-2027).
+    research/derisk/: backtest 2007+ found no warning good enough for a trim rule (credit_lead 47.4% and semis_lead 42.4%
+    10%+ drop odds vs 25% base, but trimming on them changed CAGR/maxDD very little). Rules FROZEN 2026-11-25; forward_test.py
+    logs them daily. Each month: report forward_summary.json vs the backtest, note any warning that fired before a real drop,
+    and do NOT retune thresholds. Pass bar: 12+ months resolved, >= 1.5x base rate, fired before the next real drop.
 P0d. (new 2026-11-24) GEX AT THE LOW, a live-only hypothesis. At the 2026-11-20 flush (SPY 689.81, RSI 29.4, VIX 35.9)
     price made a new low while SPY GEX got LESS negative (-20.0 -> -13.2): dealers covering into the low. The 2026-03-30 low
     (RSI 22.8, GEX -3.5) looked similar. GEX history only starts 2026-03-30, so this can't be backtested. Track it on every
