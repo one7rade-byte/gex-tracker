@@ -33,7 +33,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, ROOT)
-from quick_action import LADDER  # noqa: E402  (single source of truth for the tranche plan)
+from quick_action import LADDER  # noqa: E402  (levels the study measures; the buy plan itself is in quick_action.ladder_read)
 
 PEAK_DATE = "2026-10-06"
 
@@ -131,8 +131,7 @@ def main():
         w.writerows(ledger)
     hit = [x for x in ledger if x["hit_date"]]
     if hit:
-        wsum = sum(x["weight_pct"] for x in hit)
-        blended = sum(x["weight_pct"] * x["ret_now_pct"] for x in hit) / wsum
+        blended = sum(x["ret_now_pct"] for x in hit) / len(hit)  # equal weight per level hit
     else:
         blended = None
 

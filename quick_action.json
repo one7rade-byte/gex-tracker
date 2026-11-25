@@ -1,8 +1,8 @@
 {
- "date": "2026-11-20",
- "action": "BUY-LOW LADDER: TRANCHE 1 OF 6",
+ "date": "2026-11-25",
+ "action": "BUY ZONE: SINGLE BUY",
  "tone": "green",
- "headline": "SPY is 11.4% below its 2026-10-06 high. Buy in tranches, not all at once. Next tranche at 685.60 (-12%). History: past drops that got this far reached -20% 28% of the time; buying here returned a median +15.6% over 12 months. Fear is high (VIX backwardation 4 days, regime defensive), so expect lower prices before the bottom; stick to the ladder.",
+ "headline": "SPY is 8.1% below its 2026-10-06 high. Normal-correction plan: one buy. The buy zone opened at -8% (716.76) on 2026-11-19. History: one buy at -8% returned a median +15.6% over 12 months (12/17 positive), usually after about -9% more first. Switch to the 3-buy deep-drop plan only if SPY closes below 655.32 (5% under the 2026-11-20 first-oversold close of 689.81): that second leg came in 5/5 drops of 20%+ since 1995 and 0/9 mild corrections. Fear is still high (VIX backwardation 7 days, big money leaving 2 days), so a retest is likely; that's not a reason for a second buy unless the switch level breaks.",
  "confirmations": 0,
  "confirmations_total": 5,
  "checks": [
@@ -30,106 +30,306 @@
  "reasons": [
   {
    "label": "Signal",
-   "text": "Defensive",
-   "tone": "red"
+   "text": "Hold",
+   "tone": "blue"
   },
   {
    "label": "From high",
-   "text": "SPY -11.4% vs 779.09 (2026-10-06)",
+   "text": "SPY -8.1% vs 779.09 (2026-10-06)",
    "tone": "green"
   },
   {
    "label": "Big money",
-   "text": "No strong rotation",
-   "tone": "gray"
+   "text": "Leaving stocks: credit sold, money into defensives",
+   "tone": "red"
   },
   {
    "label": "Credit",
-   "text": "softening (HYG -0.8% in 5 days)",
-   "tone": "amber"
+   "text": "calm (HYG -0.1% in 5 days)",
+   "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 35.9, backwardation day 4",
+   "text": "VIX 28.1, backwardation day 7",
    "tone": "red"
+  },
+  {
+   "label": "RSI",
+   "text": "RSI(14) 39.6; first oversold 2026-11-20 at 689.81 (low since 689.81; typical retest zone ~659)",
+   "tone": "amber"
+  },
+  {
+   "label": "TQQQ",
+   "text": "entry zone open since 2026-11-20 (QQQ 608.45, -19.9%); past entries returned a median +150% in 12 months (3/5 positive). Stop adding if QQQ closes below 547.61 (10% under the entry)",
+   "tone": "green"
   }
  ],
- "flow_date": "2026-11-20",
+ "flow_date": "2026-11-25",
  "ladder": {
   "ath": 779.09,
   "ath_date": "2026-10-06",
-  "last": 690.43,
-  "drawdown_pct": -11.4,
+  "last": 715.93,
+  "drawdown_pct": -8.1,
   "tiers": [
    {
     "tier": -8,
     "price": 716.76,
-    "weight_pct": 15,
-    "hit_date": "2026-11-19",
-    "from_here_pct": 3.8
+    "label": "Buy 1 (the single buy)",
+    "hit_date": "2026-11-19"
    },
    {
-    "tier": -12,
-    "price": 685.6,
-    "weight_pct": 15,
-    "hit_date": null,
-    "from_here_pct": -0.7
-   },
-   {
-    "tier": -16,
-    "price": 654.44,
-    "weight_pct": 20,
-    "hit_date": null,
-    "from_here_pct": -5.2
-   },
-   {
-    "tier": -20,
-    "price": 623.27,
-    "weight_pct": 20,
-    "hit_date": null,
-    "from_here_pct": -9.7
+    "tier": -15.9,
+    "price": 655.32,
+    "label": "Deep-drop switch / Buy 2 (5% under first oversold)",
+    "hit_date": null
    },
    {
     "tier": -25,
     "price": 584.32,
-    "weight_pct": 15,
-    "hit_date": null,
-    "from_here_pct": -15.4
-   },
-   {
-    "tier": -30,
-    "price": 545.36,
-    "weight_pct": 15,
-    "hit_date": null,
-    "from_here_pct": -21.0
+    "label": "Buy 3 (or 5 closes above the 50-day avg)",
+    "hit_date": null
    }
   ],
+  "mode": "NORMAL",
   "tranches_hit": 1,
-  "next": {
-   "tier": -12,
-   "price": 685.6,
-   "weight_pct": 15,
-   "hit_date": null,
-   "from_here_pct": -0.7
+  "first_oversold": {
+   "date": "2026-11-20",
+   "close": 689.81
   },
-  "history_at_deepest": {
-   "tier": -8,
-   "n": 19,
-   "to_m10": "67%",
-   "to_m15": "39%",
-   "to_m20": "28%",
-   "to_m30": "17%",
-   "median_bottom": -11.6,
-   "median_6m": 13.8,
-   "median_12m": 15.6,
-   "pos_12m": "12/17",
-   "median_worst_12m": -9.0
+  "ma50": 757.87,
+  "study": {
+   "n_completed": 17,
+   "single_buy": {
+    "at_-8pct": {
+     "filled": 17,
+     "of": 17,
+     "median_12m": 15.6,
+     "positive_12m": 12,
+     "median_worst_after": -9.0,
+     "worst_12m": -37.5
+    },
+    "at_-10pct": {
+     "filled": 12,
+     "of": 17,
+     "median_12m": 15.4,
+     "positive_12m": 9,
+     "median_worst_after": -9.8,
+     "worst_12m": -34.7
+    },
+    "first_oversold": {
+     "filled": 13,
+     "of": 17,
+     "median_12m": 10.5,
+     "positive_12m": 9,
+     "median_worst_after": -11.2,
+     "worst_12m": -36.3
+    },
+    "first_oversold_vix30": {
+     "filled": 10,
+     "of": 17,
+     "median_12m": 18.8,
+     "positive_12m": 7,
+     "median_worst_after": -10.7,
+     "worst_12m": -35.7
+    }
+   },
+   "deep_switch": {
+    "second_leg": {
+     "deep_caught": "5/5",
+     "big_14_20_fired": "3/3",
+     "mild_false_alarms": "0/9",
+     "median_dd_when_fired": -15.7
+    },
+    "credit_break_2007plus": {
+     "deep_caught": "4/4",
+     "mild_false_alarms": "3/4"
+    }
+   },
+   "episodes": [
+    {
+     "peak": "1996-05-22",
+     "bottom_pct": -8.1,
+     "first_oversold": "1996-07-15",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "1997-02-18",
+     "bottom_pct": -10.4,
+     "first_oversold": null,
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "1997-10-07",
+     "bottom_pct": -11.2,
+     "first_oversold": "1997-10-27",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "1998-07-20",
+     "bottom_pct": -19.0,
+     "first_oversold": "1998-08-04",
+     "second_leg": "1998-08-31",
+     "second_leg_dd_pct": -19.0,
+     "credit_break": null
+    },
+    {
+     "peak": "1999-07-16",
+     "bottom_pct": -11.9,
+     "first_oversold": "1999-08-10",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "2000-01-19",
+     "bottom_pct": -9.3,
+     "first_oversold": null,
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "2000-03-24",
+     "bottom_pct": -49.1,
+     "first_oversold": "2000-10-11",
+     "second_leg": "2000-12-20",
+     "second_leg_dd_pct": -17.8,
+     "credit_break": null
+    },
+    {
+     "peak": "2007-07-19",
+     "bottom_pct": -9.0,
+     "first_oversold": "2007-07-27",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": "2007-07-20"
+    },
+    {
+     "peak": "2007-10-09",
+     "bottom_pct": -56.5,
+     "first_oversold": "2008-01-17",
+     "second_leg": "2008-07-02",
+     "second_leg_dd_pct": -19.4,
+     "credit_break": "2007-10-22"
+    },
+    {
+     "peak": "2015-05-21",
+     "bottom_pct": -14.4,
+     "first_oversold": "2015-08-21",
+     "second_leg": "2015-08-25",
+     "second_leg_dd_pct": -12.3,
+     "credit_break": "2015-07-08"
+    },
+    {
+     "peak": "2018-01-26",
+     "bottom_pct": -10.2,
+     "first_oversold": "2018-02-05",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    },
+    {
+     "peak": "2018-09-20",
+     "bottom_pct": -20.2,
+     "first_oversold": "2018-10-10",
+     "second_leg": "2018-10-29",
+     "second_leg_dd_pct": -10.1,
+     "credit_break": "2018-11-19"
+    },
+    {
+     "peak": "2020-02-19",
+     "bottom_pct": -34.1,
+     "first_oversold": "2020-02-25",
+     "second_leg": "2020-02-28",
+     "second_leg_dd_pct": -12.4,
+     "credit_break": "2020-02-26"
+    },
+    {
+     "peak": "2020-09-02",
+     "bottom_pct": -9.8,
+     "first_oversold": null,
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": "2020-09-25"
+    },
+    {
+     "peak": "2022-01-03",
+     "bottom_pct": -25.4,
+     "first_oversold": "2022-01-21",
+     "second_leg": "2022-04-29",
+     "second_leg_dd_pct": -13.8,
+     "credit_break": "2022-03-07"
+    },
+    {
+     "peak": "2024-07-16",
+     "bottom_pct": -8.4,
+     "first_oversold": null,
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": "2024-08-02"
+    },
+    {
+     "peak": "2025-02-19",
+     "bottom_pct": -19.0,
+     "first_oversold": "2025-03-11",
+     "second_leg": "2025-04-04",
+     "second_leg_dd_pct": -17.6,
+     "credit_break": "2025-03-13"
+    },
+    {
+     "peak": "2026-10-06",
+     "bottom_pct": -11.5,
+     "first_oversold": "2026-11-20",
+     "second_leg": null,
+     "second_leg_dd_pct": null,
+     "credit_break": null
+    }
+   ]
   }
  },
+ "rsi_oversold": {
+  "rsi": 39.6,
+  "first_oversold_date": "2026-11-20",
+  "first_oversold_close": 689.81,
+  "vix_over_30": true,
+  "undercut_pct": 62.5,
+  "median_further_drop_60d": -4.45,
+  "retest_zone": 659.11,
+  "median_12m": 22.54,
+  "positive_12m_pct": 85.7,
+  "n": 8,
+  "low_since": 689.81
+ },
+ "tqqq": {
+  "qqq_ath": 759.66,
+  "qqq_ath_date": "2026-10-06",
+  "qqq_last": 631.3,
+  "qqq_dd_pct": -16.9,
+  "trigger_level": 607.73,
+  "entry_date": "2026-11-20",
+  "status": "ZONE OPEN",
+  "study": {
+   "fired": 5,
+   "of": 17,
+   "median_tqqq_12m": 149.7,
+   "positive_12m": 3,
+   "median_worst_after": -19.9
+  },
+  "entry_qqq": 608.45,
+  "entry_dd_pct": -19.9,
+  "guard_level": 547.61,
+  "guard_hit": null
+ },
  "flow_10d_pct": {
-  "smh_spy": -8.09,
-  "rsp_spy": 2.34,
-  "defensive_cyclical": 7.93,
-  "hyg_ief": -0.94
+  "smh_spy": -12.63,
+  "rsp_spy": 2.9,
+  "defensive_cyclical": 9.09,
+  "hyg_ief": -2.36
  }
 }
