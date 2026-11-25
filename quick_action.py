@@ -111,6 +111,54 @@ def ladder_read(date, spot):
             "tiers": tiers, "tranches_hit": n_hit, "next": nxt, "history_at_deepest": ref}
 
 
+RSI_STUDY = os.path.join("research", "rsi_divergence", "rsi_study.json")
+
+
+def rsi_read(date, spot):
+    """Latest 'first oversold' (RSI(14) < 30 after 60+ sessions without one) in
+    the last 60 sessions, with what history says happens next
+    (research/rsi_divergence/rsi_study.py, SPY 1995+)."""
+    closes = [(r["date"], f(r["spy"])) for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("spy"))]
+    if spot and closes and closes[-1][0] != date:
+        closes.append((date, spot))
+    if len(closes) < 300:
+        return None
+    C = [c for _, c in closes]
+    n, R = 14, [None] * len(C)
+    g = sum(max(C[i] - C[i - 1], 0) for i in range(1, n + 1)) / n
+    l = sum(max(C[i - 1] - C[i], 0) for i in range(1, n + 1)) / n
+    for i in range(n, len(C)):
+        if i > n:
+            d = C[i] - C[i - 1]
+            g, l = (g * (n - 1) + max(d, 0)) / n, (l * (n - 1) + max(-d, 0)) / n
+        R[i] = 100 - 100 / (1 + g / l) if l else 100
+    first, last_os = None, -999
+    for i in range(n, len(C)):
+        if R[i] < 30:
+            if i - last_os >= 60:
+                first = i
+            last_os = i
+    out = {"rsi": round(R[-1], 1)}
+    if first is not None and len(C) - 1 - first <= 60:
+        fd, fc = closes[first]
+        vix_hi = False
+        for r in read(FLOW_CSV):
+            if r["date"] == fd:
+                vix_hi = (f(r.get("vix")) or 0) > 30
+        try:
+            with open(RSI_STUDY, encoding="utf-8") as fh:
+                st_ = json.load(fh)["spy"]["oversold_vix_over_30" if vix_hi else "oversold_vix_under_30"]
+        except (OSError, ValueError, KeyError):
+            st_ = {}
+        drop = st_.get("median_further_drop_60d")
+        out.update({"first_oversold_date": fd, "first_oversold_close": round(fc, 2), "vix_over_30": vix_hi,
+                    "undercut_pct": st_.get("undercut_within_60d_pct"), "median_further_drop_60d": drop,
+                    "retest_zone": round(fc * (1 + drop / 100), 2) if drop is not None else None,
+                    "median_12m": st_.get("median_f250"), "positive_12m_pct": st_.get("f250_positive_pct"),
+                    "n": st_.get("n"), "low_since": round(min(C[first:]), 2)})
+    return out
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -171,6 +219,12 @@ def main():
         if h.get("to_m20") and h.get("median_12m") is not None:
             head += (f" History: past drops that got this far reached -20% {h['to_m20']} of the time; "
                      f"buying here returned a median {h['median_12m']:+.1f}% over 12 months.")
+        ro = rsi_read(date, spy) or {}
+        if ro.get("first_oversold_date") and ro.get("retest_zone"):
+            head += (f" RSI first hit oversold on {ro['first_oversold_date']} at {ro['first_oversold_close']:.2f}"
+                     f"{' with VIX above 30' if ro['vix_over_30'] else ''}: historically that close was undercut within "
+                     f"60 days {ro['undercut_pct']:.0f}% of the time (median retest zone ~{ro['retest_zone']:.0f}), "
+                     f"yet buying it returned a median {ro['median_12m']:+.1f}% over 12 months.")
         if crisis:
             head += " Credit is breaking, so only buy the deeper tranches (-20% and below) until it stabilizes."
         elif stress:
@@ -208,6 +262,13 @@ def main():
          "tone": "red" if credit_breaking else "green" if (hyg5 or 0) > -0.75 else "amber"},
         {"label": "Fear", "text": fear_txt, "tone": "red" if backw else "amber" if (vix or 0) >= 22 else "green"},
     ]
+    ro_ = rsi_read(date, spy) or {}
+    if ro_.get("rsi") is not None:
+        txt = f"RSI(14) {ro_['rsi']}"
+        if ro_.get("first_oversold_date"):
+            txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
+                    f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
+        reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
     if lad:
         reasons.insert(1, {"label": "From high", "text": f"SPY {lad['drawdown_pct']:+.1f}% vs {lad['ath']:.2f} ({lad['ath_date']})",
                            "tone": "green" if lad["tranches_hit"] else "gray"})
@@ -215,7 +276,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:
