@@ -15,6 +15,12 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
 P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
     2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
     DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
+P0d. (new 2026-11-24) GEX AT THE LOW, a live-only hypothesis. At the 2026-11-20 flush (SPY 689.81, RSI 29.4, VIX 35.9)
+    price made a new low while SPY GEX got LESS negative (-20.0 -> -13.2): dealers covering into the low. The 2026-03-30 low
+    (RSI 22.8, GEX -3.5) looked similar. GEX history only starts 2026-03-30, so this can't be backtested. Track it on every
+    future RSI<30 day: GEX change vs the prior day, VIX, next 5/10/20d return, and whether the low held. Also see
+    research/rsi_divergence/FINDINGS.md: RSI bear divergence has no edge as a crash warning (present before 82% of all highs);
+    first oversold is undercut within 60d 85% of the time.
 P0c. (new 2026-11-15) NEWS SHOCKS / DIP QUALITY (live on main; dip_quality.py, research/news_shock/FINDINGS.md).
     6,163 S&P 500 shock drops since 2010. Bad news alone is ~50/50 vs SPY over 60d. The score (logistic, trained
     2010-18) is a modest edge on 2019+: top band beat SPY 54.8% vs 39.4% for the bottom band, test AUC 0.553.
