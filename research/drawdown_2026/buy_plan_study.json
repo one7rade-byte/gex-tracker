@@ -1,0 +1,195 @@
+{
+ "n_completed": 17,
+ "single_buy": {
+  "at_-8pct": {
+   "filled": 17,
+   "of": 17,
+   "median_12m": 15.6,
+   "positive_12m": 12,
+   "median_worst_after": -9.0,
+   "worst_12m": -37.5
+  },
+  "at_-10pct": {
+   "filled": 12,
+   "of": 17,
+   "median_12m": 15.4,
+   "positive_12m": 9,
+   "median_worst_after": -9.8,
+   "worst_12m": -34.7
+  },
+  "first_oversold": {
+   "filled": 13,
+   "of": 17,
+   "median_12m": 10.5,
+   "positive_12m": 9,
+   "median_worst_after": -11.2,
+   "worst_12m": -36.3
+  },
+  "first_oversold_vix30": {
+   "filled": 10,
+   "of": 17,
+   "median_12m": 18.8,
+   "positive_12m": 7,
+   "median_worst_after": -10.7,
+   "worst_12m": -35.7
+  }
+ },
+ "deep_switch": {
+  "second_leg": {
+   "deep_caught": "5/5",
+   "big_14_20_fired": "3/3",
+   "mild_false_alarms": "0/9",
+   "median_dd_when_fired": -15.7
+  },
+  "credit_break_2007plus": {
+   "deep_caught": "4/4",
+   "mild_false_alarms": "3/4"
+  }
+ },
+ "episodes": [
+  {
+   "peak": "1996-05-22",
+   "bottom_pct": -8.1,
+   "first_oversold": "1996-07-15",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "1997-02-18",
+   "bottom_pct": -10.4,
+   "first_oversold": null,
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "1997-10-07",
+   "bottom_pct": -11.2,
+   "first_oversold": "1997-10-27",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "1998-07-20",
+   "bottom_pct": -19.0,
+   "first_oversold": "1998-08-04",
+   "second_leg": "1998-08-31",
+   "second_leg_dd_pct": -19.0,
+   "credit_break": null
+  },
+  {
+   "peak": "1999-07-16",
+   "bottom_pct": -11.9,
+   "first_oversold": "1999-08-10",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "2000-01-19",
+   "bottom_pct": -9.3,
+   "first_oversold": null,
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "2000-03-24",
+   "bottom_pct": -49.1,
+   "first_oversold": "2000-10-11",
+   "second_leg": "2000-12-20",
+   "second_leg_dd_pct": -17.8,
+   "credit_break": null
+  },
+  {
+   "peak": "2007-07-19",
+   "bottom_pct": -9.0,
+   "first_oversold": "2007-07-27",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": "2007-07-20"
+  },
+  {
+   "peak": "2007-10-09",
+   "bottom_pct": -56.5,
+   "first_oversold": "2008-01-17",
+   "second_leg": "2008-07-02",
+   "second_leg_dd_pct": -19.4,
+   "credit_break": "2007-10-22"
+  },
+  {
+   "peak": "2015-05-21",
+   "bottom_pct": -14.4,
+   "first_oversold": "2015-08-21",
+   "second_leg": "2015-08-25",
+   "second_leg_dd_pct": -12.3,
+   "credit_break": "2015-07-08"
+  },
+  {
+   "peak": "2018-01-26",
+   "bottom_pct": -10.2,
+   "first_oversold": "2018-02-05",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  },
+  {
+   "peak": "2018-09-20",
+   "bottom_pct": -20.2,
+   "first_oversold": "2018-10-10",
+   "second_leg": "2018-10-29",
+   "second_leg_dd_pct": -10.1,
+   "credit_break": "2018-11-19"
+  },
+  {
+   "peak": "2020-02-19",
+   "bottom_pct": -34.1,
+   "first_oversold": "2020-02-25",
+   "second_leg": "2020-02-28",
+   "second_leg_dd_pct": -12.4,
+   "credit_break": "2020-02-26"
+  },
+  {
+   "peak": "2020-09-02",
+   "bottom_pct": -9.8,
+   "first_oversold": null,
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": "2020-09-25"
+  },
+  {
+   "peak": "2022-01-03",
+   "bottom_pct": -25.4,
+   "first_oversold": "2022-01-21",
+   "second_leg": "2022-04-29",
+   "second_leg_dd_pct": -13.8,
+   "credit_break": "2022-03-07"
+  },
+  {
+   "peak": "2024-07-16",
+   "bottom_pct": -8.4,
+   "first_oversold": null,
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": "2024-08-02"
+  },
+  {
+   "peak": "2025-02-19",
+   "bottom_pct": -19.0,
+   "first_oversold": "2025-03-11",
+   "second_leg": "2025-04-04",
+   "second_leg_dd_pct": -17.6,
+   "credit_break": "2025-03-13"
+  },
+  {
+   "peak": "2026-10-06",
+   "bottom_pct": -11.5,
+   "first_oversold": "2026-11-20",
+   "second_leg": null,
+   "second_leg_dd_pct": null,
+   "credit_break": null
+  }
+ ]
+}
