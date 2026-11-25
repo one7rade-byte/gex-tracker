@@ -50,9 +50,10 @@ P3. [TESTED 2026-11-21 — inconclusive, see WEEKLY_RESEARCH_LOG.md] Second tran
 P4. [DONE 2026-11-05 on main, a8606d1] Fix the stale HYG 5d bug: regime_analyzer.hyg_5d_change reads macro_history.csv, frozen since 2026-08-17, so
     every "HYG dropped $X in 5 days" warning since then is false (true 5d on 11-05 was -0.39%). Compute it from
     gex_log.csv's hyg column. Small PR with a test.
-P5. Confirmation-tier entries (Simon's philosophy): across the 28 historical SPY <= -3.5% days, compare early entries
-    (trigger close, RSI<30) vs confirmation entries (VIX back below a threshold, VIX9D<VIX, credit holding). Report
-    cost of waiting (rebound missed) vs pain avoided (drawdown after entry).
+P5. [TESTED 2026-11-25 — inconclusive, see WEEKLY_RESEARCH_LOG.md] Early vs confirmation entries after SPY <= -3.5% days
+    (23 events 1997-2025). Confirmation's better mean is carried by 2008-09/2020-02. Ex-crash every rule costs return. First
+    contango = no confirmation (median -1.0% ret, no DD help). Credit holding worse both sides. VIX<22 / F(contango+VIX<22+
+    HYG5d>=0) = insurance: ~+6-9pp less MAE for ~2-4.5% return, fires ~half the time. RSI<30-after-shock: DD better in all cuts.
 P6. QQQ lagging SPY >= 2-3% over 10d as an early heads-up (2.5x base rate live, 2026 only). Needs QQQ history
     (Yahoo, 1999+). If the sandbox can't fetch it, add a fetch step to a workflow_dispatch workflow and say so.
 P7. 2-day GEX confirmation: a 1-day GEX flip positive after >=3 negative days (Nov 4) preceded a >=3% dip 3/15 times
@@ -68,6 +69,11 @@ P8. (new 2026-11-07) STRONG_BUY re-fire / "early not confirmed" problem. Live: 7
     (d) (from P3, 2026-11-21) invalidation: once a first fire is -5% (or -3% with composite<1) within 20d, suppress
     STRONG_BUY re-fires below the first-fire price until a new episode. Live: 4 re-fires below 761.68 (11-06..11-16)
     are all -6% to -8% to date. Measure upside missed (2010-17 tranches were positive) vs drawdown avoided.
+P10. (new 2026-11-25, from P5) DEFENSIVE vs "first RSI<30 after a shock". Live 11-20: regime_signal DEFENSIVE on the same
+    close (690.43) where the RSI<30 ledger entry fired (+3.8% by 11-25). P5: first RSI14<30 close at/after a <= -3.5% shock
+    had less drawdown than the trigger close in every era/definition (+0.9 to +2.6pp MAE). Test on the deep log: shock-window
+    days (<= 20d after a <= -3.5% drop) with RSI<30, split by regime_signal DEFENSIVE/CRISIS vs not; fwd20/60 + MAE, by era.
+    Question: should DEFENSIVE suppress "add" language when it lands on a post-shock RSI<30 day?
 P9. (new 2026-11-14) Backwardation >=3d (T2) was the most cost-efficient DEFEND trigger 2007+ (CAGR 8.83->8.66,
     max DD -56.5->-47.3, 4 switches/yr) while credit5d (T1) cost 2.6pp CAGR for ~no DD help. Test tiering DEFEND by
     trigger (T2/T4 = de-risk; T1/T3 alone = no-adds only) and whether T1 needs a level filter (HYG below 50d MA).

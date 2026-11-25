@@ -1,5 +1,69 @@
 # Weekly Research Log
 
+## 2026-11-25 — P5: early vs confirmation entries after SPY ≤ −3.5% one-day drops
+
+**VERDICT: inconclusive, no new entry rule.** In a typical shock the trigger-day close is as good as or better than every confirmation entry. The confirmation rules' better *average* numbers come almost entirely from the two crash events (2008-09-15 and 2020-02-27). In those, the confirmation never fired or fired weeks later, so the rule sat in cash. Take those two out and every confirmation rule costs return, and most don't cut drawdown much either. Two specific results: **"first contango" is not confirmation.** It fires a median 2.5 days after the trigger, costs about 1%, and in the median event gives no drawdown protection. **"Credit holding" (HYG 5d ≥ 0) is worse than the trigger close on both sides.** The only waiting rule that held up on drawdown in every definition was "first close with RSI14 < 30 at or after the trigger". Its return edge changes sign across definitions, so I'm not wiring it in. No PR.
+
+**Data and method** (`research/p5_confirmation_entries.py`; output `research/p5_confirmation_entries_output*.txt`, `p5_confirmation_entries_results*.json`):
+- SPY/VIX from deep_history_backtest_log.csv for 1995–98 and flow_history.csv for 1999-01-04..2026-11-25 (identical unadjusted closes where they meet). VIX3M from 2006-07, HYG from 2007-04. Closes only.
+- Event = SPY close-to-close ≤ −3.5%, first of a cluster (≥ 20 trading days since the previous qualifying drop). 23 resolved events 1997-10..2025-04, plus 2026-11-05 still open. Robustness checks: (i) the README definition (≥ 20d since the previous *event*, which splits 2008/2020 into several events): 28 resolved; (ii) a −3.0% threshold: 38 resolved.
+- Rules fixed before looking, mirroring the live entry ledger. **A** trigger close · **G5/H10** −5%/−10% vs the 60d closing high before the drop · **I** RSI14 < 30 (simple-average RSI, as in deep_history_backtest.py) · **B** first contango (VIX/VIX3M < 1) · **C** VIX < 22 · **C2** VIX ≤ 0.8 × trigger-day VIX · **K** HYG 5d ≥ 0 · **F** stabilization proxy (contango AND VIX < 22 AND HYG 5d ≥ 0) · **R** close back above the pre-drop close. VIX9D < VIX has no deep history and is not tested. A rule has 60 trading days to fire. The common endpoint is T+60. "Policy vs A" treats an event where the rule never fired as cash (0 return, 0 MAE). MAE = worst close from the rule's entry to T+60.
+- Base (all days 1995+): fwd60 +2.26%, hit 69.2%, MAE60 −5.01%, P(MAE60 ≤ −5) 35.0%.
+
+**1. Main definition, 23 resolved events:**
+
+| Rule | avail / fired | Lag med | Cost vs A avg | To T+60 avg (med) | Hit | MAE avg | P(MAE ≤ −5) | Policy vs A: Δret / ΔMAE (mean) | Δret / ΔMAE (median) | Mean ex-2008/2020: Δret / ΔMAE |
+|---|---|---|---|---|---|---|---|---|---|---|
+| A trigger | 23/23 | 0 | 0 | +4.16 (+6.93) | 73.9% | −7.78 | 56.5% | – | – | – |
+| I RSI<30 | 23/22 | 0 | −1.50 | +5.27 (+6.92) | 77.3% | −6.52 | 45.5% | +0.88 / +1.54 | 0 / 0 | +0.14 / +0.99 |
+| B contango | 15/14 | 2.5 | +1.08 | +4.88 (+5.09) | 78.6% | −5.20 | 42.9% | +0.63 / +3.85 | −1.02 / −0.53 | −1.62 / −0.30 |
+| C VIX<22 | 23/13 | 29 | +5.00 | +2.32 (+1.38) | 61.5% | −2.08 | 15.4% | −2.85 / +6.60 | −4.34 / +6.07 | −4.36 / +4.27 |
+| C2 VIX −20% | 23/20 | 8.5 | +3.60 | +2.92 (+2.28) | 75.0% | −4.40 | 25.0% | −1.62 / +3.95 | −2.21 / +1.78 | −3.05 / +1.55 |
+| K credit holding | 14/14 | 5 | +2.09 | +1.53 (+3.19) | 57.1% | −10.14 | 57.1% | −2.01 / −0.92 | −2.53 / −2.35 | −1.88 / −0.72 |
+| F stabilized | 14/7 | 29 | +4.15 | +3.10 (+3.27) | 71.4% | −0.44 | 0.0% | −1.99 / +9.00 | −2.00 / +6.84 | −4.50 / +5.31 |
+| R reclaim pre-drop | 23/20 | 15.5 | +5.36 | +0.65 (+1.87) | 60.0% | −6.50 | 40.0% | −3.59 / +2.13 | −4.87 / −0.14 | −4.91 / +0.74 |
+| H10 −10% from high | 23/17 | 0 | −0.30 | +2.64 (+3.87) | 76.5% | −9.51 | 70.6% | −2.20 / +0.75 | 0 / 0 | −2.41 / +0.82 |
+
+(ΔMAE > 0 = less drawdown than A.)
+
+**2. By era (policy vs A, mean Δret / ΔMAE):**
+
+| Rule | pre-2010 (12) | 2010–17 (5) | 2018+ (6) |
+|---|---|---|---|
+| I RSI<30 | +0.69 / +0.89 | +1.62 / +1.79 | +0.64 / +2.62 |
+| B contango | +4.48 / +7.88 (n=4) | −1.25 / −0.34 | −0.37 / +4.67 |
+| C VIX<22 | −2.41 / +7.12 | −3.59 / +2.91 | −3.11 / +8.65 |
+| F stabilized | +2.11 / +17.1 (n=3) | −3.03 / +4.62 | −3.17 / +8.59 |
+| K credit | −3.76 / −3.06 (n=3) | −1.49 / +0.18 | −1.57 / −0.78 |
+| R reclaim | −2.51 / +3.18 | −5.02 / +1.53 | −4.57 / +0.52 |
+
+**3. Robustness (policy vs A, mean Δret / ΔMAE):**
+
+| Rule | main (23) | README def (28) | −3.0% (38) | 2018+ README def (8) | 2018+ −3.0% (11) |
+|---|---|---|---|---|---|
+| I RSI<30 | +0.88 / +1.54 | +0.50 / +1.94 | −0.99 / +1.95 | −1.96 / +2.14 | +1.47 / +2.48 |
+| B contango | +0.63 / +3.85 | −0.70 / +4.08 | −0.31 / +1.84 | −2.22 / +3.37 | +0.10 / +3.36 |
+| C VIX<22 | −2.85 / +6.60 | −4.01 / +6.62 | −2.41 / +4.71 | −6.27 / +6.05 | −2.11 / +6.13 |
+| F stabilized | −1.99 / +9.00 | −3.94 / +8.39 | −0.98 / +7.56 | −6.32 / +6.00 | −2.27 / +5.97 |
+| K credit | −2.01 / −0.92 | −2.31 / +0.03 | −1.10 / +0.20 | −2.73 / −0.45 | −0.84 / −0.05 |
+
+**Reading it through Simon's rule ("not first, not last"):**
+- **Waiting a few days for the term structure to normalize (B) buys nothing in a normal shock.** Median paired result: −1.02% return, −0.53 pp *more* drawdown. Its positive mean comes from 2008-09 (never fired, so it sat in cash through −37%) and 2020-02 (fired on day 40, 4.9% below the trigger). Outside those two crashes it is worse on both sides (−1.62 / −0.30).
+- **Real confirmation (VIX < 22, or F = contango + VIX < 22 + credit holding) does buy drawdown protection,** about +6 to +9 pp less MAE. When F fires, MAE averaged −0.44% and P(MAE ≤ −5) was 0% (n=7). But it fires in only about half the events, a median 29 days late, and costs 2–4.5% of return per event (median −2.0, ex-crash mean −4.5). That is insurance against the roughly 1-in-10 crash, not a better entry. It is "late," and under Simon's rule late is acceptable. Its cost is now measured, though: about 2% median per event.
+- **Credit holding (K) is rejected as an add trigger.** It fires day 3–5, often at a dead-cat bounce, and the drawdown after is *worse* than A (−10.14 vs −7.78 avg MAE). 2008-09 K fired on day 5 and lost 26%.
+- **Reclaiming the pre-drop close (R) is the worst rule:** −3.6 to −5.2% per event, and it doesn't consistently protect (median ΔMAE −0.14).
+- **Near highs vs already falling.** Near-high shocks (< 2% off the 60d high, n=6): A hit 100%, +9.31% to T+60, MAE −2.06. Every waiting rule was worse on return (−1.1 to −9.3). Already-falling shocks (n=17): A +2.34%, MAE −9.80, P(MAE ≤ −5) 70.6%. That is where confirmation earns its keep (F ΔMAE +11.88 at −0.06 return, n=10 available / 4 fired; B +1.49 / +5.85).
+
+**Failure cases:** for early entry (A): 2008-09-15 (−25.5% to T+60, MAE −37.2), 2002-07-10 (−10.7 / −13.2), 2020-02-27 (−0.7 / −25.1), 2022-04-29 (−2.7 / −11.2), 2009-01-20 (+7.4 but MAE −15.5), 1998-08-04 (−0.2 / −10.3). For confirmation entries: 2020-06-11 (C/F filled 12.4–12.7% above the trigger; missed +14%), 2009-04-20 (C never fired; missed +11.8%), 1997-10-27 (C filled +10.5% higher and ended −0.4), 2022-04-29 (C2/K/R bought a bounce and lost 6.5% / MAE −14.7).
+
+**Caveats:** 23 events (5 in 2010–17, 6 in 2018+). Means are dominated by 2 crash events, which is why medians and ex-crash numbers are shown. Closes only. No GEX, VIX9D or flow legs. RSI is the simple 14-day version from deep_history_backtest.py, not necessarily the live one. 10 rules × 3 definitions = many comparisons. Only drawdown-side results that held in every cut are treated as findings.
+
+**Live check (signal_performance_log.csv through 11-24; event tracking_log through 11-24; gex_log 11-25):**
+- SPY 716.94 on 11-25 (−2.38% vs the 734.40 trigger). regime_signal HOLD 11-23..11-25 (composite −0.9), after DEFENSIVE on 11-20. VIX 28.08, still in backwardation. Event ESCALATING (4/6 on 11-24).
+- **P5 rules on the live event:** contango, VIX < 22 and F all fired on day 2 (11-09) at 753.01 and are −4.8% to date (MAE −8.3%). That is the deep-history B pattern: an early "normalization" is not confirmation. **I (RSI < 30) fired 11-20 at 690.43, +3.84% to date**, and A is −2.38%. This event was a near-high shock (−1.58% off the high), the group where history says A wins. So far it is behaving like the already-falling group. One event.
+- **Contradiction:** regime_signal was **DEFENSIVE on 11-20**, the same close where the best-performing ledger entry (RSI < 30) fired. P0b already found DEFENSIVE is a "no new adds" flag rather than a sell. P5 says a first RSI < 30 close after a shock historically beats the trigger close on drawdown in every era. Added as P10.
+- Resolved STRONG_BUY (all live): 5d n=23, 69.6% hit, +0.75%, worst −8.43%. 10d n=21, 61.9%, +0.86%, worst −6.12%. 20d n=16, 81.2%, +1.56%, worst −6.22%. The 10-22 and 10-26 20d windows resolved at −6.22% and −5.35%. Every STRONG_BUY since 10-16 (entries 735.40–763.86) is −2.5% to −6.1% to date. BUY_WATCH 20d n=29, 69.0%, +0.39%, worst −10.05% (10-23). P8 (re-fire veto / invalidation) remains the most relevant open item for the live failure.
+
 ## 2026-11-21 — P3: second tranche after a STRONG_BUY-type entry falls further (and/or downgrades)
 
 **VERDICT: inconclusive. No second-tranche rule.** A small add on a shallow dip (−2% within 5 days of a first fire) is fine but no better than adding on any −2% dip after 2010. Deeper adds are worse. A −5% break within 20 days of a first fire is a **below-base** place to add in all three eras (n=19 episodes). A downgraded breach (composite < 1) is worse than an ordinary breach in 2018+. That points toward a "don't average down a failed STRONG_BUY" caution, not a buy rule. It goes to P8 for testing as a veto. Not wired in; no PR.
