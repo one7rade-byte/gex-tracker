@@ -58,6 +58,12 @@ jobs:
         continue-on-error: true
         run: python flow_extras.py
 
+      # De-risking warnings forward test (rules frozen 2026-11-25, see
+      # research/derisk/README.md). Logging only; changes no signal.
+      - name: De-risk forward test
+        continue-on-error: true
+        run: python research/derisk/forward_test.py
+
       # One-line "what to do now" read for the dashboard card and the top of
       # the Telegram summary (quick_action.json).
       - name: Quick action
@@ -78,6 +84,7 @@ jobs:
           [ -f flow_history.csv ] && git add flow_history.csv
           [ -f quick_action.json ] && git add quick_action.json
           [ -f dip_quality.json ] && git add dip_quality.json
+          git add research/derisk/forward_log.csv research/derisk/forward_summary.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Daily update $(date +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
             git fetch origin main
