@@ -1,0 +1,173 @@
+{
+ "window": [
+  "2007-04-12",
+  "2026-11-24"
+ ],
+ "base_near_high": {
+  "days": 3323,
+  "p10_120d": 25.0,
+  "p20_120d": 4.7
+ },
+ "peaks_10_20": [
+  "2015-05-21",
+  "2018-01-26",
+  "2025-02-19",
+  "2026-10-06"
+ ],
+ "peaks_20plus": [
+  "2007-10-09",
+  "2018-09-20",
+  "2020-02-19",
+  "2022-01-03"
+ ],
+ "signals": {
+  "semis_lead": {
+   "days_on_pct": 1.6,
+   "episodes": 6,
+   "p10_120d": 42.4,
+   "p20_120d": 0.0,
+   "caught_peaks": "2/8",
+   "caught": [
+    "2025-02-19",
+    "2026-10-06"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.87,
+    "maxdd": -54.9,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-11-13",
+   "on_today": false
+  },
+  "narrow_rally": {
+   "days_on_pct": 3.9,
+   "episodes": 11,
+   "p10_120d": 9.1,
+   "p20_120d": 0.0,
+   "caught_peaks": "4/8",
+   "caught": [
+    "2007-10-09",
+    "2022-01-03",
+    "2025-02-19",
+    "2026-10-06"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.57,
+    "maxdd": -56.5,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-10-21",
+   "on_today": false
+  },
+  "smallcap_lag": {
+   "days_on_pct": 2.2,
+   "episodes": 10,
+   "p10_120d": 27.0,
+   "p20_120d": 15.7,
+   "caught_peaks": "2/8",
+   "caught": [
+    "2022-01-03",
+    "2026-10-06"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.93,
+    "maxdd": -56.5,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-10-23",
+   "on_today": false
+  },
+  "credit_lead": {
+   "days_on_pct": 6.1,
+   "episodes": 39,
+   "p10_120d": 47.4,
+   "p20_120d": 5.1,
+   "caught_peaks": "5/8",
+   "caught": [
+    "2007-10-09",
+    "2015-05-21",
+    "2018-01-26",
+    "2020-02-19",
+    "2022-01-03"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.92,
+    "maxdd": -57.0,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-11-09",
+   "on_today": false
+  },
+  "vol_creep": {
+   "days_on_pct": 4.1,
+   "episodes": 40,
+   "p10_120d": 29.4,
+   "p20_120d": 4.5,
+   "caught_peaks": "7/8",
+   "caught": [
+    "2007-10-09",
+    "2015-05-21",
+    "2018-01-26",
+    "2020-02-19",
+    "2022-01-03",
+    "2025-02-19",
+    "2026-10-06"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.41,
+    "maxdd": -56.4,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-10-16",
+   "on_today": false
+  },
+  "below_200": {
+   "days_on_pct": 23.0,
+   "episodes": 20,
+   "p10_120d": 92.5,
+   "p20_120d": 56.2,
+   "caught_peaks": "2/8",
+   "caught": [
+    "2007-10-09",
+    "2018-09-20"
+   ],
+   "half_exposure_test": {
+    "cagr": 7.62,
+    "maxdd": -37.0,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-11-24",
+   "on_today": true
+  },
+  "two_or_more": {
+   "days_on_pct": 2.4,
+   "episodes": 24,
+   "p10_120d": 32.0,
+   "p20_120d": 4.0,
+   "caught_peaks": "7/8",
+   "caught": [
+    "2007-10-09",
+    "2015-05-21",
+    "2018-01-26",
+    "2020-02-19",
+    "2022-01-03",
+    "2025-02-19",
+    "2026-10-06"
+   ],
+   "half_exposure_test": {
+    "cagr": 8.6,
+    "maxdd": -56.6,
+    "bh_cagr": 8.53,
+    "bh_maxdd": -56.5
+   },
+   "last_on": "2026-11-09",
+   "on_today": false
+  }
+ }
+}

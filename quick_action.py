@@ -9,15 +9,18 @@ Philosophy (Simon's): don't be first, don't be last, follow where the big
 money is moving. So a BUY setup alone isn't "add": it's "wait for
 confirmation" until enough of the 5 confirmation checks are in.
 
-Buy-low rule (Simon, 2026-11-19): never "exit" into a drop. Once SPY is 8%+
-below its all-time high, buy in staged tranches down a ladder (LADDER below).
-Evidence: research/drawdown_2026/ladder_history.json (SPY 1995+, QQQ 1999+)
-and the research agent's P0b test (stress flags are volatility flags, not
-sell signals: cashing out on them cost ~3.8 pts/yr of CAGR since 2007).
+Buy-low rule (Simon, 2026-11-19/25): never "exit" into a drop. A normal
+correction gets ONE buy, at -8% from SPY's all-time high. Three buys are only
+for a deep / black-swan drop, which is switched on by a "second leg": SPY
+closes 5%+ below its first-oversold (RSI<30) close. Since 1995 that happened
+in all 5 drops of 20%+ and in none of the 9 mild corrections
+(research/drawdown_2026/buy_plan_study.py). The research agent's P0b test
+showed stress flags are volatility flags, not sell signals.
 
 Actions:
-  LADDER    SPY 8%+ below its high: buy the tranche(s) reached; wider spacing
-            if credit is breaking or fear is extreme. Never "exit".
+  BUY ZONE  SPY 8%+ below its high, normal correction: one buy.
+  DEEP-DROP second leg confirmed: 3 buys (-8%, the second leg, then -25% or
+            5 straight closes above the 50-day average, whichever comes first).
   NO RUSH   stress flag (backwardation 3+ days, or credit breaking / big
             money leaving for 2 days in a row) while SPY is less than 8% off
             its high. Not a sell signal: don't add size yet.
@@ -71,44 +74,153 @@ def flow_read(date):
     return lab, cur["date"], ch
 
 
-# Tranche plan: (tier % below the all-time high, share of dip-buying cash).
-# Spacing follows the history: after -8%, the median final bottom was ~-12%,
-# 28% of drops reached -20% and 17% reached -30% (SPY 1995+).
-LADDER = [(-8, 15), (-12, 15), (-16, 20), (-20, 20), (-25, 15), (-30, 15)]
-LADDER_HISTORY = os.path.join("research", "drawdown_2026", "ladder_history.json")
+# Levels the drawdown tracker measures (research only, not the plan).
+LADDER = [(-8, None), (-12, None), (-15, None), (-20, None), (-25, None), (-30, None)]
+BUY_PLAN_STUDY = os.path.join("research", "drawdown_2026", "buy_plan_study.json")
+BUY1_DD, SECOND_LEG, BUY3_DD = -8, 0.95, -25
+
+
+def _rsi(C, n=14):
+    R = [None] * len(C)
+    if len(C) <= n:
+        return R
+    g = sum(max(C[i] - C[i - 1], 0) for i in range(1, n + 1)) / n
+    l = sum(max(C[i - 1] - C[i], 0) for i in range(1, n + 1)) / n
+    R[n] = 100 - 100 / (1 + g / l) if l else 100
+    for i in range(n + 1, len(C)):
+        d = C[i] - C[i - 1]
+        g, l = (g * (n - 1) + max(d, 0)) / n, (l * (n - 1) + max(-d, 0)) / n
+        R[i] = 100 - 100 / (1 + g / l) if l else 100
+    return R
 
 
 def ladder_read(date, spot):
-    """SPY all-time high, current drawdown, and which ladder tranches are hit."""
+    """SPY all-time high, drawdown, and the buy plan: one buy in a normal
+    correction, three buys once a second leg confirms a deep drop."""
     rows = [r for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("spy"))]
     if not rows:
         return None
     closes = [(r["date"], f(r["spy"])) for r in rows]
     if spot and closes[-1][0] != date:
         closes.append((date, spot))
-    ath_date, ath = max(closes, key=lambda x: x[1])
-    last = spot or closes[-1][1]
-    dd = (last / ath - 1) * 100
-    since = [c for c in closes if c[0] >= ath_date]
-    hist = {}
+    D, C = [d for d, _ in closes], [c for _, c in closes]
+    ai = max(range(len(C)), key=lambda i: C[i])
+    ath_date, ath, last = D[ai], C[ai], C[-1]
+    R = _rsi(C)
+    ma50 = [sum(C[i - 49:i + 1]) / 50 if i >= 49 else None for i in range(len(C))]
+    p1 = round(ath * (1 + BUY1_DD / 100), 2)
+    i1 = next((i for i in range(ai, len(C)) if C[i] <= p1), None)
+    ios = next((i for i in range(ai, len(C)) if R[i] is not None and R[i] < 30), None)
+    p2 = round(C[ios] * SECOND_LEG, 2) if ios is not None else None
+    i2 = next((i for i in range(ios, len(C)) if C[i] <= p2), None) if ios is not None else None
+    p3 = round(ath * (1 + BUY3_DD / 100), 2)
+    i3 = None
+    if i2 is not None:
+        # 5 straight closes above the 50-day avg: a 1-day reclaim fired too
+        # early in 2018 (Dec 3, before the Dec 24 low); 5 days fixed it.
+        i3 = next((i for i in range(i2 + 5, len(C)) if C[i] <= p3 or
+                   all(ma50[j] and C[j] > ma50[j] for j in range(i - 4, i + 1))), None)
     try:
-        with open(LADDER_HISTORY, encoding="utf-8") as fh:
-            hist = {r["tier"]: r for r in json.load(fh)["spy"]}
-    except (OSError, ValueError, KeyError):
-        pass
-    tiers = []
-    for t, w in LADDER:
-        price = round(ath * (1 + t / 100), 2)
-        hit = next((d for d, c in since if c <= price), None)
-        tiers.append({"tier": t, "price": price, "weight_pct": w, "hit_date": hit,
-                      "from_here_pct": round((price / last - 1) * 100, 1)})
-    n_hit = sum(1 for x in tiers if x["hit_date"])
-    nxt = next((x for x in tiers if not x["hit_date"]), None)
-    # History for the deepest tier reached (nearest tier in the study table).
-    deepest = max((x["tier"] for x in tiers if x["hit_date"]), default=None, key=lambda v: -v)
-    ref = hist[min(hist, key=lambda t: abs(t - deepest))] if (deepest is not None and hist) else None
-    return {"ath": round(ath, 2), "ath_date": ath_date, "last": round(last, 2), "drawdown_pct": round(dd, 1),
-            "tiers": tiers, "tranches_hit": n_hit, "next": nxt, "history_at_deepest": ref}
+        with open(BUY_PLAN_STUDY, encoding="utf-8") as fh:
+            study = json.load(fh)
+    except (OSError, ValueError):
+        study = {}
+    tiers = [
+        {"tier": BUY1_DD, "price": p1, "label": "Buy 1 (the single buy)", "hit_date": D[i1] if i1 is not None else None},
+        {"tier": round((p2 / ath - 1) * 100, 1) if p2 else None, "price": p2,
+         "label": "Deep-drop switch / Buy 2 (5% under first oversold)", "hit_date": D[i2] if i2 is not None else None},
+        {"tier": BUY3_DD, "price": p3, "label": "Buy 3 (or 5 closes above the 50-day avg)", "hit_date": D[i3] if i3 is not None else None},
+    ]
+    return {"ath": round(ath, 2), "ath_date": ath_date, "last": round(last, 2),
+            "drawdown_pct": round((last / ath - 1) * 100, 1), "tiers": tiers,
+            "mode": "DEEP" if i2 is not None else "NORMAL",
+            "tranches_hit": sum(1 for t in tiers if t["hit_date"]),
+            "first_oversold": {"date": D[ios], "close": round(C[ios], 2)} if ios is not None else None,
+            "ma50": round(ma50[-1], 2) if ma50[-1] else None, "study": study}
+
+
+RSI_STUDY = os.path.join("research", "rsi_divergence", "rsi_study.json")
+
+
+def rsi_read(date, spot):
+    """Latest 'first oversold' (RSI(14) < 30 after 60+ sessions without one) in
+    the last 60 sessions, with what history says happens next
+    (research/rsi_divergence/rsi_study.py, SPY 1995+)."""
+    closes = [(r["date"], f(r["spy"])) for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("spy"))]
+    if spot and closes and closes[-1][0] != date:
+        closes.append((date, spot))
+    if len(closes) < 300:
+        return None
+    C = [c for _, c in closes]
+    n, R = 14, [None] * len(C)
+    g = sum(max(C[i] - C[i - 1], 0) for i in range(1, n + 1)) / n
+    l = sum(max(C[i - 1] - C[i], 0) for i in range(1, n + 1)) / n
+    for i in range(n, len(C)):
+        if i > n:
+            d = C[i] - C[i - 1]
+            g, l = (g * (n - 1) + max(d, 0)) / n, (l * (n - 1) + max(-d, 0)) / n
+        R[i] = 100 - 100 / (1 + g / l) if l else 100
+    first, last_os = None, -999
+    for i in range(n, len(C)):
+        if R[i] < 30:
+            if i - last_os >= 60:
+                first = i
+            last_os = i
+    out = {"rsi": round(R[-1], 1)}
+    if first is not None and len(C) - 1 - first <= 60:
+        fd, fc = closes[first]
+        vix_hi = False
+        for r in read(FLOW_CSV):
+            if r["date"] == fd:
+                vix_hi = (f(r.get("vix")) or 0) > 30
+        try:
+            with open(RSI_STUDY, encoding="utf-8") as fh:
+                st_ = json.load(fh)["spy"]["oversold_vix_over_30" if vix_hi else "oversold_vix_under_30"]
+        except (OSError, ValueError, KeyError):
+            st_ = {}
+        drop = st_.get("median_further_drop_60d")
+        out.update({"first_oversold_date": fd, "first_oversold_close": round(fc, 2), "vix_over_30": vix_hi,
+                    "undercut_pct": st_.get("undercut_within_60d_pct"), "median_further_drop_60d": drop,
+                    "retest_zone": round(fc * (1 + drop / 100), 2) if drop is not None else None,
+                    "median_12m": st_.get("median_f250"), "positive_12m_pct": st_.get("f250_positive_pct"),
+                    "n": st_.get("n"), "low_since": round(min(C[first:]), 2)})
+    return out
+
+
+TQQQ_STUDY = os.path.join("research", "drawdown_2026", "tqqq_entry_study.json")
+
+
+def tqqq_read(date):
+    """TQQQ (3x QQQ) entry zone: only in a deep drop, never at the start.
+    Trigger: QQQ closes 20%+ below its high, or 15%+ below with RSI<30 and
+    VIX>30 the same day. Guard: QQQ closes 10% below the entry close, which
+    means stop adding TQQQ (it happened in the 2000 and 2022 bear markets
+    and in none of the drops that recovered). research/drawdown_2026/tqqq_entry_study.py"""
+    rows = [r for r in read(FLOW_CSV) if r["date"] <= date and f(r.get("qqq"))]
+    if len(rows) < 300:
+        return None
+    D, C = [r["date"] for r in rows], [f(r["qqq"]) for r in rows]
+    V = {r["date"]: f(r.get("vix")) for r in rows}
+    R = _rsi(C)
+    ai = max(range(len(C)), key=lambda i: C[i])
+    ath = C[ai]
+    i0 = next((i for i in range(ai, len(C)) if C[i] / ath - 1 <= -0.20 or
+               (C[i] / ath - 1 <= -0.15 and R[i] is not None and R[i] < 30 and (V.get(D[i]) or 0) > 30)), None)
+    try:
+        with open(TQQQ_STUDY, encoding="utf-8") as fh:
+            st_ = json.load(fh)
+    except (OSError, ValueError):
+        st_ = {}
+    out = {"qqq_ath": round(ath, 2), "qqq_ath_date": D[ai], "qqq_last": round(C[-1], 2),
+           "qqq_dd_pct": round((C[-1] / ath - 1) * 100, 1), "trigger_level": round(ath * 0.8, 2),
+           "entry_date": None, "status": "NOT YET", "study": {k: st_.get(k) for k in ("fired", "of", "median_tqqq_12m", "positive_12m", "median_worst_after")}}
+    if i0 is not None:
+        guard = round(C[i0] * 0.90, 2)
+        g = next((i for i in range(i0 + 1, len(C)) if C[i] <= guard), None)
+        out.update({"entry_date": D[i0], "entry_qqq": round(C[i0], 2), "entry_dd_pct": round((C[i0] / ath - 1) * 100, 1),
+                    "guard_level": guard, "guard_hit": D[g] if g is not None else None,
+                    "status": "GUARD HIT: STOP ADDING" if g is not None else "ZONE OPEN"})
+    return out
 
 
 def main():
@@ -161,26 +273,42 @@ def main():
     confirmed = n_conf >= 3 and whale_conf
 
     if lad and lad["tranches_hit"] > 0:
-        k, nxt, h = lad["tranches_hit"], lad["next"], lad.get("history_at_deepest") or {}
-        crisis = signal == "CRISIS" or (credit_2d and signal == "DEFENSIVE")
-        action = f"BUY-LOW LADDER: TRANCHE {k} OF {len(LADDER)}"
-        tone = "amber" if crisis else "green"
-        head = f"SPY is {abs(lad['drawdown_pct']):.1f}% below its {lad['ath_date']} high. Buy in tranches, not all at once."
-        if nxt:
-            head += f" Next tranche at {nxt['price']:.2f} ({nxt['tier']}%)."
-        if h.get("to_m20") and h.get("median_12m") is not None:
-            head += (f" History: past drops that got this far reached -20% {h['to_m20']} of the time; "
-                     f"buying here returned a median {h['median_12m']:+.1f}% over 12 months.")
-        if crisis:
-            head += " Credit is breaking, so only buy the deeper tranches (-20% and below) until it stabilizes."
-        elif stress:
-            head += f" Fear is high ({stress_why}), so expect lower prices before the bottom; stick to the ladder."
+        t1, t2, t3 = lad["tiers"]
+        sb = (lad.get("study") or {}).get("single_buy", {}).get("at_-8pct", {})
+        sw = (lad.get("study") or {}).get("deep_switch", {}).get("second_leg", {})
+        fo = lad.get("first_oversold")
+        if lad["mode"] == "NORMAL":
+            action, tone = "BUY ZONE: SINGLE BUY", "green"
+            head = (f"SPY is {abs(lad['drawdown_pct']):.1f}% below its {lad['ath_date']} high. Normal-correction plan: one buy. "
+                    f"The buy zone opened at -8% ({t1['price']:.2f}) on {t1['hit_date']}.")
+            if sb:
+                head += (f" History: one buy at -8% returned a median {sb['median_12m']:+.1f}% over 12 months "
+                         f"({sb['positive_12m']}/{sb['filled']} positive), usually after about {sb['median_worst_after']:.0f}% more first.")
+            if fo and t2["price"]:
+                head += (f" Switch to the 3-buy deep-drop plan only if SPY closes below {t2['price']:.2f} "
+                         f"(5% under the {fo['date']} first-oversold close of {fo['close']:.2f})")
+                head += (f": that second leg came in {sw['deep_caught']} drops of 20%+ since 1995 and {sw['mild_false_alarms']} mild corrections."
+                         if sw else ".")
+            else:
+                head += " The deep-drop switch level is set once RSI first goes oversold."
+        else:
+            action, tone = "DEEP-DROP MODE: 3 BUYS", "amber"
+            head = (f"SPY made a second leg on {t2['hit_date']} (closed below {t2['price']:.2f}, 5% under the first-oversold close), "
+                    f"the pattern of every 20%+ drop since 1995. Plan: Buy 1 at -8% ({t1['price']:.2f}), "
+                    f"Buy 2 at the second leg ({t2['price']:.2f}), Buy 3 at -25% ({t3['price']:.2f}) or after 5 straight closes above "
+                    f"the 50-day average (now {lad['ma50']:.2f}), whichever comes first.")
+            if t3["hit_date"]:
+                head += f" Buy 3 triggered on {t3['hit_date']}."
+            elif credit_2d:
+                head += " Credit is breaking, so use -25% for Buy 3, not the 50-day reclaim."
+        if stress and lad["mode"] == "NORMAL":
+            head += f" Fear is still high ({stress_why}), so a retest is likely; that's not a reason for a second buy unless the switch level breaks."
         elif confirmed:
             head += f" {n_conf}/5 confirmations are in, so the bounce has support."
     elif stress:
         action, tone = "NO RUSH", "amber"
         head = (f"Fear is high ({stress_why}). Not a sell signal: hold, but don't add in size yet."
-                + (f" The buy-low ladder starts at {lad['tiers'][0]['price']:.2f} (-8% from the high)." if lad else ""))
+                + (f" The buy zone opens at {lad['tiers'][0]['price']:.2f} (-8% from the high)." if lad else ""))
     elif buy and confirmed:
         action, tone = "ADD", "green"
         head = f"Buy setup with {n_conf}/5 confirmations in. Scale in."
@@ -208,6 +336,31 @@ def main():
          "tone": "red" if credit_breaking else "green" if (hyg5 or 0) > -0.75 else "amber"},
         {"label": "Fear", "text": fear_txt, "tone": "red" if backw else "amber" if (vix or 0) >= 22 else "green"},
     ]
+    ro_ = rsi_read(date, spy) or {}
+    if ro_.get("rsi") is not None:
+        txt = f"RSI(14) {ro_['rsi']}"
+        if ro_.get("first_oversold_date"):
+            txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
+                    f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
+        reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
+    tq = tqqq_read(date)
+    if tq:
+        sd = tq["study"] or {}
+        if tq["status"] == "NOT YET":
+            txt = (f"not yet: QQQ {tq['qqq_dd_pct']:+.1f}% from its high; the entry zone opens at QQQ {tq['trigger_level']:.2f} (-20%), "
+                   f"or at -15% with RSI<30 and VIX>30")
+            tone_ = "gray"
+        elif tq["status"] == "ZONE OPEN":
+            txt = (f"entry zone open since {tq['entry_date']} (QQQ {tq['entry_qqq']:.2f}, {tq['entry_dd_pct']:+.1f}%)"
+                   + (f"; past entries returned a median {sd['median_tqqq_12m']:+.0f}% in 12 months ({sd['positive_12m']}/{sd['fired']} positive)"
+                      if sd.get("median_tqqq_12m") is not None else "")
+                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)")
+            tone_ = "green"
+        else:
+            txt = (f"STOP ADDING: QQQ closed 10% below the {tq['entry_date']} entry on {tq['guard_hit']}, the pattern of the 2000 and 2022 bear markets. "
+                   f"No more leveraged buys; any further buys go to the SPY plan")
+            tone_ = "red"
+        reasons.append({"label": "TQQQ", "text": txt, "tone": tone_})
     if lad:
         reasons.insert(1, {"label": "From high", "text": f"SPY {lad['drawdown_pct']:+.1f}% vs {lad['ath']:.2f} ({lad['ath_date']})",
                            "tone": "green" if lad["tranches_hit"] else "gray"})
@@ -215,7 +368,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:
@@ -238,8 +391,9 @@ def telegram_line():
         lines.append(f"• {r['label']}: {r['text']}")
     lad = q.get("ladder") or {}
     if lad.get("tranches_hit"):
-        hit = [f"{t['tier']}% {t['price']:.0f}" + (" ✓" if t["hit_date"] else "") for t in lad["tiers"]]
-        lines.append("• Ladder: " + " | ".join(hit))
+        hit = [f"{t['label'].split(' (')[0]} {t['price']:.0f}" + (" ✓" if t["hit_date"] else "")
+               for t in lad["tiers"] if t.get("price")]
+        lines.append(f"• Plan ({lad.get('mode', '').lower()}): " + " | ".join(hit))
     return "\n".join(lines).replace("*", "").replace("_", " ").replace("`", "")
 
 

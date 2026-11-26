@@ -1,0 +1,61 @@
+{
+ "rule": "QQQ close <= -20% from its high, or <= -15% with RSI(14)<30 and VIX>30",
+ "guard": "QQQ closes 10% below the TQQQ entry close: stop adding TQQQ",
+ "fired": 5,
+ "of": 17,
+ "median_tqqq_12m": 149.7,
+ "positive_12m": 3,
+ "median_worst_after": -19.9,
+ "entries": [
+  {
+   "entry": "2000-04-12",
+   "qqq_dd_at_entry": -21.9,
+   "qqq_final_bottom": -83.0,
+   "tqqq_6m": -62.6,
+   "tqqq_12m": -96.9,
+   "tqqq_worst_after": -98.4,
+   "guard_hit": "2000-04-14",
+   "tqqq_at_guard": -35.7
+  },
+  {
+   "entry": "2018-12-21",
+   "qqq_dd_at_entry": -21.0,
+   "qqq_final_bottom": -23.2,
+   "tqqq_6m": 82.3,
+   "tqqq_12m": 159.1,
+   "tqqq_worst_after": -8.3,
+   "guard_hit": null,
+   "tqqq_at_guard": null
+  },
+  {
+   "entry": "2020-03-12",
+   "qqq_dd_at_entry": -25.2,
+   "qqq_final_bottom": -28.6,
+   "tqqq_6m": 177.9,
+   "tqqq_12m": 288.6,
+   "tqqq_worst_after": -19.9,
+   "guard_hit": null,
+   "tqqq_at_guard": null
+  },
+  {
+   "entry": "2022-01-27",
+   "qqq_dd_at_entry": -15.6,
+   "qqq_final_bottom": -35.6,
+   "tqqq_6m": -35.6,
+   "tqqq_12m": -56.6,
+   "tqqq_worst_after": -68.2,
+   "guard_hit": "2022-05-09",
+   "tqqq_at_guard": -41.2
+  },
+  {
+   "entry": "2025-04-04",
+   "qqq_dd_at_entry": -21.7,
+   "qqq_final_bottom": -22.9,
+   "tqqq_6m": 170.4,
+   "tqqq_12m": 149.7,
+   "tqqq_worst_after": -4.7,
+   "guard_hit": null,
+   "tqqq_at_guard": null
+  }
+ ]
+}

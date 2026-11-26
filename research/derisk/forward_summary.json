@@ -1,0 +1,56 @@
+{
+ "frozen": "2026-11-25",
+ "logged_days": 1,
+ "resolved_days": 0,
+ "base_near_high": {
+  "n": 0,
+  "drop10_pct": null
+ },
+ "today": {
+  "semis_lead": 0,
+  "narrow_rally": 0,
+  "smallcap_lag": 0,
+  "credit_lead": 0,
+  "vol_creep": 0,
+  "two_or_more": 0,
+  "below_200": 1
+ },
+ "as_of": "2026-11-25",
+ "flags": {
+  "semis_lead": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "narrow_rally": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "smallcap_lag": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "credit_lead": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "vol_creep": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "two_or_more": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  },
+  "below_200": {
+   "days_on_resolved": 0,
+   "drop10_pct": null,
+   "drop20_pct": null
+  }
+ }
+}
