@@ -60,7 +60,7 @@
   },
   {
    "label": "Yield curve",
-   "text": "Flat (the 10y-2y spread moved less than 10bp in 20 sessions). 2y 4.61%, 10y 4.85%, spread +0.24; 20d change 2y -0.09, 10y -0.14. Since 2010, SPY in this regime: median +6.0% over 120d with a 10%+ drop 21% of the time (all days: +6.7%, 21%)",
+   "text": "Flat (the 10y-2y spread moved less than 10bp in 20 sessions). 2y 4.61%, 10y 4.85%, spread +0.24; 20d change 2y -0.09, 10y -0.14. Since 2010, SPY in this regime: median +6.0% over 120d with a 10%+ drop 21% of the time (all days: +6.7%, 21%). Curve caution off",
    "tone": "gray"
   },
   {
@@ -362,7 +362,10 @@
    "median_120d": 6.7,
    "up_120d_pct": 78.8,
    "drop10_120d_pct": 20.7
-  }
+  },
+  "caution": false,
+  "caution_why": [],
+  "hyg_ief_20d_pct": -2.68
  },
  "flow_10d_pct": {
   "smh_spy": -11.66,

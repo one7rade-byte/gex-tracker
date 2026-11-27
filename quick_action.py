@@ -247,13 +247,34 @@ def curve_read(date):
     except (OSError, ValueError):
         st_ = {}
     g = r["regime"]
+    # Curve CAUTION (sizing only, never "sell"): bear flattener, the year after
+    # an un-inversion (first positive close after 60+ inverted sessions), or a
+    # bull steepener while credit is weak (HYG/IEF -1.5%+ over 20 sessions).
+    # Backtest 1999+ (half size while on): SPY CAGR 7.37% vs 6.44%, max DD
+    # -44.5% vs -56.5%; simulated TQQQ since 2010 35.5% vs 34.3%, -76.2% vs -81.6%.
+    sp = [f(x["spread_10_2"]) for x in rows[-1300:]]
+    unin_until, run = -1, 0
+    for i, v in enumerate(sp):
+        if v is not None and v < 0:
+            run += 1
+        else:
+            if run >= 60:
+                unin_until = i + 250
+            run = 0
+    in_unin = len(sp) - 1 <= unin_until
+    fl = [x for x in read(FLOW_CSV) if x["date"] <= date and f(x.get("hyg_ief"))]
+    cred20 = (f(fl[-1]["hyg_ief"]) / f(fl[-21]["hyg_ief"]) - 1) * 100 if len(fl) > 21 else None
+    why = [w for w, on in (("bear flattener (Fed tightening)", g == "BEAR FLATTENER"),
+                           ("within a year of an un-inversion", in_unin),
+                           ("bull steepener with weak credit", g == "BULL STEEPENER" and cred20 is not None and cred20 <= -1.5)) if on]
     allh = (st_.get("by_regime") or {}).get(g, {})
     recent = ((st_.get("by_era") or {}).get("2010+") or {}).get(g, {})
     base = ((st_.get("by_era") or {}).get("2010+") or {}).get("all_days", {})
     return {"date": r["date"], "y2": f(r["y2"]), "y10": f(r["y10"]), "spread": f(r["spread_10_2"]),
             "chg2": f(r.get("chg2_20d")), "chg10": f(r.get("chg10_20d")), "regime": g,
             "meaning": CURVE_MEANING.get(g, ""), "inverted": (f(r["spread_10_2"]) or 0) < 0,
-            "hist_all": allh, "hist_2010": recent, "base_2010": base}
+            "hist_all": allh, "hist_2010": recent, "base_2010": base,
+            "caution": bool(why), "caution_why": why, "hyg_ief_20d_pct": round(cred20, 2) if cred20 is not None else None}
 
 
 def main():
@@ -385,8 +406,9 @@ def main():
         if h.get("n") and b.get("n"):
             txt += (f". Since 2010, SPY in this regime: median {h['median_120d']:+.1f}% over 120d with a 10%+ drop "
                     f"{h['drop10_120d_pct']:.0f}% of the time (all days: {b['median_120d']:+.1f}%, {b['drop10_120d_pct']:.0f}%)")
-        risky = cv["regime"] == "BEAR FLATTENER" or cv["inverted"]
-        reasons.append({"label": "Yield curve", "text": txt, "tone": "amber" if risky else "gray"})
+        txt += (f". CURVE CAUTION ON ({', '.join(cv['caution_why'])}): use half size for new adds, especially TQQQ. Not a sell signal"
+                if cv["caution"] else ". Curve caution off")
+        reasons.append({"label": "Yield curve", "text": txt, "tone": "amber" if cv["caution"] else "gray"})
     tq = tqqq_read(date)
     if tq:
         sd = tq["study"] or {}
@@ -398,7 +420,8 @@ def main():
             txt = (f"entry zone open since {tq['entry_date']} (QQQ {tq['entry_qqq']:.2f}, {tq['entry_dd_pct']:+.1f}%)"
                    + (f"; past entries returned a median {sd['median_tqqq_12m']:+.0f}% in 12 months ({sd['positive_12m']}/{sd['fired']} positive)"
                       if sd.get("median_tqqq_12m") is not None else "")
-                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)")
+                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)"
+                   + (". Curve caution is ON: half size" if cv and cv.get("caution") else ""))
             tone_ = "green"
         else:
             txt = (f"STOP ADDING: QQQ closed 10% below the {tq['entry_date']} entry on {tq['guard_hit']}, the pattern of the 2000 and 2022 bear markets. "

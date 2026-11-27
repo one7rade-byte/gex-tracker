@@ -19,3 +19,20 @@ Data: U.S. Treasury daily par yield curve (1990+, `yield_curve.py`, updated dail
 
 ## On the dashboard
 The Quick Action card (and Telegram) shows the current regime, yields, spread, 20-day changes and the regime's record since 2010. It's informational only: no buy or trim rule uses it yet. The research agent forward-tracks the regime (backlog P0f).
+
+## Sizing rule: CURVE CAUTION (added 2026-11-28)
+**On when:** bear flattener, OR within 250 sessions after an un-inversion (first positive 10y−2y close after 60+ inverted sessions), OR a bull steepener while HYG/IEF is down 1.5%+ over 20 sessions.
+**Action:** half size for new adds, especially TQQQ. It is never a sell signal.
+
+| Backtest (half exposure while on, daily, no costs) | Always invested | With curve caution |
+|---|---|---|
+| SPY 1999+ (on 21% of days) | 6.44%/yr, max DD −56.5% | **7.37%/yr, −44.5%** |
+| SPY 2010+ (on 15% of days) | 11.65%/yr, −34.1% | 11.44%/yr, **−27.7%** |
+| TQQQ sim 2010+ | 34.3%/yr, −81.6% | **35.5%/yr, −76.2%** |
+| TQQQ sim 2010+, bear flattener only | 34.3%/yr, −81.6% | **37.4%/yr, −75.6%** |
+
+**Caveats:**
+- The regimes come from the chart and weren't tuned. The un-inversion window and the −1.5% credit threshold were set on 2026-11-28 and are in-sample.
+- The SPY 1999+ gain comes mostly from 2000–02 and 2007–09.
+- It halved adds near the March 2020 bottom; that cost is included above.
+- Shown on the Quick Action card (Yield curve line, and on the TQQQ line when on). The research agent forward-tracks it (P0f).
