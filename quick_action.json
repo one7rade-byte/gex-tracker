@@ -59,6 +59,11 @@
    "tone": "gray"
   },
   {
+   "label": "Yield curve",
+   "text": "Flat (the 10y-2y spread moved less than 10bp in 20 sessions). 2y 4.61%, 10y 4.85%, spread +0.24; 20d change 2y -0.09, 10y -0.14. Since 2010, SPY in this regime: median +6.0% over 120d with a 10%+ drop 21% of the time (all days: +6.7%, 21%)",
+   "tone": "gray"
+  },
+  {
    "label": "TQQQ",
    "text": "entry zone open since 2026-11-20 (QQQ 608.45, -19.9%); past entries returned a median +150% in 12 months (3/5 positive). Stop adding if QQQ closes below 547.61 (10% under the entry)",
    "tone": "green"
@@ -325,6 +330,39 @@
   "entry_dd_pct": -19.9,
   "guard_level": 547.61,
   "guard_hit": null
+ },
+ "yield_curve": {
+  "date": "2026-11-25",
+  "y2": 4.61,
+  "y10": 4.85,
+  "spread": 0.24,
+  "chg2": -0.09,
+  "chg10": -0.14,
+  "regime": "FLAT",
+  "meaning": "the 10y-2y spread moved less than 10bp in 20 sessions",
+  "inverted": false,
+  "hist_all": {
+   "n": 4295,
+   "median_60d": 3.39,
+   "median_120d": 5.9,
+   "up_120d_pct": 73.6,
+   "drop10_120d_pct": 22.7,
+   "share_of_days_pct": 56.2
+  },
+  "hist_2010": {
+   "n": 2280,
+   "median_60d": 3.57,
+   "median_120d": 6.04,
+   "up_120d_pct": 77.4,
+   "drop10_120d_pct": 21.3
+  },
+  "base_2010": {
+   "n": 4099,
+   "median_60d": 3.69,
+   "median_120d": 6.7,
+   "up_120d_pct": 78.8,
+   "drop10_120d_pct": 20.7
+  }
  },
  "flow_10d_pct": {
   "smh_spy": -11.66,

@@ -223,6 +223,39 @@ def tqqq_read(date):
     return out
 
 
+CURVE_CSV = "yield_curve.csv"
+CURVE_STUDY = os.path.join("research", "yield_curve", "curve_study.json")
+CURVE_MEANING = {
+    "BULL STEEPENER": "yields falling, 2y faster: the market expects Fed cuts",
+    "BULL FLATTENER": "yields falling, 10y faster: growth fears, flight to safety",
+    "BEAR STEEPENER": "yields rising, 10y faster: inflation / fiscal / term-premium worry",
+    "BEAR FLATTENER": "yields rising, 2y faster: the Fed is tightening",
+    "FLAT": "the 10y-2y spread moved less than 10bp in 20 sessions",
+}
+
+
+def curve_read(date):
+    """2y/10y regime from yield_curve.csv plus its SPY track record
+    (research/yield_curve/curve_study.py, 1995+, split by era)."""
+    rows = [r for r in read(CURVE_CSV) if r["date"] <= date and r.get("regime")]
+    if not rows:
+        return None
+    r = rows[-1]
+    try:
+        with open(CURVE_STUDY, encoding="utf-8") as fh:
+            st_ = json.load(fh)
+    except (OSError, ValueError):
+        st_ = {}
+    g = r["regime"]
+    allh = (st_.get("by_regime") or {}).get(g, {})
+    recent = ((st_.get("by_era") or {}).get("2010+") or {}).get(g, {})
+    base = ((st_.get("by_era") or {}).get("2010+") or {}).get("all_days", {})
+    return {"date": r["date"], "y2": f(r["y2"]), "y10": f(r["y10"]), "spread": f(r["spread_10_2"]),
+            "chg2": f(r.get("chg2_20d")), "chg10": f(r.get("chg10_20d")), "regime": g,
+            "meaning": CURVE_MEANING.get(g, ""), "inverted": (f(r["spread_10_2"]) or 0) < 0,
+            "hist_all": allh, "hist_2010": recent, "base_2010": base}
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -343,6 +376,17 @@ def main():
             txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
                     f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
         reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
+    cv = curve_read(date)
+    if cv:
+        h, b = cv["hist_2010"], cv["base_2010"]
+        txt = (f"{cv['regime'].title()} ({cv['meaning']}). 2y {cv['y2']:.2f}%, 10y {cv['y10']:.2f}%, spread {cv['spread']:+.2f}"
+               + (" (INVERTED)" if cv["inverted"] else "")
+               + (f"; 20d change 2y {cv['chg2']:+.2f}, 10y {cv['chg10']:+.2f}" if cv["chg2"] is not None else ""))
+        if h.get("n") and b.get("n"):
+            txt += (f". Since 2010, SPY in this regime: median {h['median_120d']:+.1f}% over 120d with a 10%+ drop "
+                    f"{h['drop10_120d_pct']:.0f}% of the time (all days: {b['median_120d']:+.1f}%, {b['drop10_120d_pct']:.0f}%)")
+        risky = cv["regime"] == "BEAR FLATTENER" or cv["inverted"]
+        reasons.append({"label": "Yield curve", "text": txt, "tone": "amber" if risky else "gray"})
     tq = tqqq_read(date)
     if tq:
         sd = tq["study"] or {}
@@ -368,7 +412,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq, "yield_curve": cv,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:

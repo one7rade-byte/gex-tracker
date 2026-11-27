@@ -1,0 +1,177 @@
+{
+ "from": "1995-10-17",
+ "to": "2026-11-25",
+ "all_days": {
+  "n": 7649,
+  "median_60d": 3.23,
+  "median_120d": 5.77,
+  "up_120d_pct": 72.8,
+  "drop10_120d_pct": 24.6
+ },
+ "by_regime": {
+  "BULL STEEPENER": {
+   "n": 605,
+   "median_60d": 2.85,
+   "median_120d": 0.7,
+   "up_120d_pct": 51.2,
+   "drop10_120d_pct": 43.6,
+   "share_of_days_pct": 7.8
+  },
+  "BULL FLATTENER": {
+   "n": 1095,
+   "median_60d": 3.48,
+   "median_120d": 6.81,
+   "up_120d_pct": 81.0,
+   "drop10_120d_pct": 22.2,
+   "share_of_days_pct": 14.2
+  },
+  "BEAR STEEPENER": {
+   "n": 986,
+   "median_60d": 3.79,
+   "median_120d": 8.61,
+   "up_120d_pct": 77.4,
+   "drop10_120d_pct": 21.3,
+   "share_of_days_pct": 12.9
+  },
+  "BEAR FLATTENER": {
+   "n": 668,
+   "median_60d": 0.92,
+   "median_120d": 3.14,
+   "up_120d_pct": 66.6,
+   "drop10_120d_pct": 28.1,
+   "share_of_days_pct": 8.8
+  },
+  "FLAT": {
+   "n": 4295,
+   "median_60d": 3.39,
+   "median_120d": 5.9,
+   "up_120d_pct": 73.6,
+   "drop10_120d_pct": 22.7,
+   "share_of_days_pct": 56.2
+  }
+ },
+ "by_era": {
+  "1995-2009": {
+   "all_days": {
+    "n": 3550,
+    "median_60d": 2.37,
+    "median_120d": 4.5,
+    "up_120d_pct": 65.9,
+    "drop10_120d_pct": 29.1
+   },
+   "BULL STEEPENER": {
+    "n": 433,
+    "median_60d": -0.97,
+    "median_120d": -4.89,
+    "up_120d_pct": 37.2,
+    "drop10_120d_pct": 55.9
+   },
+   "BULL FLATTENER": {
+    "n": 387,
+    "median_60d": 2.72,
+    "median_120d": 5.34,
+    "up_120d_pct": 77.8,
+    "drop10_120d_pct": 26.6
+   },
+   "BEAR STEEPENER": {
+    "n": 362,
+    "median_60d": 1.77,
+    "median_120d": 4.15,
+    "up_120d_pct": 65.7,
+    "drop10_120d_pct": 30.1
+   },
+   "BEAR FLATTENER": {
+    "n": 353,
+    "median_60d": 0.72,
+    "median_120d": 2.85,
+    "up_120d_pct": 68.0,
+    "drop10_120d_pct": 24.6
+   },
+   "FLAT": {
+    "n": 2015,
+    "median_60d": 3.03,
+    "median_120d": 5.73,
+    "up_120d_pct": 69.4,
+    "drop10_120d_pct": 24.4
+   }
+  },
+  "2010+": {
+   "all_days": {
+    "n": 4099,
+    "median_60d": 3.69,
+    "median_120d": 6.7,
+    "up_120d_pct": 78.8,
+    "drop10_120d_pct": 20.7
+   },
+   "BULL STEEPENER": {
+    "n": 172,
+    "median_60d": 7.93,
+    "median_120d": 10.95,
+    "up_120d_pct": 86.6,
+    "drop10_120d_pct": 12.8
+   },
+   "BULL FLATTENER": {
+    "n": 708,
+    "median_60d": 3.91,
+    "median_120d": 7.44,
+    "up_120d_pct": 82.8,
+    "drop10_120d_pct": 19.8
+   },
+   "BEAR STEEPENER": {
+    "n": 624,
+    "median_60d": 4.54,
+    "median_120d": 9.31,
+    "up_120d_pct": 84.1,
+    "drop10_120d_pct": 16.2
+   },
+   "BEAR FLATTENER": {
+    "n": 315,
+    "median_60d": 1.23,
+    "median_120d": 3.34,
+    "up_120d_pct": 65.1,
+    "drop10_120d_pct": 32.1
+   },
+   "FLAT": {
+    "n": 2280,
+    "median_60d": 3.57,
+    "median_120d": 6.04,
+    "up_120d_pct": 77.4,
+    "drop10_120d_pct": 21.3
+   }
+  }
+ },
+ "inverted": {
+  "n": 1034,
+  "median_60d": 3.26,
+  "median_120d": 6.8,
+  "up_120d_pct": 75.1,
+  "drop10_120d_pct": 20.0,
+  "share_of_days_pct": 13.3
+ },
+ "uninversion_events": [
+  {
+   "date": "2000-12-27",
+   "spy_120d": -8.2,
+   "worst_250d": -27.0
+  },
+  {
+   "date": "2007-03-21",
+   "spy_120d": 2.9,
+   "worst_250d": -10.7
+  },
+  {
+   "date": "2024-08-27",
+   "spy_120d": 6.3,
+   "worst_250d": -11.6
+  }
+ ],
+ "now": {
+  "date": "2026-11-25",
+  "y2": "4.61",
+  "y10": "4.85",
+  "spread_10_2": "0.24",
+  "chg2_20d": "-0.09",
+  "chg10_20d": "-0.14",
+  "regime": "FLAT"
+ }
+}
