@@ -1,39 +1,39 @@
 {
   "date": "2026-11-27",
-  "generated_at": "07:00 PM",
+  "generated_at": "11:00 PM",
   "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 Fear building (6/10, VIX 26.8). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
-  "macro_picture": "SPY GEX is deeply negative at $-9.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.8 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
-  "mag7_section": "MSFT HEADLINE NOISE: negative headlines, but the stock moved only -1.1% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 52th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.",
-  "watch_section": "VIX pushing above 22-25 (currently 26.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-9.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.8 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (6/10, VIX 26.8). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: MSFT HEADLINE NOISE: negative headlines, but the stock moved only -1.1% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 52th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.\n\nWATCH FOR: VIX pushing above 22-25 (currently 26.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "voo_vgt_action": "WATCH \u2014 GEX negative with VIX at 23.8. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.",
+  "macro_picture": "SPY GEX is negative at $-3.4B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 23.8 (elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
+  "mag7_section": "MSFT HEADLINE NOISE: negative headlines, but the stock moved only -1.1% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 70th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. META WATCH \u2014 score 4/10, RSI at 66th pct. Not yet at peak oversold but building.",
+  "watch_section": "VIX pushing above 22-25 (currently 23.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is negative at $-3.4B \u2014 dealers are short gamma. Market regime is unstable but not in free-fall. VIX is 23.8 (elevated, rising trend over 5 days). Term structure in contango \u2014 calm, orderly vol curve. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 GEX negative with VIX at 23.8. Mixed signals. Hold current positions, do not add aggressively. Watch for VIX to push above 22-25 as the real loading zone.\n\nMAG 7 OPPORTUNITIES: MSFT HEADLINE NOISE: negative headlines, but the stock moved only -1.1% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 70th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. META WATCH \u2014 score 4/10, RSI at 66th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 23.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "bear_warning",
+    "regime": "negative_gex",
     "vix_trend": "rising",
-    "vix_current": 26.8,
+    "vix_current": 23.81,
     "gex_trend": "improving",
-    "gex_current": -9.0,
+    "gex_current": -3.4,
     "fear_trend": "building",
-    "fear_current": 6.0,
-    "bear_current": 8.0,
-    "bull_current": 0.0,
+    "fear_current": 4.0,
+    "bear_current": 4.0,
+    "bull_current": 2.0,
     "neg_gex_days": 10,
     "skew_current": 142.06,
-    "term_struct": "backwardation",
+    "term_struct": "contango",
     "above_200ma": "False",
-    "spy_rsi": 44.2
+    "spy_rsi": 47.67
   },
   "top_opportunity": {
     "ticker": "NVDA",
     "score": 5,
-    "reason": "RSI oversold (bottom 22% of own history) | Options expensive (IV top 1% of history) \u2014 fear priced in, wait | Elevated put buying (P/C 66th pct) | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "company_negative"
+    "reason": "RSI very oversold (bottom 18% of own history) | Options expensive (IV top 1% of history) \u2014 fear priced in, wait | Elevated put buying (P/C 60th pct) | GEX positive \u2014 dealers providing support | Below 200MA \u2014 downtrend, scale in slowly",
+    "news": "neutral"
   },
   "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 52.0,
+      "rsi_pct": 69.9,
       "above_200ma": true,
       "news": "macro_fear",
       "rsi_dir": "recovering",
@@ -46,8 +46,8 @@
       ]
     },
     "MSFT": {
-      "score": 7.0,
-      "rsi_pct": 8.1,
+      "score": 6.0,
+      "rsi_pct": 10.4,
       "above_200ma": true,
       "news": "company_negative",
       "rsi_dir": "getting_more_oversold",
@@ -56,77 +56,77 @@
         "Microsoft Stocks Rise 0.26% as Code Red Targets One-Hour Outage Recovery",
         "Did Billionaire Bill Ackman Lose Confidence in Microsoft? The Answer Might Surprise You",
         "Why Is Microsoft (MSFT) Down 7.6% Since Last Earnings Report?",
-        "Anthropic, Meta and Microsoft Join AI Data Center Talks in Japan"
+        "IREN (NasdaqGS:IREN) Stock Sees Modest Fair Value Cut After AI Cloud Sentiment Swings"
       ]
     },
     "NVDA": {
-      "score": 3.0,
-      "rsi_pct": 22.0,
+      "score": 4.0,
+      "rsi_pct": 17.9,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "neutral",
       "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
         "Dow Jones Futures: Stock Market Makes Bullish Move, Tesla Leads 7 New Buys; Nvidia's Jensen Huang Heads To Capitol Hill",
-        "US Equity Indexes Rise as Jensen Huang's Return to Nvidia Guardrails AI Trade While Investors Slice Growth Exposure This Week",
-        "For a Little While, Nvidia Faced a Future Without Jensen Huang",
-        "Investing.com\u2019s stocks of the week"
+        "Should You Buy Nvidia Stock Before CEO Jensen Huang Testifies in Front of Congress on Dec. 1 and Dec. 3?",
+        "Sports Betting and the Way We Make Money",
+        "Stock Market Today: Indexes Log Best Thanksgiving Week In 18 Years"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 41.6,
+      "rsi_pct": 38.7,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 3,
+      "days_oversold": 2,
       "headlines": [
-        "PLTR vs. ARM: Which AI-Tech Stock is Better Positioned Now?",
-        "Jim Cramer Is Still Bullish On These 5 Tech Stocks Despite AI Bear Market",
-        "AppLovin vs. Magnite: Which Technology Stock Is a Better Buy for 2027?",
-        "What Does Alphabet (GOOGL) Need To Prove After The Air Force Cloud Breach?"
+        "5 Best Tech Stocks to Buy for 2027 According to Hedge Funds",
+        "Jensen Huang Is Back. Nvidia\u2019s (NVDA) Bull Case Remains",
+        "Alphabet Down Nearly 20%: What Would Its CEO Say?",
+        "Alphabet Stocks Move Lower as Record Credit Spreads Shadow AI Spending"
       ]
     },
     "META": {
-      "score": 3.0,
-      "rsi_pct": 60.1,
-      "above_200ma": false,
+      "score": 4.0,
+      "rsi_pct": 65.9,
+      "above_200ma": true,
       "news": "company_positive",
-      "rsi_dir": "stable",
+      "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
+        "Top Stock Reports for Alphabet, Meta &amp; Bank of America",
         "What Is Meta Platforms (META) Up Against With Australia And EU AI Rules?",
         "Meta, Anthropic in Talks to Build AI Data Centers in Japan",
-        "Tech Stock Sell-Off: Down 23%, Is Meta a Buy Now?",
-        "Amazon.com (AMZN) Is Negotiating Muse AI Access To Its Shopping Platform"
+        "Tech Stock Sell-Off: Down 23%, Is Meta a Buy Now?"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 26.0,
-      "above_200ma": false,
+      "rsi_pct": 39.3,
+      "above_200ma": true,
       "news": "neutral",
       "rsi_dir": "getting_more_oversold",
       "days_oversold": 3,
       "headlines": [
-        "The Best 3 Stocks to Buy in December to Hold Into 2027",
-        "Stock Market Midday, Nov. 27: Tech Stocks Recover and Amazon Posts Black Friday Gains",
-        "Does Amazon's Profit Hang On One Business?",
-        "Sector Update: Tech Stocks Gain Friday Afternoon"
+        "Amazon, Target and Walmart Chase Holiday Toy Spending",
+        "Amazon\u2019s AWS Profit Rose 55%. Can It Absorb a $220 Billion Capex Bill?",
+        "Amazon Stocks Climb 2.96% as Thanksgiving Online Spending Hits $7.1 Billion",
+        "Jeff Bezos makes a $200 million move involving Amazon stock"
       ]
     },
     "TSLA": {
       "score": 3.0,
-      "rsi_pct": 75.1,
-      "above_200ma": false,
+      "rsi_pct": 80.3,
+      "above_200ma": true,
       "news": "fundamental_change",
       "rsi_dir": "recovering",
       "days_oversold": 5,
       "headlines": [
         "SpaceX, Tesla have had a bumpy 2026 thus far: What to know",
+        "TSLA Stock Clocks Best Week In 18 Months: Tesla Reportedly Eyes Buying German Toolmaker Amid Cybercab, Optimus Scaling Plans",
         "Dow Jones Futures: Stock Market Makes Bullish Move, Tesla Leads 7 New Buys; Nvidia's Jensen Huang Heads To Capitol Hill",
-        "Tesla Takes 1.2M SF at Houston\u2019s Cedar Port Industrial Park",
-        "Sector Update: Consumer Stocks Advance Friday Afternoon"
+        "Tesla Takes 1.2M SF at Houston\u2019s Cedar Port Industrial Park"
       ]
     }
   },
@@ -189,6 +189,17 @@
       "source_count": 1
     },
     {
+      "title": "Fidelity Counted 654,000 401(k) Millionaires in the Third Quarter of 2025, Up From 544,000 a Year Earlier",
+      "link": "https://247wallst.com/personal-finance/2026/11/27/fidelity-counted-654000-401k-millionaires-in-the-third-quarter-of-2025-up-from-544000-a-year-earlier/?.tsrc=rss",
+      "pub_date": "2026-11-27",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
       "title": "I Tested More Than 100 Trading Strategies With AI. Most Of Them Failed, And The Reasons Why Were More Interesting Than The Winners",
       "link": "https://finance.yahoo.com/markets/options/articles/tested-more-100-trading-strategies-171507159.html?.tsrc=rss",
       "pub_date": "2026-11-27",
@@ -224,17 +235,6 @@
     {
       "title": "Pre-Markets Up Ahead of Shortened Trading Session",
       "link": "https://finance.yahoo.com/markets/stocks/articles/pre-markets-ahead-shortened-trading-141400040.html?.tsrc=rss",
-      "pub_date": "2026-11-27",
-      "tickers": [
-        "MARKET"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Down 26% This Year, Is It Time to Buy Salesforce Stock Before Earnings?",
-      "link": "https://247wallst.com/investing/2026/11/27/down-26-this-year-is-it-time-to-buy-salesforce-stock-before-earnings/?.tsrc=rss",
       "pub_date": "2026-11-27",
       "tickers": [
         "MARKET"
