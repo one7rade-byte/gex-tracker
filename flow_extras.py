@@ -57,6 +57,8 @@ TICKERS = {
     "xlu": "XLU", "xlp": "XLP", "xly": "XLY", "xlk": "XLK",
     "vix": "^VIX", "vix3m": "^VIX3M", "vvix": "^VVIX", "move": "^MOVE",
     "usdjpy": "JPY=X", "copper": "HG=F", "gold": "GC=F", "btc": "BTC-USD",
+    # added 2026-11-28 for the cross-asset money-flow study
+    "tlt": "TLT", "uup": "UUP", "dbc": "DBC", "eem": "EEM", "gld": "GLD",
 }
 FETCH_START_YEAR = 1999
 CHUNK_YEARS = 3
