@@ -15,6 +15,13 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
 P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
     2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
     DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
+P0g. (new 2026-11-28) CROSS-ASSET MONEY FLOW, forward track + refine. money_flow.py / research/money_flow/FINDINGS.md.
+    Standing principle from Simon: nothing goes on the dashboard untested; every addition must show where money is moving
+    across assets (stocks, bonds, gold, credit, dollar, commodities, crypto) and be backtested for de-risk / add-risk value.
+    Score bottom 20% -> 30.1% chance of a 10%+ drop in 120d vs 12.2% top 20% (2010+). Risk-on trigger fired after the
+    low in 6/6 drops. To do: (a) log the score daily and compare live vs backtest monthly; (b) does it add anything on
+    top of curve caution and the deep-drop switch (overlap test)?; (c) add BTC and oil as pairs only if they improve the
+    out-of-sample result; (d) test the trigger for sizing TQQQ adds.
 P0f. (new 2026-11-27) YIELD CURVE REGIME, forward track and refine. yield_curve.csv (Treasury 2y/3m/10y, 1990+, daily) and
     research/yield_curve/FINDINGS.md: since 2010 the bear flattener is the weakest SPY regime (+3.3% 120d, 32% chance of a
     10%+ drop); the bull steepener flips by era (pre-2010 -4.9% / 56%, 2010+ +11.0% / 12.8%). Ideas: (a) does credit
