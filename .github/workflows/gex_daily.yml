@@ -60,6 +60,11 @@ jobs:
 
       # De-risking warnings forward test (rules frozen 2026-11-25, see
       # research/derisk/README.md). Logging only; changes no signal.
+      # 2y/10y Treasury curve regime (bull/bear steepener/flattener), FRED.
+      - name: Yield curve
+        continue-on-error: true
+        run: python yield_curve.py
+
       - name: De-risk forward test
         continue-on-error: true
         run: python research/derisk/forward_test.py
@@ -83,6 +88,7 @@ jobs:
           git add gex_log.csv regime_log.csv
           [ -f flow_history.csv ] && git add flow_history.csv
           [ -f quick_action.json ] && git add quick_action.json
+          [ -f yield_curve.csv ] && git add yield_curve.csv
           [ -f dip_quality.json ] && git add dip_quality.json
           git add research/derisk/forward_log.csv research/derisk/forward_summary.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Daily update $(date +'%Y-%m-%d')"
