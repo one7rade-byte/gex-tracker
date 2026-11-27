@@ -1,0 +1,205 @@
+{
+ "from": "2010-02-09",
+ "to": "2026-11-27",
+ "all": {
+  "n": 4101,
+  "median_60d": 3.66,
+  "median_120d": 6.63,
+  "up_120d_pct": 79.0,
+  "drop10_pct": 20.5
+ },
+ "quintiles": {
+  "Q1 (0-20 pct)": {
+   "n": 1009,
+   "median_60d": 3.76,
+   "median_120d": 5.93,
+   "up_120d_pct": 74.3,
+   "drop10_pct": 30.1
+  },
+  "Q2 (20-40 pct)": {
+   "n": 936,
+   "median_60d": 3.28,
+   "median_120d": 4.6,
+   "up_120d_pct": 67.3,
+   "drop10_pct": 26.0
+  },
+  "Q3 (40-60 pct)": {
+   "n": 799,
+   "median_60d": 3.25,
+   "median_120d": 6.52,
+   "up_120d_pct": 83.7,
+   "drop10_pct": 17.3
+  },
+  "Q4 (60-80 pct)": {
+   "n": 676,
+   "median_60d": 3.75,
+   "median_120d": 7.95,
+   "up_120d_pct": 88.5,
+   "drop10_pct": 10.9
+  },
+  "Q5 (80-100 pct)": {
+   "n": 681,
+   "median_60d": 4.56,
+   "median_120d": 8.93,
+   "up_120d_pct": 86.8,
+   "drop10_pct": 12.2
+  }
+ },
+ "eras": {
+  "2009-2017": {
+   "all": {
+    "n": 1984,
+    "median_60d": 3.31,
+    "median_120d": 6.19,
+    "up_120d_pct": 83.5,
+    "drop10_pct": 15.4
+   },
+   "bottom_20": {
+    "n": 591,
+    "median_60d": 3.48,
+    "median_120d": 5.38,
+    "up_120d_pct": 76.5,
+    "drop10_pct": 23.5
+   },
+   "top_20": {
+    "n": 309,
+    "median_60d": 3.89,
+    "median_120d": 7.72,
+    "up_120d_pct": 91.3,
+    "drop10_pct": 8.4
+   }
+  },
+  "2018+": {
+   "all": {
+    "n": 2117,
+    "median_60d": 4.12,
+    "median_120d": 7.48,
+    "up_120d_pct": 74.7,
+    "drop10_pct": 25.4
+   },
+   "bottom_20": {
+    "n": 418,
+    "median_60d": 4.55,
+    "median_120d": 7.53,
+    "up_120d_pct": 71.3,
+    "drop10_pct": 39.5
+   },
+   "top_20": {
+    "n": 372,
+    "median_60d": 5.57,
+    "median_120d": 12.52,
+    "up_120d_pct": 83.1,
+    "drop10_pct": 15.3
+   }
+  }
+ },
+ "risk_off_near_high": {
+  "n": 471,
+  "median_60d": 2.22,
+  "median_120d": 2.95,
+  "up_120d_pct": 64.3,
+  "drop10_pct": 35.2,
+  "days_pct": 11.3,
+  "base_near_high": {
+   "n": 2997,
+   "median_60d": 3.12,
+   "median_120d": 5.86,
+   "up_120d_pct": 76.7,
+   "drop10_pct": 20.7
+  }
+ },
+ "risk_off_backtest": {
+  "always": [
+   12.07,
+   -34.1
+  ],
+  "half_when_on": [
+   11.96,
+   -34.1
+  ],
+  "half_when_bottom20_any": [
+   11.1,
+   -24.1
+  ]
+ },
+ "risk_on_in_drawdown": {
+  "all_drawdown_days": {
+   "n": 685,
+   "median_60d": 6.59,
+   "median_120d": 11.81,
+   "up_120d_pct": 86.1,
+   "drop10_pct": 18.5
+  },
+  "score_rising": {
+   "n": 133,
+   "median_60d": 10.12,
+   "median_120d": 13.04,
+   "up_120d_pct": 80.5,
+   "drop10_pct": 20.3
+  },
+  "first_signal_per_episode": {
+   "n": 6,
+   "median_60d": 9.13,
+   "median_120d": 15.6,
+   "up_120d_pct": 83.3,
+   "drop10_pct": 16.7
+  },
+  "first_signal_dates": [
+   "2010-07-29",
+   "2011-10-20",
+   "2019-01-09",
+   "2020-04-14",
+   "2022-05-31",
+   "2025-05-05"
+  ]
+ },
+ "now": {
+  "date": "2026-11-27",
+  "score": -0.81,
+  "percentile": 12.1,
+  "score_20d_change": -0.37,
+  "spy_vs_high_pct": -6.9,
+  "pairs": {
+   "stocks_vs_bonds": {
+    "z": -1.39,
+    "rel_60d_pct": -4.68,
+    "toward": "bonds"
+   },
+   "stocks_vs_gold": {
+    "z": 1.13,
+    "rel_60d_pct": 14.98,
+    "toward": "stocks"
+   },
+   "credit_vs_treasury": {
+    "z": -1.5,
+    "rel_60d_pct": -2.7,
+    "toward": "Treasuries"
+   },
+   "cyclical_vs_defens": {
+    "z": -1.47,
+    "rel_60d_pct": -12.17,
+    "toward": "defensive sectors"
+   },
+   "copper_vs_gold": {
+    "z": 0.37,
+    "rel_60d_pct": 4.14,
+    "toward": "copper"
+   },
+   "dollar_inverted": {
+    "z": -1.53,
+    "rel_60d_pct": -5.22,
+    "toward": "the dollar"
+   },
+   "small_vs_large": {
+    "z": -0.39,
+    "rel_60d_pct": -2.28,
+    "toward": "large caps"
+   },
+   "em_vs_us": {
+    "z": -1.73,
+    "rel_60d_pct": -9.14,
+    "toward": "US stocks"
+   }
+  }
+ }
+}

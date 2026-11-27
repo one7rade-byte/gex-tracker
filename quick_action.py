@@ -397,6 +397,35 @@ def main():
             txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
                     f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
         reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
+    try:
+        with open("money_flow.json", encoding="utf-8") as fh:
+            mf = json.load(fh)
+    except (OSError, ValueError):
+        mf = None
+    if mf and mf.get("percentile") is not None:
+        h = mf.get("history_for_this_quintile") or {}
+        txt = (f"{mf['state'].title()}: risk appetite at the {mf['percentile']:.0f}th percentile "
+               f"({'falling' if (mf.get('score_20d_change') or 0) < 0 else 'rising'} over 20 days).")
+        moves = [p_ for p_ in mf["pairs"] if p_.get("z") is not None and abs(p_["z"]) >= 1]
+        if moves:
+            def side(p_):
+                if p_["key"] == "dollar_inverted":
+                    return "into the dollar" if not p_["risk_on"] else "out of the dollar"
+                a, b = p_["name"].split(" vs ")
+                win, lose = (a, b) if p_["risk_on"] else (b, a)
+                fix = {"us": "US", "em": "EM", "treasuries": "Treasuries"}
+                w_, l_ = (fix.get(x.lower(), x.lower()) for x in (win, lose))
+                return f"{w_} over {l_}"
+            txt += " Biggest moves: " + "; ".join(side(p_) for p_ in moves) + "."
+        if h.get("n"):
+            txt += (f" Since 2010 at this level, a 10%+ drop followed within 120 days {h['drop10_pct']:.0f}% of the time "
+                    f"(all days {mf['history_all_days']['drop10_pct']:.0f}%).")
+        if mf.get("risk_on_trigger_today"):
+            txt += " RISK-ON TRIGGER: money is rotating back toward risk during a drawdown, the 'whales returning' signal."
+        elif mf.get("spy_vs_high_pct", 0) <= -8:
+            txt += " Watching for money to rotate back toward risk (score up 0.5+ over 20 days) to confirm adding more."
+        reasons.append({"label": "Money flow", "text": txt,
+                        "tone": "green" if mf.get("risk_on_trigger_today") or mf["state"] == "RISK-ON FLOWS" else "amber" if mf["state"] == "RISK-OFF FLOWS" else "gray"})
     cv = curve_read(date)
     if cv:
         h, b = cv["hist_2010"], cv["base_2010"]
@@ -435,7 +464,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq, "yield_curve": cv,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq, "yield_curve": cv, "money_flow": mf,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:

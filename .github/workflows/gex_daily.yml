@@ -69,6 +69,12 @@ jobs:
         continue-on-error: true
         run: python research/derisk/forward_test.py
 
+      # Cross-asset money flow (risk appetite score across stocks, bonds,
+      # gold, credit, sectors, copper, dollar, small caps, EM).
+      - name: Money flow
+        continue-on-error: true
+        run: python money_flow.py
+
       # One-line "what to do now" read for the dashboard card and the top of
       # the Telegram summary (quick_action.json).
       - name: Quick action
@@ -88,6 +94,7 @@ jobs:
           git add gex_log.csv regime_log.csv
           [ -f flow_history.csv ] && git add flow_history.csv
           [ -f quick_action.json ] && git add quick_action.json
+          [ -f money_flow.json ] && git add money_flow.json
           [ -f yield_curve.csv ] && git add yield_curve.csv
           [ -f dip_quality.json ] && git add dip_quality.json
           git add research/derisk/forward_log.csv research/derisk/forward_summary.json 2>/dev/null || true

@@ -413,6 +413,38 @@ async function buildNewsDips(){
   }catch(e){console.error('news dips:',e);}
 }
 
+// ── Money flow card (money_flow.json): where is money moving across assets? ──
+const MF_URL='https://raw.githubusercontent.com/one7rade-byte/gex-tracker/main/money_flow.json';
+async function buildMoneyFlow(){
+  const el=document.getElementById('moneyFlow');if(!el)return;
+  try{
+    const r=await fetch(MF_URL+'?t='+Date.now());if(!r.ok)return;
+    const d=await r.json();
+    const tone=d.state==='RISK-OFF FLOWS'?QA_TONE.amber:d.state==='RISK-ON FLOWS'?QA_TONE.green:QA_TONE.gray;
+    const rows=(d.pairs||[]).map(function(p){
+      const zz=Math.max(-2.5,Math.min(2.5,p.z||0)),w=Math.abs(zz)/2.5*50,on=zz>=0;
+      return '<div style="padding:5px 0;border-top:1px solid #eee">'+
+        '<div style="display:flex;justify-content:space-between;font-size:12px"><span>'+qaEsc(p.name)+'</span>'+
+        '<span style="font-weight:600;color:'+(on?'#3B6D11':'#A32D2D')+'">→ '+qaEsc(p.toward)+'</span></div>'+
+        '<div style="position:relative;height:6px;background:#f0ede8;border-radius:3px;margin:4px 0">'+
+          '<div style="position:absolute;left:50%;top:-2px;width:1px;height:10px;background:#bbb"></div>'+
+          '<div style="position:absolute;top:0;height:6px;border-radius:3px;'+(on?'left:50%;':'right:50%;')+'width:'+w+'%;background:'+(on?'#639922':'#C24A4A')+'"></div></div>'+
+        '<div style="font-size:10px;color:#888">'+qaEsc(p.detail)+(p.z!=null?' · '+(Math.abs(p.z)>=1?'unusual':'normal')+' (z '+p.z+')':'')+'</div></div>';}).join('');
+    const h=d.history_for_this_quintile||{},a=d.history_all_days||{},ro=d.risk_on_history||{};
+    el.innerHTML='<div class="card" style="margin-bottom:12px">'+
+      '<div class="cl">Money flow across assets · '+qaEsc(d.date)+'</div>'+
+      '<div style="display:flex;align-items:baseline;gap:10px;margin:4px 0 2px"><span style="font-size:18px;font-weight:700;color:'+tone[1]+'">'+qaEsc(d.state)+'</span>'+
+      '<span style="font-size:12px;color:#666">risk appetite '+qaEsc(d.percentile)+'th pct · '+((d.score_20d_change||0)<0?'falling':'rising')+' ('+(d.score_20d_change>0?'+':'')+qaEsc(d.score_20d_change)+' in 20d)</span></div>'+
+      '<div style="font-size:10px;color:#999;margin-bottom:4px">Left (red) = money moving to safety · right (green) = money moving to risk</div>'+rows+
+      '<div style="margin-top:8px;font-size:11px;color:#555;line-height:1.45">'+
+        (h.n?'<b>At this level</b> (since 2010): a 10%+ SPY drop followed within 120 days '+h.drop10_pct+'% of the time (all days '+a.drop10_pct+'%). ':'')+
+        (d.risk_on_trigger_today?'<b style="color:#3B6D11">Risk-on trigger today:</b> money rotating back to risk during a drawdown. ':
+          '<b>Risk-on trigger</b> (SPY 8%+ off its high and the score up 0.5+ in 20 days): '+(d.last_risk_on_trigger?'last '+qaEsc(d.last_risk_on_trigger):'not fired in this drop')+'. ')+
+        (ro.n?'It fired after the low in '+ro.n+' past drops (median +'+ro.median_120d+'% over 120d).':'')+
+      '</div><div style="margin-top:4px;font-size:9px;color:#aaa">Backtested 2010–2026 (research/money_flow). Not financial advice.</div></div>';
+  }catch(e){console.error('money flow:',e);}
+}
+
 async function fetchCSV(){
   const r=await fetch(CSV_URL+'?t='+Date.now());
   if(!r.ok)throw new Error('HTTP '+r.status);
@@ -1530,6 +1562,7 @@ function buildUI(data){
 
   document.getElementById('app').innerHTML=
     '<div id="quickAction"></div>'+
+    '<div id="moneyFlow"></div>'+
     '<div id="newsDips"></div>'+
     '<div id="regimePanel"class="card" style="margin-bottom:12px"><div style="font-size:11px;color:#888;padding:8px">Loading regime analysis...</div></div>'+
     '<div class="sig '+info.cls+'"><div class="sig-title">'+info.label+'</div><div class="sig-body">'+info.body+'</div></div>'+
@@ -1644,6 +1677,7 @@ async function init(){
     buildUI(data);
     buildQuickAction(data[data.length-1].d);
     buildNewsDips();
+    buildMoneyFlow();
     fetchRegime().then(function(regime){
       ALL_REGIME=regime;
       buildRegimePanel(regime);
