@@ -1,8 +1,9 @@
 """
 yield_curve.py — 2-year / 10-year Treasury curve regime.
 
-Data: FRED daily constant-maturity yields DGS2, DGS10, DGS3MO (free, no key,
-1976+ for 2y). Writes yield_curve.csv (date, y3m, y2, y10, spread_10_2,
+Data: the U.S. Treasury's official daily par yield curve (one CSV per year,
+1990+), with FRED (DGS2/DGS10/DGS3MO) as a fallback. FRED times out from
+GitHub Actions servers. Writes yield_curve.csv (date, y3m, y2, y10, spread_10_2,
 spread_10_3m, and the regime over the last 20 trading days).
 
 Regime (20-session change; "moving" = the 10y-2y spread changed 10bp+):
@@ -30,7 +31,7 @@ WIN, MOVE = 20, 0.10  # sessions, percentage points (10bp)
 
 def fetch(sid):
     url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}"
-    r = requests.get(url, timeout=60, headers={"User-Agent": "Mozilla/5.0 gex-tracker"})
+    r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0 gex-tracker"})
     r.raise_for_status()
     out = {}
     for row in csv.reader(io.StringIO(r.text)):
@@ -40,6 +41,34 @@ def fetch(sid):
             out[row[0]] = float(row[1])
         except ValueError:
             pass  # FRED uses "." for holidays
+    return out
+
+
+TSY = ("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/"
+       "{y}/all?type=daily_treasury_yield_curve&field_tdr_date_value={y}&page&_format=csv")
+TSY_COLS = {"y3m": "3 Mo", "y2": "2 Yr", "y10": "10 Yr"}
+
+
+def fetch_treasury(first_year=1990):
+    """{"y3m": {date: v}, "y2": {...}, "y10": {...}} from Treasury's yearly CSVs."""
+    from datetime import date as _d
+    out = {k: {} for k in TSY_COLS}
+    for y in range(first_year, _d.today().year + 1):
+        r = requests.get(TSY.format(y=y), timeout=60, headers={"User-Agent": "Mozilla/5.0 gex-tracker"})
+        r.raise_for_status()
+        for row in csv.DictReader(io.StringIO(r.text)):
+            try:
+                m, dd, yy = row["Date"].split("/")
+                iso = f"{yy}-{m}-{dd}"
+            except (KeyError, ValueError):
+                continue
+            for k, col in TSY_COLS.items():
+                try:
+                    out[k][iso] = float(row.get(col) or "")
+                except ValueError:
+                    pass
+    if len(out["y2"]) < 1000:
+        raise RuntimeError(f"Treasury returned too little data ({len(out['y2'])} days)")
     return out
 
 
@@ -60,10 +89,16 @@ def regime(d2, d10):
 
 def main():
     try:
-        data = {k: fetch(v) for k, v in SERIES.items()}
+        data = fetch_treasury()
+        print("source: U.S. Treasury daily par yield curve")
     except Exception as e:
-        print(f"FRED unavailable ({e}); keeping existing {OUT}")
-        sys.exit(0 if os.path.exists(OUT) else 1)
+        print(f"Treasury unavailable ({e}); trying FRED")
+        try:
+            data = {k: fetch(v) for k, v in SERIES.items()}
+            print("source: FRED")
+        except Exception as e2:
+            print(f"FRED unavailable ({e2}); keeping existing {OUT}")
+            sys.exit(0 if os.path.exists(OUT) else 1)
     dates = sorted(d for d in data["y2"] if d in data["y10"])
     rows = []
     for i, d in enumerate(dates):
