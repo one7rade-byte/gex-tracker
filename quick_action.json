@@ -65,7 +65,7 @@
   },
   {
    "label": "Yield curve",
-   "text": "Flat (the 10y-2y spread moved less than 10bp in 20 sessions). 2y 4.61%, 10y 4.85%, spread +0.24; 20d change 2y -0.09, 10y -0.14. Since 2010, SPY in this regime: median +6.0% over 120d with a 10%+ drop 21% of the time (all days: +6.7%, 21%). Curve caution off",
+   "text": "Bull Flattener (yields falling, 10y faster: growth fears, flight to safety). 2y 4.69%, 10y 4.94%, spread +0.25; 20d change 2y +0.02, 10y -0.11. Since 2010, SPY in this regime: median +7.4% over 120d with a 10%+ drop 20% of the time (all days: +6.7%, 21%). Curve caution off",
    "tone": "gray"
   },
   {
@@ -337,29 +337,29 @@
   "guard_hit": null
  },
  "yield_curve": {
-  "date": "2026-11-25",
-  "y2": 4.61,
-  "y10": 4.85,
-  "spread": 0.24,
-  "chg2": -0.09,
-  "chg10": -0.14,
-  "regime": "FLAT",
-  "meaning": "the 10y-2y spread moved less than 10bp in 20 sessions",
+  "date": "2026-11-27",
+  "y2": 4.69,
+  "y10": 4.94,
+  "spread": 0.25,
+  "chg2": 0.02,
+  "chg10": -0.11,
+  "regime": "BULL FLATTENER",
+  "meaning": "yields falling, 10y faster: growth fears, flight to safety",
   "inverted": false,
   "hist_all": {
-   "n": 4295,
-   "median_60d": 3.39,
-   "median_120d": 5.9,
-   "up_120d_pct": 73.6,
-   "drop10_120d_pct": 22.7,
-   "share_of_days_pct": 56.2
+   "n": 1095,
+   "median_60d": 3.48,
+   "median_120d": 6.81,
+   "up_120d_pct": 81.0,
+   "drop10_120d_pct": 22.2,
+   "share_of_days_pct": 14.2
   },
   "hist_2010": {
-   "n": 2280,
-   "median_60d": 3.57,
-   "median_120d": 6.04,
-   "up_120d_pct": 77.4,
-   "drop10_120d_pct": 21.3
+   "n": 708,
+   "median_60d": 3.91,
+   "median_120d": 7.44,
+   "up_120d_pct": 82.8,
+   "drop10_120d_pct": 19.8
   },
   "base_2010": {
    "n": 4099,
