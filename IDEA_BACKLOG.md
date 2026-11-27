@@ -15,6 +15,12 @@ P0. [TESTED 2026-11-11 — inconclusive, see WEEKLY_RESEARCH_LOG.md] SMH/RSP rot
 P0b. [TESTED 2026-11-14 — PASS (modest), PR claude/pr-quick-action-defend-2day; see WEEKLY_RESEARCH_LOG.md] DEFEND needs
     2 consecutive trigger days (switches 19.5 -> 12.0/yr 2007+; better both sides 2007+/2018+, worse max DD 2010-17).
     DEFEND is a vol flag, not a sell: cash-on-DEFEND cost 3.8pp CAGR 2007+. Headline reworded to "no new adds".
+P0f. (new 2026-11-27) YIELD CURVE REGIME, forward track and refine. yield_curve.csv (Treasury 2y/3m/10y, 1990+, daily) and
+    research/yield_curve/FINDINGS.md: since 2010 the bear flattener is the weakest SPY regime (+3.3% 120d, 32% chance of a
+    10%+ drop); the bull steepener flips by era (pre-2010 -4.9% / 56%, 2010+ +11.0% / 12.8%). Ideas: (a) does credit
+    (HYG/IEF) separate "something broke" bull steepeners from "insurance cut" ones? (b) 10y-3m spread vs 10y-2y;
+    (c) un-inversion + 250d (n=3, so weight carefully); (d) use research/yield_curve/DGS2_fred_1976.csv to extend the
+    2y back to 1976 if an index series back to 1976 can be found. Informational on the dashboard until something passes.
 P0e. (new 2026-11-25) DE-RISK FORWARD TEST REVIEW, monthly (first full review once 120 sessions have resolved, ~mid-2027).
     research/derisk/: backtest 2007+ found no warning good enough for a trim rule (credit_lead 47.4% and semis_lead 42.4%
     10%+ drop odds vs 25% base, but trimming on them changed CAGR/maxDD very little). Rules FROZEN 2026-11-25; forward_test.py
