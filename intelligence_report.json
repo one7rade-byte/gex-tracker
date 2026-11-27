@@ -1,154 +1,142 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "generated_at": "11:00 PM",
   "overall_signal": "WATCH",
-  "voo_vgt_action": "WATCH \u2014 Fear building (7/10, VIX 28.1). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
-  "macro_picture": "SPY GEX is deeply negative at $-8.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 28.1 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.",
-  "mag7_section": "MSFT HEADLINE NOISE: negative headlines, but the stock moved only -3.6% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 51th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building.",
-  "watch_section": "VIX pushing above 22-25 (currently 28.1, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
-  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-8.6B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 28.1 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 139 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. Market headlines are dominated by macro fear themes (Fed, inflation, geopolitical) \u2014 this is broad market anxiety, not company-specific deterioration.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (7/10, VIX 28.1). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: MSFT HEADLINE NOISE: negative headlines, but the stock moved only -3.6% over 5 days. That's no shock-sized reaction, so not a reason to avoid on its own. AAPL WATCH \u2014 score 4/10, RSI at 51th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building.\n\nWATCH FOR: VIX pushing above 22-25 (currently 28.1, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
+  "voo_vgt_action": "WATCH \u2014 Fear building (6/10, VIX 26.8). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.",
+  "macro_picture": "SPY GEX is deeply negative at $-9.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.8 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.",
+  "mag7_section": "MSFT OPPORTUNITY (high confidence) \u2014 RSI at 8th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 52th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.",
+  "watch_section": "VIX pushing above 22-25 (currently 26.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.",
+  "ai_brief": "MACRO PICTURE: SPY GEX is deeply negative at $-9.0B \u2014 dealers are net short gamma and amplifying moves in both directions. The market is in an unstable, high-energy state. VIX is 26.8 (elevated, rising trend over 5 days). Term structure in backwardation \u2014 near-term fear exceeds long-term, institutions hedging imminent risk. SKEW at 142 is elevated \u2014 smart money is actively buying tail protection. Not panic, but meaningful hedging activity. GEX has been negative 10 of the last 10 days \u2014 this is a prolonged negative regime, not a one-day event. No dominant negative news theme today \u2014 market moves appear technical rather than news-driven.\n\nVOO/VGT ACTION: WATCH \u2014 Fear building (6/10, VIX 26.8). Not at peak fear yet but the setup is forming. Begin preparing capital, add a small tranche if VOO/VGT dips further.\n\nMAG 7 OPPORTUNITIES: MSFT OPPORTUNITY (high confidence) \u2014 RSI at 8th percentile of own history, 10 of last 10 days oversold, mixed drivers. Score 7/10. Below 200MA \u2014 scale in slowly. AAPL WATCH \u2014 score 4/10, RSI at 52th pct. Not yet at peak oversold but building. AMZN WATCH \u2014 score 4/10, RSI at 26th pct. Not yet at peak oversold but building. NVDA MAG 7 NEWS DIP: HISTORICALLY BUYABLE: down -14.0% on 2026-11-20. Past Mag 7 news drops beat SPY over 60 days 56.5% of the time (median +0.99%). Not a reason to avoid on its own; wait for Quick Action confirmations to add.\n\nWATCH FOR: VIX pushing above 22-25 (currently 26.8, needs +0.0 pts) with GEX remaining negative would trigger a high-conviction buy zone. GEX flipping positive would confirm dealer stabilization \u2014 that's the technical all-clear for loading.\n\nOVERALL SIGNAL: WATCH",
   "macro_trend": {
-    "regime": "high_fear",
+    "regime": "bear_warning",
     "vix_trend": "rising",
-    "vix_current": 28.08,
+    "vix_current": 26.8,
     "gex_trend": "improving",
-    "gex_current": -8.6,
+    "gex_current": -9.0,
     "fear_trend": "building",
-    "fear_current": 7.0,
+    "fear_current": 6.0,
     "bear_current": 8.0,
     "bull_current": 0.0,
     "neg_gex_days": 10,
-    "skew_current": 139.16,
+    "skew_current": 142.06,
     "term_struct": "backwardation",
     "above_200ma": "False",
-    "spy_rsi": 43.85
+    "spy_rsi": 44.2
   },
   "top_opportunity": {
-    "ticker": "NVDA",
-    "score": 5,
-    "reason": "RSI very oversold (bottom 20% of own history) | Options expensive (IV top 1% of history) \u2014 fear priced in, wait | Elevated put buying (P/C 62th pct) | GEX negative \u2014 unstable, watch for stabilization | Below 200MA \u2014 downtrend, scale in slowly",
-    "news": "company_negative"
+    "ticker": "MSFT",
+    "score": 7.0,
+    "reason": "RSI extremely oversold (bottom 8% of own history) | Options expensive (IV top 6% of history) \u2014 fear priced in, wait | Heavy put buying (P/C top 14% of history) \u2014 extreme fear, contrarian buy | GEX positive \u2014 dealers providing support | Above 200MA \u2014 uptrend intact, dip is buyable",
+    "news": "company_positive"
   },
   "avoid_names": [],
   "mag7_snapshot": {
     "AAPL": {
       "score": 4.0,
-      "rsi_pct": 50.9,
+      "rsi_pct": 51.7,
       "above_200ma": true,
       "news": "company_positive",
       "rsi_dir": "recovering",
       "days_oversold": 0,
       "headlines": [
-        "Is the market experiencing a 'dead cat' bounce?",
-        "Apple (AAPL) Pushes Back As 24 7 Tokenized Shares Trading Opens",
-        "Chips and iPhones Are Safe From New Tariffs. Here\u2019s What Isn\u2019t.",
-        "Tech Stock Sell-Off: Here's Why Apple Has Been Immune"
+        "Apple Stocks Rise as AI Selloff Spares the iPhone Maker",
+        "Apple Removes Talkie From App Store After Reports of Inappropriate AI Messages",
+        "Apple, Exxon and Lowe\u2019s Are Rewarding Shareholders Beyond Their Regular Dividends",
+        "If You Invest $1,000 in Apple Today, Here\u2019s What It Could Be Worth by 2029"
       ]
     },
     "MSFT": {
       "score": 7.0,
-      "rsi_pct": 8.2,
+      "rsi_pct": 7.6,
       "above_200ma": true,
-      "news": "company_negative",
+      "news": "company_positive",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 9,
+      "days_oversold": 10,
       "headlines": [
-        "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
-        "Tariffs are back as Anthropic sinks further below its IPO price",
-        "Bill Ackman, George Soros and 5 Other Famous Investors Own Microsoft. Here\u2019s Who Bought and Sold Recently",
-        "Satya Nadella Says \u201cthe Floor of Cyber Attacks Has Fallen.\u201d Microsoft Just Declared Code Red After a 24-Hour Outage"
+        "Tech Stock Sell-Off: Down 13%, Is Microsoft a Buy Now?",
+        "Microsoft Stocks Slip 1.25% While Nadella Backs Cheaper In-House AI Models",
+        "Can NICE (TASE:NICE) Support A Reasonable Price On Earnings?",
+        "Data Engineering Workflow Orchestration Market Global Report 2026 | Capture $14.43B AI and Multi-Cloud Demand with Databricks, Microsoft, Snowflake and Astronomer"
       ]
     },
     "NVDA": {
-      "score": 4.0,
-      "rsi_pct": 19.9,
+      "score": 3.0,
+      "rsi_pct": 21.5,
       "above_200ma": false,
-      "news": "company_negative",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
       "days_oversold": 10,
       "headlines": [
-        "Dow Jones Futures: Market Goes On Wild Ride. Nasdaq, Nvidia Slash Losses While Anthropic Reverses Higher.",
-        "Nvidia settles 8-year-old investor suit for $290M",
-        "Nvidia May Get A Credit Rating Cut Amid Governance Issues, While US Officials Reportedly Say No Chinese Interference in Huang\u2019s Affair",
-        "Nvidia Sell-Off: You Won\u2019t Believe How Cheap the Stock Is"
+        "Loonie weakens amid Thanksgiving holiday lull, Canadian labor market data",
+        "Jensen Huang\u2019s Return Doesn\u2019t Make Nvidia Stock (NVDA) a Buy",
+        "Nvidia halts server shipments to 4 countries just weeks after Jensen Huang\u2019s affair with alleged spy was exposed",
+        "If a Market Correction Is Around the Corner, I'm Making This 1 Easy Move"
       ]
     },
     "GOOGL": {
       "score": 3.0,
-      "rsi_pct": 38.0,
+      "rsi_pct": 41.3,
       "above_200ma": false,
-      "news": "fundamental_change",
+      "news": "macro_fear",
       "rsi_dir": "recovering",
-      "days_oversold": 4,
+      "days_oversold": 3,
       "headlines": [
-        "These 5 Tech Stocks are Sidestepping the AI Downturn",
-        "Anthropic\u2019s Chip Choices Could Change the Nvidia Story. Here\u2019s How.",
-        "Megadeals Defy Selloff, Head Toward Record",
-        "SpaceX stock price crashes on concerns over compute demand"
+        "Tesla's Self-Driving Expansion in Europe Faces a Crucial Test",
+        "Jim Lebenthal Says This Is \u201ca Correction, Not Something Worse.\u201d Why He\u2019s Buying More Alphabet",
+        "Jensen Huang\u2019s Return Doesn\u2019t Make Nvidia Stock (NVDA) a Buy",
+        "Broadcom Stocks Edge Lower After Rebounding From an Intraday Low of $278"
       ]
     },
     "META": {
       "score": 3.0,
-      "rsi_pct": 58.5,
+      "rsi_pct": 59.9,
       "above_200ma": false,
-      "news": "neutral",
+      "news": "macro_fear",
       "rsi_dir": "stable",
       "days_oversold": 0,
       "headlines": [
-        "Nvidia is cheap on paper, so why won't the market buy it?",
-        "Stocks Pare Losses as Anthropic Shares Swing Higher",
-        "Meta Says Muse \u201cRaises Conversions for Advertisers.\u201d It Already Places 51% of AI Agent Orders",
-        "Meta\u2019s AI shopping push could lift Instagram ad revenue, Jefferies says"
+        "George Soros and 64 Other Big Funds Bought Meta Last Quarter. David Tepper and 33 Others Sold. Who\u2019s Right?",
+        "Meta Faces India Lawsuit Over 5.4 Million Content Restrictions",
+        "Meta Platforms Stocks Jump 3.4% on Reported Amazon Talks Over Muse AI Agent",
+        "Meta Platforms\u2019 (META) Surging Capex Pressures Free Cash Flow Amid Monetization Debates"
       ]
     },
     "AMZN": {
       "score": 4.0,
-      "rsi_pct": 26.3,
+      "rsi_pct": 25.6,
       "above_200ma": false,
       "news": "macro_fear",
       "rsi_dir": "getting_more_oversold",
-      "days_oversold": 2,
+      "days_oversold": 3,
       "headlines": [
-        "Jensen Huang's return, neocloud risk, and a holiday retail rally",
-        "Nvidia is cheap on paper, so why won't the market buy it?",
-        "SpaceX is now on the clock to launch 1,000,000 satellites \u2014 60x what exists in space today. Amazon calls it impossible",
-        "Federal Court Rules in Favor of CPSC in Landmark E-Commerce Product Safety Case"
+        "Stanley Druckenmiller, Bill Ackman and 7 Other Famous Investors Own Amazon. Here\u2019s Who Bought and Sold Recently",
+        "Amazon , Walmart Battle for $124 Billion Holiday Shopping Market",
+        "NFL's Thanksgiving Boom Raises Stakes for Disney, Netflix",
+        "Meta Platforms Stocks Jump 3.4% on Reported Amazon Talks Over Muse AI Agent"
       ]
     },
     "TSLA": {
       "score": 3.0,
-      "rsi_pct": 74.3,
+      "rsi_pct": 75.0,
       "above_200ma": false,
       "news": "fundamental_change",
-      "rsi_dir": "stable",
+      "rsi_dir": "recovering",
       "days_oversold": 5,
       "headlines": [
-        "Ten reasons the market is selling off again before Thanksgiving",
-        "Tesla and SpaceX stocks sink as merger concerns mount",
-        "Billionaire Brad Gerstner\u2019s Altimeter Opened a $680 Million Tesla Stake and Exited Qualcomm and Applied Materials",
-        "Is Space Exploration Technologies (SPCX) Cheap As Tesla Merger Talks Raise Valuation Questions?"
+        "Should You Buy Tesla Stock Before December?",
+        "Tesla Stocks Slip 1.18% as EU Delays Self-Driving Vote to December 15",
+        "Tesla: A SpaceX Merger Could Turn $5,000 Into $10,000",
+        "XPeng Raises Stakes for Tesla Stock Investors' Big Growth Bet"
       ]
     }
   },
   "macro_headlines": [
     {
-      "title": "Nvidia is cheap on paper, so why won't the market buy it?",
-      "link": "https://finance.yahoo.com/video/nvidia-is-cheap-on-paper-so-why-wont-the-market-buy-it-192215326.html?.tsrc=rss",
-      "pub_date": "2026-11-25",
-      "tickers": [
-        "NVDA"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "SPDR S&amp;P 500 ETF (SPY) Adds Apple and Nvidia on Monday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110402304.html?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "SPDR S&amp;P 500 ETF (SPY) Sells $400.1 Million of Apple on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-500-etf-spy-110357521.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "AAPL",
-        "NVDA",
         "SPY"
       ],
       "high_impact": false,
@@ -156,43 +144,9 @@
       "source_count": 1
     },
     {
-      "title": "Forget the P/E Ratio. DSTL Picks 100 Large Stocks by the Cash They Generate and the Debt They Don\u2019t Carry",
-      "link": "https://247wallst.com/investing/etf/2026/11/25/forget-the-p-e-ratio-dstl-picks-100-large-stocks-by-the-cash-they-generate-and-the-debt-they-dont-carry/?.tsrc=rss",
-      "pub_date": "2026-11-25",
-      "tickers": [
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "SPYD and SCHD Hold No Nvidia. Here\u2019s What You Give Up and What You Get",
-      "link": "https://247wallst.com/investing/etf/2026/11/25/spyd-and-schd-hold-no-nvidia-heres-what-you-give-up-and-what-you-get/?.tsrc=rss",
-      "pub_date": "2026-11-25",
-      "tickers": [
-        "NVDA",
-        "SPY"
-      ],
-      "high_impact": false,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Dow Craters Over 1000 Points, Nasdaq Slips 4% As AI Trade Unravels \u2013 Investors Digest PCE Inflation, Fresh Tariff Proposal",
-      "link": "https://stocktwits.com/news-articles/markets/equity/dow-craters-over-1000-points-nasdaq-slips-4-as-ai-trade-unravels-investors-digest-pce-inflation-fresh-tariff-proposal/cNbHjJvR9mj?.tsrc=rss",
-      "pub_date": "2026-11-25",
-      "tickers": [
-        "QQQ"
-      ],
-      "high_impact": true,
-      "sources": [],
-      "source_count": 1
-    },
-    {
-      "title": "Is A 4.7% S&amp;P Jump A Good Sign?",
-      "link": "https://www.trefis.com/stock/spy/articles/628687/is-a-4-7-s-p-jump-a-good-sign/2026-11-25?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "Own Palo Alto Stock? Watch Its Deferred Revenue",
+      "link": "https://www.trefis.com/stock/panw/articles/629187/own-palo-alto-stock-watch-its-deferred-revenue/2026-11-26?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "MARKET"
       ],
@@ -201,9 +155,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Buying American International Group (AIG) on Monday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-american-international-group-110210871.html?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "ETFs Are Net Sellers of Thermo Fisher (TMO) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-thermo-fisher-110336584.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "MARKET"
       ],
@@ -212,9 +166,9 @@
       "source_count": 1
     },
     {
-      "title": "ETFs Are Buying Extra Space Storage (EXR) on Nov. 23",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-buying-extra-space-storage-110204240.html?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "ETFs Are Net Sellers of Intuitive Surgical (ISRG) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-intuitive-surgical-110334735.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "MARKET"
       ],
@@ -223,9 +177,9 @@
       "source_count": 1
     },
     {
-      "title": "How Much of Your Portfolio Should Be in Bitcoin After a 50% Drop?",
-      "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/how-much-of-your-portfolio-should-be-in-bitcoin-after-a-50-drop/?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "ETFs Are Net Sellers of Medtronic (MDT) on Tuesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-medtronic-mdt-110331824.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "MARKET"
       ],
@@ -234,9 +188,53 @@
       "source_count": 1
     },
     {
-      "title": "Feeling Safe After a Decade of Gains, He Keeps 80% of His $1.4 Million 401(k) in Stocks at 64. Like a Thanksgiving Turkey, He Won\u2019t See It Coming: a 25% Drop Would Cost Him $280,000 Months Before He Retires",
-      "link": "https://247wallst.com/personal-finance/2026/11/25/feeling-safe-after-a-decade-of-gains-he-keeps-80-of-his-1-4-million-401k-in-stocks-at-64-like-a-thanksgiving-turkey-he-wont-see-it-coming-a-25-drop-would-cost-him-280000-months-before-he-re/?.tsrc=rss",
-      "pub_date": "2026-11-25",
+      "title": "ETFs Are Net Sellers of Merck (MRK) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-merck-mrk-110325675.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of UnitedHealth (UNH) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-unitedhealth-unh-110321795.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of General Electric (GE) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-general-electric-110314220.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of Abbott Laboratories (ABT) on Tuesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-abbott-laboratories-110304656.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
+      "tickers": [
+        "MARKET"
+      ],
+      "high_impact": false,
+      "sources": [],
+      "source_count": 1
+    },
+    {
+      "title": "ETFs Are Net Sellers of Broadcom (AVGO) on Nov. 24",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-broadcom-avgo-110258196.html?.tsrc=rss",
+      "pub_date": "2026-11-26",
       "tickers": [
         "MARKET"
       ],
