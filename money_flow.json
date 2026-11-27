@@ -1,10 +1,10 @@
 {
  "date": "2026-11-27",
- "score": -0.81,
- "percentile": 12.1,
- "score_20d_change": -0.37,
+ "score": -0.8,
+ "percentile": 12.5,
+ "score_20d_change": -0.35,
  "state": "RISK-OFF FLOWS",
- "spy_vs_high_pct": -6.9,
+ "spy_vs_high_pct": -6.5,
  "risk_on_trigger_today": false,
  "last_risk_on_trigger": null,
  "pairs": [
@@ -13,9 +13,9 @@
    "name": "EM vs US",
    "toward": "US stocks",
    "risk_on": false,
-   "rel_60d_pct": -9.14,
+   "rel_60d_pct": -9.1,
    "detail": "emerging markets lagged US stocks by 9.1% over 60 days",
-   "z": -1.73
+   "z": -1.72
   },
   {
    "key": "dollar_inverted",
@@ -31,54 +31,54 @@
    "name": "Junk vs Treasuries",
    "toward": "Treasuries",
    "risk_on": false,
-   "rel_60d_pct": -2.7,
-   "detail": "junk bonds lagged Treasuries by 2.7% over 60 days",
-   "z": -1.5
+   "rel_60d_pct": -2.61,
+   "detail": "junk bonds lagged Treasuries by 2.6% over 60 days",
+   "z": -1.46
   },
   {
    "key": "cyclical_vs_defens",
    "name": "Cyclicals vs defensives",
    "toward": "defensive sectors",
    "risk_on": false,
-   "rel_60d_pct": -12.17,
-   "detail": "cyclicals/tech lagged defensive sectors by 12.2% over 60 days",
-   "z": -1.47
+   "rel_60d_pct": -11.79,
+   "detail": "cyclicals/tech lagged defensive sectors by 11.8% over 60 days",
+   "z": -1.43
   },
   {
    "key": "stocks_vs_bonds",
    "name": "Stocks vs bonds",
    "toward": "bonds",
    "risk_on": false,
-   "rel_60d_pct": -4.68,
-   "detail": "stocks lagged bonds by 4.7% over 60 days",
-   "z": -1.39
+   "rel_60d_pct": -4.02,
+   "detail": "stocks lagged bonds by 4.0% over 60 days",
+   "z": -1.29
   },
   {
    "key": "small_vs_large",
    "name": "Small vs large caps",
    "toward": "large caps",
    "risk_on": false,
-   "rel_60d_pct": -2.28,
-   "detail": "small caps lagged large caps by 2.3% over 60 days",
-   "z": -0.39
+   "rel_60d_pct": -2.17,
+   "detail": "small caps lagged large caps by 2.2% over 60 days",
+   "z": -0.36
   },
   {
    "key": "copper_vs_gold",
    "name": "Copper vs gold",
    "toward": "copper",
    "risk_on": true,
-   "rel_60d_pct": 4.14,
-   "detail": "copper beat gold by 4.1% over 60 days",
-   "z": 0.37
+   "rel_60d_pct": 3.67,
+   "detail": "copper beat gold by 3.7% over 60 days",
+   "z": 0.33
   },
   {
    "key": "stocks_vs_gold",
    "name": "Stocks vs gold",
    "toward": "stocks",
    "risk_on": true,
-   "rel_60d_pct": 14.98,
-   "detail": "stocks beat gold by 15.0% over 60 days",
-   "z": 1.13
+   "rel_60d_pct": 14.65,
+   "detail": "stocks beat gold by 14.6% over 60 days",
+   "z": 1.11
   }
  ],
  "history_for_this_quintile": {
