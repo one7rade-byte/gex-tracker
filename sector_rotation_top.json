@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "benchmark": "SPY",
   "rs_window_days": 21,
   "momentum_lag_days": 5,
@@ -102,6 +102,14 @@
       "return_21d": 1.77
     },
     {
+      "ticker": "BTC-USD",
+      "label": "Bitcoin",
+      "quadrant": "IMPROVING",
+      "rs_now": 80.24,
+      "rs_momentum": 0.26,
+      "return_21d": -25.28
+    },
+    {
       "ticker": "XLI",
       "label": "Industrials",
       "quadrant": "LEADING",
@@ -134,14 +142,6 @@
       "return_21d": -12.04
     },
     {
-      "ticker": "BTC-USD",
-      "label": "Bitcoin",
-      "quadrant": "LAGGING",
-      "rs_now": 79.52,
-      "rs_momentum": -3.45,
-      "return_21d": -25.32
-    },
-    {
       "ticker": "XLK",
       "label": "Technology",
       "quadrant": "LAGGING",
@@ -166,7 +166,8 @@
     ],
     "IMPROVING": [
       "XLE",
-      "EEM"
+      "EEM",
+      "BTC-USD"
     ],
     "WEAKENING": [
       "IWM",
@@ -174,7 +175,6 @@
     ],
     "LAGGING": [
       "GLD",
-      "BTC-USD",
       "XLK"
     ],
     "unknown": []

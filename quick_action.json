@@ -1,14 +1,14 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "action": "BUY ZONE: SINGLE BUY",
  "tone": "green",
- "headline": "SPY is 7.9% below its 2026-10-06 high. Normal-correction plan: one buy. The buy zone opened at -8% (716.76) on 2026-11-19. History: one buy at -8% returned a median +15.6% over 12 months (12/17 positive), usually after about -9% more first. Switch to the 3-buy deep-drop plan only if SPY closes below 655.32 (5% under the 2026-11-20 first-oversold close of 689.81): that second leg came in 5/5 drops of 20%+ since 1995 and 0/9 mild corrections. Fear is still high (VIX backwardation 8 days, big money leaving 2 days), so a retest is likely; that's not a reason for a second buy unless the switch level breaks.",
- "confirmations": 0,
+ "headline": "SPY is 6.5% below its 2026-10-06 high. Normal-correction plan: one buy. The buy zone opened at -8% (716.76) on 2026-11-19. History: one buy at -8% returned a median +15.6% over 12 months (12/17 positive), usually after about -9% more first. Switch to the 3-buy deep-drop plan only if SPY closes below 655.32 (5% under the 2026-11-20 first-oversold close of 689.81): that second leg came in 5/5 drops of 20%+ since 1995 and 0/9 mild corrections. Fear is still high (big money leaving 2 days), so a retest is likely; that's not a reason for a second buy unless the switch level breaks.",
+ "confirmations": 2,
  "confirmations_total": 5,
  "checks": [
   {
    "label": "Fear easing: VIX curve back in contango",
-   "ok": false
+   "ok": true
   },
   {
    "label": "VIX below 22",
@@ -24,7 +24,7 @@
   },
   {
    "label": "Credit holding: HYG flat or up over 5 days",
-   "ok": false
+   "ok": true
   }
  ],
  "reasons": [
@@ -35,7 +35,7 @@
   },
   {
    "label": "From high",
-   "text": "SPY -7.9% vs 779.09 (2026-10-06)",
+   "text": "SPY -6.5% vs 779.09 (2026-10-06)",
    "tone": "green"
   },
   {
@@ -45,17 +45,27 @@
   },
   {
    "label": "Credit",
-   "text": "calm (HYG -0.0% in 5 days)",
+   "text": "calm (HYG +0.4% in 5 days)",
    "tone": "green"
   },
   {
    "label": "Fear",
-   "text": "VIX 26.8, backwardation day 8",
-   "tone": "red"
+   "text": "VIX 23.8, contango",
+   "tone": "amber"
   },
   {
    "label": "RSI",
-   "text": "RSI(14) 40.1; first oversold 2026-11-20 at 689.81 (low since 689.81; typical retest zone ~659)",
+   "text": "RSI(14) 45.0; first oversold 2026-11-20 at 689.81 (low since 689.81; typical retest zone ~659)",
+   "tone": "gray"
+  },
+  {
+   "label": "Money flow",
+   "text": "Risk-Off Flows: risk appetite at the 12th percentile (falling over 20 days). Biggest moves: US over EM; into the dollar; Treasuries over junk; defensives over cyclicals; bonds over stocks; stocks over gold. Since 2010 at this level, a 10%+ drop followed within 120 days 30% of the time (all days 20%).",
+   "tone": "amber"
+  },
+  {
+   "label": "Yield curve",
+   "text": "Bull Flattener (yields falling, 10y faster: growth fears, flight to safety). 2y 4.69%, 10y 4.94%, spread +0.25; 20d change 2y +0.02, 10y -0.11. Since 2010, SPY in this regime: median +7.4% over 120d with a 10%+ drop 20% of the time (all days: +6.7%, 21%). Curve caution off",
    "tone": "gray"
   },
   {
@@ -64,12 +74,12 @@
    "tone": "green"
   }
  ],
- "flow_date": "2026-11-25",
+ "flow_date": "2026-11-27",
  "ladder": {
   "ath": 779.09,
   "ath_date": "2026-10-06",
-  "last": 717.26,
-  "drawdown_pct": -7.9,
+  "last": 728.32,
+  "drawdown_pct": -6.5,
   "tiers": [
    {
     "tier": -8,
@@ -96,7 +106,7 @@
    "date": "2026-11-20",
    "close": 689.81
   },
-  "ma50": 756.98,
+  "ma50": 757.2,
   "study": {
    "n_completed": 17,
    "single_buy": {
@@ -294,7 +304,7 @@
   }
  },
  "rsi_oversold": {
-  "rsi": 40.1,
+  "rsi": 45.0,
   "first_oversold_date": "2026-11-20",
   "first_oversold_close": 689.81,
   "vix_over_30": true,
@@ -309,8 +319,8 @@
  "tqqq": {
   "qqq_ath": 759.66,
   "qqq_ath_date": "2026-10-06",
-  "qqq_last": 633.93,
-  "qqq_dd_pct": -16.6,
+  "qqq_last": 650.99,
+  "qqq_dd_pct": -14.3,
   "trigger_level": 607.73,
   "entry_date": "2026-11-20",
   "status": "ZONE OPEN",
@@ -326,10 +336,160 @@
   "guard_level": 547.61,
   "guard_hit": null
  },
+ "yield_curve": {
+  "date": "2026-11-27",
+  "y2": 4.69,
+  "y10": 4.94,
+  "spread": 0.25,
+  "chg2": 0.02,
+  "chg10": -0.11,
+  "regime": "BULL FLATTENER",
+  "meaning": "yields falling, 10y faster: growth fears, flight to safety",
+  "inverted": false,
+  "hist_all": {
+   "n": 1095,
+   "median_60d": 3.48,
+   "median_120d": 6.81,
+   "up_120d_pct": 81.0,
+   "drop10_120d_pct": 22.2,
+   "share_of_days_pct": 14.2
+  },
+  "hist_2010": {
+   "n": 708,
+   "median_60d": 3.91,
+   "median_120d": 7.44,
+   "up_120d_pct": 82.8,
+   "drop10_120d_pct": 19.8
+  },
+  "base_2010": {
+   "n": 4099,
+   "median_60d": 3.69,
+   "median_120d": 6.7,
+   "up_120d_pct": 78.8,
+   "drop10_120d_pct": 20.7
+  },
+  "caution": false,
+  "caution_why": [],
+  "hyg_ief_20d_pct": -1.69
+ },
+ "money_flow": {
+  "date": "2026-11-27",
+  "score": -0.8,
+  "percentile": 12.5,
+  "score_20d_change": -0.35,
+  "state": "RISK-OFF FLOWS",
+  "spy_vs_high_pct": -6.5,
+  "risk_on_trigger_today": false,
+  "last_risk_on_trigger": null,
+  "pairs": [
+   {
+    "key": "em_vs_us",
+    "name": "EM vs US",
+    "toward": "US stocks",
+    "risk_on": false,
+    "rel_60d_pct": -9.1,
+    "detail": "emerging markets lagged US stocks by 9.1% over 60 days",
+    "z": -1.72
+   },
+   {
+    "key": "dollar_inverted",
+    "name": "Dollar",
+    "toward": "the dollar",
+    "risk_on": false,
+    "rel_60d_pct": -5.22,
+    "detail": "dollar +5.5% over 60 days",
+    "z": -1.53
+   },
+   {
+    "key": "credit_vs_treasury",
+    "name": "Junk vs Treasuries",
+    "toward": "Treasuries",
+    "risk_on": false,
+    "rel_60d_pct": -2.61,
+    "detail": "junk bonds lagged Treasuries by 2.6% over 60 days",
+    "z": -1.46
+   },
+   {
+    "key": "cyclical_vs_defens",
+    "name": "Cyclicals vs defensives",
+    "toward": "defensive sectors",
+    "risk_on": false,
+    "rel_60d_pct": -11.79,
+    "detail": "cyclicals/tech lagged defensive sectors by 11.8% over 60 days",
+    "z": -1.43
+   },
+   {
+    "key": "stocks_vs_bonds",
+    "name": "Stocks vs bonds",
+    "toward": "bonds",
+    "risk_on": false,
+    "rel_60d_pct": -4.02,
+    "detail": "stocks lagged bonds by 4.0% over 60 days",
+    "z": -1.29
+   },
+   {
+    "key": "small_vs_large",
+    "name": "Small vs large caps",
+    "toward": "large caps",
+    "risk_on": false,
+    "rel_60d_pct": -2.17,
+    "detail": "small caps lagged large caps by 2.2% over 60 days",
+    "z": -0.36
+   },
+   {
+    "key": "copper_vs_gold",
+    "name": "Copper vs gold",
+    "toward": "copper",
+    "risk_on": true,
+    "rel_60d_pct": 3.67,
+    "detail": "copper beat gold by 3.7% over 60 days",
+    "z": 0.33
+   },
+   {
+    "key": "stocks_vs_gold",
+    "name": "Stocks vs gold",
+    "toward": "stocks",
+    "risk_on": true,
+    "rel_60d_pct": 14.65,
+    "detail": "stocks beat gold by 14.6% over 60 days",
+    "z": 1.11
+   }
+  ],
+  "history_for_this_quintile": {
+   "n": 1009,
+   "median_60d": 3.76,
+   "median_120d": 5.93,
+   "up_120d_pct": 74.3,
+   "drop10_pct": 30.1
+  },
+  "history_quintile": "Q1 (0-20 pct)",
+  "history_all_days": {
+   "n": 4101,
+   "median_60d": 3.66,
+   "median_120d": 6.63,
+   "up_120d_pct": 79.0,
+   "drop10_pct": 20.5
+  },
+  "risk_on_history": {
+   "n": 6,
+   "median_60d": 9.13,
+   "median_120d": 15.6,
+   "up_120d_pct": 83.3,
+   "drop10_pct": 16.7
+  },
+  "risk_on_history_dates": [
+   "2010-07-29",
+   "2011-10-20",
+   "2019-01-09",
+   "2020-04-14",
+   "2022-05-31",
+   "2025-05-05"
+  ]
+ },
  "flow_10d_pct": {
-  "smh_spy": -11.66,
-  "rsp_spy": 2.73,
-  "defensive_cyclical": 8.59,
-  "hyg_ief": -2.28
+  "smh_spy": -8.82,
+  "rsp_spy": 2.85,
+  "defensive_cyclical": 6.24,
+  "hyg_ief": -2.05
  }
 }

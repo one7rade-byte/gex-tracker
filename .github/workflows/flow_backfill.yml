@@ -16,11 +16,13 @@ jobs:
           python-version: '3.11'
       - run: pip install requests
       - run: python flow_extras.py --backfill
+      - run: python yield_curve.py
       - name: Commit flow_history.csv
         run: |
           git config user.name "GEX Bot"
           git config user.email "one7rade@gmail.com"
           git add flow_history.csv
+          [ -f yield_curve.csv ] && git add yield_curve.csv
           git diff --staged --quiet && exit 0
           git commit -m "Flow extras backfill $(date +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do

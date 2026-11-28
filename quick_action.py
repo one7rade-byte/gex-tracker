@@ -223,6 +223,60 @@ def tqqq_read(date):
     return out
 
 
+CURVE_CSV = "yield_curve.csv"
+CURVE_STUDY = os.path.join("research", "yield_curve", "curve_study.json")
+CURVE_MEANING = {
+    "BULL STEEPENER": "yields falling, 2y faster: the market expects Fed cuts",
+    "BULL FLATTENER": "yields falling, 10y faster: growth fears, flight to safety",
+    "BEAR STEEPENER": "yields rising, 10y faster: inflation / fiscal / term-premium worry",
+    "BEAR FLATTENER": "yields rising, 2y faster: the Fed is tightening",
+    "FLAT": "the 10y-2y spread moved less than 10bp in 20 sessions",
+}
+
+
+def curve_read(date):
+    """2y/10y regime from yield_curve.csv plus its SPY track record
+    (research/yield_curve/curve_study.py, 1995+, split by era)."""
+    rows = [r for r in read(CURVE_CSV) if r["date"] <= date and r.get("regime")]
+    if not rows:
+        return None
+    r = rows[-1]
+    try:
+        with open(CURVE_STUDY, encoding="utf-8") as fh:
+            st_ = json.load(fh)
+    except (OSError, ValueError):
+        st_ = {}
+    g = r["regime"]
+    # Curve CAUTION (sizing only, never "sell"): bear flattener, the year after
+    # an un-inversion (first positive close after 60+ inverted sessions), or a
+    # bull steepener while credit is weak (HYG/IEF -1.5%+ over 20 sessions).
+    # Backtest 1999+ (half size while on): SPY CAGR 7.37% vs 6.44%, max DD
+    # -44.5% vs -56.5%; simulated TQQQ since 2010 35.5% vs 34.3%, -76.2% vs -81.6%.
+    sp = [f(x["spread_10_2"]) for x in rows[-1300:]]
+    unin_until, run = -1, 0
+    for i, v in enumerate(sp):
+        if v is not None and v < 0:
+            run += 1
+        else:
+            if run >= 60:
+                unin_until = i + 250
+            run = 0
+    in_unin = len(sp) - 1 <= unin_until
+    fl = [x for x in read(FLOW_CSV) if x["date"] <= date and f(x.get("hyg_ief"))]
+    cred20 = (f(fl[-1]["hyg_ief"]) / f(fl[-21]["hyg_ief"]) - 1) * 100 if len(fl) > 21 else None
+    why = [w for w, on in (("bear flattener (Fed tightening)", g == "BEAR FLATTENER"),
+                           ("within a year of an un-inversion", in_unin),
+                           ("bull steepener with weak credit", g == "BULL STEEPENER" and cred20 is not None and cred20 <= -1.5)) if on]
+    allh = (st_.get("by_regime") or {}).get(g, {})
+    recent = ((st_.get("by_era") or {}).get("2010+") or {}).get(g, {})
+    base = ((st_.get("by_era") or {}).get("2010+") or {}).get("all_days", {})
+    return {"date": r["date"], "y2": f(r["y2"]), "y10": f(r["y10"]), "spread": f(r["spread_10_2"]),
+            "chg2": f(r.get("chg2_20d")), "chg10": f(r.get("chg10_20d")), "regime": g,
+            "meaning": CURVE_MEANING.get(g, ""), "inverted": (f(r["spread_10_2"]) or 0) < 0,
+            "hist_all": allh, "hist_2010": recent, "base_2010": base,
+            "caution": bool(why), "caution_why": why, "hyg_ief_20d_pct": round(cred20, 2) if cred20 is not None else None}
+
+
 def main():
     gex = [r for r in read(GEX_CSV) if r.get("ticker", "SPY").strip() == "SPY"]
     reg = {r["date"]: r for r in read(REGIME_CSV)}
@@ -343,6 +397,47 @@ def main():
             txt += (f"; first oversold {ro_['first_oversold_date']} at {ro_['first_oversold_close']:.2f}"
                     f" (low since {ro_['low_since']:.2f}; typical retest zone ~{ro_['retest_zone']:.0f})")
         reasons.append({"label": "RSI", "text": txt, "tone": "green" if ro_["rsi"] < 30 else "amber" if ro_["rsi"] < 40 else "gray"})
+    try:
+        with open("money_flow.json", encoding="utf-8") as fh:
+            mf = json.load(fh)
+    except (OSError, ValueError):
+        mf = None
+    if mf and mf.get("percentile") is not None:
+        h = mf.get("history_for_this_quintile") or {}
+        txt = (f"{mf['state'].title()}: risk appetite at the {mf['percentile']:.0f}th percentile "
+               f"({'falling' if (mf.get('score_20d_change') or 0) < 0 else 'rising'} over 20 days).")
+        moves = [p_ for p_ in mf["pairs"] if p_.get("z") is not None and abs(p_["z"]) >= 1]
+        if moves:
+            def side(p_):
+                if p_["key"] == "dollar_inverted":
+                    return "into the dollar" if not p_["risk_on"] else "out of the dollar"
+                a, b = p_["name"].split(" vs ")
+                win, lose = (a, b) if p_["risk_on"] else (b, a)
+                fix = {"us": "US", "em": "EM", "treasuries": "Treasuries"}
+                w_, l_ = (fix.get(x.lower(), x.lower()) for x in (win, lose))
+                return f"{w_} over {l_}"
+            txt += " Biggest moves: " + "; ".join(side(p_) for p_ in moves) + "."
+        if h.get("n"):
+            txt += (f" Since 2010 at this level, a 10%+ drop followed within 120 days {h['drop10_pct']:.0f}% of the time "
+                    f"(all days {mf['history_all_days']['drop10_pct']:.0f}%).")
+        if mf.get("risk_on_trigger_today"):
+            txt += " RISK-ON TRIGGER: money is rotating back toward risk during a drawdown, the 'whales returning' signal."
+        elif mf.get("spy_vs_high_pct", 0) <= -8:
+            txt += " Watching for money to rotate back toward risk (score up 0.5+ over 20 days) to confirm adding more."
+        reasons.append({"label": "Money flow", "text": txt,
+                        "tone": "green" if mf.get("risk_on_trigger_today") or mf["state"] == "RISK-ON FLOWS" else "amber" if mf["state"] == "RISK-OFF FLOWS" else "gray"})
+    cv = curve_read(date)
+    if cv:
+        h, b = cv["hist_2010"], cv["base_2010"]
+        txt = (f"{cv['regime'].title()} ({cv['meaning']}). 2y {cv['y2']:.2f}%, 10y {cv['y10']:.2f}%, spread {cv['spread']:+.2f}"
+               + (" (INVERTED)" if cv["inverted"] else "")
+               + (f"; 20d change 2y {cv['chg2']:+.2f}, 10y {cv['chg10']:+.2f}" if cv["chg2"] is not None else ""))
+        if h.get("n") and b.get("n"):
+            txt += (f". Since 2010, SPY in this regime: median {h['median_120d']:+.1f}% over 120d with a 10%+ drop "
+                    f"{h['drop10_120d_pct']:.0f}% of the time (all days: {b['median_120d']:+.1f}%, {b['drop10_120d_pct']:.0f}%)")
+        txt += (f". CURVE CAUTION ON ({', '.join(cv['caution_why'])}): use half size for new adds, especially TQQQ. Not a sell signal"
+                if cv["caution"] else ". Curve caution off")
+        reasons.append({"label": "Yield curve", "text": txt, "tone": "amber" if cv["caution"] else "gray"})
     tq = tqqq_read(date)
     if tq:
         sd = tq["study"] or {}
@@ -354,7 +449,8 @@ def main():
             txt = (f"entry zone open since {tq['entry_date']} (QQQ {tq['entry_qqq']:.2f}, {tq['entry_dd_pct']:+.1f}%)"
                    + (f"; past entries returned a median {sd['median_tqqq_12m']:+.0f}% in 12 months ({sd['positive_12m']}/{sd['fired']} positive)"
                       if sd.get("median_tqqq_12m") is not None else "")
-                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)")
+                   + f". Stop adding if QQQ closes below {tq['guard_level']:.2f} (10% under the entry)"
+                   + (". Curve caution is ON: half size" if cv and cv.get("caution") else ""))
             tone_ = "green"
         else:
             txt = (f"STOP ADDING: QQQ closed 10% below the {tq['entry_date']} entry on {tq['guard_hit']}, the pattern of the 2000 and 2022 bear markets. "
@@ -368,7 +464,7 @@ def main():
         "date": date, "action": action, "tone": tone, "headline": head,
         "confirmations": n_conf, "confirmations_total": len(checks),
         "checks": [{"label": l, "ok": bool(ok)} for l, ok in checks],
-        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq,
+        "reasons": reasons, "flow_date": flow_date, "ladder": lad, "rsi_oversold": ro_, "tqqq": tq, "yield_curve": cv, "money_flow": mf,
         "flow_10d_pct": {k: (round(v, 2) if v is not None else None) for k, v in flow_ch.items()},
     }
     with open(OUT, "w", encoding="utf-8") as fh:

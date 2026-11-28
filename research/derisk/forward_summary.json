@@ -1,6 +1,6 @@
 {
  "frozen": "2026-11-25",
- "logged_days": 1,
+ "logged_days": 2,
  "resolved_days": 0,
  "base_near_high": {
   "n": 0,
@@ -15,7 +15,7 @@
   "two_or_more": 0,
   "below_200": 1
  },
- "as_of": "2026-11-25",
+ "as_of": "2026-11-27",
  "flags": {
   "semis_lead": {
    "days_on_resolved": 0,
